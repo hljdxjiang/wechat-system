@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nuoding.wechat.common.dao.MarketCouponRuleDao">
+
+    <resultMap type="com.nuoding.wechat.common.entity.MarketCouponRule" id="MarketCouponRuleMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
+        <result property="couponId" column="coupon_id" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
+        <result property="ruleId" column="rule_id" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="MarketCouponRuleMap">
+        select
+          id, tenant_id, coupon_id, status, create_time, last_modified_time, rule_id
+        from market_coupon_rule
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="MarketCouponRuleMap">
+        select
+        id, tenant_id, coupon_id, status, create_time, last_modified_time, rule_id
+        from market_coupon_rule
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="tenantId != null and tenantId != ''">
+                and tenant_id = #{tenantId}
+            </if>
+            <if test="couponId != null and couponId != ''">
+                and coupon_id = #{couponId}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="lastModifiedTime != null">
+                and last_modified_time = #{lastModifiedTime}
+            </if>
+            <if test="ruleId != null and ruleId != ''">
+                and rule_id = #{ruleId}
+            </if>
+        </where>
+
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from market_coupon_rule
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="tenantId != null and tenantId != ''">
+                and tenant_id = #{tenantId}
+            </if>
+            <if test="couponId != null and couponId != ''">
+                and coupon_id = #{couponId}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="lastModifiedTime != null">
+                and last_modified_time = #{lastModifiedTime}
+            </if>
+            <if test="ruleId != null and ruleId != ''">
+                and rule_id = #{ruleId}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into market_coupon_rule(tenant_id, coupon_id, status, create_time, last_modified_time, rule_id)
+        values (#{tenantId}, #{couponId}, #{status}, #{createTime}, #{lastModifiedTime}, #{ruleId})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into market_coupon_rule(tenant_id, coupon_id, status, create_time, last_modified_time, rule_id)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tenantId}, #{entity.couponId}, #{entity.status}, #{entity.createTime}, #{entity.lastModifiedTime},
+            #{entity.ruleId})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into market_coupon_rule(tenant_id, coupon_id, status, create_time, last_modified_time, rule_id)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tenantId}, #{entity.couponId}, #{entity.status}, #{entity.createTime}, #{entity.lastModifiedTime},
+            #{entity.ruleId})
+        </foreach>
+        on duplicate key update
+        tenant_id = values(tenant_id),
+        coupon_id = values(coupon_id),
+        status = values(status),
+        create_time = values(create_time),
+        last_modified_time = values(last_modified_time),
+        rule_id = values(rule_id)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update market_coupon_rule
+        <set>
+            <if test="tenantId != null and tenantId != ''">
+                tenant_id = #{tenantId},
+            </if>
+            <if test="couponId != null and couponId != ''">
+                coupon_id = #{couponId},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="lastModifiedTime != null">
+                last_modified_time = #{lastModifiedTime},
+            </if>
+            <if test="ruleId != null and ruleId != ''">
+                rule_id = #{ruleId},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from market_coupon_rule where id = #{id}
+    </delete>
+
+</mapper>
+

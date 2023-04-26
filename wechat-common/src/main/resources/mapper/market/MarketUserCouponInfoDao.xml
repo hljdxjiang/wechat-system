@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nuoding.wechat.common.dao.MarketUserCouponInfoDao">
+
+    <resultMap type="com.nuoding.wechat.common.entity.MarketUserCouponInfo" id="MarketUserCouponInfoMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
+        <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+        <result property="userCouponId" column="user_coupon_id" jdbcType="VARCHAR"/>
+        <result property="couponId" column="coupon_id" jdbcType="VARCHAR"/>
+        <result property="couponType" column="coupon_type" jdbcType="VARCHAR"/>
+        <result property="couponMethod" column="coupon_method" jdbcType="VARCHAR"/>
+        <result property="couponAmount" column="coupon_amount" jdbcType="VARCHAR"/>
+        <result property="useVaildDate" column="use_vaild_date" jdbcType="TIMESTAMP"/>
+        <result property="useExpireDate" column="use_expire_date" jdbcType="TIMESTAMP"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="MarketUserCouponInfoMap">
+        select
+          id, tenant_id, user_id, user_coupon_id, coupon_id, coupon_type, coupon_method, coupon_amount, use_vaild_date, use_expire_date, status, create_time, last_modified_time
+        from market_user_coupon_info
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="MarketUserCouponInfoMap">
+        select
+        id, tenant_id, user_id, user_coupon_id, coupon_id, coupon_type, coupon_method, coupon_amount, use_vaild_date,
+        use_expire_date, status, create_time, last_modified_time
+        from market_user_coupon_info
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="tenantId != null and tenantId != ''">
+                and tenant_id = #{tenantId}
+            </if>
+            <if test="userId != null and userId != ''">
+                and user_id = #{userId}
+            </if>
+            <if test="userCouponId != null and userCouponId != ''">
+                and user_coupon_id = #{userCouponId}
+            </if>
+            <if test="couponId != null and couponId != ''">
+                and coupon_id = #{couponId}
+            </if>
+            <if test="couponType != null and couponType != ''">
+                and coupon_type = #{couponType}
+            </if>
+            <if test="couponMethod != null and couponMethod != ''">
+                and coupon_method = #{couponMethod}
+            </if>
+            <if test="couponAmount != null and couponAmount != ''">
+                and coupon_amount = #{couponAmount}
+            </if>
+            <if test="useVaildDate != null">
+                and use_vaild_date = #{useVaildDate}
+            </if>
+            <if test="useExpireDate != null">
+                and use_expire_date = #{useExpireDate}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="lastModifiedTime != null">
+                and last_modified_time = #{lastModifiedTime}
+            </if>
+        </where>
+
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from market_user_coupon_info
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="tenantId != null and tenantId != ''">
+                and tenant_id = #{tenantId}
+            </if>
+            <if test="userId != null and userId != ''">
+                and user_id = #{userId}
+            </if>
+            <if test="userCouponId != null and userCouponId != ''">
+                and user_coupon_id = #{userCouponId}
+            </if>
+            <if test="couponId != null and couponId != ''">
+                and coupon_id = #{couponId}
+            </if>
+            <if test="couponType != null and couponType != ''">
+                and coupon_type = #{couponType}
+            </if>
+            <if test="couponMethod != null and couponMethod != ''">
+                and coupon_method = #{couponMethod}
+            </if>
+            <if test="couponAmount != null and couponAmount != ''">
+                and coupon_amount = #{couponAmount}
+            </if>
+            <if test="useVaildDate != null">
+                and use_vaild_date = #{useVaildDate}
+            </if>
+            <if test="useExpireDate != null">
+                and use_expire_date = #{useExpireDate}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="lastModifiedTime != null">
+                and last_modified_time = #{lastModifiedTime}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into market_user_coupon_info(tenant_id, user_id, user_coupon_id, coupon_id, coupon_type, coupon_method, coupon_amount, use_vaild_date, use_expire_date, status, create_time, last_modified_time)
+        values (#{tenantId}, #{userId}, #{userCouponId}, #{couponId}, #{couponType}, #{couponMethod}, #{couponAmount}, #{useVaildDate}, #{useExpireDate}, #{status}, #{createTime}, #{lastModifiedTime})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into market_user_coupon_info(tenant_id, user_id, user_coupon_id, coupon_id, coupon_type, coupon_method,
+        coupon_amount, use_vaild_date, use_expire_date, status, create_time, last_modified_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tenantId}, #{entity.userId}, #{entity.userCouponId}, #{entity.couponId}, #{entity.couponType},
+            #{entity.couponMethod}, #{entity.couponAmount}, #{entity.useVaildDate}, #{entity.useExpireDate},
+            #{entity.status}, #{entity.createTime}, #{entity.lastModifiedTime})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into market_user_coupon_info(tenant_id, user_id, user_coupon_id, coupon_id, coupon_type, coupon_method,
+        coupon_amount, use_vaild_date, use_expire_date, status, create_time, last_modified_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tenantId}, #{entity.userId}, #{entity.userCouponId}, #{entity.couponId}, #{entity.couponType},
+            #{entity.couponMethod}, #{entity.couponAmount}, #{entity.useVaildDate}, #{entity.useExpireDate},
+            #{entity.status}, #{entity.createTime}, #{entity.lastModifiedTime})
+        </foreach>
+        on duplicate key update
+        tenant_id = values(tenant_id),
+        user_id = values(user_id),
+        user_coupon_id = values(user_coupon_id),
+        coupon_id = values(coupon_id),
+        coupon_type = values(coupon_type),
+        coupon_method = values(coupon_method),
+        coupon_amount = values(coupon_amount),
+        use_vaild_date = values(use_vaild_date),
+        use_expire_date = values(use_expire_date),
+        status = values(status),
+        create_time = values(create_time),
+        last_modified_time = values(last_modified_time)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update market_user_coupon_info
+        <set>
+            <if test="tenantId != null and tenantId != ''">
+                tenant_id = #{tenantId},
+            </if>
+            <if test="userId != null and userId != ''">
+                user_id = #{userId},
+            </if>
+            <if test="userCouponId != null and userCouponId != ''">
+                user_coupon_id = #{userCouponId},
+            </if>
+            <if test="couponId != null and couponId != ''">
+                coupon_id = #{couponId},
+            </if>
+            <if test="couponType != null and couponType != ''">
+                coupon_type = #{couponType},
+            </if>
+            <if test="couponMethod != null and couponMethod != ''">
+                coupon_method = #{couponMethod},
+            </if>
+            <if test="couponAmount != null and couponAmount != ''">
+                coupon_amount = #{couponAmount},
+            </if>
+            <if test="useVaildDate != null">
+                use_vaild_date = #{useVaildDate},
+            </if>
+            <if test="useExpireDate != null">
+                use_expire_date = #{useExpireDate},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="lastModifiedTime != null">
+                last_modified_time = #{lastModifiedTime},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from market_user_coupon_info where id = #{id}
+    </delete>
+
+</mapper>
+

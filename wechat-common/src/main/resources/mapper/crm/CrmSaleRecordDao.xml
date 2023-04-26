@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nuoding.wechat.common.dao.CrmSaleRecordDao">
+
+    <resultMap type="com.nuoding.wechat.common.entity.CrmSaleRecord" id="CrmSaleRecordMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
+        <result property="batchId" column="batch_id" jdbcType="INTEGER"/>
+        <result property="amount" column="amount" jdbcType="VARCHAR"/>
+        <result property="orderTime" column="order_time" jdbcType="NUMERIC"/>
+        <result property="spend" column="spend" jdbcType="NUMERIC"/>
+        <result property="postage" column="postage" jdbcType="NUMERIC"/>
+        <result property="postageCost" column="postage_cost" jdbcType="NUMERIC"/>
+        <result property="traceCode" column="trace_code" jdbcType="VARCHAR"/>
+        <result property="postDate" column="post_date" jdbcType="TIMESTAMP"/>
+        <result property="realPrice" column="real_price" jdbcType="NUMERIC"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="CrmSaleRecordMap">
+        select
+          id, tenant_id, batch_id, amount, order_time, spend, postage, postage_cost, trace_code, post_date, real_price, remark, status, create_time, last_modified_time
+        from crm_sale_record
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="CrmSaleRecordMap">
+        select
+        id, tenant_id, batch_id, amount, order_time, spend, postage, postage_cost, trace_code, post_date, real_price,
+        remark, status, create_time, last_modified_time
+        from crm_sale_record
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="tenantId != null and tenantId != ''">
+                and tenant_id = #{tenantId}
+            </if>
+            <if test="batchId != null">
+                and batch_id = #{batchId}
+            </if>
+            <if test="amount != null and amount != ''">
+                and amount = #{amount}
+            </if>
+            <if test="orderTime != null">
+                and order_time = #{orderTime}
+            </if>
+            <if test="spend != null">
+                and spend = #{spend}
+            </if>
+            <if test="postage != null">
+                and postage = #{postage}
+            </if>
+            <if test="postageCost != null">
+                and postage_cost = #{postageCost}
+            </if>
+            <if test="traceCode != null and traceCode != ''">
+                and trace_code = #{traceCode}
+            </if>
+            <if test="postDate != null">
+                and post_date = #{postDate}
+            </if>
+            <if test="realPrice != null">
+                and real_price = #{realPrice}
+            </if>
+            <if test="remark != null and remark != ''">
+                and remark = #{remark}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="lastModifiedTime != null">
+                and last_modified_time = #{lastModifiedTime}
+            </if>
+        </where>
+
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from crm_sale_record
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="tenantId != null and tenantId != ''">
+                and tenant_id = #{tenantId}
+            </if>
+            <if test="batchId != null">
+                and batch_id = #{batchId}
+            </if>
+            <if test="amount != null and amount != ''">
+                and amount = #{amount}
+            </if>
+            <if test="orderTime != null">
+                and order_time = #{orderTime}
+            </if>
+            <if test="spend != null">
+                and spend = #{spend}
+            </if>
+            <if test="postage != null">
+                and postage = #{postage}
+            </if>
+            <if test="postageCost != null">
+                and postage_cost = #{postageCost}
+            </if>
+            <if test="traceCode != null and traceCode != ''">
+                and trace_code = #{traceCode}
+            </if>
+            <if test="postDate != null">
+                and post_date = #{postDate}
+            </if>
+            <if test="realPrice != null">
+                and real_price = #{realPrice}
+            </if>
+            <if test="remark != null and remark != ''">
+                and remark = #{remark}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="lastModifiedTime != null">
+                and last_modified_time = #{lastModifiedTime}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into crm_sale_record(tenant_id, batch_id, amount, order_time, spend, postage, postage_cost, trace_code, post_date, real_price, remark, status, create_time, last_modified_time)
+        values (#{tenantId}, #{batchId}, #{amount}, #{orderTime}, #{spend}, #{postage}, #{postageCost}, #{traceCode}, #{postDate}, #{realPrice}, #{remark}, #{status}, #{createTime}, #{lastModifiedTime})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into crm_sale_record(tenant_id, batch_id, amount, order_time, spend, postage, postage_cost, trace_code,
+        post_date, real_price, remark, status, create_time, last_modified_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tenantId}, #{entity.batchId}, #{entity.amount}, #{entity.orderTime}, #{entity.spend},
+            #{entity.postage}, #{entity.postageCost}, #{entity.traceCode}, #{entity.postDate}, #{entity.realPrice},
+            #{entity.remark}, #{entity.status}, #{entity.createTime}, #{entity.lastModifiedTime})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into crm_sale_record(tenant_id, batch_id, amount, order_time, spend, postage, postage_cost, trace_code,
+        post_date, real_price, remark, status, create_time, last_modified_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tenantId}, #{entity.batchId}, #{entity.amount}, #{entity.orderTime}, #{entity.spend},
+            #{entity.postage}, #{entity.postageCost}, #{entity.traceCode}, #{entity.postDate}, #{entity.realPrice},
+            #{entity.remark}, #{entity.status}, #{entity.createTime}, #{entity.lastModifiedTime})
+        </foreach>
+        on duplicate key update
+        tenant_id = values(tenant_id),
+        batch_id = values(batch_id),
+        amount = values(amount),
+        order_time = values(order_time),
+        spend = values(spend),
+        postage = values(postage),
+        postage_cost = values(postage_cost),
+        trace_code = values(trace_code),
+        post_date = values(post_date),
+        real_price = values(real_price),
+        remark = values(remark),
+        status = values(status),
+        create_time = values(create_time),
+        last_modified_time = values(last_modified_time)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update crm_sale_record
+        <set>
+            <if test="tenantId != null and tenantId != ''">
+                tenant_id = #{tenantId},
+            </if>
+            <if test="batchId != null">
+                batch_id = #{batchId},
+            </if>
+            <if test="amount != null and amount != ''">
+                amount = #{amount},
+            </if>
+            <if test="orderTime != null">
+                order_time = #{orderTime},
+            </if>
+            <if test="spend != null">
+                spend = #{spend},
+            </if>
+            <if test="postage != null">
+                postage = #{postage},
+            </if>
+            <if test="postageCost != null">
+                postage_cost = #{postageCost},
+            </if>
+            <if test="traceCode != null and traceCode != ''">
+                trace_code = #{traceCode},
+            </if>
+            <if test="postDate != null">
+                post_date = #{postDate},
+            </if>
+            <if test="realPrice != null">
+                real_price = #{realPrice},
+            </if>
+            <if test="remark != null and remark != ''">
+                remark = #{remark},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="lastModifiedTime != null">
+                last_modified_time = #{lastModifiedTime},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from crm_sale_record where id = #{id}
+    </delete>
+
+</mapper>
+

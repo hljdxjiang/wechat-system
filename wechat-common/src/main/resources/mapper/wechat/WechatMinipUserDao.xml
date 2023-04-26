@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nuoding.wechat.common.dao.WechatMinipUserDao">
+
+    <resultMap type="com.nuoding.wechat.common.entity.WechatMinipUser" id="WechatMinipUserMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="mopenid" column="mopenid" jdbcType="VARCHAR"/>
+        <result property="unionid" column="unionid" jdbcType="VARCHAR"/>
+        <result property="nickname" column="nickname" jdbcType="VARCHAR"/>
+        <result property="gender" column="gender" jdbcType="INTEGER"/>
+        <result property="province" column="province" jdbcType="VARCHAR"/>
+        <result property="city" column="city" jdbcType="VARCHAR"/>
+        <result property="country" column="country" jdbcType="VARCHAR"/>
+        <result property="avatarurl" column="avatarurl" jdbcType="VARCHAR"/>
+        <result property="wartermark" column="wartermark" jdbcType="VARCHAR"/>
+        <result property="createtime" column="createtime" jdbcType="TIMESTAMP"/>
+        <result property="lastmodifiedtime" column="lastmodifiedtime" jdbcType="TIMESTAMP"/>
+        <result property="mobileNo" column="mobile_no" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="WechatMinipUserMap">
+        select
+          id, mopenid, unionid, nickname, gender, province, city, country, avatarurl, wartermark, createtime, lastmodifiedtime, mobile_no, status, user_id
+        from wechat_minip_user
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="WechatMinipUserMap">
+        select
+        id, mopenid, unionid, nickname, gender, province, city, country, avatarurl, wartermark, createtime,
+        lastmodifiedtime, mobile_no, status, user_id
+        from wechat_minip_user
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="mopenid != null and mopenid != ''">
+                and mopenid = #{mopenid}
+            </if>
+            <if test="unionid != null and unionid != ''">
+                and unionid = #{unionid}
+            </if>
+            <if test="nickname != null and nickname != ''">
+                and nickname = #{nickname}
+            </if>
+            <if test="gender != null">
+                and gender = #{gender}
+            </if>
+            <if test="province != null and province != ''">
+                and province = #{province}
+            </if>
+            <if test="city != null and city != ''">
+                and city = #{city}
+            </if>
+            <if test="country != null and country != ''">
+                and country = #{country}
+            </if>
+            <if test="avatarurl != null and avatarurl != ''">
+                and avatarurl = #{avatarurl}
+            </if>
+            <if test="wartermark != null and wartermark != ''">
+                and wartermark = #{wartermark}
+            </if>
+            <if test="createtime != null">
+                and createtime = #{createtime}
+            </if>
+            <if test="lastmodifiedtime != null">
+                and lastmodifiedtime = #{lastmodifiedtime}
+            </if>
+            <if test="mobileNo != null and mobileNo != ''">
+                and mobile_no = #{mobileNo}
+            </if>
+            <if test="status != null and status != ''">
+                and status = #{status}
+            </if>
+            <if test="userId != null and userId != ''">
+                and user_id = #{userId}
+            </if>
+        </where>
+
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from wechat_minip_user
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="mopenid != null and mopenid != ''">
+                and mopenid = #{mopenid}
+            </if>
+            <if test="unionid != null and unionid != ''">
+                and unionid = #{unionid}
+            </if>
+            <if test="nickname != null and nickname != ''">
+                and nickname = #{nickname}
+            </if>
+            <if test="gender != null">
+                and gender = #{gender}
+            </if>
+            <if test="province != null and province != ''">
+                and province = #{province}
+            </if>
+            <if test="city != null and city != ''">
+                and city = #{city}
+            </if>
+            <if test="country != null and country != ''">
+                and country = #{country}
+            </if>
+            <if test="avatarurl != null and avatarurl != ''">
+                and avatarurl = #{avatarurl}
+            </if>
+            <if test="wartermark != null and wartermark != ''">
+                and wartermark = #{wartermark}
+            </if>
+            <if test="createtime != null">
+                and createtime = #{createtime}
+            </if>
+            <if test="lastmodifiedtime != null">
+                and lastmodifiedtime = #{lastmodifiedtime}
+            </if>
+            <if test="mobileNo != null and mobileNo != ''">
+                and mobile_no = #{mobileNo}
+            </if>
+            <if test="status != null and status != ''">
+                and status = #{status}
+            </if>
+            <if test="userId != null and userId != ''">
+                and user_id = #{userId}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into wechat_minip_user(mopenid, unionid, nickname, gender, province, city, country, avatarurl, wartermark, createtime, lastmodifiedtime, mobile_no, status, user_id)
+        values (#{mopenid}, #{unionid}, #{nickname}, #{gender}, #{province}, #{city}, #{country}, #{avatarurl}, #{wartermark}, #{createtime}, #{lastmodifiedtime}, #{mobileNo}, #{status}, #{userId})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into wechat_minip_user(mopenid, unionid, nickname, gender, province, city, country, avatarurl,
+        wartermark, createtime, lastmodifiedtime, mobile_no, status, user_id)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.mopenid}, #{entity.unionid}, #{entity.nickname}, #{entity.gender}, #{entity.province},
+            #{entity.city}, #{entity.country}, #{entity.avatarurl}, #{entity.wartermark}, #{entity.createtime},
+            #{entity.lastmodifiedtime}, #{entity.mobileNo}, #{entity.status}, #{entity.userId})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into wechat_minip_user(mopenid, unionid, nickname, gender, province, city, country, avatarurl,
+        wartermark, createtime, lastmodifiedtime, mobile_no, status, user_id)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.mopenid}, #{entity.unionid}, #{entity.nickname}, #{entity.gender}, #{entity.province},
+            #{entity.city}, #{entity.country}, #{entity.avatarurl}, #{entity.wartermark}, #{entity.createtime},
+            #{entity.lastmodifiedtime}, #{entity.mobileNo}, #{entity.status}, #{entity.userId})
+        </foreach>
+        on duplicate key update
+        mopenid = values(mopenid),
+        unionid = values(unionid),
+        nickname = values(nickname),
+        gender = values(gender),
+        province = values(province),
+        city = values(city),
+        country = values(country),
+        avatarurl = values(avatarurl),
+        wartermark = values(wartermark),
+        createtime = values(createtime),
+        lastmodifiedtime = values(lastmodifiedtime),
+        mobile_no = values(mobile_no),
+        status = values(status),
+        user_id = values(user_id)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update wechat_minip_user
+        <set>
+            <if test="mopenid != null and mopenid != ''">
+                mopenid = #{mopenid},
+            </if>
+            <if test="unionid != null and unionid != ''">
+                unionid = #{unionid},
+            </if>
+            <if test="nickname != null and nickname != ''">
+                nickname = #{nickname},
+            </if>
+            <if test="gender != null">
+                gender = #{gender},
+            </if>
+            <if test="province != null and province != ''">
+                province = #{province},
+            </if>
+            <if test="city != null and city != ''">
+                city = #{city},
+            </if>
+            <if test="country != null and country != ''">
+                country = #{country},
+            </if>
+            <if test="avatarurl != null and avatarurl != ''">
+                avatarurl = #{avatarurl},
+            </if>
+            <if test="wartermark != null and wartermark != ''">
+                wartermark = #{wartermark},
+            </if>
+            <if test="createtime != null">
+                createtime = #{createtime},
+            </if>
+            <if test="lastmodifiedtime != null">
+                lastmodifiedtime = #{lastmodifiedtime},
+            </if>
+            <if test="mobileNo != null and mobileNo != ''">
+                mobile_no = #{mobileNo},
+            </if>
+            <if test="status != null and status != ''">
+                status = #{status},
+            </if>
+            <if test="userId != null and userId != ''">
+                user_id = #{userId},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from wechat_minip_user where id = #{id}
+    </delete>
+
+</mapper>
+

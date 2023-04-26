@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nuoding.wechat.common.dao.BackSysRevokesDao">
+
+    <resultMap type="com.nuoding.wechat.common.entity.BackSysRevokes" id="BackSysRevokesMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="revokeId" column="revoke_id" jdbcType="VARCHAR"/>
+        <result property="revokeTitle" column="revoke_title" jdbcType="VARCHAR"/>
+        <result property="revokeType" column="revoke_type" jdbcType="VARCHAR"/>
+        <result property="revokeParentid" column="revoke_parentid" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BackSysRevokesMap">
+        select
+          id, revoke_id, revoke_title, revoke_type, revoke_parentid, create_time, last_modified_time, remark
+        from back_sys_revokes
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BackSysRevokesMap">
+        select
+        id, revoke_id, revoke_title, revoke_type, revoke_parentid, create_time, last_modified_time, remark
+        from back_sys_revokes
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="revokeId != null and revokeId != ''">
+                and revoke_id = #{revokeId}
+            </if>
+            <if test="revokeTitle != null and revokeTitle != ''">
+                and revoke_title = #{revokeTitle}
+            </if>
+            <if test="revokeType != null and revokeType != ''">
+                and revoke_type = #{revokeType}
+            </if>
+            <if test="revokeParentid != null and revokeParentid != ''">
+                and revoke_parentid = #{revokeParentid}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="lastModifiedTime != null">
+                and last_modified_time = #{lastModifiedTime}
+            </if>
+            <if test="remark != null and remark != ''">
+                and remark = #{remark}
+            </if>
+        </where>
+
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from back_sys_revokes
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="revokeId != null and revokeId != ''">
+                and revoke_id = #{revokeId}
+            </if>
+            <if test="revokeTitle != null and revokeTitle != ''">
+                and revoke_title = #{revokeTitle}
+            </if>
+            <if test="revokeType != null and revokeType != ''">
+                and revoke_type = #{revokeType}
+            </if>
+            <if test="revokeParentid != null and revokeParentid != ''">
+                and revoke_parentid = #{revokeParentid}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="lastModifiedTime != null">
+                and last_modified_time = #{lastModifiedTime}
+            </if>
+            <if test="remark != null and remark != ''">
+                and remark = #{remark}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into back_sys_revokes(revoke_id, revoke_title, revoke_type, revoke_parentid, create_time, last_modified_time, remark)
+        values (#{revokeId}, #{revokeTitle}, #{revokeType}, #{revokeParentid}, #{createTime}, #{lastModifiedTime}, #{remark})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into back_sys_revokes(revoke_id, revoke_title, revoke_type, revoke_parentid, create_time,
+        last_modified_time, remark)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.revokeId}, #{entity.revokeTitle}, #{entity.revokeType}, #{entity.revokeParentid},
+            #{entity.createTime}, #{entity.lastModifiedTime}, #{entity.remark})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into back_sys_revokes(revoke_id, revoke_title, revoke_type, revoke_parentid, create_time,
+        last_modified_time, remark)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.revokeId}, #{entity.revokeTitle}, #{entity.revokeType}, #{entity.revokeParentid},
+            #{entity.createTime}, #{entity.lastModifiedTime}, #{entity.remark})
+        </foreach>
+        on duplicate key update
+        revoke_id = values(revoke_id),
+        revoke_title = values(revoke_title),
+        revoke_type = values(revoke_type),
+        revoke_parentid = values(revoke_parentid),
+        create_time = values(create_time),
+        last_modified_time = values(last_modified_time),
+        remark = values(remark)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update back_sys_revokes
+        <set>
+            <if test="revokeId != null and revokeId != ''">
+                revoke_id = #{revokeId},
+            </if>
+            <if test="revokeTitle != null and revokeTitle != ''">
+                revoke_title = #{revokeTitle},
+            </if>
+            <if test="revokeType != null and revokeType != ''">
+                revoke_type = #{revokeType},
+            </if>
+            <if test="revokeParentid != null and revokeParentid != ''">
+                revoke_parentid = #{revokeParentid},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="lastModifiedTime != null">
+                last_modified_time = #{lastModifiedTime},
+            </if>
+            <if test="remark != null and remark != ''">
+                remark = #{remark},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from back_sys_revokes where id = #{id}
+    </delete>
+
+</mapper>
+

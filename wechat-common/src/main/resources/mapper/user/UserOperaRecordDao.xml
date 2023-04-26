@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nuoding.wechat.common.dao.UserOperaRecordDao">
+
+    <resultMap type="com.nuoding.wechat.common.entity.UserOperaRecord" id="UserOperaRecordMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
+        <result property="userid" column="userid" jdbcType="VARCHAR"/>
+        <result property="operationType" column="operation_type" jdbcType="VARCHAR"/>
+        <result property="requestUrl" column="request_url" jdbcType="VARCHAR"/>
+        <result property="userIp" column="user_ip" jdbcType="VARCHAR"/>
+        <result property="createtime" column="createtime" jdbcType="TIMESTAMP"/>
+        <result property="lastmodifiedtime" column="lastmodifiedtime" jdbcType="TIMESTAMP"/>
+        <result property="macAddr" column="mac_addr" jdbcType="VARCHAR"/>
+        <result property="transCode" column="trans_code" jdbcType="VARCHAR"/>
+        <result property="version" column="version" jdbcType="VARCHAR"/>
+        <result property="sessionid" column="sessionid" jdbcType="VARCHAR"/>
+        <result property="replayid" column="replayid" jdbcType="VARCHAR"/>
+        <result property="requestBody" column="request_body" jdbcType="VARCHAR"/>
+        <result property="responseCode" column="response_code" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="UserOperaRecordMap">
+        select
+          id, tenant_id, userid, operation_type, request_url, user_ip, createtime, lastmodifiedtime, mac_addr, trans_code, version, sessionid, replayid, request_body, response_code
+        from user_opera_record
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="UserOperaRecordMap">
+        select
+        id, tenant_id, userid, operation_type, request_url, user_ip, createtime, lastmodifiedtime, mac_addr, trans_code,
+        version, sessionid, replayid, request_body, response_code
+        from user_opera_record
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="tenantId != null and tenantId != ''">
+                and tenant_id = #{tenantId}
+            </if>
+            <if test="userid != null and userid != ''">
+                and userid = #{userid}
+            </if>
+            <if test="operationType != null and operationType != ''">
+                and operation_type = #{operationType}
+            </if>
+            <if test="requestUrl != null and requestUrl != ''">
+                and request_url = #{requestUrl}
+            </if>
+            <if test="userIp != null and userIp != ''">
+                and user_ip = #{userIp}
+            </if>
+            <if test="createtime != null">
+                and createtime = #{createtime}
+            </if>
+            <if test="lastmodifiedtime != null">
+                and lastmodifiedtime = #{lastmodifiedtime}
+            </if>
+            <if test="macAddr != null and macAddr != ''">
+                and mac_addr = #{macAddr}
+            </if>
+            <if test="transCode != null and transCode != ''">
+                and trans_code = #{transCode}
+            </if>
+            <if test="version != null and version != ''">
+                and version = #{version}
+            </if>
+            <if test="sessionid != null and sessionid != ''">
+                and sessionid = #{sessionid}
+            </if>
+            <if test="replayid != null and replayid != ''">
+                and replayid = #{replayid}
+            </if>
+            <if test="requestBody != null and requestBody != ''">
+                and request_body = #{requestBody}
+            </if>
+            <if test="responseCode != null and responseCode != ''">
+                and response_code = #{responseCode}
+            </if>
+        </where>
+
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from user_opera_record
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="tenantId != null and tenantId != ''">
+                and tenant_id = #{tenantId}
+            </if>
+            <if test="userid != null and userid != ''">
+                and userid = #{userid}
+            </if>
+            <if test="operationType != null and operationType != ''">
+                and operation_type = #{operationType}
+            </if>
+            <if test="requestUrl != null and requestUrl != ''">
+                and request_url = #{requestUrl}
+            </if>
+            <if test="userIp != null and userIp != ''">
+                and user_ip = #{userIp}
+            </if>
+            <if test="createtime != null">
+                and createtime = #{createtime}
+            </if>
+            <if test="lastmodifiedtime != null">
+                and lastmodifiedtime = #{lastmodifiedtime}
+            </if>
+            <if test="macAddr != null and macAddr != ''">
+                and mac_addr = #{macAddr}
+            </if>
+            <if test="transCode != null and transCode != ''">
+                and trans_code = #{transCode}
+            </if>
+            <if test="version != null and version != ''">
+                and version = #{version}
+            </if>
+            <if test="sessionid != null and sessionid != ''">
+                and sessionid = #{sessionid}
+            </if>
+            <if test="replayid != null and replayid != ''">
+                and replayid = #{replayid}
+            </if>
+            <if test="requestBody != null and requestBody != ''">
+                and request_body = #{requestBody}
+            </if>
+            <if test="responseCode != null and responseCode != ''">
+                and response_code = #{responseCode}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into user_opera_record(tenant_id, userid, operation_type, request_url, user_ip, createtime, lastmodifiedtime, mac_addr, trans_code, version, sessionid, replayid, request_body, response_code)
+        values (#{tenantId}, #{userid}, #{operationType}, #{requestUrl}, #{userIp}, #{createtime}, #{lastmodifiedtime}, #{macAddr}, #{transCode}, #{version}, #{sessionid}, #{replayid}, #{requestBody}, #{responseCode})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into user_opera_record(tenant_id, userid, operation_type, request_url, user_ip, createtime,
+        lastmodifiedtime, mac_addr, trans_code, version, sessionid, replayid, request_body, response_code)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tenantId}, #{entity.userid}, #{entity.operationType}, #{entity.requestUrl}, #{entity.userIp},
+            #{entity.createtime}, #{entity.lastmodifiedtime}, #{entity.macAddr}, #{entity.transCode}, #{entity.version},
+            #{entity.sessionid}, #{entity.replayid}, #{entity.requestBody}, #{entity.responseCode})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into user_opera_record(tenant_id, userid, operation_type, request_url, user_ip, createtime,
+        lastmodifiedtime, mac_addr, trans_code, version, sessionid, replayid, request_body, response_code)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tenantId}, #{entity.userid}, #{entity.operationType}, #{entity.requestUrl}, #{entity.userIp},
+            #{entity.createtime}, #{entity.lastmodifiedtime}, #{entity.macAddr}, #{entity.transCode}, #{entity.version},
+            #{entity.sessionid}, #{entity.replayid}, #{entity.requestBody}, #{entity.responseCode})
+        </foreach>
+        on duplicate key update
+        tenant_id = values(tenant_id),
+        userid = values(userid),
+        operation_type = values(operation_type),
+        request_url = values(request_url),
+        user_ip = values(user_ip),
+        createtime = values(createtime),
+        lastmodifiedtime = values(lastmodifiedtime),
+        mac_addr = values(mac_addr),
+        trans_code = values(trans_code),
+        version = values(version),
+        sessionid = values(sessionid),
+        replayid = values(replayid),
+        request_body = values(request_body),
+        response_code = values(response_code)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update user_opera_record
+        <set>
+            <if test="tenantId != null and tenantId != ''">
+                tenant_id = #{tenantId},
+            </if>
+            <if test="userid != null and userid != ''">
+                userid = #{userid},
+            </if>
+            <if test="operationType != null and operationType != ''">
+                operation_type = #{operationType},
+            </if>
+            <if test="requestUrl != null and requestUrl != ''">
+                request_url = #{requestUrl},
+            </if>
+            <if test="userIp != null and userIp != ''">
+                user_ip = #{userIp},
+            </if>
+            <if test="createtime != null">
+                createtime = #{createtime},
+            </if>
+            <if test="lastmodifiedtime != null">
+                lastmodifiedtime = #{lastmodifiedtime},
+            </if>
+            <if test="macAddr != null and macAddr != ''">
+                mac_addr = #{macAddr},
+            </if>
+            <if test="transCode != null and transCode != ''">
+                trans_code = #{transCode},
+            </if>
+            <if test="version != null and version != ''">
+                version = #{version},
+            </if>
+            <if test="sessionid != null and sessionid != ''">
+                sessionid = #{sessionid},
+            </if>
+            <if test="replayid != null and replayid != ''">
+                replayid = #{replayid},
+            </if>
+            <if test="requestBody != null and requestBody != ''">
+                request_body = #{requestBody},
+            </if>
+            <if test="responseCode != null and responseCode != ''">
+                response_code = #{responseCode},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from user_opera_record where id = #{id}
+    </delete>
+
+</mapper>
+

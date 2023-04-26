@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nuoding.wechat.common.dao.SysPageInfoDao">
+
+    <resultMap type="com.nuoding.wechat.common.entity.SysPageInfo" id="SysPageInfoMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
+        <result property="pageId" column="page_id" jdbcType="VARCHAR"/>
+        <result property="pageTitle" column="page_title" jdbcType="VARCHAR"/>
+        <result property="pageType" column="page_type" jdbcType="VARCHAR"/>
+        <result property="controlFlag" column="control_flag" jdbcType="VARCHAR"/>
+        <result property="needLogin" column="need_login" jdbcType="INTEGER"/>
+        <result property="pageRemark" column="page_remark" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
+        <result property="userid" column="userid" jdbcType="VARCHAR"/>
+        <result property="modifyUserid" column="modify_userid" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="SysPageInfoMap">
+        select
+          id, tenant_id, page_id, page_title, page_type, control_flag, need_login, page_remark, status, create_time, last_modified_time, userid, modify_userid
+        from sys_page_info
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="SysPageInfoMap">
+        select
+          id, tenant_id, page_id, page_title, page_type, control_flag, need_login, page_remark, status, create_time, last_modified_time, userid, modify_userid
+        from sys_page_info
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="tenantId != null and tenantId != ''">
+                and tenant_id = #{tenantId}
+            </if>
+            <if test="pageId != null and pageId != ''">
+                and page_id = #{pageId}
+            </if>
+            <if test="pageTitle != null and pageTitle != ''">
+                and page_title = #{pageTitle}
+            </if>
+            <if test="pageType != null and pageType != ''">
+                and page_type = #{pageType}
+            </if>
+            <if test="controlFlag != null and controlFlag != ''">
+                and control_flag = #{controlFlag}
+            </if>
+            <if test="needLogin != null">
+                and need_login = #{needLogin}
+            </if>
+            <if test="pageRemark != null and pageRemark != ''">
+                and page_remark = #{pageRemark}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="lastModifiedTime != null">
+                and last_modified_time = #{lastModifiedTime}
+            </if>
+            <if test="userid != null and userid != ''">
+                and userid = #{userid}
+            </if>
+            <if test="modifyUserid != null and modifyUserid != ''">
+                and modify_userid = #{modifyUserid}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from sys_page_info
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="tenantId != null and tenantId != ''">
+                and tenant_id = #{tenantId}
+            </if>
+            <if test="pageId != null and pageId != ''">
+                and page_id = #{pageId}
+            </if>
+            <if test="pageTitle != null and pageTitle != ''">
+                and page_title = #{pageTitle}
+            </if>
+            <if test="pageType != null and pageType != ''">
+                and page_type = #{pageType}
+            </if>
+            <if test="controlFlag != null and controlFlag != ''">
+                and control_flag = #{controlFlag}
+            </if>
+            <if test="needLogin != null">
+                and need_login = #{needLogin}
+            </if>
+            <if test="pageRemark != null and pageRemark != ''">
+                and page_remark = #{pageRemark}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="lastModifiedTime != null">
+                and last_modified_time = #{lastModifiedTime}
+            </if>
+            <if test="userid != null and userid != ''">
+                and userid = #{userid}
+            </if>
+            <if test="modifyUserid != null and modifyUserid != ''">
+                and modify_userid = #{modifyUserid}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into sys_page_info(tenant_id, page_id, page_title, page_type, control_flag, need_login, page_remark, status, create_time, last_modified_time, userid, modify_userid)
+        values (#{tenantId}, #{pageId}, #{pageTitle}, #{pageType}, #{controlFlag}, #{needLogin}, #{pageRemark}, #{status}, #{createTime}, #{lastModifiedTime}, #{userid}, #{modifyUserid})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into sys_page_info(tenant_id, page_id, page_title, page_type, control_flag, need_login, page_remark, status, create_time, last_modified_time, userid, modify_userid)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.tenantId}, #{entity.pageId}, #{entity.pageTitle}, #{entity.pageType}, #{entity.controlFlag}, #{entity.needLogin}, #{entity.pageRemark}, #{entity.status}, #{entity.createTime}, #{entity.lastModifiedTime}, #{entity.userid}, #{entity.modifyUserid})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into sys_page_info(tenant_id, page_id, page_title, page_type, control_flag, need_login, page_remark, status, create_time, last_modified_time, userid, modify_userid)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tenantId}, #{entity.pageId}, #{entity.pageTitle}, #{entity.pageType}, #{entity.controlFlag}, #{entity.needLogin}, #{entity.pageRemark}, #{entity.status}, #{entity.createTime}, #{entity.lastModifiedTime}, #{entity.userid}, #{entity.modifyUserid})
+        </foreach>
+        on duplicate key update
+        tenant_id = values(tenant_id),
+        page_id = values(page_id),
+        page_title = values(page_title),
+        page_type = values(page_type),
+        control_flag = values(control_flag),
+        need_login = values(need_login),
+        page_remark = values(page_remark),
+        status = values(status),
+        create_time = values(create_time),
+        last_modified_time = values(last_modified_time),
+        userid = values(userid),
+        modify_userid = values(modify_userid)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update sys_page_info
+        <set>
+            <if test="tenantId != null and tenantId != ''">
+                tenant_id = #{tenantId},
+            </if>
+            <if test="pageId != null and pageId != ''">
+                page_id = #{pageId},
+            </if>
+            <if test="pageTitle != null and pageTitle != ''">
+                page_title = #{pageTitle},
+            </if>
+            <if test="pageType != null and pageType != ''">
+                page_type = #{pageType},
+            </if>
+            <if test="controlFlag != null and controlFlag != ''">
+                control_flag = #{controlFlag},
+            </if>
+            <if test="needLogin != null">
+                need_login = #{needLogin},
+            </if>
+            <if test="pageRemark != null and pageRemark != ''">
+                page_remark = #{pageRemark},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="lastModifiedTime != null">
+                last_modified_time = #{lastModifiedTime},
+            </if>
+            <if test="userid != null and userid != ''">
+                userid = #{userid},
+            </if>
+            <if test="modifyUserid != null and modifyUserid != ''">
+                modify_userid = #{modifyUserid},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from sys_page_info where id = #{id}
+    </delete>
+
+</mapper>
+

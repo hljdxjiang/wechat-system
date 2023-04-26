@@ -1,0 +1,29 @@
+server:
+  port: 22456
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://21.129.141.31:38761/eureka/,http://21.129.141.32:38761/eureka/,http://21.129.141.33:38761/eureka/
+    register-with-eureka: true
+spring:
+  application:
+    name: uap-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: wecaht-main
+          uri: lb://wecaht-main
+          predicates:
+            - Path=/wechat/api/**
+
+        - id: wecaht-main-blue
+          uri: lb://wecaht-main-blue
+          predicates:
+            - Path=/blue/wechat/api/{segment}
+          filters:
+            - SetPath=/wechat/api/{segment}
+
+
+

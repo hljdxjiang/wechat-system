@@ -1,0 +1,6 @@
+*.iml
+target
+logs
+.idea
+/wecaht-background/src/bin/encyrMysql.bat
+*/${build.path}/
