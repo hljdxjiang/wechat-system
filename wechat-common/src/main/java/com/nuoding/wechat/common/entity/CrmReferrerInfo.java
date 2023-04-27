@@ -6,23 +6,23 @@ import java.util.Date;
 /**
  * (CrmReferrerInfo)实体类
  *
- * @author jhc
- * @since 2023-04-11 16:30:20
+ * @author makejava
+ * @since 2023-04-27 11:20:26
  */
 public class CrmReferrerInfo implements Serializable {
-    private static final long serialVersionUID = 885317873128423210L;
+    private static final long serialVersionUID = -69686624340440785L;
     /**
      * 主键
      */
     private Integer id;
     /**
+     * 租户ID
+     */
+    private String tenantid;
+    /**
      * 推荐人编号
      */
     private String referrerId;
-    /**
-     * 推荐人姓名
-     */
-    private String referrerName;
     /**
      * 推荐人证件号
      */
@@ -32,17 +32,17 @@ public class CrmReferrerInfo implements Serializable {
      */
     private String referrerCertType;
     /**
-     * 推荐人手机号
+     * 推荐人姓名
      */
-    private String mobileNo;
+    private String referrerName;
     /**
      * 推荐人邮箱
      */
     private String referrerEmail;
     /**
-     * 推荐人渠道编号
+     * 推荐人手机号
      */
-    private String channelNo;
+    private String mobileNo;
     /**
      * 推荐人卡号
      */
@@ -52,9 +52,9 @@ public class CrmReferrerInfo implements Serializable {
      */
     private String status;
     /**
-     * 备注
+     * 推荐人渠道编号
      */
-    private String remark;
+    private String channelNo;
     /**
      * 创建时间
      */
@@ -63,6 +63,10 @@ public class CrmReferrerInfo implements Serializable {
      * 最后修改时间
      */
     private Date lastmodifiedtime;
+    /**
+     * 备注
+     */
+    private String remark;
 
 
     public Integer getId() {
@@ -73,20 +77,20 @@ public class CrmReferrerInfo implements Serializable {
         this.id = id;
     }
 
+    public String getTenantid() {
+        return tenantid;
+    }
+
+    public void setTenantid(String tenantid) {
+        this.tenantid = tenantid;
+    }
+
     public String getReferrerId() {
         return referrerId;
     }
 
     public void setReferrerId(String referrerId) {
         this.referrerId = referrerId;
-    }
-
-    public String getReferrerName() {
-        return referrerName;
-    }
-
-    public void setReferrerName(String referrerName) {
-        this.referrerName = referrerName;
     }
 
     public String getReferrerCertNo() {
@@ -105,12 +109,12 @@ public class CrmReferrerInfo implements Serializable {
         this.referrerCertType = referrerCertType;
     }
 
-    public String getMobileNo() {
-        return mobileNo;
+    public String getReferrerName() {
+        return referrerName;
     }
 
-    public void setMobileNo(String mobileNo) {
-        this.mobileNo = mobileNo;
+    public void setReferrerName(String referrerName) {
+        this.referrerName = referrerName;
     }
 
     public String getReferrerEmail() {
@@ -121,12 +125,12 @@ public class CrmReferrerInfo implements Serializable {
         this.referrerEmail = referrerEmail;
     }
 
-    public String getChannelNo() {
-        return channelNo;
+    public String getMobileNo() {
+        return mobileNo;
     }
 
-    public void setChannelNo(String channelNo) {
-        this.channelNo = channelNo;
+    public void setMobileNo(String mobileNo) {
+        this.mobileNo = mobileNo;
     }
 
     public String getReferrerCardNo() {
@@ -145,12 +149,12 @@ public class CrmReferrerInfo implements Serializable {
         this.status = status;
     }
 
-    public String getRemark() {
-        return remark;
+    public String getChannelNo() {
+        return channelNo;
     }
 
-    public void setRemark(String remark) {
-        this.remark = remark;
+    public void setChannelNo(String channelNo) {
+        this.channelNo = channelNo;
     }
 
     public Date getCreatetime() {
@@ -167,6 +171,14 @@ public class CrmReferrerInfo implements Serializable {
 
     public void setLastmodifiedtime(Date lastmodifiedtime) {
         this.lastmodifiedtime = lastmodifiedtime;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
 }

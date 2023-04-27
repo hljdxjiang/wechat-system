@@ -4,24 +4,25 @@
 
     <resultMap type="com.nuoding.wechat.common.entity.CrmReferrerInfo" id="CrmReferrerInfoMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="tenantid" column="tenantid" jdbcType="VARCHAR"/>
         <result property="referrerId" column="referrer_id" jdbcType="VARCHAR"/>
-        <result property="referrerName" column="referrer_name" jdbcType="VARCHAR"/>
         <result property="referrerCertNo" column="referrer_cert_no" jdbcType="VARCHAR"/>
         <result property="referrerCertType" column="referrer_cert_type" jdbcType="VARCHAR"/>
-        <result property="mobileNo" column="mobile_no" jdbcType="VARCHAR"/>
+        <result property="referrerName" column="referrer_name" jdbcType="VARCHAR"/>
         <result property="referrerEmail" column="referrer_email" jdbcType="VARCHAR"/>
-        <result property="channelNo" column="channel_no" jdbcType="VARCHAR"/>
+        <result property="mobileNo" column="mobile_no" jdbcType="VARCHAR"/>
         <result property="referrerCardNo" column="referrer_card_no" jdbcType="VARCHAR"/>
         <result property="status" column="status" jdbcType="VARCHAR"/>
-        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+        <result property="channelNo" column="channel_no" jdbcType="VARCHAR"/>
         <result property="createtime" column="createtime" jdbcType="TIMESTAMP"/>
         <result property="lastmodifiedtime" column="lastmodifiedtime" jdbcType="TIMESTAMP"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
     </resultMap>
 
     <!--查询单个-->
     <select id="queryById" resultMap="CrmReferrerInfoMap">
         select
-          id, referrer_id, referrer_name, referrer_cert_no, referrer_cert_type, mobile_no, referrer_email, channel_no, referrer_card_no, status, remark, createtime, lastmodifiedtime
+          id, tenantid, referrer_id, referrer_cert_no, referrer_cert_type, referrer_name, referrer_email, mobile_no, referrer_card_no, status, channel_no, createtime, lastmodifiedtime, remark
         from crm_referrer_info
         where id = #{id}
     </select>
@@ -29,17 +30,17 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="CrmReferrerInfoMap">
         select
-          id, referrer_id, referrer_name, referrer_cert_no, referrer_cert_type, mobile_no, referrer_email, channel_no, referrer_card_no, status, remark, createtime, lastmodifiedtime
+          id, tenantid, referrer_id, referrer_cert_no, referrer_cert_type, referrer_name, referrer_email, mobile_no, referrer_card_no, status, channel_no, createtime, lastmodifiedtime, remark
         from crm_referrer_info
         <where>
             <if test="id != null">
                 and id = #{id}
             </if>
+            <if test="tenantid != null and tenantid != ''">
+                and tenantid = #{tenantid}
+            </if>
             <if test="referrerId != null and referrerId != ''">
                 and referrer_id = #{referrerId}
-            </if>
-            <if test="referrerName != null and referrerName != ''">
-                and referrer_name = #{referrerName}
             </if>
             <if test="referrerCertNo != null and referrerCertNo != ''">
                 and referrer_cert_no = #{referrerCertNo}
@@ -47,14 +48,14 @@
             <if test="referrerCertType != null and referrerCertType != ''">
                 and referrer_cert_type = #{referrerCertType}
             </if>
-            <if test="mobileNo != null and mobileNo != ''">
-                and mobile_no = #{mobileNo}
+            <if test="referrerName != null and referrerName != ''">
+                and referrer_name = #{referrerName}
             </if>
             <if test="referrerEmail != null and referrerEmail != ''">
                 and referrer_email = #{referrerEmail}
             </if>
-            <if test="channelNo != null and channelNo != ''">
-                and channel_no = #{channelNo}
+            <if test="mobileNo != null and mobileNo != ''">
+                and mobile_no = #{mobileNo}
             </if>
             <if test="referrerCardNo != null and referrerCardNo != ''">
                 and referrer_card_no = #{referrerCardNo}
@@ -62,14 +63,17 @@
             <if test="status != null and status != ''">
                 and status = #{status}
             </if>
-            <if test="remark != null and remark != ''">
-                and remark = #{remark}
+            <if test="channelNo != null and channelNo != ''">
+                and channel_no = #{channelNo}
             </if>
             <if test="createtime != null">
                 and createtime = #{createtime}
             </if>
             <if test="lastmodifiedtime != null">
                 and lastmodifiedtime = #{lastmodifiedtime}
+            </if>
+            <if test="remark != null and remark != ''">
+                and remark = #{remark}
             </if>
         </where>
     </select>
@@ -82,11 +86,11 @@
             <if test="id != null">
                 and id = #{id}
             </if>
+            <if test="tenantid != null and tenantid != ''">
+                and tenantid = #{tenantid}
+            </if>
             <if test="referrerId != null and referrerId != ''">
                 and referrer_id = #{referrerId}
-            </if>
-            <if test="referrerName != null and referrerName != ''">
-                and referrer_name = #{referrerName}
             </if>
             <if test="referrerCertNo != null and referrerCertNo != ''">
                 and referrer_cert_no = #{referrerCertNo}
@@ -94,14 +98,14 @@
             <if test="referrerCertType != null and referrerCertType != ''">
                 and referrer_cert_type = #{referrerCertType}
             </if>
-            <if test="mobileNo != null and mobileNo != ''">
-                and mobile_no = #{mobileNo}
+            <if test="referrerName != null and referrerName != ''">
+                and referrer_name = #{referrerName}
             </if>
             <if test="referrerEmail != null and referrerEmail != ''">
                 and referrer_email = #{referrerEmail}
             </if>
-            <if test="channelNo != null and channelNo != ''">
-                and channel_no = #{channelNo}
+            <if test="mobileNo != null and mobileNo != ''">
+                and mobile_no = #{mobileNo}
             </if>
             <if test="referrerCardNo != null and referrerCardNo != ''">
                 and referrer_card_no = #{referrerCardNo}
@@ -109,8 +113,8 @@
             <if test="status != null and status != ''">
                 and status = #{status}
             </if>
-            <if test="remark != null and remark != ''">
-                and remark = #{remark}
+            <if test="channelNo != null and channelNo != ''">
+                and channel_no = #{channelNo}
             </if>
             <if test="createtime != null">
                 and createtime = #{createtime}
@@ -118,53 +122,57 @@
             <if test="lastmodifiedtime != null">
                 and lastmodifiedtime = #{lastmodifiedtime}
             </if>
+            <if test="remark != null and remark != ''">
+                and remark = #{remark}
+            </if>
         </where>
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into crm_referrer_info(referrer_id, referrer_name, referrer_cert_no, referrer_cert_type, mobile_no, referrer_email, channel_no, referrer_card_no, status, remark, createtime, lastmodifiedtime)
-        values (#{referrerId}, #{referrerName}, #{referrerCertNo}, #{referrerCertType}, #{mobileNo}, #{referrerEmail}, #{channelNo}, #{referrerCardNo}, #{status}, #{remark}, #{createtime}, #{lastmodifiedtime})
+        insert into crm_referrer_info(tenantid, referrer_id, referrer_cert_no, referrer_cert_type, referrer_name, referrer_email, mobile_no, referrer_card_no, status, channel_no, createtime, lastmodifiedtime, remark)
+        values (#{tenantid}, #{referrerId}, #{referrerCertNo}, #{referrerCertType}, #{referrerName}, #{referrerEmail}, #{mobileNo}, #{referrerCardNo}, #{status}, #{channelNo}, #{createtime}, #{lastmodifiedtime}, #{remark})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into crm_referrer_info(referrer_id, referrer_name, referrer_cert_no, referrer_cert_type, mobile_no, referrer_email, channel_no, referrer_card_no, status, remark, createtime, lastmodifiedtime)
+        insert into crm_referrer_info(tenantid, referrer_id, referrer_cert_no, referrer_cert_type, referrer_name, referrer_email, mobile_no, referrer_card_no, status, channel_no, createtime, lastmodifiedtime, remark)
         values
         <foreach collection="entities" item="entity" separator=",">
-        (#{entity.referrerId}, #{entity.referrerName}, #{entity.referrerCertNo}, #{entity.referrerCertType}, #{entity.mobileNo}, #{entity.referrerEmail}, #{entity.channelNo}, #{entity.referrerCardNo}, #{entity.status}, #{entity.remark}, #{entity.createtime}, #{entity.lastmodifiedtime})
+        (#{entity.tenantid}, #{entity.referrerId}, #{entity.referrerCertNo}, #{entity.referrerCertType}, #{entity.referrerName}, #{entity.referrerEmail}, #{entity.mobileNo}, #{entity.referrerCardNo}, #{entity.status}, #{entity.channelNo}, #{entity.createtime}, #{entity.lastmodifiedtime}, #{entity.remark})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into crm_referrer_info(referrer_id, referrer_name, referrer_cert_no, referrer_cert_type, mobile_no, referrer_email, channel_no, referrer_card_no, status, remark, createtime, lastmodifiedtime)
+        insert into crm_referrer_info(tenantid, referrer_id, referrer_cert_no, referrer_cert_type, referrer_name, referrer_email, mobile_no, referrer_card_no, status, channel_no, createtime, lastmodifiedtime, remark)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.referrerId}, #{entity.referrerName}, #{entity.referrerCertNo}, #{entity.referrerCertType}, #{entity.mobileNo}, #{entity.referrerEmail}, #{entity.channelNo}, #{entity.referrerCardNo}, #{entity.status}, #{entity.remark}, #{entity.createtime}, #{entity.lastmodifiedtime})
+            (#{entity.tenantid}, #{entity.referrerId}, #{entity.referrerCertNo}, #{entity.referrerCertType}, #{entity.referrerName}, #{entity.referrerEmail}, #{entity.mobileNo}, #{entity.referrerCardNo}, #{entity.status}, #{entity.channelNo}, #{entity.createtime}, #{entity.lastmodifiedtime}, #{entity.remark})
         </foreach>
         on duplicate key update
+        tenantid = values(tenantid),
         referrer_id = values(referrer_id),
-        referrer_name = values(referrer_name),
         referrer_cert_no = values(referrer_cert_no),
         referrer_cert_type = values(referrer_cert_type),
-        mobile_no = values(mobile_no),
+        referrer_name = values(referrer_name),
         referrer_email = values(referrer_email),
-        channel_no = values(channel_no),
+        mobile_no = values(mobile_no),
         referrer_card_no = values(referrer_card_no),
         status = values(status),
-        remark = values(remark),
+        channel_no = values(channel_no),
         createtime = values(createtime),
-        lastmodifiedtime = values(lastmodifiedtime)
+        lastmodifiedtime = values(lastmodifiedtime),
+        remark = values(remark)
     </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
         update crm_referrer_info
         <set>
+            <if test="tenantid != null and tenantid != ''">
+                tenantid = #{tenantid},
+            </if>
             <if test="referrerId != null and referrerId != ''">
                 referrer_id = #{referrerId},
-            </if>
-            <if test="referrerName != null and referrerName != ''">
-                referrer_name = #{referrerName},
             </if>
             <if test="referrerCertNo != null and referrerCertNo != ''">
                 referrer_cert_no = #{referrerCertNo},
@@ -172,14 +180,14 @@
             <if test="referrerCertType != null and referrerCertType != ''">
                 referrer_cert_type = #{referrerCertType},
             </if>
-            <if test="mobileNo != null and mobileNo != ''">
-                mobile_no = #{mobileNo},
+            <if test="referrerName != null and referrerName != ''">
+                referrer_name = #{referrerName},
             </if>
             <if test="referrerEmail != null and referrerEmail != ''">
                 referrer_email = #{referrerEmail},
             </if>
-            <if test="channelNo != null and channelNo != ''">
-                channel_no = #{channelNo},
+            <if test="mobileNo != null and mobileNo != ''">
+                mobile_no = #{mobileNo},
             </if>
             <if test="referrerCardNo != null and referrerCardNo != ''">
                 referrer_card_no = #{referrerCardNo},
@@ -187,14 +195,17 @@
             <if test="status != null and status != ''">
                 status = #{status},
             </if>
-            <if test="remark != null and remark != ''">
-                remark = #{remark},
+            <if test="channelNo != null and channelNo != ''">
+                channel_no = #{channelNo},
             </if>
             <if test="createtime != null">
                 createtime = #{createtime},
             </if>
             <if test="lastmodifiedtime != null">
                 lastmodifiedtime = #{lastmodifiedtime},
+            </if>
+            <if test="remark != null and remark != ''">
+                remark = #{remark},
             </if>
         </set>
         where id = #{id}
