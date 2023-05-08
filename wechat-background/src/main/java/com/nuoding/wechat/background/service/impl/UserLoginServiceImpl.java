@@ -42,15 +42,14 @@ public class UserLoginServiceImpl implements UserLoginService {
         MapResponse mapResponse = new MapResponse();
         String userId = loginDTO.getUserId();
         String passWD = loginDTO.getPassWD();
-        String tenantId = SessionKey.getValue(SessionKey.TENANT_ID);
-        String maxConfigCnt = "";
-        String notAllLoginFlag = redisService.getValue(RedisKey.USER_NOT_ALLOW_FLAG.concat(tenantId).concat(userId));
+        String maxConfigCnt = sysParamConfigService.getConfigByCatch(RedisKey.USER_ERROR_CNT);
+        String notAllLoginFlag = redisService.getValue(RedisKey.USER_NOT_ALLOW_FLAG.concat(userId));
         if (StringUtils.isNotBlank(notAllLoginFlag)) {
             mapResponse.setResponse(RespStatusEnum.USER_NOT_ALLOW_LOGIN);
             return mapResponse;
         }
         int errCnt = 0;
-        String err = redisService.getValue(RedisKey.USER_ERROR_CNT.concat(tenantId).concat(userId));
+        String err = redisService.getValue(RedisKey.USER_ERROR_CNT.concat(userId));
         if (!StringUtils.isBlank(err)) {
             errCnt = Integer.valueOf(err);
         }
@@ -73,10 +72,10 @@ public class UserLoginServiceImpl implements UserLoginService {
                 map.put("userName", backSysUser.getUserName());
                 map.put("tenantId", backSysUser.getTenantId());
                 mapResponse.put("data", map);
-                redisService.delValue(RedisKey.USER_ERROR_CNT.concat(tenantId).concat(userId));
+                redisService.delValue(RedisKey.USER_ERROR_CNT.concat(userId));
             } else {
                 mapResponse.setResponse(RespStatusEnum.PASSWD_CODE_ERROR);
-                redisService.setValue(RedisKey.USER_ERROR_CNT.concat(tenantId).concat(userId)
+                redisService.setValue(RedisKey.USER_ERROR_CNT.concat(userId)
                         , String.valueOf(errCnt + 1), 10 * 60);
             }
         } else {
