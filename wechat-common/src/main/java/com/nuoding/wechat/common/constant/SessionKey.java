@@ -38,11 +38,19 @@ public class SessionKey {
 
     public static final String LOGIN_KEY = "login:userid";
     public static final String LOGIN_ROLE_ID = "login:roleid";
-    public static final String TOKEN_KEY = "login:token";
+    public static final String LOGIN_TOKEN = "login:token";
     public static final String TENANT_ID = "login:user:tenantid";
 
     public static String getLoginID() {
         return getValue(LOGIN_KEY);
+    }
+
+    public static String getRoleID() {
+        return getValue(LOGIN_ROLE_ID);
+    }
+
+    public static String getToken() {
+        return getValue(LOGIN_TOKEN);
     }
 
     public static String getSessionID() {

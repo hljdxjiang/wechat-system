@@ -1,6 +1,6 @@
 package com.nuoding.wechat.background.model;
 
-import com.nuoding.wechat.common.entity.BackSysMenus;
+import com.nuoding.wechat.common.entity.back.BackSysMenusEntity;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import java.util.List;
  * @Description //TODO $
  * @Date $ $
  **/
-public class UserSysMenusDTO extends BackSysMenus {
+public class UserSysMenusDTO extends BackSysMenusEntity {
     List<UserSysMenusDTO> list;
 
     public List<UserSysMenusDTO> getList() {

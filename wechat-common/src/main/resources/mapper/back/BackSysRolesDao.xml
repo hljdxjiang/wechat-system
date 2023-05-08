@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nuoding.wechat.common.dao.BackSysRolesDao">
+<mapper namespace="com.nuoding.wechat.common.dao.back.BackSysRolesDao">
 
-    <resultMap type="com.nuoding.wechat.common.entity.BackSysRoles" id="BackSysRolesMap">
-        <result property="id" column="id" jdbcType="INTEGER"/>
+    <resultMap type="com.nuoding.wechat.common.entity.back.BackSysRolesEntity" id="BackSysRolesMap">
+            <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
         <result property="roleId" column="role_id" jdbcType="VARCHAR"/>
         <result property="roleName" column="role_name" jdbcType="VARCHAR"/>
@@ -12,41 +12,36 @@
         <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
+    <sql id="Table_Name">
+        back_sys_roles
+    </sql>
+
+    <sql id="Base_Column_List">
+        id,tenant_id,role_id,role_name,role_remark,create_time,last_modified_time    </sql>
+
     <!--查询单个-->
     <select id="queryById" resultMap="BackSysRolesMap">
         select
-          id, tenant_id, role_id, role_name, role_remark, create_time, last_modified_time
-        from back_sys_roles
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
         where id = #{id}
     </select>
 
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BackSysRolesMap">
         select
-        id, tenant_id, role_id, role_name, role_remark, create_time, last_modified_time
-        from back_sys_roles
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
         <where>
-            <if test="id != null">
-                and id = #{id}
-            </if>
-            <if test="tenantId != null and tenantId != ''">
-                and tenant_id = #{tenantId}
-            </if>
-            <if test="roleId != null and roleId != ''">
-                and role_id = #{roleId}
-            </if>
-            <if test="roleName != null and roleName != ''">
-                and role_name = #{roleName}
-            </if>
-            <if test="roleRemark != null and roleRemark != ''">
-                and role_remark = #{roleRemark}
-            </if>
-            <if test="createTime != null">
-                and create_time = #{createTime}
-            </if>
-            <if test="lastModifiedTime != null">
-                and last_modified_time = #{lastModifiedTime}
-            </if>
+            <if test="id != null and id !=''">and id = #{id}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="roleId != null and roleId !=''">and role_id = #{roleId}</if>
+            <if test="roleName != null and roleName !=''">and role_name = #{roleName}</if>
+            <if test="roleRemark != null and roleRemark !=''">and role_remark = #{roleRemark}</if>
+            <if test="createTime != null and createTime !=''">and create_time = #{createTime}</if>
+            <if test="lastModifiedTime != null and lastModifiedTime !=''">and last_modified_time = #{lastModifiedTime}</if>
         </where>
 
     </select>
@@ -54,92 +49,75 @@
     <!--统计总行数-->
     <select id="count" resultType="java.lang.Long">
         select count(1)
-        from back_sys_roles
+        from
+        <include refid="Table_Name"/>
         <where>
-            <if test="id != null">
-                and id = #{id}
-            </if>
-            <if test="tenantId != null and tenantId != ''">
-                and tenant_id = #{tenantId}
-            </if>
-            <if test="roleId != null and roleId != ''">
-                and role_id = #{roleId}
-            </if>
-            <if test="roleName != null and roleName != ''">
-                and role_name = #{roleName}
-            </if>
-            <if test="roleRemark != null and roleRemark != ''">
-                and role_remark = #{roleRemark}
-            </if>
-            <if test="createTime != null">
-                and create_time = #{createTime}
-            </if>
-            <if test="lastModifiedTime != null">
-                and last_modified_time = #{lastModifiedTime}
-            </if>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="tenantId != null and tenantId != ''">and tenant_id = #{tenantId}</if>
+            <if test="roleId != null and roleId != ''">and role_id = #{roleId}</if>
+            <if test="roleName != null and roleName != ''">and role_name = #{roleName}</if>
+            <if test="roleRemark != null and roleRemark != ''">and role_remark = #{roleRemark}</if>
+            <if test="createTime != null and createTime != ''">and create_time = #{createTime}</if>
+            <if test="lastModifiedTime != null and lastModifiedTime != ''">and last_modified_time = #{lastModifiedTime}</if>
         </where>
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into back_sys_roles(tenant_id, role_id, role_name, role_remark, create_time, last_modified_time)
-        values (#{tenantId}, #{roleId}, #{roleName}, #{roleRemark}, #{createTime}, #{lastModifiedTime})
+        insert into
+        <include refid="Table_Name"/>
+        (tenant_id,role_id,role_name,role_remark,create_time,last_modified_time)
+        values
+        (#{tenantId},#{roleId},#{roleName},#{roleRemark},#{createTime},#{lastModifiedTime})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into back_sys_roles(tenant_id, role_id, role_name, role_remark, create_time, last_modified_time)
+        insert into
+        <include refid="Table_Name"/>
+            (tenant_id,role_id,role_name,role_remark,create_time,last_modified_time)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId}, #{entity.roleId}, #{entity.roleName}, #{entity.roleRemark}, #{entity.createTime},
-            #{entity.lastModifiedTime})
+            (#{entity.tenantId},#{entity.roleId},#{entity.roleName},#{entity.roleRemark},#{entity.createTime},#{entity.lastModifiedTime})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into back_sys_roles(tenant_id, role_id, role_name, role_remark, create_time, last_modified_time)
+        insert into
+        <include refid="Table_Name"/>
+            (tenant_id,role_id,role_name,role_remark,create_time,last_modified_time)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId}, #{entity.roleId}, #{entity.roleName}, #{entity.roleRemark}, #{entity.createTime},
-            #{entity.lastModifiedTime})
+            (#{entity.tenantId},#{entity.roleId},#{entity.roleName},#{entity.roleRemark},#{entity.createTime},#{entity.lastModifiedTime})
         </foreach>
         on duplicate key update
-        tenant_id = values(tenant_id),
-        role_id = values(role_id),
-        role_name = values(role_name),
-        role_remark = values(role_remark),
-        create_time = values(create_time),
-        last_modified_time = values(last_modified_time)
-    </insert>
+                tenant_id=values(tenant_id),
+        role_id=values(role_id),
+        role_name=values(role_name),
+        role_remark=values(role_remark),
+        create_time=values(create_time),
+        last_modified_time=values(last_modified_time)
+        </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
-        update back_sys_roles
+        update
+        <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">
-                tenant_id = #{tenantId},
-            </if>
-            <if test="roleId != null and roleId != ''">
-                role_id = #{roleId},
-            </if>
-            <if test="roleName != null and roleName != ''">
-                role_name = #{roleName},
-            </if>
-            <if test="roleRemark != null and roleRemark != ''">
-                role_remark = #{roleRemark},
-            </if>
-            <if test="createTime != null">
-                create_time = #{createTime},
-            </if>
-            <if test="lastModifiedTime != null">
-                last_modified_time = #{lastModifiedTime},
-            </if>
+    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+    <if test="roleId != null and roleId != ''">role_id = #{roleId},</if>
+    <if test="roleName != null and roleName != ''">role_name = #{roleName},</if>
+    <if test="roleRemark != null and roleRemark != ''">role_remark = #{roleRemark},</if>
+    <if test="createTime != null and createTime != ''">create_time = #{createTime},</if>
+    <if test="lastModifiedTime != null and lastModifiedTime != ''">last_modified_time = #{lastModifiedTime},</if>
         </set>
         where id = #{id}
     </update>
 
     <!--通过主键删除-->
     <delete id="deleteById">
-        delete from back_sys_roles where id = #{id}
+        delete from
+        <include refid="Table_Name"/>
+        where id = #{id}
     </delete>
 
 </mapper>

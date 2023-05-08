@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nuoding.wechat.common.dao.BackRuleControlDao">
+<mapper namespace="com.nuoding.wechat.common.dao.back.BackRuleControlDao">
 
-    <resultMap type="com.nuoding.wechat.common.entity.BackRuleControl" id="BackRuleControlMap">
-        <result property="id" column="id" jdbcType="INTEGER"/>
+    <resultMap type="com.nuoding.wechat.common.entity.back.BackRuleControlEntity" id="BackRuleControlMap">
+            <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
         <result property="controlType" column="control_type" jdbcType="VARCHAR"/>
         <result property="controlDesc" column="control_desc" jdbcType="VARCHAR"/>
@@ -14,48 +14,38 @@
         <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
+    <sql id="Table_Name">
+        back_rule_control
+    </sql>
+
+    <sql id="Base_Column_List">
+        id,tenant_id,control_type,control_desc,rule_range,control_switch,rule_expr,create_time,last_modified_time    </sql>
+
     <!--查询单个-->
     <select id="queryById" resultMap="BackRuleControlMap">
         select
-          id, tenant_id, control_type, control_desc, rule_range, control_switch, rule_expr, create_time, last_modified_time
-        from back_rule_control
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
         where id = #{id}
     </select>
 
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BackRuleControlMap">
         select
-        id, tenant_id, control_type, control_desc, rule_range, control_switch, rule_expr, create_time,
-        last_modified_time
-        from back_rule_control
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
         <where>
-            <if test="id != null">
-                and id = #{id}
-            </if>
-            <if test="tenantId != null and tenantId != ''">
-                and tenant_id = #{tenantId}
-            </if>
-            <if test="controlType != null and controlType != ''">
-                and control_type = #{controlType}
-            </if>
-            <if test="controlDesc != null and controlDesc != ''">
-                and control_desc = #{controlDesc}
-            </if>
-            <if test="ruleRange != null and ruleRange != ''">
-                and rule_range = #{ruleRange}
-            </if>
-            <if test="controlSwitch != null and controlSwitch != ''">
-                and control_switch = #{controlSwitch}
-            </if>
-            <if test="ruleExpr != null and ruleExpr != ''">
-                and rule_expr = #{ruleExpr}
-            </if>
-            <if test="createTime != null">
-                and create_time = #{createTime}
-            </if>
-            <if test="lastModifiedTime != null">
-                and last_modified_time = #{lastModifiedTime}
-            </if>
+            <if test="id != null and id !=''">and id = #{id}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="controlType != null and controlType !=''">and control_type = #{controlType}</if>
+            <if test="controlDesc != null and controlDesc !=''">and control_desc = #{controlDesc}</if>
+            <if test="ruleRange != null and ruleRange !=''">and rule_range = #{ruleRange}</if>
+            <if test="controlSwitch != null and controlSwitch !=''">and control_switch = #{controlSwitch}</if>
+            <if test="ruleExpr != null and ruleExpr !=''">and rule_expr = #{ruleExpr}</if>
+            <if test="createTime != null and createTime !=''">and create_time = #{createTime}</if>
+            <if test="lastModifiedTime != null and lastModifiedTime !=''">and last_modified_time = #{lastModifiedTime}</if>
         </where>
 
     </select>
@@ -63,108 +53,81 @@
     <!--统计总行数-->
     <select id="count" resultType="java.lang.Long">
         select count(1)
-        from back_rule_control
+        from
+        <include refid="Table_Name"/>
         <where>
-            <if test="id != null">
-                and id = #{id}
-            </if>
-            <if test="tenantId != null and tenantId != ''">
-                and tenant_id = #{tenantId}
-            </if>
-            <if test="controlType != null and controlType != ''">
-                and control_type = #{controlType}
-            </if>
-            <if test="controlDesc != null and controlDesc != ''">
-                and control_desc = #{controlDesc}
-            </if>
-            <if test="ruleRange != null and ruleRange != ''">
-                and rule_range = #{ruleRange}
-            </if>
-            <if test="controlSwitch != null and controlSwitch != ''">
-                and control_switch = #{controlSwitch}
-            </if>
-            <if test="ruleExpr != null and ruleExpr != ''">
-                and rule_expr = #{ruleExpr}
-            </if>
-            <if test="createTime != null">
-                and create_time = #{createTime}
-            </if>
-            <if test="lastModifiedTime != null">
-                and last_modified_time = #{lastModifiedTime}
-            </if>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="tenantId != null and tenantId != ''">and tenant_id = #{tenantId}</if>
+            <if test="controlType != null and controlType != ''">and control_type = #{controlType}</if>
+            <if test="controlDesc != null and controlDesc != ''">and control_desc = #{controlDesc}</if>
+            <if test="ruleRange != null and ruleRange != ''">and rule_range = #{ruleRange}</if>
+            <if test="controlSwitch != null and controlSwitch != ''">and control_switch = #{controlSwitch}</if>
+            <if test="ruleExpr != null and ruleExpr != ''">and rule_expr = #{ruleExpr}</if>
+            <if test="createTime != null and createTime != ''">and create_time = #{createTime}</if>
+            <if test="lastModifiedTime != null and lastModifiedTime != ''">and last_modified_time = #{lastModifiedTime}</if>
         </where>
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into back_rule_control(tenant_id, control_type, control_desc, rule_range, control_switch, rule_expr, create_time, last_modified_time)
-        values (#{tenantId}, #{controlType}, #{controlDesc}, #{ruleRange}, #{controlSwitch}, #{ruleExpr}, #{createTime}, #{lastModifiedTime})
+        insert into
+        <include refid="Table_Name"/>
+        (tenant_id,control_type,control_desc,rule_range,control_switch,rule_expr,create_time,last_modified_time)
+        values
+        (#{tenantId},#{controlType},#{controlDesc},#{ruleRange},#{controlSwitch},#{ruleExpr},#{createTime},#{lastModifiedTime})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into back_rule_control(tenant_id, control_type, control_desc, rule_range, control_switch, rule_expr,
-        create_time, last_modified_time)
+        insert into
+        <include refid="Table_Name"/>
+            (tenant_id,control_type,control_desc,rule_range,control_switch,rule_expr,create_time,last_modified_time)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId}, #{entity.controlType}, #{entity.controlDesc}, #{entity.ruleRange},
-            #{entity.controlSwitch}, #{entity.ruleExpr}, #{entity.createTime}, #{entity.lastModifiedTime})
+            (#{entity.tenantId},#{entity.controlType},#{entity.controlDesc},#{entity.ruleRange},#{entity.controlSwitch},#{entity.ruleExpr},#{entity.createTime},#{entity.lastModifiedTime})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into back_rule_control(tenant_id, control_type, control_desc, rule_range, control_switch, rule_expr,
-        create_time, last_modified_time)
+        insert into
+        <include refid="Table_Name"/>
+            (tenant_id,control_type,control_desc,rule_range,control_switch,rule_expr,create_time,last_modified_time)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId}, #{entity.controlType}, #{entity.controlDesc}, #{entity.ruleRange},
-            #{entity.controlSwitch}, #{entity.ruleExpr}, #{entity.createTime}, #{entity.lastModifiedTime})
+            (#{entity.tenantId},#{entity.controlType},#{entity.controlDesc},#{entity.ruleRange},#{entity.controlSwitch},#{entity.ruleExpr},#{entity.createTime},#{entity.lastModifiedTime})
         </foreach>
         on duplicate key update
-        tenant_id = values(tenant_id),
-        control_type = values(control_type),
-        control_desc = values(control_desc),
-        rule_range = values(rule_range),
-        control_switch = values(control_switch),
-        rule_expr = values(rule_expr),
-        create_time = values(create_time),
-        last_modified_time = values(last_modified_time)
-    </insert>
+                tenant_id=values(tenant_id),
+        control_type=values(control_type),
+        control_desc=values(control_desc),
+        rule_range=values(rule_range),
+        control_switch=values(control_switch),
+        rule_expr=values(rule_expr),
+        create_time=values(create_time),
+        last_modified_time=values(last_modified_time)
+        </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
-        update back_rule_control
+        update
+        <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">
-                tenant_id = #{tenantId},
-            </if>
-            <if test="controlType != null and controlType != ''">
-                control_type = #{controlType},
-            </if>
-            <if test="controlDesc != null and controlDesc != ''">
-                control_desc = #{controlDesc},
-            </if>
-            <if test="ruleRange != null and ruleRange != ''">
-                rule_range = #{ruleRange},
-            </if>
-            <if test="controlSwitch != null and controlSwitch != ''">
-                control_switch = #{controlSwitch},
-            </if>
-            <if test="ruleExpr != null and ruleExpr != ''">
-                rule_expr = #{ruleExpr},
-            </if>
-            <if test="createTime != null">
-                create_time = #{createTime},
-            </if>
-            <if test="lastModifiedTime != null">
-                last_modified_time = #{lastModifiedTime},
-            </if>
+    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+    <if test="controlType != null and controlType != ''">control_type = #{controlType},</if>
+    <if test="controlDesc != null and controlDesc != ''">control_desc = #{controlDesc},</if>
+    <if test="ruleRange != null and ruleRange != ''">rule_range = #{ruleRange},</if>
+    <if test="controlSwitch != null and controlSwitch != ''">control_switch = #{controlSwitch},</if>
+    <if test="ruleExpr != null and ruleExpr != ''">rule_expr = #{ruleExpr},</if>
+    <if test="createTime != null and createTime != ''">create_time = #{createTime},</if>
+    <if test="lastModifiedTime != null and lastModifiedTime != ''">last_modified_time = #{lastModifiedTime},</if>
         </set>
         where id = #{id}
     </update>
 
     <!--通过主键删除-->
     <delete id="deleteById">
-        delete from back_rule_control where id = #{id}
+        delete from
+        <include refid="Table_Name"/>
+        where id = #{id}
     </delete>
 
 </mapper>

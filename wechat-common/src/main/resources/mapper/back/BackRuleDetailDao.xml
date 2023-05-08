@@ -1,44 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nuoding.wechat.common.dao.BackRoleDetailDao">
+<mapper namespace="com.nuoding.wechat.common.dao.back.BackRuleDetailDao">
 
-    <resultMap type="com.nuoding.wechat.common.entity.BackRoleDetail" id="BackRoleDetailMap">
-        <result property="id" column="id" jdbcType="INTEGER"/>
+    <resultMap type="com.nuoding.wechat.common.entity.back.BackRuleDetailEntity" id="BackRuleDetailMap">
+            <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
         <result property="roleId" column="role_id" jdbcType="VARCHAR"/>
         <result property="keyValue" column="key_value" jdbcType="VARCHAR"/>
         <result property="keyType" column="key_type" jdbcType="VARCHAR"/>
     </resultMap>
 
+    <sql id="Table_Name">
+        back_rule_detail
+    </sql>
+
+    <sql id="Base_Column_List">
+        id,tenant_id,role_id,key_value,key_type    </sql>
+
     <!--查询单个-->
-    <select id="queryById" resultMap="BackRoleDetailMap">
+    <select id="queryById" resultMap="BackRuleDetailMap">
         select
-          id, tenant_id, role_id, key_value, key_type
-        from back_role_detail
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
         where id = #{id}
     </select>
 
     <!--查询指定行数据-->
-    <select id="queryAllByLimit" resultMap="BackRoleDetailMap">
+    <select id="queryAllByLimit" resultMap="BackRuleDetailMap">
         select
-        id, tenant_id, role_id, key_value, key_type
-        from back_role_detail
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
         <where>
-            <if test="id != null">
-                and id = #{id}
-            </if>
-            <if test="tenantId != null and tenantId != ''">
-                and tenant_id = #{tenantId}
-            </if>
-            <if test="roleId != null and roleId != ''">
-                and role_id = #{roleId}
-            </if>
-            <if test="keyValue != null and keyValue != ''">
-                and key_value = #{keyValue}
-            </if>
-            <if test="keyType != null and keyType != ''">
-                and key_type = #{keyType}
-            </if>
+            <if test="id != null and id !=''">and id = #{id}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="roleId != null and roleId !=''">and role_id = #{roleId}</if>
+            <if test="keyValue != null and keyValue !=''">and key_value = #{keyValue}</if>
+            <if test="keyType != null and keyType !=''">and key_type = #{keyType}</if>
         </where>
 
     </select>
@@ -46,76 +45,69 @@
     <!--统计总行数-->
     <select id="count" resultType="java.lang.Long">
         select count(1)
-        from back_role_detail
+        from
+        <include refid="Table_Name"/>
         <where>
-            <if test="id != null">
-                and id = #{id}
-            </if>
-            <if test="tenantId != null and tenantId != ''">
-                and tenant_id = #{tenantId}
-            </if>
-            <if test="roleId != null and roleId != ''">
-                and role_id = #{roleId}
-            </if>
-            <if test="keyValue != null and keyValue != ''">
-                and key_value = #{keyValue}
-            </if>
-            <if test="keyType != null and keyType != ''">
-                and key_type = #{keyType}
-            </if>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="tenantId != null and tenantId != ''">and tenant_id = #{tenantId}</if>
+            <if test="roleId != null and roleId != ''">and role_id = #{roleId}</if>
+            <if test="keyValue != null and keyValue != ''">and key_value = #{keyValue}</if>
+            <if test="keyType != null and keyType != ''">and key_type = #{keyType}</if>
         </where>
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into back_role_detail(tenant_id, role_id, key_value, key_type)
-        values (#{tenantId}, #{roleId}, #{keyValue}, #{keyType})
+        insert into
+        <include refid="Table_Name"/>
+        (tenant_id,role_id,key_value,key_type)
+        values
+        (#{tenantId},#{roleId},#{keyValue},#{keyType})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into back_role_detail(tenant_id, role_id, key_value, key_type)
+        insert into
+        <include refid="Table_Name"/>
+            (tenant_id,role_id,key_value,key_type)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId}, #{entity.roleId}, #{entity.keyValue}, #{entity.keyType})
+            (#{entity.tenantId},#{entity.roleId},#{entity.keyValue},#{entity.keyType})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into back_role_detail(tenant_id, role_id, key_value, key_type)
+        insert into
+        <include refid="Table_Name"/>
+            (tenant_id,role_id,key_value,key_type)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId}, #{entity.roleId}, #{entity.keyValue}, #{entity.keyType})
+            (#{entity.tenantId},#{entity.roleId},#{entity.keyValue},#{entity.keyType})
         </foreach>
         on duplicate key update
-        tenant_id = values(tenant_id),
-        role_id = values(role_id),
-        key_value = values(key_value),
-        key_type = values(key_type)
-    </insert>
+                tenant_id=values(tenant_id),
+        role_id=values(role_id),
+        key_value=values(key_value),
+        key_type=values(key_type)
+        </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
-        update back_role_detail
+        update
+        <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">
-                tenant_id = #{tenantId},
-            </if>
-            <if test="roleId != null and roleId != ''">
-                role_id = #{roleId},
-            </if>
-            <if test="keyValue != null and keyValue != ''">
-                key_value = #{keyValue},
-            </if>
-            <if test="keyType != null and keyType != ''">
-                key_type = #{keyType},
-            </if>
+    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+    <if test="roleId != null and roleId != ''">role_id = #{roleId},</if>
+    <if test="keyValue != null and keyValue != ''">key_value = #{keyValue},</if>
+    <if test="keyType != null and keyType != ''">key_type = #{keyType},</if>
         </set>
         where id = #{id}
     </update>
 
     <!--通过主键删除-->
     <delete id="deleteById">
-        delete from back_role_detail where id = #{id}
+        delete from
+        <include refid="Table_Name"/>
+        where id = #{id}
     </delete>
 
 </mapper>

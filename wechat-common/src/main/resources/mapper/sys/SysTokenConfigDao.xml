@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nuoding.wechat.common.dao.SysTokenConfigDao">
+<mapper namespace="com.nuoding.wechat.common.dao.sys.SysTokenConfigDao">
 
-    <resultMap type="com.nuoding.wechat.common.entity.SysTokenConfig" id="SysTokenConfigMap">
-        <result property="id" column="ID" jdbcType="INTEGER"/>
+    <resultMap type="com.nuoding.wechat.common.entity.sys.SysTokenConfigEntity" id="SysTokenConfigMap">
+            <result property="id" column="ID" jdbcType="INTEGER"/>
         <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
         <result property="tokenName" column="token_name" jdbcType="VARCHAR"/>
         <result property="tokenKey" column="token_key" jdbcType="VARCHAR"/>
@@ -15,51 +15,39 @@
         <result property="lastUpdateTime" column="last_update_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
+    <sql id="Table_Name">
+        sys_token_config
+    </sql>
+
+    <sql id="Base_Column_List">
+        ID,tenant_id,token_name,token_key,token_desc,token_vaild_type,token_valid_time,token_status,create_time,last_update_time    </sql>
+
     <!--查询单个-->
     <select id="queryById" resultMap="SysTokenConfigMap">
         select
-          ID, tenant_id, token_name, token_key, token_desc, token_vaild_type, token_valid_time, token_status, create_time, last_update_time
-        from sys_token_config
-        where ID = #{id}
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        where id = #{id}
     </select>
 
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="SysTokenConfigMap">
         select
-        ID, tenant_id, token_name, token_key, token_desc, token_vaild_type, token_valid_time, token_status, create_time,
-        last_update_time
-        from sys_token_config
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
         <where>
-            <if test="id != null">
-                and ID = #{id}
-            </if>
-            <if test="tenantId != null and tenantId != ''">
-                and tenant_id = #{tenantId}
-            </if>
-            <if test="tokenName != null and tokenName != ''">
-                and token_name = #{tokenName}
-            </if>
-            <if test="tokenKey != null and tokenKey != ''">
-                and token_key = #{tokenKey}
-            </if>
-            <if test="tokenDesc != null and tokenDesc != ''">
-                and token_desc = #{tokenDesc}
-            </if>
-            <if test="tokenVaildType != null and tokenVaildType != ''">
-                and token_vaild_type = #{tokenVaildType}
-            </if>
-            <if test="tokenValidTime != null">
-                and token_valid_time = #{tokenValidTime}
-            </if>
-            <if test="tokenStatus != null">
-                and token_status = #{tokenStatus}
-            </if>
-            <if test="createTime != null">
-                and create_time = #{createTime}
-            </if>
-            <if test="lastUpdateTime != null">
-                and last_update_time = #{lastUpdateTime}
-            </if>
+            <if test="id != null and id !=''">and ID = #{id}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="tokenName != null and tokenName !=''">and token_name = #{tokenName}</if>
+            <if test="tokenKey != null and tokenKey !=''">and token_key = #{tokenKey}</if>
+            <if test="tokenDesc != null and tokenDesc !=''">and token_desc = #{tokenDesc}</if>
+            <if test="tokenVaildType != null and tokenVaildType !=''">and token_vaild_type = #{tokenVaildType}</if>
+            <if test="tokenValidTime != null and tokenValidTime !=''">and token_valid_time = #{tokenValidTime}</if>
+            <if test="tokenStatus != null and tokenStatus !=''">and token_status = #{tokenStatus}</if>
+            <if test="createTime != null and createTime !=''">and create_time = #{createTime}</if>
+            <if test="lastUpdateTime != null and lastUpdateTime !=''">and last_update_time = #{lastUpdateTime}</if>
         </where>
 
     </select>
@@ -67,115 +55,86 @@
     <!--统计总行数-->
     <select id="count" resultType="java.lang.Long">
         select count(1)
-        from sys_token_config
+        from
+        <include refid="Table_Name"/>
         <where>
-            <if test="id != null">
-                and ID = #{id}
-            </if>
-            <if test="tenantId != null and tenantId != ''">
-                and tenant_id = #{tenantId}
-            </if>
-            <if test="tokenName != null and tokenName != ''">
-                and token_name = #{tokenName}
-            </if>
-            <if test="tokenKey != null and tokenKey != ''">
-                and token_key = #{tokenKey}
-            </if>
-            <if test="tokenDesc != null and tokenDesc != ''">
-                and token_desc = #{tokenDesc}
-            </if>
-            <if test="tokenVaildType != null and tokenVaildType != ''">
-                and token_vaild_type = #{tokenVaildType}
-            </if>
-            <if test="tokenValidTime != null">
-                and token_valid_time = #{tokenValidTime}
-            </if>
-            <if test="tokenStatus != null">
-                and token_status = #{tokenStatus}
-            </if>
-            <if test="createTime != null">
-                and create_time = #{createTime}
-            </if>
-            <if test="lastUpdateTime != null">
-                and last_update_time = #{lastUpdateTime}
-            </if>
+            <if test="id != null and id != ''">and ID = #{id}</if>
+            <if test="tenantId != null and tenantId != ''">and tenant_id = #{tenantId}</if>
+            <if test="tokenName != null and tokenName != ''">and token_name = #{tokenName}</if>
+            <if test="tokenKey != null and tokenKey != ''">and token_key = #{tokenKey}</if>
+            <if test="tokenDesc != null and tokenDesc != ''">and token_desc = #{tokenDesc}</if>
+            <if test="tokenVaildType != null and tokenVaildType != ''">and token_vaild_type = #{tokenVaildType}</if>
+            <if test="tokenValidTime != null and tokenValidTime != ''">and token_valid_time = #{tokenValidTime}</if>
+            <if test="tokenStatus != null and tokenStatus != ''">and token_status = #{tokenStatus}</if>
+            <if test="createTime != null and createTime != ''">and create_time = #{createTime}</if>
+            <if test="lastUpdateTime != null and lastUpdateTime != ''">and last_update_time = #{lastUpdateTime}</if>
         </where>
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into sys_token_config(tenant_id, token_name, token_key, token_desc, token_vaild_type, token_valid_time, token_status, create_time, last_update_time)
-        values (#{tenantId}, #{tokenName}, #{tokenKey}, #{tokenDesc}, #{tokenVaildType}, #{tokenValidTime}, #{tokenStatus}, #{createTime}, #{lastUpdateTime})
+        insert into
+        <include refid="Table_Name"/>
+        (ID,tenant_id,token_name,token_key,token_desc,token_vaild_type,token_valid_time,token_status,create_time,last_update_time)
+        values
+        (#{id},#{tenantId},#{tokenName},#{tokenKey},#{tokenDesc},#{tokenVaildType},#{tokenValidTime},#{tokenStatus},#{createTime},#{lastUpdateTime})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into sys_token_config(tenant_id, token_name, token_key, token_desc, token_vaild_type, token_valid_time,
-        token_status, create_time, last_update_time)
+        insert into
+        <include refid="Table_Name"/>
+            (ID,tenant_id,token_name,token_key,token_desc,token_vaild_type,token_valid_time,token_status,create_time,last_update_time)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId}, #{entity.tokenName}, #{entity.tokenKey}, #{entity.tokenDesc}, #{entity.tokenVaildType},
-            #{entity.tokenValidTime}, #{entity.tokenStatus}, #{entity.createTime}, #{entity.lastUpdateTime})
+            (#{entity.id},#{entity.tenantId},#{entity.tokenName},#{entity.tokenKey},#{entity.tokenDesc},#{entity.tokenVaildType},#{entity.tokenValidTime},#{entity.tokenStatus},#{entity.createTime},#{entity.lastUpdateTime})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into sys_token_config(tenant_id, token_name, token_key, token_desc, token_vaild_type, token_valid_time,
-        token_status, create_time, last_update_time)
+        insert into
+        <include refid="Table_Name"/>
+            (ID,tenant_id,token_name,token_key,token_desc,token_vaild_type,token_valid_time,token_status,create_time,last_update_time)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId}, #{entity.tokenName}, #{entity.tokenKey}, #{entity.tokenDesc}, #{entity.tokenVaildType},
-            #{entity.tokenValidTime}, #{entity.tokenStatus}, #{entity.createTime}, #{entity.lastUpdateTime})
+            (#{entity.id},#{entity.tenantId},#{entity.tokenName},#{entity.tokenKey},#{entity.tokenDesc},#{entity.tokenVaildType},#{entity.tokenValidTime},#{entity.tokenStatus},#{entity.createTime},#{entity.lastUpdateTime})
         </foreach>
         on duplicate key update
-        tenant_id = values(tenant_id),
-        token_name = values(token_name),
-        token_key = values(token_key),
-        token_desc = values(token_desc),
-        token_vaild_type = values(token_vaild_type),
-        token_valid_time = values(token_valid_time),
-        token_status = values(token_status),
-        create_time = values(create_time),
-        last_update_time = values(last_update_time)
-    </insert>
+        ID=values(ID),
+        tenant_id=values(tenant_id),
+        token_name=values(token_name),
+        token_key=values(token_key),
+        token_desc=values(token_desc),
+        token_vaild_type=values(token_vaild_type),
+        token_valid_time=values(token_valid_time),
+        token_status=values(token_status),
+        create_time=values(create_time),
+        last_update_time=values(last_update_time)
+        </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
-        update sys_token_config
+        update
+        <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">
-                tenant_id = #{tenantId},
-            </if>
-            <if test="tokenName != null and tokenName != ''">
-                token_name = #{tokenName},
-            </if>
-            <if test="tokenKey != null and tokenKey != ''">
-                token_key = #{tokenKey},
-            </if>
-            <if test="tokenDesc != null and tokenDesc != ''">
-                token_desc = #{tokenDesc},
-            </if>
-            <if test="tokenVaildType != null and tokenVaildType != ''">
-                token_vaild_type = #{tokenVaildType},
-            </if>
-            <if test="tokenValidTime != null">
-                token_valid_time = #{tokenValidTime},
-            </if>
-            <if test="tokenStatus != null">
-                token_status = #{tokenStatus},
-            </if>
-            <if test="createTime != null">
-                create_time = #{createTime},
-            </if>
-            <if test="lastUpdateTime != null">
-                last_update_time = #{lastUpdateTime},
-            </if>
+    <if test="id != null and id != ''">ID = #{id},</if>
+    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+    <if test="tokenName != null and tokenName != ''">token_name = #{tokenName},</if>
+    <if test="tokenKey != null and tokenKey != ''">token_key = #{tokenKey},</if>
+    <if test="tokenDesc != null and tokenDesc != ''">token_desc = #{tokenDesc},</if>
+    <if test="tokenVaildType != null and tokenVaildType != ''">token_vaild_type = #{tokenVaildType},</if>
+    <if test="tokenValidTime != null and tokenValidTime != ''">token_valid_time = #{tokenValidTime},</if>
+    <if test="tokenStatus != null and tokenStatus != ''">token_status = #{tokenStatus},</if>
+    <if test="createTime != null and createTime != ''">create_time = #{createTime},</if>
+    <if test="lastUpdateTime != null and lastUpdateTime != ''">last_update_time = #{lastUpdateTime},</if>
         </set>
-        where ID = #{id}
+        where id = #{id}
     </update>
 
     <!--通过主键删除-->
     <delete id="deleteById">
-        delete from sys_token_config where ID = #{id}
+        delete from
+        <include refid="Table_Name"/>
+        where id = #{id}
     </delete>
 
 </mapper>

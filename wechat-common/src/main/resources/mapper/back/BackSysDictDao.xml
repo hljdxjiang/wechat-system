@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nuoding.wechat.common.dao.BackSysDictDao">
+<mapper namespace="com.nuoding.wechat.common.dao.back.BackSysDictDao">
 
-    <resultMap type="com.nuoding.wechat.common.entity.BackSysDict" id="BackSysDictMap">
-        <result property="id" column="id" jdbcType="INTEGER"/>
+    <resultMap type="com.nuoding.wechat.common.entity.back.BackSysDictEntity" id="BackSysDictMap">
+            <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="dictValue" column="dict_value" jdbcType="VARCHAR"/>
         <result property="dictTitle" column="dict_title" jdbcType="VARCHAR"/>
         <result property="dictType" column="dict_type" jdbcType="VARCHAR"/>
@@ -14,47 +14,38 @@
         <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
+    <sql id="Table_Name">
+        back_sys_dict
+    </sql>
+
+    <sql id="Base_Column_List">
+        id,dict_value,dict_title,dict_type,dict_sort,status,remark,create_time,last_modified_time    </sql>
+
     <!--查询单个-->
     <select id="queryById" resultMap="BackSysDictMap">
         select
-          id, dict_value, dict_title, dict_type, dict_sort, status, remark, create_time, last_modified_time
-        from back_sys_dict
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
         where id = #{id}
     </select>
 
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BackSysDictMap">
         select
-        id, dict_value, dict_title, dict_type, dict_sort, status, remark, create_time, last_modified_time
-        from back_sys_dict
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
         <where>
-            <if test="id != null">
-                and id = #{id}
-            </if>
-            <if test="dictValue != null and dictValue != ''">
-                and dict_value = #{dictValue}
-            </if>
-            <if test="dictTitle != null and dictTitle != ''">
-                and dict_title = #{dictTitle}
-            </if>
-            <if test="dictType != null and dictType != ''">
-                and dict_type = #{dictType}
-            </if>
-            <if test="dictSort != null">
-                and dict_sort = #{dictSort}
-            </if>
-            <if test="status != null and status != ''">
-                and status = #{status}
-            </if>
-            <if test="remark != null and remark != ''">
-                and remark = #{remark}
-            </if>
-            <if test="createTime != null">
-                and create_time = #{createTime}
-            </if>
-            <if test="lastModifiedTime != null">
-                and last_modified_time = #{lastModifiedTime}
-            </if>
+            <if test="id != null and id !=''">and id = #{id}</if>
+            <if test="dictValue != null and dictValue !=''">and dict_value = #{dictValue}</if>
+            <if test="dictTitle != null and dictTitle !=''">and dict_title = #{dictTitle}</if>
+            <if test="dictType != null and dictType !=''">and dict_type = #{dictType}</if>
+            <if test="dictSort != null and dictSort !=''">and dict_sort = #{dictSort}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="remark != null and remark !=''">and remark = #{remark}</if>
+            <if test="createTime != null and createTime !=''">and create_time = #{createTime}</if>
+            <if test="lastModifiedTime != null and lastModifiedTime !=''">and last_modified_time = #{lastModifiedTime}</if>
         </where>
 
     </select>
@@ -62,108 +53,81 @@
     <!--统计总行数-->
     <select id="count" resultType="java.lang.Long">
         select count(1)
-        from back_sys_dict
+        from
+        <include refid="Table_Name"/>
         <where>
-            <if test="id != null">
-                and id = #{id}
-            </if>
-            <if test="dictValue != null and dictValue != ''">
-                and dict_value = #{dictValue}
-            </if>
-            <if test="dictTitle != null and dictTitle != ''">
-                and dict_title = #{dictTitle}
-            </if>
-            <if test="dictType != null and dictType != ''">
-                and dict_type = #{dictType}
-            </if>
-            <if test="dictSort != null">
-                and dict_sort = #{dictSort}
-            </if>
-            <if test="status != null and status != ''">
-                and status = #{status}
-            </if>
-            <if test="remark != null and remark != ''">
-                and remark = #{remark}
-            </if>
-            <if test="createTime != null">
-                and create_time = #{createTime}
-            </if>
-            <if test="lastModifiedTime != null">
-                and last_modified_time = #{lastModifiedTime}
-            </if>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="dictValue != null and dictValue != ''">and dict_value = #{dictValue}</if>
+            <if test="dictTitle != null and dictTitle != ''">and dict_title = #{dictTitle}</if>
+            <if test="dictType != null and dictType != ''">and dict_type = #{dictType}</if>
+            <if test="dictSort != null and dictSort != ''">and dict_sort = #{dictSort}</if>
+            <if test="status != null and status != ''">and status = #{status}</if>
+            <if test="remark != null and remark != ''">and remark = #{remark}</if>
+            <if test="createTime != null and createTime != ''">and create_time = #{createTime}</if>
+            <if test="lastModifiedTime != null and lastModifiedTime != ''">and last_modified_time = #{lastModifiedTime}</if>
         </where>
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into back_sys_dict(dict_value, dict_title, dict_type, dict_sort, status, remark, create_time, last_modified_time)
-        values (#{dictValue}, #{dictTitle}, #{dictType}, #{dictSort}, #{status}, #{remark}, #{createTime}, #{lastModifiedTime})
+        insert into
+        <include refid="Table_Name"/>
+        (dict_value,dict_title,dict_type,dict_sort,status,remark,create_time,last_modified_time)
+        values
+        (#{dictValue},#{dictTitle},#{dictType},#{dictSort},#{status},#{remark},#{createTime},#{lastModifiedTime})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into back_sys_dict(dict_value, dict_title, dict_type, dict_sort, status, remark, create_time,
-        last_modified_time)
+        insert into
+        <include refid="Table_Name"/>
+            (dict_value,dict_title,dict_type,dict_sort,status,remark,create_time,last_modified_time)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.dictValue}, #{entity.dictTitle}, #{entity.dictType}, #{entity.dictSort}, #{entity.status},
-            #{entity.remark}, #{entity.createTime}, #{entity.lastModifiedTime})
+            (#{entity.dictValue},#{entity.dictTitle},#{entity.dictType},#{entity.dictSort},#{entity.status},#{entity.remark},#{entity.createTime},#{entity.lastModifiedTime})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into back_sys_dict(dict_value, dict_title, dict_type, dict_sort, status, remark, create_time,
-        last_modified_time)
+        insert into
+        <include refid="Table_Name"/>
+            (dict_value,dict_title,dict_type,dict_sort,status,remark,create_time,last_modified_time)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.dictValue}, #{entity.dictTitle}, #{entity.dictType}, #{entity.dictSort}, #{entity.status},
-            #{entity.remark}, #{entity.createTime}, #{entity.lastModifiedTime})
+            (#{entity.dictValue},#{entity.dictTitle},#{entity.dictType},#{entity.dictSort},#{entity.status},#{entity.remark},#{entity.createTime},#{entity.lastModifiedTime})
         </foreach>
         on duplicate key update
-        dict_value = values(dict_value),
-        dict_title = values(dict_title),
-        dict_type = values(dict_type),
-        dict_sort = values(dict_sort),
-        status = values(status),
-        remark = values(remark),
-        create_time = values(create_time),
-        last_modified_time = values(last_modified_time)
-    </insert>
+                dict_value=values(dict_value),
+        dict_title=values(dict_title),
+        dict_type=values(dict_type),
+        dict_sort=values(dict_sort),
+        status=values(status),
+        remark=values(remark),
+        create_time=values(create_time),
+        last_modified_time=values(last_modified_time)
+        </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
-        update back_sys_dict
+        update
+        <include refid="Table_Name"/>
         <set>
-            <if test="dictValue != null and dictValue != ''">
-                dict_value = #{dictValue},
-            </if>
-            <if test="dictTitle != null and dictTitle != ''">
-                dict_title = #{dictTitle},
-            </if>
-            <if test="dictType != null and dictType != ''">
-                dict_type = #{dictType},
-            </if>
-            <if test="dictSort != null">
-                dict_sort = #{dictSort},
-            </if>
-            <if test="status != null and status != ''">
-                status = #{status},
-            </if>
-            <if test="remark != null and remark != ''">
-                remark = #{remark},
-            </if>
-            <if test="createTime != null">
-                create_time = #{createTime},
-            </if>
-            <if test="lastModifiedTime != null">
-                last_modified_time = #{lastModifiedTime},
-            </if>
+    <if test="dictValue != null and dictValue != ''">dict_value = #{dictValue},</if>
+    <if test="dictTitle != null and dictTitle != ''">dict_title = #{dictTitle},</if>
+    <if test="dictType != null and dictType != ''">dict_type = #{dictType},</if>
+    <if test="dictSort != null and dictSort != ''">dict_sort = #{dictSort},</if>
+    <if test="status != null and status != ''">status = #{status},</if>
+    <if test="remark != null and remark != ''">remark = #{remark},</if>
+    <if test="createTime != null and createTime != ''">create_time = #{createTime},</if>
+    <if test="lastModifiedTime != null and lastModifiedTime != ''">last_modified_time = #{lastModifiedTime},</if>
         </set>
         where id = #{id}
     </update>
 
     <!--通过主键删除-->
     <delete id="deleteById">
-        delete from back_sys_dict where id = #{id}
+        delete from
+        <include refid="Table_Name"/>
+        where id = #{id}
     </delete>
 
 </mapper>

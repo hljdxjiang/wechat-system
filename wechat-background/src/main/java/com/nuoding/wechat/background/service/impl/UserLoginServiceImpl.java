@@ -4,13 +4,12 @@ import com.nuoding.wechat.background.model.LoginDTO;
 import com.nuoding.wechat.background.service.UserLoginService;
 import com.nuoding.wechat.common.constant.RedisKey;
 import com.nuoding.wechat.common.constant.SessionKey;
-import com.nuoding.wechat.common.constant.SysParamConfigKey;
-import com.nuoding.wechat.common.dao.BackSysUserDao;
-import com.nuoding.wechat.common.entity.BackSysUser;
+import com.nuoding.wechat.common.dao.back.BackSysUserDao;
+import com.nuoding.wechat.common.entity.back.BackSysUserEntity;
 import com.nuoding.wechat.common.enums.RespStatusEnum;
 import com.nuoding.wechat.common.model.MapResponse;
 import com.nuoding.wechat.common.service.RedisService;
-import com.nuoding.wechat.common.service.SysParamConfigService;
+import com.nuoding.wechat.common.service.sys.SysParamConfigService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,8 +43,7 @@ public class UserLoginServiceImpl implements UserLoginService {
         String userId = loginDTO.getUserId();
         String passWD = loginDTO.getPassWD();
         String tenantId = SessionKey.getValue(SessionKey.TENANT_ID);
-        String maxConfigCnt = sysParamConfigService.getConfigByCatch(
-                tenantId, SysParamConfigKey.USER_LOGIN_ERROR_MAX_CNT);
+        String maxConfigCnt = "";
         String notAllLoginFlag = redisService.getValue(RedisKey.USER_NOT_ALLOW_FLAG.concat(tenantId).concat(userId));
         if (StringUtils.isNotBlank(notAllLoginFlag)) {
             mapResponse.setResponse(RespStatusEnum.USER_NOT_ALLOW_LOGIN);
@@ -61,10 +59,10 @@ public class UserLoginServiceImpl implements UserLoginService {
             return mapResponse;
         }
 
-        BackSysUser backSysUser = new BackSysUser();
+        BackSysUserEntity backSysUser = new BackSysUserEntity();
         backSysUser.setUserId(userId);
         backSysUser.setTenantId(SessionKey.getValue(SessionKey.TENANT_ID));
-        List<BackSysUser> list = backSysUserDao.queryAllByLimit(backSysUser);
+        List<BackSysUserEntity> list = backSysUserDao.queryAllByLimit(backSysUser);
         if (!CollectionUtils.isEmpty(list)) {
             backSysUser = list.get(0);
             if (!StringUtils.equals(passWD, backSysUser.getPasswd())) {

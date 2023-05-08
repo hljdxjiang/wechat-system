@@ -1,7 +1,7 @@
 package com.nuoding.wechat.common.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.nuoding.wechat.common.entity.WechatUser;
+import com.nuoding.wechat.common.entity.wechat.WechatUserEntity;
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -24,7 +24,7 @@ public class Wid {
         this.unionId = unionId;
     }
 
-    public Wid(WechatUser user) {
+    public Wid(WechatUserEntity user) {
         this.openId = user.getWxopenid();
         this.unionId = user.getUnionid();
     }

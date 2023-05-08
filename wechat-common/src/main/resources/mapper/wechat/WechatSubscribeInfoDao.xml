@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nuoding.wechat.common.dao.WechatSubscribeInfoDao">
+<mapper namespace="com.nuoding.wechat.common.dao.wechat.WechatSubscribeInfoDao">
 
-    <resultMap type="com.nuoding.wechat.common.entity.WechatSubscribeInfo" id="WechatSubscribeInfoMap">
-        <result property="id" column="id" jdbcType="INTEGER"/>
+    <resultMap type="com.nuoding.wechat.common.entity.wechat.WechatSubscribeInfoEntity" id="WechatSubscribeInfoMap">
+            <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="appid" column="appid" jdbcType="VARCHAR"/>
         <result property="wxopenid" column="wxopenid" jdbcType="VARCHAR"/>
         <result property="templateId" column="template_id" jdbcType="VARCHAR"/>
@@ -15,51 +15,39 @@
         <result property="sendResult" column="send_result" jdbcType="VARCHAR"/>
     </resultMap>
 
+    <sql id="Table_Name">
+        wechat_subscribe_info
+    </sql>
+
+    <sql id="Base_Column_List">
+        id,appid,wxopenid,template_id,popup_sence,subscribe_status_string,create_time,last_modified_time,send_status,send_result    </sql>
+
     <!--查询单个-->
     <select id="queryById" resultMap="WechatSubscribeInfoMap">
         select
-          id, appid, wxopenid, template_id, popup_sence, subscribe_status_string, create_time, last_modified_time, send_status, send_result
-        from wechat_subscribe_info
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
         where id = #{id}
     </select>
 
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="WechatSubscribeInfoMap">
         select
-        id, appid, wxopenid, template_id, popup_sence, subscribe_status_string, create_time, last_modified_time,
-        send_status, send_result
-        from wechat_subscribe_info
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
         <where>
-            <if test="id != null">
-                and id = #{id}
-            </if>
-            <if test="appid != null and appid != ''">
-                and appid = #{appid}
-            </if>
-            <if test="wxopenid != null and wxopenid != ''">
-                and wxopenid = #{wxopenid}
-            </if>
-            <if test="templateId != null and templateId != ''">
-                and template_id = #{templateId}
-            </if>
-            <if test="popupSence != null">
-                and popup_sence = #{popupSence}
-            </if>
-            <if test="subscribeStatusString != null and subscribeStatusString != ''">
-                and subscribe_status_string = #{subscribeStatusString}
-            </if>
-            <if test="createTime != null">
-                and create_time = #{createTime}
-            </if>
-            <if test="lastModifiedTime != null">
-                and last_modified_time = #{lastModifiedTime}
-            </if>
-            <if test="sendStatus != null">
-                and send_status = #{sendStatus}
-            </if>
-            <if test="sendResult != null and sendResult != ''">
-                and send_result = #{sendResult}
-            </if>
+            <if test="id != null and id !=''">and id = #{id}</if>
+            <if test="appid != null and appid !=''">and appid = #{appid}</if>
+            <if test="wxopenid != null and wxopenid !=''">and wxopenid = #{wxopenid}</if>
+            <if test="templateId != null and templateId !=''">and template_id = #{templateId}</if>
+            <if test="popupSence != null and popupSence !=''">and popup_sence = #{popupSence}</if>
+            <if test="subscribeStatusString != null and subscribeStatusString !=''">and subscribe_status_string = #{subscribeStatusString}</if>
+            <if test="createTime != null and createTime !=''">and create_time = #{createTime}</if>
+            <if test="lastModifiedTime != null and lastModifiedTime !=''">and last_modified_time = #{lastModifiedTime}</if>
+            <if test="sendStatus != null and sendStatus !=''">and send_status = #{sendStatus}</if>
+            <if test="sendResult != null and sendResult !=''">and send_result = #{sendResult}</if>
         </where>
 
     </select>
@@ -67,117 +55,84 @@
     <!--统计总行数-->
     <select id="count" resultType="java.lang.Long">
         select count(1)
-        from wechat_subscribe_info
+        from
+        <include refid="Table_Name"/>
         <where>
-            <if test="id != null">
-                and id = #{id}
-            </if>
-            <if test="appid != null and appid != ''">
-                and appid = #{appid}
-            </if>
-            <if test="wxopenid != null and wxopenid != ''">
-                and wxopenid = #{wxopenid}
-            </if>
-            <if test="templateId != null and templateId != ''">
-                and template_id = #{templateId}
-            </if>
-            <if test="popupSence != null">
-                and popup_sence = #{popupSence}
-            </if>
-            <if test="subscribeStatusString != null and subscribeStatusString != ''">
-                and subscribe_status_string = #{subscribeStatusString}
-            </if>
-            <if test="createTime != null">
-                and create_time = #{createTime}
-            </if>
-            <if test="lastModifiedTime != null">
-                and last_modified_time = #{lastModifiedTime}
-            </if>
-            <if test="sendStatus != null">
-                and send_status = #{sendStatus}
-            </if>
-            <if test="sendResult != null and sendResult != ''">
-                and send_result = #{sendResult}
-            </if>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="appid != null and appid != ''">and appid = #{appid}</if>
+            <if test="wxopenid != null and wxopenid != ''">and wxopenid = #{wxopenid}</if>
+            <if test="templateId != null and templateId != ''">and template_id = #{templateId}</if>
+            <if test="popupSence != null and popupSence != ''">and popup_sence = #{popupSence}</if>
+            <if test="subscribeStatusString != null and subscribeStatusString != ''">and subscribe_status_string = #{subscribeStatusString}</if>
+            <if test="createTime != null and createTime != ''">and create_time = #{createTime}</if>
+            <if test="lastModifiedTime != null and lastModifiedTime != ''">and last_modified_time = #{lastModifiedTime}</if>
+            <if test="sendStatus != null and sendStatus != ''">and send_status = #{sendStatus}</if>
+            <if test="sendResult != null and sendResult != ''">and send_result = #{sendResult}</if>
         </where>
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into wechat_subscribe_info(appid, wxopenid, template_id, popup_sence, subscribe_status_string, create_time, last_modified_time, send_status, send_result)
-        values (#{appid}, #{wxopenid}, #{templateId}, #{popupSence}, #{subscribeStatusString}, #{createTime}, #{lastModifiedTime}, #{sendStatus}, #{sendResult})
+        insert into
+        <include refid="Table_Name"/>
+        (appid,wxopenid,template_id,popup_sence,subscribe_status_string,create_time,last_modified_time,send_status,send_result)
+        values
+        (#{appid},#{wxopenid},#{templateId},#{popupSence},#{subscribeStatusString},#{createTime},#{lastModifiedTime},#{sendStatus},#{sendResult})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into wechat_subscribe_info(appid, wxopenid, template_id, popup_sence, subscribe_status_string,
-        create_time, last_modified_time, send_status, send_result)
+        insert into
+        <include refid="Table_Name"/>
+            (appid,wxopenid,template_id,popup_sence,subscribe_status_string,create_time,last_modified_time,send_status,send_result)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.appid}, #{entity.wxopenid}, #{entity.templateId}, #{entity.popupSence},
-            #{entity.subscribeStatusString}, #{entity.createTime}, #{entity.lastModifiedTime}, #{entity.sendStatus},
-            #{entity.sendResult})
+            (#{entity.appid},#{entity.wxopenid},#{entity.templateId},#{entity.popupSence},#{entity.subscribeStatusString},#{entity.createTime},#{entity.lastModifiedTime},#{entity.sendStatus},#{entity.sendResult})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into wechat_subscribe_info(appid, wxopenid, template_id, popup_sence, subscribe_status_string,
-        create_time, last_modified_time, send_status, send_result)
+        insert into
+        <include refid="Table_Name"/>
+            (appid,wxopenid,template_id,popup_sence,subscribe_status_string,create_time,last_modified_time,send_status,send_result)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.appid}, #{entity.wxopenid}, #{entity.templateId}, #{entity.popupSence},
-            #{entity.subscribeStatusString}, #{entity.createTime}, #{entity.lastModifiedTime}, #{entity.sendStatus},
-            #{entity.sendResult})
+            (#{entity.appid},#{entity.wxopenid},#{entity.templateId},#{entity.popupSence},#{entity.subscribeStatusString},#{entity.createTime},#{entity.lastModifiedTime},#{entity.sendStatus},#{entity.sendResult})
         </foreach>
         on duplicate key update
-        appid = values(appid),
-        wxopenid = values(wxopenid),
-        template_id = values(template_id),
-        popup_sence = values(popup_sence),
-        subscribe_status_string = values(subscribe_status_string),
-        create_time = values(create_time),
-        last_modified_time = values(last_modified_time),
-        send_status = values(send_status),
-        send_result = values(send_result)
-    </insert>
+                appid=values(appid),
+        wxopenid=values(wxopenid),
+        template_id=values(template_id),
+        popup_sence=values(popup_sence),
+        subscribe_status_string=values(subscribe_status_string),
+        create_time=values(create_time),
+        last_modified_time=values(last_modified_time),
+        send_status=values(send_status),
+        send_result=values(send_result)
+        </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
-        update wechat_subscribe_info
+        update
+        <include refid="Table_Name"/>
         <set>
-            <if test="appid != null and appid != ''">
-                appid = #{appid},
-            </if>
-            <if test="wxopenid != null and wxopenid != ''">
-                wxopenid = #{wxopenid},
-            </if>
-            <if test="templateId != null and templateId != ''">
-                template_id = #{templateId},
-            </if>
-            <if test="popupSence != null">
-                popup_sence = #{popupSence},
-            </if>
-            <if test="subscribeStatusString != null and subscribeStatusString != ''">
-                subscribe_status_string = #{subscribeStatusString},
-            </if>
-            <if test="createTime != null">
-                create_time = #{createTime},
-            </if>
-            <if test="lastModifiedTime != null">
-                last_modified_time = #{lastModifiedTime},
-            </if>
-            <if test="sendStatus != null">
-                send_status = #{sendStatus},
-            </if>
-            <if test="sendResult != null and sendResult != ''">
-                send_result = #{sendResult},
-            </if>
+    <if test="appid != null and appid != ''">appid = #{appid},</if>
+    <if test="wxopenid != null and wxopenid != ''">wxopenid = #{wxopenid},</if>
+    <if test="templateId != null and templateId != ''">template_id = #{templateId},</if>
+    <if test="popupSence != null and popupSence != ''">popup_sence = #{popupSence},</if>
+    <if test="subscribeStatusString != null and subscribeStatusString != ''">subscribe_status_string = #{subscribeStatusString},</if>
+    <if test="createTime != null and createTime != ''">create_time = #{createTime},</if>
+    <if test="lastModifiedTime != null and lastModifiedTime != ''">last_modified_time = #{lastModifiedTime},</if>
+    <if test="sendStatus != null and sendStatus != ''">send_status = #{sendStatus},</if>
+    <if test="sendResult != null and sendResult != ''">send_result = #{sendResult},</if>
         </set>
         where id = #{id}
     </update>
 
     <!--通过主键删除-->
     <delete id="deleteById">
-        delete from wechat_subscribe_info where id = #{id}
+        delete from
+        <include refid="Table_Name"/>
+        where id = #{id}
     </delete>
 
 </mapper>

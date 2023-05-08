@@ -6,14 +6,14 @@ import com.nuoding.wechat.background.model.UserSysMenusDTO;
 import com.nuoding.wechat.background.model.UserSysRevokesDTO;
 import com.nuoding.wechat.background.service.UserRoleInfoService;
 import com.nuoding.wechat.common.constant.RedisKey;
-import com.nuoding.wechat.common.dao.BackRoleDetailDao;
-import com.nuoding.wechat.common.dao.BackSysMenusDao;
-import com.nuoding.wechat.common.dao.BackSysRevokesDao;
-import com.nuoding.wechat.common.dao.BackSysRolesDao;
-import com.nuoding.wechat.common.entity.BackRoleDetail;
-import com.nuoding.wechat.common.entity.BackSysMenus;
-import com.nuoding.wechat.common.entity.BackSysRevokes;
-import com.nuoding.wechat.common.entity.BackSysRoles;
+import com.nuoding.wechat.common.dao.back.BackRuleDetailDao;
+import com.nuoding.wechat.common.dao.back.BackSysMenusDao;
+import com.nuoding.wechat.common.dao.back.BackSysRevokesDao;
+import com.nuoding.wechat.common.dao.back.BackSysRolesDao;
+import com.nuoding.wechat.common.entity.back.BackRuleDetailEntity;
+import com.nuoding.wechat.common.entity.back.BackSysMenusEntity;
+import com.nuoding.wechat.common.entity.back.BackSysRevokesEntity;
+import com.nuoding.wechat.common.entity.back.BackSysRolesEntity;
 import com.nuoding.wechat.common.service.RedisService;
 import com.nuoding.wechat.common.utils.CollectionUtil;
 import com.nuoding.wechat.common.utils.JsonUtil;
@@ -47,7 +47,7 @@ public class UserRoleInfoServiceImpl implements UserRoleInfoService {
     private BackSysRevokesDao backSysRevokesDao;
 
     @Resource
-    private BackRoleDetailDao backRoleDetailDao;
+    private BackRuleDetailDao backRuleDetailDao;
 
     @Autowired
     private RedisService redisService;
@@ -62,10 +62,10 @@ public class UserRoleInfoServiceImpl implements UserRoleInfoService {
             return JsonUtil.json2Map(roleInfo);
         }
         Map map = new HashMap();
-        BackRoleDetail detail = new BackRoleDetail();
+        BackRuleDetailEntity detail = new BackRuleDetailEntity();
         detail.setRoleId(roleId);
         detail.setTenantId(tenantID);
-        List<BackRoleDetail> roleDetailList = this.getBackRoleDetail(detail);
+        List<BackRuleDetailEntity> roleDetailList = this.getBackRoleDetail(detail);
         List<UserSysMenusDTO> backMenus = new ArrayList<>();
         map.put("menus", this.buildMenusTree(backSysMenusDao.queryAllByLimit(null)
                 , ROOT, roleDetailList));
@@ -77,21 +77,21 @@ public class UserRoleInfoServiceImpl implements UserRoleInfoService {
 
     @Override
     public void deleteRole(String tenantId, String roleId) {
-        BackSysRoles query = new BackSysRoles();
+        BackSysRolesEntity query = new BackSysRolesEntity();
         query.setRoleId(roleId);
         query.setTenantId(tenantId);
-        List<BackSysRoles> list = backSysRolesDao.queryAllByLimit(query);
+        List<BackSysRolesEntity> list = backSysRolesDao.queryAllByLimit(query);
         if (!CollectionUtils.isEmpty(list)) {
-            for (BackSysRoles role : list) {
+            for (BackSysRolesEntity role : list) {
                 backSysRolesDao.deleteById(role.getId());
             }
         }
-        BackRoleDetail detailquery = new BackRoleDetail();
+        BackRuleDetailEntity detailquery = new BackRuleDetailEntity();
         detailquery.setRoleId(roleId);
         detailquery.setTenantId(tenantId);
-        List<BackRoleDetail> roleDetails = backRoleDetailDao.queryAllByLimit(detailquery);
+        List<BackRuleDetailEntity> roleDetails = backRuleDetailDao.queryAllByLimit(detailquery);
         if (!CollectionUtils.isEmpty(roleDetails)) {
-            for (BackRoleDetail detail : roleDetails) {
+            for (BackRuleDetailEntity detail : roleDetails) {
                 backSysRolesDao.deleteById(detail.getId());
             }
         }
@@ -106,19 +106,19 @@ public class UserRoleInfoServiceImpl implements UserRoleInfoService {
 
 
     @Override
-    public List<UserSysMenusDTO> getBackSysMenus(BackSysMenus backSysMenus) {
-        List<BackSysMenus> list = backSysMenusDao.queryAllByLimit(backSysMenus);
+    public List<UserSysMenusDTO> getBackSysMenus(BackSysMenusEntity backSysMenus) {
+        List<BackSysMenusEntity> list = backSysMenusDao.queryAllByLimit(backSysMenus);
         return this.buildMenusTree(list, ROOT, null);
     }
 
     @Override
-    public List<UserSysRevokesDTO> getBackSysRevokes(BackSysRevokes backSysRevokes) {
-        List<BackSysRevokes> list = backSysRevokesDao.queryAllByLimit(backSysRevokes);
+    public List<UserSysRevokesDTO> getBackSysRevokes(BackSysRevokesEntity backSysRevokes) {
+        List<BackSysRevokesEntity> list = backSysRevokesDao.queryAllByLimit(backSysRevokes);
         return this.buildRevokeTree(list, ROOT, null);
     }
 
-    public List<BackRoleDetail> getBackRoleDetail(BackRoleDetail backRoleDetail) {
-        return backRoleDetailDao.queryAllByLimit(backRoleDetail);
+    public List<BackRuleDetailEntity> getBackRoleDetail(BackRuleDetailEntity backRoleDetail) {
+        return backRuleDetailDao.queryAllByLimit(backRoleDetail);
     }
 
     /***
@@ -128,11 +128,11 @@ public class UserRoleInfoServiceImpl implements UserRoleInfoService {
      * @param roleDetailList
      * @return
      */
-    private List<UserSysMenusDTO> buildMenusTree(List<BackSysMenus> list,
-                                                 String pid, List<BackRoleDetail> roleDetailList) {
+    private List<UserSysMenusDTO> buildMenusTree(List<BackSysMenusEntity> list,
+                                                 String pid, List<BackRuleDetailEntity> roleDetailList) {
         List<UserSysMenusDTO> ret = null;
         if (!CollectionUtils.isEmpty(list)) {
-            for (BackSysMenus menu : list) {
+            for (BackSysMenusEntity menu : list) {
                 if (StringUtils.equals(menu.getParentId(), pid)) {
                     if (ret == null) {
                         ret = new ArrayList<>();
@@ -141,7 +141,7 @@ public class UserRoleInfoServiceImpl implements UserRoleInfoService {
                     if (!CollectionUtils.isEmpty(roleDetailList)) {
                         if (!CollectionUtils.isEmpty(
                                 CollectionUtil.containsByField(roleDetailList,
-                                        "keyvalue", menu.getMenuId(), BackRoleDetail.class))) {
+                                        "keyvalue", menu.getMenuId(), BackRuleDetailEntity.class))) {
                             needAdd = true;
                         }
 
@@ -167,10 +167,10 @@ public class UserRoleInfoServiceImpl implements UserRoleInfoService {
      * @param roleDetailList
      * @return
      */
-    private List<UserSysRevokesDTO> buildRevokeTree(List<BackSysRevokes> list, String pid, List<BackRoleDetail> roleDetailList) {
+    private List<UserSysRevokesDTO> buildRevokeTree(List<BackSysRevokesEntity> list, String pid, List<BackRuleDetailEntity> roleDetailList) {
         List<UserSysRevokesDTO> ret = null;
         if (!CollectionUtils.isEmpty(list)) {
-            for (BackSysRevokes revoke : list) {
+            for (BackSysRevokesEntity revoke : list) {
                 if (StringUtils.equals(revoke.getRevokeParentid(), pid)) {
                     if (ret == null) {
                         ret = new ArrayList<>();
@@ -178,7 +178,7 @@ public class UserRoleInfoServiceImpl implements UserRoleInfoService {
                     boolean needAdd = false;
                     if (!CollectionUtils.isEmpty(roleDetailList)) {
                         if (!CollectionUtils.isEmpty(
-                                CollectionUtil.containsByField(roleDetailList, "keyvalue", revoke.getRevokeId(), BackRoleDetail.class))) {
+                                CollectionUtil.containsByField(roleDetailList, "keyvalue", revoke.getRevokeId(), BackRuleDetailEntity.class))) {
                             needAdd = true;
                         }
 
@@ -200,7 +200,7 @@ public class UserRoleInfoServiceImpl implements UserRoleInfoService {
     private void saveRevokes(List<UserSysRevokesDTO> list, String id) {
         if (!CollectionUtils.isEmpty(list)) {
             for (UserSysRevokesDTO dto : list) {
-                BackSysRevokes revokes = new BackSysRevokes();
+                BackSysRevokesEntity revokes = new BackSysRevokesEntity();
                 BeanUtils.copyProperties(dto, revokes);
                 backSysRevokesDao.insert(revokes);
                 this.saveRevokes(dto.getList(), dto.getRevokeId());
@@ -211,7 +211,7 @@ public class UserRoleInfoServiceImpl implements UserRoleInfoService {
     private void saveMenus(List<UserSysMenusDTO> list, String id) {
         if (!CollectionUtils.isEmpty(list)) {
             for (UserSysMenusDTO dto : list) {
-                BackSysMenus menus = new BackSysMenus();
+                BackSysMenusEntity menus = new BackSysMenusEntity();
                 BeanUtils.copyProperties(dto, menus);
                 backSysMenusDao.insert(menus);
                 this.saveMenus(dto.getList(), dto.getMenuId());

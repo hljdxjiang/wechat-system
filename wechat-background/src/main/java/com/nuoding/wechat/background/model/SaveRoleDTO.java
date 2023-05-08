@@ -1,19 +1,19 @@
 package com.nuoding.wechat.background.model;
 
-import com.nuoding.wechat.common.entity.BackSysRoles;
+import com.nuoding.wechat.common.entity.back.BackSysRolesEntity;
 
 import java.util.List;
 
 public class SaveRoleDTO {
-    BackSysRoles backSysRole;
+    BackSysRolesEntity backSysRole;
     List<UserSysMenusDTO> menusBackDTOList;
     List<UserSysRevokesDTO> revokesBackDTOList;
 
-    public BackSysRoles getBackSysRole() {
+    public BackSysRolesEntity getBackSysRole() {
         return backSysRole;
     }
 
-    public void setBackSysRole(BackSysRoles backSysRole) {
+    public void setBackSysRole(BackSysRolesEntity backSysRole) {
         this.backSysRole = backSysRole;
     }
 

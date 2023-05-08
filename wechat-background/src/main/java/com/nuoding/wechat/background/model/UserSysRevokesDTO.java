@@ -1,6 +1,6 @@
 package com.nuoding.wechat.background.model;
 
-import com.nuoding.wechat.common.entity.BackSysRevokes;
+import com.nuoding.wechat.common.entity.back.BackSysRevokesEntity;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import java.util.List;
  * @Description //TODO $
  * @Date $ $
  **/
-public class UserSysRevokesDTO extends BackSysRevokes {
+public class UserSysRevokesDTO extends BackSysRevokesEntity {
     List<UserSysRevokesDTO> list;
 
     public List<UserSysRevokesDTO> getList() {

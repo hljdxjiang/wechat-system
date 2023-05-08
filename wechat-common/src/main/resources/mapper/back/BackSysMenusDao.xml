@@ -1,60 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nuoding.wechat.common.dao.BackSysMenusDao">
+<mapper namespace="com.nuoding.wechat.common.dao.back.BackSysMenusDao">
 
-    <resultMap type="com.nuoding.wechat.common.entity.BackSysMenus" id="BackSysMenusMap">
-        <result property="id" column="id" jdbcType="INTEGER"/>
+    <resultMap type="com.nuoding.wechat.common.entity.back.BackSysMenusEntity" id="BackSysMenusMap">
+            <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="menuId" column="menu_id" jdbcType="VARCHAR"/>
         <result property="menusTitle" column="menus_title" jdbcType="VARCHAR"/>
         <result property="menuType" column="menu_type" jdbcType="VARCHAR"/>
-        <result property="menuPath" column="menu_path" jdbcType="VARCHAR"/>
         <result property="parentId" column="parent_id" jdbcType="VARCHAR"/>
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
         <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
         <result property="remark" column="remark" jdbcType="VARCHAR"/>
+        <result property="menuPath" column="menu_path" jdbcType="VARCHAR"/>
     </resultMap>
+
+    <sql id="Table_Name">
+        back_sys_menus
+    </sql>
+
+    <sql id="Base_Column_List">
+        id,menu_id,menus_title,menu_type,parent_id,create_time,last_modified_time,remark,menu_path    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="BackSysMenusMap">
         select
-          id, menu_id, menus_title, menu_type,menu_path, parent_id, create_time, last_modified_time, remark
-        from back_sys_menus
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
         where id = #{id}
     </select>
 
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BackSysMenusMap">
         select
-        id, menu_id, menus_title, menu_type,menu_path, parent_id, create_time, last_modified_time, remark
-        from back_sys_menus
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
         <where>
-            <if test="id != null">
-                and id = #{id}
-            </if>
-            <if test="menuId != null and menuId != ''">
-                and menu_id = #{menuId}
-            </if>
-            <if test="menusTitle != null and menusTitle != ''">
-                and menus_title = #{menusTitle}
-            </if>
-            <if test="menuType != null and menuType != ''">
-                and menu_type = #{menuType}
-            </if>
-            <if test="menuPath != null and menuPath != ''">
-                and menu_path = #{menuPath}
-            </if>
-            <if test="parentId != null and parentId != ''">
-                and parent_id = #{parentId}
-            </if>
-            <if test="createTime != null">
-                and create_time = #{createTime}
-            </if>
-            <if test="lastModifiedTime != null">
-                and last_modified_time = #{lastModifiedTime}
-            </if>
-            <if test="remark != null and remark != ''">
-                and remark = #{remark}
-            </if>
+            <if test="id != null and id !=''">and id = #{id}</if>
+            <if test="menuId != null and menuId !=''">and menu_id = #{menuId}</if>
+            <if test="menusTitle != null and menusTitle !=''">and menus_title = #{menusTitle}</if>
+            <if test="menuType != null and menuType !=''">and menu_type = #{menuType}</if>
+            <if test="parentId != null and parentId !=''">and parent_id = #{parentId}</if>
+            <if test="createTime != null and createTime !=''">and create_time = #{createTime}</if>
+            <if test="lastModifiedTime != null and lastModifiedTime !=''">and last_modified_time = #{lastModifiedTime}</if>
+            <if test="remark != null and remark !=''">and remark = #{remark}</if>
+            <if test="menuPath != null and menuPath !=''">and menu_path = #{menuPath}</if>
         </where>
 
     </select>
@@ -62,110 +53,81 @@
     <!--统计总行数-->
     <select id="count" resultType="java.lang.Long">
         select count(1)
-        from back_sys_menus
+        from
+        <include refid="Table_Name"/>
         <where>
-            <if test="id != null">
-                and id = #{id}
-            </if>
-            <if test="menuId != null and menuId != ''">
-                and menu_id = #{menuId}
-            </if>
-            <if test="menusTitle != null and menusTitle != ''">
-                and menus_title = #{menusTitle}
-            </if>
-            <if test="menuType != null and menuType != ''">
-                and menu_type = #{menuType}
-            </if>
-            <if test="menuPath != null and menuPath != ''">
-                and menu_path = #{menuPath}
-            </if>
-            <if test="parentId != null and parentId != ''">
-                and parent_id = #{parentId}
-            </if>
-            <if test="createTime != null">
-                and create_time = #{createTime}
-            </if>
-            <if test="lastModifiedTime != null">
-                and last_modified_time = #{lastModifiedTime}
-            </if>
-            <if test="remark != null and remark != ''">
-                and remark = #{remark}
-            </if>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="menuId != null and menuId != ''">and menu_id = #{menuId}</if>
+            <if test="menusTitle != null and menusTitle != ''">and menus_title = #{menusTitle}</if>
+            <if test="menuType != null and menuType != ''">and menu_type = #{menuType}</if>
+            <if test="parentId != null and parentId != ''">and parent_id = #{parentId}</if>
+            <if test="createTime != null and createTime != ''">and create_time = #{createTime}</if>
+            <if test="lastModifiedTime != null and lastModifiedTime != ''">and last_modified_time = #{lastModifiedTime}</if>
+            <if test="remark != null and remark != ''">and remark = #{remark}</if>
+            <if test="menuPath != null and menuPath != ''">and menu_path = #{menuPath}</if>
         </where>
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into back_sys_menus(menu_id, menus_title, menu_type,menu_path, parent_id, create_time, last_modified_time, remark)
-        values (#{menuId}, #{menusTitle}, #{menuType},#{menuPath}, #{parentId}, #{createTime}, #{lastModifiedTime}, #{remark})
+        insert into
+        <include refid="Table_Name"/>
+        (menu_id,menus_title,menu_type,parent_id,create_time,last_modified_time,remark,menu_path)
+        values
+        (#{menuId},#{menusTitle},#{menuType},#{parentId},#{createTime},#{lastModifiedTime},#{remark},#{menuPath})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into back_sys_menus(menu_id, menus_title, menu_type,menu_path, parent_id, create_time,
-        last_modified_time, remark)
+        insert into
+        <include refid="Table_Name"/>
+            (menu_id,menus_title,menu_type,parent_id,create_time,last_modified_time,remark,menu_path)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.menuId}, #{entity.menusTitle}, #{entity.menuType},#{entity.menuPath}, #{entity.parentId},
-            #{entity.createTime},
-            #{entity.lastModifiedTime}, #{entity.remark})
+            (#{entity.menuId},#{entity.menusTitle},#{entity.menuType},#{entity.parentId},#{entity.createTime},#{entity.lastModifiedTime},#{entity.remark},#{entity.menuPath})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into back_sys_menus(menu_id, menus_title, menu_type,menu_path, parent_id, create_time,
-        last_modified_time, remark)
+        insert into
+        <include refid="Table_Name"/>
+            (menu_id,menus_title,menu_type,parent_id,create_time,last_modified_time,remark,menu_path)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.menuId}, #{entity.menusTitle}, #{entity.menuType}, #{entity.menuPath}, #{entity.parentId},
-            #{entity.createTime},
-            #{entity.lastModifiedTime}, #{entity.remark})
+            (#{entity.menuId},#{entity.menusTitle},#{entity.menuType},#{entity.parentId},#{entity.createTime},#{entity.lastModifiedTime},#{entity.remark},#{entity.menuPath})
         </foreach>
         on duplicate key update
-        menu_id = values(menu_id),
-        menus_title = values(menus_title),
-        menu_type = values(menu_type),
-        menu_path = values(menu_path),
-        parent_id = values(parent_id),
-        create_time = values(create_time),
-        last_modified_time = values(last_modified_time),
-        remark = values(remark)
-    </insert>
+                menu_id=values(menu_id),
+        menus_title=values(menus_title),
+        menu_type=values(menu_type),
+        parent_id=values(parent_id),
+        create_time=values(create_time),
+        last_modified_time=values(last_modified_time),
+        remark=values(remark),
+        menu_path=values(menu_path)
+        </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
-        update back_sys_menus
+        update
+        <include refid="Table_Name"/>
         <set>
-            <if test="menuId != null and menuId != ''">
-                menu_id = #{menuId},
-            </if>
-            <if test="menusTitle != null and menusTitle != ''">
-                menus_title = #{menusTitle},
-            </if>
-            <if test="menuType != null and menuType != ''">
-                menu_type = #{menuType},
-            </if>
-            <if test="menuPath != null and menuPath != ''">
-                menu_path = #{menuPath},
-            </if>
-            <if test="parentId != null and parentId != ''">
-                parent_id = #{parentId},
-            </if>
-            <if test="createTime != null">
-                create_time = #{createTime},
-            </if>
-            <if test="lastModifiedTime != null">
-                last_modified_time = #{lastModifiedTime},
-            </if>
-            <if test="remark != null and remark != ''">
-                remark = #{remark},
-            </if>
+    <if test="menuId != null and menuId != ''">menu_id = #{menuId},</if>
+    <if test="menusTitle != null and menusTitle != ''">menus_title = #{menusTitle},</if>
+    <if test="menuType != null and menuType != ''">menu_type = #{menuType},</if>
+    <if test="parentId != null and parentId != ''">parent_id = #{parentId},</if>
+    <if test="createTime != null and createTime != ''">create_time = #{createTime},</if>
+    <if test="lastModifiedTime != null and lastModifiedTime != ''">last_modified_time = #{lastModifiedTime},</if>
+    <if test="remark != null and remark != ''">remark = #{remark},</if>
+    <if test="menuPath != null and menuPath != ''">menu_path = #{menuPath},</if>
         </set>
         where id = #{id}
     </update>
 
     <!--通过主键删除-->
     <delete id="deleteById">
-        delete from back_sys_menus where id = #{id}
+        delete from
+        <include refid="Table_Name"/>
+        where id = #{id}
     </delete>
 
 </mapper>

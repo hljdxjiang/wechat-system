@@ -5,14 +5,10 @@ import com.nuoding.wechat.background.service.UserLoginService;
 import com.nuoding.wechat.background.service.UserRoleInfoService;
 import com.nuoding.wechat.common.constant.LockTradeType;
 import com.nuoding.wechat.common.constant.SessionKey;
-import com.nuoding.wechat.common.entity.BackUserLoginRecord;
 import com.nuoding.wechat.common.enums.RespStatusEnum;
 import com.nuoding.wechat.common.interceptor.LockTrade;
 import com.nuoding.wechat.common.interceptor.StaticTrade;
 import com.nuoding.wechat.common.model.MapResponse;
-import com.nuoding.wechat.common.service.BackUserLoginRecordService;
-import com.nuoding.wechat.common.utils.IpUtil;
-import com.nuoding.wechat.common.utils.RequestUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Date;
 import java.util.Map;
 
 /**
@@ -40,8 +35,6 @@ public class BackUserLoginController {
     @Autowired
     private UserRoleInfoService userRoleInfoService;
 
-    @Autowired
-    private BackUserLoginRecordService backUserLoginRecordService;
 
     /***
      * 用户登录接口
@@ -53,7 +46,7 @@ public class BackUserLoginController {
     @PostMapping("/login")
     public MapResponse login(@RequestBody LoginDTO loginDTO) {
         MapResponse mapResponse = userLoginService.login(loginDTO);
-        BackUserLoginRecord record = new BackUserLoginRecord();
+//        BackUserLoginRecord record = new BackUserLoginRecord();
         String tenantId = SessionKey.getValue(SessionKey.TENANT_ID);
         if (MapResponse.verifyMapResponse(mapResponse)) {
             Map map = (Map) mapResponse.get("data");
@@ -69,13 +62,13 @@ public class BackUserLoginController {
         } else {
             mapResponse.setResponse(RespStatusEnum.PASSWD_CODE_ERROR);
         }
-        record.setIpAddr(IpUtil.getIpAddr(RequestUtil.getRequest()));
-        record.setUserId(loginDTO.getUserId());
-        record.setTenantId(tenantId);
-        record.setLoginResult(mapResponse.getMessage());
-        record.setLoginResultCode(mapResponse.getCode());
-        record.setLoginTime(new Date());
-        backUserLoginRecordService.asyncInsert(record);
+//        record.setIpAddr(IpUtil.getIpAddr(RequestUtil.getRequest()));
+//        record.setUserId(loginDTO.getUserId());
+//        record.setTenantId(tenantId);
+//        record.setLoginResult(mapResponse.getMessage());
+//        record.setLoginResultCode(mapResponse.getCode());
+//        record.setLoginTime(new Date());
+//        backUserLoginRecordService.asyncInsert(record);
         return mapResponse;
     }
 
