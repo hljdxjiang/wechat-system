@@ -3,6 +3,7 @@ package com.nuoding.wechat.common.service.user.impl;
 import com.nuoding.wechat.common.dao.user.UserOperaRecordDao;
 import com.nuoding.wechat.common.entity.user.UserOperaRecordEntity;
 import com.nuoding.wechat.common.service.user.UserOperaRecordService;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -74,5 +75,18 @@ public class UserOperaRecordServiceImpl implements UserOperaRecordService {
     @Override
     public boolean deleteById(Integer id) {
         return this.userOperaRecordDao.deleteById(id) > 0;
+    }
+
+    /**
+     * 异步新增数据
+     *
+     * @param userOperaRecordEntity 实例对象
+     * @return 实例对象
+     */
+    @Override
+    @Async
+    public UserOperaRecordEntity asyncInsert(UserOperaRecordEntity userOperaRecordEntity) {
+        this.userOperaRecordDao.insert(userOperaRecordEntity);
+        return userOperaRecordEntity;
     }
 }

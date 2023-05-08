@@ -1,7 +1,10 @@
 package com.nuoding.wechat.api.interceptor;
 
+import com.nuoding.wechat.api.service.check.LockTradeCheckService;
+import com.nuoding.wechat.api.service.check.SessionCheckService;
+import com.nuoding.wechat.api.service.check.SignatureCheckService;
 import com.nuoding.wechat.common.constant.SessionKey;
-import com.nuoding.wechat.common.entity.UserOperaRecord;
+import com.nuoding.wechat.common.entity.user.UserOperaRecordEntity;
 import com.nuoding.wechat.common.enums.RespStatusEnum;
 import com.nuoding.wechat.common.filters.MultiReadHttpRequestWrapper;
 import com.nuoding.wechat.common.filters.ResponseWrapper;
@@ -12,11 +15,8 @@ import com.nuoding.wechat.common.interceptor.StaticTrade;
 import com.nuoding.wechat.common.model.MapRequest;
 import com.nuoding.wechat.common.model.MapResponse;
 import com.nuoding.wechat.common.model.ReqHeader;
-import com.nuoding.wechat.common.service.UserOperaRecordService;
-import com.nuoding.wechat.api.service.check.LockTradeCheckService;
-import com.nuoding.wechat.api.service.check.SessionCheckService;
-import com.nuoding.wechat.api.service.check.SignatureCheckService;
 import com.nuoding.wechat.common.service.strategy.BaseStrategy;
+import com.nuoding.wechat.common.service.user.UserOperaRecordService;
 import com.nuoding.wechat.common.utils.IpUtil;
 import com.nuoding.wechat.common.utils.JsonUtil;
 import com.nuoding.wechat.common.utils.RequestUtil;
@@ -59,7 +59,7 @@ public class CommonInterceptor implements AsyncHandlerInterceptor {
 
     private String userId;
 
-    public ThreadLocal<UserOperaRecord> currentTrade = null;
+    public ThreadLocal<UserOperaRecordEntity> currentTrade = null;
 
 
     @Override
@@ -114,9 +114,9 @@ public class CommonInterceptor implements AsyncHandlerInterceptor {
         }
         if (clazz.isAnnotationPresent(StaticTrade.class)) {
             ReqHeader reqHeader = mapRequest.getHeader();
-            currentTrade = new ThreadLocal<UserOperaRecord>();
+            currentTrade = new ThreadLocal<UserOperaRecordEntity>();
             StaticTrade staticTrade = clazz.getAnnotation(StaticTrade.class);
-            UserOperaRecord userOperaRecord = new UserOperaRecord();
+            UserOperaRecordEntity userOperaRecord = new UserOperaRecordEntity();
             userOperaRecord.setUserid(reqHeader.getUserId());
             userOperaRecord.setSessionid(SessionKey.getSessionID());
             userOperaRecord.setUserIp(reqHeader.getIp().concat("-").concat(IpUtil.getIpAddr(RequestUtil.getRequest())));
@@ -141,7 +141,7 @@ public class CommonInterceptor implements AsyncHandlerInterceptor {
             ResponseWrapper responseWrapper = new ResponseWrapper(response);
             byte[] content = responseWrapper.getContent();
             MapResponse mapResponse = JsonUtil.json2Obj(content.toString(), MapResponse.class);
-            UserOperaRecord userOperaRecord = currentTrade.get();
+            UserOperaRecordEntity userOperaRecord = currentTrade.get();
             userOperaRecord.setResponseCode(mapResponse.getCode());
             userOperaRecordService.asyncInsert(userOperaRecord);
         }

@@ -1,12 +1,14 @@
 package com.nuoding.wechat.common.service.user;
 
 import com.nuoding.wechat.common.entity.user.UserOperaRecordEntity;
+import org.springframework.scheduling.annotation.Async;
 
 import java.util.List;
 
 /**
  * (userOperaRecord)表服务接口
  * 用户操作历史表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:18
  */
@@ -51,5 +53,13 @@ public interface UserOperaRecordService {
      * @return 是否成功
      */
     boolean deleteById(Integer id);
+
+    /**
+     * 异步新增数据
+     *
+     * @param userOperaRecordEntity 实例对象
+     * @return 实例对象
+     */
+    public UserOperaRecordEntity asyncInsert(UserOperaRecordEntity userOperaRecordEntity);
 
 }
