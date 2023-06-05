@@ -15,7 +15,7 @@ import java.math.BigDecimal;
  * 文章记录表
  *
  * @Author: hzq
- * @Date: 2023-05-08 19:32:47
+ * @Date: 2023-06-05 17:49:47
  */
 @Entity
 @Table(name = "bbs_article_info")

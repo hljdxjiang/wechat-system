@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * (crmSalePayInfo)表服务接口
- * 销售记录表
+ * 销售支付记录表
  * @author jhc
  * @since 2023-03-07 14:38:18
  */

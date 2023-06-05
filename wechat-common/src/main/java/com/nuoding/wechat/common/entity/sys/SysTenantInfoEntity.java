@@ -15,7 +15,7 @@ import java.math.BigDecimal;
  * 租户信息表
  *
  * @Author: hzq
- * @Date: 2023-05-08 19:32:47
+ * @Date: 2023-06-05 17:49:46
  */
 @Entity
 @Table(name = "sys_tenant_info")
@@ -124,6 +124,30 @@ public class SysTenantInfoEntity implements Serializable {
              */
                     @Column(name = "email")
                     private String email;
+                    
+            /**
+             * 微信ID
+             */
+                    @Column(name = "appid")
+                    private String appid;
+                    
+            /**
+             * 微信秘钥
+             */
+                    @Column(name = "app_secret")
+                    private String appSecret;
+                    
+            /**
+             * 微信token
+             */
+                    @Column(name = "wechat_token")
+                    private String wechatToken;
+                    
+            /**
+             * 小程序token
+             */
+                    @Column(name = "minip_secret")
+                    private String minipSecret;
             
     
         /**
@@ -348,5 +372,61 @@ public class SysTenantInfoEntity implements Serializable {
          */
         public void setEmail(String email) {
             this.email=email;
+        }
+    
+        /**
+         * 获取：微信ID
+         */
+        public String getAppid() {
+            return appid;
+        }
+
+        /**
+         * 设置：微信ID
+         */
+        public void setAppid(String appid) {
+            this.appid=appid;
+        }
+    
+        /**
+         * 获取：微信秘钥
+         */
+        public String getAppSecret() {
+            return appSecret;
+        }
+
+        /**
+         * 设置：微信秘钥
+         */
+        public void setAppSecret(String appSecret) {
+            this.appSecret=appSecret;
+        }
+    
+        /**
+         * 获取：微信token
+         */
+        public String getWechatToken() {
+            return wechatToken;
+        }
+
+        /**
+         * 设置：微信token
+         */
+        public void setWechatToken(String wechatToken) {
+            this.wechatToken=wechatToken;
+        }
+    
+        /**
+         * 获取：小程序token
+         */
+        public String getMinipSecret() {
+            return minipSecret;
+        }
+
+        /**
+         * 设置：小程序token
+         */
+        public void setMinipSecret(String minipSecret) {
+            this.minipSecret=minipSecret;
         }
     }

@@ -54,6 +54,13 @@ public class UserOperaRecordServiceImpl implements UserOperaRecordService {
         return userOperaRecordEntity;
     }
 
+
+    @Async
+    @Override
+    public UserOperaRecordEntity asyncInsert(UserOperaRecordEntity userOperaRecordEntity) {
+        return asyncInsert(userOperaRecordEntity);
+    }
+
     /**
      * 修改数据
      *
@@ -75,18 +82,5 @@ public class UserOperaRecordServiceImpl implements UserOperaRecordService {
     @Override
     public boolean deleteById(Integer id) {
         return this.userOperaRecordDao.deleteById(id) > 0;
-    }
-
-    /**
-     * 异步新增数据
-     *
-     * @param userOperaRecordEntity 实例对象
-     * @return 实例对象
-     */
-    @Override
-    @Async
-    public UserOperaRecordEntity asyncInsert(UserOperaRecordEntity userOperaRecordEntity) {
-        this.userOperaRecordDao.insert(userOperaRecordEntity);
-        return userOperaRecordEntity;
     }
 }

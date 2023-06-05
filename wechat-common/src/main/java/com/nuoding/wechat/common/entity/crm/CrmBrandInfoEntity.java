@@ -15,7 +15,7 @@ import java.math.BigDecimal;
  * 品牌信息表
  *
  * @Author: hzq
- * @Date: 2023-05-08 19:32:47
+ * @Date: 2023-06-05 17:49:47
  */
 @Entity
 @Table(name = "crm_brand_info")

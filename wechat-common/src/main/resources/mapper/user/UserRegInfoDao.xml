@@ -33,6 +33,7 @@
         <result property="loginPwd" column="login_pwd" jdbcType="VARCHAR"/>
         <result property="gesturePwd" column="gesture_pwd" jdbcType="VARCHAR"/>
         <result property="faceIdPwd" column="face_id_pwd" jdbcType="VARCHAR"/>
+        <result property="userLabel" column="user_label" jdbcType="VARCHAR"/>
         <result property="status" column="status" jdbcType="VARCHAR"/>
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
         <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
@@ -43,7 +44,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,user_id,mobile_no,id_type,id_no,valid_date,expired_date,issue_authority,user_name,gender,birth_date,email,tran_pwd,saver_id,source_platform,referee,address,occupation,reg_source,id_path_face,id_path_emblem,id_path_hand,dist_code,user_ip,set_tran_pwd_time,device_id,login_pwd,gesture_pwd,face_id_pwd,status,create_time,last_modified_time    </sql>
+        id,tenant_id,user_id,mobile_no,id_type,id_no,valid_date,expired_date,issue_authority,user_name,gender,birth_date,email,tran_pwd,saver_id,source_platform,referee,address,occupation,reg_source,id_path_face,id_path_emblem,id_path_hand,dist_code,user_ip,set_tran_pwd_time,device_id,login_pwd,gesture_pwd,face_id_pwd,user_label,status,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="UserRegInfoMap">
@@ -91,6 +92,7 @@
             <if test="loginPwd != null and loginPwd !=''">and login_pwd = #{loginPwd}</if>
             <if test="gesturePwd != null and gesturePwd !=''">and gesture_pwd = #{gesturePwd}</if>
             <if test="faceIdPwd != null and faceIdPwd !=''">and face_id_pwd = #{faceIdPwd}</if>
+            <if test="userLabel != null and userLabel !=''">and user_label = #{userLabel}</if>
             <if test="status != null and status !=''">and status = #{status}</if>
             <if test="createTime != null and createTime !=''">and create_time = #{createTime}</if>
             <if test="lastModifiedTime != null and lastModifiedTime !=''">and last_modified_time = #{lastModifiedTime}</if>
@@ -134,6 +136,7 @@
             <if test="loginPwd != null and loginPwd != ''">and login_pwd = #{loginPwd}</if>
             <if test="gesturePwd != null and gesturePwd != ''">and gesture_pwd = #{gesturePwd}</if>
             <if test="faceIdPwd != null and faceIdPwd != ''">and face_id_pwd = #{faceIdPwd}</if>
+            <if test="userLabel != null and userLabel != ''">and user_label = #{userLabel}</if>
             <if test="status != null and status != ''">and status = #{status}</if>
             <if test="createTime != null and createTime != ''">and create_time = #{createTime}</if>
             <if test="lastModifiedTime != null and lastModifiedTime != ''">and last_modified_time = #{lastModifiedTime}</if>
@@ -144,28 +147,28 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,user_id,mobile_no,id_type,id_no,valid_date,expired_date,issue_authority,user_name,gender,birth_date,email,tran_pwd,saver_id,source_platform,referee,address,occupation,reg_source,id_path_face,id_path_emblem,id_path_hand,dist_code,user_ip,set_tran_pwd_time,device_id,login_pwd,gesture_pwd,face_id_pwd,status,create_time,last_modified_time)
+        (tenant_id,user_id,mobile_no,id_type,id_no,valid_date,expired_date,issue_authority,user_name,gender,birth_date,email,tran_pwd,saver_id,source_platform,referee,address,occupation,reg_source,id_path_face,id_path_emblem,id_path_hand,dist_code,user_ip,set_tran_pwd_time,device_id,login_pwd,gesture_pwd,face_id_pwd,user_label,status,create_time,last_modified_time)
         values
-        (#{tenantId},#{userId},#{mobileNo},#{idType},#{idNo},#{validDate},#{expiredDate},#{issueAuthority},#{userName},#{gender},#{birthDate},#{email},#{tranPwd},#{saverId},#{sourcePlatform},#{referee},#{address},#{occupation},#{regSource},#{idPathFace},#{idPathEmblem},#{idPathHand},#{distCode},#{userIp},#{setTranPwdTime},#{deviceId},#{loginPwd},#{gesturePwd},#{faceIdPwd},#{status},#{createTime},#{lastModifiedTime})
+        (#{tenantId},#{userId},#{mobileNo},#{idType},#{idNo},#{validDate},#{expiredDate},#{issueAuthority},#{userName},#{gender},#{birthDate},#{email},#{tranPwd},#{saverId},#{sourcePlatform},#{referee},#{address},#{occupation},#{regSource},#{idPathFace},#{idPathEmblem},#{idPathHand},#{distCode},#{userIp},#{setTranPwdTime},#{deviceId},#{loginPwd},#{gesturePwd},#{faceIdPwd},#{userLabel},#{status},#{createTime},#{lastModifiedTime})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (tenant_id,user_id,mobile_no,id_type,id_no,valid_date,expired_date,issue_authority,user_name,gender,birth_date,email,tran_pwd,saver_id,source_platform,referee,address,occupation,reg_source,id_path_face,id_path_emblem,id_path_hand,dist_code,user_ip,set_tran_pwd_time,device_id,login_pwd,gesture_pwd,face_id_pwd,status,create_time,last_modified_time)
+            (tenant_id,user_id,mobile_no,id_type,id_no,valid_date,expired_date,issue_authority,user_name,gender,birth_date,email,tran_pwd,saver_id,source_platform,referee,address,occupation,reg_source,id_path_face,id_path_emblem,id_path_hand,dist_code,user_ip,set_tran_pwd_time,device_id,login_pwd,gesture_pwd,face_id_pwd,user_label,status,create_time,last_modified_time)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.userId},#{entity.mobileNo},#{entity.idType},#{entity.idNo},#{entity.validDate},#{entity.expiredDate},#{entity.issueAuthority},#{entity.userName},#{entity.gender},#{entity.birthDate},#{entity.email},#{entity.tranPwd},#{entity.saverId},#{entity.sourcePlatform},#{entity.referee},#{entity.address},#{entity.occupation},#{entity.regSource},#{entity.idPathFace},#{entity.idPathEmblem},#{entity.idPathHand},#{entity.distCode},#{entity.userIp},#{entity.setTranPwdTime},#{entity.deviceId},#{entity.loginPwd},#{entity.gesturePwd},#{entity.faceIdPwd},#{entity.status},#{entity.createTime},#{entity.lastModifiedTime})
+            (#{entity.tenantId},#{entity.userId},#{entity.mobileNo},#{entity.idType},#{entity.idNo},#{entity.validDate},#{entity.expiredDate},#{entity.issueAuthority},#{entity.userName},#{entity.gender},#{entity.birthDate},#{entity.email},#{entity.tranPwd},#{entity.saverId},#{entity.sourcePlatform},#{entity.referee},#{entity.address},#{entity.occupation},#{entity.regSource},#{entity.idPathFace},#{entity.idPathEmblem},#{entity.idPathHand},#{entity.distCode},#{entity.userIp},#{entity.setTranPwdTime},#{entity.deviceId},#{entity.loginPwd},#{entity.gesturePwd},#{entity.faceIdPwd},#{entity.userLabel},#{entity.status},#{entity.createTime},#{entity.lastModifiedTime})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (tenant_id,user_id,mobile_no,id_type,id_no,valid_date,expired_date,issue_authority,user_name,gender,birth_date,email,tran_pwd,saver_id,source_platform,referee,address,occupation,reg_source,id_path_face,id_path_emblem,id_path_hand,dist_code,user_ip,set_tran_pwd_time,device_id,login_pwd,gesture_pwd,face_id_pwd,status,create_time,last_modified_time)
+            (tenant_id,user_id,mobile_no,id_type,id_no,valid_date,expired_date,issue_authority,user_name,gender,birth_date,email,tran_pwd,saver_id,source_platform,referee,address,occupation,reg_source,id_path_face,id_path_emblem,id_path_hand,dist_code,user_ip,set_tran_pwd_time,device_id,login_pwd,gesture_pwd,face_id_pwd,user_label,status,create_time,last_modified_time)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.userId},#{entity.mobileNo},#{entity.idType},#{entity.idNo},#{entity.validDate},#{entity.expiredDate},#{entity.issueAuthority},#{entity.userName},#{entity.gender},#{entity.birthDate},#{entity.email},#{entity.tranPwd},#{entity.saverId},#{entity.sourcePlatform},#{entity.referee},#{entity.address},#{entity.occupation},#{entity.regSource},#{entity.idPathFace},#{entity.idPathEmblem},#{entity.idPathHand},#{entity.distCode},#{entity.userIp},#{entity.setTranPwdTime},#{entity.deviceId},#{entity.loginPwd},#{entity.gesturePwd},#{entity.faceIdPwd},#{entity.status},#{entity.createTime},#{entity.lastModifiedTime})
+            (#{entity.tenantId},#{entity.userId},#{entity.mobileNo},#{entity.idType},#{entity.idNo},#{entity.validDate},#{entity.expiredDate},#{entity.issueAuthority},#{entity.userName},#{entity.gender},#{entity.birthDate},#{entity.email},#{entity.tranPwd},#{entity.saverId},#{entity.sourcePlatform},#{entity.referee},#{entity.address},#{entity.occupation},#{entity.regSource},#{entity.idPathFace},#{entity.idPathEmblem},#{entity.idPathHand},#{entity.distCode},#{entity.userIp},#{entity.setTranPwdTime},#{entity.deviceId},#{entity.loginPwd},#{entity.gesturePwd},#{entity.faceIdPwd},#{entity.userLabel},#{entity.status},#{entity.createTime},#{entity.lastModifiedTime})
         </foreach>
         on duplicate key update
                 tenant_id=values(tenant_id),
@@ -197,6 +200,7 @@
         login_pwd=values(login_pwd),
         gesture_pwd=values(gesture_pwd),
         face_id_pwd=values(face_id_pwd),
+        user_label=values(user_label),
         status=values(status),
         create_time=values(create_time),
         last_modified_time=values(last_modified_time)
@@ -236,6 +240,7 @@
     <if test="loginPwd != null and loginPwd != ''">login_pwd = #{loginPwd},</if>
     <if test="gesturePwd != null and gesturePwd != ''">gesture_pwd = #{gesturePwd},</if>
     <if test="faceIdPwd != null and faceIdPwd != ''">face_id_pwd = #{faceIdPwd},</if>
+    <if test="userLabel != null and userLabel != ''">user_label = #{userLabel},</if>
     <if test="status != null and status != ''">status = #{status},</if>
     <if test="createTime != null and createTime != ''">create_time = #{createTime},</if>
     <if test="lastModifiedTime != null and lastModifiedTime != ''">last_modified_time = #{lastModifiedTime},</if>

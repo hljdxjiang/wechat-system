@@ -15,7 +15,7 @@ import java.math.BigDecimal;
  * 产品详情表
  *
  * @Author: hzq
- * @Date: 2023-05-08 19:32:47
+ * @Date: 2023-06-05 17:49:46
  */
 @Entity
 @Table(name = "crm_prod_detail")

@@ -5,6 +5,7 @@
     <resultMap type="com.nuoding.wechat.common.entity.wechat.WechatUserEntity" id="WechatUserMap">
             <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
+        <result property="unionid" column="unionid" jdbcType="VARCHAR"/>
         <result property="wxopenid" column="wxopenid" jdbcType="VARCHAR"/>
         <result property="nickname" column="nickname" jdbcType="VARCHAR"/>
         <result property="sex" column="sex" jdbcType="DECIMAL"/>
@@ -13,13 +14,12 @@
         <result property="country" column="country" jdbcType="VARCHAR"/>
         <result property="headimgurl" column="headimgurl" jdbcType="VARCHAR"/>
         <result property="privilege" column="privilege" jdbcType="VARCHAR"/>
-        <result property="unionid" column="unionid" jdbcType="VARCHAR"/>
-        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
-        <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
         <result property="mobileNo" column="mobile_no" jdbcType="VARCHAR"/>
         <result property="status" column="status" jdbcType="VARCHAR"/>
         <result property="userId" column="user_id" jdbcType="VARCHAR"/>
-        <result property="mOpenid" column="m_openid" jdbcType="VARCHAR"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Table_Name">
@@ -27,7 +27,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,wxopenid,nickname,sex,province,city,country,headimgurl,privilege,unionid,create_time,last_modified_time,mobile_no,status,user_id,m_openid    </sql>
+        id,tenant_id,unionid,wxopenid,nickname,sex,province,city,country,headimgurl,privilege,mobile_no,status,user_id,remark,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="WechatUserMap">
@@ -47,6 +47,7 @@
         <where>
             <if test="id != null and id !=''">and id = #{id}</if>
             <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="unionid != null and unionid !=''">and unionid = #{unionid}</if>
             <if test="wxopenid != null and wxopenid !=''">and wxopenid = #{wxopenid}</if>
             <if test="nickname != null and nickname !=''">and nickname = #{nickname}</if>
             <if test="sex != null and sex !=''">and sex = #{sex}</if>
@@ -55,13 +56,12 @@
             <if test="country != null and country !=''">and country = #{country}</if>
             <if test="headimgurl != null and headimgurl !=''">and headimgurl = #{headimgurl}</if>
             <if test="privilege != null and privilege !=''">and privilege = #{privilege}</if>
-            <if test="unionid != null and unionid !=''">and unionid = #{unionid}</if>
-            <if test="createTime != null and createTime !=''">and create_time = #{createTime}</if>
-            <if test="lastModifiedTime != null and lastModifiedTime !=''">and last_modified_time = #{lastModifiedTime}</if>
             <if test="mobileNo != null and mobileNo !=''">and mobile_no = #{mobileNo}</if>
             <if test="status != null and status !=''">and status = #{status}</if>
             <if test="userId != null and userId !=''">and user_id = #{userId}</if>
-            <if test="mOpenid != null and mOpenid !=''">and m_openid = #{mOpenid}</if>
+            <if test="remark != null and remark !=''">and remark = #{remark}</if>
+            <if test="createTime != null and createTime !=''">and create_time = #{createTime}</if>
+            <if test="lastModifiedTime != null and lastModifiedTime !=''">and last_modified_time = #{lastModifiedTime}</if>
         </where>
 
     </select>
@@ -74,6 +74,7 @@
         <where>
             <if test="id != null and id != ''">and id = #{id}</if>
             <if test="tenantId != null and tenantId != ''">and tenant_id = #{tenantId}</if>
+            <if test="unionid != null and unionid != ''">and unionid = #{unionid}</if>
             <if test="wxopenid != null and wxopenid != ''">and wxopenid = #{wxopenid}</if>
             <if test="nickname != null and nickname != ''">and nickname = #{nickname}</if>
             <if test="sex != null and sex != ''">and sex = #{sex}</if>
@@ -82,13 +83,12 @@
             <if test="country != null and country != ''">and country = #{country}</if>
             <if test="headimgurl != null and headimgurl != ''">and headimgurl = #{headimgurl}</if>
             <if test="privilege != null and privilege != ''">and privilege = #{privilege}</if>
-            <if test="unionid != null and unionid != ''">and unionid = #{unionid}</if>
-            <if test="createTime != null and createTime != ''">and create_time = #{createTime}</if>
-            <if test="lastModifiedTime != null and lastModifiedTime != ''">and last_modified_time = #{lastModifiedTime}</if>
             <if test="mobileNo != null and mobileNo != ''">and mobile_no = #{mobileNo}</if>
             <if test="status != null and status != ''">and status = #{status}</if>
             <if test="userId != null and userId != ''">and user_id = #{userId}</if>
-            <if test="mOpenid != null and mOpenid != ''">and m_openid = #{mOpenid}</if>
+            <if test="remark != null and remark != ''">and remark = #{remark}</if>
+            <if test="createTime != null and createTime != ''">and create_time = #{createTime}</if>
+            <if test="lastModifiedTime != null and lastModifiedTime != ''">and last_modified_time = #{lastModifiedTime}</if>
         </where>
     </select>
 
@@ -96,31 +96,32 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,wxopenid,nickname,sex,province,city,country,headimgurl,privilege,unionid,create_time,last_modified_time,mobile_no,status,user_id,m_openid)
+        (tenant_id,unionid,wxopenid,nickname,sex,province,city,country,headimgurl,privilege,mobile_no,status,user_id,remark,create_time,last_modified_time)
         values
-        (#{tenantId},#{wxopenid},#{nickname},#{sex},#{province},#{city},#{country},#{headimgurl},#{privilege},#{unionid},#{createTime},#{lastModifiedTime},#{mobileNo},#{status},#{userId},#{mOpenid})
+        (#{tenantId},#{unionid},#{wxopenid},#{nickname},#{sex},#{province},#{city},#{country},#{headimgurl},#{privilege},#{mobileNo},#{status},#{userId},#{remark},#{createTime},#{lastModifiedTime})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (tenant_id,wxopenid,nickname,sex,province,city,country,headimgurl,privilege,unionid,create_time,last_modified_time,mobile_no,status,user_id,m_openid)
+            (tenant_id,unionid,wxopenid,nickname,sex,province,city,country,headimgurl,privilege,mobile_no,status,user_id,remark,create_time,last_modified_time)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.wxopenid},#{entity.nickname},#{entity.sex},#{entity.province},#{entity.city},#{entity.country},#{entity.headimgurl},#{entity.privilege},#{entity.unionid},#{entity.createTime},#{entity.lastModifiedTime},#{entity.mobileNo},#{entity.status},#{entity.userId},#{entity.mOpenid})
+            (#{entity.tenantId},#{entity.unionid},#{entity.wxopenid},#{entity.nickname},#{entity.sex},#{entity.province},#{entity.city},#{entity.country},#{entity.headimgurl},#{entity.privilege},#{entity.mobileNo},#{entity.status},#{entity.userId},#{entity.remark},#{entity.createTime},#{entity.lastModifiedTime})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (tenant_id,wxopenid,nickname,sex,province,city,country,headimgurl,privilege,unionid,create_time,last_modified_time,mobile_no,status,user_id,m_openid)
+            (tenant_id,unionid,wxopenid,nickname,sex,province,city,country,headimgurl,privilege,mobile_no,status,user_id,remark,create_time,last_modified_time)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.wxopenid},#{entity.nickname},#{entity.sex},#{entity.province},#{entity.city},#{entity.country},#{entity.headimgurl},#{entity.privilege},#{entity.unionid},#{entity.createTime},#{entity.lastModifiedTime},#{entity.mobileNo},#{entity.status},#{entity.userId},#{entity.mOpenid})
+            (#{entity.tenantId},#{entity.unionid},#{entity.wxopenid},#{entity.nickname},#{entity.sex},#{entity.province},#{entity.city},#{entity.country},#{entity.headimgurl},#{entity.privilege},#{entity.mobileNo},#{entity.status},#{entity.userId},#{entity.remark},#{entity.createTime},#{entity.lastModifiedTime})
         </foreach>
         on duplicate key update
                 tenant_id=values(tenant_id),
+        unionid=values(unionid),
         wxopenid=values(wxopenid),
         nickname=values(nickname),
         sex=values(sex),
@@ -129,13 +130,12 @@
         country=values(country),
         headimgurl=values(headimgurl),
         privilege=values(privilege),
-        unionid=values(unionid),
-        create_time=values(create_time),
-        last_modified_time=values(last_modified_time),
         mobile_no=values(mobile_no),
         status=values(status),
         user_id=values(user_id),
-        m_openid=values(m_openid)
+        remark=values(remark),
+        create_time=values(create_time),
+        last_modified_time=values(last_modified_time)
         </insert>
 
     <!--通过主键修改数据-->
@@ -144,6 +144,7 @@
         <include refid="Table_Name"/>
         <set>
     <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+    <if test="unionid != null and unionid != ''">unionid = #{unionid},</if>
     <if test="wxopenid != null and wxopenid != ''">wxopenid = #{wxopenid},</if>
     <if test="nickname != null and nickname != ''">nickname = #{nickname},</if>
     <if test="sex != null and sex != ''">sex = #{sex},</if>
@@ -152,13 +153,12 @@
     <if test="country != null and country != ''">country = #{country},</if>
     <if test="headimgurl != null and headimgurl != ''">headimgurl = #{headimgurl},</if>
     <if test="privilege != null and privilege != ''">privilege = #{privilege},</if>
-    <if test="unionid != null and unionid != ''">unionid = #{unionid},</if>
-    <if test="createTime != null and createTime != ''">create_time = #{createTime},</if>
-    <if test="lastModifiedTime != null and lastModifiedTime != ''">last_modified_time = #{lastModifiedTime},</if>
     <if test="mobileNo != null and mobileNo != ''">mobile_no = #{mobileNo},</if>
     <if test="status != null and status != ''">status = #{status},</if>
     <if test="userId != null and userId != ''">user_id = #{userId},</if>
-    <if test="mOpenid != null and mOpenid != ''">m_openid = #{mOpenid},</if>
+    <if test="remark != null and remark != ''">remark = #{remark},</if>
+    <if test="createTime != null and createTime != ''">create_time = #{createTime},</if>
+    <if test="lastModifiedTime != null and lastModifiedTime != ''">last_modified_time = #{lastModifiedTime},</if>
         </set>
         where id = #{id}
     </update>

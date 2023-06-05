@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nuoding.wechat.common.dao.mall.MallLotteryUserDao">
+
+    <resultMap type="com.nuoding.wechat.common.entity.mall.MallLotteryUserEntity" id="MallLotteryUserMap">
+            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
+        <result property="lotteryId" column="lottery_id" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="userid" column="userid" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
+        <result property="complateTime" column="complate_time" jdbcType="TIMESTAMP"/>
+        <result property="rewardId" column="reward_id" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Table_Name">
+        mall_lottery_user
+    </sql>
+
+    <sql id="Base_Column_List">
+        id,tenant_id,lottery_id,status,userid,create_time,last_modified_time,complate_time,reward_id    </sql>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="MallLotteryUserMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="MallLotteryUserMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+            <if test="id != null and id !=''">and id = #{id}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="lotteryId != null and lotteryId !=''">and lottery_id = #{lotteryId}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="userid != null and userid !=''">and userid = #{userid}</if>
+            <if test="createTime != null and createTime !=''">and create_time = #{createTime}</if>
+            <if test="lastModifiedTime != null and lastModifiedTime !=''">and last_modified_time = #{lastModifiedTime}</if>
+            <if test="complateTime != null and complateTime !=''">and complate_time = #{complateTime}</if>
+            <if test="rewardId != null and rewardId !=''">and reward_id = #{rewardId}</if>
+        </where>
+
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from
+        <include refid="Table_Name"/>
+        <where>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="tenantId != null and tenantId != ''">and tenant_id = #{tenantId}</if>
+            <if test="lotteryId != null and lotteryId != ''">and lottery_id = #{lotteryId}</if>
+            <if test="status != null and status != ''">and status = #{status}</if>
+            <if test="userid != null and userid != ''">and userid = #{userid}</if>
+            <if test="createTime != null and createTime != ''">and create_time = #{createTime}</if>
+            <if test="lastModifiedTime != null and lastModifiedTime != ''">and last_modified_time = #{lastModifiedTime}</if>
+            <if test="complateTime != null and complateTime != ''">and complate_time = #{complateTime}</if>
+            <if test="rewardId != null and rewardId != ''">and reward_id = #{rewardId}</if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+        (tenant_id,lottery_id,status,userid,create_time,last_modified_time,complate_time,reward_id)
+        values
+        (#{tenantId},#{lotteryId},#{status},#{userid},#{createTime},#{lastModifiedTime},#{complateTime},#{rewardId})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (tenant_id,lottery_id,status,userid,create_time,last_modified_time,complate_time,reward_id)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tenantId},#{entity.lotteryId},#{entity.status},#{entity.userid},#{entity.createTime},#{entity.lastModifiedTime},#{entity.complateTime},#{entity.rewardId})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (tenant_id,lottery_id,status,userid,create_time,last_modified_time,complate_time,reward_id)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tenantId},#{entity.lotteryId},#{entity.status},#{entity.userid},#{entity.createTime},#{entity.lastModifiedTime},#{entity.complateTime},#{entity.rewardId})
+        </foreach>
+        on duplicate key update
+                tenant_id=values(tenant_id),
+        lottery_id=values(lottery_id),
+        status=values(status),
+        userid=values(userid),
+        create_time=values(create_time),
+        last_modified_time=values(last_modified_time),
+        complate_time=values(complate_time),
+        reward_id=values(reward_id)
+        </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update
+        <include refid="Table_Name"/>
+        <set>
+    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+    <if test="lotteryId != null and lotteryId != ''">lottery_id = #{lotteryId},</if>
+    <if test="status != null and status != ''">status = #{status},</if>
+    <if test="userid != null and userid != ''">userid = #{userid},</if>
+    <if test="createTime != null and createTime != ''">create_time = #{createTime},</if>
+    <if test="lastModifiedTime != null and lastModifiedTime != ''">last_modified_time = #{lastModifiedTime},</if>
+    <if test="complateTime != null and complateTime != ''">complate_time = #{complateTime},</if>
+    <if test="rewardId != null and rewardId != ''">reward_id = #{rewardId},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from
+        <include refid="Table_Name"/>
+        where id = #{id}
+    </delete>
+
+</mapper>
+

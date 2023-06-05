@@ -9,7 +9,7 @@ import java.util.List;
  * 用户登录历史表
  *
  * @Author: hzq
- * @Date: 2023-05-08 19:32:47
+ * @Date: 2023-06-05 17:49:47
  */
 public interface BackUserLoginRecordDao {
 

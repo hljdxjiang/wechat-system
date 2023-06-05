@@ -15,7 +15,7 @@ import java.math.BigDecimal;
  * 系统参数配置表
  *
  * @Author: hzq
- * @Date: 2023-05-08 19:32:47
+ * @Date: 2023-06-05 17:49:46
  */
 @Entity
 @Table(name = "sys_param_config")

@@ -19,6 +19,10 @@
         <result property="tenantFavicon" column="tenant_favicon" jdbcType="VARCHAR"/>
         <result property="tenantLogo" column="tenant_logo" jdbcType="VARCHAR"/>
         <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="appid" column="appid" jdbcType="VARCHAR"/>
+        <result property="appSecret" column="app_secret" jdbcType="VARCHAR"/>
+        <result property="wechatToken" column="wechat_token" jdbcType="VARCHAR"/>
+        <result property="minipSecret" column="minip_secret" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Table_Name">
@@ -26,7 +30,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,tenant_name,tenant_desc,register_time,mobile_no,vip_level,vip_expire_day,tenant_card_no,status,remark,createtime,lastmodifiedtime,tenant_favicon,tenant_logo,email    </sql>
+        id,tenant_id,tenant_name,tenant_desc,register_time,mobile_no,vip_level,vip_expire_day,tenant_card_no,status,remark,createtime,lastmodifiedtime,tenant_favicon,tenant_logo,email,appid,app_secret,wechat_token,minip_secret    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="SysTenantInfoMap">
@@ -60,6 +64,10 @@
             <if test="tenantFavicon != null and tenantFavicon !=''">and tenant_favicon = #{tenantFavicon}</if>
             <if test="tenantLogo != null and tenantLogo !=''">and tenant_logo = #{tenantLogo}</if>
             <if test="email != null and email !=''">and email = #{email}</if>
+            <if test="appid != null and appid !=''">and appid = #{appid}</if>
+            <if test="appSecret != null and appSecret !=''">and app_secret = #{appSecret}</if>
+            <if test="wechatToken != null and wechatToken !=''">and wechat_token = #{wechatToken}</if>
+            <if test="minipSecret != null and minipSecret !=''">and minip_secret = #{minipSecret}</if>
         </where>
 
     </select>
@@ -86,6 +94,10 @@
             <if test="tenantFavicon != null and tenantFavicon != ''">and tenant_favicon = #{tenantFavicon}</if>
             <if test="tenantLogo != null and tenantLogo != ''">and tenant_logo = #{tenantLogo}</if>
             <if test="email != null and email != ''">and email = #{email}</if>
+            <if test="appid != null and appid != ''">and appid = #{appid}</if>
+            <if test="appSecret != null and appSecret != ''">and app_secret = #{appSecret}</if>
+            <if test="wechatToken != null and wechatToken != ''">and wechat_token = #{wechatToken}</if>
+            <if test="minipSecret != null and minipSecret != ''">and minip_secret = #{minipSecret}</if>
         </where>
     </select>
 
@@ -93,28 +105,28 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,tenant_name,tenant_desc,register_time,mobile_no,vip_level,vip_expire_day,tenant_card_no,status,remark,createtime,lastmodifiedtime,tenant_favicon,tenant_logo,email)
+        (tenant_id,tenant_name,tenant_desc,register_time,mobile_no,vip_level,vip_expire_day,tenant_card_no,status,remark,createtime,lastmodifiedtime,tenant_favicon,tenant_logo,email,appid,app_secret,wechat_token,minip_secret)
         values
-        (#{tenantId},#{tenantName},#{tenantDesc},#{registerTime},#{mobileNo},#{vipLevel},#{vipExpireDay},#{tenantCardNo},#{status},#{remark},#{createtime},#{lastmodifiedtime},#{tenantFavicon},#{tenantLogo},#{email})
+        (#{tenantId},#{tenantName},#{tenantDesc},#{registerTime},#{mobileNo},#{vipLevel},#{vipExpireDay},#{tenantCardNo},#{status},#{remark},#{createtime},#{lastmodifiedtime},#{tenantFavicon},#{tenantLogo},#{email},#{appid},#{appSecret},#{wechatToken},#{minipSecret})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (tenant_id,tenant_name,tenant_desc,register_time,mobile_no,vip_level,vip_expire_day,tenant_card_no,status,remark,createtime,lastmodifiedtime,tenant_favicon,tenant_logo,email)
+            (tenant_id,tenant_name,tenant_desc,register_time,mobile_no,vip_level,vip_expire_day,tenant_card_no,status,remark,createtime,lastmodifiedtime,tenant_favicon,tenant_logo,email,appid,app_secret,wechat_token,minip_secret)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.tenantName},#{entity.tenantDesc},#{entity.registerTime},#{entity.mobileNo},#{entity.vipLevel},#{entity.vipExpireDay},#{entity.tenantCardNo},#{entity.status},#{entity.remark},#{entity.createtime},#{entity.lastmodifiedtime},#{entity.tenantFavicon},#{entity.tenantLogo},#{entity.email})
+            (#{entity.tenantId},#{entity.tenantName},#{entity.tenantDesc},#{entity.registerTime},#{entity.mobileNo},#{entity.vipLevel},#{entity.vipExpireDay},#{entity.tenantCardNo},#{entity.status},#{entity.remark},#{entity.createtime},#{entity.lastmodifiedtime},#{entity.tenantFavicon},#{entity.tenantLogo},#{entity.email},#{entity.appid},#{entity.appSecret},#{entity.wechatToken},#{entity.minipSecret})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (tenant_id,tenant_name,tenant_desc,register_time,mobile_no,vip_level,vip_expire_day,tenant_card_no,status,remark,createtime,lastmodifiedtime,tenant_favicon,tenant_logo,email)
+            (tenant_id,tenant_name,tenant_desc,register_time,mobile_no,vip_level,vip_expire_day,tenant_card_no,status,remark,createtime,lastmodifiedtime,tenant_favicon,tenant_logo,email,appid,app_secret,wechat_token,minip_secret)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.tenantName},#{entity.tenantDesc},#{entity.registerTime},#{entity.mobileNo},#{entity.vipLevel},#{entity.vipExpireDay},#{entity.tenantCardNo},#{entity.status},#{entity.remark},#{entity.createtime},#{entity.lastmodifiedtime},#{entity.tenantFavicon},#{entity.tenantLogo},#{entity.email})
+            (#{entity.tenantId},#{entity.tenantName},#{entity.tenantDesc},#{entity.registerTime},#{entity.mobileNo},#{entity.vipLevel},#{entity.vipExpireDay},#{entity.tenantCardNo},#{entity.status},#{entity.remark},#{entity.createtime},#{entity.lastmodifiedtime},#{entity.tenantFavicon},#{entity.tenantLogo},#{entity.email},#{entity.appid},#{entity.appSecret},#{entity.wechatToken},#{entity.minipSecret})
         </foreach>
         on duplicate key update
                 tenant_id=values(tenant_id),
@@ -131,7 +143,11 @@
         lastmodifiedtime=values(lastmodifiedtime),
         tenant_favicon=values(tenant_favicon),
         tenant_logo=values(tenant_logo),
-        email=values(email)
+        email=values(email),
+        appid=values(appid),
+        app_secret=values(app_secret),
+        wechat_token=values(wechat_token),
+        minip_secret=values(minip_secret)
         </insert>
 
     <!--通过主键修改数据-->
@@ -154,6 +170,10 @@
     <if test="tenantFavicon != null and tenantFavicon != ''">tenant_favicon = #{tenantFavicon},</if>
     <if test="tenantLogo != null and tenantLogo != ''">tenant_logo = #{tenantLogo},</if>
     <if test="email != null and email != ''">email = #{email},</if>
+    <if test="appid != null and appid != ''">appid = #{appid},</if>
+    <if test="appSecret != null and appSecret != ''">app_secret = #{appSecret},</if>
+    <if test="wechatToken != null and wechatToken != ''">wechat_token = #{wechatToken},</if>
+    <if test="minipSecret != null and minipSecret != ''">minip_secret = #{minipSecret},</if>
         </set>
         where id = #{id}
     </update>

@@ -15,7 +15,7 @@ import java.math.BigDecimal;
  * 系统菜单表
  *
  * @Author: hzq
- * @Date: 2023-05-08 19:32:47
+ * @Date: 2023-06-05 17:49:46
  */
 @Entity
 @Table(name = "back_sys_menus")
@@ -32,22 +32,52 @@ public class BackSysMenusEntity implements Serializable {
             private Integer id;
                     
             /**
-             * 权限ID
+             * 菜单ID
              */
                     @Column(name = "menu_id")
                     private String menuId;
                     
             /**
+             * 跳转路径
+             */
+                    @Column(name = "path")
+                    private String path;
+                    
+            /**
              * 菜单权限标题
              */
-                    @Column(name = "menus_title")
-                    private String menusTitle;
+                    @Column(name = "name")
+                    private String name;
+                    
+            /**
+             * 菜单图标
+             */
+                    @Column(name = "icon")
+                    private String icon;
+                    
+            /**
+             * 是否展示0展示1不展示
+             */
+                    @Column(name = "hideInMenu")
+                    private Integer hideinmenu;
+                    
+            /**
+             * 匹配规则，0精确匹配
+             */
+                    @Column(name = "exact")
+                    private Integer exact;
+                    
+            /**
+             * 链接组件
+             */
+                    @Column(name = "component")
+                    private String component;
                     
             /**
              * 菜单类型
              */
-                    @Column(name = "menu_type")
-                    private String menuType;
+                    @Column(name = "type")
+                    private String type;
                     
             /**
              * 权限父ID
@@ -56,14 +86,14 @@ public class BackSysMenusEntity implements Serializable {
                     private String parentId;
                     
             /**
-             * 
+             * 创建时间
              */
                         @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
                     @Column(name = "create_time")
                     private Date createTime;
                     
             /**
-             * 
+             * 最后修改时间
              */
                         @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
                     @Column(name = "last_modified_time")
@@ -74,12 +104,6 @@ public class BackSysMenusEntity implements Serializable {
              */
                     @Column(name = "remark")
                     private String remark;
-                    
-            /**
-             * 跳转路径
-             */
-                    @Column(name = "menu_path")
-                    private String menuPath;
             
     
         /**
@@ -97,45 +121,115 @@ public class BackSysMenusEntity implements Serializable {
         }
     
         /**
-         * 获取：权限ID
+         * 获取：菜单ID
          */
         public String getMenuId() {
             return menuId;
         }
 
         /**
-         * 设置：权限ID
+         * 设置：菜单ID
          */
         public void setMenuId(String menuId) {
             this.menuId=menuId;
         }
     
         /**
+         * 获取：跳转路径
+         */
+        public String getPath() {
+            return path;
+        }
+
+        /**
+         * 设置：跳转路径
+         */
+        public void setPath(String path) {
+            this.path=path;
+        }
+    
+        /**
          * 获取：菜单权限标题
          */
-        public String getMenusTitle() {
-            return menusTitle;
+        public String getName() {
+            return name;
         }
 
         /**
          * 设置：菜单权限标题
          */
-        public void setMenusTitle(String menusTitle) {
-            this.menusTitle=menusTitle;
+        public void setName(String name) {
+            this.name=name;
+        }
+    
+        /**
+         * 获取：菜单图标
+         */
+        public String getIcon() {
+            return icon;
+        }
+
+        /**
+         * 设置：菜单图标
+         */
+        public void setIcon(String icon) {
+            this.icon=icon;
+        }
+    
+        /**
+         * 获取：是否展示0展示1不展示
+         */
+        public Integer getHideinmenu() {
+            return hideinmenu;
+        }
+
+        /**
+         * 设置：是否展示0展示1不展示
+         */
+        public void setHideinmenu(Integer hideinmenu) {
+            this.hideinmenu=hideinmenu;
+        }
+    
+        /**
+         * 获取：匹配规则，0精确匹配
+         */
+        public Integer getExact() {
+            return exact;
+        }
+
+        /**
+         * 设置：匹配规则，0精确匹配
+         */
+        public void setExact(Integer exact) {
+            this.exact=exact;
+        }
+    
+        /**
+         * 获取：链接组件
+         */
+        public String getComponent() {
+            return component;
+        }
+
+        /**
+         * 设置：链接组件
+         */
+        public void setComponent(String component) {
+            this.component=component;
         }
     
         /**
          * 获取：菜单类型
          */
-        public String getMenuType() {
-            return menuType;
+        public String getType() {
+            return type;
         }
 
         /**
          * 设置：菜单类型
          */
-        public void setMenuType(String menuType) {
-            this.menuType=menuType;
+        public void setType(String type) {
+            this.type=type;
         }
     
         /**
@@ -153,28 +247,28 @@ public class BackSysMenusEntity implements Serializable {
         }
     
         /**
-         * 获取：
+         * 获取：创建时间
          */
         public Date getCreateTime() {
             return createTime;
         }
 
         /**
-         * 设置：
+         * 设置：创建时间
          */
         public void setCreateTime(Date createTime) {
             this.createTime=createTime;
         }
     
         /**
-         * 获取：
+         * 获取：最后修改时间
          */
         public Date getLastModifiedTime() {
             return lastModifiedTime;
         }
 
         /**
-         * 设置：
+         * 设置：最后修改时间
          */
         public void setLastModifiedTime(Date lastModifiedTime) {
             this.lastModifiedTime=lastModifiedTime;
@@ -192,19 +286,5 @@ public class BackSysMenusEntity implements Serializable {
          */
         public void setRemark(String remark) {
             this.remark=remark;
-        }
-    
-        /**
-         * 获取：跳转路径
-         */
-        public String getMenuPath() {
-            return menuPath;
-        }
-
-        /**
-         * 设置：跳转路径
-         */
-        public void setMenuPath(String menuPath) {
-            this.menuPath=menuPath;
         }
     }

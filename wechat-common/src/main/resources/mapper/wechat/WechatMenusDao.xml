@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nuoding.wechat.common.dao.wechat.WechatMenusDao">
+
+    <resultMap type="com.nuoding.wechat.common.entity.wechat.WechatMenusEntity" id="WechatMenusMap">
+            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
+        <result property="menuId" column="menu_id" jdbcType="VARCHAR"/>
+        <result property="menuName" column="menu_name" jdbcType="VARCHAR"/>
+        <result property="wxMenuId" column="wx_menu_id" jdbcType="VARCHAR"/>
+        <result property="version" column="version" jdbcType="VARCHAR"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+        <result property="menuType" column="menu_type" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Table_Name">
+        wechat_menus
+    </sql>
+
+    <sql id="Base_Column_List">
+        id,tenant_id,menu_id,menu_name,wx_menu_id,version,remark,menu_type,create_time,last_modified_time    </sql>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="WechatMenusMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="WechatMenusMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+            <if test="id != null and id !=''">and id = #{id}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="menuId != null and menuId !=''">and menu_id = #{menuId}</if>
+            <if test="menuName != null and menuName !=''">and menu_name = #{menuName}</if>
+            <if test="wxMenuId != null and wxMenuId !=''">and wx_menu_id = #{wxMenuId}</if>
+            <if test="version != null and version !=''">and version = #{version}</if>
+            <if test="remark != null and remark !=''">and remark = #{remark}</if>
+            <if test="menuType != null and menuType !=''">and menu_type = #{menuType}</if>
+            <if test="createTime != null and createTime !=''">and create_time = #{createTime}</if>
+            <if test="lastModifiedTime != null and lastModifiedTime !=''">and last_modified_time = #{lastModifiedTime}</if>
+        </where>
+
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from
+        <include refid="Table_Name"/>
+        <where>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="tenantId != null and tenantId != ''">and tenant_id = #{tenantId}</if>
+            <if test="menuId != null and menuId != ''">and menu_id = #{menuId}</if>
+            <if test="menuName != null and menuName != ''">and menu_name = #{menuName}</if>
+            <if test="wxMenuId != null and wxMenuId != ''">and wx_menu_id = #{wxMenuId}</if>
+            <if test="version != null and version != ''">and version = #{version}</if>
+            <if test="remark != null and remark != ''">and remark = #{remark}</if>
+            <if test="menuType != null and menuType != ''">and menu_type = #{menuType}</if>
+            <if test="createTime != null and createTime != ''">and create_time = #{createTime}</if>
+            <if test="lastModifiedTime != null and lastModifiedTime != ''">and last_modified_time = #{lastModifiedTime}</if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+        (tenant_id,menu_id,menu_name,wx_menu_id,version,remark,menu_type,create_time,last_modified_time)
+        values
+        (#{tenantId},#{menuId},#{menuName},#{wxMenuId},#{version},#{remark},#{menuType},#{createTime},#{lastModifiedTime})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (tenant_id,menu_id,menu_name,wx_menu_id,version,remark,menu_type,create_time,last_modified_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tenantId},#{entity.menuId},#{entity.menuName},#{entity.wxMenuId},#{entity.version},#{entity.remark},#{entity.menuType},#{entity.createTime},#{entity.lastModifiedTime})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (tenant_id,menu_id,menu_name,wx_menu_id,version,remark,menu_type,create_time,last_modified_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tenantId},#{entity.menuId},#{entity.menuName},#{entity.wxMenuId},#{entity.version},#{entity.remark},#{entity.menuType},#{entity.createTime},#{entity.lastModifiedTime})
+        </foreach>
+        on duplicate key update
+                tenant_id=values(tenant_id),
+        menu_id=values(menu_id),
+        menu_name=values(menu_name),
+        wx_menu_id=values(wx_menu_id),
+        version=values(version),
+        remark=values(remark),
+        menu_type=values(menu_type),
+        create_time=values(create_time),
+        last_modified_time=values(last_modified_time)
+        </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update
+        <include refid="Table_Name"/>
+        <set>
+    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+    <if test="menuId != null and menuId != ''">menu_id = #{menuId},</if>
+    <if test="menuName != null and menuName != ''">menu_name = #{menuName},</if>
+    <if test="wxMenuId != null and wxMenuId != ''">wx_menu_id = #{wxMenuId},</if>
+    <if test="version != null and version != ''">version = #{version},</if>
+    <if test="remark != null and remark != ''">remark = #{remark},</if>
+    <if test="menuType != null and menuType != ''">menu_type = #{menuType},</if>
+    <if test="createTime != null and createTime != ''">create_time = #{createTime},</if>
+    <if test="lastModifiedTime != null and lastModifiedTime != ''">last_modified_time = #{lastModifiedTime},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from
+        <include refid="Table_Name"/>
+        where id = #{id}
+    </delete>
+
+</mapper>
+

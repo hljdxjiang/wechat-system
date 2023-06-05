@@ -15,7 +15,7 @@ import java.math.BigDecimal;
  * 微信用户信息表
  *
  * @Author: hzq
- * @Date: 2023-05-08 19:32:47
+ * @Date: 2023-06-05 17:49:46
  */
 @Entity
 @Table(name = "wechat_user")
@@ -36,6 +36,12 @@ public class WechatUserEntity implements Serializable {
              */
                     @Column(name = "tenant_id")
                     private String tenantId;
+                    
+            /**
+             * 开放平台下统一ID
+             */
+                    @Column(name = "unionid")
+                    private String unionid;
                     
             /**
              * 微信公众号openId
@@ -86,10 +92,28 @@ public class WechatUserEntity implements Serializable {
                     private String privilege;
                     
             /**
-             * 开放平台下统一ID
+             * 手机号码
              */
-                    @Column(name = "unionid")
-                    private String unionid;
+                    @Column(name = "mobile_no")
+                    private String mobileNo;
+                    
+            /**
+             * 用户状态
+             */
+                    @Column(name = "status")
+                    private String status;
+                    
+            /**
+             * 客户ID
+             */
+                    @Column(name = "user_id")
+                    private String userId;
+                    
+            /**
+             * 用户备注
+             */
+                    @Column(name = "remark")
+                    private String remark;
                     
             /**
              * 创建时间
@@ -104,30 +128,6 @@ public class WechatUserEntity implements Serializable {
                         @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
                     @Column(name = "last_modified_time")
                     private Date lastModifiedTime;
-                    
-            /**
-             * 手机号码
-             */
-                    @Column(name = "mobile_no")
-                    private String mobileNo;
-                    
-            /**
-             * 用户状态
-             */
-                    @Column(name = "status")
-                    private String status;
-                    
-            /**
-             * 管理客户ID
-             */
-                    @Column(name = "user_id")
-                    private String userId;
-                    
-            /**
-             * 小程序OpenID
-             */
-                    @Column(name = "m_openid")
-                    private String mOpenid;
             
     
         /**
@@ -156,6 +156,20 @@ public class WechatUserEntity implements Serializable {
          */
         public void setTenantId(String tenantId) {
             this.tenantId=tenantId;
+        }
+    
+        /**
+         * 获取：开放平台下统一ID
+         */
+        public String getUnionid() {
+            return unionid;
+        }
+
+        /**
+         * 设置：开放平台下统一ID
+         */
+        public void setUnionid(String unionid) {
+            this.unionid=unionid;
         }
     
         /**
@@ -271,48 +285,6 @@ public class WechatUserEntity implements Serializable {
         }
     
         /**
-         * 获取：开放平台下统一ID
-         */
-        public String getUnionid() {
-            return unionid;
-        }
-
-        /**
-         * 设置：开放平台下统一ID
-         */
-        public void setUnionid(String unionid) {
-            this.unionid=unionid;
-        }
-    
-        /**
-         * 获取：创建时间
-         */
-        public Date getCreateTime() {
-            return createTime;
-        }
-
-        /**
-         * 设置：创建时间
-         */
-        public void setCreateTime(Date createTime) {
-            this.createTime=createTime;
-        }
-    
-        /**
-         * 获取：最后修改时间
-         */
-        public Date getLastModifiedTime() {
-            return lastModifiedTime;
-        }
-
-        /**
-         * 设置：最后修改时间
-         */
-        public void setLastModifiedTime(Date lastModifiedTime) {
-            this.lastModifiedTime=lastModifiedTime;
-        }
-    
-        /**
          * 获取：手机号码
          */
         public String getMobileNo() {
@@ -341,30 +313,58 @@ public class WechatUserEntity implements Serializable {
         }
     
         /**
-         * 获取：管理客户ID
+         * 获取：客户ID
          */
         public String getUserId() {
             return userId;
         }
 
         /**
-         * 设置：管理客户ID
+         * 设置：客户ID
          */
         public void setUserId(String userId) {
             this.userId=userId;
         }
     
         /**
-         * 获取：小程序OpenID
+         * 获取：用户备注
          */
-        public String getMOpenid() {
-            return mOpenid;
+        public String getRemark() {
+            return remark;
         }
 
         /**
-         * 设置：小程序OpenID
+         * 设置：用户备注
          */
-        public void setMOpenid(String mOpenid) {
-            this.mOpenid=mOpenid;
+        public void setRemark(String remark) {
+            this.remark=remark;
+        }
+    
+        /**
+         * 获取：创建时间
+         */
+        public Date getCreateTime() {
+            return createTime;
+        }
+
+        /**
+         * 设置：创建时间
+         */
+        public void setCreateTime(Date createTime) {
+            this.createTime=createTime;
+        }
+    
+        /**
+         * 获取：最后修改时间
+         */
+        public Date getLastModifiedTime() {
+            return lastModifiedTime;
+        }
+
+        /**
+         * 设置：最后修改时间
+         */
+        public void setLastModifiedTime(Date lastModifiedTime) {
+            this.lastModifiedTime=lastModifiedTime;
         }
     }

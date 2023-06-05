@@ -5,13 +5,17 @@
     <resultMap type="com.nuoding.wechat.common.entity.back.BackSysMenusEntity" id="BackSysMenusMap">
             <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="menuId" column="menu_id" jdbcType="VARCHAR"/>
-        <result property="menusTitle" column="menus_title" jdbcType="VARCHAR"/>
-        <result property="menuType" column="menu_type" jdbcType="VARCHAR"/>
+        <result property="path" column="path" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="icon" column="icon" jdbcType="VARCHAR"/>
+        <result property="hideinmenu" column="hideInMenu" jdbcType="INTEGER"/>
+        <result property="exact" column="exact" jdbcType="INTEGER"/>
+        <result property="component" column="component" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
         <result property="parentId" column="parent_id" jdbcType="VARCHAR"/>
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
         <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
         <result property="remark" column="remark" jdbcType="VARCHAR"/>
-        <result property="menuPath" column="menu_path" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Table_Name">
@@ -19,7 +23,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,menu_id,menus_title,menu_type,parent_id,create_time,last_modified_time,remark,menu_path    </sql>
+        id,menu_id,path,name,icon,hideInMenu,exact,component,type,parent_id,create_time,last_modified_time,remark    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="BackSysMenusMap">
@@ -39,13 +43,17 @@
         <where>
             <if test="id != null and id !=''">and id = #{id}</if>
             <if test="menuId != null and menuId !=''">and menu_id = #{menuId}</if>
-            <if test="menusTitle != null and menusTitle !=''">and menus_title = #{menusTitle}</if>
-            <if test="menuType != null and menuType !=''">and menu_type = #{menuType}</if>
+            <if test="path != null and path !=''">and path = #{path}</if>
+            <if test="name != null and name !=''">and name = #{name}</if>
+            <if test="icon != null and icon !=''">and icon = #{icon}</if>
+            <if test="hideinmenu != null and hideinmenu !=''">and hideInMenu = #{hideinmenu}</if>
+            <if test="exact != null and exact !=''">and exact = #{exact}</if>
+            <if test="component != null and component !=''">and component = #{component}</if>
+            <if test="type != null and type !=''">and type = #{type}</if>
             <if test="parentId != null and parentId !=''">and parent_id = #{parentId}</if>
             <if test="createTime != null and createTime !=''">and create_time = #{createTime}</if>
             <if test="lastModifiedTime != null and lastModifiedTime !=''">and last_modified_time = #{lastModifiedTime}</if>
             <if test="remark != null and remark !=''">and remark = #{remark}</if>
-            <if test="menuPath != null and menuPath !=''">and menu_path = #{menuPath}</if>
         </where>
 
     </select>
@@ -58,13 +66,17 @@
         <where>
             <if test="id != null and id != ''">and id = #{id}</if>
             <if test="menuId != null and menuId != ''">and menu_id = #{menuId}</if>
-            <if test="menusTitle != null and menusTitle != ''">and menus_title = #{menusTitle}</if>
-            <if test="menuType != null and menuType != ''">and menu_type = #{menuType}</if>
+            <if test="path != null and path != ''">and path = #{path}</if>
+            <if test="name != null and name != ''">and name = #{name}</if>
+            <if test="icon != null and icon != ''">and icon = #{icon}</if>
+            <if test="hideinmenu != null and hideinmenu != ''">and hideInMenu = #{hideinmenu}</if>
+            <if test="exact != null and exact != ''">and exact = #{exact}</if>
+            <if test="component != null and component != ''">and component = #{component}</if>
+            <if test="type != null and type != ''">and type = #{type}</if>
             <if test="parentId != null and parentId != ''">and parent_id = #{parentId}</if>
             <if test="createTime != null and createTime != ''">and create_time = #{createTime}</if>
             <if test="lastModifiedTime != null and lastModifiedTime != ''">and last_modified_time = #{lastModifiedTime}</if>
             <if test="remark != null and remark != ''">and remark = #{remark}</if>
-            <if test="menuPath != null and menuPath != ''">and menu_path = #{menuPath}</if>
         </where>
     </select>
 
@@ -72,38 +84,42 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (menu_id,menus_title,menu_type,parent_id,create_time,last_modified_time,remark,menu_path)
+        (menu_id,path,name,icon,hideInMenu,exact,component,type,parent_id,create_time,last_modified_time,remark)
         values
-        (#{menuId},#{menusTitle},#{menuType},#{parentId},#{createTime},#{lastModifiedTime},#{remark},#{menuPath})
+        (#{menuId},#{path},#{name},#{icon},#{hideinmenu},#{exact},#{component},#{type},#{parentId},#{createTime},#{lastModifiedTime},#{remark})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (menu_id,menus_title,menu_type,parent_id,create_time,last_modified_time,remark,menu_path)
+            (menu_id,path,name,icon,hideInMenu,exact,component,type,parent_id,create_time,last_modified_time,remark)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.menuId},#{entity.menusTitle},#{entity.menuType},#{entity.parentId},#{entity.createTime},#{entity.lastModifiedTime},#{entity.remark},#{entity.menuPath})
+            (#{entity.menuId},#{entity.path},#{entity.name},#{entity.icon},#{entity.hideinmenu},#{entity.exact},#{entity.component},#{entity.type},#{entity.parentId},#{entity.createTime},#{entity.lastModifiedTime},#{entity.remark})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (menu_id,menus_title,menu_type,parent_id,create_time,last_modified_time,remark,menu_path)
+            (menu_id,path,name,icon,hideInMenu,exact,component,type,parent_id,create_time,last_modified_time,remark)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.menuId},#{entity.menusTitle},#{entity.menuType},#{entity.parentId},#{entity.createTime},#{entity.lastModifiedTime},#{entity.remark},#{entity.menuPath})
+            (#{entity.menuId},#{entity.path},#{entity.name},#{entity.icon},#{entity.hideinmenu},#{entity.exact},#{entity.component},#{entity.type},#{entity.parentId},#{entity.createTime},#{entity.lastModifiedTime},#{entity.remark})
         </foreach>
         on duplicate key update
                 menu_id=values(menu_id),
-        menus_title=values(menus_title),
-        menu_type=values(menu_type),
+        path=values(path),
+        name=values(name),
+        icon=values(icon),
+        hideInMenu=values(hideInMenu),
+        exact=values(exact),
+        component=values(component),
+        type=values(type),
         parent_id=values(parent_id),
         create_time=values(create_time),
         last_modified_time=values(last_modified_time),
-        remark=values(remark),
-        menu_path=values(menu_path)
+        remark=values(remark)
         </insert>
 
     <!--通过主键修改数据-->
@@ -112,13 +128,17 @@
         <include refid="Table_Name"/>
         <set>
     <if test="menuId != null and menuId != ''">menu_id = #{menuId},</if>
-    <if test="menusTitle != null and menusTitle != ''">menus_title = #{menusTitle},</if>
-    <if test="menuType != null and menuType != ''">menu_type = #{menuType},</if>
+    <if test="path != null and path != ''">path = #{path},</if>
+    <if test="name != null and name != ''">name = #{name},</if>
+    <if test="icon != null and icon != ''">icon = #{icon},</if>
+    <if test="hideinmenu != null and hideinmenu != ''">hideInMenu = #{hideinmenu},</if>
+    <if test="exact != null and exact != ''">exact = #{exact},</if>
+    <if test="component != null and component != ''">component = #{component},</if>
+    <if test="type != null and type != ''">type = #{type},</if>
     <if test="parentId != null and parentId != ''">parent_id = #{parentId},</if>
     <if test="createTime != null and createTime != ''">create_time = #{createTime},</if>
     <if test="lastModifiedTime != null and lastModifiedTime != ''">last_modified_time = #{lastModifiedTime},</if>
     <if test="remark != null and remark != ''">remark = #{remark},</if>
-    <if test="menuPath != null and menuPath != ''">menu_path = #{menuPath},</if>
         </set>
         where id = #{id}
     </update>

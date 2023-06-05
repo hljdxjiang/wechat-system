@@ -15,7 +15,7 @@ import java.math.BigDecimal;
  * 后管操作记录表
  *
  * @Author: hzq
- * @Date: 2023-05-08 19:32:47
+ * @Date: 2023-06-05 17:49:46
  */
 @Entity
 @Table(name = "back_opera_record")

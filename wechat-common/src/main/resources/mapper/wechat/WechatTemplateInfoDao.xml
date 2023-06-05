@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nuoding.wechat.common.dao.wechat.WechatTemplateInfoDao">
+
+    <resultMap type="com.nuoding.wechat.common.entity.wechat.WechatTemplateInfoEntity" id="WechatTemplateInfoMap">
+            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
+        <result property="templateId" column="template_id" jdbcType="VARCHAR"/>
+        <result property="templateType" column="template_type" jdbcType="VARCHAR"/>
+        <result property="templateDes" column="template_des" jdbcType="VARCHAR"/>
+        <result property="templateUrl" column="template_url" jdbcType="VARCHAR"/>
+        <result property="templateConfig" column="template_config" jdbcType="VARCHAR"/>
+        <result property="minipAppid" column="minip_appid" jdbcType="VARCHAR"/>
+        <result property="minipPagePath" column="minip_page_path" jdbcType="VARCHAR"/>
+        <result property="messageType" column="message_type" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Table_Name">
+        wechat_template_info
+    </sql>
+
+    <sql id="Base_Column_List">
+        id,tenant_id,template_id,template_type,template_des,template_url,template_config,minip_appid,minip_page_path,message_type,create_time,last_modified_time    </sql>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="WechatTemplateInfoMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="WechatTemplateInfoMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+            <if test="id != null and id !=''">and id = #{id}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="templateId != null and templateId !=''">and template_id = #{templateId}</if>
+            <if test="templateType != null and templateType !=''">and template_type = #{templateType}</if>
+            <if test="templateDes != null and templateDes !=''">and template_des = #{templateDes}</if>
+            <if test="templateUrl != null and templateUrl !=''">and template_url = #{templateUrl}</if>
+            <if test="templateConfig != null and templateConfig !=''">and template_config = #{templateConfig}</if>
+            <if test="minipAppid != null and minipAppid !=''">and minip_appid = #{minipAppid}</if>
+            <if test="minipPagePath != null and minipPagePath !=''">and minip_page_path = #{minipPagePath}</if>
+            <if test="messageType != null and messageType !=''">and message_type = #{messageType}</if>
+            <if test="createTime != null and createTime !=''">and create_time = #{createTime}</if>
+            <if test="lastModifiedTime != null and lastModifiedTime !=''">and last_modified_time = #{lastModifiedTime}</if>
+        </where>
+
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from
+        <include refid="Table_Name"/>
+        <where>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="tenantId != null and tenantId != ''">and tenant_id = #{tenantId}</if>
+            <if test="templateId != null and templateId != ''">and template_id = #{templateId}</if>
+            <if test="templateType != null and templateType != ''">and template_type = #{templateType}</if>
+            <if test="templateDes != null and templateDes != ''">and template_des = #{templateDes}</if>
+            <if test="templateUrl != null and templateUrl != ''">and template_url = #{templateUrl}</if>
+            <if test="templateConfig != null and templateConfig != ''">and template_config = #{templateConfig}</if>
+            <if test="minipAppid != null and minipAppid != ''">and minip_appid = #{minipAppid}</if>
+            <if test="minipPagePath != null and minipPagePath != ''">and minip_page_path = #{minipPagePath}</if>
+            <if test="messageType != null and messageType != ''">and message_type = #{messageType}</if>
+            <if test="createTime != null and createTime != ''">and create_time = #{createTime}</if>
+            <if test="lastModifiedTime != null and lastModifiedTime != ''">and last_modified_time = #{lastModifiedTime}</if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+        (tenant_id,template_id,template_type,template_des,template_url,template_config,minip_appid,minip_page_path,message_type,create_time,last_modified_time)
+        values
+        (#{tenantId},#{templateId},#{templateType},#{templateDes},#{templateUrl},#{templateConfig},#{minipAppid},#{minipPagePath},#{messageType},#{createTime},#{lastModifiedTime})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (tenant_id,template_id,template_type,template_des,template_url,template_config,minip_appid,minip_page_path,message_type,create_time,last_modified_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tenantId},#{entity.templateId},#{entity.templateType},#{entity.templateDes},#{entity.templateUrl},#{entity.templateConfig},#{entity.minipAppid},#{entity.minipPagePath},#{entity.messageType},#{entity.createTime},#{entity.lastModifiedTime})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (tenant_id,template_id,template_type,template_des,template_url,template_config,minip_appid,minip_page_path,message_type,create_time,last_modified_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tenantId},#{entity.templateId},#{entity.templateType},#{entity.templateDes},#{entity.templateUrl},#{entity.templateConfig},#{entity.minipAppid},#{entity.minipPagePath},#{entity.messageType},#{entity.createTime},#{entity.lastModifiedTime})
+        </foreach>
+        on duplicate key update
+                tenant_id=values(tenant_id),
+        template_id=values(template_id),
+        template_type=values(template_type),
+        template_des=values(template_des),
+        template_url=values(template_url),
+        template_config=values(template_config),
+        minip_appid=values(minip_appid),
+        minip_page_path=values(minip_page_path),
+        message_type=values(message_type),
+        create_time=values(create_time),
+        last_modified_time=values(last_modified_time)
+        </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update
+        <include refid="Table_Name"/>
+        <set>
+    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+    <if test="templateId != null and templateId != ''">template_id = #{templateId},</if>
+    <if test="templateType != null and templateType != ''">template_type = #{templateType},</if>
+    <if test="templateDes != null and templateDes != ''">template_des = #{templateDes},</if>
+    <if test="templateUrl != null and templateUrl != ''">template_url = #{templateUrl},</if>
+    <if test="templateConfig != null and templateConfig != ''">template_config = #{templateConfig},</if>
+    <if test="minipAppid != null and minipAppid != ''">minip_appid = #{minipAppid},</if>
+    <if test="minipPagePath != null and minipPagePath != ''">minip_page_path = #{minipPagePath},</if>
+    <if test="messageType != null and messageType != ''">message_type = #{messageType},</if>
+    <if test="createTime != null and createTime != ''">create_time = #{createTime},</if>
+    <if test="lastModifiedTime != null and lastModifiedTime != ''">last_modified_time = #{lastModifiedTime},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from
+        <include refid="Table_Name"/>
+        where id = #{id}
+    </delete>
+
+</mapper>
+

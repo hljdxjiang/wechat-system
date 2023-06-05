@@ -17,13 +17,11 @@ import java.util.List;
 /**
  * (sysParamConfig)表服务实现类
  * 系统参数配置表
- *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
 @Service
 public class SysParamConfigServiceImpl implements SysParamConfigService {
-
     @Resource
     private SysParamConfigDao sysParamConfigDao;
 

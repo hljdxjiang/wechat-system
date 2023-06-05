@@ -15,7 +15,7 @@ import java.math.BigDecimal;
  * 客户信息表
  *
  * @Author: hzq
- * @Date: 2023-05-08 19:32:47
+ * @Date: 2023-06-05 17:49:46
  */
 @Entity
 @Table(name = "user_reg_info")
@@ -205,6 +205,12 @@ public class UserRegInfoEntity implements Serializable {
              */
                     @Column(name = "face_id_pwd")
                     private String faceIdPwd;
+                    
+            /**
+             * 用户标签ID
+             */
+                    @Column(name = "user_label")
+                    private String userLabel;
                     
             /**
              * 用户状态
@@ -645,6 +651,20 @@ public class UserRegInfoEntity implements Serializable {
          */
         public void setFaceIdPwd(String faceIdPwd) {
             this.faceIdPwd=faceIdPwd;
+        }
+    
+        /**
+         * 获取：用户标签ID
+         */
+        public String getUserLabel() {
+            return userLabel;
+        }
+
+        /**
+         * 设置：用户标签ID
+         */
+        public void setUserLabel(String userLabel) {
+            this.userLabel=userLabel;
         }
     
         /**

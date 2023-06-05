@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nuoding.wechat.common.dao.mall.MallLotteryDao">
+
+    <resultMap type="com.nuoding.wechat.common.entity.mall.MallLotteryEntity" id="MallLotteryMap">
+            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
+        <result property="lotteryId" column="lottery_id" jdbcType="VARCHAR"/>
+        <result property="lotteryTitle" column="lottery_title" jdbcType="VARCHAR"/>
+        <result property="lotteryDetail" column="lottery_detail" jdbcType="VARCHAR"/>
+        <result property="lotteryType" column="lottery_type" jdbcType="VARCHAR"/>
+        <result property="reward" column="reward" jdbcType="VARCHAR"/>
+        <result property="rewardAmount" column="reward_amount" jdbcType="DECIMAL"/>
+        <result property="vaildDate" column="vaild_date" jdbcType="TIMESTAMP"/>
+        <result property="expireDate" column="expire_date" jdbcType="TIMESTAMP"/>
+        <result property="rewardValidDate" column="reward_valid_date" jdbcType="TIMESTAMP"/>
+        <result property="rewardExpireDate" column="reward_expire_date" jdbcType="TIMESTAMP"/>
+        <result property="numbero" column="numbero" jdbcType="INTEGER"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
+        <result property="cost" column="cost" jdbcType="DECIMAL"/>
+        <result property="costType" column="cost_type" jdbcType="VARCHAR"/>
+        <result property="rewardType" column="reward_type" jdbcType="VARCHAR"/>
+        <result property="cycleAmount" column="cycle_amount" jdbcType="INTEGER"/>
+        <result property="cyclePeriod" column="cycle_period" jdbcType="INTEGER"/>
+        <result property="cycleType" column="cycle_type" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Table_Name">
+        mall_lottery
+    </sql>
+
+    <sql id="Base_Column_List">
+        id,tenant_id,lottery_id,lottery_title,lottery_detail,lottery_type,reward,reward_amount,vaild_date,expire_date,reward_valid_date,reward_expire_date,numbero,status,create_time,last_modified_time,cost,cost_type,reward_type,cycle_amount,cycle_period,cycle_type    </sql>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="MallLotteryMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="MallLotteryMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+            <if test="id != null and id !=''">and id = #{id}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="lotteryId != null and lotteryId !=''">and lottery_id = #{lotteryId}</if>
+            <if test="lotteryTitle != null and lotteryTitle !=''">and lottery_title = #{lotteryTitle}</if>
+            <if test="lotteryDetail != null and lotteryDetail !=''">and lottery_detail = #{lotteryDetail}</if>
+            <if test="lotteryType != null and lotteryType !=''">and lottery_type = #{lotteryType}</if>
+            <if test="reward != null and reward !=''">and reward = #{reward}</if>
+            <if test="rewardAmount != null and rewardAmount !=''">and reward_amount = #{rewardAmount}</if>
+            <if test="vaildDate != null and vaildDate !=''">and vaild_date = #{vaildDate}</if>
+            <if test="expireDate != null and expireDate !=''">and expire_date = #{expireDate}</if>
+            <if test="rewardValidDate != null and rewardValidDate !=''">and reward_valid_date = #{rewardValidDate}</if>
+            <if test="rewardExpireDate != null and rewardExpireDate !=''">and reward_expire_date = #{rewardExpireDate}</if>
+            <if test="numbero != null and numbero !=''">and numbero = #{numbero}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="createTime != null and createTime !=''">and create_time = #{createTime}</if>
+            <if test="lastModifiedTime != null and lastModifiedTime !=''">and last_modified_time = #{lastModifiedTime}</if>
+            <if test="cost != null and cost !=''">and cost = #{cost}</if>
+            <if test="costType != null and costType !=''">and cost_type = #{costType}</if>
+            <if test="rewardType != null and rewardType !=''">and reward_type = #{rewardType}</if>
+            <if test="cycleAmount != null and cycleAmount !=''">and cycle_amount = #{cycleAmount}</if>
+            <if test="cyclePeriod != null and cyclePeriod !=''">and cycle_period = #{cyclePeriod}</if>
+            <if test="cycleType != null and cycleType !=''">and cycle_type = #{cycleType}</if>
+        </where>
+
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from
+        <include refid="Table_Name"/>
+        <where>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="tenantId != null and tenantId != ''">and tenant_id = #{tenantId}</if>
+            <if test="lotteryId != null and lotteryId != ''">and lottery_id = #{lotteryId}</if>
+            <if test="lotteryTitle != null and lotteryTitle != ''">and lottery_title = #{lotteryTitle}</if>
+            <if test="lotteryDetail != null and lotteryDetail != ''">and lottery_detail = #{lotteryDetail}</if>
+            <if test="lotteryType != null and lotteryType != ''">and lottery_type = #{lotteryType}</if>
+            <if test="reward != null and reward != ''">and reward = #{reward}</if>
+            <if test="rewardAmount != null and rewardAmount != ''">and reward_amount = #{rewardAmount}</if>
+            <if test="vaildDate != null and vaildDate != ''">and vaild_date = #{vaildDate}</if>
+            <if test="expireDate != null and expireDate != ''">and expire_date = #{expireDate}</if>
+            <if test="rewardValidDate != null and rewardValidDate != ''">and reward_valid_date = #{rewardValidDate}</if>
+            <if test="rewardExpireDate != null and rewardExpireDate != ''">and reward_expire_date = #{rewardExpireDate}</if>
+            <if test="numbero != null and numbero != ''">and numbero = #{numbero}</if>
+            <if test="status != null and status != ''">and status = #{status}</if>
+            <if test="createTime != null and createTime != ''">and create_time = #{createTime}</if>
+            <if test="lastModifiedTime != null and lastModifiedTime != ''">and last_modified_time = #{lastModifiedTime}</if>
+            <if test="cost != null and cost != ''">and cost = #{cost}</if>
+            <if test="costType != null and costType != ''">and cost_type = #{costType}</if>
+            <if test="rewardType != null and rewardType != ''">and reward_type = #{rewardType}</if>
+            <if test="cycleAmount != null and cycleAmount != ''">and cycle_amount = #{cycleAmount}</if>
+            <if test="cyclePeriod != null and cyclePeriod != ''">and cycle_period = #{cyclePeriod}</if>
+            <if test="cycleType != null and cycleType != ''">and cycle_type = #{cycleType}</if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+        (tenant_id,lottery_id,lottery_title,lottery_detail,lottery_type,reward,reward_amount,vaild_date,expire_date,reward_valid_date,reward_expire_date,numbero,status,create_time,last_modified_time,cost,cost_type,reward_type,cycle_amount,cycle_period,cycle_type)
+        values
+        (#{tenantId},#{lotteryId},#{lotteryTitle},#{lotteryDetail},#{lotteryType},#{reward},#{rewardAmount},#{vaildDate},#{expireDate},#{rewardValidDate},#{rewardExpireDate},#{numbero},#{status},#{createTime},#{lastModifiedTime},#{cost},#{costType},#{rewardType},#{cycleAmount},#{cyclePeriod},#{cycleType})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (tenant_id,lottery_id,lottery_title,lottery_detail,lottery_type,reward,reward_amount,vaild_date,expire_date,reward_valid_date,reward_expire_date,numbero,status,create_time,last_modified_time,cost,cost_type,reward_type,cycle_amount,cycle_period,cycle_type)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tenantId},#{entity.lotteryId},#{entity.lotteryTitle},#{entity.lotteryDetail},#{entity.lotteryType},#{entity.reward},#{entity.rewardAmount},#{entity.vaildDate},#{entity.expireDate},#{entity.rewardValidDate},#{entity.rewardExpireDate},#{entity.numbero},#{entity.status},#{entity.createTime},#{entity.lastModifiedTime},#{entity.cost},#{entity.costType},#{entity.rewardType},#{entity.cycleAmount},#{entity.cyclePeriod},#{entity.cycleType})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (tenant_id,lottery_id,lottery_title,lottery_detail,lottery_type,reward,reward_amount,vaild_date,expire_date,reward_valid_date,reward_expire_date,numbero,status,create_time,last_modified_time,cost,cost_type,reward_type,cycle_amount,cycle_period,cycle_type)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tenantId},#{entity.lotteryId},#{entity.lotteryTitle},#{entity.lotteryDetail},#{entity.lotteryType},#{entity.reward},#{entity.rewardAmount},#{entity.vaildDate},#{entity.expireDate},#{entity.rewardValidDate},#{entity.rewardExpireDate},#{entity.numbero},#{entity.status},#{entity.createTime},#{entity.lastModifiedTime},#{entity.cost},#{entity.costType},#{entity.rewardType},#{entity.cycleAmount},#{entity.cyclePeriod},#{entity.cycleType})
+        </foreach>
+        on duplicate key update
+                tenant_id=values(tenant_id),
+        lottery_id=values(lottery_id),
+        lottery_title=values(lottery_title),
+        lottery_detail=values(lottery_detail),
+        lottery_type=values(lottery_type),
+        reward=values(reward),
+        reward_amount=values(reward_amount),
+        vaild_date=values(vaild_date),
+        expire_date=values(expire_date),
+        reward_valid_date=values(reward_valid_date),
+        reward_expire_date=values(reward_expire_date),
+        numbero=values(numbero),
+        status=values(status),
+        create_time=values(create_time),
+        last_modified_time=values(last_modified_time),
+        cost=values(cost),
+        cost_type=values(cost_type),
+        reward_type=values(reward_type),
+        cycle_amount=values(cycle_amount),
+        cycle_period=values(cycle_period),
+        cycle_type=values(cycle_type)
+        </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update
+        <include refid="Table_Name"/>
+        <set>
+    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+    <if test="lotteryId != null and lotteryId != ''">lottery_id = #{lotteryId},</if>
+    <if test="lotteryTitle != null and lotteryTitle != ''">lottery_title = #{lotteryTitle},</if>
+    <if test="lotteryDetail != null and lotteryDetail != ''">lottery_detail = #{lotteryDetail},</if>
+    <if test="lotteryType != null and lotteryType != ''">lottery_type = #{lotteryType},</if>
+    <if test="reward != null and reward != ''">reward = #{reward},</if>
+    <if test="rewardAmount != null and rewardAmount != ''">reward_amount = #{rewardAmount},</if>
+    <if test="vaildDate != null and vaildDate != ''">vaild_date = #{vaildDate},</if>
+    <if test="expireDate != null and expireDate != ''">expire_date = #{expireDate},</if>
+    <if test="rewardValidDate != null and rewardValidDate != ''">reward_valid_date = #{rewardValidDate},</if>
+    <if test="rewardExpireDate != null and rewardExpireDate != ''">reward_expire_date = #{rewardExpireDate},</if>
+    <if test="numbero != null and numbero != ''">numbero = #{numbero},</if>
+    <if test="status != null and status != ''">status = #{status},</if>
+    <if test="createTime != null and createTime != ''">create_time = #{createTime},</if>
+    <if test="lastModifiedTime != null and lastModifiedTime != ''">last_modified_time = #{lastModifiedTime},</if>
+    <if test="cost != null and cost != ''">cost = #{cost},</if>
+    <if test="costType != null and costType != ''">cost_type = #{costType},</if>
+    <if test="rewardType != null and rewardType != ''">reward_type = #{rewardType},</if>
+    <if test="cycleAmount != null and cycleAmount != ''">cycle_amount = #{cycleAmount},</if>
+    <if test="cyclePeriod != null and cyclePeriod != ''">cycle_period = #{cyclePeriod},</if>
+    <if test="cycleType != null and cycleType != ''">cycle_type = #{cycleType},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from
+        <include refid="Table_Name"/>
+        where id = #{id}
+    </delete>
+
+</mapper>
+
