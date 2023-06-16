@@ -37,7 +37,7 @@ public class UserPropertyServiceImpl implements UserPropertyService {
      * @return 查询结果
      */
     @Override
-    public List<UserPropertyEntity> queryByPage(UserPropertyEntity userPropertyEntity) {
+    public List<UserPropertyEntity> queryAllByLimit(UserPropertyEntity userPropertyEntity) {
         return this.userPropertyDao.queryAllByLimit(userPropertyEntity);
     }
 

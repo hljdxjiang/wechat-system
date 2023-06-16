@@ -37,7 +37,7 @@ public class WechatTemplateInfoServiceImpl implements WechatTemplateInfoService 
      * @return 查询结果
      */
     @Override
-    public List<WechatTemplateInfoEntity> queryByPage(WechatTemplateInfoEntity wechatTemplateInfoEntity) {
+    public List<WechatTemplateInfoEntity> queryAllByLimit(WechatTemplateInfoEntity wechatTemplateInfoEntity) {
         return this.wechatTemplateInfoDao.queryAllByLimit(wechatTemplateInfoEntity);
     }
 

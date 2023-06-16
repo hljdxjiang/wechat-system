@@ -37,7 +37,7 @@ public class BackRuleDetailServiceImpl implements BackRuleDetailService {
      * @return 查询结果
      */
     @Override
-    public List<BackRuleDetailEntity> queryByPage(BackRuleDetailEntity backRuleDetailEntity) {
+    public List<BackRuleDetailEntity> queryAllByLimit(BackRuleDetailEntity backRuleDetailEntity) {
         return this.backRuleDetailDao.queryAllByLimit(backRuleDetailEntity);
     }
 

@@ -37,7 +37,7 @@ public class MallCouponRuleServiceImpl implements MallCouponRuleService {
      * @return 查询结果
      */
     @Override
-    public List<MallCouponRuleEntity> queryByPage(MallCouponRuleEntity mallCouponRuleEntity) {
+    public List<MallCouponRuleEntity> queryAllByLimit(MallCouponRuleEntity mallCouponRuleEntity) {
         return this.mallCouponRuleDao.queryAllByLimit(mallCouponRuleEntity);
     }
 

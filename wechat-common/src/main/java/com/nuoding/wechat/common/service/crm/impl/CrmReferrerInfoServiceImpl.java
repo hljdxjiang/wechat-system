@@ -37,7 +37,7 @@ public class CrmReferrerInfoServiceImpl implements CrmReferrerInfoService {
      * @return 查询结果
      */
     @Override
-    public List<CrmReferrerInfoEntity> queryByPage(CrmReferrerInfoEntity crmReferrerInfoEntity) {
+    public List<CrmReferrerInfoEntity> queryAllByLimit(CrmReferrerInfoEntity crmReferrerInfoEntity) {
         return this.crmReferrerInfoDao.queryAllByLimit(crmReferrerInfoEntity);
     }
 

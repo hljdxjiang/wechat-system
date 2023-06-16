@@ -43,7 +43,7 @@ public class MallCouponRuleController {
     public MapResponse queryByPage(@RequestBody MallCouponRuleEntity mallCouponRuleEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<MallCouponRuleEntity> list = this.mallCouponRuleService.queryByPage(mallCouponRuleEntity);
+        List<MallCouponRuleEntity> list = this.mallCouponRuleService.queryAllByLimit(mallCouponRuleEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

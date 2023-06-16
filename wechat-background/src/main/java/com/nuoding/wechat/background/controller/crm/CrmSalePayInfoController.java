@@ -43,7 +43,7 @@ public class CrmSalePayInfoController {
     public MapResponse queryByPage(@RequestBody CrmSalePayInfoEntity crmSalePayInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<CrmSalePayInfoEntity> list = this.crmSalePayInfoService.queryByPage(crmSalePayInfoEntity);
+        List<CrmSalePayInfoEntity> list = this.crmSalePayInfoService.queryAllByLimit(crmSalePayInfoEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

@@ -43,7 +43,7 @@ public class WechatMenusController {
     public MapResponse queryByPage(@RequestBody WechatMenusEntity wechatMenusEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<WechatMenusEntity> list = this.wechatMenusService.queryByPage(wechatMenusEntity);
+        List<WechatMenusEntity> list = this.wechatMenusService.queryAllByLimit(wechatMenusEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

@@ -43,7 +43,7 @@ public class WechatMinipUserController {
     public MapResponse queryByPage(@RequestBody WechatMinipUserEntity wechatMinipUserEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<WechatMinipUserEntity> list = this.wechatMinipUserService.queryByPage(wechatMinipUserEntity);
+        List<WechatMinipUserEntity> list = this.wechatMinipUserService.queryAllByLimit(wechatMinipUserEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

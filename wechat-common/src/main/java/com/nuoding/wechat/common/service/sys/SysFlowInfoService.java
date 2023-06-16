@@ -26,7 +26,7 @@ public interface SysFlowInfoService {
      * @param sysFlowInfoEntity 筛选条件
      * @return 查询结果
      */
-    List<SysFlowInfoEntity> queryByPage(SysFlowInfoEntity sysFlowInfoEntity);
+    List<SysFlowInfoEntity> queryAllByLimit(SysFlowInfoEntity sysFlowInfoEntity);
 
     /**
      * 新增数据

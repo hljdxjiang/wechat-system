@@ -43,7 +43,7 @@ public class SysUserLabelsController {
     public MapResponse queryByPage(@RequestBody SysUserLabelsEntity sysUserLabelsEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<SysUserLabelsEntity> list = this.sysUserLabelsService.queryByPage(sysUserLabelsEntity);
+        List<SysUserLabelsEntity> list = this.sysUserLabelsService.queryAllByLimit(sysUserLabelsEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

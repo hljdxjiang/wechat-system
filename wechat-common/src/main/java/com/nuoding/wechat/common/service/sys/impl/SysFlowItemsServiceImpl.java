@@ -37,7 +37,7 @@ public class SysFlowItemsServiceImpl implements SysFlowItemsService {
      * @return 查询结果
      */
     @Override
-    public List<SysFlowItemsEntity> queryByPage(SysFlowItemsEntity sysFlowItemsEntity) {
+    public List<SysFlowItemsEntity> queryAllByLimit(SysFlowItemsEntity sysFlowItemsEntity) {
         return this.sysFlowItemsDao.queryAllByLimit(sysFlowItemsEntity);
     }
 

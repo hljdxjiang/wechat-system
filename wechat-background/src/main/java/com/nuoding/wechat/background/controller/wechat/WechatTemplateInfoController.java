@@ -43,7 +43,7 @@ public class WechatTemplateInfoController {
     public MapResponse queryByPage(@RequestBody WechatTemplateInfoEntity wechatTemplateInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<WechatTemplateInfoEntity> list = this.wechatTemplateInfoService.queryByPage(wechatTemplateInfoEntity);
+        List<WechatTemplateInfoEntity> list = this.wechatTemplateInfoService.queryAllByLimit(wechatTemplateInfoEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

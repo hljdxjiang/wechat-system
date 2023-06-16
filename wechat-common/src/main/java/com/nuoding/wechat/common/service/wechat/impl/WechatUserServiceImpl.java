@@ -37,7 +37,7 @@ public class WechatUserServiceImpl implements WechatUserService {
      * @return 查询结果
      */
     @Override
-    public List<WechatUserEntity> queryByPage(WechatUserEntity wechatUserEntity) {
+    public List<WechatUserEntity> queryAllByLimit(WechatUserEntity wechatUserEntity) {
         return this.wechatUserDao.queryAllByLimit(wechatUserEntity);
     }
 

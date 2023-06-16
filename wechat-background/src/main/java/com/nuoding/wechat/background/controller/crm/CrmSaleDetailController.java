@@ -43,7 +43,7 @@ public class CrmSaleDetailController {
     public MapResponse queryByPage(@RequestBody CrmSaleDetailEntity crmSaleDetailEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<CrmSaleDetailEntity> list = this.crmSaleDetailService.queryByPage(crmSaleDetailEntity);
+        List<CrmSaleDetailEntity> list = this.crmSaleDetailService.queryAllByLimit(crmSaleDetailEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

@@ -26,7 +26,7 @@ public interface SysTenantTokenService {
      * @param sysTenantTokenEntity 筛选条件
      * @return 查询结果
      */
-    List<SysTenantTokenEntity> queryByPage(SysTenantTokenEntity sysTenantTokenEntity);
+    List<SysTenantTokenEntity> queryAllByLimit(SysTenantTokenEntity sysTenantTokenEntity);
 
     /**
      * 新增数据

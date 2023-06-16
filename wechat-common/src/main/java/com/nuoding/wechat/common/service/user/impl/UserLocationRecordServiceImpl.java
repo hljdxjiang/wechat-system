@@ -37,7 +37,7 @@ public class UserLocationRecordServiceImpl implements UserLocationRecordService 
      * @return 查询结果
      */
     @Override
-    public List<UserLocationRecordEntity> queryByPage(UserLocationRecordEntity userLocationRecordEntity) {
+    public List<UserLocationRecordEntity> queryAllByLimit(UserLocationRecordEntity userLocationRecordEntity) {
         return this.userLocationRecordDao.queryAllByLimit(userLocationRecordEntity);
     }
 

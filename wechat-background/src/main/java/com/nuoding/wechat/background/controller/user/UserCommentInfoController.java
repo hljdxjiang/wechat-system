@@ -43,7 +43,7 @@ public class UserCommentInfoController {
     public MapResponse queryByPage(@RequestBody UserCommentInfoEntity userCommentInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<UserCommentInfoEntity> list = this.userCommentInfoService.queryByPage(userCommentInfoEntity);
+        List<UserCommentInfoEntity> list = this.userCommentInfoService.queryAllByLimit(userCommentInfoEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

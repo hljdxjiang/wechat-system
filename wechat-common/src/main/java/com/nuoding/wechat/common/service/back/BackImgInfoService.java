@@ -26,7 +26,7 @@ public interface BackImgInfoService {
      * @param backImgInfoEntity 筛选条件
      * @return 查询结果
      */
-    List<BackImgInfoEntity> queryByPage(BackImgInfoEntity backImgInfoEntity);
+    List<BackImgInfoEntity> queryAllByLimit(BackImgInfoEntity backImgInfoEntity);
 
     /**
      * 新增数据

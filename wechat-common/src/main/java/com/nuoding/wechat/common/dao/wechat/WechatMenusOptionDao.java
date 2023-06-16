@@ -9,7 +9,7 @@ import java.util.List;
  * 微信菜单要素表
  *
  * @Author: hzq
- * @Date: 2023-06-05 17:49:46
+ * @Date: 2023-06-08 17:37:05
  */
 public interface WechatMenusOptionDao {
 

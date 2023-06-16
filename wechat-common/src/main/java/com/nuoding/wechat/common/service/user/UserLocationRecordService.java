@@ -26,7 +26,7 @@ public interface UserLocationRecordService {
      * @param userLocationRecordEntity 筛选条件
      * @return 查询结果
      */
-    List<UserLocationRecordEntity> queryByPage(UserLocationRecordEntity userLocationRecordEntity);
+    List<UserLocationRecordEntity> queryAllByLimit(UserLocationRecordEntity userLocationRecordEntity);
 
     /**
      * 新增数据

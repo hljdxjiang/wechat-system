@@ -26,7 +26,7 @@ public interface SysParamConfigService {
      * @param sysParamConfigEntity 筛选条件
      * @return 查询结果
      */
-    List<SysParamConfigEntity> queryByPage(SysParamConfigEntity sysParamConfigEntity);
+    List<SysParamConfigEntity> queryAllByLimit(SysParamConfigEntity sysParamConfigEntity);
 
     /**
      * 新增数据
@@ -58,7 +58,4 @@ public interface SysParamConfigService {
      * @Date:2023/5/8 下午9:05
      */
     String getConfigByCatch(String configKey);
-
-
-
 }

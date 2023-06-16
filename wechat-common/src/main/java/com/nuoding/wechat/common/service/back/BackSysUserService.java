@@ -26,7 +26,7 @@ public interface BackSysUserService {
      * @param backSysUserEntity 筛选条件
      * @return 查询结果
      */
-    List<BackSysUserEntity> queryByPage(BackSysUserEntity backSysUserEntity);
+    List<BackSysUserEntity> queryAllByLimit(BackSysUserEntity backSysUserEntity);
 
     /**
      * 新增数据

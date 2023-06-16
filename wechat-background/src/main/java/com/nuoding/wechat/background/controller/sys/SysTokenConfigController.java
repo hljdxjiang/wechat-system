@@ -43,7 +43,7 @@ public class SysTokenConfigController {
     public MapResponse queryByPage(@RequestBody SysTokenConfigEntity sysTokenConfigEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<SysTokenConfigEntity> list = this.sysTokenConfigService.queryByPage(sysTokenConfigEntity);
+        List<SysTokenConfigEntity> list = this.sysTokenConfigService.queryAllByLimit(sysTokenConfigEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

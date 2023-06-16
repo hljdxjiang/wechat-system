@@ -37,7 +37,7 @@ public class BackUserLoginRecordServiceImpl implements BackUserLoginRecordServic
      * @return 查询结果
      */
     @Override
-    public List<BackUserLoginRecordEntity> queryByPage(BackUserLoginRecordEntity backUserLoginRecordEntity) {
+    public List<BackUserLoginRecordEntity> queryAllByLimit(BackUserLoginRecordEntity backUserLoginRecordEntity) {
         return this.backUserLoginRecordDao.queryAllByLimit(backUserLoginRecordEntity);
     }
 

@@ -26,7 +26,7 @@ public interface SysTenantInfoService {
      * @param sysTenantInfoEntity 筛选条件
      * @return 查询结果
      */
-    List<SysTenantInfoEntity> queryByPage(SysTenantInfoEntity sysTenantInfoEntity);
+    List<SysTenantInfoEntity> queryAllByLimit(SysTenantInfoEntity sysTenantInfoEntity);
 
     /**
      * 新增数据

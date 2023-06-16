@@ -43,7 +43,7 @@ public class UserPropertyDetailController {
     public MapResponse queryByPage(@RequestBody UserPropertyDetailEntity userPropertyDetailEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<UserPropertyDetailEntity> list = this.userPropertyDetailService.queryByPage(userPropertyDetailEntity);
+        List<UserPropertyDetailEntity> list = this.userPropertyDetailService.queryAllByLimit(userPropertyDetailEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

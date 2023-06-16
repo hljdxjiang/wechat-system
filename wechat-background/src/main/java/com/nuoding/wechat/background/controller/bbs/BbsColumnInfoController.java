@@ -43,7 +43,7 @@ public class BbsColumnInfoController {
     public MapResponse queryByPage(@RequestBody BbsColumnInfoEntity bbsColumnInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<BbsColumnInfoEntity> list = this.bbsColumnInfoService.queryByPage(bbsColumnInfoEntity);
+        List<BbsColumnInfoEntity> list = this.bbsColumnInfoService.queryAllByLimit(bbsColumnInfoEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

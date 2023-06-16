@@ -37,7 +37,7 @@ public class WechatMenusItemServiceImpl implements WechatMenusItemService {
      * @return 查询结果
      */
     @Override
-    public List<WechatMenusItemEntity> queryByPage(WechatMenusItemEntity wechatMenusItemEntity) {
+    public List<WechatMenusItemEntity> queryAllByLimit(WechatMenusItemEntity wechatMenusItemEntity) {
         return this.wechatMenusItemDao.queryAllByLimit(wechatMenusItemEntity);
     }
 

@@ -37,7 +37,7 @@ public class MallCardInfoServiceImpl implements MallCardInfoService {
      * @return 查询结果
      */
     @Override
-    public List<MallCardInfoEntity> queryByPage(MallCardInfoEntity mallCardInfoEntity) {
+    public List<MallCardInfoEntity> queryAllByLimit(MallCardInfoEntity mallCardInfoEntity) {
         return this.mallCardInfoDao.queryAllByLimit(mallCardInfoEntity);
     }
 

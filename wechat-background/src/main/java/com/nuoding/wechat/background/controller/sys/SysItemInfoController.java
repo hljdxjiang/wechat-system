@@ -43,7 +43,7 @@ public class SysItemInfoController {
     public MapResponse queryByPage(@RequestBody SysItemInfoEntity sysItemInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<SysItemInfoEntity> list = this.sysItemInfoService.queryByPage(sysItemInfoEntity);
+        List<SysItemInfoEntity> list = this.sysItemInfoService.queryAllByLimit(sysItemInfoEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

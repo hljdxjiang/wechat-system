@@ -37,7 +37,7 @@ public class SysUserLabelsServiceImpl implements SysUserLabelsService {
      * @return 查询结果
      */
     @Override
-    public List<SysUserLabelsEntity> queryByPage(SysUserLabelsEntity sysUserLabelsEntity) {
+    public List<SysUserLabelsEntity> queryAllByLimit(SysUserLabelsEntity sysUserLabelsEntity) {
         return this.sysUserLabelsDao.queryAllByLimit(sysUserLabelsEntity);
     }
 

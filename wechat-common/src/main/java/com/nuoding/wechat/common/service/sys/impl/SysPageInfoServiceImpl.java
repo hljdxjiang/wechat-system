@@ -37,7 +37,7 @@ public class SysPageInfoServiceImpl implements SysPageInfoService {
      * @return 查询结果
      */
     @Override
-    public List<SysPageInfoEntity> queryByPage(SysPageInfoEntity sysPageInfoEntity) {
+    public List<SysPageInfoEntity> queryAllByLimit(SysPageInfoEntity sysPageInfoEntity) {
         return this.sysPageInfoDao.queryAllByLimit(sysPageInfoEntity);
     }
 

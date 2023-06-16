@@ -26,7 +26,7 @@ public interface MallUserCouponInfoService {
      * @param mallUserCouponInfoEntity 筛选条件
      * @return 查询结果
      */
-    List<MallUserCouponInfoEntity> queryByPage(MallUserCouponInfoEntity mallUserCouponInfoEntity);
+    List<MallUserCouponInfoEntity> queryAllByLimit(MallUserCouponInfoEntity mallUserCouponInfoEntity);
 
     /**
      * 新增数据

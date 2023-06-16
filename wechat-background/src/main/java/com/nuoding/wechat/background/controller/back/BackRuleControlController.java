@@ -43,7 +43,7 @@ public class BackRuleControlController {
     public MapResponse queryByPage(@RequestBody BackRuleControlEntity backRuleControlEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<BackRuleControlEntity> list = this.backRuleControlService.queryByPage(backRuleControlEntity);
+        List<BackRuleControlEntity> list = this.backRuleControlService.queryAllByLimit(backRuleControlEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

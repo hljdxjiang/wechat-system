@@ -26,7 +26,7 @@ public interface BbsArticleInfoService {
      * @param bbsArticleInfoEntity 筛选条件
      * @return 查询结果
      */
-    List<BbsArticleInfoEntity> queryByPage(BbsArticleInfoEntity bbsArticleInfoEntity);
+    List<BbsArticleInfoEntity> queryAllByLimit(BbsArticleInfoEntity bbsArticleInfoEntity);
 
     /**
      * 新增数据

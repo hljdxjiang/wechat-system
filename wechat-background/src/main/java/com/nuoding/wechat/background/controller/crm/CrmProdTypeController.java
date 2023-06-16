@@ -43,7 +43,7 @@ public class CrmProdTypeController {
     public MapResponse queryByPage(@RequestBody CrmProdTypeEntity crmProdTypeEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<CrmProdTypeEntity> list = this.crmProdTypeService.queryByPage(crmProdTypeEntity);
+        List<CrmProdTypeEntity> list = this.crmProdTypeService.queryAllByLimit(crmProdTypeEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

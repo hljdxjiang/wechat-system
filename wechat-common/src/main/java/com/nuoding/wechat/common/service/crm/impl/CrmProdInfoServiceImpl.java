@@ -37,7 +37,7 @@ public class CrmProdInfoServiceImpl implements CrmProdInfoService {
      * @return 查询结果
      */
     @Override
-    public List<CrmProdInfoEntity> queryByPage(CrmProdInfoEntity crmProdInfoEntity) {
+    public List<CrmProdInfoEntity> queryAllByLimit(CrmProdInfoEntity crmProdInfoEntity) {
         return this.crmProdInfoDao.queryAllByLimit(crmProdInfoEntity);
     }
 

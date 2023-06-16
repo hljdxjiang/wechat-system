@@ -26,7 +26,7 @@ public interface MallLotteryPrizeService {
      * @param mallLotteryPrizeEntity 筛选条件
      * @return 查询结果
      */
-    List<MallLotteryPrizeEntity> queryByPage(MallLotteryPrizeEntity mallLotteryPrizeEntity);
+    List<MallLotteryPrizeEntity> queryAllByLimit(MallLotteryPrizeEntity mallLotteryPrizeEntity);
 
     /**
      * 新增数据

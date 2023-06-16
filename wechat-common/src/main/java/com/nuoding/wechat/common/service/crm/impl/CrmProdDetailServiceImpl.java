@@ -37,7 +37,7 @@ public class CrmProdDetailServiceImpl implements CrmProdDetailService {
      * @return 查询结果
      */
     @Override
-    public List<CrmProdDetailEntity> queryByPage(CrmProdDetailEntity crmProdDetailEntity) {
+    public List<CrmProdDetailEntity> queryAllByLimit(CrmProdDetailEntity crmProdDetailEntity) {
         return this.crmProdDetailDao.queryAllByLimit(crmProdDetailEntity);
     }
 

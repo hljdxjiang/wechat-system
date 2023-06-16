@@ -3,7 +3,6 @@ package com.nuoding.wechat.common.service.user.impl;
 import com.nuoding.wechat.common.dao.user.UserOperaRecordDao;
 import com.nuoding.wechat.common.entity.user.UserOperaRecordEntity;
 import com.nuoding.wechat.common.service.user.UserOperaRecordService;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -38,7 +37,7 @@ public class UserOperaRecordServiceImpl implements UserOperaRecordService {
      * @return 查询结果
      */
     @Override
-    public List<UserOperaRecordEntity> queryByPage(UserOperaRecordEntity userOperaRecordEntity) {
+    public List<UserOperaRecordEntity> queryAllByLimit(UserOperaRecordEntity userOperaRecordEntity) {
         return this.userOperaRecordDao.queryAllByLimit(userOperaRecordEntity);
     }
 
@@ -52,13 +51,6 @@ public class UserOperaRecordServiceImpl implements UserOperaRecordService {
     public UserOperaRecordEntity insert(UserOperaRecordEntity userOperaRecordEntity) {
         this.userOperaRecordDao.insert(userOperaRecordEntity);
         return userOperaRecordEntity;
-    }
-
-
-    @Async
-    @Override
-    public UserOperaRecordEntity asyncInsert(UserOperaRecordEntity userOperaRecordEntity) {
-        return asyncInsert(userOperaRecordEntity);
     }
 
     /**

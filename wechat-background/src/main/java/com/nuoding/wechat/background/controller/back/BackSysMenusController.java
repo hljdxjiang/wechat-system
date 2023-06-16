@@ -43,7 +43,7 @@ public class BackSysMenusController {
     public MapResponse queryByPage(@RequestBody BackSysMenusEntity backSysMenusEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<BackSysMenusEntity> list = this.backSysMenusService.queryByPage(backSysMenusEntity);
+        List<BackSysMenusEntity> list = this.backSysMenusService.queryAllByLimit(backSysMenusEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

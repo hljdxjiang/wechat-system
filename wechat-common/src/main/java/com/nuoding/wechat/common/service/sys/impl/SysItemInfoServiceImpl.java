@@ -37,7 +37,7 @@ public class SysItemInfoServiceImpl implements SysItemInfoService {
      * @return 查询结果
      */
     @Override
-    public List<SysItemInfoEntity> queryByPage(SysItemInfoEntity sysItemInfoEntity) {
+    public List<SysItemInfoEntity> queryAllByLimit(SysItemInfoEntity sysItemInfoEntity) {
         return this.sysItemInfoDao.queryAllByLimit(sysItemInfoEntity);
     }
 

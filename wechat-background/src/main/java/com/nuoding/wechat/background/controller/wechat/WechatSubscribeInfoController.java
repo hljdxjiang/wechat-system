@@ -43,7 +43,7 @@ public class WechatSubscribeInfoController {
     public MapResponse queryByPage(@RequestBody WechatSubscribeInfoEntity wechatSubscribeInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<WechatSubscribeInfoEntity> list = this.wechatSubscribeInfoService.queryByPage(wechatSubscribeInfoEntity);
+        List<WechatSubscribeInfoEntity> list = this.wechatSubscribeInfoService.queryAllByLimit(wechatSubscribeInfoEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

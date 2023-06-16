@@ -26,7 +26,7 @@ public interface UserOperaRecordService {
      * @param userOperaRecordEntity 筛选条件
      * @return 查询结果
      */
-    List<UserOperaRecordEntity> queryByPage(UserOperaRecordEntity userOperaRecordEntity);
+    List<UserOperaRecordEntity> queryAllByLimit(UserOperaRecordEntity userOperaRecordEntity);
 
     /**
      * 新增数据
@@ -35,14 +35,6 @@ public interface UserOperaRecordService {
      * @return 实例对象
      */
     UserOperaRecordEntity insert(UserOperaRecordEntity userOperaRecordEntity);
-
-    /**
-     * 异步新增数据
-     *
-     * @param userOperaRecordEntity 实例对象
-     * @return 实例对象
-     */
-    UserOperaRecordEntity asyncInsert(UserOperaRecordEntity userOperaRecordEntity);
 
     /**
      * 修改数据

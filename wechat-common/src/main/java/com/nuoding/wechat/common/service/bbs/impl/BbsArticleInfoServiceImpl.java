@@ -37,7 +37,7 @@ public class BbsArticleInfoServiceImpl implements BbsArticleInfoService {
      * @return 查询结果
      */
     @Override
-    public List<BbsArticleInfoEntity> queryByPage(BbsArticleInfoEntity bbsArticleInfoEntity) {
+    public List<BbsArticleInfoEntity> queryAllByLimit(BbsArticleInfoEntity bbsArticleInfoEntity) {
         return this.bbsArticleInfoDao.queryAllByLimit(bbsArticleInfoEntity);
     }
 

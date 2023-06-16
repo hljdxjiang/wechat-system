@@ -37,7 +37,7 @@ public class BbsColumnInfoServiceImpl implements BbsColumnInfoService {
      * @return 查询结果
      */
     @Override
-    public List<BbsColumnInfoEntity> queryByPage(BbsColumnInfoEntity bbsColumnInfoEntity) {
+    public List<BbsColumnInfoEntity> queryAllByLimit(BbsColumnInfoEntity bbsColumnInfoEntity) {
         return this.bbsColumnInfoDao.queryAllByLimit(bbsColumnInfoEntity);
     }
 

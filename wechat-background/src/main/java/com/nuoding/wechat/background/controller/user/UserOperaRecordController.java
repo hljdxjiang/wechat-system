@@ -43,7 +43,7 @@ public class UserOperaRecordController {
     public MapResponse queryByPage(@RequestBody UserOperaRecordEntity userOperaRecordEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<UserOperaRecordEntity> list = this.userOperaRecordService.queryByPage(userOperaRecordEntity);
+        List<UserOperaRecordEntity> list = this.userOperaRecordService.queryAllByLimit(userOperaRecordEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

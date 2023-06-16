@@ -37,7 +37,7 @@ public class BackOperaRecordServiceImpl implements BackOperaRecordService {
      * @return 查询结果
      */
     @Override
-    public List<BackOperaRecordEntity> queryByPage(BackOperaRecordEntity backOperaRecordEntity) {
+    public List<BackOperaRecordEntity> queryAllByLimit(BackOperaRecordEntity backOperaRecordEntity) {
         return this.backOperaRecordDao.queryAllByLimit(backOperaRecordEntity);
     }
 

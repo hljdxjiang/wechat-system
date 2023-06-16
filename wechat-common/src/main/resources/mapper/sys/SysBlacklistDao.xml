@@ -9,6 +9,8 @@
         <result property="channel" column="channel" jdbcType="VARCHAR"/>
         <result property="remark" column="remark" jdbcType="VARCHAR"/>
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="mobileNo" column="mobile_no" jdbcType="VARCHAR"/>
+        <result property="blackType" column="black_type" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Table_Name">
@@ -16,7 +18,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,user_id,channel,remark,create_time    </sql>
+        id,tenant_id,user_id,channel,remark,create_time,mobile_no,black_type    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="SysBlacklistMap">
@@ -40,6 +42,8 @@
             <if test="channel != null and channel !=''">and channel = #{channel}</if>
             <if test="remark != null and remark !=''">and remark = #{remark}</if>
             <if test="createTime != null and createTime !=''">and create_time = #{createTime}</if>
+            <if test="mobileNo != null and mobileNo !=''">and mobile_no = #{mobileNo}</if>
+            <if test="blackType != null and blackType !=''">and black_type = #{blackType}</if>
         </where>
 
     </select>
@@ -56,6 +60,8 @@
             <if test="channel != null and channel != ''">and channel = #{channel}</if>
             <if test="remark != null and remark != ''">and remark = #{remark}</if>
             <if test="createTime != null and createTime != ''">and create_time = #{createTime}</if>
+            <if test="mobileNo != null and mobileNo != ''">and mobile_no = #{mobileNo}</if>
+            <if test="blackType != null and blackType != ''">and black_type = #{blackType}</if>
         </where>
     </select>
 
@@ -63,35 +69,37 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,user_id,channel,remark,create_time)
+        (tenant_id,user_id,channel,remark,create_time,mobile_no,black_type)
         values
-        (#{tenantId},#{userId},#{channel},#{remark},#{createTime})
+        (#{tenantId},#{userId},#{channel},#{remark},#{createTime},#{mobileNo},#{blackType})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (tenant_id,user_id,channel,remark,create_time)
+            (tenant_id,user_id,channel,remark,create_time,mobile_no,black_type)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.userId},#{entity.channel},#{entity.remark},#{entity.createTime})
+            (#{entity.tenantId},#{entity.userId},#{entity.channel},#{entity.remark},#{entity.createTime},#{entity.mobileNo},#{entity.blackType})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (tenant_id,user_id,channel,remark,create_time)
+            (tenant_id,user_id,channel,remark,create_time,mobile_no,black_type)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.userId},#{entity.channel},#{entity.remark},#{entity.createTime})
+            (#{entity.tenantId},#{entity.userId},#{entity.channel},#{entity.remark},#{entity.createTime},#{entity.mobileNo},#{entity.blackType})
         </foreach>
         on duplicate key update
                 tenant_id=values(tenant_id),
         user_id=values(user_id),
         channel=values(channel),
         remark=values(remark),
-        create_time=values(create_time)
+        create_time=values(create_time),
+        mobile_no=values(mobile_no),
+        black_type=values(black_type)
         </insert>
 
     <!--通过主键修改数据-->
@@ -104,6 +112,8 @@
     <if test="channel != null and channel != ''">channel = #{channel},</if>
     <if test="remark != null and remark != ''">remark = #{remark},</if>
     <if test="createTime != null and createTime != ''">create_time = #{createTime},</if>
+    <if test="mobileNo != null and mobileNo != ''">mobile_no = #{mobileNo},</if>
+    <if test="blackType != null and blackType != ''">black_type = #{blackType},</if>
         </set>
         where id = #{id}
     </update>

@@ -37,7 +37,7 @@ public class CrmSalePayInfoServiceImpl implements CrmSalePayInfoService {
      * @return 查询结果
      */
     @Override
-    public List<CrmSalePayInfoEntity> queryByPage(CrmSalePayInfoEntity crmSalePayInfoEntity) {
+    public List<CrmSalePayInfoEntity> queryAllByLimit(CrmSalePayInfoEntity crmSalePayInfoEntity) {
         return this.crmSalePayInfoDao.queryAllByLimit(crmSalePayInfoEntity);
     }
 

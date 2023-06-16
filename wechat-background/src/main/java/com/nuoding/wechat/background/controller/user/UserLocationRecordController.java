@@ -43,7 +43,7 @@ public class UserLocationRecordController {
     public MapResponse queryByPage(@RequestBody UserLocationRecordEntity userLocationRecordEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<UserLocationRecordEntity> list = this.userLocationRecordService.queryByPage(userLocationRecordEntity);
+        List<UserLocationRecordEntity> list = this.userLocationRecordService.queryAllByLimit(userLocationRecordEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

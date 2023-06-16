@@ -26,7 +26,7 @@ public interface MallSaleAddrService {
      * @param mallSaleAddrEntity 筛选条件
      * @return 查询结果
      */
-    List<MallSaleAddrEntity> queryByPage(MallSaleAddrEntity mallSaleAddrEntity);
+    List<MallSaleAddrEntity> queryAllByLimit(MallSaleAddrEntity mallSaleAddrEntity);
 
     /**
      * 新增数据

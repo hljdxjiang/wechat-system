@@ -26,7 +26,7 @@ public interface BackSysMenusService {
      * @param backSysMenusEntity 筛选条件
      * @return 查询结果
      */
-    List<BackSysMenusEntity> queryByPage(BackSysMenusEntity backSysMenusEntity);
+    List<BackSysMenusEntity> queryAllByLimit(BackSysMenusEntity backSysMenusEntity);
 
     /**
      * 新增数据

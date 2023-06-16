@@ -26,7 +26,7 @@ public interface SysUserLabelsService {
      * @param sysUserLabelsEntity 筛选条件
      * @return 查询结果
      */
-    List<SysUserLabelsEntity> queryByPage(SysUserLabelsEntity sysUserLabelsEntity);
+    List<SysUserLabelsEntity> queryAllByLimit(SysUserLabelsEntity sysUserLabelsEntity);
 
     /**
      * 新增数据

@@ -37,7 +37,7 @@ public class BackSysMenusServiceImpl implements BackSysMenusService {
      * @return 查询结果
      */
     @Override
-    public List<BackSysMenusEntity> queryByPage(BackSysMenusEntity backSysMenusEntity) {
+    public List<BackSysMenusEntity> queryAllByLimit(BackSysMenusEntity backSysMenusEntity) {
         return this.backSysMenusDao.queryAllByLimit(backSysMenusEntity);
     }
 

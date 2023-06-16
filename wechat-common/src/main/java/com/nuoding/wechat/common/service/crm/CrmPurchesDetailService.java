@@ -26,7 +26,7 @@ public interface CrmPurchesDetailService {
      * @param crmPurchesDetailEntity 筛选条件
      * @return 查询结果
      */
-    List<CrmPurchesDetailEntity> queryByPage(CrmPurchesDetailEntity crmPurchesDetailEntity);
+    List<CrmPurchesDetailEntity> queryAllByLimit(CrmPurchesDetailEntity crmPurchesDetailEntity);
 
     /**
      * 新增数据

@@ -5,7 +5,7 @@
     <resultMap type="com.nuoding.wechat.common.entity.sys.SysTokenConfigEntity" id="SysTokenConfigMap">
             <result property="id" column="ID" jdbcType="INTEGER"/>
         <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
-        <result property="tokenName" column="token_name" jdbcType="VARCHAR"/>
+        <result property="appid" column="appid" jdbcType="VARCHAR"/>
         <result property="tokenKey" column="token_key" jdbcType="VARCHAR"/>
         <result property="tokenDesc" column="token_desc" jdbcType="VARCHAR"/>
         <result property="tokenVaildType" column="token_vaild_type" jdbcType="VARCHAR"/>
@@ -20,7 +20,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        ID,tenant_id,token_name,token_key,token_desc,token_vaild_type,token_valid_time,token_status,create_time,last_update_time    </sql>
+        ID,tenant_id,appid,token_key,token_desc,token_vaild_type,token_valid_time,token_status,create_time,last_update_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="SysTokenConfigMap">
@@ -40,7 +40,7 @@
         <where>
             <if test="id != null and id !=''">and ID = #{id}</if>
             <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="tokenName != null and tokenName !=''">and token_name = #{tokenName}</if>
+            <if test="appid != null and appid !=''">and appid = #{appid}</if>
             <if test="tokenKey != null and tokenKey !=''">and token_key = #{tokenKey}</if>
             <if test="tokenDesc != null and tokenDesc !=''">and token_desc = #{tokenDesc}</if>
             <if test="tokenVaildType != null and tokenVaildType !=''">and token_vaild_type = #{tokenVaildType}</if>
@@ -60,7 +60,7 @@
         <where>
             <if test="id != null and id != ''">and ID = #{id}</if>
             <if test="tenantId != null and tenantId != ''">and tenant_id = #{tenantId}</if>
-            <if test="tokenName != null and tokenName != ''">and token_name = #{tokenName}</if>
+            <if test="appid != null and appid != ''">and appid = #{appid}</if>
             <if test="tokenKey != null and tokenKey != ''">and token_key = #{tokenKey}</if>
             <if test="tokenDesc != null and tokenDesc != ''">and token_desc = #{tokenDesc}</if>
             <if test="tokenVaildType != null and tokenVaildType != ''">and token_vaild_type = #{tokenVaildType}</if>
@@ -75,33 +75,33 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (ID,tenant_id,token_name,token_key,token_desc,token_vaild_type,token_valid_time,token_status,create_time,last_update_time)
+        (ID,tenant_id,appid,token_key,token_desc,token_vaild_type,token_valid_time,token_status,create_time,last_update_time)
         values
-        (#{id},#{tenantId},#{tokenName},#{tokenKey},#{tokenDesc},#{tokenVaildType},#{tokenValidTime},#{tokenStatus},#{createTime},#{lastUpdateTime})
+        (#{id},#{tenantId},#{appid},#{tokenKey},#{tokenDesc},#{tokenVaildType},#{tokenValidTime},#{tokenStatus},#{createTime},#{lastUpdateTime})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (ID,tenant_id,token_name,token_key,token_desc,token_vaild_type,token_valid_time,token_status,create_time,last_update_time)
+            (ID,tenant_id,appid,token_key,token_desc,token_vaild_type,token_valid_time,token_status,create_time,last_update_time)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.id},#{entity.tenantId},#{entity.tokenName},#{entity.tokenKey},#{entity.tokenDesc},#{entity.tokenVaildType},#{entity.tokenValidTime},#{entity.tokenStatus},#{entity.createTime},#{entity.lastUpdateTime})
+            (#{entity.id},#{entity.tenantId},#{entity.appid},#{entity.tokenKey},#{entity.tokenDesc},#{entity.tokenVaildType},#{entity.tokenValidTime},#{entity.tokenStatus},#{entity.createTime},#{entity.lastUpdateTime})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (ID,tenant_id,token_name,token_key,token_desc,token_vaild_type,token_valid_time,token_status,create_time,last_update_time)
+            (ID,tenant_id,appid,token_key,token_desc,token_vaild_type,token_valid_time,token_status,create_time,last_update_time)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.id},#{entity.tenantId},#{entity.tokenName},#{entity.tokenKey},#{entity.tokenDesc},#{entity.tokenVaildType},#{entity.tokenValidTime},#{entity.tokenStatus},#{entity.createTime},#{entity.lastUpdateTime})
+            (#{entity.id},#{entity.tenantId},#{entity.appid},#{entity.tokenKey},#{entity.tokenDesc},#{entity.tokenVaildType},#{entity.tokenValidTime},#{entity.tokenStatus},#{entity.createTime},#{entity.lastUpdateTime})
         </foreach>
         on duplicate key update
         ID=values(ID),
         tenant_id=values(tenant_id),
-        token_name=values(token_name),
+        appid=values(appid),
         token_key=values(token_key),
         token_desc=values(token_desc),
         token_vaild_type=values(token_vaild_type),
@@ -118,7 +118,7 @@
         <set>
     <if test="id != null and id != ''">ID = #{id},</if>
     <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-    <if test="tokenName != null and tokenName != ''">token_name = #{tokenName},</if>
+    <if test="appid != null and appid != ''">appid = #{appid},</if>
     <if test="tokenKey != null and tokenKey != ''">token_key = #{tokenKey},</if>
     <if test="tokenDesc != null and tokenDesc != ''">token_desc = #{tokenDesc},</if>
     <if test="tokenVaildType != null and tokenVaildType != ''">token_vaild_type = #{tokenVaildType},</if>

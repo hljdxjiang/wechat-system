@@ -37,7 +37,7 @@ public class UserFeedbackInfoServiceImpl implements UserFeedbackInfoService {
      * @return 查询结果
      */
     @Override
-    public List<UserFeedbackInfoEntity> queryByPage(UserFeedbackInfoEntity userFeedbackInfoEntity) {
+    public List<UserFeedbackInfoEntity> queryAllByLimit(UserFeedbackInfoEntity userFeedbackInfoEntity) {
         return this.userFeedbackInfoDao.queryAllByLimit(userFeedbackInfoEntity);
     }
 

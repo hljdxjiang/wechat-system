@@ -37,7 +37,7 @@ public class UserCollectInfoServiceImpl implements UserCollectInfoService {
      * @return 查询结果
      */
     @Override
-    public List<UserCollectInfoEntity> queryByPage(UserCollectInfoEntity userCollectInfoEntity) {
+    public List<UserCollectInfoEntity> queryAllByLimit(UserCollectInfoEntity userCollectInfoEntity) {
         return this.userCollectInfoDao.queryAllByLimit(userCollectInfoEntity);
     }
 

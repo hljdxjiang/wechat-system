@@ -26,7 +26,7 @@ public interface UserFeedbackInfoService {
      * @param userFeedbackInfoEntity 筛选条件
      * @return 查询结果
      */
-    List<UserFeedbackInfoEntity> queryByPage(UserFeedbackInfoEntity userFeedbackInfoEntity);
+    List<UserFeedbackInfoEntity> queryAllByLimit(UserFeedbackInfoEntity userFeedbackInfoEntity);
 
     /**
      * 新增数据

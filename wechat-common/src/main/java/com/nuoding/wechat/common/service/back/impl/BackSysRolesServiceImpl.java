@@ -37,7 +37,7 @@ public class BackSysRolesServiceImpl implements BackSysRolesService {
      * @return 查询结果
      */
     @Override
-    public List<BackSysRolesEntity> queryByPage(BackSysRolesEntity backSysRolesEntity) {
+    public List<BackSysRolesEntity> queryAllByLimit(BackSysRolesEntity backSysRolesEntity) {
         return this.backSysRolesDao.queryAllByLimit(backSysRolesEntity);
     }
 

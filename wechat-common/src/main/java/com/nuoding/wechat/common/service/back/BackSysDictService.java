@@ -26,7 +26,7 @@ public interface BackSysDictService {
      * @param backSysDictEntity 筛选条件
      * @return 查询结果
      */
-    List<BackSysDictEntity> queryByPage(BackSysDictEntity backSysDictEntity);
+    List<BackSysDictEntity> queryAllByLimit(BackSysDictEntity backSysDictEntity);
 
     /**
      * 新增数据

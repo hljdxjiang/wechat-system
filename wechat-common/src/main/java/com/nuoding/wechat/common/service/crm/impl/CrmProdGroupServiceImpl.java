@@ -37,7 +37,7 @@ public class CrmProdGroupServiceImpl implements CrmProdGroupService {
      * @return 查询结果
      */
     @Override
-    public List<CrmProdGroupEntity> queryByPage(CrmProdGroupEntity crmProdGroupEntity) {
+    public List<CrmProdGroupEntity> queryAllByLimit(CrmProdGroupEntity crmProdGroupEntity) {
         return this.crmProdGroupDao.queryAllByLimit(crmProdGroupEntity);
     }
 

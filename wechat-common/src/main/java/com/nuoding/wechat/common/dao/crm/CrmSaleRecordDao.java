@@ -9,7 +9,7 @@ import java.util.List;
  * 销售记录表
  *
  * @Author: hzq
- * @Date: 2023-06-05 17:49:47
+ * @Date: 2023-06-08 17:37:05
  */
 public interface CrmSaleRecordDao {
 

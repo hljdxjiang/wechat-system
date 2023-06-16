@@ -43,7 +43,7 @@ public class MallActivityConditionController {
     public MapResponse queryByPage(@RequestBody MallActivityConditionEntity mallActivityConditionEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<MallActivityConditionEntity> list = this.mallActivityConditionService.queryByPage(mallActivityConditionEntity);
+        List<MallActivityConditionEntity> list = this.mallActivityConditionService.queryAllByLimit(mallActivityConditionEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

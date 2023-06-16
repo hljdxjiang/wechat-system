@@ -26,7 +26,7 @@ public interface UserPropertyDetailService {
      * @param userPropertyDetailEntity 筛选条件
      * @return 查询结果
      */
-    List<UserPropertyDetailEntity> queryByPage(UserPropertyDetailEntity userPropertyDetailEntity);
+    List<UserPropertyDetailEntity> queryAllByLimit(UserPropertyDetailEntity userPropertyDetailEntity);
 
     /**
      * 新增数据

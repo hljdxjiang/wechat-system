@@ -37,7 +37,7 @@ public class SysTokenConfigServiceImpl implements SysTokenConfigService {
      * @return 查询结果
      */
     @Override
-    public List<SysTokenConfigEntity> queryByPage(SysTokenConfigEntity sysTokenConfigEntity) {
+    public List<SysTokenConfigEntity> queryAllByLimit(SysTokenConfigEntity sysTokenConfigEntity) {
         return this.sysTokenConfigDao.queryAllByLimit(sysTokenConfigEntity);
     }
 

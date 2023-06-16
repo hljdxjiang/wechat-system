@@ -43,7 +43,7 @@ public class BackSysRolesController {
     public MapResponse queryByPage(@RequestBody BackSysRolesEntity backSysRolesEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<BackSysRolesEntity> list = this.backSysRolesService.queryByPage(backSysRolesEntity);
+        List<BackSysRolesEntity> list = this.backSysRolesService.queryAllByLimit(backSysRolesEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

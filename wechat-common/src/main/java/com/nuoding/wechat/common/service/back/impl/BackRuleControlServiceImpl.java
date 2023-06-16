@@ -37,7 +37,7 @@ public class BackRuleControlServiceImpl implements BackRuleControlService {
      * @return 查询结果
      */
     @Override
-    public List<BackRuleControlEntity> queryByPage(BackRuleControlEntity backRuleControlEntity) {
+    public List<BackRuleControlEntity> queryAllByLimit(BackRuleControlEntity backRuleControlEntity) {
         return this.backRuleControlDao.queryAllByLimit(backRuleControlEntity);
     }
 

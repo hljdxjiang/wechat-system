@@ -26,7 +26,7 @@ public interface SysItemInfoService {
      * @param sysItemInfoEntity 筛选条件
      * @return 查询结果
      */
-    List<SysItemInfoEntity> queryByPage(SysItemInfoEntity sysItemInfoEntity);
+    List<SysItemInfoEntity> queryAllByLimit(SysItemInfoEntity sysItemInfoEntity);
 
     /**
      * 新增数据

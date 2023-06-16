@@ -37,7 +37,7 @@ public class UserWinningRecordServiceImpl implements UserWinningRecordService {
      * @return 查询结果
      */
     @Override
-    public List<UserWinningRecordEntity> queryByPage(UserWinningRecordEntity userWinningRecordEntity) {
+    public List<UserWinningRecordEntity> queryAllByLimit(UserWinningRecordEntity userWinningRecordEntity) {
         return this.userWinningRecordDao.queryAllByLimit(userWinningRecordEntity);
     }
 

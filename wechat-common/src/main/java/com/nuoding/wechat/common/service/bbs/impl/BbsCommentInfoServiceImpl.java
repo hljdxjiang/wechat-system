@@ -37,7 +37,7 @@ public class BbsCommentInfoServiceImpl implements BbsCommentInfoService {
      * @return 查询结果
      */
     @Override
-    public List<BbsCommentInfoEntity> queryByPage(BbsCommentInfoEntity bbsCommentInfoEntity) {
+    public List<BbsCommentInfoEntity> queryAllByLimit(BbsCommentInfoEntity bbsCommentInfoEntity) {
         return this.bbsCommentInfoDao.queryAllByLimit(bbsCommentInfoEntity);
     }
 

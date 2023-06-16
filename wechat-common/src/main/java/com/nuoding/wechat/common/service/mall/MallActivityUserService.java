@@ -26,7 +26,7 @@ public interface MallActivityUserService {
      * @param mallActivityUserEntity 筛选条件
      * @return 查询结果
      */
-    List<MallActivityUserEntity> queryByPage(MallActivityUserEntity mallActivityUserEntity);
+    List<MallActivityUserEntity> queryAllByLimit(MallActivityUserEntity mallActivityUserEntity);
 
     /**
      * 新增数据

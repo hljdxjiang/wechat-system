@@ -43,7 +43,7 @@ public class SysPageTypeInfoController {
     public MapResponse queryByPage(@RequestBody SysPageTypeInfoEntity sysPageTypeInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<SysPageTypeInfoEntity> list = this.sysPageTypeInfoService.queryByPage(sysPageTypeInfoEntity);
+        List<SysPageTypeInfoEntity> list = this.sysPageTypeInfoService.queryAllByLimit(sysPageTypeInfoEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

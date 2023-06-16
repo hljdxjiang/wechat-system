@@ -26,7 +26,7 @@ public interface BackSysRolesService {
      * @param backSysRolesEntity 筛选条件
      * @return 查询结果
      */
-    List<BackSysRolesEntity> queryByPage(BackSysRolesEntity backSysRolesEntity);
+    List<BackSysRolesEntity> queryAllByLimit(BackSysRolesEntity backSysRolesEntity);
 
     /**
      * 新增数据

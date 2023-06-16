@@ -43,7 +43,7 @@ public class BackSysDictController {
     public MapResponse queryByPage(@RequestBody BackSysDictEntity backSysDictEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<BackSysDictEntity> list = this.backSysDictService.queryByPage(backSysDictEntity);
+        List<BackSysDictEntity> list = this.backSysDictService.queryAllByLimit(backSysDictEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

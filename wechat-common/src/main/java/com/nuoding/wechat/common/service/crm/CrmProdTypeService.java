@@ -26,7 +26,7 @@ public interface CrmProdTypeService {
      * @param crmProdTypeEntity 筛选条件
      * @return 查询结果
      */
-    List<CrmProdTypeEntity> queryByPage(CrmProdTypeEntity crmProdTypeEntity);
+    List<CrmProdTypeEntity> queryAllByLimit(CrmProdTypeEntity crmProdTypeEntity);
 
     /**
      * 新增数据

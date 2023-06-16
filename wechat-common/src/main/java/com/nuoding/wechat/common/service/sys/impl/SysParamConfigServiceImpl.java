@@ -46,7 +46,7 @@ public class SysParamConfigServiceImpl implements SysParamConfigService {
      * @return 查询结果
      */
     @Override
-    public List<SysParamConfigEntity> queryByPage(SysParamConfigEntity sysParamConfigEntity) {
+    public List<SysParamConfigEntity> queryAllByLimit(SysParamConfigEntity sysParamConfigEntity) {
         return this.sysParamConfigDao.queryAllByLimit(sysParamConfigEntity);
     }
 
@@ -85,6 +85,7 @@ public class SysParamConfigServiceImpl implements SysParamConfigService {
         return this.sysParamConfigDao.deleteById(id) > 0;
     }
 
+
     @Override
     public String getConfigByCatch(String code) {
         SysParamConfigEntity config;
@@ -96,7 +97,7 @@ public class SysParamConfigServiceImpl implements SysParamConfigService {
         }
         config = new SysParamConfigEntity();
         config.setConfigKey(code);
-        List<SysParamConfigEntity> list = this.queryByPage(config);
+        List<SysParamConfigEntity> list = this.queryAllByLimit(config);
         if (!CollectionUtils.isEmpty(list)) {
             config = list.get(0);
             redisService.setValue(RedisKey.SYS_PARAM_CONFIG_KEY_PRE

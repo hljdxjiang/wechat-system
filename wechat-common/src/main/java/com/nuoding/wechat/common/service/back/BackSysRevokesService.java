@@ -26,7 +26,7 @@ public interface BackSysRevokesService {
      * @param backSysRevokesEntity 筛选条件
      * @return 查询结果
      */
-    List<BackSysRevokesEntity> queryByPage(BackSysRevokesEntity backSysRevokesEntity);
+    List<BackSysRevokesEntity> queryAllByLimit(BackSysRevokesEntity backSysRevokesEntity);
 
     /**
      * 新增数据

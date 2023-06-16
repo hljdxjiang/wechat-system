@@ -37,7 +37,7 @@ public class MallActivityConditionServiceImpl implements MallActivityConditionSe
      * @return 查询结果
      */
     @Override
-    public List<MallActivityConditionEntity> queryByPage(MallActivityConditionEntity mallActivityConditionEntity) {
+    public List<MallActivityConditionEntity> queryAllByLimit(MallActivityConditionEntity mallActivityConditionEntity) {
         return this.mallActivityConditionDao.queryAllByLimit(mallActivityConditionEntity);
     }
 

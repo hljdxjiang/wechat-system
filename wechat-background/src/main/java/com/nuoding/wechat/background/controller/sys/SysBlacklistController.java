@@ -43,7 +43,7 @@ public class SysBlacklistController {
     public MapResponse queryByPage(@RequestBody SysBlacklistEntity sysBlacklistEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<SysBlacklistEntity> list = this.sysBlacklistService.queryByPage(sysBlacklistEntity);
+        List<SysBlacklistEntity> list = this.sysBlacklistService.queryAllByLimit(sysBlacklistEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

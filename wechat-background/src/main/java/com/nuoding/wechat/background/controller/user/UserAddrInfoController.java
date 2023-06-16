@@ -43,7 +43,7 @@ public class UserAddrInfoController {
     public MapResponse queryByPage(@RequestBody UserAddrInfoEntity userAddrInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<UserAddrInfoEntity> list = this.userAddrInfoService.queryByPage(userAddrInfoEntity);
+        List<UserAddrInfoEntity> list = this.userAddrInfoService.queryAllByLimit(userAddrInfoEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

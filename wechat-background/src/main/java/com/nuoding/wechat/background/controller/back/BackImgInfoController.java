@@ -43,7 +43,7 @@ public class BackImgInfoController {
     public MapResponse queryByPage(@RequestBody BackImgInfoEntity backImgInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<BackImgInfoEntity> list = this.backImgInfoService.queryByPage(backImgInfoEntity);
+        List<BackImgInfoEntity> list = this.backImgInfoService.queryAllByLimit(backImgInfoEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

@@ -1,4 +1,4 @@
-package com.nuoding.wechat.api.service.strategy.impl;
+package com.nuoding.wechat.api.strategy;
 
 
 import com.nuoding.wechat.common.interceptor.SignatureIgnore;

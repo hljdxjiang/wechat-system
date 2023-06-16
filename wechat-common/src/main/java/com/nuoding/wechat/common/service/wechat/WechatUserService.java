@@ -26,7 +26,7 @@ public interface WechatUserService {
      * @param wechatUserEntity 筛选条件
      * @return 查询结果
      */
-    List<WechatUserEntity> queryByPage(WechatUserEntity wechatUserEntity);
+    List<WechatUserEntity> queryAllByLimit(WechatUserEntity wechatUserEntity);
 
     /**
      * 新增数据

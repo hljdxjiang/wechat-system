@@ -43,7 +43,7 @@ public class WechatMenusMatchruleController {
     public MapResponse queryByPage(@RequestBody WechatMenusMatchruleEntity wechatMenusMatchruleEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<WechatMenusMatchruleEntity> list = this.wechatMenusMatchruleService.queryByPage(wechatMenusMatchruleEntity);
+        List<WechatMenusMatchruleEntity> list = this.wechatMenusMatchruleService.queryAllByLimit(wechatMenusMatchruleEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

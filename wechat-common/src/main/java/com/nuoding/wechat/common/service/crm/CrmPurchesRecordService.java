@@ -26,7 +26,7 @@ public interface CrmPurchesRecordService {
      * @param crmPurchesRecordEntity 筛选条件
      * @return 查询结果
      */
-    List<CrmPurchesRecordEntity> queryByPage(CrmPurchesRecordEntity crmPurchesRecordEntity);
+    List<CrmPurchesRecordEntity> queryAllByLimit(CrmPurchesRecordEntity crmPurchesRecordEntity);
 
     /**
      * 新增数据

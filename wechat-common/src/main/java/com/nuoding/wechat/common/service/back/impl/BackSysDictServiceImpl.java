@@ -37,7 +37,7 @@ public class BackSysDictServiceImpl implements BackSysDictService {
      * @return 查询结果
      */
     @Override
-    public List<BackSysDictEntity> queryByPage(BackSysDictEntity backSysDictEntity) {
+    public List<BackSysDictEntity> queryAllByLimit(BackSysDictEntity backSysDictEntity) {
         return this.backSysDictDao.queryAllByLimit(backSysDictEntity);
     }
 

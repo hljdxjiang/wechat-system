@@ -43,7 +43,7 @@ public class MallLotteryUserController {
     public MapResponse queryByPage(@RequestBody MallLotteryUserEntity mallLotteryUserEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<MallLotteryUserEntity> list = this.mallLotteryUserService.queryByPage(mallLotteryUserEntity);
+        List<MallLotteryUserEntity> list = this.mallLotteryUserService.queryAllByLimit(mallLotteryUserEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

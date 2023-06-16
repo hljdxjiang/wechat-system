@@ -43,7 +43,7 @@ public class BackUserLoginRecordController {
     public MapResponse queryByPage(@RequestBody BackUserLoginRecordEntity backUserLoginRecordEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<BackUserLoginRecordEntity> list = this.backUserLoginRecordService.queryByPage(backUserLoginRecordEntity);
+        List<BackUserLoginRecordEntity> list = this.backUserLoginRecordService.queryAllByLimit(backUserLoginRecordEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

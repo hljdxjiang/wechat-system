@@ -43,7 +43,7 @@ public class BbsArticleInfoController {
     public MapResponse queryByPage(@RequestBody BbsArticleInfoEntity bbsArticleInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<BbsArticleInfoEntity> list = this.bbsArticleInfoService.queryByPage(bbsArticleInfoEntity);
+        List<BbsArticleInfoEntity> list = this.bbsArticleInfoService.queryAllByLimit(bbsArticleInfoEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

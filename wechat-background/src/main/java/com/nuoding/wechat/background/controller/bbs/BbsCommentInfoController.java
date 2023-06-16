@@ -43,7 +43,7 @@ public class BbsCommentInfoController {
     public MapResponse queryByPage(@RequestBody BbsCommentInfoEntity bbsCommentInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<BbsCommentInfoEntity> list = this.bbsCommentInfoService.queryByPage(bbsCommentInfoEntity);
+        List<BbsCommentInfoEntity> list = this.bbsCommentInfoService.queryAllByLimit(bbsCommentInfoEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

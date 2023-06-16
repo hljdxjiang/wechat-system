@@ -43,7 +43,7 @@ public class CrmBrandInfoController {
     public MapResponse queryByPage(@RequestBody CrmBrandInfoEntity crmBrandInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<CrmBrandInfoEntity> list = this.crmBrandInfoService.queryByPage(crmBrandInfoEntity);
+        List<CrmBrandInfoEntity> list = this.crmBrandInfoService.queryAllByLimit(crmBrandInfoEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

@@ -26,7 +26,7 @@ public interface BbsColumnInfoService {
      * @param bbsColumnInfoEntity 筛选条件
      * @return 查询结果
      */
-    List<BbsColumnInfoEntity> queryByPage(BbsColumnInfoEntity bbsColumnInfoEntity);
+    List<BbsColumnInfoEntity> queryAllByLimit(BbsColumnInfoEntity bbsColumnInfoEntity);
 
     /**
      * 新增数据

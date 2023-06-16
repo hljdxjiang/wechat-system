@@ -37,7 +37,7 @@ public class CrmPurchesDetailServiceImpl implements CrmPurchesDetailService {
      * @return 查询结果
      */
     @Override
-    public List<CrmPurchesDetailEntity> queryByPage(CrmPurchesDetailEntity crmPurchesDetailEntity) {
+    public List<CrmPurchesDetailEntity> queryAllByLimit(CrmPurchesDetailEntity crmPurchesDetailEntity) {
         return this.crmPurchesDetailDao.queryAllByLimit(crmPurchesDetailEntity);
     }
 

@@ -37,7 +37,7 @@ public class BackImgInfoServiceImpl implements BackImgInfoService {
      * @return 查询结果
      */
     @Override
-    public List<BackImgInfoEntity> queryByPage(BackImgInfoEntity backImgInfoEntity) {
+    public List<BackImgInfoEntity> queryAllByLimit(BackImgInfoEntity backImgInfoEntity) {
         return this.backImgInfoDao.queryAllByLimit(backImgInfoEntity);
     }
 

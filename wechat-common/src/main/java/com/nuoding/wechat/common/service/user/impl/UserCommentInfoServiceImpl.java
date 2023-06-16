@@ -37,7 +37,7 @@ public class UserCommentInfoServiceImpl implements UserCommentInfoService {
      * @return 查询结果
      */
     @Override
-    public List<UserCommentInfoEntity> queryByPage(UserCommentInfoEntity userCommentInfoEntity) {
+    public List<UserCommentInfoEntity> queryAllByLimit(UserCommentInfoEntity userCommentInfoEntity) {
         return this.userCommentInfoDao.queryAllByLimit(userCommentInfoEntity);
     }
 

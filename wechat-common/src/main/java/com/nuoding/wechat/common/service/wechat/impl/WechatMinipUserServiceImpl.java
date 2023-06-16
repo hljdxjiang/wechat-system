@@ -37,7 +37,7 @@ public class WechatMinipUserServiceImpl implements WechatMinipUserService {
      * @return 查询结果
      */
     @Override
-    public List<WechatMinipUserEntity> queryByPage(WechatMinipUserEntity wechatMinipUserEntity) {
+    public List<WechatMinipUserEntity> queryAllByLimit(WechatMinipUserEntity wechatMinipUserEntity) {
         return this.wechatMinipUserDao.queryAllByLimit(wechatMinipUserEntity);
     }
 

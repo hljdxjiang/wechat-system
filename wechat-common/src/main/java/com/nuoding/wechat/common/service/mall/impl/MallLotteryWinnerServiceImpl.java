@@ -37,7 +37,7 @@ public class MallLotteryWinnerServiceImpl implements MallLotteryWinnerService {
      * @return 查询结果
      */
     @Override
-    public List<MallLotteryWinnerEntity> queryByPage(MallLotteryWinnerEntity mallLotteryWinnerEntity) {
+    public List<MallLotteryWinnerEntity> queryAllByLimit(MallLotteryWinnerEntity mallLotteryWinnerEntity) {
         return this.mallLotteryWinnerDao.queryAllByLimit(mallLotteryWinnerEntity);
     }
 

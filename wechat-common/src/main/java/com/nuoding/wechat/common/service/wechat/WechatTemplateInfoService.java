@@ -26,7 +26,7 @@ public interface WechatTemplateInfoService {
      * @param wechatTemplateInfoEntity 筛选条件
      * @return 查询结果
      */
-    List<WechatTemplateInfoEntity> queryByPage(WechatTemplateInfoEntity wechatTemplateInfoEntity);
+    List<WechatTemplateInfoEntity> queryAllByLimit(WechatTemplateInfoEntity wechatTemplateInfoEntity);
 
     /**
      * 新增数据

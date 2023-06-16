@@ -26,7 +26,7 @@ public interface WechatSubscribeInfoService {
      * @param wechatSubscribeInfoEntity 筛选条件
      * @return 查询结果
      */
-    List<WechatSubscribeInfoEntity> queryByPage(WechatSubscribeInfoEntity wechatSubscribeInfoEntity);
+    List<WechatSubscribeInfoEntity> queryAllByLimit(WechatSubscribeInfoEntity wechatSubscribeInfoEntity);
 
     /**
      * 新增数据

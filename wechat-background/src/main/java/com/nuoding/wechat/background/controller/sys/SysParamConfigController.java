@@ -43,7 +43,7 @@ public class SysParamConfigController {
     public MapResponse queryByPage(@RequestBody SysParamConfigEntity sysParamConfigEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<SysParamConfigEntity> list = this.sysParamConfigService.queryByPage(sysParamConfigEntity);
+        List<SysParamConfigEntity> list = this.sysParamConfigService.queryAllByLimit(sysParamConfigEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

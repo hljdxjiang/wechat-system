@@ -26,7 +26,7 @@ public interface SysPageInfoService {
      * @param sysPageInfoEntity 筛选条件
      * @return 查询结果
      */
-    List<SysPageInfoEntity> queryByPage(SysPageInfoEntity sysPageInfoEntity);
+    List<SysPageInfoEntity> queryAllByLimit(SysPageInfoEntity sysPageInfoEntity);
 
     /**
      * 新增数据

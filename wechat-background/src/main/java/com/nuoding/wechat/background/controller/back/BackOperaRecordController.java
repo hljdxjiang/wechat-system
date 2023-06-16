@@ -43,7 +43,7 @@ public class BackOperaRecordController {
     public MapResponse queryByPage(@RequestBody BackOperaRecordEntity backOperaRecordEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<BackOperaRecordEntity> list = this.backOperaRecordService.queryByPage(backOperaRecordEntity);
+        List<BackOperaRecordEntity> list = this.backOperaRecordService.queryAllByLimit(backOperaRecordEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

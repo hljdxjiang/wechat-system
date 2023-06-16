@@ -37,7 +37,7 @@ public class MallUserCouponInfoServiceImpl implements MallUserCouponInfoService 
      * @return 查询结果
      */
     @Override
-    public List<MallUserCouponInfoEntity> queryByPage(MallUserCouponInfoEntity mallUserCouponInfoEntity) {
+    public List<MallUserCouponInfoEntity> queryAllByLimit(MallUserCouponInfoEntity mallUserCouponInfoEntity) {
         return this.mallUserCouponInfoDao.queryAllByLimit(mallUserCouponInfoEntity);
     }
 

@@ -37,7 +37,7 @@ public class BackSysRevokesServiceImpl implements BackSysRevokesService {
      * @return 查询结果
      */
     @Override
-    public List<BackSysRevokesEntity> queryByPage(BackSysRevokesEntity backSysRevokesEntity) {
+    public List<BackSysRevokesEntity> queryAllByLimit(BackSysRevokesEntity backSysRevokesEntity) {
         return this.backSysRevokesDao.queryAllByLimit(backSysRevokesEntity);
     }
 

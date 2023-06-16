@@ -37,7 +37,7 @@ public class MallSaleAddrServiceImpl implements MallSaleAddrService {
      * @return 查询结果
      */
     @Override
-    public List<MallSaleAddrEntity> queryByPage(MallSaleAddrEntity mallSaleAddrEntity) {
+    public List<MallSaleAddrEntity> queryAllByLimit(MallSaleAddrEntity mallSaleAddrEntity) {
         return this.mallSaleAddrDao.queryAllByLimit(mallSaleAddrEntity);
     }
 

@@ -26,7 +26,7 @@ public interface UserCommentInfoService {
      * @param userCommentInfoEntity 筛选条件
      * @return 查询结果
      */
-    List<UserCommentInfoEntity> queryByPage(UserCommentInfoEntity userCommentInfoEntity);
+    List<UserCommentInfoEntity> queryAllByLimit(UserCommentInfoEntity userCommentInfoEntity);
 
     /**
      * 新增数据

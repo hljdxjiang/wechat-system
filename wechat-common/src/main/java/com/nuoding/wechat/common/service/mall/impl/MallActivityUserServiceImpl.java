@@ -37,7 +37,7 @@ public class MallActivityUserServiceImpl implements MallActivityUserService {
      * @return 查询结果
      */
     @Override
-    public List<MallActivityUserEntity> queryByPage(MallActivityUserEntity mallActivityUserEntity) {
+    public List<MallActivityUserEntity> queryAllByLimit(MallActivityUserEntity mallActivityUserEntity) {
         return this.mallActivityUserDao.queryAllByLimit(mallActivityUserEntity);
     }
 

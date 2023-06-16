@@ -43,7 +43,7 @@ public class BackSysRevokesController {
     public MapResponse queryByPage(@RequestBody BackSysRevokesEntity backSysRevokesEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<BackSysRevokesEntity> list = this.backSysRevokesService.queryByPage(backSysRevokesEntity);
+        List<BackSysRevokesEntity> list = this.backSysRevokesService.queryAllByLimit(backSysRevokesEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

@@ -37,7 +37,7 @@ public class WechatSubscribeInfoServiceImpl implements WechatSubscribeInfoServic
      * @return 查询结果
      */
     @Override
-    public List<WechatSubscribeInfoEntity> queryByPage(WechatSubscribeInfoEntity wechatSubscribeInfoEntity) {
+    public List<WechatSubscribeInfoEntity> queryAllByLimit(WechatSubscribeInfoEntity wechatSubscribeInfoEntity) {
         return this.wechatSubscribeInfoDao.queryAllByLimit(wechatSubscribeInfoEntity);
     }
 

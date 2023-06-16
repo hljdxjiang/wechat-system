@@ -43,7 +43,7 @@ public class UserWinningRecordController {
     public MapResponse queryByPage(@RequestBody UserWinningRecordEntity userWinningRecordEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<UserWinningRecordEntity> list = this.userWinningRecordService.queryByPage(userWinningRecordEntity);
+        List<UserWinningRecordEntity> list = this.userWinningRecordService.queryAllByLimit(userWinningRecordEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

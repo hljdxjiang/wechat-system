@@ -43,7 +43,7 @@ public class CrmPurchesDetailController {
     public MapResponse queryByPage(@RequestBody CrmPurchesDetailEntity crmPurchesDetailEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<CrmPurchesDetailEntity> list = this.crmPurchesDetailService.queryByPage(crmPurchesDetailEntity);
+        List<CrmPurchesDetailEntity> list = this.crmPurchesDetailService.queryAllByLimit(crmPurchesDetailEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

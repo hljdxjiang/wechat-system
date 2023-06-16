@@ -37,7 +37,7 @@ public class SysTenantTokenServiceImpl implements SysTenantTokenService {
      * @return 查询结果
      */
     @Override
-    public List<SysTenantTokenEntity> queryByPage(SysTenantTokenEntity sysTenantTokenEntity) {
+    public List<SysTenantTokenEntity> queryAllByLimit(SysTenantTokenEntity sysTenantTokenEntity) {
         return this.sysTenantTokenDao.queryAllByLimit(sysTenantTokenEntity);
     }
 

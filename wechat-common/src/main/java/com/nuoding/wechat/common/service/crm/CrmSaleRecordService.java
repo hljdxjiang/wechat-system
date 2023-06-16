@@ -26,7 +26,7 @@ public interface CrmSaleRecordService {
      * @param crmSaleRecordEntity 筛选条件
      * @return 查询结果
      */
-    List<CrmSaleRecordEntity> queryByPage(CrmSaleRecordEntity crmSaleRecordEntity);
+    List<CrmSaleRecordEntity> queryAllByLimit(CrmSaleRecordEntity crmSaleRecordEntity);
 
     /**
      * 新增数据

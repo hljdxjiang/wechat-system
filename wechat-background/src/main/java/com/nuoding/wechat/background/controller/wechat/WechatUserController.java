@@ -43,7 +43,7 @@ public class WechatUserController {
     public MapResponse queryByPage(@RequestBody WechatUserEntity wechatUserEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<WechatUserEntity> list = this.wechatUserService.queryByPage(wechatUserEntity);
+        List<WechatUserEntity> list = this.wechatUserService.queryAllByLimit(wechatUserEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

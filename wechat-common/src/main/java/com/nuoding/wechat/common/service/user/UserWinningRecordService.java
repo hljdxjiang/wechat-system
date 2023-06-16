@@ -26,7 +26,7 @@ public interface UserWinningRecordService {
      * @param userWinningRecordEntity 筛选条件
      * @return 查询结果
      */
-    List<UserWinningRecordEntity> queryByPage(UserWinningRecordEntity userWinningRecordEntity);
+    List<UserWinningRecordEntity> queryAllByLimit(UserWinningRecordEntity userWinningRecordEntity);
 
     /**
      * 新增数据

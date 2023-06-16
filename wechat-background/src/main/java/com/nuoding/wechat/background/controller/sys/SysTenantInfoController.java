@@ -43,7 +43,7 @@ public class SysTenantInfoController {
     public MapResponse queryByPage(@RequestBody SysTenantInfoEntity sysTenantInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<SysTenantInfoEntity> list = this.sysTenantInfoService.queryByPage(sysTenantInfoEntity);
+        List<SysTenantInfoEntity> list = this.sysTenantInfoService.queryAllByLimit(sysTenantInfoEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

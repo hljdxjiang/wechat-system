@@ -26,7 +26,7 @@ public interface CrmSalePayInfoService {
      * @param crmSalePayInfoEntity 筛选条件
      * @return 查询结果
      */
-    List<CrmSalePayInfoEntity> queryByPage(CrmSalePayInfoEntity crmSalePayInfoEntity);
+    List<CrmSalePayInfoEntity> queryAllByLimit(CrmSalePayInfoEntity crmSalePayInfoEntity);
 
     /**
      * 新增数据

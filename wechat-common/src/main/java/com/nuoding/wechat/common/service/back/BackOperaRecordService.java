@@ -26,7 +26,7 @@ public interface BackOperaRecordService {
      * @param backOperaRecordEntity 筛选条件
      * @return 查询结果
      */
-    List<BackOperaRecordEntity> queryByPage(BackOperaRecordEntity backOperaRecordEntity);
+    List<BackOperaRecordEntity> queryAllByLimit(BackOperaRecordEntity backOperaRecordEntity);
 
     /**
      * 新增数据

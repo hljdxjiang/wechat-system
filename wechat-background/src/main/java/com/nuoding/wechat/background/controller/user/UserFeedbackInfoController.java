@@ -43,7 +43,7 @@ public class UserFeedbackInfoController {
     public MapResponse queryByPage(@RequestBody UserFeedbackInfoEntity userFeedbackInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<UserFeedbackInfoEntity> list = this.userFeedbackInfoService.queryByPage(userFeedbackInfoEntity);
+        List<UserFeedbackInfoEntity> list = this.userFeedbackInfoService.queryAllByLimit(userFeedbackInfoEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

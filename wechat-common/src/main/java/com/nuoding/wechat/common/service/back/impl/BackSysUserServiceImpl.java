@@ -37,7 +37,7 @@ public class BackSysUserServiceImpl implements BackSysUserService {
      * @return 查询结果
      */
     @Override
-    public List<BackSysUserEntity> queryByPage(BackSysUserEntity backSysUserEntity) {
+    public List<BackSysUserEntity> queryAllByLimit(BackSysUserEntity backSysUserEntity) {
         return this.backSysUserDao.queryAllByLimit(backSysUserEntity);
     }
 

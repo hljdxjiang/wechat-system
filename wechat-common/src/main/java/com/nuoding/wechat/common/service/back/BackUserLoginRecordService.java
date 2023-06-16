@@ -26,7 +26,7 @@ public interface BackUserLoginRecordService {
      * @param backUserLoginRecordEntity 筛选条件
      * @return 查询结果
      */
-    List<BackUserLoginRecordEntity> queryByPage(BackUserLoginRecordEntity backUserLoginRecordEntity);
+    List<BackUserLoginRecordEntity> queryAllByLimit(BackUserLoginRecordEntity backUserLoginRecordEntity);
 
     /**
      * 新增数据

@@ -37,7 +37,7 @@ public class SysTenantInfoServiceImpl implements SysTenantInfoService {
      * @return 查询结果
      */
     @Override
-    public List<SysTenantInfoEntity> queryByPage(SysTenantInfoEntity sysTenantInfoEntity) {
+    public List<SysTenantInfoEntity> queryAllByLimit(SysTenantInfoEntity sysTenantInfoEntity) {
         return this.sysTenantInfoDao.queryAllByLimit(sysTenantInfoEntity);
     }
 

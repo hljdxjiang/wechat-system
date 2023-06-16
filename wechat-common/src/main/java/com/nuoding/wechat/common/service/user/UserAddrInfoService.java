@@ -26,7 +26,7 @@ public interface UserAddrInfoService {
      * @param userAddrInfoEntity 筛选条件
      * @return 查询结果
      */
-    List<UserAddrInfoEntity> queryByPage(UserAddrInfoEntity userAddrInfoEntity);
+    List<UserAddrInfoEntity> queryAllByLimit(UserAddrInfoEntity userAddrInfoEntity);
 
     /**
      * 新增数据

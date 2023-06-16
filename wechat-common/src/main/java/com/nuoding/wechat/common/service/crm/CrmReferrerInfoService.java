@@ -26,7 +26,7 @@ public interface CrmReferrerInfoService {
      * @param crmReferrerInfoEntity 筛选条件
      * @return 查询结果
      */
-    List<CrmReferrerInfoEntity> queryByPage(CrmReferrerInfoEntity crmReferrerInfoEntity);
+    List<CrmReferrerInfoEntity> queryAllByLimit(CrmReferrerInfoEntity crmReferrerInfoEntity);
 
     /**
      * 新增数据

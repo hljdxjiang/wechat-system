@@ -43,7 +43,7 @@ public class MallCardInfoController {
     public MapResponse queryByPage(@RequestBody MallCardInfoEntity mallCardInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<MallCardInfoEntity> list = this.mallCardInfoService.queryByPage(mallCardInfoEntity);
+        List<MallCardInfoEntity> list = this.mallCardInfoService.queryAllByLimit(mallCardInfoEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

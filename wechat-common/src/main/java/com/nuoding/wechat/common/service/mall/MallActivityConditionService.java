@@ -26,7 +26,7 @@ public interface MallActivityConditionService {
      * @param mallActivityConditionEntity 筛选条件
      * @return 查询结果
      */
-    List<MallActivityConditionEntity> queryByPage(MallActivityConditionEntity mallActivityConditionEntity);
+    List<MallActivityConditionEntity> queryAllByLimit(MallActivityConditionEntity mallActivityConditionEntity);
 
     /**
      * 新增数据

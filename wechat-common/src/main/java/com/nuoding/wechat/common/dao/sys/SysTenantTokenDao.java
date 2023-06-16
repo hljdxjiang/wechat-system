@@ -9,7 +9,7 @@ import java.util.List;
  * 企业token信息表
  *
  * @Author: hzq
- * @Date: 2023-06-05 17:49:46
+ * @Date: 2023-06-08 17:37:04
  */
 public interface SysTenantTokenDao {
 

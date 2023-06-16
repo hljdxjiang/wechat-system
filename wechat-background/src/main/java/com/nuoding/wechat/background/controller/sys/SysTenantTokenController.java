@@ -43,7 +43,7 @@ public class SysTenantTokenController {
     public MapResponse queryByPage(@RequestBody SysTenantTokenEntity sysTenantTokenEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<SysTenantTokenEntity> list = this.sysTenantTokenService.queryByPage(sysTenantTokenEntity);
+        List<SysTenantTokenEntity> list = this.sysTenantTokenService.queryAllByLimit(sysTenantTokenEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

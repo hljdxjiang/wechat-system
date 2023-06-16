@@ -26,7 +26,7 @@ public interface WechatMenusMatchruleService {
      * @param wechatMenusMatchruleEntity 筛选条件
      * @return 查询结果
      */
-    List<WechatMenusMatchruleEntity> queryByPage(WechatMenusMatchruleEntity wechatMenusMatchruleEntity);
+    List<WechatMenusMatchruleEntity> queryAllByLimit(WechatMenusMatchruleEntity wechatMenusMatchruleEntity);
 
     /**
      * 新增数据

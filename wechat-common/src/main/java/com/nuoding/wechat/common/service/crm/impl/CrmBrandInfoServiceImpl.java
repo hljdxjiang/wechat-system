@@ -37,7 +37,7 @@ public class CrmBrandInfoServiceImpl implements CrmBrandInfoService {
      * @return 查询结果
      */
     @Override
-    public List<CrmBrandInfoEntity> queryByPage(CrmBrandInfoEntity crmBrandInfoEntity) {
+    public List<CrmBrandInfoEntity> queryAllByLimit(CrmBrandInfoEntity crmBrandInfoEntity) {
         return this.crmBrandInfoDao.queryAllByLimit(crmBrandInfoEntity);
     }
 

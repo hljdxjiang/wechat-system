@@ -26,7 +26,7 @@ public interface WechatMenusDetailService {
      * @param wechatMenusDetailEntity 筛选条件
      * @return 查询结果
      */
-    List<WechatMenusDetailEntity> queryByPage(WechatMenusDetailEntity wechatMenusDetailEntity);
+    List<WechatMenusDetailEntity> queryAllByLimit(WechatMenusDetailEntity wechatMenusDetailEntity);
 
     /**
      * 新增数据

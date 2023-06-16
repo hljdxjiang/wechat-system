@@ -37,7 +37,7 @@ public class UserAddrInfoServiceImpl implements UserAddrInfoService {
      * @return 查询结果
      */
     @Override
-    public List<UserAddrInfoEntity> queryByPage(UserAddrInfoEntity userAddrInfoEntity) {
+    public List<UserAddrInfoEntity> queryAllByLimit(UserAddrInfoEntity userAddrInfoEntity) {
         return this.userAddrInfoDao.queryAllByLimit(userAddrInfoEntity);
     }
 

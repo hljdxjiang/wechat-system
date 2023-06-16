@@ -37,7 +37,7 @@ public class UserRegInfoServiceImpl implements UserRegInfoService {
      * @return 查询结果
      */
     @Override
-    public List<UserRegInfoEntity> queryByPage(UserRegInfoEntity userRegInfoEntity) {
+    public List<UserRegInfoEntity> queryAllByLimit(UserRegInfoEntity userRegInfoEntity) {
         return this.userRegInfoDao.queryAllByLimit(userRegInfoEntity);
     }
 

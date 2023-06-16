@@ -37,7 +37,7 @@ public class SysBlacklistServiceImpl implements SysBlacklistService {
      * @return 查询结果
      */
     @Override
-    public List<SysBlacklistEntity> queryByPage(SysBlacklistEntity sysBlacklistEntity) {
+    public List<SysBlacklistEntity> queryAllByLimit(SysBlacklistEntity sysBlacklistEntity) {
         return this.sysBlacklistDao.queryAllByLimit(sysBlacklistEntity);
     }
 

@@ -43,7 +43,7 @@ public class CrmReferrerInfoController {
     public MapResponse queryByPage(@RequestBody CrmReferrerInfoEntity crmReferrerInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<CrmReferrerInfoEntity> list = this.crmReferrerInfoService.queryByPage(crmReferrerInfoEntity);
+        List<CrmReferrerInfoEntity> list = this.crmReferrerInfoService.queryAllByLimit(crmReferrerInfoEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

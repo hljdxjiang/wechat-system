@@ -37,7 +37,7 @@ public class CrmSaleRecordServiceImpl implements CrmSaleRecordService {
      * @return 查询结果
      */
     @Override
-    public List<CrmSaleRecordEntity> queryByPage(CrmSaleRecordEntity crmSaleRecordEntity) {
+    public List<CrmSaleRecordEntity> queryAllByLimit(CrmSaleRecordEntity crmSaleRecordEntity) {
         return this.crmSaleRecordDao.queryAllByLimit(crmSaleRecordEntity);
     }
 

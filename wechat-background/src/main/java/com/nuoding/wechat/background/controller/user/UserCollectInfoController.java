@@ -43,7 +43,7 @@ public class UserCollectInfoController {
     public MapResponse queryByPage(@RequestBody UserCollectInfoEntity userCollectInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<UserCollectInfoEntity> list = this.userCollectInfoService.queryByPage(userCollectInfoEntity);
+        List<UserCollectInfoEntity> list = this.userCollectInfoService.queryAllByLimit(userCollectInfoEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

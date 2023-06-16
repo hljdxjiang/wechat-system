@@ -37,7 +37,7 @@ public class SysPageTypeInfoServiceImpl implements SysPageTypeInfoService {
      * @return 查询结果
      */
     @Override
-    public List<SysPageTypeInfoEntity> queryByPage(SysPageTypeInfoEntity sysPageTypeInfoEntity) {
+    public List<SysPageTypeInfoEntity> queryAllByLimit(SysPageTypeInfoEntity sysPageTypeInfoEntity) {
         return this.sysPageTypeInfoDao.queryAllByLimit(sysPageTypeInfoEntity);
     }
 

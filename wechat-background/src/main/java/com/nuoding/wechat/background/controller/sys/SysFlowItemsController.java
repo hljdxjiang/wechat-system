@@ -43,7 +43,7 @@ public class SysFlowItemsController {
     public MapResponse queryByPage(@RequestBody SysFlowItemsEntity sysFlowItemsEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<SysFlowItemsEntity> list = this.sysFlowItemsService.queryByPage(sysFlowItemsEntity);
+        List<SysFlowItemsEntity> list = this.sysFlowItemsService.queryAllByLimit(sysFlowItemsEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);

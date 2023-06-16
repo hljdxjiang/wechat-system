@@ -43,7 +43,7 @@ public class MallSaleAddrController {
     public MapResponse queryByPage(@RequestBody MallSaleAddrEntity mallSaleAddrEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
         PageHelper.startPage(dto.getPage(), dto.getSize());
-        List<MallSaleAddrEntity> list = this.mallSaleAddrService.queryByPage(mallSaleAddrEntity);
+        List<MallSaleAddrEntity> list = this.mallSaleAddrService.queryAllByLimit(mallSaleAddrEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);
