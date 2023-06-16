@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.mall.MallLotteryDao;
 import com.nuoding.wechat.common.entity.mall.MallLotteryEntity;
 import com.nuoding.wechat.common.service.mall.MallLotteryService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class MallLotteryServiceImpl implements MallLotteryService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private MallLotteryDao mallLotteryDao;
 
@@ -38,6 +45,7 @@ public class MallLotteryServiceImpl implements MallLotteryService {
      */
     @Override
     public List<MallLotteryEntity> queryAllByLimit(MallLotteryEntity mallLotteryEntity) {
+        logger.info("queryAllByLimit begin.mallLotteryEntity:{}", JsonUtil.obj2Json(mallLotteryEntity));
         return this.mallLotteryDao.queryAllByLimit(mallLotteryEntity);
     }
 
@@ -49,6 +57,7 @@ public class MallLotteryServiceImpl implements MallLotteryService {
      */
     @Override
     public MallLotteryEntity insert(MallLotteryEntity mallLotteryEntity) {
+        logger.info("insert begin.mallLotteryEntity:{}", JsonUtil.obj2Json(mallLotteryEntity));
         this.mallLotteryDao.insert(mallLotteryEntity);
         return mallLotteryEntity;
     }
@@ -61,6 +70,7 @@ public class MallLotteryServiceImpl implements MallLotteryService {
      */
     @Override
     public MallLotteryEntity update(MallLotteryEntity mallLotteryEntity) {
+        logger.info("update begin.mallLotteryEntity:{}", JsonUtil.obj2Json(mallLotteryEntity));
         this.mallLotteryDao.update(mallLotteryEntity);
         return this.queryById(mallLotteryEntity.getId());
     }
@@ -73,6 +83,7 @@ public class MallLotteryServiceImpl implements MallLotteryService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.mallLotteryEntity:{}", id);
         return this.mallLotteryDao.deleteById(id) > 0;
     }
 }

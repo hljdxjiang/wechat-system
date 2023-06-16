@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.user.UserPropertyDao;
 import com.nuoding.wechat.common.entity.user.UserPropertyEntity;
 import com.nuoding.wechat.common.service.user.UserPropertyService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class UserPropertyServiceImpl implements UserPropertyService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private UserPropertyDao userPropertyDao;
 
@@ -38,6 +45,7 @@ public class UserPropertyServiceImpl implements UserPropertyService {
      */
     @Override
     public List<UserPropertyEntity> queryAllByLimit(UserPropertyEntity userPropertyEntity) {
+        logger.info("queryAllByLimit begin.userPropertyEntity:{}", JsonUtil.obj2Json(userPropertyEntity));
         return this.userPropertyDao.queryAllByLimit(userPropertyEntity);
     }
 
@@ -49,6 +57,7 @@ public class UserPropertyServiceImpl implements UserPropertyService {
      */
     @Override
     public UserPropertyEntity insert(UserPropertyEntity userPropertyEntity) {
+        logger.info("insert begin.userPropertyEntity:{}", JsonUtil.obj2Json(userPropertyEntity));
         this.userPropertyDao.insert(userPropertyEntity);
         return userPropertyEntity;
     }
@@ -61,6 +70,7 @@ public class UserPropertyServiceImpl implements UserPropertyService {
      */
     @Override
     public UserPropertyEntity update(UserPropertyEntity userPropertyEntity) {
+        logger.info("update begin.userPropertyEntity:{}", JsonUtil.obj2Json(userPropertyEntity));
         this.userPropertyDao.update(userPropertyEntity);
         return this.queryById(userPropertyEntity.getId());
     }
@@ -73,6 +83,7 @@ public class UserPropertyServiceImpl implements UserPropertyService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.userPropertyEntity:{}", id);
         return this.userPropertyDao.deleteById(id) > 0;
     }
 }

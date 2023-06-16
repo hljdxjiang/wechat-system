@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.mall.MallLotteryConditionDao;
 import com.nuoding.wechat.common.entity.mall.MallLotteryConditionEntity;
 import com.nuoding.wechat.common.service.mall.MallLotteryConditionService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class MallLotteryConditionServiceImpl implements MallLotteryConditionService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private MallLotteryConditionDao mallLotteryConditionDao;
 
@@ -38,6 +45,7 @@ public class MallLotteryConditionServiceImpl implements MallLotteryConditionServ
      */
     @Override
     public List<MallLotteryConditionEntity> queryAllByLimit(MallLotteryConditionEntity mallLotteryConditionEntity) {
+        logger.info("queryAllByLimit begin.mallLotteryConditionEntity:{}", JsonUtil.obj2Json(mallLotteryConditionEntity));
         return this.mallLotteryConditionDao.queryAllByLimit(mallLotteryConditionEntity);
     }
 
@@ -49,6 +57,7 @@ public class MallLotteryConditionServiceImpl implements MallLotteryConditionServ
      */
     @Override
     public MallLotteryConditionEntity insert(MallLotteryConditionEntity mallLotteryConditionEntity) {
+        logger.info("insert begin.mallLotteryConditionEntity:{}", JsonUtil.obj2Json(mallLotteryConditionEntity));
         this.mallLotteryConditionDao.insert(mallLotteryConditionEntity);
         return mallLotteryConditionEntity;
     }
@@ -61,6 +70,7 @@ public class MallLotteryConditionServiceImpl implements MallLotteryConditionServ
      */
     @Override
     public MallLotteryConditionEntity update(MallLotteryConditionEntity mallLotteryConditionEntity) {
+        logger.info("update begin.mallLotteryConditionEntity:{}", JsonUtil.obj2Json(mallLotteryConditionEntity));
         this.mallLotteryConditionDao.update(mallLotteryConditionEntity);
         return this.queryById(mallLotteryConditionEntity.getId());
     }
@@ -73,6 +83,7 @@ public class MallLotteryConditionServiceImpl implements MallLotteryConditionServ
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.mallLotteryConditionEntity:{}", id);
         return this.mallLotteryConditionDao.deleteById(id) > 0;
     }
 }

@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.wechat.WechatSubscribeInfoDao;
 import com.nuoding.wechat.common.entity.wechat.WechatSubscribeInfoEntity;
 import com.nuoding.wechat.common.service.wechat.WechatSubscribeInfoService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class WechatSubscribeInfoServiceImpl implements WechatSubscribeInfoService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private WechatSubscribeInfoDao wechatSubscribeInfoDao;
 
@@ -38,6 +45,7 @@ public class WechatSubscribeInfoServiceImpl implements WechatSubscribeInfoServic
      */
     @Override
     public List<WechatSubscribeInfoEntity> queryAllByLimit(WechatSubscribeInfoEntity wechatSubscribeInfoEntity) {
+        logger.info("queryAllByLimit begin.wechatSubscribeInfoEntity:{}", JsonUtil.obj2Json(wechatSubscribeInfoEntity));
         return this.wechatSubscribeInfoDao.queryAllByLimit(wechatSubscribeInfoEntity);
     }
 
@@ -49,6 +57,7 @@ public class WechatSubscribeInfoServiceImpl implements WechatSubscribeInfoServic
      */
     @Override
     public WechatSubscribeInfoEntity insert(WechatSubscribeInfoEntity wechatSubscribeInfoEntity) {
+        logger.info("insert begin.wechatSubscribeInfoEntity:{}", JsonUtil.obj2Json(wechatSubscribeInfoEntity));
         this.wechatSubscribeInfoDao.insert(wechatSubscribeInfoEntity);
         return wechatSubscribeInfoEntity;
     }
@@ -61,6 +70,7 @@ public class WechatSubscribeInfoServiceImpl implements WechatSubscribeInfoServic
      */
     @Override
     public WechatSubscribeInfoEntity update(WechatSubscribeInfoEntity wechatSubscribeInfoEntity) {
+        logger.info("update begin.wechatSubscribeInfoEntity:{}", JsonUtil.obj2Json(wechatSubscribeInfoEntity));
         this.wechatSubscribeInfoDao.update(wechatSubscribeInfoEntity);
         return this.queryById(wechatSubscribeInfoEntity.getId());
     }
@@ -73,6 +83,7 @@ public class WechatSubscribeInfoServiceImpl implements WechatSubscribeInfoServic
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.wechatSubscribeInfoEntity:{}", id);
         return this.wechatSubscribeInfoDao.deleteById(id) > 0;
     }
 }

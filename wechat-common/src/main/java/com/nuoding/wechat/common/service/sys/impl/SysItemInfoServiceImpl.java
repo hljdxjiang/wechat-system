@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.sys.SysItemInfoDao;
 import com.nuoding.wechat.common.entity.sys.SysItemInfoEntity;
 import com.nuoding.wechat.common.service.sys.SysItemInfoService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class SysItemInfoServiceImpl implements SysItemInfoService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private SysItemInfoDao sysItemInfoDao;
 
@@ -38,6 +45,7 @@ public class SysItemInfoServiceImpl implements SysItemInfoService {
      */
     @Override
     public List<SysItemInfoEntity> queryAllByLimit(SysItemInfoEntity sysItemInfoEntity) {
+        logger.info("queryAllByLimit begin.sysItemInfoEntity:{}", JsonUtil.obj2Json(sysItemInfoEntity));
         return this.sysItemInfoDao.queryAllByLimit(sysItemInfoEntity);
     }
 
@@ -49,6 +57,7 @@ public class SysItemInfoServiceImpl implements SysItemInfoService {
      */
     @Override
     public SysItemInfoEntity insert(SysItemInfoEntity sysItemInfoEntity) {
+        logger.info("insert begin.sysItemInfoEntity:{}", JsonUtil.obj2Json(sysItemInfoEntity));
         this.sysItemInfoDao.insert(sysItemInfoEntity);
         return sysItemInfoEntity;
     }
@@ -61,6 +70,7 @@ public class SysItemInfoServiceImpl implements SysItemInfoService {
      */
     @Override
     public SysItemInfoEntity update(SysItemInfoEntity sysItemInfoEntity) {
+        logger.info("update begin.sysItemInfoEntity:{}", JsonUtil.obj2Json(sysItemInfoEntity));
         this.sysItemInfoDao.update(sysItemInfoEntity);
         return this.queryById(sysItemInfoEntity.getId());
     }
@@ -73,6 +83,7 @@ public class SysItemInfoServiceImpl implements SysItemInfoService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.sysItemInfoEntity:{}", id);
         return this.sysItemInfoDao.deleteById(id) > 0;
     }
 }

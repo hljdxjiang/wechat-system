@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.mall.MallSaleAddrDao;
 import com.nuoding.wechat.common.entity.mall.MallSaleAddrEntity;
 import com.nuoding.wechat.common.service.mall.MallSaleAddrService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class MallSaleAddrServiceImpl implements MallSaleAddrService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private MallSaleAddrDao mallSaleAddrDao;
 
@@ -38,6 +45,7 @@ public class MallSaleAddrServiceImpl implements MallSaleAddrService {
      */
     @Override
     public List<MallSaleAddrEntity> queryAllByLimit(MallSaleAddrEntity mallSaleAddrEntity) {
+        logger.info("queryAllByLimit begin.mallSaleAddrEntity:{}", JsonUtil.obj2Json(mallSaleAddrEntity));
         return this.mallSaleAddrDao.queryAllByLimit(mallSaleAddrEntity);
     }
 
@@ -49,6 +57,7 @@ public class MallSaleAddrServiceImpl implements MallSaleAddrService {
      */
     @Override
     public MallSaleAddrEntity insert(MallSaleAddrEntity mallSaleAddrEntity) {
+        logger.info("insert begin.mallSaleAddrEntity:{}", JsonUtil.obj2Json(mallSaleAddrEntity));
         this.mallSaleAddrDao.insert(mallSaleAddrEntity);
         return mallSaleAddrEntity;
     }
@@ -61,6 +70,7 @@ public class MallSaleAddrServiceImpl implements MallSaleAddrService {
      */
     @Override
     public MallSaleAddrEntity update(MallSaleAddrEntity mallSaleAddrEntity) {
+        logger.info("update begin.mallSaleAddrEntity:{}", JsonUtil.obj2Json(mallSaleAddrEntity));
         this.mallSaleAddrDao.update(mallSaleAddrEntity);
         return this.queryById(mallSaleAddrEntity.getId());
     }
@@ -73,6 +83,7 @@ public class MallSaleAddrServiceImpl implements MallSaleAddrService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.mallSaleAddrEntity:{}", id);
         return this.mallSaleAddrDao.deleteById(id) > 0;
     }
 }

@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.user.UserCollectInfoDao;
 import com.nuoding.wechat.common.entity.user.UserCollectInfoEntity;
 import com.nuoding.wechat.common.service.user.UserCollectInfoService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class UserCollectInfoServiceImpl implements UserCollectInfoService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private UserCollectInfoDao userCollectInfoDao;
 
@@ -38,6 +45,7 @@ public class UserCollectInfoServiceImpl implements UserCollectInfoService {
      */
     @Override
     public List<UserCollectInfoEntity> queryAllByLimit(UserCollectInfoEntity userCollectInfoEntity) {
+        logger.info("queryAllByLimit begin.userCollectInfoEntity:{}", JsonUtil.obj2Json(userCollectInfoEntity));
         return this.userCollectInfoDao.queryAllByLimit(userCollectInfoEntity);
     }
 
@@ -49,6 +57,7 @@ public class UserCollectInfoServiceImpl implements UserCollectInfoService {
      */
     @Override
     public UserCollectInfoEntity insert(UserCollectInfoEntity userCollectInfoEntity) {
+        logger.info("insert begin.userCollectInfoEntity:{}", JsonUtil.obj2Json(userCollectInfoEntity));
         this.userCollectInfoDao.insert(userCollectInfoEntity);
         return userCollectInfoEntity;
     }
@@ -61,6 +70,7 @@ public class UserCollectInfoServiceImpl implements UserCollectInfoService {
      */
     @Override
     public UserCollectInfoEntity update(UserCollectInfoEntity userCollectInfoEntity) {
+        logger.info("update begin.userCollectInfoEntity:{}", JsonUtil.obj2Json(userCollectInfoEntity));
         this.userCollectInfoDao.update(userCollectInfoEntity);
         return this.queryById(userCollectInfoEntity.getId());
     }
@@ -73,6 +83,7 @@ public class UserCollectInfoServiceImpl implements UserCollectInfoService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.userCollectInfoEntity:{}", id);
         return this.userCollectInfoDao.deleteById(id) > 0;
     }
 }

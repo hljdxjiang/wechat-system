@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.mall.MallCardInfoDao;
 import com.nuoding.wechat.common.entity.mall.MallCardInfoEntity;
 import com.nuoding.wechat.common.service.mall.MallCardInfoService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class MallCardInfoServiceImpl implements MallCardInfoService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private MallCardInfoDao mallCardInfoDao;
 
@@ -38,6 +45,7 @@ public class MallCardInfoServiceImpl implements MallCardInfoService {
      */
     @Override
     public List<MallCardInfoEntity> queryAllByLimit(MallCardInfoEntity mallCardInfoEntity) {
+        logger.info("queryAllByLimit begin.mallCardInfoEntity:{}", JsonUtil.obj2Json(mallCardInfoEntity));
         return this.mallCardInfoDao.queryAllByLimit(mallCardInfoEntity);
     }
 
@@ -49,6 +57,7 @@ public class MallCardInfoServiceImpl implements MallCardInfoService {
      */
     @Override
     public MallCardInfoEntity insert(MallCardInfoEntity mallCardInfoEntity) {
+        logger.info("insert begin.mallCardInfoEntity:{}", JsonUtil.obj2Json(mallCardInfoEntity));
         this.mallCardInfoDao.insert(mallCardInfoEntity);
         return mallCardInfoEntity;
     }
@@ -61,6 +70,7 @@ public class MallCardInfoServiceImpl implements MallCardInfoService {
      */
     @Override
     public MallCardInfoEntity update(MallCardInfoEntity mallCardInfoEntity) {
+        logger.info("update begin.mallCardInfoEntity:{}", JsonUtil.obj2Json(mallCardInfoEntity));
         this.mallCardInfoDao.update(mallCardInfoEntity);
         return this.queryById(mallCardInfoEntity.getId());
     }
@@ -73,6 +83,7 @@ public class MallCardInfoServiceImpl implements MallCardInfoService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.mallCardInfoEntity:{}", id);
         return this.mallCardInfoDao.deleteById(id) > 0;
     }
 }

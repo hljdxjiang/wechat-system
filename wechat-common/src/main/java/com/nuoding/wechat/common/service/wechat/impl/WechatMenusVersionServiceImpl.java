@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.wechat.WechatMenusVersionDao;
 import com.nuoding.wechat.common.entity.wechat.WechatMenusVersionEntity;
 import com.nuoding.wechat.common.service.wechat.WechatMenusVersionService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class WechatMenusVersionServiceImpl implements WechatMenusVersionService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private WechatMenusVersionDao wechatMenusVersionDao;
 
@@ -38,6 +45,7 @@ public class WechatMenusVersionServiceImpl implements WechatMenusVersionService 
      */
     @Override
     public List<WechatMenusVersionEntity> queryAllByLimit(WechatMenusVersionEntity wechatMenusVersionEntity) {
+        logger.info("queryAllByLimit begin.wechatMenusVersionEntity:{}", JsonUtil.obj2Json(wechatMenusVersionEntity));
         return this.wechatMenusVersionDao.queryAllByLimit(wechatMenusVersionEntity);
     }
 
@@ -49,6 +57,7 @@ public class WechatMenusVersionServiceImpl implements WechatMenusVersionService 
      */
     @Override
     public WechatMenusVersionEntity insert(WechatMenusVersionEntity wechatMenusVersionEntity) {
+        logger.info("insert begin.wechatMenusVersionEntity:{}", JsonUtil.obj2Json(wechatMenusVersionEntity));
         this.wechatMenusVersionDao.insert(wechatMenusVersionEntity);
         return wechatMenusVersionEntity;
     }
@@ -61,6 +70,7 @@ public class WechatMenusVersionServiceImpl implements WechatMenusVersionService 
      */
     @Override
     public WechatMenusVersionEntity update(WechatMenusVersionEntity wechatMenusVersionEntity) {
+        logger.info("update begin.wechatMenusVersionEntity:{}", JsonUtil.obj2Json(wechatMenusVersionEntity));
         this.wechatMenusVersionDao.update(wechatMenusVersionEntity);
         return this.queryById(wechatMenusVersionEntity.getId());
     }
@@ -73,6 +83,7 @@ public class WechatMenusVersionServiceImpl implements WechatMenusVersionService 
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.wechatMenusVersionEntity:{}", id);
         return this.wechatMenusVersionDao.deleteById(id) > 0;
     }
 }

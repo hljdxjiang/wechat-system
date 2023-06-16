@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.crm.CrmPurchesRecordDao;
 import com.nuoding.wechat.common.entity.crm.CrmPurchesRecordEntity;
 import com.nuoding.wechat.common.service.crm.CrmPurchesRecordService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class CrmPurchesRecordServiceImpl implements CrmPurchesRecordService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private CrmPurchesRecordDao crmPurchesRecordDao;
 
@@ -38,6 +45,7 @@ public class CrmPurchesRecordServiceImpl implements CrmPurchesRecordService {
      */
     @Override
     public List<CrmPurchesRecordEntity> queryAllByLimit(CrmPurchesRecordEntity crmPurchesRecordEntity) {
+        logger.info("queryAllByLimit begin.crmPurchesRecordEntity:{}", JsonUtil.obj2Json(crmPurchesRecordEntity));
         return this.crmPurchesRecordDao.queryAllByLimit(crmPurchesRecordEntity);
     }
 
@@ -49,6 +57,7 @@ public class CrmPurchesRecordServiceImpl implements CrmPurchesRecordService {
      */
     @Override
     public CrmPurchesRecordEntity insert(CrmPurchesRecordEntity crmPurchesRecordEntity) {
+        logger.info("insert begin.crmPurchesRecordEntity:{}", JsonUtil.obj2Json(crmPurchesRecordEntity));
         this.crmPurchesRecordDao.insert(crmPurchesRecordEntity);
         return crmPurchesRecordEntity;
     }
@@ -61,6 +70,7 @@ public class CrmPurchesRecordServiceImpl implements CrmPurchesRecordService {
      */
     @Override
     public CrmPurchesRecordEntity update(CrmPurchesRecordEntity crmPurchesRecordEntity) {
+        logger.info("update begin.crmPurchesRecordEntity:{}", JsonUtil.obj2Json(crmPurchesRecordEntity));
         this.crmPurchesRecordDao.update(crmPurchesRecordEntity);
         return this.queryById(crmPurchesRecordEntity.getId());
     }
@@ -73,6 +83,7 @@ public class CrmPurchesRecordServiceImpl implements CrmPurchesRecordService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.crmPurchesRecordEntity:{}", id);
         return this.crmPurchesRecordDao.deleteById(id) > 0;
     }
 }

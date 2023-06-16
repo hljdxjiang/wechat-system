@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.wechat.WechatMenusItemDao;
 import com.nuoding.wechat.common.entity.wechat.WechatMenusItemEntity;
 import com.nuoding.wechat.common.service.wechat.WechatMenusItemService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class WechatMenusItemServiceImpl implements WechatMenusItemService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private WechatMenusItemDao wechatMenusItemDao;
 
@@ -38,6 +45,7 @@ public class WechatMenusItemServiceImpl implements WechatMenusItemService {
      */
     @Override
     public List<WechatMenusItemEntity> queryAllByLimit(WechatMenusItemEntity wechatMenusItemEntity) {
+        logger.info("queryAllByLimit begin.wechatMenusItemEntity:{}", JsonUtil.obj2Json(wechatMenusItemEntity));
         return this.wechatMenusItemDao.queryAllByLimit(wechatMenusItemEntity);
     }
 
@@ -49,6 +57,7 @@ public class WechatMenusItemServiceImpl implements WechatMenusItemService {
      */
     @Override
     public WechatMenusItemEntity insert(WechatMenusItemEntity wechatMenusItemEntity) {
+        logger.info("insert begin.wechatMenusItemEntity:{}", JsonUtil.obj2Json(wechatMenusItemEntity));
         this.wechatMenusItemDao.insert(wechatMenusItemEntity);
         return wechatMenusItemEntity;
     }
@@ -61,6 +70,7 @@ public class WechatMenusItemServiceImpl implements WechatMenusItemService {
      */
     @Override
     public WechatMenusItemEntity update(WechatMenusItemEntity wechatMenusItemEntity) {
+        logger.info("update begin.wechatMenusItemEntity:{}", JsonUtil.obj2Json(wechatMenusItemEntity));
         this.wechatMenusItemDao.update(wechatMenusItemEntity);
         return this.queryById(wechatMenusItemEntity.getId());
     }
@@ -73,6 +83,7 @@ public class WechatMenusItemServiceImpl implements WechatMenusItemService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.wechatMenusItemEntity:{}", id);
         return this.wechatMenusItemDao.deleteById(id) > 0;
     }
 }

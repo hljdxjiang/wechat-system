@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.user.UserLocationRecordDao;
 import com.nuoding.wechat.common.entity.user.UserLocationRecordEntity;
 import com.nuoding.wechat.common.service.user.UserLocationRecordService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class UserLocationRecordServiceImpl implements UserLocationRecordService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private UserLocationRecordDao userLocationRecordDao;
 
@@ -38,6 +45,7 @@ public class UserLocationRecordServiceImpl implements UserLocationRecordService 
      */
     @Override
     public List<UserLocationRecordEntity> queryAllByLimit(UserLocationRecordEntity userLocationRecordEntity) {
+        logger.info("queryAllByLimit begin.userLocationRecordEntity:{}", JsonUtil.obj2Json(userLocationRecordEntity));
         return this.userLocationRecordDao.queryAllByLimit(userLocationRecordEntity);
     }
 
@@ -49,6 +57,7 @@ public class UserLocationRecordServiceImpl implements UserLocationRecordService 
      */
     @Override
     public UserLocationRecordEntity insert(UserLocationRecordEntity userLocationRecordEntity) {
+        logger.info("insert begin.userLocationRecordEntity:{}", JsonUtil.obj2Json(userLocationRecordEntity));
         this.userLocationRecordDao.insert(userLocationRecordEntity);
         return userLocationRecordEntity;
     }
@@ -61,6 +70,7 @@ public class UserLocationRecordServiceImpl implements UserLocationRecordService 
      */
     @Override
     public UserLocationRecordEntity update(UserLocationRecordEntity userLocationRecordEntity) {
+        logger.info("update begin.userLocationRecordEntity:{}", JsonUtil.obj2Json(userLocationRecordEntity));
         this.userLocationRecordDao.update(userLocationRecordEntity);
         return this.queryById(userLocationRecordEntity.getId());
     }
@@ -73,6 +83,7 @@ public class UserLocationRecordServiceImpl implements UserLocationRecordService 
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.userLocationRecordEntity:{}", id);
         return this.userLocationRecordDao.deleteById(id) > 0;
     }
 }

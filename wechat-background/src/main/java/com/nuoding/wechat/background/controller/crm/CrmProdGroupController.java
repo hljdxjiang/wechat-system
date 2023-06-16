@@ -9,7 +9,10 @@ import com.nuoding.wechat.common.interceptor.SessionValue;
 import com.nuoding.wechat.common.model.MapResponse;
 import com.nuoding.wechat.common.model.PageQueryBaseDTO;
 import com.nuoding.wechat.common.service.crm.CrmProdGroupService;
+import com.nuoding.wechat.common.utils.JsonUtil;
 import com.nuoding.wechat.common.utils.PageInfoUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -19,6 +22,7 @@ import java.util.Map;
 /**
  * 后管(crmProdGroup)服务接口
  * 产品分组表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -26,6 +30,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/background/crmProdGroup")
 public class CrmProdGroupController {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     /**
      * 服务对象
      */
@@ -36,17 +43,19 @@ public class CrmProdGroupController {
      * 分页查询
      *
      * @param crmProdGroupEntity 筛选条件
-     * @param dto             size     分页对象
+     * @param dto                size     分页对象
      * @return 查询结果
      */
     @PostMapping("/queryByPage")
     public MapResponse queryByPage(@RequestBody CrmProdGroupEntity crmProdGroupEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
+        logger.info("queryByPage begin.crmProdGroupEntity:{},dto:{}", JsonUtil.obj2Json(crmProdGroupEntity), JsonUtil.obj2Json(dto));
         PageHelper.startPage(dto.getPage(), dto.getSize());
         List<CrmProdGroupEntity> list = this.crmProdGroupService.queryAllByLimit(crmProdGroupEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);
+        logger.info("queryByPage end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }
 
@@ -58,8 +67,10 @@ public class CrmProdGroupController {
      */
     @GetMapping("{id}")
     public MapResponse queryById(@PathVariable("id") Integer id) {
+        logger.info("queryById begin.id:{}", id);
         MapResponse mapResponse = new MapResponse();
         mapResponse.put("data", this.crmProdGroupService.queryById(id));
+        logger.info("queryById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }
 
@@ -71,8 +82,10 @@ public class CrmProdGroupController {
      */
     @PostMapping("/add")
     public MapResponse add(CrmProdGroupEntity crmProdGroupEntity) {
+        logger.info("add begin.crmProdGroupEntity:{}", JsonUtil.obj2Json(crmProdGroupEntity));
         MapResponse mapResponse = new MapResponse();
         mapResponse.put("data", this.crmProdGroupService.insert(crmProdGroupEntity));
+        logger.info("add end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }
 
@@ -85,7 +98,9 @@ public class CrmProdGroupController {
     @PostMapping("/edit")
     public MapResponse edit(CrmProdGroupEntity crmProdGroupEntity) {
         MapResponse mapResponse = new MapResponse();
+        logger.info("edit begin.crmProdGroupEntity:{}", JsonUtil.obj2Json(crmProdGroupEntity));
         mapResponse.put("data", this.crmProdGroupService.update(crmProdGroupEntity));
+        logger.info("edit end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }
 
@@ -99,6 +114,7 @@ public class CrmProdGroupController {
     public MapResponse deleteById(CrmProdGroupEntity crmProdGroupEntity) {
 
         MapResponse mapResponse = new MapResponse();
+        logger.info("deleteById begin.crmProdGroupEntity:{}", JsonUtil.obj2Json(crmProdGroupEntity));
         Integer id = crmProdGroupEntity.getId();
         if (id == null || id == 0) {
             mapResponse.setResponse(RespStatusEnum.ARGS_ERROR);
@@ -108,6 +124,7 @@ public class CrmProdGroupController {
         if (b) {
             mapResponse.setResponse(RespStatusEnum.DATA_DELETE_FAIL);
         }
+        logger.info("deleteById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }
 

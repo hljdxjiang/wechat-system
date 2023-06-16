@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.mall.MallLotteryPrizeDao;
 import com.nuoding.wechat.common.entity.mall.MallLotteryPrizeEntity;
 import com.nuoding.wechat.common.service.mall.MallLotteryPrizeService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class MallLotteryPrizeServiceImpl implements MallLotteryPrizeService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private MallLotteryPrizeDao mallLotteryPrizeDao;
 
@@ -38,6 +45,7 @@ public class MallLotteryPrizeServiceImpl implements MallLotteryPrizeService {
      */
     @Override
     public List<MallLotteryPrizeEntity> queryAllByLimit(MallLotteryPrizeEntity mallLotteryPrizeEntity) {
+        logger.info("queryAllByLimit begin.mallLotteryPrizeEntity:{}", JsonUtil.obj2Json(mallLotteryPrizeEntity));
         return this.mallLotteryPrizeDao.queryAllByLimit(mallLotteryPrizeEntity);
     }
 
@@ -49,6 +57,7 @@ public class MallLotteryPrizeServiceImpl implements MallLotteryPrizeService {
      */
     @Override
     public MallLotteryPrizeEntity insert(MallLotteryPrizeEntity mallLotteryPrizeEntity) {
+        logger.info("insert begin.mallLotteryPrizeEntity:{}", JsonUtil.obj2Json(mallLotteryPrizeEntity));
         this.mallLotteryPrizeDao.insert(mallLotteryPrizeEntity);
         return mallLotteryPrizeEntity;
     }
@@ -61,6 +70,7 @@ public class MallLotteryPrizeServiceImpl implements MallLotteryPrizeService {
      */
     @Override
     public MallLotteryPrizeEntity update(MallLotteryPrizeEntity mallLotteryPrizeEntity) {
+        logger.info("update begin.mallLotteryPrizeEntity:{}", JsonUtil.obj2Json(mallLotteryPrizeEntity));
         this.mallLotteryPrizeDao.update(mallLotteryPrizeEntity);
         return this.queryById(mallLotteryPrizeEntity.getId());
     }
@@ -73,6 +83,7 @@ public class MallLotteryPrizeServiceImpl implements MallLotteryPrizeService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.mallLotteryPrizeEntity:{}", id);
         return this.mallLotteryPrizeDao.deleteById(id) > 0;
     }
 }

@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.user.UserPropertyDetailDao;
 import com.nuoding.wechat.common.entity.user.UserPropertyDetailEntity;
 import com.nuoding.wechat.common.service.user.UserPropertyDetailService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class UserPropertyDetailServiceImpl implements UserPropertyDetailService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private UserPropertyDetailDao userPropertyDetailDao;
 
@@ -38,6 +45,7 @@ public class UserPropertyDetailServiceImpl implements UserPropertyDetailService 
      */
     @Override
     public List<UserPropertyDetailEntity> queryAllByLimit(UserPropertyDetailEntity userPropertyDetailEntity) {
+        logger.info("queryAllByLimit begin.userPropertyDetailEntity:{}", JsonUtil.obj2Json(userPropertyDetailEntity));
         return this.userPropertyDetailDao.queryAllByLimit(userPropertyDetailEntity);
     }
 
@@ -49,6 +57,7 @@ public class UserPropertyDetailServiceImpl implements UserPropertyDetailService 
      */
     @Override
     public UserPropertyDetailEntity insert(UserPropertyDetailEntity userPropertyDetailEntity) {
+        logger.info("insert begin.userPropertyDetailEntity:{}", JsonUtil.obj2Json(userPropertyDetailEntity));
         this.userPropertyDetailDao.insert(userPropertyDetailEntity);
         return userPropertyDetailEntity;
     }
@@ -61,6 +70,7 @@ public class UserPropertyDetailServiceImpl implements UserPropertyDetailService 
      */
     @Override
     public UserPropertyDetailEntity update(UserPropertyDetailEntity userPropertyDetailEntity) {
+        logger.info("update begin.userPropertyDetailEntity:{}", JsonUtil.obj2Json(userPropertyDetailEntity));
         this.userPropertyDetailDao.update(userPropertyDetailEntity);
         return this.queryById(userPropertyDetailEntity.getId());
     }
@@ -73,6 +83,7 @@ public class UserPropertyDetailServiceImpl implements UserPropertyDetailService 
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.userPropertyDetailEntity:{}", id);
         return this.userPropertyDetailDao.deleteById(id) > 0;
     }
 }

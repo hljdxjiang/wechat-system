@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.back.BackSysRevokesDao;
 import com.nuoding.wechat.common.entity.back.BackSysRevokesEntity;
 import com.nuoding.wechat.common.service.back.BackSysRevokesService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class BackSysRevokesServiceImpl implements BackSysRevokesService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private BackSysRevokesDao backSysRevokesDao;
 
@@ -38,6 +45,7 @@ public class BackSysRevokesServiceImpl implements BackSysRevokesService {
      */
     @Override
     public List<BackSysRevokesEntity> queryAllByLimit(BackSysRevokesEntity backSysRevokesEntity) {
+        logger.info("queryAllByLimit begin.backSysRevokesEntity:{}", JsonUtil.obj2Json(backSysRevokesEntity));
         return this.backSysRevokesDao.queryAllByLimit(backSysRevokesEntity);
     }
 
@@ -49,6 +57,7 @@ public class BackSysRevokesServiceImpl implements BackSysRevokesService {
      */
     @Override
     public BackSysRevokesEntity insert(BackSysRevokesEntity backSysRevokesEntity) {
+        logger.info("insert begin.backSysRevokesEntity:{}", JsonUtil.obj2Json(backSysRevokesEntity));
         this.backSysRevokesDao.insert(backSysRevokesEntity);
         return backSysRevokesEntity;
     }
@@ -61,6 +70,7 @@ public class BackSysRevokesServiceImpl implements BackSysRevokesService {
      */
     @Override
     public BackSysRevokesEntity update(BackSysRevokesEntity backSysRevokesEntity) {
+        logger.info("update begin.backSysRevokesEntity:{}", JsonUtil.obj2Json(backSysRevokesEntity));
         this.backSysRevokesDao.update(backSysRevokesEntity);
         return this.queryById(backSysRevokesEntity.getId());
     }
@@ -73,6 +83,7 @@ public class BackSysRevokesServiceImpl implements BackSysRevokesService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.backSysRevokesEntity:{}", id);
         return this.backSysRevokesDao.deleteById(id) > 0;
     }
 }

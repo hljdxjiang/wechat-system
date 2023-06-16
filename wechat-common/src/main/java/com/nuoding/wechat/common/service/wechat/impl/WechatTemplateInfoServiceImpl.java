@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.wechat.WechatTemplateInfoDao;
 import com.nuoding.wechat.common.entity.wechat.WechatTemplateInfoEntity;
 import com.nuoding.wechat.common.service.wechat.WechatTemplateInfoService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class WechatTemplateInfoServiceImpl implements WechatTemplateInfoService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private WechatTemplateInfoDao wechatTemplateInfoDao;
 
@@ -38,6 +45,7 @@ public class WechatTemplateInfoServiceImpl implements WechatTemplateInfoService 
      */
     @Override
     public List<WechatTemplateInfoEntity> queryAllByLimit(WechatTemplateInfoEntity wechatTemplateInfoEntity) {
+        logger.info("queryAllByLimit begin.wechatTemplateInfoEntity:{}", JsonUtil.obj2Json(wechatTemplateInfoEntity));
         return this.wechatTemplateInfoDao.queryAllByLimit(wechatTemplateInfoEntity);
     }
 
@@ -49,6 +57,7 @@ public class WechatTemplateInfoServiceImpl implements WechatTemplateInfoService 
      */
     @Override
     public WechatTemplateInfoEntity insert(WechatTemplateInfoEntity wechatTemplateInfoEntity) {
+        logger.info("insert begin.wechatTemplateInfoEntity:{}", JsonUtil.obj2Json(wechatTemplateInfoEntity));
         this.wechatTemplateInfoDao.insert(wechatTemplateInfoEntity);
         return wechatTemplateInfoEntity;
     }
@@ -61,6 +70,7 @@ public class WechatTemplateInfoServiceImpl implements WechatTemplateInfoService 
      */
     @Override
     public WechatTemplateInfoEntity update(WechatTemplateInfoEntity wechatTemplateInfoEntity) {
+        logger.info("update begin.wechatTemplateInfoEntity:{}", JsonUtil.obj2Json(wechatTemplateInfoEntity));
         this.wechatTemplateInfoDao.update(wechatTemplateInfoEntity);
         return this.queryById(wechatTemplateInfoEntity.getId());
     }
@@ -73,6 +83,7 @@ public class WechatTemplateInfoServiceImpl implements WechatTemplateInfoService 
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.wechatTemplateInfoEntity:{}", id);
         return this.wechatTemplateInfoDao.deleteById(id) > 0;
     }
 }

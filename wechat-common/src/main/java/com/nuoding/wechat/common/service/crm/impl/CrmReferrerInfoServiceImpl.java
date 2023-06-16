@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.crm.CrmReferrerInfoDao;
 import com.nuoding.wechat.common.entity.crm.CrmReferrerInfoEntity;
 import com.nuoding.wechat.common.service.crm.CrmReferrerInfoService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class CrmReferrerInfoServiceImpl implements CrmReferrerInfoService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private CrmReferrerInfoDao crmReferrerInfoDao;
 
@@ -38,6 +45,7 @@ public class CrmReferrerInfoServiceImpl implements CrmReferrerInfoService {
      */
     @Override
     public List<CrmReferrerInfoEntity> queryAllByLimit(CrmReferrerInfoEntity crmReferrerInfoEntity) {
+        logger.info("queryAllByLimit begin.crmReferrerInfoEntity:{}", JsonUtil.obj2Json(crmReferrerInfoEntity));
         return this.crmReferrerInfoDao.queryAllByLimit(crmReferrerInfoEntity);
     }
 
@@ -49,6 +57,7 @@ public class CrmReferrerInfoServiceImpl implements CrmReferrerInfoService {
      */
     @Override
     public CrmReferrerInfoEntity insert(CrmReferrerInfoEntity crmReferrerInfoEntity) {
+        logger.info("insert begin.crmReferrerInfoEntity:{}", JsonUtil.obj2Json(crmReferrerInfoEntity));
         this.crmReferrerInfoDao.insert(crmReferrerInfoEntity);
         return crmReferrerInfoEntity;
     }
@@ -61,6 +70,7 @@ public class CrmReferrerInfoServiceImpl implements CrmReferrerInfoService {
      */
     @Override
     public CrmReferrerInfoEntity update(CrmReferrerInfoEntity crmReferrerInfoEntity) {
+        logger.info("update begin.crmReferrerInfoEntity:{}", JsonUtil.obj2Json(crmReferrerInfoEntity));
         this.crmReferrerInfoDao.update(crmReferrerInfoEntity);
         return this.queryById(crmReferrerInfoEntity.getId());
     }
@@ -73,6 +83,7 @@ public class CrmReferrerInfoServiceImpl implements CrmReferrerInfoService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.crmReferrerInfoEntity:{}", id);
         return this.crmReferrerInfoDao.deleteById(id) > 0;
     }
 }

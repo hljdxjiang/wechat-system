@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.sys.SysPageFlowInfoDao;
 import com.nuoding.wechat.common.entity.sys.SysPageFlowInfoEntity;
 import com.nuoding.wechat.common.service.sys.SysPageFlowInfoService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class SysPageFlowInfoServiceImpl implements SysPageFlowInfoService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private SysPageFlowInfoDao sysPageFlowInfoDao;
 
@@ -38,6 +45,7 @@ public class SysPageFlowInfoServiceImpl implements SysPageFlowInfoService {
      */
     @Override
     public List<SysPageFlowInfoEntity> queryAllByLimit(SysPageFlowInfoEntity sysPageFlowInfoEntity) {
+        logger.info("queryAllByLimit begin.sysPageFlowInfoEntity:{}", JsonUtil.obj2Json(sysPageFlowInfoEntity));
         return this.sysPageFlowInfoDao.queryAllByLimit(sysPageFlowInfoEntity);
     }
 
@@ -49,6 +57,7 @@ public class SysPageFlowInfoServiceImpl implements SysPageFlowInfoService {
      */
     @Override
     public SysPageFlowInfoEntity insert(SysPageFlowInfoEntity sysPageFlowInfoEntity) {
+        logger.info("insert begin.sysPageFlowInfoEntity:{}", JsonUtil.obj2Json(sysPageFlowInfoEntity));
         this.sysPageFlowInfoDao.insert(sysPageFlowInfoEntity);
         return sysPageFlowInfoEntity;
     }
@@ -61,6 +70,7 @@ public class SysPageFlowInfoServiceImpl implements SysPageFlowInfoService {
      */
     @Override
     public SysPageFlowInfoEntity update(SysPageFlowInfoEntity sysPageFlowInfoEntity) {
+        logger.info("update begin.sysPageFlowInfoEntity:{}", JsonUtil.obj2Json(sysPageFlowInfoEntity));
         this.sysPageFlowInfoDao.update(sysPageFlowInfoEntity);
         return this.queryById(sysPageFlowInfoEntity.getId());
     }
@@ -73,6 +83,7 @@ public class SysPageFlowInfoServiceImpl implements SysPageFlowInfoService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.sysPageFlowInfoEntity:{}", id);
         return this.sysPageFlowInfoDao.deleteById(id) > 0;
     }
 }

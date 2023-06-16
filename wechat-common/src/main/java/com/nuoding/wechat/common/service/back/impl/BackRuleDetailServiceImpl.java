@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.back.BackRuleDetailDao;
 import com.nuoding.wechat.common.entity.back.BackRuleDetailEntity;
 import com.nuoding.wechat.common.service.back.BackRuleDetailService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class BackRuleDetailServiceImpl implements BackRuleDetailService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private BackRuleDetailDao backRuleDetailDao;
 
@@ -38,6 +45,7 @@ public class BackRuleDetailServiceImpl implements BackRuleDetailService {
      */
     @Override
     public List<BackRuleDetailEntity> queryAllByLimit(BackRuleDetailEntity backRuleDetailEntity) {
+        logger.info("queryAllByLimit begin.backRuleDetailEntity:{}", JsonUtil.obj2Json(backRuleDetailEntity));
         return this.backRuleDetailDao.queryAllByLimit(backRuleDetailEntity);
     }
 
@@ -49,6 +57,7 @@ public class BackRuleDetailServiceImpl implements BackRuleDetailService {
      */
     @Override
     public BackRuleDetailEntity insert(BackRuleDetailEntity backRuleDetailEntity) {
+        logger.info("insert begin.backRuleDetailEntity:{}", JsonUtil.obj2Json(backRuleDetailEntity));
         this.backRuleDetailDao.insert(backRuleDetailEntity);
         return backRuleDetailEntity;
     }
@@ -61,6 +70,7 @@ public class BackRuleDetailServiceImpl implements BackRuleDetailService {
      */
     @Override
     public BackRuleDetailEntity update(BackRuleDetailEntity backRuleDetailEntity) {
+        logger.info("update begin.backRuleDetailEntity:{}", JsonUtil.obj2Json(backRuleDetailEntity));
         this.backRuleDetailDao.update(backRuleDetailEntity);
         return this.queryById(backRuleDetailEntity.getId());
     }
@@ -73,6 +83,7 @@ public class BackRuleDetailServiceImpl implements BackRuleDetailService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.backRuleDetailEntity:{}", id);
         return this.backRuleDetailDao.deleteById(id) > 0;
     }
 }

@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.sys.SysBlacklistDao;
 import com.nuoding.wechat.common.entity.sys.SysBlacklistEntity;
 import com.nuoding.wechat.common.service.sys.SysBlacklistService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class SysBlacklistServiceImpl implements SysBlacklistService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private SysBlacklistDao sysBlacklistDao;
 
@@ -38,6 +45,7 @@ public class SysBlacklistServiceImpl implements SysBlacklistService {
      */
     @Override
     public List<SysBlacklistEntity> queryAllByLimit(SysBlacklistEntity sysBlacklistEntity) {
+        logger.info("queryAllByLimit begin.sysBlacklistEntity:{}", JsonUtil.obj2Json(sysBlacklistEntity));
         return this.sysBlacklistDao.queryAllByLimit(sysBlacklistEntity);
     }
 
@@ -49,6 +57,7 @@ public class SysBlacklistServiceImpl implements SysBlacklistService {
      */
     @Override
     public SysBlacklistEntity insert(SysBlacklistEntity sysBlacklistEntity) {
+        logger.info("insert begin.sysBlacklistEntity:{}", JsonUtil.obj2Json(sysBlacklistEntity));
         this.sysBlacklistDao.insert(sysBlacklistEntity);
         return sysBlacklistEntity;
     }
@@ -61,6 +70,7 @@ public class SysBlacklistServiceImpl implements SysBlacklistService {
      */
     @Override
     public SysBlacklistEntity update(SysBlacklistEntity sysBlacklistEntity) {
+        logger.info("update begin.sysBlacklistEntity:{}", JsonUtil.obj2Json(sysBlacklistEntity));
         this.sysBlacklistDao.update(sysBlacklistEntity);
         return this.queryById(sysBlacklistEntity.getId());
     }
@@ -73,6 +83,7 @@ public class SysBlacklistServiceImpl implements SysBlacklistService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.sysBlacklistEntity:{}", id);
         return this.sysBlacklistDao.deleteById(id) > 0;
     }
 }

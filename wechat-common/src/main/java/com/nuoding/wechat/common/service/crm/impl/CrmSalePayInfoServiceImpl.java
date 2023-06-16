@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.crm.CrmSalePayInfoDao;
 import com.nuoding.wechat.common.entity.crm.CrmSalePayInfoEntity;
 import com.nuoding.wechat.common.service.crm.CrmSalePayInfoService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class CrmSalePayInfoServiceImpl implements CrmSalePayInfoService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private CrmSalePayInfoDao crmSalePayInfoDao;
 
@@ -38,6 +45,7 @@ public class CrmSalePayInfoServiceImpl implements CrmSalePayInfoService {
      */
     @Override
     public List<CrmSalePayInfoEntity> queryAllByLimit(CrmSalePayInfoEntity crmSalePayInfoEntity) {
+        logger.info("queryAllByLimit begin.crmSalePayInfoEntity:{}", JsonUtil.obj2Json(crmSalePayInfoEntity));
         return this.crmSalePayInfoDao.queryAllByLimit(crmSalePayInfoEntity);
     }
 
@@ -49,6 +57,7 @@ public class CrmSalePayInfoServiceImpl implements CrmSalePayInfoService {
      */
     @Override
     public CrmSalePayInfoEntity insert(CrmSalePayInfoEntity crmSalePayInfoEntity) {
+        logger.info("insert begin.crmSalePayInfoEntity:{}", JsonUtil.obj2Json(crmSalePayInfoEntity));
         this.crmSalePayInfoDao.insert(crmSalePayInfoEntity);
         return crmSalePayInfoEntity;
     }
@@ -61,6 +70,7 @@ public class CrmSalePayInfoServiceImpl implements CrmSalePayInfoService {
      */
     @Override
     public CrmSalePayInfoEntity update(CrmSalePayInfoEntity crmSalePayInfoEntity) {
+        logger.info("update begin.crmSalePayInfoEntity:{}", JsonUtil.obj2Json(crmSalePayInfoEntity));
         this.crmSalePayInfoDao.update(crmSalePayInfoEntity);
         return this.queryById(crmSalePayInfoEntity.getId());
     }
@@ -73,6 +83,7 @@ public class CrmSalePayInfoServiceImpl implements CrmSalePayInfoService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.crmSalePayInfoEntity:{}", id);
         return this.crmSalePayInfoDao.deleteById(id) > 0;
     }
 }

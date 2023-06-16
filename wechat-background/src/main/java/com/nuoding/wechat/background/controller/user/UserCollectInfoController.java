@@ -9,7 +9,10 @@ import com.nuoding.wechat.common.interceptor.SessionValue;
 import com.nuoding.wechat.common.model.MapResponse;
 import com.nuoding.wechat.common.model.PageQueryBaseDTO;
 import com.nuoding.wechat.common.service.user.UserCollectInfoService;
+import com.nuoding.wechat.common.utils.JsonUtil;
 import com.nuoding.wechat.common.utils.PageInfoUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -19,6 +22,7 @@ import java.util.Map;
 /**
  * 后管(userCollectInfo)服务接口
  * 用户收藏表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -26,6 +30,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/background/userCollectInfo")
 public class UserCollectInfoController {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     /**
      * 服务对象
      */
@@ -36,17 +43,19 @@ public class UserCollectInfoController {
      * 分页查询
      *
      * @param userCollectInfoEntity 筛选条件
-     * @param dto             size     分页对象
+     * @param dto                   size     分页对象
      * @return 查询结果
      */
     @PostMapping("/queryByPage")
     public MapResponse queryByPage(@RequestBody UserCollectInfoEntity userCollectInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
+        logger.info("queryByPage begin.userCollectInfoEntity:{},dto:{}", JsonUtil.obj2Json(userCollectInfoEntity), JsonUtil.obj2Json(dto));
         PageHelper.startPage(dto.getPage(), dto.getSize());
         List<UserCollectInfoEntity> list = this.userCollectInfoService.queryAllByLimit(userCollectInfoEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);
+        logger.info("queryByPage end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }
 
@@ -58,8 +67,10 @@ public class UserCollectInfoController {
      */
     @GetMapping("{id}")
     public MapResponse queryById(@PathVariable("id") Integer id) {
+        logger.info("queryById begin.id:{}", id);
         MapResponse mapResponse = new MapResponse();
         mapResponse.put("data", this.userCollectInfoService.queryById(id));
+        logger.info("queryById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }
 
@@ -71,8 +82,10 @@ public class UserCollectInfoController {
      */
     @PostMapping("/add")
     public MapResponse add(UserCollectInfoEntity userCollectInfoEntity) {
+        logger.info("add begin.userCollectInfoEntity:{}", JsonUtil.obj2Json(userCollectInfoEntity));
         MapResponse mapResponse = new MapResponse();
         mapResponse.put("data", this.userCollectInfoService.insert(userCollectInfoEntity));
+        logger.info("add end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }
 
@@ -85,7 +98,9 @@ public class UserCollectInfoController {
     @PostMapping("/edit")
     public MapResponse edit(UserCollectInfoEntity userCollectInfoEntity) {
         MapResponse mapResponse = new MapResponse();
+        logger.info("edit begin.userCollectInfoEntity:{}", JsonUtil.obj2Json(userCollectInfoEntity));
         mapResponse.put("data", this.userCollectInfoService.update(userCollectInfoEntity));
+        logger.info("edit end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }
 
@@ -99,6 +114,7 @@ public class UserCollectInfoController {
     public MapResponse deleteById(UserCollectInfoEntity userCollectInfoEntity) {
 
         MapResponse mapResponse = new MapResponse();
+        logger.info("deleteById begin.userCollectInfoEntity:{}", JsonUtil.obj2Json(userCollectInfoEntity));
         Integer id = userCollectInfoEntity.getId();
         if (id == null || id == 0) {
             mapResponse.setResponse(RespStatusEnum.ARGS_ERROR);
@@ -108,6 +124,7 @@ public class UserCollectInfoController {
         if (b) {
             mapResponse.setResponse(RespStatusEnum.DATA_DELETE_FAIL);
         }
+        logger.info("deleteById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }
 

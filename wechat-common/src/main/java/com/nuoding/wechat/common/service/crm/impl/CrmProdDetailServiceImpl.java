@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.crm.CrmProdDetailDao;
 import com.nuoding.wechat.common.entity.crm.CrmProdDetailEntity;
 import com.nuoding.wechat.common.service.crm.CrmProdDetailService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class CrmProdDetailServiceImpl implements CrmProdDetailService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private CrmProdDetailDao crmProdDetailDao;
 
@@ -38,6 +45,7 @@ public class CrmProdDetailServiceImpl implements CrmProdDetailService {
      */
     @Override
     public List<CrmProdDetailEntity> queryAllByLimit(CrmProdDetailEntity crmProdDetailEntity) {
+        logger.info("queryAllByLimit begin.crmProdDetailEntity:{}", JsonUtil.obj2Json(crmProdDetailEntity));
         return this.crmProdDetailDao.queryAllByLimit(crmProdDetailEntity);
     }
 
@@ -49,6 +57,7 @@ public class CrmProdDetailServiceImpl implements CrmProdDetailService {
      */
     @Override
     public CrmProdDetailEntity insert(CrmProdDetailEntity crmProdDetailEntity) {
+        logger.info("insert begin.crmProdDetailEntity:{}", JsonUtil.obj2Json(crmProdDetailEntity));
         this.crmProdDetailDao.insert(crmProdDetailEntity);
         return crmProdDetailEntity;
     }
@@ -61,6 +70,7 @@ public class CrmProdDetailServiceImpl implements CrmProdDetailService {
      */
     @Override
     public CrmProdDetailEntity update(CrmProdDetailEntity crmProdDetailEntity) {
+        logger.info("update begin.crmProdDetailEntity:{}", JsonUtil.obj2Json(crmProdDetailEntity));
         this.crmProdDetailDao.update(crmProdDetailEntity);
         return this.queryById(crmProdDetailEntity.getId());
     }
@@ -73,6 +83,7 @@ public class CrmProdDetailServiceImpl implements CrmProdDetailService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.crmProdDetailEntity:{}", id);
         return this.crmProdDetailDao.deleteById(id) > 0;
     }
 }

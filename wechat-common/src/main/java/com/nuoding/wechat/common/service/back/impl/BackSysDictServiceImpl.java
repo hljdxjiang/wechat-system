@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.back.BackSysDictDao;
 import com.nuoding.wechat.common.entity.back.BackSysDictEntity;
 import com.nuoding.wechat.common.service.back.BackSysDictService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class BackSysDictServiceImpl implements BackSysDictService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private BackSysDictDao backSysDictDao;
 
@@ -38,6 +45,7 @@ public class BackSysDictServiceImpl implements BackSysDictService {
      */
     @Override
     public List<BackSysDictEntity> queryAllByLimit(BackSysDictEntity backSysDictEntity) {
+        logger.info("queryAllByLimit begin.backSysDictEntity:{}", JsonUtil.obj2Json(backSysDictEntity));
         return this.backSysDictDao.queryAllByLimit(backSysDictEntity);
     }
 
@@ -49,6 +57,7 @@ public class BackSysDictServiceImpl implements BackSysDictService {
      */
     @Override
     public BackSysDictEntity insert(BackSysDictEntity backSysDictEntity) {
+        logger.info("insert begin.backSysDictEntity:{}", JsonUtil.obj2Json(backSysDictEntity));
         this.backSysDictDao.insert(backSysDictEntity);
         return backSysDictEntity;
     }
@@ -61,6 +70,7 @@ public class BackSysDictServiceImpl implements BackSysDictService {
      */
     @Override
     public BackSysDictEntity update(BackSysDictEntity backSysDictEntity) {
+        logger.info("update begin.backSysDictEntity:{}", JsonUtil.obj2Json(backSysDictEntity));
         this.backSysDictDao.update(backSysDictEntity);
         return this.queryById(backSysDictEntity.getId());
     }
@@ -73,6 +83,7 @@ public class BackSysDictServiceImpl implements BackSysDictService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.backSysDictEntity:{}", id);
         return this.backSysDictDao.deleteById(id) > 0;
     }
 }

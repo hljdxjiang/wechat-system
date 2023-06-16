@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.user.UserAddrInfoDao;
 import com.nuoding.wechat.common.entity.user.UserAddrInfoEntity;
 import com.nuoding.wechat.common.service.user.UserAddrInfoService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class UserAddrInfoServiceImpl implements UserAddrInfoService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private UserAddrInfoDao userAddrInfoDao;
 
@@ -38,6 +45,7 @@ public class UserAddrInfoServiceImpl implements UserAddrInfoService {
      */
     @Override
     public List<UserAddrInfoEntity> queryAllByLimit(UserAddrInfoEntity userAddrInfoEntity) {
+        logger.info("queryAllByLimit begin.userAddrInfoEntity:{}", JsonUtil.obj2Json(userAddrInfoEntity));
         return this.userAddrInfoDao.queryAllByLimit(userAddrInfoEntity);
     }
 
@@ -49,6 +57,7 @@ public class UserAddrInfoServiceImpl implements UserAddrInfoService {
      */
     @Override
     public UserAddrInfoEntity insert(UserAddrInfoEntity userAddrInfoEntity) {
+        logger.info("insert begin.userAddrInfoEntity:{}", JsonUtil.obj2Json(userAddrInfoEntity));
         this.userAddrInfoDao.insert(userAddrInfoEntity);
         return userAddrInfoEntity;
     }
@@ -61,6 +70,7 @@ public class UserAddrInfoServiceImpl implements UserAddrInfoService {
      */
     @Override
     public UserAddrInfoEntity update(UserAddrInfoEntity userAddrInfoEntity) {
+        logger.info("update begin.userAddrInfoEntity:{}", JsonUtil.obj2Json(userAddrInfoEntity));
         this.userAddrInfoDao.update(userAddrInfoEntity);
         return this.queryById(userAddrInfoEntity.getId());
     }
@@ -73,6 +83,7 @@ public class UserAddrInfoServiceImpl implements UserAddrInfoService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.userAddrInfoEntity:{}", id);
         return this.userAddrInfoDao.deleteById(id) > 0;
     }
 }

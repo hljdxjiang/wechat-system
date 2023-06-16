@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.user.UserFeedbackInfoDao;
 import com.nuoding.wechat.common.entity.user.UserFeedbackInfoEntity;
 import com.nuoding.wechat.common.service.user.UserFeedbackInfoService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class UserFeedbackInfoServiceImpl implements UserFeedbackInfoService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private UserFeedbackInfoDao userFeedbackInfoDao;
 
@@ -38,6 +45,7 @@ public class UserFeedbackInfoServiceImpl implements UserFeedbackInfoService {
      */
     @Override
     public List<UserFeedbackInfoEntity> queryAllByLimit(UserFeedbackInfoEntity userFeedbackInfoEntity) {
+        logger.info("queryAllByLimit begin.userFeedbackInfoEntity:{}", JsonUtil.obj2Json(userFeedbackInfoEntity));
         return this.userFeedbackInfoDao.queryAllByLimit(userFeedbackInfoEntity);
     }
 
@@ -49,6 +57,7 @@ public class UserFeedbackInfoServiceImpl implements UserFeedbackInfoService {
      */
     @Override
     public UserFeedbackInfoEntity insert(UserFeedbackInfoEntity userFeedbackInfoEntity) {
+        logger.info("insert begin.userFeedbackInfoEntity:{}", JsonUtil.obj2Json(userFeedbackInfoEntity));
         this.userFeedbackInfoDao.insert(userFeedbackInfoEntity);
         return userFeedbackInfoEntity;
     }
@@ -61,6 +70,7 @@ public class UserFeedbackInfoServiceImpl implements UserFeedbackInfoService {
      */
     @Override
     public UserFeedbackInfoEntity update(UserFeedbackInfoEntity userFeedbackInfoEntity) {
+        logger.info("update begin.userFeedbackInfoEntity:{}", JsonUtil.obj2Json(userFeedbackInfoEntity));
         this.userFeedbackInfoDao.update(userFeedbackInfoEntity);
         return this.queryById(userFeedbackInfoEntity.getId());
     }
@@ -73,6 +83,7 @@ public class UserFeedbackInfoServiceImpl implements UserFeedbackInfoService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.userFeedbackInfoEntity:{}", id);
         return this.userFeedbackInfoDao.deleteById(id) > 0;
     }
 }

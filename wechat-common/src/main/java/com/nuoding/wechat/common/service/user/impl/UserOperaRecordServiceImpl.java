@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.user.UserOperaRecordDao;
 import com.nuoding.wechat.common.entity.user.UserOperaRecordEntity;
 import com.nuoding.wechat.common.service.user.UserOperaRecordService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class UserOperaRecordServiceImpl implements UserOperaRecordService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private UserOperaRecordDao userOperaRecordDao;
 
@@ -38,6 +45,7 @@ public class UserOperaRecordServiceImpl implements UserOperaRecordService {
      */
     @Override
     public List<UserOperaRecordEntity> queryAllByLimit(UserOperaRecordEntity userOperaRecordEntity) {
+        logger.info("queryAllByLimit begin.userOperaRecordEntity:{}", JsonUtil.obj2Json(userOperaRecordEntity));
         return this.userOperaRecordDao.queryAllByLimit(userOperaRecordEntity);
     }
 
@@ -49,6 +57,7 @@ public class UserOperaRecordServiceImpl implements UserOperaRecordService {
      */
     @Override
     public UserOperaRecordEntity insert(UserOperaRecordEntity userOperaRecordEntity) {
+        logger.info("insert begin.userOperaRecordEntity:{}", JsonUtil.obj2Json(userOperaRecordEntity));
         this.userOperaRecordDao.insert(userOperaRecordEntity);
         return userOperaRecordEntity;
     }
@@ -61,6 +70,7 @@ public class UserOperaRecordServiceImpl implements UserOperaRecordService {
      */
     @Override
     public UserOperaRecordEntity update(UserOperaRecordEntity userOperaRecordEntity) {
+        logger.info("update begin.userOperaRecordEntity:{}", JsonUtil.obj2Json(userOperaRecordEntity));
         this.userOperaRecordDao.update(userOperaRecordEntity);
         return this.queryById(userOperaRecordEntity.getId());
     }
@@ -73,6 +83,7 @@ public class UserOperaRecordServiceImpl implements UserOperaRecordService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.userOperaRecordEntity:{}", id);
         return this.userOperaRecordDao.deleteById(id) > 0;
     }
 }

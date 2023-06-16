@@ -41,9 +41,13 @@ public class SessionKey {
     public static final String LOGIN_TOKEN = "login:token";
     public static final String TENANT_ID = "login:user:tenantid";
 
+    public static final String LOGIN_USER_LABEL = "login:user:label";
+
     public static String getLoginID() {
         return getValue(LOGIN_KEY);
     }
+
+    public static String getLoginUserLabel(){return getValue(LOGIN_USER_LABEL);};
 
     public static String getRoleID() {
         return getValue(LOGIN_ROLE_ID);

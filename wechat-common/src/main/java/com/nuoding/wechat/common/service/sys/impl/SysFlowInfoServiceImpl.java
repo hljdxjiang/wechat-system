@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.sys.SysFlowInfoDao;
 import com.nuoding.wechat.common.entity.sys.SysFlowInfoEntity;
 import com.nuoding.wechat.common.service.sys.SysFlowInfoService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class SysFlowInfoServiceImpl implements SysFlowInfoService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private SysFlowInfoDao sysFlowInfoDao;
 
@@ -38,6 +45,7 @@ public class SysFlowInfoServiceImpl implements SysFlowInfoService {
      */
     @Override
     public List<SysFlowInfoEntity> queryAllByLimit(SysFlowInfoEntity sysFlowInfoEntity) {
+        logger.info("queryAllByLimit begin.sysFlowInfoEntity:{}", JsonUtil.obj2Json(sysFlowInfoEntity));
         return this.sysFlowInfoDao.queryAllByLimit(sysFlowInfoEntity);
     }
 
@@ -49,6 +57,7 @@ public class SysFlowInfoServiceImpl implements SysFlowInfoService {
      */
     @Override
     public SysFlowInfoEntity insert(SysFlowInfoEntity sysFlowInfoEntity) {
+        logger.info("insert begin.sysFlowInfoEntity:{}", JsonUtil.obj2Json(sysFlowInfoEntity));
         this.sysFlowInfoDao.insert(sysFlowInfoEntity);
         return sysFlowInfoEntity;
     }
@@ -61,6 +70,7 @@ public class SysFlowInfoServiceImpl implements SysFlowInfoService {
      */
     @Override
     public SysFlowInfoEntity update(SysFlowInfoEntity sysFlowInfoEntity) {
+        logger.info("update begin.sysFlowInfoEntity:{}", JsonUtil.obj2Json(sysFlowInfoEntity));
         this.sysFlowInfoDao.update(sysFlowInfoEntity);
         return this.queryById(sysFlowInfoEntity.getId());
     }
@@ -73,6 +83,7 @@ public class SysFlowInfoServiceImpl implements SysFlowInfoService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.sysFlowInfoEntity:{}", id);
         return this.sysFlowInfoDao.deleteById(id) > 0;
     }
 }

@@ -1,15 +1,13 @@
 package com.nuoding.wechat.common.service.sys.impl;
 
-import com.alibaba.excel.util.CollectionUtils;
-import com.nuoding.wechat.common.constant.RedisKey;
 import com.nuoding.wechat.common.dao.sys.SysParamConfigDao;
 import com.nuoding.wechat.common.entity.sys.SysParamConfigEntity;
-import com.nuoding.wechat.common.service.RedisService;
 import com.nuoding.wechat.common.service.sys.SysParamConfigService;
-import com.nuoding.wechat.common.utils.JsonUtil;
-import org.apache.logging.log4j.util.Strings;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,11 +20,11 @@ import java.util.List;
  */
 @Service
 public class SysParamConfigServiceImpl implements SysParamConfigService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private SysParamConfigDao sysParamConfigDao;
-
-    @Autowired
-    private RedisService redisService;
 
     /**
      * 通过ID查询单条数据
@@ -47,6 +45,7 @@ public class SysParamConfigServiceImpl implements SysParamConfigService {
      */
     @Override
     public List<SysParamConfigEntity> queryAllByLimit(SysParamConfigEntity sysParamConfigEntity) {
+        logger.info("queryAllByLimit begin.sysParamConfigEntity:{}", JsonUtil.obj2Json(sysParamConfigEntity));
         return this.sysParamConfigDao.queryAllByLimit(sysParamConfigEntity);
     }
 
@@ -58,6 +57,7 @@ public class SysParamConfigServiceImpl implements SysParamConfigService {
      */
     @Override
     public SysParamConfigEntity insert(SysParamConfigEntity sysParamConfigEntity) {
+        logger.info("insert begin.sysParamConfigEntity:{}", JsonUtil.obj2Json(sysParamConfigEntity));
         this.sysParamConfigDao.insert(sysParamConfigEntity);
         return sysParamConfigEntity;
     }
@@ -70,6 +70,7 @@ public class SysParamConfigServiceImpl implements SysParamConfigService {
      */
     @Override
     public SysParamConfigEntity update(SysParamConfigEntity sysParamConfigEntity) {
+        logger.info("update begin.sysParamConfigEntity:{}", JsonUtil.obj2Json(sysParamConfigEntity));
         this.sysParamConfigDao.update(sysParamConfigEntity);
         return this.queryById(sysParamConfigEntity.getId());
     }
@@ -82,6 +83,7 @@ public class SysParamConfigServiceImpl implements SysParamConfigService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.sysParamConfigEntity:{}", id);
         return this.sysParamConfigDao.deleteById(id) > 0;
     }
 

@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.crm.CrmProdTypeDao;
 import com.nuoding.wechat.common.entity.crm.CrmProdTypeEntity;
 import com.nuoding.wechat.common.service.crm.CrmProdTypeService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class CrmProdTypeServiceImpl implements CrmProdTypeService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private CrmProdTypeDao crmProdTypeDao;
 
@@ -38,6 +45,7 @@ public class CrmProdTypeServiceImpl implements CrmProdTypeService {
      */
     @Override
     public List<CrmProdTypeEntity> queryAllByLimit(CrmProdTypeEntity crmProdTypeEntity) {
+        logger.info("queryAllByLimit begin.crmProdTypeEntity:{}", JsonUtil.obj2Json(crmProdTypeEntity));
         return this.crmProdTypeDao.queryAllByLimit(crmProdTypeEntity);
     }
 
@@ -49,6 +57,7 @@ public class CrmProdTypeServiceImpl implements CrmProdTypeService {
      */
     @Override
     public CrmProdTypeEntity insert(CrmProdTypeEntity crmProdTypeEntity) {
+        logger.info("insert begin.crmProdTypeEntity:{}", JsonUtil.obj2Json(crmProdTypeEntity));
         this.crmProdTypeDao.insert(crmProdTypeEntity);
         return crmProdTypeEntity;
     }
@@ -61,6 +70,7 @@ public class CrmProdTypeServiceImpl implements CrmProdTypeService {
      */
     @Override
     public CrmProdTypeEntity update(CrmProdTypeEntity crmProdTypeEntity) {
+        logger.info("update begin.crmProdTypeEntity:{}", JsonUtil.obj2Json(crmProdTypeEntity));
         this.crmProdTypeDao.update(crmProdTypeEntity);
         return this.queryById(crmProdTypeEntity.getId());
     }
@@ -73,6 +83,7 @@ public class CrmProdTypeServiceImpl implements CrmProdTypeService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.crmProdTypeEntity:{}", id);
         return this.crmProdTypeDao.deleteById(id) > 0;
     }
 }

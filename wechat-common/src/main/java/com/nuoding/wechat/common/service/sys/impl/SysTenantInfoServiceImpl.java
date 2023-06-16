@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.sys.SysTenantInfoDao;
 import com.nuoding.wechat.common.entity.sys.SysTenantInfoEntity;
 import com.nuoding.wechat.common.service.sys.SysTenantInfoService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class SysTenantInfoServiceImpl implements SysTenantInfoService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private SysTenantInfoDao sysTenantInfoDao;
 
@@ -38,6 +45,7 @@ public class SysTenantInfoServiceImpl implements SysTenantInfoService {
      */
     @Override
     public List<SysTenantInfoEntity> queryAllByLimit(SysTenantInfoEntity sysTenantInfoEntity) {
+        logger.info("queryAllByLimit begin.sysTenantInfoEntity:{}", JsonUtil.obj2Json(sysTenantInfoEntity));
         return this.sysTenantInfoDao.queryAllByLimit(sysTenantInfoEntity);
     }
 
@@ -49,6 +57,7 @@ public class SysTenantInfoServiceImpl implements SysTenantInfoService {
      */
     @Override
     public SysTenantInfoEntity insert(SysTenantInfoEntity sysTenantInfoEntity) {
+        logger.info("insert begin.sysTenantInfoEntity:{}", JsonUtil.obj2Json(sysTenantInfoEntity));
         this.sysTenantInfoDao.insert(sysTenantInfoEntity);
         return sysTenantInfoEntity;
     }
@@ -61,6 +70,7 @@ public class SysTenantInfoServiceImpl implements SysTenantInfoService {
      */
     @Override
     public SysTenantInfoEntity update(SysTenantInfoEntity sysTenantInfoEntity) {
+        logger.info("update begin.sysTenantInfoEntity:{}", JsonUtil.obj2Json(sysTenantInfoEntity));
         this.sysTenantInfoDao.update(sysTenantInfoEntity);
         return this.queryById(sysTenantInfoEntity.getId());
     }
@@ -73,6 +83,7 @@ public class SysTenantInfoServiceImpl implements SysTenantInfoService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.sysTenantInfoEntity:{}", id);
         return this.sysTenantInfoDao.deleteById(id) > 0;
     }
 }

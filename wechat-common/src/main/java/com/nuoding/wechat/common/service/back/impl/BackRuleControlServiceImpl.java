@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.back.BackRuleControlDao;
 import com.nuoding.wechat.common.entity.back.BackRuleControlEntity;
 import com.nuoding.wechat.common.service.back.BackRuleControlService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class BackRuleControlServiceImpl implements BackRuleControlService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private BackRuleControlDao backRuleControlDao;
 
@@ -38,6 +45,7 @@ public class BackRuleControlServiceImpl implements BackRuleControlService {
      */
     @Override
     public List<BackRuleControlEntity> queryAllByLimit(BackRuleControlEntity backRuleControlEntity) {
+        logger.info("queryAllByLimit begin.backRuleControlEntity:{}", JsonUtil.obj2Json(backRuleControlEntity));
         return this.backRuleControlDao.queryAllByLimit(backRuleControlEntity);
     }
 
@@ -49,6 +57,7 @@ public class BackRuleControlServiceImpl implements BackRuleControlService {
      */
     @Override
     public BackRuleControlEntity insert(BackRuleControlEntity backRuleControlEntity) {
+        logger.info("insert begin.backRuleControlEntity:{}", JsonUtil.obj2Json(backRuleControlEntity));
         this.backRuleControlDao.insert(backRuleControlEntity);
         return backRuleControlEntity;
     }
@@ -61,6 +70,7 @@ public class BackRuleControlServiceImpl implements BackRuleControlService {
      */
     @Override
     public BackRuleControlEntity update(BackRuleControlEntity backRuleControlEntity) {
+        logger.info("update begin.backRuleControlEntity:{}", JsonUtil.obj2Json(backRuleControlEntity));
         this.backRuleControlDao.update(backRuleControlEntity);
         return this.queryById(backRuleControlEntity.getId());
     }
@@ -73,6 +83,7 @@ public class BackRuleControlServiceImpl implements BackRuleControlService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.backRuleControlEntity:{}", id);
         return this.backRuleControlDao.deleteById(id) > 0;
     }
 }

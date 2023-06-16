@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.back.BackSysUserDao;
 import com.nuoding.wechat.common.entity.back.BackSysUserEntity;
 import com.nuoding.wechat.common.service.back.BackSysUserService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class BackSysUserServiceImpl implements BackSysUserService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private BackSysUserDao backSysUserDao;
 
@@ -38,6 +45,7 @@ public class BackSysUserServiceImpl implements BackSysUserService {
      */
     @Override
     public List<BackSysUserEntity> queryAllByLimit(BackSysUserEntity backSysUserEntity) {
+        logger.info("queryAllByLimit begin.backSysUserEntity:{}", JsonUtil.obj2Json(backSysUserEntity));
         return this.backSysUserDao.queryAllByLimit(backSysUserEntity);
     }
 
@@ -49,6 +57,7 @@ public class BackSysUserServiceImpl implements BackSysUserService {
      */
     @Override
     public BackSysUserEntity insert(BackSysUserEntity backSysUserEntity) {
+        logger.info("insert begin.backSysUserEntity:{}", JsonUtil.obj2Json(backSysUserEntity));
         this.backSysUserDao.insert(backSysUserEntity);
         return backSysUserEntity;
     }
@@ -61,6 +70,7 @@ public class BackSysUserServiceImpl implements BackSysUserService {
      */
     @Override
     public BackSysUserEntity update(BackSysUserEntity backSysUserEntity) {
+        logger.info("update begin.backSysUserEntity:{}", JsonUtil.obj2Json(backSysUserEntity));
         this.backSysUserDao.update(backSysUserEntity);
         return this.queryById(backSysUserEntity.getId());
     }
@@ -73,6 +83,7 @@ public class BackSysUserServiceImpl implements BackSysUserService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.backSysUserEntity:{}", id);
         return this.backSysUserDao.deleteById(id) > 0;
     }
 }

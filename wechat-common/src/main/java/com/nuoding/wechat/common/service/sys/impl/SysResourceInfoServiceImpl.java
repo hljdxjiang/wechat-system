@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.sys.SysResourceInfoDao;
 import com.nuoding.wechat.common.entity.sys.SysResourceInfoEntity;
 import com.nuoding.wechat.common.service.sys.SysResourceInfoService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class SysResourceInfoServiceImpl implements SysResourceInfoService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private SysResourceInfoDao sysResourceInfoDao;
 
@@ -38,6 +45,7 @@ public class SysResourceInfoServiceImpl implements SysResourceInfoService {
      */
     @Override
     public List<SysResourceInfoEntity> queryAllByLimit(SysResourceInfoEntity sysResourceInfoEntity) {
+        logger.info("queryAllByLimit begin.sysResourceInfoEntity:{}", JsonUtil.obj2Json(sysResourceInfoEntity));
         return this.sysResourceInfoDao.queryAllByLimit(sysResourceInfoEntity);
     }
 
@@ -49,6 +57,7 @@ public class SysResourceInfoServiceImpl implements SysResourceInfoService {
      */
     @Override
     public SysResourceInfoEntity insert(SysResourceInfoEntity sysResourceInfoEntity) {
+        logger.info("insert begin.sysResourceInfoEntity:{}", JsonUtil.obj2Json(sysResourceInfoEntity));
         this.sysResourceInfoDao.insert(sysResourceInfoEntity);
         return sysResourceInfoEntity;
     }
@@ -61,6 +70,7 @@ public class SysResourceInfoServiceImpl implements SysResourceInfoService {
      */
     @Override
     public SysResourceInfoEntity update(SysResourceInfoEntity sysResourceInfoEntity) {
+        logger.info("update begin.sysResourceInfoEntity:{}", JsonUtil.obj2Json(sysResourceInfoEntity));
         this.sysResourceInfoDao.update(sysResourceInfoEntity);
         return this.queryById(sysResourceInfoEntity.getId());
     }
@@ -73,6 +83,7 @@ public class SysResourceInfoServiceImpl implements SysResourceInfoService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.sysResourceInfoEntity:{}", id);
         return this.sysResourceInfoDao.deleteById(id) > 0;
     }
 }

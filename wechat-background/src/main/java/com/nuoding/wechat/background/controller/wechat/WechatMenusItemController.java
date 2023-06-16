@@ -9,7 +9,10 @@ import com.nuoding.wechat.common.interceptor.SessionValue;
 import com.nuoding.wechat.common.model.MapResponse;
 import com.nuoding.wechat.common.model.PageQueryBaseDTO;
 import com.nuoding.wechat.common.service.wechat.WechatMenusItemService;
+import com.nuoding.wechat.common.utils.JsonUtil;
 import com.nuoding.wechat.common.utils.PageInfoUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -19,6 +22,7 @@ import java.util.Map;
 /**
  * 后管(wechatMenusItem)服务接口
  * 微信菜单要素表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -26,6 +30,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/background/wechatMenusItem")
 public class WechatMenusItemController {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     /**
      * 服务对象
      */
@@ -36,17 +43,19 @@ public class WechatMenusItemController {
      * 分页查询
      *
      * @param wechatMenusItemEntity 筛选条件
-     * @param dto             size     分页对象
+     * @param dto                   size     分页对象
      * @return 查询结果
      */
     @PostMapping("/queryByPage")
     public MapResponse queryByPage(@RequestBody WechatMenusItemEntity wechatMenusItemEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
+        logger.info("queryByPage begin.wechatMenusItemEntity:{},dto:{}", JsonUtil.obj2Json(wechatMenusItemEntity), JsonUtil.obj2Json(dto));
         PageHelper.startPage(dto.getPage(), dto.getSize());
         List<WechatMenusItemEntity> list = this.wechatMenusItemService.queryAllByLimit(wechatMenusItemEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);
+        logger.info("queryByPage end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }
 
@@ -58,8 +67,10 @@ public class WechatMenusItemController {
      */
     @GetMapping("{id}")
     public MapResponse queryById(@PathVariable("id") Integer id) {
+        logger.info("queryById begin.id:{}", id);
         MapResponse mapResponse = new MapResponse();
         mapResponse.put("data", this.wechatMenusItemService.queryById(id));
+        logger.info("queryById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }
 
@@ -71,8 +82,10 @@ public class WechatMenusItemController {
      */
     @PostMapping("/add")
     public MapResponse add(WechatMenusItemEntity wechatMenusItemEntity) {
+        logger.info("add begin.wechatMenusItemEntity:{}", JsonUtil.obj2Json(wechatMenusItemEntity));
         MapResponse mapResponse = new MapResponse();
         mapResponse.put("data", this.wechatMenusItemService.insert(wechatMenusItemEntity));
+        logger.info("add end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }
 
@@ -85,7 +98,9 @@ public class WechatMenusItemController {
     @PostMapping("/edit")
     public MapResponse edit(WechatMenusItemEntity wechatMenusItemEntity) {
         MapResponse mapResponse = new MapResponse();
+        logger.info("edit begin.wechatMenusItemEntity:{}", JsonUtil.obj2Json(wechatMenusItemEntity));
         mapResponse.put("data", this.wechatMenusItemService.update(wechatMenusItemEntity));
+        logger.info("edit end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }
 
@@ -99,6 +114,7 @@ public class WechatMenusItemController {
     public MapResponse deleteById(WechatMenusItemEntity wechatMenusItemEntity) {
 
         MapResponse mapResponse = new MapResponse();
+        logger.info("deleteById begin.wechatMenusItemEntity:{}", JsonUtil.obj2Json(wechatMenusItemEntity));
         Integer id = wechatMenusItemEntity.getId();
         if (id == null || id == 0) {
             mapResponse.setResponse(RespStatusEnum.ARGS_ERROR);
@@ -108,6 +124,7 @@ public class WechatMenusItemController {
         if (b) {
             mapResponse.setResponse(RespStatusEnum.DATA_DELETE_FAIL);
         }
+        logger.info("deleteById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }
 

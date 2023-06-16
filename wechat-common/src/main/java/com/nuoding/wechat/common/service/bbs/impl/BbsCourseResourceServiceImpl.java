@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.bbs.BbsCourseResourceDao;
 import com.nuoding.wechat.common.entity.bbs.BbsCourseResourceEntity;
 import com.nuoding.wechat.common.service.bbs.BbsCourseResourceService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class BbsCourseResourceServiceImpl implements BbsCourseResourceService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private BbsCourseResourceDao bbsCourseResourceDao;
 
@@ -38,6 +45,7 @@ public class BbsCourseResourceServiceImpl implements BbsCourseResourceService {
      */
     @Override
     public List<BbsCourseResourceEntity> queryAllByLimit(BbsCourseResourceEntity bbsCourseResourceEntity) {
+        logger.info("queryAllByLimit begin.bbsCourseResourceEntity:{}", JsonUtil.obj2Json(bbsCourseResourceEntity));
         return this.bbsCourseResourceDao.queryAllByLimit(bbsCourseResourceEntity);
     }
 
@@ -49,6 +57,7 @@ public class BbsCourseResourceServiceImpl implements BbsCourseResourceService {
      */
     @Override
     public BbsCourseResourceEntity insert(BbsCourseResourceEntity bbsCourseResourceEntity) {
+        logger.info("insert begin.bbsCourseResourceEntity:{}", JsonUtil.obj2Json(bbsCourseResourceEntity));
         this.bbsCourseResourceDao.insert(bbsCourseResourceEntity);
         return bbsCourseResourceEntity;
     }
@@ -61,6 +70,7 @@ public class BbsCourseResourceServiceImpl implements BbsCourseResourceService {
      */
     @Override
     public BbsCourseResourceEntity update(BbsCourseResourceEntity bbsCourseResourceEntity) {
+        logger.info("update begin.bbsCourseResourceEntity:{}", JsonUtil.obj2Json(bbsCourseResourceEntity));
         this.bbsCourseResourceDao.update(bbsCourseResourceEntity);
         return this.queryById(bbsCourseResourceEntity.getId());
     }
@@ -73,6 +83,7 @@ public class BbsCourseResourceServiceImpl implements BbsCourseResourceService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.bbsCourseResourceEntity:{}", id);
         return this.bbsCourseResourceDao.deleteById(id) > 0;
     }
 }

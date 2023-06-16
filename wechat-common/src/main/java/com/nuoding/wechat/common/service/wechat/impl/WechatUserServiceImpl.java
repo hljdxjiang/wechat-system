@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.wechat.WechatUserDao;
 import com.nuoding.wechat.common.entity.wechat.WechatUserEntity;
 import com.nuoding.wechat.common.service.wechat.WechatUserService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class WechatUserServiceImpl implements WechatUserService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private WechatUserDao wechatUserDao;
 
@@ -38,6 +45,7 @@ public class WechatUserServiceImpl implements WechatUserService {
      */
     @Override
     public List<WechatUserEntity> queryAllByLimit(WechatUserEntity wechatUserEntity) {
+        logger.info("queryAllByLimit begin.wechatUserEntity:{}", JsonUtil.obj2Json(wechatUserEntity));
         return this.wechatUserDao.queryAllByLimit(wechatUserEntity);
     }
 
@@ -49,6 +57,7 @@ public class WechatUserServiceImpl implements WechatUserService {
      */
     @Override
     public WechatUserEntity insert(WechatUserEntity wechatUserEntity) {
+        logger.info("insert begin.wechatUserEntity:{}", JsonUtil.obj2Json(wechatUserEntity));
         this.wechatUserDao.insert(wechatUserEntity);
         return wechatUserEntity;
     }
@@ -61,6 +70,7 @@ public class WechatUserServiceImpl implements WechatUserService {
      */
     @Override
     public WechatUserEntity update(WechatUserEntity wechatUserEntity) {
+        logger.info("update begin.wechatUserEntity:{}", JsonUtil.obj2Json(wechatUserEntity));
         this.wechatUserDao.update(wechatUserEntity);
         return this.queryById(wechatUserEntity.getId());
     }
@@ -73,6 +83,7 @@ public class WechatUserServiceImpl implements WechatUserService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.wechatUserEntity:{}", id);
         return this.wechatUserDao.deleteById(id) > 0;
     }
 }

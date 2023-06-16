@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.wechat.WechatMenusOptionDao;
 import com.nuoding.wechat.common.entity.wechat.WechatMenusOptionEntity;
 import com.nuoding.wechat.common.service.wechat.WechatMenusOptionService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class WechatMenusOptionServiceImpl implements WechatMenusOptionService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private WechatMenusOptionDao wechatMenusOptionDao;
 
@@ -38,6 +45,7 @@ public class WechatMenusOptionServiceImpl implements WechatMenusOptionService {
      */
     @Override
     public List<WechatMenusOptionEntity> queryAllByLimit(WechatMenusOptionEntity wechatMenusOptionEntity) {
+        logger.info("queryAllByLimit begin.wechatMenusOptionEntity:{}", JsonUtil.obj2Json(wechatMenusOptionEntity));
         return this.wechatMenusOptionDao.queryAllByLimit(wechatMenusOptionEntity);
     }
 
@@ -49,6 +57,7 @@ public class WechatMenusOptionServiceImpl implements WechatMenusOptionService {
      */
     @Override
     public WechatMenusOptionEntity insert(WechatMenusOptionEntity wechatMenusOptionEntity) {
+        logger.info("insert begin.wechatMenusOptionEntity:{}", JsonUtil.obj2Json(wechatMenusOptionEntity));
         this.wechatMenusOptionDao.insert(wechatMenusOptionEntity);
         return wechatMenusOptionEntity;
     }
@@ -61,6 +70,7 @@ public class WechatMenusOptionServiceImpl implements WechatMenusOptionService {
      */
     @Override
     public WechatMenusOptionEntity update(WechatMenusOptionEntity wechatMenusOptionEntity) {
+        logger.info("update begin.wechatMenusOptionEntity:{}", JsonUtil.obj2Json(wechatMenusOptionEntity));
         this.wechatMenusOptionDao.update(wechatMenusOptionEntity);
         return this.queryById(wechatMenusOptionEntity.getId());
     }
@@ -73,6 +83,7 @@ public class WechatMenusOptionServiceImpl implements WechatMenusOptionService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.wechatMenusOptionEntity:{}", id);
         return this.wechatMenusOptionDao.deleteById(id) > 0;
     }
 }

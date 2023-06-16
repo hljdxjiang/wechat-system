@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.user.UserCommentInfoDao;
 import com.nuoding.wechat.common.entity.user.UserCommentInfoEntity;
 import com.nuoding.wechat.common.service.user.UserCommentInfoService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class UserCommentInfoServiceImpl implements UserCommentInfoService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private UserCommentInfoDao userCommentInfoDao;
 
@@ -38,6 +45,7 @@ public class UserCommentInfoServiceImpl implements UserCommentInfoService {
      */
     @Override
     public List<UserCommentInfoEntity> queryAllByLimit(UserCommentInfoEntity userCommentInfoEntity) {
+        logger.info("queryAllByLimit begin.userCommentInfoEntity:{}", JsonUtil.obj2Json(userCommentInfoEntity));
         return this.userCommentInfoDao.queryAllByLimit(userCommentInfoEntity);
     }
 
@@ -49,6 +57,7 @@ public class UserCommentInfoServiceImpl implements UserCommentInfoService {
      */
     @Override
     public UserCommentInfoEntity insert(UserCommentInfoEntity userCommentInfoEntity) {
+        logger.info("insert begin.userCommentInfoEntity:{}", JsonUtil.obj2Json(userCommentInfoEntity));
         this.userCommentInfoDao.insert(userCommentInfoEntity);
         return userCommentInfoEntity;
     }
@@ -61,6 +70,7 @@ public class UserCommentInfoServiceImpl implements UserCommentInfoService {
      */
     @Override
     public UserCommentInfoEntity update(UserCommentInfoEntity userCommentInfoEntity) {
+        logger.info("update begin.userCommentInfoEntity:{}", JsonUtil.obj2Json(userCommentInfoEntity));
         this.userCommentInfoDao.update(userCommentInfoEntity);
         return this.queryById(userCommentInfoEntity.getId());
     }
@@ -73,6 +83,7 @@ public class UserCommentInfoServiceImpl implements UserCommentInfoService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.userCommentInfoEntity:{}", id);
         return this.userCommentInfoDao.deleteById(id) > 0;
     }
 }

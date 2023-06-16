@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.bbs.BbsCourseDetailDao;
 import com.nuoding.wechat.common.entity.bbs.BbsCourseDetailEntity;
 import com.nuoding.wechat.common.service.bbs.BbsCourseDetailService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class BbsCourseDetailServiceImpl implements BbsCourseDetailService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private BbsCourseDetailDao bbsCourseDetailDao;
 
@@ -38,6 +45,7 @@ public class BbsCourseDetailServiceImpl implements BbsCourseDetailService {
      */
     @Override
     public List<BbsCourseDetailEntity> queryAllByLimit(BbsCourseDetailEntity bbsCourseDetailEntity) {
+        logger.info("queryAllByLimit begin.bbsCourseDetailEntity:{}", JsonUtil.obj2Json(bbsCourseDetailEntity));
         return this.bbsCourseDetailDao.queryAllByLimit(bbsCourseDetailEntity);
     }
 
@@ -49,6 +57,7 @@ public class BbsCourseDetailServiceImpl implements BbsCourseDetailService {
      */
     @Override
     public BbsCourseDetailEntity insert(BbsCourseDetailEntity bbsCourseDetailEntity) {
+        logger.info("insert begin.bbsCourseDetailEntity:{}", JsonUtil.obj2Json(bbsCourseDetailEntity));
         this.bbsCourseDetailDao.insert(bbsCourseDetailEntity);
         return bbsCourseDetailEntity;
     }
@@ -61,6 +70,7 @@ public class BbsCourseDetailServiceImpl implements BbsCourseDetailService {
      */
     @Override
     public BbsCourseDetailEntity update(BbsCourseDetailEntity bbsCourseDetailEntity) {
+        logger.info("update begin.bbsCourseDetailEntity:{}", JsonUtil.obj2Json(bbsCourseDetailEntity));
         this.bbsCourseDetailDao.update(bbsCourseDetailEntity);
         return this.queryById(bbsCourseDetailEntity.getId());
     }
@@ -73,6 +83,7 @@ public class BbsCourseDetailServiceImpl implements BbsCourseDetailService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.bbsCourseDetailEntity:{}", id);
         return this.bbsCourseDetailDao.deleteById(id) > 0;
     }
 }

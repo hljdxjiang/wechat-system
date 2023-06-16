@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.crm.CrmProdGroupDao;
 import com.nuoding.wechat.common.entity.crm.CrmProdGroupEntity;
 import com.nuoding.wechat.common.service.crm.CrmProdGroupService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class CrmProdGroupServiceImpl implements CrmProdGroupService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private CrmProdGroupDao crmProdGroupDao;
 
@@ -38,6 +45,7 @@ public class CrmProdGroupServiceImpl implements CrmProdGroupService {
      */
     @Override
     public List<CrmProdGroupEntity> queryAllByLimit(CrmProdGroupEntity crmProdGroupEntity) {
+        logger.info("queryAllByLimit begin.crmProdGroupEntity:{}", JsonUtil.obj2Json(crmProdGroupEntity));
         return this.crmProdGroupDao.queryAllByLimit(crmProdGroupEntity);
     }
 
@@ -49,6 +57,7 @@ public class CrmProdGroupServiceImpl implements CrmProdGroupService {
      */
     @Override
     public CrmProdGroupEntity insert(CrmProdGroupEntity crmProdGroupEntity) {
+        logger.info("insert begin.crmProdGroupEntity:{}", JsonUtil.obj2Json(crmProdGroupEntity));
         this.crmProdGroupDao.insert(crmProdGroupEntity);
         return crmProdGroupEntity;
     }
@@ -61,6 +70,7 @@ public class CrmProdGroupServiceImpl implements CrmProdGroupService {
      */
     @Override
     public CrmProdGroupEntity update(CrmProdGroupEntity crmProdGroupEntity) {
+        logger.info("update begin.crmProdGroupEntity:{}", JsonUtil.obj2Json(crmProdGroupEntity));
         this.crmProdGroupDao.update(crmProdGroupEntity);
         return this.queryById(crmProdGroupEntity.getId());
     }
@@ -73,6 +83,7 @@ public class CrmProdGroupServiceImpl implements CrmProdGroupService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.crmProdGroupEntity:{}", id);
         return this.crmProdGroupDao.deleteById(id) > 0;
     }
 }

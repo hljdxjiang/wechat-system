@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.user.UserRegInfoDao;
 import com.nuoding.wechat.common.entity.user.UserRegInfoEntity;
 import com.nuoding.wechat.common.service.user.UserRegInfoService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class UserRegInfoServiceImpl implements UserRegInfoService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private UserRegInfoDao userRegInfoDao;
 
@@ -38,6 +45,7 @@ public class UserRegInfoServiceImpl implements UserRegInfoService {
      */
     @Override
     public List<UserRegInfoEntity> queryAllByLimit(UserRegInfoEntity userRegInfoEntity) {
+        logger.info("queryAllByLimit begin.userRegInfoEntity:{}", JsonUtil.obj2Json(userRegInfoEntity));
         return this.userRegInfoDao.queryAllByLimit(userRegInfoEntity);
     }
 
@@ -49,6 +57,7 @@ public class UserRegInfoServiceImpl implements UserRegInfoService {
      */
     @Override
     public UserRegInfoEntity insert(UserRegInfoEntity userRegInfoEntity) {
+        logger.info("insert begin.userRegInfoEntity:{}", JsonUtil.obj2Json(userRegInfoEntity));
         this.userRegInfoDao.insert(userRegInfoEntity);
         return userRegInfoEntity;
     }
@@ -61,6 +70,7 @@ public class UserRegInfoServiceImpl implements UserRegInfoService {
      */
     @Override
     public UserRegInfoEntity update(UserRegInfoEntity userRegInfoEntity) {
+        logger.info("update begin.userRegInfoEntity:{}", JsonUtil.obj2Json(userRegInfoEntity));
         this.userRegInfoDao.update(userRegInfoEntity);
         return this.queryById(userRegInfoEntity.getId());
     }
@@ -73,6 +83,7 @@ public class UserRegInfoServiceImpl implements UserRegInfoService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.userRegInfoEntity:{}", id);
         return this.userRegInfoDao.deleteById(id) > 0;
     }
 }

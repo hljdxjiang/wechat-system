@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.sys.SysTenantTokenDao;
 import com.nuoding.wechat.common.entity.sys.SysTenantTokenEntity;
 import com.nuoding.wechat.common.service.sys.SysTenantTokenService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class SysTenantTokenServiceImpl implements SysTenantTokenService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private SysTenantTokenDao sysTenantTokenDao;
 
@@ -38,6 +45,7 @@ public class SysTenantTokenServiceImpl implements SysTenantTokenService {
      */
     @Override
     public List<SysTenantTokenEntity> queryAllByLimit(SysTenantTokenEntity sysTenantTokenEntity) {
+        logger.info("queryAllByLimit begin.sysTenantTokenEntity:{}", JsonUtil.obj2Json(sysTenantTokenEntity));
         return this.sysTenantTokenDao.queryAllByLimit(sysTenantTokenEntity);
     }
 
@@ -49,6 +57,7 @@ public class SysTenantTokenServiceImpl implements SysTenantTokenService {
      */
     @Override
     public SysTenantTokenEntity insert(SysTenantTokenEntity sysTenantTokenEntity) {
+        logger.info("insert begin.sysTenantTokenEntity:{}", JsonUtil.obj2Json(sysTenantTokenEntity));
         this.sysTenantTokenDao.insert(sysTenantTokenEntity);
         return sysTenantTokenEntity;
     }
@@ -61,6 +70,7 @@ public class SysTenantTokenServiceImpl implements SysTenantTokenService {
      */
     @Override
     public SysTenantTokenEntity update(SysTenantTokenEntity sysTenantTokenEntity) {
+        logger.info("update begin.sysTenantTokenEntity:{}", JsonUtil.obj2Json(sysTenantTokenEntity));
         this.sysTenantTokenDao.update(sysTenantTokenEntity);
         return this.queryById(sysTenantTokenEntity.getId());
     }
@@ -73,6 +83,7 @@ public class SysTenantTokenServiceImpl implements SysTenantTokenService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.sysTenantTokenEntity:{}", id);
         return this.sysTenantTokenDao.deleteById(id) > 0;
     }
 }

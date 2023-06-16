@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.wechat.WechatMinipUserDao;
 import com.nuoding.wechat.common.entity.wechat.WechatMinipUserEntity;
 import com.nuoding.wechat.common.service.wechat.WechatMinipUserService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class WechatMinipUserServiceImpl implements WechatMinipUserService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private WechatMinipUserDao wechatMinipUserDao;
 
@@ -38,6 +45,7 @@ public class WechatMinipUserServiceImpl implements WechatMinipUserService {
      */
     @Override
     public List<WechatMinipUserEntity> queryAllByLimit(WechatMinipUserEntity wechatMinipUserEntity) {
+        logger.info("queryAllByLimit begin.wechatMinipUserEntity:{}", JsonUtil.obj2Json(wechatMinipUserEntity));
         return this.wechatMinipUserDao.queryAllByLimit(wechatMinipUserEntity);
     }
 
@@ -49,6 +57,7 @@ public class WechatMinipUserServiceImpl implements WechatMinipUserService {
      */
     @Override
     public WechatMinipUserEntity insert(WechatMinipUserEntity wechatMinipUserEntity) {
+        logger.info("insert begin.wechatMinipUserEntity:{}", JsonUtil.obj2Json(wechatMinipUserEntity));
         this.wechatMinipUserDao.insert(wechatMinipUserEntity);
         return wechatMinipUserEntity;
     }
@@ -61,6 +70,7 @@ public class WechatMinipUserServiceImpl implements WechatMinipUserService {
      */
     @Override
     public WechatMinipUserEntity update(WechatMinipUserEntity wechatMinipUserEntity) {
+        logger.info("update begin.wechatMinipUserEntity:{}", JsonUtil.obj2Json(wechatMinipUserEntity));
         this.wechatMinipUserDao.update(wechatMinipUserEntity);
         return this.queryById(wechatMinipUserEntity.getId());
     }
@@ -73,6 +83,7 @@ public class WechatMinipUserServiceImpl implements WechatMinipUserService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.wechatMinipUserEntity:{}", id);
         return this.wechatMinipUserDao.deleteById(id) > 0;
     }
 }

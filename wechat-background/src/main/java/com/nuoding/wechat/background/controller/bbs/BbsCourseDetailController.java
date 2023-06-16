@@ -9,7 +9,10 @@ import com.nuoding.wechat.common.interceptor.SessionValue;
 import com.nuoding.wechat.common.model.MapResponse;
 import com.nuoding.wechat.common.model.PageQueryBaseDTO;
 import com.nuoding.wechat.common.service.bbs.BbsCourseDetailService;
+import com.nuoding.wechat.common.utils.JsonUtil;
 import com.nuoding.wechat.common.utils.PageInfoUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -19,6 +22,7 @@ import java.util.Map;
 /**
  * 后管(bbsCourseDetail)服务接口
  * 课程详情表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -26,6 +30,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/background/bbsCourseDetail")
 public class BbsCourseDetailController {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     /**
      * 服务对象
      */
@@ -36,17 +43,19 @@ public class BbsCourseDetailController {
      * 分页查询
      *
      * @param bbsCourseDetailEntity 筛选条件
-     * @param dto             size     分页对象
+     * @param dto                   size     分页对象
      * @return 查询结果
      */
     @PostMapping("/queryByPage")
     public MapResponse queryByPage(@RequestBody BbsCourseDetailEntity bbsCourseDetailEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
+        logger.info("queryByPage begin.bbsCourseDetailEntity:{},dto:{}", JsonUtil.obj2Json(bbsCourseDetailEntity), JsonUtil.obj2Json(dto));
         PageHelper.startPage(dto.getPage(), dto.getSize());
         List<BbsCourseDetailEntity> list = this.bbsCourseDetailService.queryAllByLimit(bbsCourseDetailEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);
+        logger.info("queryByPage end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }
 
@@ -58,8 +67,10 @@ public class BbsCourseDetailController {
      */
     @GetMapping("{id}")
     public MapResponse queryById(@PathVariable("id") Integer id) {
+        logger.info("queryById begin.id:{}", id);
         MapResponse mapResponse = new MapResponse();
         mapResponse.put("data", this.bbsCourseDetailService.queryById(id));
+        logger.info("queryById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }
 
@@ -71,8 +82,10 @@ public class BbsCourseDetailController {
      */
     @PostMapping("/add")
     public MapResponse add(BbsCourseDetailEntity bbsCourseDetailEntity) {
+        logger.info("add begin.bbsCourseDetailEntity:{}", JsonUtil.obj2Json(bbsCourseDetailEntity));
         MapResponse mapResponse = new MapResponse();
         mapResponse.put("data", this.bbsCourseDetailService.insert(bbsCourseDetailEntity));
+        logger.info("add end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }
 
@@ -85,7 +98,9 @@ public class BbsCourseDetailController {
     @PostMapping("/edit")
     public MapResponse edit(BbsCourseDetailEntity bbsCourseDetailEntity) {
         MapResponse mapResponse = new MapResponse();
+        logger.info("edit begin.bbsCourseDetailEntity:{}", JsonUtil.obj2Json(bbsCourseDetailEntity));
         mapResponse.put("data", this.bbsCourseDetailService.update(bbsCourseDetailEntity));
+        logger.info("edit end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }
 
@@ -99,6 +114,7 @@ public class BbsCourseDetailController {
     public MapResponse deleteById(BbsCourseDetailEntity bbsCourseDetailEntity) {
 
         MapResponse mapResponse = new MapResponse();
+        logger.info("deleteById begin.bbsCourseDetailEntity:{}", JsonUtil.obj2Json(bbsCourseDetailEntity));
         Integer id = bbsCourseDetailEntity.getId();
         if (id == null || id == 0) {
             mapResponse.setResponse(RespStatusEnum.ARGS_ERROR);
@@ -108,6 +124,7 @@ public class BbsCourseDetailController {
         if (b) {
             mapResponse.setResponse(RespStatusEnum.DATA_DELETE_FAIL);
         }
+        logger.info("deleteById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }
 

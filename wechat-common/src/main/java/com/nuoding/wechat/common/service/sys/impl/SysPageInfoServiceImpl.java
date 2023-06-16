@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.sys.SysPageInfoDao;
 import com.nuoding.wechat.common.entity.sys.SysPageInfoEntity;
 import com.nuoding.wechat.common.service.sys.SysPageInfoService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class SysPageInfoServiceImpl implements SysPageInfoService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private SysPageInfoDao sysPageInfoDao;
 
@@ -38,6 +45,7 @@ public class SysPageInfoServiceImpl implements SysPageInfoService {
      */
     @Override
     public List<SysPageInfoEntity> queryAllByLimit(SysPageInfoEntity sysPageInfoEntity) {
+        logger.info("queryAllByLimit begin.sysPageInfoEntity:{}", JsonUtil.obj2Json(sysPageInfoEntity));
         return this.sysPageInfoDao.queryAllByLimit(sysPageInfoEntity);
     }
 
@@ -49,6 +57,7 @@ public class SysPageInfoServiceImpl implements SysPageInfoService {
      */
     @Override
     public SysPageInfoEntity insert(SysPageInfoEntity sysPageInfoEntity) {
+        logger.info("insert begin.sysPageInfoEntity:{}", JsonUtil.obj2Json(sysPageInfoEntity));
         this.sysPageInfoDao.insert(sysPageInfoEntity);
         return sysPageInfoEntity;
     }
@@ -61,6 +70,7 @@ public class SysPageInfoServiceImpl implements SysPageInfoService {
      */
     @Override
     public SysPageInfoEntity update(SysPageInfoEntity sysPageInfoEntity) {
+        logger.info("update begin.sysPageInfoEntity:{}", JsonUtil.obj2Json(sysPageInfoEntity));
         this.sysPageInfoDao.update(sysPageInfoEntity);
         return this.queryById(sysPageInfoEntity.getId());
     }
@@ -73,6 +83,7 @@ public class SysPageInfoServiceImpl implements SysPageInfoService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.sysPageInfoEntity:{}", id);
         return this.sysPageInfoDao.deleteById(id) > 0;
     }
 }

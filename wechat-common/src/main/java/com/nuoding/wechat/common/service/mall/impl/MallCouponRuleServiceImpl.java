@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.mall.MallCouponRuleDao;
 import com.nuoding.wechat.common.entity.mall.MallCouponRuleEntity;
 import com.nuoding.wechat.common.service.mall.MallCouponRuleService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class MallCouponRuleServiceImpl implements MallCouponRuleService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private MallCouponRuleDao mallCouponRuleDao;
 
@@ -38,6 +45,7 @@ public class MallCouponRuleServiceImpl implements MallCouponRuleService {
      */
     @Override
     public List<MallCouponRuleEntity> queryAllByLimit(MallCouponRuleEntity mallCouponRuleEntity) {
+        logger.info("queryAllByLimit begin.mallCouponRuleEntity:{}", JsonUtil.obj2Json(mallCouponRuleEntity));
         return this.mallCouponRuleDao.queryAllByLimit(mallCouponRuleEntity);
     }
 
@@ -49,6 +57,7 @@ public class MallCouponRuleServiceImpl implements MallCouponRuleService {
      */
     @Override
     public MallCouponRuleEntity insert(MallCouponRuleEntity mallCouponRuleEntity) {
+        logger.info("insert begin.mallCouponRuleEntity:{}", JsonUtil.obj2Json(mallCouponRuleEntity));
         this.mallCouponRuleDao.insert(mallCouponRuleEntity);
         return mallCouponRuleEntity;
     }
@@ -61,6 +70,7 @@ public class MallCouponRuleServiceImpl implements MallCouponRuleService {
      */
     @Override
     public MallCouponRuleEntity update(MallCouponRuleEntity mallCouponRuleEntity) {
+        logger.info("update begin.mallCouponRuleEntity:{}", JsonUtil.obj2Json(mallCouponRuleEntity));
         this.mallCouponRuleDao.update(mallCouponRuleEntity);
         return this.queryById(mallCouponRuleEntity.getId());
     }
@@ -73,6 +83,7 @@ public class MallCouponRuleServiceImpl implements MallCouponRuleService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.mallCouponRuleEntity:{}", id);
         return this.mallCouponRuleDao.deleteById(id) > 0;
     }
 }

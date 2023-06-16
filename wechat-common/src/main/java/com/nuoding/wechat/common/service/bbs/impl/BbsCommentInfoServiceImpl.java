@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.bbs.BbsCommentInfoDao;
 import com.nuoding.wechat.common.entity.bbs.BbsCommentInfoEntity;
 import com.nuoding.wechat.common.service.bbs.BbsCommentInfoService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class BbsCommentInfoServiceImpl implements BbsCommentInfoService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private BbsCommentInfoDao bbsCommentInfoDao;
 
@@ -38,6 +45,7 @@ public class BbsCommentInfoServiceImpl implements BbsCommentInfoService {
      */
     @Override
     public List<BbsCommentInfoEntity> queryAllByLimit(BbsCommentInfoEntity bbsCommentInfoEntity) {
+        logger.info("queryAllByLimit begin.bbsCommentInfoEntity:{}", JsonUtil.obj2Json(bbsCommentInfoEntity));
         return this.bbsCommentInfoDao.queryAllByLimit(bbsCommentInfoEntity);
     }
 
@@ -49,6 +57,7 @@ public class BbsCommentInfoServiceImpl implements BbsCommentInfoService {
      */
     @Override
     public BbsCommentInfoEntity insert(BbsCommentInfoEntity bbsCommentInfoEntity) {
+        logger.info("insert begin.bbsCommentInfoEntity:{}", JsonUtil.obj2Json(bbsCommentInfoEntity));
         this.bbsCommentInfoDao.insert(bbsCommentInfoEntity);
         return bbsCommentInfoEntity;
     }
@@ -61,6 +70,7 @@ public class BbsCommentInfoServiceImpl implements BbsCommentInfoService {
      */
     @Override
     public BbsCommentInfoEntity update(BbsCommentInfoEntity bbsCommentInfoEntity) {
+        logger.info("update begin.bbsCommentInfoEntity:{}", JsonUtil.obj2Json(bbsCommentInfoEntity));
         this.bbsCommentInfoDao.update(bbsCommentInfoEntity);
         return this.queryById(bbsCommentInfoEntity.getId());
     }
@@ -73,6 +83,7 @@ public class BbsCommentInfoServiceImpl implements BbsCommentInfoService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.bbsCommentInfoEntity:{}", id);
         return this.bbsCommentInfoDao.deleteById(id) > 0;
     }
 }

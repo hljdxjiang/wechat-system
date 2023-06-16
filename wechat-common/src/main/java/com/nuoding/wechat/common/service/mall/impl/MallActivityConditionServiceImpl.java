@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.mall.MallActivityConditionDao;
 import com.nuoding.wechat.common.entity.mall.MallActivityConditionEntity;
 import com.nuoding.wechat.common.service.mall.MallActivityConditionService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class MallActivityConditionServiceImpl implements MallActivityConditionService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private MallActivityConditionDao mallActivityConditionDao;
 
@@ -38,6 +45,7 @@ public class MallActivityConditionServiceImpl implements MallActivityConditionSe
      */
     @Override
     public List<MallActivityConditionEntity> queryAllByLimit(MallActivityConditionEntity mallActivityConditionEntity) {
+        logger.info("queryAllByLimit begin.mallActivityConditionEntity:{}", JsonUtil.obj2Json(mallActivityConditionEntity));
         return this.mallActivityConditionDao.queryAllByLimit(mallActivityConditionEntity);
     }
 
@@ -49,6 +57,7 @@ public class MallActivityConditionServiceImpl implements MallActivityConditionSe
      */
     @Override
     public MallActivityConditionEntity insert(MallActivityConditionEntity mallActivityConditionEntity) {
+        logger.info("insert begin.mallActivityConditionEntity:{}", JsonUtil.obj2Json(mallActivityConditionEntity));
         this.mallActivityConditionDao.insert(mallActivityConditionEntity);
         return mallActivityConditionEntity;
     }
@@ -61,6 +70,7 @@ public class MallActivityConditionServiceImpl implements MallActivityConditionSe
      */
     @Override
     public MallActivityConditionEntity update(MallActivityConditionEntity mallActivityConditionEntity) {
+        logger.info("update begin.mallActivityConditionEntity:{}", JsonUtil.obj2Json(mallActivityConditionEntity));
         this.mallActivityConditionDao.update(mallActivityConditionEntity);
         return this.queryById(mallActivityConditionEntity.getId());
     }
@@ -73,6 +83,7 @@ public class MallActivityConditionServiceImpl implements MallActivityConditionSe
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.mallActivityConditionEntity:{}", id);
         return this.mallActivityConditionDao.deleteById(id) > 0;
     }
 }

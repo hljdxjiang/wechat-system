@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.crm.CrmBrandInfoDao;
 import com.nuoding.wechat.common.entity.crm.CrmBrandInfoEntity;
 import com.nuoding.wechat.common.service.crm.CrmBrandInfoService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class CrmBrandInfoServiceImpl implements CrmBrandInfoService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private CrmBrandInfoDao crmBrandInfoDao;
 
@@ -38,6 +45,7 @@ public class CrmBrandInfoServiceImpl implements CrmBrandInfoService {
      */
     @Override
     public List<CrmBrandInfoEntity> queryAllByLimit(CrmBrandInfoEntity crmBrandInfoEntity) {
+        logger.info("queryAllByLimit begin.crmBrandInfoEntity:{}", JsonUtil.obj2Json(crmBrandInfoEntity));
         return this.crmBrandInfoDao.queryAllByLimit(crmBrandInfoEntity);
     }
 
@@ -49,6 +57,7 @@ public class CrmBrandInfoServiceImpl implements CrmBrandInfoService {
      */
     @Override
     public CrmBrandInfoEntity insert(CrmBrandInfoEntity crmBrandInfoEntity) {
+        logger.info("insert begin.crmBrandInfoEntity:{}", JsonUtil.obj2Json(crmBrandInfoEntity));
         this.crmBrandInfoDao.insert(crmBrandInfoEntity);
         return crmBrandInfoEntity;
     }
@@ -61,6 +70,7 @@ public class CrmBrandInfoServiceImpl implements CrmBrandInfoService {
      */
     @Override
     public CrmBrandInfoEntity update(CrmBrandInfoEntity crmBrandInfoEntity) {
+        logger.info("update begin.crmBrandInfoEntity:{}", JsonUtil.obj2Json(crmBrandInfoEntity));
         this.crmBrandInfoDao.update(crmBrandInfoEntity);
         return this.queryById(crmBrandInfoEntity.getId());
     }
@@ -73,6 +83,7 @@ public class CrmBrandInfoServiceImpl implements CrmBrandInfoService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.crmBrandInfoEntity:{}", id);
         return this.crmBrandInfoDao.deleteById(id) > 0;
     }
 }

@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.bbs.BbsColumnInfoDao;
 import com.nuoding.wechat.common.entity.bbs.BbsColumnInfoEntity;
 import com.nuoding.wechat.common.service.bbs.BbsColumnInfoService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class BbsColumnInfoServiceImpl implements BbsColumnInfoService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private BbsColumnInfoDao bbsColumnInfoDao;
 
@@ -38,6 +45,7 @@ public class BbsColumnInfoServiceImpl implements BbsColumnInfoService {
      */
     @Override
     public List<BbsColumnInfoEntity> queryAllByLimit(BbsColumnInfoEntity bbsColumnInfoEntity) {
+        logger.info("queryAllByLimit begin.bbsColumnInfoEntity:{}", JsonUtil.obj2Json(bbsColumnInfoEntity));
         return this.bbsColumnInfoDao.queryAllByLimit(bbsColumnInfoEntity);
     }
 
@@ -49,6 +57,7 @@ public class BbsColumnInfoServiceImpl implements BbsColumnInfoService {
      */
     @Override
     public BbsColumnInfoEntity insert(BbsColumnInfoEntity bbsColumnInfoEntity) {
+        logger.info("insert begin.bbsColumnInfoEntity:{}", JsonUtil.obj2Json(bbsColumnInfoEntity));
         this.bbsColumnInfoDao.insert(bbsColumnInfoEntity);
         return bbsColumnInfoEntity;
     }
@@ -61,6 +70,7 @@ public class BbsColumnInfoServiceImpl implements BbsColumnInfoService {
      */
     @Override
     public BbsColumnInfoEntity update(BbsColumnInfoEntity bbsColumnInfoEntity) {
+        logger.info("update begin.bbsColumnInfoEntity:{}", JsonUtil.obj2Json(bbsColumnInfoEntity));
         this.bbsColumnInfoDao.update(bbsColumnInfoEntity);
         return this.queryById(bbsColumnInfoEntity.getId());
     }
@@ -73,6 +83,7 @@ public class BbsColumnInfoServiceImpl implements BbsColumnInfoService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.bbsColumnInfoEntity:{}", id);
         return this.bbsColumnInfoDao.deleteById(id) > 0;
     }
 }

@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.back.BackUserLoginRecordDao;
 import com.nuoding.wechat.common.entity.back.BackUserLoginRecordEntity;
 import com.nuoding.wechat.common.service.back.BackUserLoginRecordService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class BackUserLoginRecordServiceImpl implements BackUserLoginRecordService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private BackUserLoginRecordDao backUserLoginRecordDao;
 
@@ -38,6 +45,7 @@ public class BackUserLoginRecordServiceImpl implements BackUserLoginRecordServic
      */
     @Override
     public List<BackUserLoginRecordEntity> queryAllByLimit(BackUserLoginRecordEntity backUserLoginRecordEntity) {
+        logger.info("queryAllByLimit begin.backUserLoginRecordEntity:{}", JsonUtil.obj2Json(backUserLoginRecordEntity));
         return this.backUserLoginRecordDao.queryAllByLimit(backUserLoginRecordEntity);
     }
 
@@ -49,6 +57,7 @@ public class BackUserLoginRecordServiceImpl implements BackUserLoginRecordServic
      */
     @Override
     public BackUserLoginRecordEntity insert(BackUserLoginRecordEntity backUserLoginRecordEntity) {
+        logger.info("insert begin.backUserLoginRecordEntity:{}", JsonUtil.obj2Json(backUserLoginRecordEntity));
         this.backUserLoginRecordDao.insert(backUserLoginRecordEntity);
         return backUserLoginRecordEntity;
     }
@@ -61,6 +70,7 @@ public class BackUserLoginRecordServiceImpl implements BackUserLoginRecordServic
      */
     @Override
     public BackUserLoginRecordEntity update(BackUserLoginRecordEntity backUserLoginRecordEntity) {
+        logger.info("update begin.backUserLoginRecordEntity:{}", JsonUtil.obj2Json(backUserLoginRecordEntity));
         this.backUserLoginRecordDao.update(backUserLoginRecordEntity);
         return this.queryById(backUserLoginRecordEntity.getId());
     }
@@ -73,6 +83,7 @@ public class BackUserLoginRecordServiceImpl implements BackUserLoginRecordServic
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.backUserLoginRecordEntity:{}", id);
         return this.backUserLoginRecordDao.deleteById(id) > 0;
     }
 }

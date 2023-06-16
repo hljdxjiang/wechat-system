@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.sys.SysFlowItemsDao;
 import com.nuoding.wechat.common.entity.sys.SysFlowItemsEntity;
 import com.nuoding.wechat.common.service.sys.SysFlowItemsService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class SysFlowItemsServiceImpl implements SysFlowItemsService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private SysFlowItemsDao sysFlowItemsDao;
 
@@ -38,6 +45,7 @@ public class SysFlowItemsServiceImpl implements SysFlowItemsService {
      */
     @Override
     public List<SysFlowItemsEntity> queryAllByLimit(SysFlowItemsEntity sysFlowItemsEntity) {
+        logger.info("queryAllByLimit begin.sysFlowItemsEntity:{}", JsonUtil.obj2Json(sysFlowItemsEntity));
         return this.sysFlowItemsDao.queryAllByLimit(sysFlowItemsEntity);
     }
 
@@ -49,6 +57,7 @@ public class SysFlowItemsServiceImpl implements SysFlowItemsService {
      */
     @Override
     public SysFlowItemsEntity insert(SysFlowItemsEntity sysFlowItemsEntity) {
+        logger.info("insert begin.sysFlowItemsEntity:{}", JsonUtil.obj2Json(sysFlowItemsEntity));
         this.sysFlowItemsDao.insert(sysFlowItemsEntity);
         return sysFlowItemsEntity;
     }
@@ -61,6 +70,7 @@ public class SysFlowItemsServiceImpl implements SysFlowItemsService {
      */
     @Override
     public SysFlowItemsEntity update(SysFlowItemsEntity sysFlowItemsEntity) {
+        logger.info("update begin.sysFlowItemsEntity:{}", JsonUtil.obj2Json(sysFlowItemsEntity));
         this.sysFlowItemsDao.update(sysFlowItemsEntity);
         return this.queryById(sysFlowItemsEntity.getId());
     }
@@ -73,6 +83,7 @@ public class SysFlowItemsServiceImpl implements SysFlowItemsService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.sysFlowItemsEntity:{}", id);
         return this.sysFlowItemsDao.deleteById(id) > 0;
     }
 }

@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.back.BackSysMenusDao;
 import com.nuoding.wechat.common.entity.back.BackSysMenusEntity;
 import com.nuoding.wechat.common.service.back.BackSysMenusService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class BackSysMenusServiceImpl implements BackSysMenusService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private BackSysMenusDao backSysMenusDao;
 
@@ -38,6 +45,7 @@ public class BackSysMenusServiceImpl implements BackSysMenusService {
      */
     @Override
     public List<BackSysMenusEntity> queryAllByLimit(BackSysMenusEntity backSysMenusEntity) {
+        logger.info("queryAllByLimit begin.backSysMenusEntity:{}", JsonUtil.obj2Json(backSysMenusEntity));
         return this.backSysMenusDao.queryAllByLimit(backSysMenusEntity);
     }
 
@@ -49,6 +57,7 @@ public class BackSysMenusServiceImpl implements BackSysMenusService {
      */
     @Override
     public BackSysMenusEntity insert(BackSysMenusEntity backSysMenusEntity) {
+        logger.info("insert begin.backSysMenusEntity:{}", JsonUtil.obj2Json(backSysMenusEntity));
         this.backSysMenusDao.insert(backSysMenusEntity);
         return backSysMenusEntity;
     }
@@ -61,6 +70,7 @@ public class BackSysMenusServiceImpl implements BackSysMenusService {
      */
     @Override
     public BackSysMenusEntity update(BackSysMenusEntity backSysMenusEntity) {
+        logger.info("update begin.backSysMenusEntity:{}", JsonUtil.obj2Json(backSysMenusEntity));
         this.backSysMenusDao.update(backSysMenusEntity);
         return this.queryById(backSysMenusEntity.getId());
     }
@@ -73,6 +83,7 @@ public class BackSysMenusServiceImpl implements BackSysMenusService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.backSysMenusEntity:{}", id);
         return this.backSysMenusDao.deleteById(id) > 0;
     }
 }

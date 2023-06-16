@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.wechat.WechatMenusMatchruleDao;
 import com.nuoding.wechat.common.entity.wechat.WechatMenusMatchruleEntity;
 import com.nuoding.wechat.common.service.wechat.WechatMenusMatchruleService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class WechatMenusMatchruleServiceImpl implements WechatMenusMatchruleService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private WechatMenusMatchruleDao wechatMenusMatchruleDao;
 
@@ -38,6 +45,7 @@ public class WechatMenusMatchruleServiceImpl implements WechatMenusMatchruleServ
      */
     @Override
     public List<WechatMenusMatchruleEntity> queryAllByLimit(WechatMenusMatchruleEntity wechatMenusMatchruleEntity) {
+        logger.info("queryAllByLimit begin.wechatMenusMatchruleEntity:{}", JsonUtil.obj2Json(wechatMenusMatchruleEntity));
         return this.wechatMenusMatchruleDao.queryAllByLimit(wechatMenusMatchruleEntity);
     }
 
@@ -49,6 +57,7 @@ public class WechatMenusMatchruleServiceImpl implements WechatMenusMatchruleServ
      */
     @Override
     public WechatMenusMatchruleEntity insert(WechatMenusMatchruleEntity wechatMenusMatchruleEntity) {
+        logger.info("insert begin.wechatMenusMatchruleEntity:{}", JsonUtil.obj2Json(wechatMenusMatchruleEntity));
         this.wechatMenusMatchruleDao.insert(wechatMenusMatchruleEntity);
         return wechatMenusMatchruleEntity;
     }
@@ -61,6 +70,7 @@ public class WechatMenusMatchruleServiceImpl implements WechatMenusMatchruleServ
      */
     @Override
     public WechatMenusMatchruleEntity update(WechatMenusMatchruleEntity wechatMenusMatchruleEntity) {
+        logger.info("update begin.wechatMenusMatchruleEntity:{}", JsonUtil.obj2Json(wechatMenusMatchruleEntity));
         this.wechatMenusMatchruleDao.update(wechatMenusMatchruleEntity);
         return this.queryById(wechatMenusMatchruleEntity.getId());
     }
@@ -73,6 +83,7 @@ public class WechatMenusMatchruleServiceImpl implements WechatMenusMatchruleServ
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.wechatMenusMatchruleEntity:{}", id);
         return this.wechatMenusMatchruleDao.deleteById(id) > 0;
     }
 }

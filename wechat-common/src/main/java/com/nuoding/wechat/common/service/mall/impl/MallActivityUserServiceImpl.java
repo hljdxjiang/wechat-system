@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.mall.MallActivityUserDao;
 import com.nuoding.wechat.common.entity.mall.MallActivityUserEntity;
 import com.nuoding.wechat.common.service.mall.MallActivityUserService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class MallActivityUserServiceImpl implements MallActivityUserService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private MallActivityUserDao mallActivityUserDao;
 
@@ -38,6 +45,7 @@ public class MallActivityUserServiceImpl implements MallActivityUserService {
      */
     @Override
     public List<MallActivityUserEntity> queryAllByLimit(MallActivityUserEntity mallActivityUserEntity) {
+        logger.info("queryAllByLimit begin.mallActivityUserEntity:{}", JsonUtil.obj2Json(mallActivityUserEntity));
         return this.mallActivityUserDao.queryAllByLimit(mallActivityUserEntity);
     }
 
@@ -49,6 +57,7 @@ public class MallActivityUserServiceImpl implements MallActivityUserService {
      */
     @Override
     public MallActivityUserEntity insert(MallActivityUserEntity mallActivityUserEntity) {
+        logger.info("insert begin.mallActivityUserEntity:{}", JsonUtil.obj2Json(mallActivityUserEntity));
         this.mallActivityUserDao.insert(mallActivityUserEntity);
         return mallActivityUserEntity;
     }
@@ -61,6 +70,7 @@ public class MallActivityUserServiceImpl implements MallActivityUserService {
      */
     @Override
     public MallActivityUserEntity update(MallActivityUserEntity mallActivityUserEntity) {
+        logger.info("update begin.mallActivityUserEntity:{}", JsonUtil.obj2Json(mallActivityUserEntity));
         this.mallActivityUserDao.update(mallActivityUserEntity);
         return this.queryById(mallActivityUserEntity.getId());
     }
@@ -73,6 +83,7 @@ public class MallActivityUserServiceImpl implements MallActivityUserService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.mallActivityUserEntity:{}", id);
         return this.mallActivityUserDao.deleteById(id) > 0;
     }
 }

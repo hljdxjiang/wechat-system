@@ -354,4 +354,9 @@ public class CommonConstant {
      */
     public static final String LLK_FAIL_MSG = "该笔存款目前无法支取，如您参加了转购理财活动，请先撤销活动申请后再来支取该笔存款，或咨询我行客服。";
 
+    /**
+     * 用户标签分隔符
+     */
+    public static final String LABEL_SPLIT_FLAG = ",";
+
 }

@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.back.BackImgInfoDao;
 import com.nuoding.wechat.common.entity.back.BackImgInfoEntity;
 import com.nuoding.wechat.common.service.back.BackImgInfoService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class BackImgInfoServiceImpl implements BackImgInfoService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private BackImgInfoDao backImgInfoDao;
 
@@ -38,6 +45,7 @@ public class BackImgInfoServiceImpl implements BackImgInfoService {
      */
     @Override
     public List<BackImgInfoEntity> queryAllByLimit(BackImgInfoEntity backImgInfoEntity) {
+        logger.info("queryAllByLimit begin.backImgInfoEntity:{}", JsonUtil.obj2Json(backImgInfoEntity));
         return this.backImgInfoDao.queryAllByLimit(backImgInfoEntity);
     }
 
@@ -49,6 +57,7 @@ public class BackImgInfoServiceImpl implements BackImgInfoService {
      */
     @Override
     public BackImgInfoEntity insert(BackImgInfoEntity backImgInfoEntity) {
+        logger.info("insert begin.backImgInfoEntity:{}", JsonUtil.obj2Json(backImgInfoEntity));
         this.backImgInfoDao.insert(backImgInfoEntity);
         return backImgInfoEntity;
     }
@@ -61,6 +70,7 @@ public class BackImgInfoServiceImpl implements BackImgInfoService {
      */
     @Override
     public BackImgInfoEntity update(BackImgInfoEntity backImgInfoEntity) {
+        logger.info("update begin.backImgInfoEntity:{}", JsonUtil.obj2Json(backImgInfoEntity));
         this.backImgInfoDao.update(backImgInfoEntity);
         return this.queryById(backImgInfoEntity.getId());
     }
@@ -73,6 +83,7 @@ public class BackImgInfoServiceImpl implements BackImgInfoService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.backImgInfoEntity:{}", id);
         return this.backImgInfoDao.deleteById(id) > 0;
     }
 }

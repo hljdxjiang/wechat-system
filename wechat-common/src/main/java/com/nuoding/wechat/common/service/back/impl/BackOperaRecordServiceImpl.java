@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.back.BackOperaRecordDao;
 import com.nuoding.wechat.common.entity.back.BackOperaRecordEntity;
 import com.nuoding.wechat.common.service.back.BackOperaRecordService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class BackOperaRecordServiceImpl implements BackOperaRecordService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private BackOperaRecordDao backOperaRecordDao;
 
@@ -38,6 +45,7 @@ public class BackOperaRecordServiceImpl implements BackOperaRecordService {
      */
     @Override
     public List<BackOperaRecordEntity> queryAllByLimit(BackOperaRecordEntity backOperaRecordEntity) {
+        logger.info("queryAllByLimit begin.backOperaRecordEntity:{}", JsonUtil.obj2Json(backOperaRecordEntity));
         return this.backOperaRecordDao.queryAllByLimit(backOperaRecordEntity);
     }
 
@@ -49,6 +57,7 @@ public class BackOperaRecordServiceImpl implements BackOperaRecordService {
      */
     @Override
     public BackOperaRecordEntity insert(BackOperaRecordEntity backOperaRecordEntity) {
+        logger.info("insert begin.backOperaRecordEntity:{}", JsonUtil.obj2Json(backOperaRecordEntity));
         this.backOperaRecordDao.insert(backOperaRecordEntity);
         return backOperaRecordEntity;
     }
@@ -61,6 +70,7 @@ public class BackOperaRecordServiceImpl implements BackOperaRecordService {
      */
     @Override
     public BackOperaRecordEntity update(BackOperaRecordEntity backOperaRecordEntity) {
+        logger.info("update begin.backOperaRecordEntity:{}", JsonUtil.obj2Json(backOperaRecordEntity));
         this.backOperaRecordDao.update(backOperaRecordEntity);
         return this.queryById(backOperaRecordEntity.getId());
     }
@@ -73,6 +83,7 @@ public class BackOperaRecordServiceImpl implements BackOperaRecordService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.backOperaRecordEntity:{}", id);
         return this.backOperaRecordDao.deleteById(id) > 0;
     }
 }

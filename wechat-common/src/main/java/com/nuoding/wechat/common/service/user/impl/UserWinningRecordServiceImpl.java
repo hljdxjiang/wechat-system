@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.user.UserWinningRecordDao;
 import com.nuoding.wechat.common.entity.user.UserWinningRecordEntity;
 import com.nuoding.wechat.common.service.user.UserWinningRecordService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class UserWinningRecordServiceImpl implements UserWinningRecordService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private UserWinningRecordDao userWinningRecordDao;
 
@@ -38,6 +45,7 @@ public class UserWinningRecordServiceImpl implements UserWinningRecordService {
      */
     @Override
     public List<UserWinningRecordEntity> queryAllByLimit(UserWinningRecordEntity userWinningRecordEntity) {
+        logger.info("queryAllByLimit begin.userWinningRecordEntity:{}", JsonUtil.obj2Json(userWinningRecordEntity));
         return this.userWinningRecordDao.queryAllByLimit(userWinningRecordEntity);
     }
 
@@ -49,6 +57,7 @@ public class UserWinningRecordServiceImpl implements UserWinningRecordService {
      */
     @Override
     public UserWinningRecordEntity insert(UserWinningRecordEntity userWinningRecordEntity) {
+        logger.info("insert begin.userWinningRecordEntity:{}", JsonUtil.obj2Json(userWinningRecordEntity));
         this.userWinningRecordDao.insert(userWinningRecordEntity);
         return userWinningRecordEntity;
     }
@@ -61,6 +70,7 @@ public class UserWinningRecordServiceImpl implements UserWinningRecordService {
      */
     @Override
     public UserWinningRecordEntity update(UserWinningRecordEntity userWinningRecordEntity) {
+        logger.info("update begin.userWinningRecordEntity:{}", JsonUtil.obj2Json(userWinningRecordEntity));
         this.userWinningRecordDao.update(userWinningRecordEntity);
         return this.queryById(userWinningRecordEntity.getId());
     }
@@ -73,6 +83,7 @@ public class UserWinningRecordServiceImpl implements UserWinningRecordService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.userWinningRecordEntity:{}", id);
         return this.userWinningRecordDao.deleteById(id) > 0;
     }
 }

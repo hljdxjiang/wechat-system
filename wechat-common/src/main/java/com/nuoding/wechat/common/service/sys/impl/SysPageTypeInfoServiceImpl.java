@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.sys.SysPageTypeInfoDao;
 import com.nuoding.wechat.common.entity.sys.SysPageTypeInfoEntity;
 import com.nuoding.wechat.common.service.sys.SysPageTypeInfoService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class SysPageTypeInfoServiceImpl implements SysPageTypeInfoService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private SysPageTypeInfoDao sysPageTypeInfoDao;
 
@@ -38,6 +45,7 @@ public class SysPageTypeInfoServiceImpl implements SysPageTypeInfoService {
      */
     @Override
     public List<SysPageTypeInfoEntity> queryAllByLimit(SysPageTypeInfoEntity sysPageTypeInfoEntity) {
+        logger.info("queryAllByLimit begin.sysPageTypeInfoEntity:{}", JsonUtil.obj2Json(sysPageTypeInfoEntity));
         return this.sysPageTypeInfoDao.queryAllByLimit(sysPageTypeInfoEntity);
     }
 
@@ -49,6 +57,7 @@ public class SysPageTypeInfoServiceImpl implements SysPageTypeInfoService {
      */
     @Override
     public SysPageTypeInfoEntity insert(SysPageTypeInfoEntity sysPageTypeInfoEntity) {
+        logger.info("insert begin.sysPageTypeInfoEntity:{}", JsonUtil.obj2Json(sysPageTypeInfoEntity));
         this.sysPageTypeInfoDao.insert(sysPageTypeInfoEntity);
         return sysPageTypeInfoEntity;
     }
@@ -61,6 +70,7 @@ public class SysPageTypeInfoServiceImpl implements SysPageTypeInfoService {
      */
     @Override
     public SysPageTypeInfoEntity update(SysPageTypeInfoEntity sysPageTypeInfoEntity) {
+        logger.info("update begin.sysPageTypeInfoEntity:{}", JsonUtil.obj2Json(sysPageTypeInfoEntity));
         this.sysPageTypeInfoDao.update(sysPageTypeInfoEntity);
         return this.queryById(sysPageTypeInfoEntity.getId());
     }
@@ -73,6 +83,7 @@ public class SysPageTypeInfoServiceImpl implements SysPageTypeInfoService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.sysPageTypeInfoEntity:{}", id);
         return this.sysPageTypeInfoDao.deleteById(id) > 0;
     }
 }

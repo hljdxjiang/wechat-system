@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.bbs.BbsArticleInfoDao;
 import com.nuoding.wechat.common.entity.bbs.BbsArticleInfoEntity;
 import com.nuoding.wechat.common.service.bbs.BbsArticleInfoService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class BbsArticleInfoServiceImpl implements BbsArticleInfoService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private BbsArticleInfoDao bbsArticleInfoDao;
 
@@ -38,6 +45,7 @@ public class BbsArticleInfoServiceImpl implements BbsArticleInfoService {
      */
     @Override
     public List<BbsArticleInfoEntity> queryAllByLimit(BbsArticleInfoEntity bbsArticleInfoEntity) {
+        logger.info("queryAllByLimit begin.bbsArticleInfoEntity:{}", JsonUtil.obj2Json(bbsArticleInfoEntity));
         return this.bbsArticleInfoDao.queryAllByLimit(bbsArticleInfoEntity);
     }
 
@@ -49,6 +57,7 @@ public class BbsArticleInfoServiceImpl implements BbsArticleInfoService {
      */
     @Override
     public BbsArticleInfoEntity insert(BbsArticleInfoEntity bbsArticleInfoEntity) {
+        logger.info("insert begin.bbsArticleInfoEntity:{}", JsonUtil.obj2Json(bbsArticleInfoEntity));
         this.bbsArticleInfoDao.insert(bbsArticleInfoEntity);
         return bbsArticleInfoEntity;
     }
@@ -61,6 +70,7 @@ public class BbsArticleInfoServiceImpl implements BbsArticleInfoService {
      */
     @Override
     public BbsArticleInfoEntity update(BbsArticleInfoEntity bbsArticleInfoEntity) {
+        logger.info("update begin.bbsArticleInfoEntity:{}", JsonUtil.obj2Json(bbsArticleInfoEntity));
         this.bbsArticleInfoDao.update(bbsArticleInfoEntity);
         return this.queryById(bbsArticleInfoEntity.getId());
     }
@@ -73,6 +83,7 @@ public class BbsArticleInfoServiceImpl implements BbsArticleInfoService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.bbsArticleInfoEntity:{}", id);
         return this.bbsArticleInfoDao.deleteById(id) > 0;
     }
 }

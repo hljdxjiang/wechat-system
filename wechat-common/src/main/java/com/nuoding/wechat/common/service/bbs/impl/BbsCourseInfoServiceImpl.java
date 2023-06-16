@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.bbs.BbsCourseInfoDao;
 import com.nuoding.wechat.common.entity.bbs.BbsCourseInfoEntity;
 import com.nuoding.wechat.common.service.bbs.BbsCourseInfoService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class BbsCourseInfoServiceImpl implements BbsCourseInfoService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private BbsCourseInfoDao bbsCourseInfoDao;
 
@@ -38,6 +45,7 @@ public class BbsCourseInfoServiceImpl implements BbsCourseInfoService {
      */
     @Override
     public List<BbsCourseInfoEntity> queryAllByLimit(BbsCourseInfoEntity bbsCourseInfoEntity) {
+        logger.info("queryAllByLimit begin.bbsCourseInfoEntity:{}", JsonUtil.obj2Json(bbsCourseInfoEntity));
         return this.bbsCourseInfoDao.queryAllByLimit(bbsCourseInfoEntity);
     }
 
@@ -49,6 +57,7 @@ public class BbsCourseInfoServiceImpl implements BbsCourseInfoService {
      */
     @Override
     public BbsCourseInfoEntity insert(BbsCourseInfoEntity bbsCourseInfoEntity) {
+        logger.info("insert begin.bbsCourseInfoEntity:{}", JsonUtil.obj2Json(bbsCourseInfoEntity));
         this.bbsCourseInfoDao.insert(bbsCourseInfoEntity);
         return bbsCourseInfoEntity;
     }
@@ -61,6 +70,7 @@ public class BbsCourseInfoServiceImpl implements BbsCourseInfoService {
      */
     @Override
     public BbsCourseInfoEntity update(BbsCourseInfoEntity bbsCourseInfoEntity) {
+        logger.info("update begin.bbsCourseInfoEntity:{}", JsonUtil.obj2Json(bbsCourseInfoEntity));
         this.bbsCourseInfoDao.update(bbsCourseInfoEntity);
         return this.queryById(bbsCourseInfoEntity.getId());
     }
@@ -73,6 +83,7 @@ public class BbsCourseInfoServiceImpl implements BbsCourseInfoService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.bbsCourseInfoEntity:{}", id);
         return this.bbsCourseInfoDao.deleteById(id) > 0;
     }
 }

@@ -15,6 +15,7 @@ import com.nuoding.wechat.common.utils.JsonUtil;
 import org.apache.commons.collections4.MapUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,9 +37,17 @@ public class PageInfoServiceImpl implements PageInfoService {
 
     @Override
     public List<SysPageFlowInfoEntity> getPageFLowInfo(String pageID) {
+        List<SysPageFlowInfoEntity> retList=new ArrayList<>();
         SysPageFlowInfoEntity entity = new SysPageFlowInfoEntity();
         entity.setPageId(pageID);
-        return pageFlowInfoService.queryAllByLimit(entity);
+        List<SysPageFlowInfoEntity> list= pageFlowInfoService.queryAllByLimit(entity);
+        if(!CollectionUtils.isEmpty(list)){
+            for(SysPageFlowInfoEntity entity1:list){
+                if(ItemShowCheckUtil.checkChannel("",""));
+            }
+        }
+
+        return retList;
     }
 
     @Override
@@ -62,8 +71,8 @@ public class PageInfoServiceImpl implements PageInfoService {
             ret.put("title",entity.getPageTitle());
             ret.put("needLogin",entity.getNeedLogin());
             ret.put("type",entity.getPageType());
+            ret.put("flow",getPageFLowInfo(pageId));
         }
-        ret.put("flow",getPageFLowInfo(pageId));
         return ret;
     }
 }

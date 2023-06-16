@@ -4,6 +4,10 @@ import com.nuoding.wechat.common.dao.sys.SysTokenConfigDao;
 import com.nuoding.wechat.common.entity.sys.SysTokenConfigEntity;
 import com.nuoding.wechat.common.service.sys.SysTokenConfigService;
 import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.List;
  */
 @Service
 public class SysTokenConfigServiceImpl implements SysTokenConfigService {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
     @Resource
     private SysTokenConfigDao sysTokenConfigDao;
 
@@ -38,6 +45,7 @@ public class SysTokenConfigServiceImpl implements SysTokenConfigService {
      */
     @Override
     public List<SysTokenConfigEntity> queryAllByLimit(SysTokenConfigEntity sysTokenConfigEntity) {
+        logger.info("queryAllByLimit begin.sysTokenConfigEntity:{}", JsonUtil.obj2Json(sysTokenConfigEntity));
         return this.sysTokenConfigDao.queryAllByLimit(sysTokenConfigEntity);
     }
 
@@ -49,6 +57,7 @@ public class SysTokenConfigServiceImpl implements SysTokenConfigService {
      */
     @Override
     public SysTokenConfigEntity insert(SysTokenConfigEntity sysTokenConfigEntity) {
+        logger.info("insert begin.sysTokenConfigEntity:{}", JsonUtil.obj2Json(sysTokenConfigEntity));
         this.sysTokenConfigDao.insert(sysTokenConfigEntity);
         return sysTokenConfigEntity;
     }
@@ -61,6 +70,7 @@ public class SysTokenConfigServiceImpl implements SysTokenConfigService {
      */
     @Override
     public SysTokenConfigEntity update(SysTokenConfigEntity sysTokenConfigEntity) {
+        logger.info("update begin.sysTokenConfigEntity:{}", JsonUtil.obj2Json(sysTokenConfigEntity));
         this.sysTokenConfigDao.update(sysTokenConfigEntity);
         return this.queryById(sysTokenConfigEntity.getId());
     }
@@ -73,6 +83,7 @@ public class SysTokenConfigServiceImpl implements SysTokenConfigService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        logger.info("deleteById begin.sysTokenConfigEntity:{}", id);
         return this.sysTokenConfigDao.deleteById(id) > 0;
     }
 }
