@@ -29,7 +29,7 @@ public class PageInfoStrategy  implements BaseStrategy {
     public MapResponse process(MapRequest request) {
         MapResponse mapResponse=new MapResponse();
         SysPageFlowInfoEntity pageFlowInfoEntity=(SysPageFlowInfoEntity)request.getBody();
-        mapResponse.setData(pageInfoService.getPageFLowInfo(pageFlowInfoEntity.getPageId()));
+        mapResponse.setData(pageInfoService.getPageInfo(pageFlowInfoEntity.getPageId()));
         return mapResponse;
     }
 }
