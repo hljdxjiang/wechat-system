@@ -1,6 +1,7 @@
 package com.nuoding.wechat.api.strategy.pages;
 
 import com.nuoding.wechat.api.service.page.PageService;
+import com.nuoding.wechat.api.service.product.ProductService;
 import com.nuoding.wechat.common.model.MapRequest;
 import com.nuoding.wechat.common.model.MapResponse;
 import com.nuoding.wechat.common.service.strategy.BaseStrategy;
@@ -8,16 +9,16 @@ import org.springframework.stereotype.Component;
 
 /**
  * @Ahther:JHC
- * @Description:楼层信息查询接口
- * @Date:2023/6/8 下午5:10
+ * @Description:页面楼层查询接口
+ * @Date:2023/6/8 下午5:10 
  */
-@Component("P002001")
-public class PageFlowInfoStrategy implements BaseStrategy {
+@Component("P004001")
+public class ProductInfoStrategy implements BaseStrategy {
 
-    private PageService pageService;
+    private final ProductService productService;
 
-    public PageFlowInfoStrategy(PageService pageService) {
-        this.pageService = pageService;
+    public ProductInfoStrategy(ProductService productService) {
+        this.productService = productService;
     }
 
     /***
@@ -27,6 +28,6 @@ public class PageFlowInfoStrategy implements BaseStrategy {
      */
     @Override
     public MapResponse process(MapRequest request) {
-        return pageService.getPageFLowInfo(request);
+        return productService.getProductList(request);
     }
 }

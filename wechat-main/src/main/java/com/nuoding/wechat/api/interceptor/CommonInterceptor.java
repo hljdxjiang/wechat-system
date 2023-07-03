@@ -23,15 +23,16 @@ import com.nuoding.wechat.common.utils.RequestUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StreamUtils;
+import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.AsyncHandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Method;
 import java.util.Date;
 import java.util.Map;
 
@@ -40,24 +41,23 @@ public class CommonInterceptor implements AsyncHandlerInterceptor {
 
     private static final Logger logger = LoggerFactory.getLogger(CommonInterceptor.class);
 
-    @Autowired
-    private Map<String, BaseStrategy> map;
+    public CommonInterceptor(Map<String, BaseStrategy> map, SignatureCheckService signatureCheckService, SessionCheckService sessionCheckService, LockTradeCheckService lockTradeCheckService, UserOperaRecordService userOperaRecordService) {
+        this.map = map;
+        this.signatureCheckService = signatureCheckService;
+        this.sessionCheckService = sessionCheckService;
+        this.lockTradeCheckService = lockTradeCheckService;
+        this.userOperaRecordService = userOperaRecordService;
+    }
 
-    @Autowired
-    private SignatureCheckService signatureCheckService;
+    private final Map<String, BaseStrategy> map;
 
-    @Autowired
-    private SessionCheckService sessionCheckService;
+    private final SignatureCheckService signatureCheckService;
 
-    @Autowired
-    private LockTradeCheckService lockTradeCheckService;
+    private final SessionCheckService sessionCheckService;
 
-    @Autowired
-    private UserOperaRecordService userOperaRecordService;
+    private final LockTradeCheckService lockTradeCheckService;
 
-    private String transCode;
-
-    private String userId;
+    private final UserOperaRecordService userOperaRecordService;
 
     public ThreadLocal<UserOperaRecordEntity> currentTrade = null;
 
@@ -69,6 +69,12 @@ public class CommonInterceptor implements AsyncHandlerInterceptor {
         if (request == null) {
             logger.error("CommonInterceptor preHandle begin.request is null");
             return false;
+        }
+        String method = request.getMethod();
+        if (StringUtils.equalsIgnoreCase(method, "GET")) {
+            final HandlerMethod handlerMethod = (HandlerMethod) handler;
+            final Method method1 = handlerMethod.getMethod();
+            return true;
         }
         MapResponse mapResponse = new MapResponse();
         byte[] bytes = StreamUtils.copyToByteArray(request.getInputStream());
@@ -86,8 +92,6 @@ public class CommonInterceptor implements AsyncHandlerInterceptor {
             mapResponse.setResponse(RespStatusEnum.ARGS_TRANS_CODE_ERROR);
             returnFalse(httpServletResponse, mapResponse, 0);
         }
-        this.transCode = transCode;
-        this.userId = mapRequest.getHeader().getUserId();
         final Class<?> clazz = strategy.getClass();
         if (clazz.isAnnotationPresent(SessionValue.class)) {
             SessionValue sessionValue = clazz.getAnnotation(SessionValue.class);
@@ -136,12 +140,12 @@ public class CommonInterceptor implements AsyncHandlerInterceptor {
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        lockTradeCheckService.releaseKey(userId, transCode);
         if (currentTrade != null) {
             ResponseWrapper responseWrapper = new ResponseWrapper(response);
             byte[] content = responseWrapper.getContent();
             MapResponse mapResponse = JsonUtil.json2Obj(content.toString(), MapResponse.class);
             UserOperaRecordEntity userOperaRecord = currentTrade.get();
+            lockTradeCheckService.releaseKey(userOperaRecord.getUserid(), userOperaRecord.getTransCode());
             userOperaRecord.setResponseCode(mapResponse.getCode());
             userOperaRecordService.asyncInsert(userOperaRecord);
         }

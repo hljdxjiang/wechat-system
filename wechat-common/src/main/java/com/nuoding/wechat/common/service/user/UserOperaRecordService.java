@@ -37,6 +37,14 @@ public interface UserOperaRecordService {
     UserOperaRecordEntity insert(UserOperaRecordEntity userOperaRecordEntity);
 
     /**
+     * 异步新增数据
+     *
+     * @param userOperaRecordEntity 实例对象
+     * @return 实例对象
+     */
+    UserOperaRecordEntity asyncInsert(UserOperaRecordEntity userOperaRecordEntity);
+
+    /**
      * 修改数据
      *
      * @param userOperaRecordEntity 实例对象

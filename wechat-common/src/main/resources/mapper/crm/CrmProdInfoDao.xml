@@ -25,6 +25,21 @@
         <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
+
+    <resultMap type="com.nuoding.wechat.common.entity.crm.CrmProdInfoEntity" id="CrmProdInfoOutMap">
+        <result property="prodId" column="prod_id" jdbcType="VARCHAR"/>
+        <result property="brandId" column="brand_id" jdbcType="VARCHAR"/>
+        <result property="prodName" column="prod_name" jdbcType="VARCHAR"/>
+        <result property="prodTitle" column="prod_title" jdbcType="VARCHAR"/>
+        <result property="prodDesc" column="prod_desc" jdbcType="VARCHAR"/>
+        <result property="prodDetail" column="prod_detail" jdbcType="VARCHAR"/>
+        <result property="prodTypeId" column="prod_type_id" jdbcType="VARCHAR"/>
+        <result property="prodLogo" column="prod_logo" jdbcType="VARCHAR"/>
+        <result property="prodPrice" column="prod_price" jdbcType="DECIMAL"/>
+        <result property="prodModule" column="prod_module" jdbcType="VARCHAR"/>
+        <result property="prodSpecs" column="prod_specs" jdbcType="VARCHAR"/>
+    </resultMap>
+
     <sql id="Table_Name">
         crm_prod_info
     </sql>
@@ -70,6 +85,33 @@
             <if test="lastModifiedTime != null and lastModifiedTime !=''">and last_modified_time = #{lastModifiedTime}</if>
         </where>
 
+    </select>
+
+    <select id="fuzzyQuery" resultMap="CrmProdInfoMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+            status='0'
+            <if test="queryStr != null and queryStr !=''">
+                <foreach collection="queryStr" item="item" index="index">
+                    and ( prod_name LIKE CONCAT('%', #{item}, '%')
+                    or prod_title LIKE CONCAT('%', #{item}, '%')
+                    or prod_detail LIKE CONCAT('%', #{item}, '%')
+                    or prod_specs LIKE CONCAT('%', #{item}, '%')
+                    )
+                </foreach>
+            </if>
+        </where>
+
+        <if test="orderList != null and orderList !=''">
+            order by
+            <foreach collection="orderList" item="item" index="index"
+                     separator=",">
+                #{item.key} #{item.type}
+            </foreach>
+        </if>
     </select>
 
     <!--统计总行数-->

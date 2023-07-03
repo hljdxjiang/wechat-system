@@ -1,6 +1,8 @@
 package com.nuoding.wechat.common.service.crm;
 
 import com.nuoding.wechat.common.entity.crm.CrmProdInfoEntity;
+import com.nuoding.wechat.common.model.PageQueryBaseDTO;
+import com.nuoding.wechat.common.model.crm.ProdFuzzyFuzzyQueryDTO;
 
 import java.util.List;
 
@@ -43,6 +45,16 @@ public interface CrmProdInfoService {
      * @return 实例对象
      */
     CrmProdInfoEntity update(CrmProdInfoEntity crmProdInfoEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param dto 实例对象
+     * @page 分页属性
+     * @return 实例对象
+     */
+    List<CrmProdInfoEntity> queryFuzzyList(ProdFuzzyFuzzyQueryDTO dto);
+
 
     /**
      * 通过主键删除数据

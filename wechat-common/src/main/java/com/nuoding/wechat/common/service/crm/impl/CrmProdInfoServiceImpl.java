@@ -2,6 +2,8 @@ package com.nuoding.wechat.common.service.crm.impl;
 
 import com.nuoding.wechat.common.dao.crm.CrmProdInfoDao;
 import com.nuoding.wechat.common.entity.crm.CrmProdInfoEntity;
+import com.nuoding.wechat.common.model.PageQueryBaseDTO;
+import com.nuoding.wechat.common.model.crm.ProdFuzzyFuzzyQueryDTO;
 import com.nuoding.wechat.common.service.crm.CrmProdInfoService;
 import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
@@ -73,6 +75,11 @@ public class CrmProdInfoServiceImpl implements CrmProdInfoService {
         logger.info("update begin.crmProdInfoEntity:{}", JsonUtil.obj2Json(crmProdInfoEntity));
         this.crmProdInfoDao.update(crmProdInfoEntity);
         return this.queryById(crmProdInfoEntity.getId());
+    }
+
+    @Override
+    public List<CrmProdInfoEntity> queryFuzzyList(ProdFuzzyFuzzyQueryDTO dto) {
+        return crmProdInfoDao.fuzzyQuery(dto);
     }
 
     /**

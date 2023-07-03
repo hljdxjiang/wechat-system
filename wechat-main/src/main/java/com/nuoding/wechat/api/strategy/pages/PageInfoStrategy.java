@@ -1,6 +1,6 @@
 package com.nuoding.wechat.api.strategy.pages;
 
-import com.nuoding.wechat.api.service.page.PageInfoService;
+import com.nuoding.wechat.api.service.page.PageService;
 import com.nuoding.wechat.common.entity.sys.SysPageFlowInfoEntity;
 import com.nuoding.wechat.common.model.MapRequest;
 import com.nuoding.wechat.common.model.MapResponse;
@@ -14,10 +14,11 @@ import org.springframework.stereotype.Component;
  */
 @Component("P001001")
 public class PageInfoStrategy  implements BaseStrategy {
-    private final PageInfoService pageInfoService;
 
-    public PageInfoStrategy(PageInfoService pageInfoService) {
-        this.pageInfoService = pageInfoService;
+    private final PageService pageService;
+
+    public PageInfoStrategy(PageService pageService) {
+        this.pageService = pageService;
     }
 
     /***
@@ -27,9 +28,6 @@ public class PageInfoStrategy  implements BaseStrategy {
      */
     @Override
     public MapResponse process(MapRequest request) {
-        MapResponse mapResponse=new MapResponse();
-        SysPageFlowInfoEntity pageFlowInfoEntity=(SysPageFlowInfoEntity)request.getBody();
-        mapResponse.setData(pageInfoService.getPageInfo(pageFlowInfoEntity.getPageId()));
-        return mapResponse;
+        return pageService.getPageInfo(request);
     }
 }

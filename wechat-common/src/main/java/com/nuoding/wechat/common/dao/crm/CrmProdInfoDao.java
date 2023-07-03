@@ -1,6 +1,7 @@
 package com.nuoding.wechat.common.dao.crm;
 
 import com.nuoding.wechat.common.entity.crm.CrmProdInfoEntity;
+import com.nuoding.wechat.common.model.crm.ProdFuzzyFuzzyQueryDTO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -28,6 +29,14 @@ public interface CrmProdInfoDao {
      * @return 对象列表
      */
     List<CrmProdInfoEntity> queryAllByLimit(CrmProdInfoEntity crmProdInfoEntity);
+
+    /**
+     * 查询指定行数据
+     *
+     * @param prodFuzzyFuzzyQueryDTO 查询条件
+     * @return 对象列表
+     */
+    List<CrmProdInfoEntity> fuzzyQuery(ProdFuzzyFuzzyQueryDTO prodFuzzyFuzzyQueryDTO);
 
     /**
      * 统计总行数

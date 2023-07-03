@@ -11,7 +11,9 @@ import java.util.Map;
 public interface PageService {
     MapResponse getPageFLowInfo(MapRequest mapRequest);
 
-    MapResponse getFlowInfo(MapRequest mapRequest);
+    MapResponse getFlowItemInfo(MapRequest mapRequest);
 
     MapResponse getPageInfo(MapRequest mapRequest);
+
+    MapResponse getIntemInfo(MapRequest mapRequest);
 }

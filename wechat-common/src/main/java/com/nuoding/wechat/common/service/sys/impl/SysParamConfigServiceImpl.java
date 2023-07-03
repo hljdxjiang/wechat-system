@@ -1,8 +1,12 @@
 package com.nuoding.wechat.common.service.sys.impl;
 
+import com.nuoding.wechat.common.constant.RedisKey;
 import com.nuoding.wechat.common.dao.sys.SysParamConfigDao;
 import com.nuoding.wechat.common.entity.sys.SysParamConfigEntity;
+import com.nuoding.wechat.common.service.RedisService;
 import com.nuoding.wechat.common.service.sys.SysParamConfigService;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
 
@@ -22,9 +26,15 @@ import java.util.List;
 public class SysParamConfigServiceImpl implements SysParamConfigService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private SysParamConfigDao sysParamConfigDao;
+
+    private RedisService redisService;
+
+    public SysParamConfigServiceImpl(SysParamConfigDao sysParamConfigDao, RedisService redisService) {
+        this.sysParamConfigDao = sysParamConfigDao;
+        this.redisService = redisService;
+    }
 
     /**
      * 通过ID查询单条数据

@@ -1,6 +1,7 @@
 package com.nuoding.wechat.api.service.base.impl;
 
 import com.nuoding.wechat.api.service.base.BaseProcessService;
+import com.nuoding.wechat.common.enums.RespStatusEnum;
 import com.nuoding.wechat.common.model.MapRequest;
 import com.nuoding.wechat.common.model.MapResponse;
 import com.nuoding.wechat.common.service.strategy.BaseStrategy;
@@ -21,9 +22,17 @@ public class BaseProcessServiceImpl implements BaseProcessService {
 
     @Override
     public MapResponse processTask(MapRequest request) {
-        MapResponse mapResponse = new MapResponse();
+        MapResponse mapResponse =null;
         String transCode = request.getHeader().getTransCode();
+        logger.info("processTask begin.transCode:{}",transCode);
         BaseStrategy strategy = map.get(transCode);
-        return strategy.process(request);
+        if(strategy==null){
+            logger.info("processTask.transCode is not exists");
+            mapResponse=new MapResponse();
+            mapResponse.setResponse(RespStatusEnum.ARGS_TRANS_CODE_ERROR);
+        }else{
+            mapResponse=strategy.process(request);
+        }
+        return mapResponse;
     }
 }

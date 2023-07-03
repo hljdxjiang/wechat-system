@@ -1,6 +1,7 @@
 package com.nuoding.wechat.api.strategy.pages;
 
 import com.alibaba.excel.util.CollectionUtils;
+import com.nuoding.wechat.api.model.ImgQueryDTO;
 import com.nuoding.wechat.api.vo.page.FlowImgInfoVo;
 import com.nuoding.wechat.common.entity.back.BackImgInfoEntity;
 import com.nuoding.wechat.common.model.MapRequest;
@@ -34,7 +35,7 @@ public class FlowImgInfoStrategy implements BaseStrategy {
     @Override
     public MapResponse process(MapRequest request) {
         MapResponse mapResponse=new MapResponse();
-        FlowImgInfoVo vo=(FlowImgInfoVo)request.getBody();
+        ImgQueryDTO vo=(ImgQueryDTO)request.getBody();
         BackImgInfoEntity queryEntity=new BackImgInfoEntity();
         queryEntity.setImgType(vo.getImgType());
         queryEntity.setStatus(0);
