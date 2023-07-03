@@ -2,6 +2,7 @@ package com.nuoding.wechat.common.service.crm.impl;
 
 import com.nuoding.wechat.common.dao.crm.CrmProdInfoDao;
 import com.nuoding.wechat.common.entity.crm.CrmProdInfoEntity;
+import com.nuoding.wechat.common.entity.crm.CrmProdInfoOutEntity;
 import com.nuoding.wechat.common.model.PageQueryBaseDTO;
 import com.nuoding.wechat.common.model.crm.ProdFuzzyFuzzyQueryDTO;
 import com.nuoding.wechat.common.service.crm.CrmProdInfoService;
@@ -78,7 +79,7 @@ public class CrmProdInfoServiceImpl implements CrmProdInfoService {
     }
 
     @Override
-    public List<CrmProdInfoEntity> queryFuzzyList(ProdFuzzyFuzzyQueryDTO dto) {
+    public List<CrmProdInfoOutEntity> queryFuzzyList(ProdFuzzyFuzzyQueryDTO dto) {
         return crmProdInfoDao.fuzzyQuery(dto);
     }
 

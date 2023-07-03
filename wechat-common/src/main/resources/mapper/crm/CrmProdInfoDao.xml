@@ -26,14 +26,13 @@
     </resultMap>
 
 
-    <resultMap type="com.nuoding.wechat.common.entity.crm.CrmProdInfoEntity" id="CrmProdInfoOutMap">
+    <resultMap type="com.nuoding.wechat.common.entity.crm.CrmProdInfoOutEntity" id="CrmProdInfoOutMap">
         <result property="prodId" column="prod_id" jdbcType="VARCHAR"/>
         <result property="brandId" column="brand_id" jdbcType="VARCHAR"/>
         <result property="prodName" column="prod_name" jdbcType="VARCHAR"/>
         <result property="prodTitle" column="prod_title" jdbcType="VARCHAR"/>
         <result property="prodDesc" column="prod_desc" jdbcType="VARCHAR"/>
         <result property="prodDetail" column="prod_detail" jdbcType="VARCHAR"/>
-        <result property="prodTypeId" column="prod_type_id" jdbcType="VARCHAR"/>
         <result property="prodLogo" column="prod_logo" jdbcType="VARCHAR"/>
         <result property="prodPrice" column="prod_price" jdbcType="DECIMAL"/>
         <result property="prodModule" column="prod_module" jdbcType="VARCHAR"/>
@@ -87,7 +86,7 @@
 
     </select>
 
-    <select id="fuzzyQuery" resultMap="CrmProdInfoMap">
+    <select id="fuzzyQuery" resultMap="CrmProdInfoOutMap">
         select
         <include refid="Base_Column_List"/>
         from

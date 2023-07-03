@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.pagehelper.PageInfo;
 import com.nuoding.wechat.api.service.product.ProductService;
 import com.nuoding.wechat.common.entity.crm.CrmProdInfoEntity;
+import com.nuoding.wechat.common.entity.crm.CrmProdInfoOutEntity;
 import com.nuoding.wechat.common.model.MapRequest;
 import com.nuoding.wechat.common.model.MapResponse;
 import com.nuoding.wechat.common.model.PageQueryBaseDTO;
@@ -39,7 +40,7 @@ public class ProductServiceImpl implements ProductService {
         }
 
 
-        List<CrmProdInfoEntity> list = prodInfoService.queryFuzzyList(dto);
+        List<CrmProdInfoOutEntity> list = prodInfoService.queryFuzzyList(dto);
         if (pageQueryBaseDTO != null) {
             PageInfo pageInfo = new PageInfo(list);
             Map map = PageInfoUtil.parseReturnMap(pageInfo);
