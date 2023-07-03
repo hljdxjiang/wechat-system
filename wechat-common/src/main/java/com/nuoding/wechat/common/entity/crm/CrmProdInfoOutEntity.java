@@ -15,7 +15,6 @@ public class CrmProdInfoOutEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Column(name = "prod_id")
     private String prodId;
 
     /**
