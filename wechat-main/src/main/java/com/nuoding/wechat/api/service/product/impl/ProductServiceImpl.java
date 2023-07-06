@@ -53,7 +53,6 @@ public class ProductServiceImpl implements ProductService {
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);
-
         return mapResponse;
     }
 

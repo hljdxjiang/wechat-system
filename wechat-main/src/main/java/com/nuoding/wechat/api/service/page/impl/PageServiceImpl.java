@@ -16,7 +16,6 @@ import com.nuoding.wechat.common.model.MapResponse;
 import com.nuoding.wechat.common.service.sys.SysFlowItemsService;
 import com.nuoding.wechat.common.service.sys.SysPageFlowInfoService;
 import com.nuoding.wechat.common.service.sys.SysPageInfoService;
-import com.nuoding.wechat.common.service.sys.SysPageInfoService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -69,7 +68,7 @@ public class PageServiceImpl implements PageService {
     public MapResponse getFlowItemInfo(MapRequest mapRequest) {
         MapResponse mapResponse = new MapResponse();
         String channel = mapRequest.getHeader().getChannelNo();
-        FlowItemDTO dto = (FlowItemDTO) mapRequest.getBody();
+        FlowItemDTO dto = (FlowItemDTO) mapRequest.getBody(FlowItemDTO.class);
         String flowId = dto.getFlowId();
         logger.info("getFlowItemInfo.begin.channelL:{},pageID:{}", channel, flowId);
         SysFlowItemsEntity entity = new SysFlowItemsEntity();
@@ -84,7 +83,7 @@ public class PageServiceImpl implements PageService {
     public MapResponse getPageInfo(MapRequest mapRequest) {
         MapResponse mapResponse = new MapResponse();
         String channel = mapRequest.getHeader().getChannelNo();
-        PageDTO dto = (PageDTO) mapRequest.getBody();
+        PageDTO dto = (PageDTO) mapRequest.getBody(PageDTO.class);
         String pageID = dto.getPageId();
         logger.info("getPageInfo.begin.channel:{},pageID:{}", channel, pageID);
         if (StringUtils.isBlank(pageID)) {
@@ -112,21 +111,21 @@ public class PageServiceImpl implements PageService {
         MapResponse mapResponse = new MapResponse();
         String channel = mapRequest.getHeader().getChannelNo();
         FlowInfoDTO dto = (FlowInfoDTO) mapRequest.getBody();
-        String itemType=dto.getItemType();
-        String flowId=dto.getFlowId();
-        List retList=new ArrayList();
-        switch (itemType.toUpperCase()){
+        String itemType = dto.getItemType();
+        String flowId = dto.getFlowId();
+        List retList = new ArrayList();
+        switch (itemType.toUpperCase()) {
             case "ITEM":
-                retList=null;
+                retList = null;
                 break;
             case "FLOW":
-                retList=null;
+                retList = null;
                 break;
             case "IMAGE":
-                retList=null;
+                retList = null;
                 break;
             case "BANNER":
-                retList=null;
+                retList = null;
                 break;
         }
         mapRequest.setBody(retList);
