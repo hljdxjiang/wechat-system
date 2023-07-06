@@ -1,6 +1,5 @@
 package com.nuoding.wechat.api.strategy.pages;
 
-import com.nuoding.wechat.api.service.page.PageService;
 import com.nuoding.wechat.api.service.product.ProductService;
 import com.nuoding.wechat.common.model.MapRequest;
 import com.nuoding.wechat.common.model.MapResponse;

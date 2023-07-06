@@ -52,4 +52,6 @@ public interface CrmProdDetailService {
      */
     boolean deleteById(Integer id);
 
+    List<CrmProdDetailEntity> queryByProdId(String prodId);
+
 }

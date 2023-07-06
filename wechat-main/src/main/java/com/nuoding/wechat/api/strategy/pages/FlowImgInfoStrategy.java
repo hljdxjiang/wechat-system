@@ -2,7 +2,6 @@ package com.nuoding.wechat.api.strategy.pages;
 
 import com.alibaba.excel.util.CollectionUtils;
 import com.nuoding.wechat.api.model.ImgQueryDTO;
-import com.nuoding.wechat.api.vo.page.FlowImgInfoVo;
 import com.nuoding.wechat.common.entity.back.BackImgInfoEntity;
 import com.nuoding.wechat.common.model.MapRequest;
 import com.nuoding.wechat.common.model.MapResponse;

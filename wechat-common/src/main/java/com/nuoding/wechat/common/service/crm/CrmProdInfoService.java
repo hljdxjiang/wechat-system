@@ -2,7 +2,6 @@ package com.nuoding.wechat.common.service.crm;
 
 import com.nuoding.wechat.common.entity.crm.CrmProdInfoEntity;
 import com.nuoding.wechat.common.entity.crm.CrmProdInfoOutEntity;
-import com.nuoding.wechat.common.model.PageQueryBaseDTO;
 import com.nuoding.wechat.common.model.crm.ProdFuzzyFuzzyQueryDTO;
 
 import java.util.List;
@@ -10,6 +9,7 @@ import java.util.List;
 /**
  * (crmProdInfo)表服务接口
  * 产品信息表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:18
  */
@@ -51,8 +51,8 @@ public interface CrmProdInfoService {
      * 模糊查询
      *
      * @param dto 实例对象
-     * @page 分页属性
      * @return 实例对象
+     * @page 分页属性
      */
     List<CrmProdInfoOutEntity> queryFuzzyList(ProdFuzzyFuzzyQueryDTO dto);
 
@@ -64,5 +64,12 @@ public interface CrmProdInfoService {
      * @return 是否成功
      */
     boolean deleteById(Integer id);
+
+    /***
+     * 根据产品编号查询
+     * @param prodId
+     * @return
+     */
+    CrmProdInfoEntity queryByProdId(String prodId);
 
 }

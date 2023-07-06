@@ -3,14 +3,14 @@ package com.nuoding.wechat.common.service.crm.impl;
 import com.nuoding.wechat.common.dao.crm.CrmProdInfoDao;
 import com.nuoding.wechat.common.entity.crm.CrmProdInfoEntity;
 import com.nuoding.wechat.common.entity.crm.CrmProdInfoOutEntity;
-import com.nuoding.wechat.common.model.PageQueryBaseDTO;
 import com.nuoding.wechat.common.model.crm.ProdFuzzyFuzzyQueryDTO;
 import com.nuoding.wechat.common.service.crm.CrmProdInfoService;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -18,6 +18,7 @@ import java.util.List;
 /**
  * (crmProdInfo)表服务实现类
  * 产品信息表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -25,7 +26,7 @@ import java.util.List;
 public class CrmProdInfoServiceImpl implements CrmProdInfoService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
+
     @Resource
     private CrmProdInfoDao crmProdInfoDao;
 
@@ -93,5 +94,19 @@ public class CrmProdInfoServiceImpl implements CrmProdInfoService {
     public boolean deleteById(Integer id) {
         logger.info("deleteById begin.crmProdInfoEntity:{}", id);
         return this.crmProdInfoDao.deleteById(id) > 0;
+    }
+
+    @Override
+    public CrmProdInfoEntity queryByProdId(String prodId) {
+        if (StringUtils.isBlank(prodId)) {
+            return null;
+        }
+        CrmProdInfoEntity entity = new CrmProdInfoEntity();
+        entity.setProdId(prodId);
+        List<CrmProdInfoEntity> list = queryAllByLimit(entity);
+        if (!CollectionUtils.isEmpty(list)) {
+            return list.get(0);
+        }
+        return null;
     }
 }
