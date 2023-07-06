@@ -13,7 +13,7 @@ import java.util.Map;
 @SignatureIgnore
 public class LoginStrategy implements BaseStrategy {
     @Override
-    public MapRequest process(MapRequest request) {
+    public MapResponse process(MapRequest request) {
         Map map = (Map) request.getBody();
         MapResponse mapResponse = new MapResponse();
         mapResponse.setData(map);

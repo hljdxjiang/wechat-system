@@ -1,6 +1,5 @@
 package com.nuoding.wechat.api.service.product.impl;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.pagehelper.PageInfo;
 import com.nuoding.wechat.api.model.ProductDetailDTO;
 import com.nuoding.wechat.api.service.product.ProductService;
@@ -24,6 +23,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -45,16 +45,8 @@ public class ProductServiceImpl implements ProductService {
     public MapResponse getProductList(MapRequest mapRequest) {
         MapResponse mapResponse = new MapResponse();
         String channel = mapRequest.getHeader().getChannelNo();
-        ProdFuzzyFuzzyQueryDTO dto = null;
-        PageQueryBaseDTO pageQueryBaseDTO = null;
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            dto = objectMapper.readValue(JsonUtil.obj2Json(mapRequest.getBody()), ProdFuzzyFuzzyQueryDTO.class);
-            pageQueryBaseDTO = objectMapper.readValue(JsonUtil.obj2Json(mapRequest.getBody()), PageQueryBaseDTO.class);
-        } catch (Exception e) {
-        }
-
-
+        ProdFuzzyFuzzyQueryDTO dto = (ProdFuzzyFuzzyQueryDTO) mapRequest.getBody(ProdFuzzyFuzzyQueryDTO.class);
+        PageQueryBaseDTO pageQueryBaseDTO = (PageQueryBaseDTO) mapRequest.getBody(PageQueryBaseDTO.class);
         List<CrmProdInfoOutEntity> list = prodInfoService.queryFuzzyList(dto);
         if (pageQueryBaseDTO != null) {
             PageInfo pageInfo = new PageInfo(list);
@@ -69,21 +61,23 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public MapResponse getProductDetail(MapRequest mapRequest) {
         MapResponse mapResponse = new MapResponse();
-        ProductDetailDTO dto = (ProductDetailDTO) mapRequest.getBody();
-        if (StringUtils.isBlank(dto.getProdId())) {
+        Map reqMap = (Map) mapRequest.getBody();
+        ProductDetailDTO dto = JsonUtil.jsonMap2Obj(reqMap, ProductDetailDTO.class);
+        String prodId = (String) reqMap.get("prodId");
+        if (StringUtils.isBlank(prodId)) {
             mapResponse.setResponse(RespStatusEnum.ARGS_ERROR);
             return mapResponse;
         }
-        dto.setProdId(dto.getProdId());
-        CrmProdInfoEntity entity = prodInfoService.queryByProdId(dto.getProdId());
+        CrmProdInfoEntity entity = prodInfoService.queryByProdId(prodId);
         Map map = null;
         if (entity != null) {
+            map = new HashMap();
             map.put("prodTitle", entity.getProdTitle());
             map.put("prodPrice", entity.getProdPrice());
             map.put("prodLogo", entity.getProdLogo());
             map.put("prodName", entity.getProdName());
             map.put("prodSpecs", entity.getProdSpecs());
-            List<CrmProdDetailEntity> list = prodDetailService.queryByProdId(dto.getProdId());
+            List<CrmProdDetailEntity> list = prodDetailService.queryByProdId(prodId);
             if (list != null) {
                 List<CrmProdDetailOutEntity> retList = new ArrayList<>();
                 BeanUtils.copyProperties(list, retList);

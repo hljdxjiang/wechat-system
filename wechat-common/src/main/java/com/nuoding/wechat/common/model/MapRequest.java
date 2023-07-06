@@ -1,8 +1,10 @@
 package com.nuoding.wechat.common.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.nuoding.wechat.common.utils.JsonUtil;
 
 import java.io.Serializable;
+import java.util.Map;
 
 public class MapRequest<header extends ReqHeader, T> implements Serializable {
 
@@ -31,6 +33,11 @@ public class MapRequest<header extends ReqHeader, T> implements Serializable {
 
     public T getBody() {
         return (T) body;
+    }
+
+    public T getBody(Class<T> valueType) {
+        Map map = (Map) body;
+        return (T)JsonUtil.jsonMap2Obj(map, valueType);
     }
 
     public void setBody(T body) {
