@@ -1,5 +1,6 @@
 package com.nuoding.wechat.api.service.product.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.nuoding.wechat.api.model.ProductDetailDTO;
 import com.nuoding.wechat.api.service.product.ProductService;
@@ -47,14 +48,12 @@ public class ProductServiceImpl implements ProductService {
         String channel = mapRequest.getHeader().getChannelNo();
         ProdFuzzyFuzzyQueryDTO dto = (ProdFuzzyFuzzyQueryDTO) mapRequest.getBody(ProdFuzzyFuzzyQueryDTO.class);
         PageQueryBaseDTO pageQueryBaseDTO = (PageQueryBaseDTO) mapRequest.getBody(PageQueryBaseDTO.class);
+        PageHelper.startPage(pageQueryBaseDTO.getPage(), pageQueryBaseDTO.getSize());
         List<CrmProdInfoOutEntity> list = prodInfoService.queryFuzzyList(dto);
-        if (pageQueryBaseDTO != null) {
-            PageInfo pageInfo = new PageInfo(list);
-            Map map = PageInfoUtil.parseReturnMap(pageInfo);
-            mapResponse.setData(map);
-        } else {
-            mapResponse.setData(list);
-        }
+        PageInfo pageInfo = new PageInfo(list);
+        Map map = PageInfoUtil.parseReturnMap(pageInfo);
+        mapResponse.setData(map);
+
         return mapResponse;
     }
 
