@@ -1,5 +1,7 @@
 package com.nuoding.wechat.common.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.io.Serializable;
 
 /**
@@ -7,6 +9,7 @@ import java.io.Serializable;
  * @Description:分页查询接受DTO,页码默认是1，默认查询10条
  * @Date:2023/4/26 下午2:11
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PageQueryBaseDTO implements Serializable {
     private static final long serialVersionUID = -8635327507859410192L;
     int page;
