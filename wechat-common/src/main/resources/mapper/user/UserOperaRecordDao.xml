@@ -3,7 +3,7 @@
 <mapper namespace="com.nuoding.wechat.common.dao.user.UserOperaRecordDao">
 
     <resultMap type="com.nuoding.wechat.common.entity.user.UserOperaRecordEntity" id="UserOperaRecordMap">
-            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
         <result property="userid" column="userid" jdbcType="VARCHAR"/>
         <result property="operationType" column="operation_type" jdbcType="VARCHAR"/>
@@ -43,45 +43,47 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="userid != null and userid !=''">and userid = #{userid}</if>
-                                                <if test="operationType != null and operationType !=''">and operation_type = #{operationType}</if>
-                                                <if test="requestUrl != null and requestUrl !=''">and request_url = #{requestUrl}</if>
-                                                <if test="userIp != null and userIp !=''">and user_ip = #{userIp}</if>
-                                                <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
-                                                <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}</if>
-                                                <if test="macAddr != null and macAddr !=''">and mac_addr = #{macAddr}</if>
-                                                <if test="transCode != null and transCode !=''">and trans_code = #{transCode}</if>
-                                                <if test="version != null and version !=''">and version = #{version}</if>
-                                                <if test="sessionid != null and sessionid !=''">and sessionid = #{sessionid}</if>
-                                                <if test="replayid != null and replayid !=''">and replayid = #{replayid}</if>
-                                                <if test="requestBody != null and requestBody !=''">and request_body = #{requestBody}</if>
-                                                <if test="responseCode != null and responseCode !=''">and response_code = #{responseCode}</if>
-                    </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="userid != null and userid !=''">and userid = #{userid}</if>
+            <if test="operationType != null and operationType !=''">and operation_type = #{operationType}</if>
+            <if test="requestUrl != null and requestUrl !=''">and request_url = #{requestUrl}</if>
+            <if test="userIp != null and userIp !=''">and user_ip = #{userIp}</if>
+            <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
+            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}
+            </if>
+            <if test="macAddr != null and macAddr !=''">and mac_addr = #{macAddr}</if>
+            <if test="transCode != null and transCode !=''">and trans_code = #{transCode}</if>
+            <if test="version != null and version !=''">and version = #{version}</if>
+            <if test="sessionid != null and sessionid !=''">and sessionid = #{sessionid}</if>
+            <if test="replayid != null and replayid !=''">and replayid = #{replayid}</if>
+            <if test="requestBody != null and requestBody !=''">and request_body = #{requestBody}</if>
+            <if test="responseCode != null and responseCode !=''">and response_code = #{responseCode}</if>
+        </where>
     </select>
 
     <!--查询一条-->
     <select id="selectOne" resultMap="UserOperaRecordMap">
-    select
-    <include refid="Base_Column_List"/>
-    from
-    <include refid="Table_Name"/>
-    <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="userid != null and userid !=''">and userid = #{userid}</if>
-                                                <if test="operationType != null and operationType !=''">and operation_type = #{operationType}</if>
-                                                <if test="requestUrl != null and requestUrl !=''">and request_url = #{requestUrl}</if>
-                                                <if test="userIp != null and userIp !=''">and user_ip = #{userIp}</if>
-                                                <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
-                                                <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}</if>
-                                                <if test="macAddr != null and macAddr !=''">and mac_addr = #{macAddr}</if>
-                                                <if test="transCode != null and transCode !=''">and trans_code = #{transCode}</if>
-                                                <if test="version != null and version !=''">and version = #{version}</if>
-                                                <if test="sessionid != null and sessionid !=''">and sessionid = #{sessionid}</if>
-                                                <if test="replayid != null and replayid !=''">and replayid = #{replayid}</if>
-                                                <if test="requestBody != null and requestBody !=''">and request_body = #{requestBody}</if>
-                                                <if test="responseCode != null and responseCode !=''">and response_code = #{responseCode}</if>
-                        </where>
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="userid != null and userid !=''">and userid = #{userid}</if>
+            <if test="operationType != null and operationType !=''">and operation_type = #{operationType}</if>
+            <if test="requestUrl != null and requestUrl !=''">and request_url = #{requestUrl}</if>
+            <if test="userIp != null and userIp !=''">and user_ip = #{userIp}</if>
+            <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
+            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}
+            </if>
+            <if test="macAddr != null and macAddr !=''">and mac_addr = #{macAddr}</if>
+            <if test="transCode != null and transCode !=''">and trans_code = #{transCode}</if>
+            <if test="version != null and version !=''">and version = #{version}</if>
+            <if test="sessionid != null and sessionid !=''">and sessionid = #{sessionid}</if>
+            <if test="replayid != null and replayid !=''">and replayid = #{replayid}</if>
+            <if test="requestBody != null and requestBody !=''">and request_body = #{requestBody}</if>
+            <if test="responseCode != null and responseCode !=''">and response_code = #{responseCode}</if>
+        </where>
     </select>
 
     <!--查询指定行数据-->
@@ -91,21 +93,35 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                                                                    <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                                                                            <if test="userid != null and userid !=''">and userid like CONCAT(CONCAT('%',  #{userid}), '%')</if>
-                                                                                                            <if test="operationType != null and operationType !=''">and operation_type like CONCAT(CONCAT('%',  #{operationType}), '%')</if>
-                                                                                                            <if test="requestUrl != null and requestUrl !=''">and request_url like CONCAT(CONCAT('%',  #{requestUrl}), '%')</if>
-                                                                                                            <if test="userIp != null and userIp !=''">and user_ip like CONCAT(CONCAT('%',  #{userIp}), '%')</if>
-                                                                                                            <if test="createtime != null and createtime !=''">and createtime like CONCAT(CONCAT('%',  #{createtime}), '%')</if>
-                                                                                                            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime like CONCAT(CONCAT('%',  #{lastmodifiedtime}), '%')</if>
-                                                                                                            <if test="macAddr != null and macAddr !=''">and mac_addr like CONCAT(CONCAT('%',  #{macAddr}), '%')</if>
-                                                                                                            <if test="transCode != null and transCode !=''">and trans_code like CONCAT(CONCAT('%',  #{transCode}), '%')</if>
-                                                                                                            <if test="version != null and version !=''">and version like CONCAT(CONCAT('%',  #{version}), '%')</if>
-                                                                                                            <if test="sessionid != null and sessionid !=''">and sessionid like CONCAT(CONCAT('%',  #{sessionid}), '%')</if>
-                                                                                                            <if test="replayid != null and replayid !=''">and replayid like CONCAT(CONCAT('%',  #{replayid}), '%')</if>
-                                                                                                            <if test="requestBody != null and requestBody !=''">and request_body like CONCAT(CONCAT('%',  #{requestBody}), '%')</if>
-                                                                                                            <if test="responseCode != null and responseCode !=''">and response_code like CONCAT(CONCAT('%',  #{responseCode}), '%')</if>
-                                                        </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="userid != null and userid !=''">and userid like CONCAT(CONCAT('%', #{userid}), '%')</if>
+            <if test="operationType != null and operationType !=''">and operation_type like CONCAT(CONCAT('%',
+                #{operationType}), '%')
+            </if>
+            <if test="requestUrl != null and requestUrl !=''">and request_url like CONCAT(CONCAT('%', #{requestUrl}),
+                '%')
+            </if>
+            <if test="userIp != null and userIp !=''">and user_ip like CONCAT(CONCAT('%', #{userIp}), '%')</if>
+            <if test="createtime != null and createtime !=''">and createtime like CONCAT(CONCAT('%', #{createtime}),
+                '%')
+            </if>
+            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime like CONCAT(CONCAT('%',
+                #{lastmodifiedtime}), '%')
+            </if>
+            <if test="macAddr != null and macAddr !=''">and mac_addr like CONCAT(CONCAT('%', #{macAddr}), '%')</if>
+            <if test="transCode != null and transCode !=''">and trans_code like CONCAT(CONCAT('%', #{transCode}), '%')
+            </if>
+            <if test="version != null and version !=''">and version like CONCAT(CONCAT('%', #{version}), '%')</if>
+            <if test="sessionid != null and sessionid !=''">and sessionid like CONCAT(CONCAT('%', #{sessionid}), '%')
+            </if>
+            <if test="replayid != null and replayid !=''">and replayid like CONCAT(CONCAT('%', #{replayid}), '%')</if>
+            <if test="requestBody != null and requestBody !=''">and request_body like CONCAT(CONCAT('%',
+                #{requestBody}), '%')
+            </if>
+            <if test="responseCode != null and responseCode !=''">and response_code like CONCAT(CONCAT('%',
+                #{responseCode}), '%')
+            </if>
+        </where>
 
     </select>
 
@@ -115,21 +131,22 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                        <if test="userid != null and userid !=''">and userid = #{userid}</if>
-                                        <if test="operationType != null and operationType !=''">and operation_type = #{operationType}</if>
-                                        <if test="requestUrl != null and requestUrl !=''">and request_url = #{requestUrl}</if>
-                                        <if test="userIp != null and userIp !=''">and user_ip = #{userIp}</if>
-                                        <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
-                                        <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}</if>
-                                        <if test="macAddr != null and macAddr !=''">and mac_addr = #{macAddr}</if>
-                                        <if test="transCode != null and transCode !=''">and trans_code = #{transCode}</if>
-                                        <if test="version != null and version !=''">and version = #{version}</if>
-                                        <if test="sessionid != null and sessionid !=''">and sessionid = #{sessionid}</if>
-                                        <if test="replayid != null and replayid !=''">and replayid = #{replayid}</if>
-                                        <if test="requestBody != null and requestBody !=''">and request_body = #{requestBody}</if>
-                                        <if test="responseCode != null and responseCode !=''">and response_code = #{responseCode}</if>
-            </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="userid != null and userid !=''">and userid = #{userid}</if>
+            <if test="operationType != null and operationType !=''">and operation_type = #{operationType}</if>
+            <if test="requestUrl != null and requestUrl !=''">and request_url = #{requestUrl}</if>
+            <if test="userIp != null and userIp !=''">and user_ip = #{userIp}</if>
+            <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
+            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}
+            </if>
+            <if test="macAddr != null and macAddr !=''">and mac_addr = #{macAddr}</if>
+            <if test="transCode != null and transCode !=''">and trans_code = #{transCode}</if>
+            <if test="version != null and version !=''">and version = #{version}</if>
+            <if test="sessionid != null and sessionid !=''">and sessionid = #{sessionid}</if>
+            <if test="replayid != null and replayid !=''">and replayid = #{replayid}</if>
+            <if test="requestBody != null and requestBody !=''">and request_body = #{requestBody}</if>
+            <if test="responseCode != null and responseCode !=''">and response_code = #{responseCode}</if>
+        </where>
     </select>
 
     <!--新增所有列-->
@@ -144,57 +161,61 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        userid,        operation_type,        request_url,        user_ip,        createtime,        lastmodifiedtime,        mac_addr,        trans_code,        version,        sessionid,        replayid,        request_body,        response_code)
+        ( tenant_id, userid, operation_type, request_url, user_ip, createtime, lastmodifiedtime, mac_addr, trans_code,
+        version, sessionid, replayid, request_body, response_code)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (            #{entity.tenantId},            #{entity.userid},            #{entity.operationType},            #{entity.requestUrl},            #{entity.userIp},            #{entity.createtime},            #{entity.lastmodifiedtime},            #{entity.macAddr},            #{entity.transCode},            #{entity.version},            #{entity.sessionid},            #{entity.replayid},            #{entity.requestBody},            #{entity.responseCode})
+            ( #{entity.tenantId}, #{entity.userid}, #{entity.operationType}, #{entity.requestUrl}, #{entity.userIp},
+            #{entity.createtime}, #{entity.lastmodifiedtime}, #{entity.macAddr}, #{entity.transCode}, #{entity.version},
+            #{entity.sessionid}, #{entity.replayid}, #{entity.requestBody}, #{entity.responseCode})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        userid,        operation_type,        request_url,        user_ip,        createtime,        lastmodifiedtime,        mac_addr,        trans_code,        version,        sessionid,        replayid,        request_body,        response_code)
+        ( tenant_id, userid, operation_type, request_url, user_ip, createtime, lastmodifiedtime, mac_addr, trans_code,
+        version, sessionid, replayid, request_body, response_code)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.userid},#{entity.operationType},#{entity.requestUrl},#{entity.userIp},#{entity.createtime},#{entity.lastmodifiedtime},#{entity.macAddr},#{entity.transCode},#{entity.version},#{entity.sessionid},#{entity.replayid},#{entity.requestBody},#{entity.responseCode})
         </foreach>
         on duplicate key update
         tenant_id=values(tenant_id),
-    userid=values(userid),
-    operation_type=values(operation_type),
-    request_url=values(request_url),
-    user_ip=values(user_ip),
-    createtime=values(createtime),
-    lastmodifiedtime=values(lastmodifiedtime),
-    mac_addr=values(mac_addr),
-    trans_code=values(trans_code),
-    version=values(version),
-    sessionid=values(sessionid),
-    replayid=values(replayid),
-    request_body=values(request_body),
-    response_code=values(response_code)
-        </insert>
+        userid=values(userid),
+        operation_type=values(operation_type),
+        request_url=values(request_url),
+        user_ip=values(user_ip),
+        createtime=values(createtime),
+        lastmodifiedtime=values(lastmodifiedtime),
+        mac_addr=values(mac_addr),
+        trans_code=values(trans_code),
+        version=values(version),
+        sessionid=values(sessionid),
+        replayid=values(replayid),
+        request_body=values(request_body),
+        response_code=values(response_code)
+    </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
         update
         <include refid="Table_Name"/>
         <set>
-    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-    <if test="userid != null and userid != ''">userid = #{userid},</if>
-    <if test="operationType != null and operationType != ''">operation_type = #{operationType},</if>
-    <if test="requestUrl != null and requestUrl != ''">request_url = #{requestUrl},</if>
-    <if test="userIp != null and userIp != ''">user_ip = #{userIp},</if>
-    <if test="createtime != null and createtime != ''">createtime = #{createtime},</if>
-    <if test="lastmodifiedtime != null and lastmodifiedtime != ''">lastmodifiedtime = #{lastmodifiedtime},</if>
-    <if test="macAddr != null and macAddr != ''">mac_addr = #{macAddr},</if>
-    <if test="transCode != null and transCode != ''">trans_code = #{transCode},</if>
-    <if test="version != null and version != ''">version = #{version},</if>
-    <if test="sessionid != null and sessionid != ''">sessionid = #{sessionid},</if>
-    <if test="replayid != null and replayid != ''">replayid = #{replayid},</if>
-    <if test="requestBody != null and requestBody != ''">request_body = #{requestBody},</if>
-    <if test="responseCode != null and responseCode != ''">response_code = #{responseCode},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+            <if test="userid != null and userid != ''">userid = #{userid},</if>
+            <if test="operationType != null and operationType != ''">operation_type = #{operationType},</if>
+            <if test="requestUrl != null and requestUrl != ''">request_url = #{requestUrl},</if>
+            <if test="userIp != null and userIp != ''">user_ip = #{userIp},</if>
+            <if test="createtime != null and createtime != ''">createtime = #{createtime},</if>
+            <if test="lastmodifiedtime != null and lastmodifiedtime != ''">lastmodifiedtime = #{lastmodifiedtime},</if>
+            <if test="macAddr != null and macAddr != ''">mac_addr = #{macAddr},</if>
+            <if test="transCode != null and transCode != ''">trans_code = #{transCode},</if>
+            <if test="version != null and version != ''">version = #{version},</if>
+            <if test="sessionid != null and sessionid != ''">sessionid = #{sessionid},</if>
+            <if test="replayid != null and replayid != ''">replayid = #{replayid},</if>
+            <if test="requestBody != null and requestBody != ''">request_body = #{requestBody},</if>
+            <if test="responseCode != null and responseCode != ''">response_code = #{responseCode},</if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>

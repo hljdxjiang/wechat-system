@@ -3,7 +3,7 @@
 <mapper namespace="com.nuoding.wechat.common.dao.wechat.WechatMenusItemDao">
 
     <resultMap type="com.nuoding.wechat.common.entity.wechat.WechatMenusItemEntity" id="WechatMenusItemMap">
-            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
         <result property="itemId" column="item_id" jdbcType="VARCHAR"/>
         <result property="name" column="name" jdbcType="VARCHAR"/>
@@ -41,37 +41,41 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="itemId != null and itemId !=''">and item_id = #{itemId}</if>
-                                                <if test="name != null and name !=''">and name = #{name}</if>
-                                                <if test="type != null and type !=''">and type = #{type}</if>
-                                                <if test="key != null and key !=''">and key = #{key}</if>
-                                                <if test="url != null and url !=''">and url = #{url}</if>
-                                                <if test="appid != null and appid !=''">and appid = #{appid}</if>
-                                                <if test="pagepath != null and pagepath !=''">and pagepath = #{pagepath}</if>
-                                                <if test="articleId != null and articleId !=''">and article_id = #{articleId}</if>
-                                                <if test="articleViewLimited != null and articleViewLimited !=''">and article_view_limited = #{articleViewLimited}</if>
-                                                            </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="itemId != null and itemId !=''">and item_id = #{itemId}</if>
+            <if test="name != null and name !=''">and name = #{name}</if>
+            <if test="type != null and type !=''">and type = #{type}</if>
+            <if test="key != null and key !=''">and key = #{key}</if>
+            <if test="url != null and url !=''">and url = #{url}</if>
+            <if test="appid != null and appid !=''">and appid = #{appid}</if>
+            <if test="pagepath != null and pagepath !=''">and pagepath = #{pagepath}</if>
+            <if test="articleId != null and articleId !=''">and article_id = #{articleId}</if>
+            <if test="articleViewLimited != null and articleViewLimited !=''">and article_view_limited =
+                #{articleViewLimited}
+            </if>
+        </where>
     </select>
 
     <!--查询一条-->
     <select id="selectOne" resultMap="WechatMenusItemMap">
-    select
-    <include refid="Base_Column_List"/>
-    from
-    <include refid="Table_Name"/>
-    <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="itemId != null and itemId !=''">and item_id = #{itemId}</if>
-                                                <if test="name != null and name !=''">and name = #{name}</if>
-                                                <if test="type != null and type !=''">and type = #{type}</if>
-                                                <if test="key != null and key !=''">and key = #{key}</if>
-                                                <if test="url != null and url !=''">and url = #{url}</if>
-                                                <if test="appid != null and appid !=''">and appid = #{appid}</if>
-                                                <if test="pagepath != null and pagepath !=''">and pagepath = #{pagepath}</if>
-                                                <if test="articleId != null and articleId !=''">and article_id = #{articleId}</if>
-                                                <if test="articleViewLimited != null and articleViewLimited !=''">and article_view_limited = #{articleViewLimited}</if>
-                                                                </where>
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="itemId != null and itemId !=''">and item_id = #{itemId}</if>
+            <if test="name != null and name !=''">and name = #{name}</if>
+            <if test="type != null and type !=''">and type = #{type}</if>
+            <if test="key != null and key !=''">and key = #{key}</if>
+            <if test="url != null and url !=''">and url = #{url}</if>
+            <if test="appid != null and appid !=''">and appid = #{appid}</if>
+            <if test="pagepath != null and pagepath !=''">and pagepath = #{pagepath}</if>
+            <if test="articleId != null and articleId !=''">and article_id = #{articleId}</if>
+            <if test="articleViewLimited != null and articleViewLimited !=''">and article_view_limited =
+                #{articleViewLimited}
+            </if>
+        </where>
     </select>
 
     <!--查询指定行数据-->
@@ -81,17 +85,20 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                                                                    <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                                                                            <if test="itemId != null and itemId !=''">and item_id like CONCAT(CONCAT('%',  #{itemId}), '%')</if>
-                                                                                                            <if test="name != null and name !=''">and name like CONCAT(CONCAT('%',  #{name}), '%')</if>
-                                                                                                            <if test="type != null and type !=''">and type like CONCAT(CONCAT('%',  #{type}), '%')</if>
-                                                                                                            <if test="key != null and key !=''">and key like CONCAT(CONCAT('%',  #{key}), '%')</if>
-                                                                                                            <if test="url != null and url !=''">and url like CONCAT(CONCAT('%',  #{url}), '%')</if>
-                                                                                                            <if test="appid != null and appid !=''">and appid like CONCAT(CONCAT('%',  #{appid}), '%')</if>
-                                                                                                            <if test="pagepath != null and pagepath !=''">and pagepath like CONCAT(CONCAT('%',  #{pagepath}), '%')</if>
-                                                                                                            <if test="articleId != null and articleId !=''">and article_id like CONCAT(CONCAT('%',  #{articleId}), '%')</if>
-                                                                                                            <if test="articleViewLimited != null and articleViewLimited !=''">and article_view_limited like CONCAT(CONCAT('%',  #{articleViewLimited}), '%')</if>
-                                                                                                                </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="itemId != null and itemId !=''">and item_id like CONCAT(CONCAT('%', #{itemId}), '%')</if>
+            <if test="name != null and name !=''">and name like CONCAT(CONCAT('%', #{name}), '%')</if>
+            <if test="type != null and type !=''">and type like CONCAT(CONCAT('%', #{type}), '%')</if>
+            <if test="key != null and key !=''">and key like CONCAT(CONCAT('%', #{key}), '%')</if>
+            <if test="url != null and url !=''">and url like CONCAT(CONCAT('%', #{url}), '%')</if>
+            <if test="appid != null and appid !=''">and appid like CONCAT(CONCAT('%', #{appid}), '%')</if>
+            <if test="pagepath != null and pagepath !=''">and pagepath like CONCAT(CONCAT('%', #{pagepath}), '%')</if>
+            <if test="articleId != null and articleId !=''">and article_id like CONCAT(CONCAT('%', #{articleId}), '%')
+            </if>
+            <if test="articleViewLimited != null and articleViewLimited !=''">and article_view_limited like
+                CONCAT(CONCAT('%', #{articleViewLimited}), '%')
+            </if>
+        </where>
 
     </select>
 
@@ -101,17 +108,19 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                        <if test="itemId != null and itemId !=''">and item_id = #{itemId}</if>
-                                        <if test="name != null and name !=''">and name = #{name}</if>
-                                        <if test="type != null and type !=''">and type = #{type}</if>
-                                        <if test="key != null and key !=''">and key = #{key}</if>
-                                        <if test="url != null and url !=''">and url = #{url}</if>
-                                        <if test="appid != null and appid !=''">and appid = #{appid}</if>
-                                        <if test="pagepath != null and pagepath !=''">and pagepath = #{pagepath}</if>
-                                        <if test="articleId != null and articleId !=''">and article_id = #{articleId}</if>
-                                        <if test="articleViewLimited != null and articleViewLimited !=''">and article_view_limited = #{articleViewLimited}</if>
-                                    </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="itemId != null and itemId !=''">and item_id = #{itemId}</if>
+            <if test="name != null and name !=''">and name = #{name}</if>
+            <if test="type != null and type !=''">and type = #{type}</if>
+            <if test="key != null and key !=''">and key = #{key}</if>
+            <if test="url != null and url !=''">and url = #{url}</if>
+            <if test="appid != null and appid !=''">and appid = #{appid}</if>
+            <if test="pagepath != null and pagepath !=''">and pagepath = #{pagepath}</if>
+            <if test="articleId != null and articleId !=''">and article_id = #{articleId}</if>
+            <if test="articleViewLimited != null and articleViewLimited !=''">and article_view_limited =
+                #{articleViewLimited}
+            </if>
+        </where>
     </select>
 
     <!--新增所有列-->
@@ -126,50 +135,53 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        item_id,        name,        type,        key,        url,        appid,        pagepath,        article_id,        article_view_limited,)
+        ( tenant_id, item_id, name, type, key, url, appid, pagepath, article_id, article_view_limited,)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (            #{entity.tenantId},            #{entity.itemId},            #{entity.name},            #{entity.type},            #{entity.key},            #{entity.url},            #{entity.appid},            #{entity.pagepath},            #{entity.articleId},            #{entity.articleViewLimited},)
+            ( #{entity.tenantId}, #{entity.itemId}, #{entity.name}, #{entity.type}, #{entity.key}, #{entity.url},
+            #{entity.appid}, #{entity.pagepath}, #{entity.articleId}, #{entity.articleViewLimited},)
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        item_id,        name,        type,        key,        url,        appid,        pagepath,        article_id,        article_view_limited,)
+        ( tenant_id, item_id, name, type, key, url, appid, pagepath, article_id, article_view_limited,)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.itemId},#{entity.name},#{entity.type},#{entity.key},#{entity.url},#{entity.appid},#{entity.pagepath},#{entity.articleId},#{entity.articleViewLimited},)
         </foreach>
         on duplicate key update
         tenant_id=values(tenant_id),
-    item_id=values(item_id),
-    name=values(name),
-    type=values(type),
-    key=values(key),
-    url=values(url),
-    appid=values(appid),
-    pagepath=values(pagepath),
-    article_id=values(article_id),
-    article_view_limited=values(article_view_limited),
-        
-        </insert>
+        item_id=values(item_id),
+        name=values(name),
+        type=values(type),
+        key=values(key),
+        url=values(url),
+        appid=values(appid),
+        pagepath=values(pagepath),
+        article_id=values(article_id),
+        article_view_limited=values(article_view_limited),
+
+    </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
         update
         <include refid="Table_Name"/>
         <set>
-    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-    <if test="itemId != null and itemId != ''">item_id = #{itemId},</if>
-    <if test="name != null and name != ''">name = #{name},</if>
-    <if test="type != null and type != ''">type = #{type},</if>
-    <if test="key != null and key != ''">key = #{key},</if>
-    <if test="url != null and url != ''">url = #{url},</if>
-    <if test="appid != null and appid != ''">appid = #{appid},</if>
-    <if test="pagepath != null and pagepath != ''">pagepath = #{pagepath},</if>
-    <if test="articleId != null and articleId != ''">article_id = #{articleId},</if>
-    <if test="articleViewLimited != null and articleViewLimited != ''">article_view_limited = #{articleViewLimited},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+            <if test="itemId != null and itemId != ''">item_id = #{itemId},</if>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="type != null and type != ''">type = #{type},</if>
+            <if test="key != null and key != ''">key = #{key},</if>
+            <if test="url != null and url != ''">url = #{url},</if>
+            <if test="appid != null and appid != ''">appid = #{appid},</if>
+            <if test="pagepath != null and pagepath != ''">pagepath = #{pagepath},</if>
+            <if test="articleId != null and articleId != ''">article_id = #{articleId},</if>
+            <if test="articleViewLimited != null and articleViewLimited != ''">article_view_limited =
+                #{articleViewLimited},
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>

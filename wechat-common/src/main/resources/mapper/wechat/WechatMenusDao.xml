@@ -3,7 +3,7 @@
 <mapper namespace="com.nuoding.wechat.common.dao.wechat.WechatMenusDao">
 
     <resultMap type="com.nuoding.wechat.common.entity.wechat.WechatMenusEntity" id="WechatMenusMap">
-            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
         <result property="menuId" column="menu_id" jdbcType="VARCHAR"/>
         <result property="menuName" column="menu_name" jdbcType="VARCHAR"/>
@@ -38,31 +38,31 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="menuId != null and menuId !=''">and menu_id = #{menuId}</if>
-                                                <if test="menuName != null and menuName !=''">and menu_name = #{menuName}</if>
-                                                <if test="wxMenuId != null and wxMenuId !=''">and wx_menu_id = #{wxMenuId}</if>
-                                                <if test="version != null and version !=''">and version = #{version}</if>
-                                                <if test="remark != null and remark !=''">and remark = #{remark}</if>
-                                                <if test="menuType != null and menuType !=''">and menu_type = #{menuType}</if>
-                                                            </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="menuId != null and menuId !=''">and menu_id = #{menuId}</if>
+            <if test="menuName != null and menuName !=''">and menu_name = #{menuName}</if>
+            <if test="wxMenuId != null and wxMenuId !=''">and wx_menu_id = #{wxMenuId}</if>
+            <if test="version != null and version !=''">and version = #{version}</if>
+            <if test="remark != null and remark !=''">and remark = #{remark}</if>
+            <if test="menuType != null and menuType !=''">and menu_type = #{menuType}</if>
+        </where>
     </select>
 
     <!--查询一条-->
     <select id="selectOne" resultMap="WechatMenusMap">
-    select
-    <include refid="Base_Column_List"/>
-    from
-    <include refid="Table_Name"/>
-    <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="menuId != null and menuId !=''">and menu_id = #{menuId}</if>
-                                                <if test="menuName != null and menuName !=''">and menu_name = #{menuName}</if>
-                                                <if test="wxMenuId != null and wxMenuId !=''">and wx_menu_id = #{wxMenuId}</if>
-                                                <if test="version != null and version !=''">and version = #{version}</if>
-                                                <if test="remark != null and remark !=''">and remark = #{remark}</if>
-                                                <if test="menuType != null and menuType !=''">and menu_type = #{menuType}</if>
-                                                                </where>
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="menuId != null and menuId !=''">and menu_id = #{menuId}</if>
+            <if test="menuName != null and menuName !=''">and menu_name = #{menuName}</if>
+            <if test="wxMenuId != null and wxMenuId !=''">and wx_menu_id = #{wxMenuId}</if>
+            <if test="version != null and version !=''">and version = #{version}</if>
+            <if test="remark != null and remark !=''">and remark = #{remark}</if>
+            <if test="menuType != null and menuType !=''">and menu_type = #{menuType}</if>
+        </where>
     </select>
 
     <!--查询指定行数据-->
@@ -72,14 +72,14 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                                                                    <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                                                                            <if test="menuId != null and menuId !=''">and menu_id like CONCAT(CONCAT('%',  #{menuId}), '%')</if>
-                                                                                                            <if test="menuName != null and menuName !=''">and menu_name like CONCAT(CONCAT('%',  #{menuName}), '%')</if>
-                                                                                                            <if test="wxMenuId != null and wxMenuId !=''">and wx_menu_id like CONCAT(CONCAT('%',  #{wxMenuId}), '%')</if>
-                                                                                                            <if test="version != null and version !=''">and version like CONCAT(CONCAT('%',  #{version}), '%')</if>
-                                                                                                            <if test="remark != null and remark !=''">and remark like CONCAT(CONCAT('%',  #{remark}), '%')</if>
-                                                                                                            <if test="menuType != null and menuType !=''">and menu_type like CONCAT(CONCAT('%',  #{menuType}), '%')</if>
-                                                                                                                </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="menuId != null and menuId !=''">and menu_id like CONCAT(CONCAT('%', #{menuId}), '%')</if>
+            <if test="menuName != null and menuName !=''">and menu_name like CONCAT(CONCAT('%', #{menuName}), '%')</if>
+            <if test="wxMenuId != null and wxMenuId !=''">and wx_menu_id like CONCAT(CONCAT('%', #{wxMenuId}), '%')</if>
+            <if test="version != null and version !=''">and version like CONCAT(CONCAT('%', #{version}), '%')</if>
+            <if test="remark != null and remark !=''">and remark like CONCAT(CONCAT('%', #{remark}), '%')</if>
+            <if test="menuType != null and menuType !=''">and menu_type like CONCAT(CONCAT('%', #{menuType}), '%')</if>
+        </where>
 
     </select>
 
@@ -89,14 +89,14 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                        <if test="menuId != null and menuId !=''">and menu_id = #{menuId}</if>
-                                        <if test="menuName != null and menuName !=''">and menu_name = #{menuName}</if>
-                                        <if test="wxMenuId != null and wxMenuId !=''">and wx_menu_id = #{wxMenuId}</if>
-                                        <if test="version != null and version !=''">and version = #{version}</if>
-                                        <if test="remark != null and remark !=''">and remark = #{remark}</if>
-                                        <if test="menuType != null and menuType !=''">and menu_type = #{menuType}</if>
-                                    </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="menuId != null and menuId !=''">and menu_id = #{menuId}</if>
+            <if test="menuName != null and menuName !=''">and menu_name = #{menuName}</if>
+            <if test="wxMenuId != null and wxMenuId !=''">and wx_menu_id = #{wxMenuId}</if>
+            <if test="version != null and version !=''">and version = #{version}</if>
+            <if test="remark != null and remark !=''">and remark = #{remark}</if>
+            <if test="menuType != null and menuType !=''">and menu_type = #{menuType}</if>
+        </where>
     </select>
 
     <!--新增所有列-->
@@ -111,44 +111,45 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        menu_id,        menu_name,        wx_menu_id,        version,        remark,        menu_type,)
+        ( tenant_id, menu_id, menu_name, wx_menu_id, version, remark, menu_type,)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (            #{entity.tenantId},            #{entity.menuId},            #{entity.menuName},            #{entity.wxMenuId},            #{entity.version},            #{entity.remark},            #{entity.menuType},)
+            ( #{entity.tenantId}, #{entity.menuId}, #{entity.menuName}, #{entity.wxMenuId}, #{entity.version},
+            #{entity.remark}, #{entity.menuType},)
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        menu_id,        menu_name,        wx_menu_id,        version,        remark,        menu_type,)
+        ( tenant_id, menu_id, menu_name, wx_menu_id, version, remark, menu_type,)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.menuId},#{entity.menuName},#{entity.wxMenuId},#{entity.version},#{entity.remark},#{entity.menuType},)
         </foreach>
         on duplicate key update
         tenant_id=values(tenant_id),
-    menu_id=values(menu_id),
-    menu_name=values(menu_name),
-    wx_menu_id=values(wx_menu_id),
-    version=values(version),
-    remark=values(remark),
-    menu_type=values(menu_type),
-        
-        </insert>
+        menu_id=values(menu_id),
+        menu_name=values(menu_name),
+        wx_menu_id=values(wx_menu_id),
+        version=values(version),
+        remark=values(remark),
+        menu_type=values(menu_type),
+
+    </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
         update
         <include refid="Table_Name"/>
         <set>
-    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-    <if test="menuId != null and menuId != ''">menu_id = #{menuId},</if>
-    <if test="menuName != null and menuName != ''">menu_name = #{menuName},</if>
-    <if test="wxMenuId != null and wxMenuId != ''">wx_menu_id = #{wxMenuId},</if>
-    <if test="version != null and version != ''">version = #{version},</if>
-    <if test="remark != null and remark != ''">remark = #{remark},</if>
-    <if test="menuType != null and menuType != ''">menu_type = #{menuType},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+            <if test="menuId != null and menuId != ''">menu_id = #{menuId},</if>
+            <if test="menuName != null and menuName != ''">menu_name = #{menuName},</if>
+            <if test="wxMenuId != null and wxMenuId != ''">wx_menu_id = #{wxMenuId},</if>
+            <if test="version != null and version != ''">version = #{version},</if>
+            <if test="remark != null and remark != ''">remark = #{remark},</if>
+            <if test="menuType != null and menuType != ''">menu_type = #{menuType},</if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>

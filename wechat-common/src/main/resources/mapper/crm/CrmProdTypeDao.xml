@@ -3,7 +3,7 @@
 <mapper namespace="com.nuoding.wechat.common.dao.crm.CrmProdTypeDao">
 
     <resultMap type="com.nuoding.wechat.common.entity.crm.CrmProdTypeEntity" id="CrmProdTypeMap">
-            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
         <result property="prodTypeId" column="prod_type_id" jdbcType="VARCHAR"/>
         <result property="prodTypeName" column="prod_type_name" jdbcType="VARCHAR"/>
@@ -36,27 +36,27 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="prodTypeId != null and prodTypeId !=''">and prod_type_id = #{prodTypeId}</if>
-                                                <if test="prodTypeName != null and prodTypeName !=''">and prod_type_name = #{prodTypeName}</if>
-                                                <if test="parentId != null and parentId !=''">and parent_id = #{parentId}</if>
-                                                                                        <if test="status != null and status !=''">and status = #{status}</if>
-                    </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="prodTypeId != null and prodTypeId !=''">and prod_type_id = #{prodTypeId}</if>
+            <if test="prodTypeName != null and prodTypeName !=''">and prod_type_name = #{prodTypeName}</if>
+            <if test="parentId != null and parentId !=''">and parent_id = #{parentId}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+        </where>
     </select>
 
     <!--查询一条-->
     <select id="selectOne" resultMap="CrmProdTypeMap">
-    select
-    <include refid="Base_Column_List"/>
-    from
-    <include refid="Table_Name"/>
-    <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="prodTypeId != null and prodTypeId !=''">and prod_type_id = #{prodTypeId}</if>
-                                                <if test="prodTypeName != null and prodTypeName !=''">and prod_type_name = #{prodTypeName}</if>
-                                                <if test="parentId != null and parentId !=''">and parent_id = #{parentId}</if>
-                                                                                        <if test="status != null and status !=''">and status = #{status}</if>
-                        </where>
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="prodTypeId != null and prodTypeId !=''">and prod_type_id = #{prodTypeId}</if>
+            <if test="prodTypeName != null and prodTypeName !=''">and prod_type_name = #{prodTypeName}</if>
+            <if test="parentId != null and parentId !=''">and parent_id = #{parentId}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+        </where>
     </select>
 
     <!--查询指定行数据-->
@@ -66,12 +66,16 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                                                                    <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                                                                            <if test="prodTypeId != null and prodTypeId !=''">and prod_type_id like CONCAT(CONCAT('%',  #{prodTypeId}), '%')</if>
-                                                                                                            <if test="prodTypeName != null and prodTypeName !=''">and prod_type_name like CONCAT(CONCAT('%',  #{prodTypeName}), '%')</if>
-                                                                                                            <if test="parentId != null and parentId !=''">and parent_id like CONCAT(CONCAT('%',  #{parentId}), '%')</if>
-                                                                                                                                                                    <if test="status != null and status !=''">and status like CONCAT(CONCAT('%',  #{status}), '%')</if>
-                                                        </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="prodTypeId != null and prodTypeId !=''">and prod_type_id like CONCAT(CONCAT('%', #{prodTypeId}),
+                '%')
+            </if>
+            <if test="prodTypeName != null and prodTypeName !=''">and prod_type_name like CONCAT(CONCAT('%',
+                #{prodTypeName}), '%')
+            </if>
+            <if test="parentId != null and parentId !=''">and parent_id like CONCAT(CONCAT('%', #{parentId}), '%')</if>
+            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
+        </where>
 
     </select>
 
@@ -81,12 +85,12 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                        <if test="prodTypeId != null and prodTypeId !=''">and prod_type_id = #{prodTypeId}</if>
-                                        <if test="prodTypeName != null and prodTypeName !=''">and prod_type_name = #{prodTypeName}</if>
-                                        <if test="parentId != null and parentId !=''">and parent_id = #{parentId}</if>
-                                                                <if test="status != null and status !=''">and status = #{status}</if>
-            </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="prodTypeId != null and prodTypeId !=''">and prod_type_id = #{prodTypeId}</if>
+            <if test="prodTypeName != null and prodTypeName !=''">and prod_type_name = #{prodTypeName}</if>
+            <if test="parentId != null and parentId !=''">and parent_id = #{parentId}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+        </where>
     </select>
 
     <!--新增所有列-->
@@ -101,39 +105,39 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        prod_type_id,        prod_type_name,        parent_id,)
+        ( tenant_id, prod_type_id, prod_type_name, parent_id,)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (            #{entity.tenantId},            #{entity.prodTypeId},            #{entity.prodTypeName},            #{entity.parentId},)
+            ( #{entity.tenantId}, #{entity.prodTypeId}, #{entity.prodTypeName}, #{entity.parentId},)
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        prod_type_id,        prod_type_name,        parent_id,        status)
+        ( tenant_id, prod_type_id, prod_type_name, parent_id, status)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.prodTypeId},#{entity.prodTypeName},#{entity.parentId},#{entity.status})
         </foreach>
         on duplicate key update
         tenant_id=values(tenant_id),
-    prod_type_id=values(prod_type_id),
-    prod_type_name=values(prod_type_name),
-    parent_id=values(parent_id),
-            status=values(status)
-        </insert>
+        prod_type_id=values(prod_type_id),
+        prod_type_name=values(prod_type_name),
+        parent_id=values(parent_id),
+        status=values(status)
+    </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
         update
         <include refid="Table_Name"/>
         <set>
-    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-    <if test="prodTypeId != null and prodTypeId != ''">prod_type_id = #{prodTypeId},</if>
-    <if test="prodTypeName != null and prodTypeName != ''">prod_type_name = #{prodTypeName},</if>
-    <if test="parentId != null and parentId != ''">parent_id = #{parentId},</if>
-    <if test="status != null and status != ''">status = #{status},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+            <if test="prodTypeId != null and prodTypeId != ''">prod_type_id = #{prodTypeId},</if>
+            <if test="prodTypeName != null and prodTypeName != ''">prod_type_name = #{prodTypeName},</if>
+            <if test="parentId != null and parentId != ''">parent_id = #{parentId},</if>
+            <if test="status != null and status != ''">status = #{status},</if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>

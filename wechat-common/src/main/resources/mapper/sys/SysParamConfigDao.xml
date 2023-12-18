@@ -3,7 +3,7 @@
 <mapper namespace="com.nuoding.wechat.common.dao.sys.SysParamConfigDao">
 
     <resultMap type="com.nuoding.wechat.common.entity.sys.SysParamConfigEntity" id="SysParamConfigMap">
-            <result property="id" column="ID" jdbcType="INTEGER"/>
+        <result property="id" column="ID" jdbcType="INTEGER"/>
         <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
         <result property="configName" column="config_name" jdbcType="VARCHAR"/>
         <result property="configKey" column="config_key" jdbcType="VARCHAR"/>
@@ -36,29 +36,29 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="configName != null and configName !=''">and config_name = #{configName}</if>
-                                                <if test="configKey != null and configKey !=''">and config_key = #{configKey}</if>
-                                                <if test="configValue != null and configValue !=''">and config_value = #{configValue}</if>
-                                                <if test="configDesc != null and configDesc !=''">and config_desc = #{configDesc}</if>
-                                                                    <if test="lastUpdateTime != null and lastUpdateTime !=''">and last_update_time = #{lastUpdateTime}</if>
-                    </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="configName != null and configName !=''">and config_name = #{configName}</if>
+            <if test="configKey != null and configKey !=''">and config_key = #{configKey}</if>
+            <if test="configValue != null and configValue !=''">and config_value = #{configValue}</if>
+            <if test="configDesc != null and configDesc !=''">and config_desc = #{configDesc}</if>
+            <if test="lastUpdateTime != null and lastUpdateTime !=''">and last_update_time = #{lastUpdateTime}</if>
+        </where>
     </select>
 
     <!--查询一条-->
     <select id="selectOne" resultMap="SysParamConfigMap">
-    select
-    <include refid="Base_Column_List"/>
-    from
-    <include refid="Table_Name"/>
-    <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="configName != null and configName !=''">and config_name = #{configName}</if>
-                                                <if test="configKey != null and configKey !=''">and config_key = #{configKey}</if>
-                                                <if test="configValue != null and configValue !=''">and config_value = #{configValue}</if>
-                                                <if test="configDesc != null and configDesc !=''">and config_desc = #{configDesc}</if>
-                                                                    <if test="lastUpdateTime != null and lastUpdateTime !=''">and last_update_time = #{lastUpdateTime}</if>
-                        </where>
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="configName != null and configName !=''">and config_name = #{configName}</if>
+            <if test="configKey != null and configKey !=''">and config_key = #{configKey}</if>
+            <if test="configValue != null and configValue !=''">and config_value = #{configValue}</if>
+            <if test="configDesc != null and configDesc !=''">and config_desc = #{configDesc}</if>
+            <if test="lastUpdateTime != null and lastUpdateTime !=''">and last_update_time = #{lastUpdateTime}</if>
+        </where>
     </select>
 
     <!--查询指定行数据-->
@@ -68,13 +68,22 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                                                                    <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                                                                            <if test="configName != null and configName !=''">and config_name like CONCAT(CONCAT('%',  #{configName}), '%')</if>
-                                                                                                            <if test="configKey != null and configKey !=''">and config_key like CONCAT(CONCAT('%',  #{configKey}), '%')</if>
-                                                                                                            <if test="configValue != null and configValue !=''">and config_value like CONCAT(CONCAT('%',  #{configValue}), '%')</if>
-                                                                                                            <if test="configDesc != null and configDesc !=''">and config_desc like CONCAT(CONCAT('%',  #{configDesc}), '%')</if>
-                                                                                                                                        <if test="lastUpdateTime != null and lastUpdateTime !=''">and last_update_time like CONCAT(CONCAT('%',  #{lastUpdateTime}), '%')</if>
-                                                        </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="configName != null and configName !=''">and config_name like CONCAT(CONCAT('%', #{configName}),
+                '%')
+            </if>
+            <if test="configKey != null and configKey !=''">and config_key like CONCAT(CONCAT('%', #{configKey}), '%')
+            </if>
+            <if test="configValue != null and configValue !=''">and config_value like CONCAT(CONCAT('%',
+                #{configValue}), '%')
+            </if>
+            <if test="configDesc != null and configDesc !=''">and config_desc like CONCAT(CONCAT('%', #{configDesc}),
+                '%')
+            </if>
+            <if test="lastUpdateTime != null and lastUpdateTime !=''">and last_update_time like CONCAT(CONCAT('%',
+                #{lastUpdateTime}), '%')
+            </if>
+        </where>
 
     </select>
 
@@ -84,13 +93,13 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                        <if test="configName != null and configName !=''">and config_name = #{configName}</if>
-                                        <if test="configKey != null and configKey !=''">and config_key = #{configKey}</if>
-                                        <if test="configValue != null and configValue !=''">and config_value = #{configValue}</if>
-                                        <if test="configDesc != null and configDesc !=''">and config_desc = #{configDesc}</if>
-                                                    <if test="lastUpdateTime != null and lastUpdateTime !=''">and last_update_time = #{lastUpdateTime}</if>
-            </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="configName != null and configName !=''">and config_name = #{configName}</if>
+            <if test="configKey != null and configKey !=''">and config_key = #{configKey}</if>
+            <if test="configValue != null and configValue !=''">and config_value = #{configValue}</if>
+            <if test="configDesc != null and configDesc !=''">and config_desc = #{configDesc}</if>
+            <if test="lastUpdateTime != null and lastUpdateTime !=''">and last_update_time = #{lastUpdateTime}</if>
+        </where>
     </select>
 
     <!--新增所有列-->
@@ -105,41 +114,42 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        config_name,        config_key,        config_value,        config_desc,        last_update_time)
+        ( tenant_id, config_name, config_key, config_value, config_desc, last_update_time)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (            #{entity.tenantId},            #{entity.configName},            #{entity.configKey},            #{entity.configValue},            #{entity.configDesc},            #{entity.lastUpdateTime})
+            ( #{entity.tenantId}, #{entity.configName}, #{entity.configKey}, #{entity.configValue},
+            #{entity.configDesc}, #{entity.lastUpdateTime})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        config_name,        config_key,        config_value,        config_desc,        last_update_time)
+        ( tenant_id, config_name, config_key, config_value, config_desc, last_update_time)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.configName},#{entity.configKey},#{entity.configValue},#{entity.configDesc},#{entity.lastUpdateTime})
         </foreach>
         on duplicate key update
         tenant_id=values(tenant_id),
-    config_name=values(config_name),
-    config_key=values(config_key),
-    config_value=values(config_value),
-    config_desc=values(config_desc),
+        config_name=values(config_name),
+        config_key=values(config_key),
+        config_value=values(config_value),
+        config_desc=values(config_desc),
         last_update_time=values(last_update_time)
-        </insert>
+    </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
         update
         <include refid="Table_Name"/>
         <set>
-    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-    <if test="configName != null and configName != ''">config_name = #{configName},</if>
-    <if test="configKey != null and configKey != ''">config_key = #{configKey},</if>
-    <if test="configValue != null and configValue != ''">config_value = #{configValue},</if>
-    <if test="configDesc != null and configDesc != ''">config_desc = #{configDesc},</if>
-    <if test="lastUpdateTime != null and lastUpdateTime != ''">last_update_time = #{lastUpdateTime},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+            <if test="configName != null and configName != ''">config_name = #{configName},</if>
+            <if test="configKey != null and configKey != ''">config_key = #{configKey},</if>
+            <if test="configValue != null and configValue != ''">config_value = #{configValue},</if>
+            <if test="configDesc != null and configDesc != ''">config_desc = #{configDesc},</if>
+            <if test="lastUpdateTime != null and lastUpdateTime != ''">last_update_time = #{lastUpdateTime},</if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>

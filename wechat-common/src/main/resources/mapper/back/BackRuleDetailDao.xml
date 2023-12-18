@@ -3,7 +3,7 @@
 <mapper namespace="com.nuoding.wechat.common.dao.back.BackRuleDetailDao">
 
     <resultMap type="com.nuoding.wechat.common.entity.back.BackRuleDetailEntity" id="BackRuleDetailMap">
-            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
         <result property="roleId" column="role_id" jdbcType="VARCHAR"/>
         <result property="keyValue" column="key_value" jdbcType="VARCHAR"/>
@@ -33,25 +33,25 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="roleId != null and roleId !=''">and role_id = #{roleId}</if>
-                                                <if test="keyValue != null and keyValue !=''">and key_value = #{keyValue}</if>
-                                                <if test="keyType != null and keyType !=''">and key_type = #{keyType}</if>
-                    </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="roleId != null and roleId !=''">and role_id = #{roleId}</if>
+            <if test="keyValue != null and keyValue !=''">and key_value = #{keyValue}</if>
+            <if test="keyType != null and keyType !=''">and key_type = #{keyType}</if>
+        </where>
     </select>
 
     <!--查询一条-->
     <select id="selectOne" resultMap="BackRuleDetailMap">
-    select
-    <include refid="Base_Column_List"/>
-    from
-    <include refid="Table_Name"/>
-    <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="roleId != null and roleId !=''">and role_id = #{roleId}</if>
-                                                <if test="keyValue != null and keyValue !=''">and key_value = #{keyValue}</if>
-                                                <if test="keyType != null and keyType !=''">and key_type = #{keyType}</if>
-                        </where>
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="roleId != null and roleId !=''">and role_id = #{roleId}</if>
+            <if test="keyValue != null and keyValue !=''">and key_value = #{keyValue}</if>
+            <if test="keyType != null and keyType !=''">and key_type = #{keyType}</if>
+        </where>
     </select>
 
     <!--查询指定行数据-->
@@ -61,11 +61,11 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                                                                    <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                                                                            <if test="roleId != null and roleId !=''">and role_id like CONCAT(CONCAT('%',  #{roleId}), '%')</if>
-                                                                                                            <if test="keyValue != null and keyValue !=''">and key_value like CONCAT(CONCAT('%',  #{keyValue}), '%')</if>
-                                                                                                            <if test="keyType != null and keyType !=''">and key_type like CONCAT(CONCAT('%',  #{keyType}), '%')</if>
-                                                        </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="roleId != null and roleId !=''">and role_id like CONCAT(CONCAT('%', #{roleId}), '%')</if>
+            <if test="keyValue != null and keyValue !=''">and key_value like CONCAT(CONCAT('%', #{keyValue}), '%')</if>
+            <if test="keyType != null and keyType !=''">and key_type like CONCAT(CONCAT('%', #{keyType}), '%')</if>
+        </where>
 
     </select>
 
@@ -75,11 +75,11 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                        <if test="roleId != null and roleId !=''">and role_id = #{roleId}</if>
-                                        <if test="keyValue != null and keyValue !=''">and key_value = #{keyValue}</if>
-                                        <if test="keyType != null and keyType !=''">and key_type = #{keyType}</if>
-            </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="roleId != null and roleId !=''">and role_id = #{roleId}</if>
+            <if test="keyValue != null and keyValue !=''">and key_value = #{keyValue}</if>
+            <if test="keyType != null and keyType !=''">and key_type = #{keyType}</if>
+        </where>
     </select>
 
     <!--新增所有列-->
@@ -94,37 +94,37 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        role_id,        key_value,        key_type)
+        ( tenant_id, role_id, key_value, key_type)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (            #{entity.tenantId},            #{entity.roleId},            #{entity.keyValue},            #{entity.keyType})
+            ( #{entity.tenantId}, #{entity.roleId}, #{entity.keyValue}, #{entity.keyType})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        role_id,        key_value,        key_type)
+        ( tenant_id, role_id, key_value, key_type)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.roleId},#{entity.keyValue},#{entity.keyType})
         </foreach>
         on duplicate key update
         tenant_id=values(tenant_id),
-    role_id=values(role_id),
-    key_value=values(key_value),
-    key_type=values(key_type)
-        </insert>
+        role_id=values(role_id),
+        key_value=values(key_value),
+        key_type=values(key_type)
+    </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
         update
         <include refid="Table_Name"/>
         <set>
-    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-    <if test="roleId != null and roleId != ''">role_id = #{roleId},</if>
-    <if test="keyValue != null and keyValue != ''">key_value = #{keyValue},</if>
-    <if test="keyType != null and keyType != ''">key_type = #{keyType},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+            <if test="roleId != null and roleId != ''">role_id = #{roleId},</if>
+            <if test="keyValue != null and keyValue != ''">key_value = #{keyValue},</if>
+            <if test="keyType != null and keyType != ''">key_type = #{keyType},</if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>

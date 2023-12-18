@@ -3,7 +3,7 @@
 <mapper namespace="com.nuoding.wechat.common.dao.sys.SysFlowInfoDao">
 
     <resultMap type="com.nuoding.wechat.common.entity.sys.SysFlowInfoEntity" id="SysFlowInfoMap">
-            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
         <result property="flowId" column="flow_id" jdbcType="VARCHAR"/>
         <result property="flowTitle" column="flow_title" jdbcType="VARCHAR"/>
@@ -46,47 +46,47 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="flowId != null and flowId !=''">and flow_id = #{flowId}</if>
-                                                <if test="flowTitle != null and flowTitle !=''">and flow_title = #{flowTitle}</if>
-                                                <if test="flowType != null and flowType !=''">and flow_type = #{flowType}</if>
-                                                <if test="flowShowType != null and flowShowType !=''">and flow_show_type = #{flowShowType}</if>
-                                                <if test="controlFlag != null and controlFlag !=''">and control_flag = #{controlFlag}</if>
-                                                <if test="flowRemark != null and flowRemark !=''">and flow_remark = #{flowRemark}</if>
-                                                <if test="userid != null and userid !=''">and userid = #{userid}</if>
-                                                <if test="modifyUserid != null and modifyUserid !=''">and modify_userid = #{modifyUserid}</if>
-                                                <if test="flowData != null and flowData !=''">and flow_data = #{flowData}</if>
-                                                <if test="flowDataCount != null and flowDataCount !=''">and flow_data_count = #{flowDataCount}</if>
-                                                <if test="flowImg != null and flowImg !=''">and flow_img = #{flowImg}</if>
-                                                <if test="flowUrl != null and flowUrl !=''">and flow_url = #{flowUrl}</if>
-                                                <if test="status != null and status !=''">and status = #{status}</if>
-                                                                                        <if test="channel != null and channel !=''">and channel = #{channel}</if>
-                    </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="flowId != null and flowId !=''">and flow_id = #{flowId}</if>
+            <if test="flowTitle != null and flowTitle !=''">and flow_title = #{flowTitle}</if>
+            <if test="flowType != null and flowType !=''">and flow_type = #{flowType}</if>
+            <if test="flowShowType != null and flowShowType !=''">and flow_show_type = #{flowShowType}</if>
+            <if test="controlFlag != null and controlFlag !=''">and control_flag = #{controlFlag}</if>
+            <if test="flowRemark != null and flowRemark !=''">and flow_remark = #{flowRemark}</if>
+            <if test="userid != null and userid !=''">and userid = #{userid}</if>
+            <if test="modifyUserid != null and modifyUserid !=''">and modify_userid = #{modifyUserid}</if>
+            <if test="flowData != null and flowData !=''">and flow_data = #{flowData}</if>
+            <if test="flowDataCount != null and flowDataCount !=''">and flow_data_count = #{flowDataCount}</if>
+            <if test="flowImg != null and flowImg !=''">and flow_img = #{flowImg}</if>
+            <if test="flowUrl != null and flowUrl !=''">and flow_url = #{flowUrl}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="channel != null and channel !=''">and channel = #{channel}</if>
+        </where>
     </select>
 
     <!--查询一条-->
     <select id="selectOne" resultMap="SysFlowInfoMap">
-    select
-    <include refid="Base_Column_List"/>
-    from
-    <include refid="Table_Name"/>
-    <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="flowId != null and flowId !=''">and flow_id = #{flowId}</if>
-                                                <if test="flowTitle != null and flowTitle !=''">and flow_title = #{flowTitle}</if>
-                                                <if test="flowType != null and flowType !=''">and flow_type = #{flowType}</if>
-                                                <if test="flowShowType != null and flowShowType !=''">and flow_show_type = #{flowShowType}</if>
-                                                <if test="controlFlag != null and controlFlag !=''">and control_flag = #{controlFlag}</if>
-                                                <if test="flowRemark != null and flowRemark !=''">and flow_remark = #{flowRemark}</if>
-                                                <if test="userid != null and userid !=''">and userid = #{userid}</if>
-                                                <if test="modifyUserid != null and modifyUserid !=''">and modify_userid = #{modifyUserid}</if>
-                                                <if test="flowData != null and flowData !=''">and flow_data = #{flowData}</if>
-                                                <if test="flowDataCount != null and flowDataCount !=''">and flow_data_count = #{flowDataCount}</if>
-                                                <if test="flowImg != null and flowImg !=''">and flow_img = #{flowImg}</if>
-                                                <if test="flowUrl != null and flowUrl !=''">and flow_url = #{flowUrl}</if>
-                                                <if test="status != null and status !=''">and status = #{status}</if>
-                                                                                        <if test="channel != null and channel !=''">and channel = #{channel}</if>
-                        </where>
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="flowId != null and flowId !=''">and flow_id = #{flowId}</if>
+            <if test="flowTitle != null and flowTitle !=''">and flow_title = #{flowTitle}</if>
+            <if test="flowType != null and flowType !=''">and flow_type = #{flowType}</if>
+            <if test="flowShowType != null and flowShowType !=''">and flow_show_type = #{flowShowType}</if>
+            <if test="controlFlag != null and controlFlag !=''">and control_flag = #{controlFlag}</if>
+            <if test="flowRemark != null and flowRemark !=''">and flow_remark = #{flowRemark}</if>
+            <if test="userid != null and userid !=''">and userid = #{userid}</if>
+            <if test="modifyUserid != null and modifyUserid !=''">and modify_userid = #{modifyUserid}</if>
+            <if test="flowData != null and flowData !=''">and flow_data = #{flowData}</if>
+            <if test="flowDataCount != null and flowDataCount !=''">and flow_data_count = #{flowDataCount}</if>
+            <if test="flowImg != null and flowImg !=''">and flow_img = #{flowImg}</if>
+            <if test="flowUrl != null and flowUrl !=''">and flow_url = #{flowUrl}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="channel != null and channel !=''">and channel = #{channel}</if>
+        </where>
     </select>
 
     <!--查询指定行数据-->
@@ -96,22 +96,33 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                                                                    <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                                                                            <if test="flowId != null and flowId !=''">and flow_id like CONCAT(CONCAT('%',  #{flowId}), '%')</if>
-                                                                                                            <if test="flowTitle != null and flowTitle !=''">and flow_title like CONCAT(CONCAT('%',  #{flowTitle}), '%')</if>
-                                                                                                            <if test="flowType != null and flowType !=''">and flow_type like CONCAT(CONCAT('%',  #{flowType}), '%')</if>
-                                                                                                            <if test="flowShowType != null and flowShowType !=''">and flow_show_type like CONCAT(CONCAT('%',  #{flowShowType}), '%')</if>
-                                                                                                            <if test="controlFlag != null and controlFlag !=''">and control_flag like CONCAT(CONCAT('%',  #{controlFlag}), '%')</if>
-                                                                                                            <if test="flowRemark != null and flowRemark !=''">and flow_remark like CONCAT(CONCAT('%',  #{flowRemark}), '%')</if>
-                                                                                                            <if test="userid != null and userid !=''">and userid like CONCAT(CONCAT('%',  #{userid}), '%')</if>
-                                                                                                            <if test="modifyUserid != null and modifyUserid !=''">and modify_userid like CONCAT(CONCAT('%',  #{modifyUserid}), '%')</if>
-                                                                                                            <if test="flowData != null and flowData !=''">and flow_data like CONCAT(CONCAT('%',  #{flowData}), '%')</if>
-                                                                                                            <if test="flowDataCount != null and flowDataCount !=''">and flow_data_count like CONCAT(CONCAT('%',  #{flowDataCount}), '%')</if>
-                                                                                                            <if test="flowImg != null and flowImg !=''">and flow_img like CONCAT(CONCAT('%',  #{flowImg}), '%')</if>
-                                                                                                            <if test="flowUrl != null and flowUrl !=''">and flow_url like CONCAT(CONCAT('%',  #{flowUrl}), '%')</if>
-                                                                                                            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%',  #{status}), '%')</if>
-                                                                                                                                                                    <if test="channel != null and channel !=''">and channel like CONCAT(CONCAT('%',  #{channel}), '%')</if>
-                                                        </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="flowId != null and flowId !=''">and flow_id like CONCAT(CONCAT('%', #{flowId}), '%')</if>
+            <if test="flowTitle != null and flowTitle !=''">and flow_title like CONCAT(CONCAT('%', #{flowTitle}), '%')
+            </if>
+            <if test="flowType != null and flowType !=''">and flow_type like CONCAT(CONCAT('%', #{flowType}), '%')</if>
+            <if test="flowShowType != null and flowShowType !=''">and flow_show_type like CONCAT(CONCAT('%',
+                #{flowShowType}), '%')
+            </if>
+            <if test="controlFlag != null and controlFlag !=''">and control_flag like CONCAT(CONCAT('%',
+                #{controlFlag}), '%')
+            </if>
+            <if test="flowRemark != null and flowRemark !=''">and flow_remark like CONCAT(CONCAT('%', #{flowRemark}),
+                '%')
+            </if>
+            <if test="userid != null and userid !=''">and userid like CONCAT(CONCAT('%', #{userid}), '%')</if>
+            <if test="modifyUserid != null and modifyUserid !=''">and modify_userid like CONCAT(CONCAT('%',
+                #{modifyUserid}), '%')
+            </if>
+            <if test="flowData != null and flowData !=''">and flow_data like CONCAT(CONCAT('%', #{flowData}), '%')</if>
+            <if test="flowDataCount != null and flowDataCount !=''">and flow_data_count like CONCAT(CONCAT('%',
+                #{flowDataCount}), '%')
+            </if>
+            <if test="flowImg != null and flowImg !=''">and flow_img like CONCAT(CONCAT('%', #{flowImg}), '%')</if>
+            <if test="flowUrl != null and flowUrl !=''">and flow_url like CONCAT(CONCAT('%', #{flowUrl}), '%')</if>
+            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
+            <if test="channel != null and channel !=''">and channel like CONCAT(CONCAT('%', #{channel}), '%')</if>
+        </where>
 
     </select>
 
@@ -121,22 +132,22 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                        <if test="flowId != null and flowId !=''">and flow_id = #{flowId}</if>
-                                        <if test="flowTitle != null and flowTitle !=''">and flow_title = #{flowTitle}</if>
-                                        <if test="flowType != null and flowType !=''">and flow_type = #{flowType}</if>
-                                        <if test="flowShowType != null and flowShowType !=''">and flow_show_type = #{flowShowType}</if>
-                                        <if test="controlFlag != null and controlFlag !=''">and control_flag = #{controlFlag}</if>
-                                        <if test="flowRemark != null and flowRemark !=''">and flow_remark = #{flowRemark}</if>
-                                        <if test="userid != null and userid !=''">and userid = #{userid}</if>
-                                        <if test="modifyUserid != null and modifyUserid !=''">and modify_userid = #{modifyUserid}</if>
-                                        <if test="flowData != null and flowData !=''">and flow_data = #{flowData}</if>
-                                        <if test="flowDataCount != null and flowDataCount !=''">and flow_data_count = #{flowDataCount}</if>
-                                        <if test="flowImg != null and flowImg !=''">and flow_img = #{flowImg}</if>
-                                        <if test="flowUrl != null and flowUrl !=''">and flow_url = #{flowUrl}</if>
-                                        <if test="status != null and status !=''">and status = #{status}</if>
-                                                                <if test="channel != null and channel !=''">and channel = #{channel}</if>
-            </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="flowId != null and flowId !=''">and flow_id = #{flowId}</if>
+            <if test="flowTitle != null and flowTitle !=''">and flow_title = #{flowTitle}</if>
+            <if test="flowType != null and flowType !=''">and flow_type = #{flowType}</if>
+            <if test="flowShowType != null and flowShowType !=''">and flow_show_type = #{flowShowType}</if>
+            <if test="controlFlag != null and controlFlag !=''">and control_flag = #{controlFlag}</if>
+            <if test="flowRemark != null and flowRemark !=''">and flow_remark = #{flowRemark}</if>
+            <if test="userid != null and userid !=''">and userid = #{userid}</if>
+            <if test="modifyUserid != null and modifyUserid !=''">and modify_userid = #{modifyUserid}</if>
+            <if test="flowData != null and flowData !=''">and flow_data = #{flowData}</if>
+            <if test="flowDataCount != null and flowDataCount !=''">and flow_data_count = #{flowDataCount}</if>
+            <if test="flowImg != null and flowImg !=''">and flow_img = #{flowImg}</if>
+            <if test="flowUrl != null and flowUrl !=''">and flow_url = #{flowUrl}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="channel != null and channel !=''">and channel = #{channel}</if>
+        </where>
     </select>
 
     <!--新增所有列-->
@@ -151,59 +162,63 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        flow_id,        flow_title,        flow_type,        flow_show_type,        control_flag,        flow_remark,        userid,        modify_userid,        flow_data,        flow_data_count,        flow_img,        flow_url,        channel)
+        ( tenant_id, flow_id, flow_title, flow_type, flow_show_type, control_flag, flow_remark, userid, modify_userid,
+        flow_data, flow_data_count, flow_img, flow_url, channel)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (            #{entity.tenantId},            #{entity.flowId},            #{entity.flowTitle},            #{entity.flowType},            #{entity.flowShowType},            #{entity.controlFlag},            #{entity.flowRemark},            #{entity.userid},            #{entity.modifyUserid},            #{entity.flowData},            #{entity.flowDataCount},            #{entity.flowImg},            #{entity.flowUrl},            #{entity.channel})
+            ( #{entity.tenantId}, #{entity.flowId}, #{entity.flowTitle}, #{entity.flowType}, #{entity.flowShowType},
+            #{entity.controlFlag}, #{entity.flowRemark}, #{entity.userid}, #{entity.modifyUserid}, #{entity.flowData},
+            #{entity.flowDataCount}, #{entity.flowImg}, #{entity.flowUrl}, #{entity.channel})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        flow_id,        flow_title,        flow_type,        flow_show_type,        control_flag,        flow_remark,        userid,        modify_userid,        flow_data,        flow_data_count,        flow_img,        flow_url,        status,        channel)
+        ( tenant_id, flow_id, flow_title, flow_type, flow_show_type, control_flag, flow_remark, userid, modify_userid,
+        flow_data, flow_data_count, flow_img, flow_url, status, channel)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.flowId},#{entity.flowTitle},#{entity.flowType},#{entity.flowShowType},#{entity.controlFlag},#{entity.flowRemark},#{entity.userid},#{entity.modifyUserid},#{entity.flowData},#{entity.flowDataCount},#{entity.flowImg},#{entity.flowUrl},#{entity.status},#{entity.channel})
         </foreach>
         on duplicate key update
         tenant_id=values(tenant_id),
-    flow_id=values(flow_id),
-    flow_title=values(flow_title),
-    flow_type=values(flow_type),
-    flow_show_type=values(flow_show_type),
-    control_flag=values(control_flag),
-    flow_remark=values(flow_remark),
-    userid=values(userid),
-    modify_userid=values(modify_userid),
-    flow_data=values(flow_data),
-    flow_data_count=values(flow_data_count),
-    flow_img=values(flow_img),
-    flow_url=values(flow_url),
-    status=values(status),
-            channel=values(channel)
-        </insert>
+        flow_id=values(flow_id),
+        flow_title=values(flow_title),
+        flow_type=values(flow_type),
+        flow_show_type=values(flow_show_type),
+        control_flag=values(control_flag),
+        flow_remark=values(flow_remark),
+        userid=values(userid),
+        modify_userid=values(modify_userid),
+        flow_data=values(flow_data),
+        flow_data_count=values(flow_data_count),
+        flow_img=values(flow_img),
+        flow_url=values(flow_url),
+        status=values(status),
+        channel=values(channel)
+    </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
         update
         <include refid="Table_Name"/>
         <set>
-    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-    <if test="flowId != null and flowId != ''">flow_id = #{flowId},</if>
-    <if test="flowTitle != null and flowTitle != ''">flow_title = #{flowTitle},</if>
-    <if test="flowType != null and flowType != ''">flow_type = #{flowType},</if>
-    <if test="flowShowType != null and flowShowType != ''">flow_show_type = #{flowShowType},</if>
-    <if test="controlFlag != null and controlFlag != ''">control_flag = #{controlFlag},</if>
-    <if test="flowRemark != null and flowRemark != ''">flow_remark = #{flowRemark},</if>
-    <if test="userid != null and userid != ''">userid = #{userid},</if>
-    <if test="modifyUserid != null and modifyUserid != ''">modify_userid = #{modifyUserid},</if>
-    <if test="flowData != null and flowData != ''">flow_data = #{flowData},</if>
-    <if test="flowDataCount != null and flowDataCount != ''">flow_data_count = #{flowDataCount},</if>
-    <if test="flowImg != null and flowImg != ''">flow_img = #{flowImg},</if>
-    <if test="flowUrl != null and flowUrl != ''">flow_url = #{flowUrl},</if>
-    <if test="status != null and status != ''">status = #{status},</if>
-    <if test="channel != null and channel != ''">channel = #{channel},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+            <if test="flowId != null and flowId != ''">flow_id = #{flowId},</if>
+            <if test="flowTitle != null and flowTitle != ''">flow_title = #{flowTitle},</if>
+            <if test="flowType != null and flowType != ''">flow_type = #{flowType},</if>
+            <if test="flowShowType != null and flowShowType != ''">flow_show_type = #{flowShowType},</if>
+            <if test="controlFlag != null and controlFlag != ''">control_flag = #{controlFlag},</if>
+            <if test="flowRemark != null and flowRemark != ''">flow_remark = #{flowRemark},</if>
+            <if test="userid != null and userid != ''">userid = #{userid},</if>
+            <if test="modifyUserid != null and modifyUserid != ''">modify_userid = #{modifyUserid},</if>
+            <if test="flowData != null and flowData != ''">flow_data = #{flowData},</if>
+            <if test="flowDataCount != null and flowDataCount != ''">flow_data_count = #{flowDataCount},</if>
+            <if test="flowImg != null and flowImg != ''">flow_img = #{flowImg},</if>
+            <if test="flowUrl != null and flowUrl != ''">flow_url = #{flowUrl},</if>
+            <if test="status != null and status != ''">status = #{status},</if>
+            <if test="channel != null and channel != ''">channel = #{channel},</if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>

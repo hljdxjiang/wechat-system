@@ -3,7 +3,7 @@
 <mapper namespace="com.nuoding.wechat.common.dao.back.BackRuleControlDao">
 
     <resultMap type="com.nuoding.wechat.common.entity.back.BackRuleControlEntity" id="BackRuleControlMap">
-            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
         <result property="controlType" column="control_type" jdbcType="VARCHAR"/>
         <result property="controlDesc" column="control_desc" jdbcType="VARCHAR"/>
@@ -37,29 +37,29 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="controlType != null and controlType !=''">and control_type = #{controlType}</if>
-                                                <if test="controlDesc != null and controlDesc !=''">and control_desc = #{controlDesc}</if>
-                                                <if test="ruleRange != null and ruleRange !=''">and rule_range = #{ruleRange}</if>
-                                                <if test="controlSwitch != null and controlSwitch !=''">and control_switch = #{controlSwitch}</if>
-                                                <if test="ruleExpr != null and ruleExpr !=''">and rule_expr = #{ruleExpr}</if>
-                                                            </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="controlType != null and controlType !=''">and control_type = #{controlType}</if>
+            <if test="controlDesc != null and controlDesc !=''">and control_desc = #{controlDesc}</if>
+            <if test="ruleRange != null and ruleRange !=''">and rule_range = #{ruleRange}</if>
+            <if test="controlSwitch != null and controlSwitch !=''">and control_switch = #{controlSwitch}</if>
+            <if test="ruleExpr != null and ruleExpr !=''">and rule_expr = #{ruleExpr}</if>
+        </where>
     </select>
 
     <!--查询一条-->
     <select id="selectOne" resultMap="BackRuleControlMap">
-    select
-    <include refid="Base_Column_List"/>
-    from
-    <include refid="Table_Name"/>
-    <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="controlType != null and controlType !=''">and control_type = #{controlType}</if>
-                                                <if test="controlDesc != null and controlDesc !=''">and control_desc = #{controlDesc}</if>
-                                                <if test="ruleRange != null and ruleRange !=''">and rule_range = #{ruleRange}</if>
-                                                <if test="controlSwitch != null and controlSwitch !=''">and control_switch = #{controlSwitch}</if>
-                                                <if test="ruleExpr != null and ruleExpr !=''">and rule_expr = #{ruleExpr}</if>
-                                                                </where>
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="controlType != null and controlType !=''">and control_type = #{controlType}</if>
+            <if test="controlDesc != null and controlDesc !=''">and control_desc = #{controlDesc}</if>
+            <if test="ruleRange != null and ruleRange !=''">and rule_range = #{ruleRange}</if>
+            <if test="controlSwitch != null and controlSwitch !=''">and control_switch = #{controlSwitch}</if>
+            <if test="ruleExpr != null and ruleExpr !=''">and rule_expr = #{ruleExpr}</if>
+        </where>
     </select>
 
     <!--查询指定行数据-->
@@ -69,13 +69,20 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                                                                    <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                                                                            <if test="controlType != null and controlType !=''">and control_type like CONCAT(CONCAT('%',  #{controlType}), '%')</if>
-                                                                                                            <if test="controlDesc != null and controlDesc !=''">and control_desc like CONCAT(CONCAT('%',  #{controlDesc}), '%')</if>
-                                                                                                            <if test="ruleRange != null and ruleRange !=''">and rule_range like CONCAT(CONCAT('%',  #{ruleRange}), '%')</if>
-                                                                                                            <if test="controlSwitch != null and controlSwitch !=''">and control_switch like CONCAT(CONCAT('%',  #{controlSwitch}), '%')</if>
-                                                                                                            <if test="ruleExpr != null and ruleExpr !=''">and rule_expr like CONCAT(CONCAT('%',  #{ruleExpr}), '%')</if>
-                                                                                                                </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="controlType != null and controlType !=''">and control_type like CONCAT(CONCAT('%',
+                #{controlType}), '%')
+            </if>
+            <if test="controlDesc != null and controlDesc !=''">and control_desc like CONCAT(CONCAT('%',
+                #{controlDesc}), '%')
+            </if>
+            <if test="ruleRange != null and ruleRange !=''">and rule_range like CONCAT(CONCAT('%', #{ruleRange}), '%')
+            </if>
+            <if test="controlSwitch != null and controlSwitch !=''">and control_switch like CONCAT(CONCAT('%',
+                #{controlSwitch}), '%')
+            </if>
+            <if test="ruleExpr != null and ruleExpr !=''">and rule_expr like CONCAT(CONCAT('%', #{ruleExpr}), '%')</if>
+        </where>
 
     </select>
 
@@ -85,13 +92,13 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                        <if test="controlType != null and controlType !=''">and control_type = #{controlType}</if>
-                                        <if test="controlDesc != null and controlDesc !=''">and control_desc = #{controlDesc}</if>
-                                        <if test="ruleRange != null and ruleRange !=''">and rule_range = #{ruleRange}</if>
-                                        <if test="controlSwitch != null and controlSwitch !=''">and control_switch = #{controlSwitch}</if>
-                                        <if test="ruleExpr != null and ruleExpr !=''">and rule_expr = #{ruleExpr}</if>
-                                    </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="controlType != null and controlType !=''">and control_type = #{controlType}</if>
+            <if test="controlDesc != null and controlDesc !=''">and control_desc = #{controlDesc}</if>
+            <if test="ruleRange != null and ruleRange !=''">and rule_range = #{ruleRange}</if>
+            <if test="controlSwitch != null and controlSwitch !=''">and control_switch = #{controlSwitch}</if>
+            <if test="ruleExpr != null and ruleExpr !=''">and rule_expr = #{ruleExpr}</if>
+        </where>
     </select>
 
     <!--新增所有列-->
@@ -106,42 +113,43 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        control_type,        control_desc,        rule_range,        control_switch,        rule_expr,)
+        ( tenant_id, control_type, control_desc, rule_range, control_switch, rule_expr,)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (            #{entity.tenantId},            #{entity.controlType},            #{entity.controlDesc},            #{entity.ruleRange},            #{entity.controlSwitch},            #{entity.ruleExpr},)
+            ( #{entity.tenantId}, #{entity.controlType}, #{entity.controlDesc}, #{entity.ruleRange},
+            #{entity.controlSwitch}, #{entity.ruleExpr},)
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        control_type,        control_desc,        rule_range,        control_switch,        rule_expr,)
+        ( tenant_id, control_type, control_desc, rule_range, control_switch, rule_expr,)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.controlType},#{entity.controlDesc},#{entity.ruleRange},#{entity.controlSwitch},#{entity.ruleExpr},)
         </foreach>
         on duplicate key update
         tenant_id=values(tenant_id),
-    control_type=values(control_type),
-    control_desc=values(control_desc),
-    rule_range=values(rule_range),
-    control_switch=values(control_switch),
-    rule_expr=values(rule_expr),
-        
-        </insert>
+        control_type=values(control_type),
+        control_desc=values(control_desc),
+        rule_range=values(rule_range),
+        control_switch=values(control_switch),
+        rule_expr=values(rule_expr),
+
+    </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
         update
         <include refid="Table_Name"/>
         <set>
-    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-    <if test="controlType != null and controlType != ''">control_type = #{controlType},</if>
-    <if test="controlDesc != null and controlDesc != ''">control_desc = #{controlDesc},</if>
-    <if test="ruleRange != null and ruleRange != ''">rule_range = #{ruleRange},</if>
-    <if test="controlSwitch != null and controlSwitch != ''">control_switch = #{controlSwitch},</if>
-    <if test="ruleExpr != null and ruleExpr != ''">rule_expr = #{ruleExpr},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+            <if test="controlType != null and controlType != ''">control_type = #{controlType},</if>
+            <if test="controlDesc != null and controlDesc != ''">control_desc = #{controlDesc},</if>
+            <if test="ruleRange != null and ruleRange != ''">rule_range = #{ruleRange},</if>
+            <if test="controlSwitch != null and controlSwitch != ''">control_switch = #{controlSwitch},</if>
+            <if test="ruleExpr != null and ruleExpr != ''">rule_expr = #{ruleExpr},</if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>

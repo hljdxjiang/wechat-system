@@ -3,7 +3,7 @@
 <mapper namespace="com.nuoding.wechat.common.dao.mall.MallLotteryDao">
 
     <resultMap type="com.nuoding.wechat.common.entity.mall.MallLotteryEntity" id="MallLotteryMap">
-            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
         <result property="lotteryId" column="lottery_id" jdbcType="VARCHAR"/>
         <result property="lotteryTitle" column="lottery_title" jdbcType="VARCHAR"/>
@@ -50,55 +50,57 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="lotteryId != null and lotteryId !=''">and lottery_id = #{lotteryId}</if>
-                                                <if test="lotteryTitle != null and lotteryTitle !=''">and lottery_title = #{lotteryTitle}</if>
-                                                <if test="lotteryDetail != null and lotteryDetail !=''">and lottery_detail = #{lotteryDetail}</if>
-                                                <if test="lotteryType != null and lotteryType !=''">and lottery_type = #{lotteryType}</if>
-                                                <if test="reward != null and reward !=''">and reward = #{reward}</if>
-                                                <if test="rewardAmount != null and rewardAmount !=''">and reward_amount = #{rewardAmount}</if>
-                                                <if test="vaildDate != null and vaildDate !=''">and vaild_date = #{vaildDate}</if>
-                                                <if test="expireDate != null and expireDate !=''">and expire_date = #{expireDate}</if>
-                                                <if test="rewardValidDate != null and rewardValidDate !=''">and reward_valid_date = #{rewardValidDate}</if>
-                                                <if test="rewardExpireDate != null and rewardExpireDate !=''">and reward_expire_date = #{rewardExpireDate}</if>
-                                                <if test="numbero != null and numbero !=''">and numbero = #{numbero}</if>
-                                                <if test="status != null and status !=''">and status = #{status}</if>
-                                                                                        <if test="cost != null and cost !=''">and cost = #{cost}</if>
-                                                <if test="costType != null and costType !=''">and cost_type = #{costType}</if>
-                                                <if test="rewardType != null and rewardType !=''">and reward_type = #{rewardType}</if>
-                                                <if test="cycleAmount != null and cycleAmount !=''">and cycle_amount = #{cycleAmount}</if>
-                                                <if test="cyclePeriod != null and cyclePeriod !=''">and cycle_period = #{cyclePeriod}</if>
-                                                <if test="cycleType != null and cycleType !=''">and cycle_type = #{cycleType}</if>
-                    </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="lotteryId != null and lotteryId !=''">and lottery_id = #{lotteryId}</if>
+            <if test="lotteryTitle != null and lotteryTitle !=''">and lottery_title = #{lotteryTitle}</if>
+            <if test="lotteryDetail != null and lotteryDetail !=''">and lottery_detail = #{lotteryDetail}</if>
+            <if test="lotteryType != null and lotteryType !=''">and lottery_type = #{lotteryType}</if>
+            <if test="reward != null and reward !=''">and reward = #{reward}</if>
+            <if test="rewardAmount != null and rewardAmount !=''">and reward_amount = #{rewardAmount}</if>
+            <if test="vaildDate != null and vaildDate !=''">and vaild_date = #{vaildDate}</if>
+            <if test="expireDate != null and expireDate !=''">and expire_date = #{expireDate}</if>
+            <if test="rewardValidDate != null and rewardValidDate !=''">and reward_valid_date = #{rewardValidDate}</if>
+            <if test="rewardExpireDate != null and rewardExpireDate !=''">and reward_expire_date = #{rewardExpireDate}
+            </if>
+            <if test="numbero != null and numbero !=''">and numbero = #{numbero}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="cost != null and cost !=''">and cost = #{cost}</if>
+            <if test="costType != null and costType !=''">and cost_type = #{costType}</if>
+            <if test="rewardType != null and rewardType !=''">and reward_type = #{rewardType}</if>
+            <if test="cycleAmount != null and cycleAmount !=''">and cycle_amount = #{cycleAmount}</if>
+            <if test="cyclePeriod != null and cyclePeriod !=''">and cycle_period = #{cyclePeriod}</if>
+            <if test="cycleType != null and cycleType !=''">and cycle_type = #{cycleType}</if>
+        </where>
     </select>
 
     <!--查询一条-->
     <select id="selectOne" resultMap="MallLotteryMap">
-    select
-    <include refid="Base_Column_List"/>
-    from
-    <include refid="Table_Name"/>
-    <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="lotteryId != null and lotteryId !=''">and lottery_id = #{lotteryId}</if>
-                                                <if test="lotteryTitle != null and lotteryTitle !=''">and lottery_title = #{lotteryTitle}</if>
-                                                <if test="lotteryDetail != null and lotteryDetail !=''">and lottery_detail = #{lotteryDetail}</if>
-                                                <if test="lotteryType != null and lotteryType !=''">and lottery_type = #{lotteryType}</if>
-                                                <if test="reward != null and reward !=''">and reward = #{reward}</if>
-                                                <if test="rewardAmount != null and rewardAmount !=''">and reward_amount = #{rewardAmount}</if>
-                                                <if test="vaildDate != null and vaildDate !=''">and vaild_date = #{vaildDate}</if>
-                                                <if test="expireDate != null and expireDate !=''">and expire_date = #{expireDate}</if>
-                                                <if test="rewardValidDate != null and rewardValidDate !=''">and reward_valid_date = #{rewardValidDate}</if>
-                                                <if test="rewardExpireDate != null and rewardExpireDate !=''">and reward_expire_date = #{rewardExpireDate}</if>
-                                                <if test="numbero != null and numbero !=''">and numbero = #{numbero}</if>
-                                                <if test="status != null and status !=''">and status = #{status}</if>
-                                                                                        <if test="cost != null and cost !=''">and cost = #{cost}</if>
-                                                <if test="costType != null and costType !=''">and cost_type = #{costType}</if>
-                                                <if test="rewardType != null and rewardType !=''">and reward_type = #{rewardType}</if>
-                                                <if test="cycleAmount != null and cycleAmount !=''">and cycle_amount = #{cycleAmount}</if>
-                                                <if test="cyclePeriod != null and cyclePeriod !=''">and cycle_period = #{cyclePeriod}</if>
-                                                <if test="cycleType != null and cycleType !=''">and cycle_type = #{cycleType}</if>
-                        </where>
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="lotteryId != null and lotteryId !=''">and lottery_id = #{lotteryId}</if>
+            <if test="lotteryTitle != null and lotteryTitle !=''">and lottery_title = #{lotteryTitle}</if>
+            <if test="lotteryDetail != null and lotteryDetail !=''">and lottery_detail = #{lotteryDetail}</if>
+            <if test="lotteryType != null and lotteryType !=''">and lottery_type = #{lotteryType}</if>
+            <if test="reward != null and reward !=''">and reward = #{reward}</if>
+            <if test="rewardAmount != null and rewardAmount !=''">and reward_amount = #{rewardAmount}</if>
+            <if test="vaildDate != null and vaildDate !=''">and vaild_date = #{vaildDate}</if>
+            <if test="expireDate != null and expireDate !=''">and expire_date = #{expireDate}</if>
+            <if test="rewardValidDate != null and rewardValidDate !=''">and reward_valid_date = #{rewardValidDate}</if>
+            <if test="rewardExpireDate != null and rewardExpireDate !=''">and reward_expire_date = #{rewardExpireDate}
+            </if>
+            <if test="numbero != null and numbero !=''">and numbero = #{numbero}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="cost != null and cost !=''">and cost = #{cost}</if>
+            <if test="costType != null and costType !=''">and cost_type = #{costType}</if>
+            <if test="rewardType != null and rewardType !=''">and reward_type = #{rewardType}</if>
+            <if test="cycleAmount != null and cycleAmount !=''">and cycle_amount = #{cycleAmount}</if>
+            <if test="cyclePeriod != null and cyclePeriod !=''">and cycle_period = #{cyclePeriod}</if>
+            <if test="cycleType != null and cycleType !=''">and cycle_type = #{cycleType}</if>
+        </where>
     </select>
 
     <!--查询指定行数据-->
@@ -108,26 +110,49 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                                                                    <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                                                                            <if test="lotteryId != null and lotteryId !=''">and lottery_id like CONCAT(CONCAT('%',  #{lotteryId}), '%')</if>
-                                                                                                            <if test="lotteryTitle != null and lotteryTitle !=''">and lottery_title like CONCAT(CONCAT('%',  #{lotteryTitle}), '%')</if>
-                                                                                                            <if test="lotteryDetail != null and lotteryDetail !=''">and lottery_detail like CONCAT(CONCAT('%',  #{lotteryDetail}), '%')</if>
-                                                                                                            <if test="lotteryType != null and lotteryType !=''">and lottery_type like CONCAT(CONCAT('%',  #{lotteryType}), '%')</if>
-                                                                                                            <if test="reward != null and reward !=''">and reward like CONCAT(CONCAT('%',  #{reward}), '%')</if>
-                                                                                                            <if test="rewardAmount != null and rewardAmount !=''">and reward_amount like CONCAT(CONCAT('%',  #{rewardAmount}), '%')</if>
-                                                                                                            <if test="vaildDate != null and vaildDate !=''">and vaild_date like CONCAT(CONCAT('%',  #{vaildDate}), '%')</if>
-                                                                                                            <if test="expireDate != null and expireDate !=''">and expire_date like CONCAT(CONCAT('%',  #{expireDate}), '%')</if>
-                                                                                                            <if test="rewardValidDate != null and rewardValidDate !=''">and reward_valid_date like CONCAT(CONCAT('%',  #{rewardValidDate}), '%')</if>
-                                                                                                            <if test="rewardExpireDate != null and rewardExpireDate !=''">and reward_expire_date like CONCAT(CONCAT('%',  #{rewardExpireDate}), '%')</if>
-                                                                                                            <if test="numbero != null and numbero !=''">and numbero like CONCAT(CONCAT('%',  #{numbero}), '%')</if>
-                                                                                                            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%',  #{status}), '%')</if>
-                                                                                                                                                                    <if test="cost != null and cost !=''">and cost like CONCAT(CONCAT('%',  #{cost}), '%')</if>
-                                                                                                            <if test="costType != null and costType !=''">and cost_type like CONCAT(CONCAT('%',  #{costType}), '%')</if>
-                                                                                                            <if test="rewardType != null and rewardType !=''">and reward_type like CONCAT(CONCAT('%',  #{rewardType}), '%')</if>
-                                                                                                            <if test="cycleAmount != null and cycleAmount !=''">and cycle_amount like CONCAT(CONCAT('%',  #{cycleAmount}), '%')</if>
-                                                                                                            <if test="cyclePeriod != null and cyclePeriod !=''">and cycle_period like CONCAT(CONCAT('%',  #{cyclePeriod}), '%')</if>
-                                                                                                            <if test="cycleType != null and cycleType !=''">and cycle_type like CONCAT(CONCAT('%',  #{cycleType}), '%')</if>
-                                                        </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="lotteryId != null and lotteryId !=''">and lottery_id like CONCAT(CONCAT('%', #{lotteryId}), '%')
+            </if>
+            <if test="lotteryTitle != null and lotteryTitle !=''">and lottery_title like CONCAT(CONCAT('%',
+                #{lotteryTitle}), '%')
+            </if>
+            <if test="lotteryDetail != null and lotteryDetail !=''">and lottery_detail like CONCAT(CONCAT('%',
+                #{lotteryDetail}), '%')
+            </if>
+            <if test="lotteryType != null and lotteryType !=''">and lottery_type like CONCAT(CONCAT('%',
+                #{lotteryType}), '%')
+            </if>
+            <if test="reward != null and reward !=''">and reward like CONCAT(CONCAT('%', #{reward}), '%')</if>
+            <if test="rewardAmount != null and rewardAmount !=''">and reward_amount like CONCAT(CONCAT('%',
+                #{rewardAmount}), '%')
+            </if>
+            <if test="vaildDate != null and vaildDate !=''">and vaild_date like CONCAT(CONCAT('%', #{vaildDate}), '%')
+            </if>
+            <if test="expireDate != null and expireDate !=''">and expire_date like CONCAT(CONCAT('%', #{expireDate}),
+                '%')
+            </if>
+            <if test="rewardValidDate != null and rewardValidDate !=''">and reward_valid_date like CONCAT(CONCAT('%',
+                #{rewardValidDate}), '%')
+            </if>
+            <if test="rewardExpireDate != null and rewardExpireDate !=''">and reward_expire_date like CONCAT(CONCAT('%',
+                #{rewardExpireDate}), '%')
+            </if>
+            <if test="numbero != null and numbero !=''">and numbero like CONCAT(CONCAT('%', #{numbero}), '%')</if>
+            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
+            <if test="cost != null and cost !=''">and cost like CONCAT(CONCAT('%', #{cost}), '%')</if>
+            <if test="costType != null and costType !=''">and cost_type like CONCAT(CONCAT('%', #{costType}), '%')</if>
+            <if test="rewardType != null and rewardType !=''">and reward_type like CONCAT(CONCAT('%', #{rewardType}),
+                '%')
+            </if>
+            <if test="cycleAmount != null and cycleAmount !=''">and cycle_amount like CONCAT(CONCAT('%',
+                #{cycleAmount}), '%')
+            </if>
+            <if test="cyclePeriod != null and cyclePeriod !=''">and cycle_period like CONCAT(CONCAT('%',
+                #{cyclePeriod}), '%')
+            </if>
+            <if test="cycleType != null and cycleType !=''">and cycle_type like CONCAT(CONCAT('%', #{cycleType}), '%')
+            </if>
+        </where>
 
     </select>
 
@@ -137,26 +162,27 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                        <if test="lotteryId != null and lotteryId !=''">and lottery_id = #{lotteryId}</if>
-                                        <if test="lotteryTitle != null and lotteryTitle !=''">and lottery_title = #{lotteryTitle}</if>
-                                        <if test="lotteryDetail != null and lotteryDetail !=''">and lottery_detail = #{lotteryDetail}</if>
-                                        <if test="lotteryType != null and lotteryType !=''">and lottery_type = #{lotteryType}</if>
-                                        <if test="reward != null and reward !=''">and reward = #{reward}</if>
-                                        <if test="rewardAmount != null and rewardAmount !=''">and reward_amount = #{rewardAmount}</if>
-                                        <if test="vaildDate != null and vaildDate !=''">and vaild_date = #{vaildDate}</if>
-                                        <if test="expireDate != null and expireDate !=''">and expire_date = #{expireDate}</if>
-                                        <if test="rewardValidDate != null and rewardValidDate !=''">and reward_valid_date = #{rewardValidDate}</if>
-                                        <if test="rewardExpireDate != null and rewardExpireDate !=''">and reward_expire_date = #{rewardExpireDate}</if>
-                                        <if test="numbero != null and numbero !=''">and numbero = #{numbero}</if>
-                                        <if test="status != null and status !=''">and status = #{status}</if>
-                                                                <if test="cost != null and cost !=''">and cost = #{cost}</if>
-                                        <if test="costType != null and costType !=''">and cost_type = #{costType}</if>
-                                        <if test="rewardType != null and rewardType !=''">and reward_type = #{rewardType}</if>
-                                        <if test="cycleAmount != null and cycleAmount !=''">and cycle_amount = #{cycleAmount}</if>
-                                        <if test="cyclePeriod != null and cyclePeriod !=''">and cycle_period = #{cyclePeriod}</if>
-                                        <if test="cycleType != null and cycleType !=''">and cycle_type = #{cycleType}</if>
-            </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="lotteryId != null and lotteryId !=''">and lottery_id = #{lotteryId}</if>
+            <if test="lotteryTitle != null and lotteryTitle !=''">and lottery_title = #{lotteryTitle}</if>
+            <if test="lotteryDetail != null and lotteryDetail !=''">and lottery_detail = #{lotteryDetail}</if>
+            <if test="lotteryType != null and lotteryType !=''">and lottery_type = #{lotteryType}</if>
+            <if test="reward != null and reward !=''">and reward = #{reward}</if>
+            <if test="rewardAmount != null and rewardAmount !=''">and reward_amount = #{rewardAmount}</if>
+            <if test="vaildDate != null and vaildDate !=''">and vaild_date = #{vaildDate}</if>
+            <if test="expireDate != null and expireDate !=''">and expire_date = #{expireDate}</if>
+            <if test="rewardValidDate != null and rewardValidDate !=''">and reward_valid_date = #{rewardValidDate}</if>
+            <if test="rewardExpireDate != null and rewardExpireDate !=''">and reward_expire_date = #{rewardExpireDate}
+            </if>
+            <if test="numbero != null and numbero !=''">and numbero = #{numbero}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="cost != null and cost !=''">and cost = #{cost}</if>
+            <if test="costType != null and costType !=''">and cost_type = #{costType}</if>
+            <if test="rewardType != null and rewardType !=''">and reward_type = #{rewardType}</if>
+            <if test="cycleAmount != null and cycleAmount !=''">and cycle_amount = #{cycleAmount}</if>
+            <if test="cyclePeriod != null and cyclePeriod !=''">and cycle_period = #{cyclePeriod}</if>
+            <if test="cycleType != null and cycleType !=''">and cycle_type = #{cycleType}</if>
+        </where>
     </select>
 
     <!--新增所有列-->
@@ -171,67 +197,75 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        lottery_id,        lottery_title,        lottery_detail,        lottery_type,        reward,        reward_amount,        vaild_date,        expire_date,        reward_valid_date,        reward_expire_date,        numbero,        cost,        cost_type,        reward_type,        cycle_amount,        cycle_period,        cycle_type)
+        ( tenant_id, lottery_id, lottery_title, lottery_detail, lottery_type, reward, reward_amount, vaild_date,
+        expire_date, reward_valid_date, reward_expire_date, numbero, cost, cost_type, reward_type, cycle_amount,
+        cycle_period, cycle_type)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (            #{entity.tenantId},            #{entity.lotteryId},            #{entity.lotteryTitle},            #{entity.lotteryDetail},            #{entity.lotteryType},            #{entity.reward},            #{entity.rewardAmount},            #{entity.vaildDate},            #{entity.expireDate},            #{entity.rewardValidDate},            #{entity.rewardExpireDate},            #{entity.numbero},            #{entity.cost},            #{entity.costType},            #{entity.rewardType},            #{entity.cycleAmount},            #{entity.cyclePeriod},            #{entity.cycleType})
+            ( #{entity.tenantId}, #{entity.lotteryId}, #{entity.lotteryTitle}, #{entity.lotteryDetail},
+            #{entity.lotteryType}, #{entity.reward}, #{entity.rewardAmount}, #{entity.vaildDate}, #{entity.expireDate},
+            #{entity.rewardValidDate}, #{entity.rewardExpireDate}, #{entity.numbero}, #{entity.cost},
+            #{entity.costType}, #{entity.rewardType}, #{entity.cycleAmount}, #{entity.cyclePeriod}, #{entity.cycleType})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        lottery_id,        lottery_title,        lottery_detail,        lottery_type,        reward,        reward_amount,        vaild_date,        expire_date,        reward_valid_date,        reward_expire_date,        numbero,        status,        cost,        cost_type,        reward_type,        cycle_amount,        cycle_period,        cycle_type)
+        ( tenant_id, lottery_id, lottery_title, lottery_detail, lottery_type, reward, reward_amount, vaild_date,
+        expire_date, reward_valid_date, reward_expire_date, numbero, status, cost, cost_type, reward_type, cycle_amount,
+        cycle_period, cycle_type)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.lotteryId},#{entity.lotteryTitle},#{entity.lotteryDetail},#{entity.lotteryType},#{entity.reward},#{entity.rewardAmount},#{entity.vaildDate},#{entity.expireDate},#{entity.rewardValidDate},#{entity.rewardExpireDate},#{entity.numbero},#{entity.status},#{entity.cost},#{entity.costType},#{entity.rewardType},#{entity.cycleAmount},#{entity.cyclePeriod},#{entity.cycleType})
         </foreach>
         on duplicate key update
         tenant_id=values(tenant_id),
-    lottery_id=values(lottery_id),
-    lottery_title=values(lottery_title),
-    lottery_detail=values(lottery_detail),
-    lottery_type=values(lottery_type),
-    reward=values(reward),
-    reward_amount=values(reward_amount),
-    vaild_date=values(vaild_date),
-    expire_date=values(expire_date),
-    reward_valid_date=values(reward_valid_date),
-    reward_expire_date=values(reward_expire_date),
-    numbero=values(numbero),
-    status=values(status),
-            cost=values(cost),
-    cost_type=values(cost_type),
-    reward_type=values(reward_type),
-    cycle_amount=values(cycle_amount),
-    cycle_period=values(cycle_period),
-    cycle_type=values(cycle_type)
-        </insert>
+        lottery_id=values(lottery_id),
+        lottery_title=values(lottery_title),
+        lottery_detail=values(lottery_detail),
+        lottery_type=values(lottery_type),
+        reward=values(reward),
+        reward_amount=values(reward_amount),
+        vaild_date=values(vaild_date),
+        expire_date=values(expire_date),
+        reward_valid_date=values(reward_valid_date),
+        reward_expire_date=values(reward_expire_date),
+        numbero=values(numbero),
+        status=values(status),
+        cost=values(cost),
+        cost_type=values(cost_type),
+        reward_type=values(reward_type),
+        cycle_amount=values(cycle_amount),
+        cycle_period=values(cycle_period),
+        cycle_type=values(cycle_type)
+    </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
         update
         <include refid="Table_Name"/>
         <set>
-    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-    <if test="lotteryId != null and lotteryId != ''">lottery_id = #{lotteryId},</if>
-    <if test="lotteryTitle != null and lotteryTitle != ''">lottery_title = #{lotteryTitle},</if>
-    <if test="lotteryDetail != null and lotteryDetail != ''">lottery_detail = #{lotteryDetail},</if>
-    <if test="lotteryType != null and lotteryType != ''">lottery_type = #{lotteryType},</if>
-    <if test="reward != null and reward != ''">reward = #{reward},</if>
-    <if test="rewardAmount != null and rewardAmount != ''">reward_amount = #{rewardAmount},</if>
-    <if test="vaildDate != null and vaildDate != ''">vaild_date = #{vaildDate},</if>
-    <if test="expireDate != null and expireDate != ''">expire_date = #{expireDate},</if>
-    <if test="rewardValidDate != null and rewardValidDate != ''">reward_valid_date = #{rewardValidDate},</if>
-    <if test="rewardExpireDate != null and rewardExpireDate != ''">reward_expire_date = #{rewardExpireDate},</if>
-    <if test="numbero != null and numbero != ''">numbero = #{numbero},</if>
-    <if test="status != null and status != ''">status = #{status},</if>
-    <if test="cost != null and cost != ''">cost = #{cost},</if>
-    <if test="costType != null and costType != ''">cost_type = #{costType},</if>
-    <if test="rewardType != null and rewardType != ''">reward_type = #{rewardType},</if>
-    <if test="cycleAmount != null and cycleAmount != ''">cycle_amount = #{cycleAmount},</if>
-    <if test="cyclePeriod != null and cyclePeriod != ''">cycle_period = #{cyclePeriod},</if>
-    <if test="cycleType != null and cycleType != ''">cycle_type = #{cycleType},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+            <if test="lotteryId != null and lotteryId != ''">lottery_id = #{lotteryId},</if>
+            <if test="lotteryTitle != null and lotteryTitle != ''">lottery_title = #{lotteryTitle},</if>
+            <if test="lotteryDetail != null and lotteryDetail != ''">lottery_detail = #{lotteryDetail},</if>
+            <if test="lotteryType != null and lotteryType != ''">lottery_type = #{lotteryType},</if>
+            <if test="reward != null and reward != ''">reward = #{reward},</if>
+            <if test="rewardAmount != null and rewardAmount != ''">reward_amount = #{rewardAmount},</if>
+            <if test="vaildDate != null and vaildDate != ''">vaild_date = #{vaildDate},</if>
+            <if test="expireDate != null and expireDate != ''">expire_date = #{expireDate},</if>
+            <if test="rewardValidDate != null and rewardValidDate != ''">reward_valid_date = #{rewardValidDate},</if>
+            <if test="rewardExpireDate != null and rewardExpireDate != ''">reward_expire_date = #{rewardExpireDate},
+            </if>
+            <if test="numbero != null and numbero != ''">numbero = #{numbero},</if>
+            <if test="status != null and status != ''">status = #{status},</if>
+            <if test="cost != null and cost != ''">cost = #{cost},</if>
+            <if test="costType != null and costType != ''">cost_type = #{costType},</if>
+            <if test="rewardType != null and rewardType != ''">reward_type = #{rewardType},</if>
+            <if test="cycleAmount != null and cycleAmount != ''">cycle_amount = #{cycleAmount},</if>
+            <if test="cyclePeriod != null and cyclePeriod != ''">cycle_period = #{cyclePeriod},</if>
+            <if test="cycleType != null and cycleType != ''">cycle_type = #{cycleType},</if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>

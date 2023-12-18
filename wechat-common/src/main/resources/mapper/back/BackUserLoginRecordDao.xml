@@ -3,7 +3,7 @@
 <mapper namespace="com.nuoding.wechat.common.dao.back.BackUserLoginRecordDao">
 
     <resultMap type="com.nuoding.wechat.common.entity.back.BackUserLoginRecordEntity" id="BackUserLoginRecordMap">
-            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
         <result property="userId" column="user_id" jdbcType="VARCHAR"/>
         <result property="ipAddr" column="ip_addr" jdbcType="VARCHAR"/>
@@ -40,39 +40,39 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="userId != null and userId !=''">and user_id = #{userId}</if>
-                                                <if test="ipAddr != null and ipAddr !=''">and ip_addr = #{ipAddr}</if>
-                                                <if test="country != null and country !=''">and country = #{country}</if>
-                                                <if test="province != null and province !=''">and province = #{province}</if>
-                                                <if test="city != null and city !=''">and city = #{city}</if>
-                                                <if test="county != null and county !=''">and county = #{county}</if>
-                                                <if test="loginTime != null and loginTime !=''">and login_time = #{loginTime}</if>
-                                                <if test="loginResult != null and loginResult !=''">and login_result = #{loginResult}</if>
-                                                <if test="loginResultCode != null and loginResultCode !=''">and login_result_code = #{loginResultCode}</if>
-                                                <if test="isp != null and isp !=''">and isp = #{isp}</if>
-                    </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="userId != null and userId !=''">and user_id = #{userId}</if>
+            <if test="ipAddr != null and ipAddr !=''">and ip_addr = #{ipAddr}</if>
+            <if test="country != null and country !=''">and country = #{country}</if>
+            <if test="province != null and province !=''">and province = #{province}</if>
+            <if test="city != null and city !=''">and city = #{city}</if>
+            <if test="county != null and county !=''">and county = #{county}</if>
+            <if test="loginTime != null and loginTime !=''">and login_time = #{loginTime}</if>
+            <if test="loginResult != null and loginResult !=''">and login_result = #{loginResult}</if>
+            <if test="loginResultCode != null and loginResultCode !=''">and login_result_code = #{loginResultCode}</if>
+            <if test="isp != null and isp !=''">and isp = #{isp}</if>
+        </where>
     </select>
 
     <!--查询一条-->
     <select id="selectOne" resultMap="BackUserLoginRecordMap">
-    select
-    <include refid="Base_Column_List"/>
-    from
-    <include refid="Table_Name"/>
-    <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="userId != null and userId !=''">and user_id = #{userId}</if>
-                                                <if test="ipAddr != null and ipAddr !=''">and ip_addr = #{ipAddr}</if>
-                                                <if test="country != null and country !=''">and country = #{country}</if>
-                                                <if test="province != null and province !=''">and province = #{province}</if>
-                                                <if test="city != null and city !=''">and city = #{city}</if>
-                                                <if test="county != null and county !=''">and county = #{county}</if>
-                                                <if test="loginTime != null and loginTime !=''">and login_time = #{loginTime}</if>
-                                                <if test="loginResult != null and loginResult !=''">and login_result = #{loginResult}</if>
-                                                <if test="loginResultCode != null and loginResultCode !=''">and login_result_code = #{loginResultCode}</if>
-                                                <if test="isp != null and isp !=''">and isp = #{isp}</if>
-                        </where>
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="userId != null and userId !=''">and user_id = #{userId}</if>
+            <if test="ipAddr != null and ipAddr !=''">and ip_addr = #{ipAddr}</if>
+            <if test="country != null and country !=''">and country = #{country}</if>
+            <if test="province != null and province !=''">and province = #{province}</if>
+            <if test="city != null and city !=''">and city = #{city}</if>
+            <if test="county != null and county !=''">and county = #{county}</if>
+            <if test="loginTime != null and loginTime !=''">and login_time = #{loginTime}</if>
+            <if test="loginResult != null and loginResult !=''">and login_result = #{loginResult}</if>
+            <if test="loginResultCode != null and loginResultCode !=''">and login_result_code = #{loginResultCode}</if>
+            <if test="isp != null and isp !=''">and isp = #{isp}</if>
+        </where>
     </select>
 
     <!--查询指定行数据-->
@@ -82,18 +82,23 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                                                                    <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                                                                            <if test="userId != null and userId !=''">and user_id like CONCAT(CONCAT('%',  #{userId}), '%')</if>
-                                                                                                            <if test="ipAddr != null and ipAddr !=''">and ip_addr like CONCAT(CONCAT('%',  #{ipAddr}), '%')</if>
-                                                                                                            <if test="country != null and country !=''">and country like CONCAT(CONCAT('%',  #{country}), '%')</if>
-                                                                                                            <if test="province != null and province !=''">and province like CONCAT(CONCAT('%',  #{province}), '%')</if>
-                                                                                                            <if test="city != null and city !=''">and city like CONCAT(CONCAT('%',  #{city}), '%')</if>
-                                                                                                            <if test="county != null and county !=''">and county like CONCAT(CONCAT('%',  #{county}), '%')</if>
-                                                                                                            <if test="loginTime != null and loginTime !=''">and login_time like CONCAT(CONCAT('%',  #{loginTime}), '%')</if>
-                                                                                                            <if test="loginResult != null and loginResult !=''">and login_result like CONCAT(CONCAT('%',  #{loginResult}), '%')</if>
-                                                                                                            <if test="loginResultCode != null and loginResultCode !=''">and login_result_code like CONCAT(CONCAT('%',  #{loginResultCode}), '%')</if>
-                                                                                                            <if test="isp != null and isp !=''">and isp like CONCAT(CONCAT('%',  #{isp}), '%')</if>
-                                                        </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="userId != null and userId !=''">and user_id like CONCAT(CONCAT('%', #{userId}), '%')</if>
+            <if test="ipAddr != null and ipAddr !=''">and ip_addr like CONCAT(CONCAT('%', #{ipAddr}), '%')</if>
+            <if test="country != null and country !=''">and country like CONCAT(CONCAT('%', #{country}), '%')</if>
+            <if test="province != null and province !=''">and province like CONCAT(CONCAT('%', #{province}), '%')</if>
+            <if test="city != null and city !=''">and city like CONCAT(CONCAT('%', #{city}), '%')</if>
+            <if test="county != null and county !=''">and county like CONCAT(CONCAT('%', #{county}), '%')</if>
+            <if test="loginTime != null and loginTime !=''">and login_time like CONCAT(CONCAT('%', #{loginTime}), '%')
+            </if>
+            <if test="loginResult != null and loginResult !=''">and login_result like CONCAT(CONCAT('%',
+                #{loginResult}), '%')
+            </if>
+            <if test="loginResultCode != null and loginResultCode !=''">and login_result_code like CONCAT(CONCAT('%',
+                #{loginResultCode}), '%')
+            </if>
+            <if test="isp != null and isp !=''">and isp like CONCAT(CONCAT('%', #{isp}), '%')</if>
+        </where>
 
     </select>
 
@@ -103,18 +108,18 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                        <if test="userId != null and userId !=''">and user_id = #{userId}</if>
-                                        <if test="ipAddr != null and ipAddr !=''">and ip_addr = #{ipAddr}</if>
-                                        <if test="country != null and country !=''">and country = #{country}</if>
-                                        <if test="province != null and province !=''">and province = #{province}</if>
-                                        <if test="city != null and city !=''">and city = #{city}</if>
-                                        <if test="county != null and county !=''">and county = #{county}</if>
-                                        <if test="loginTime != null and loginTime !=''">and login_time = #{loginTime}</if>
-                                        <if test="loginResult != null and loginResult !=''">and login_result = #{loginResult}</if>
-                                        <if test="loginResultCode != null and loginResultCode !=''">and login_result_code = #{loginResultCode}</if>
-                                        <if test="isp != null and isp !=''">and isp = #{isp}</if>
-            </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="userId != null and userId !=''">and user_id = #{userId}</if>
+            <if test="ipAddr != null and ipAddr !=''">and ip_addr = #{ipAddr}</if>
+            <if test="country != null and country !=''">and country = #{country}</if>
+            <if test="province != null and province !=''">and province = #{province}</if>
+            <if test="city != null and city !=''">and city = #{city}</if>
+            <if test="county != null and county !=''">and county = #{county}</if>
+            <if test="loginTime != null and loginTime !=''">and login_time = #{loginTime}</if>
+            <if test="loginResult != null and loginResult !=''">and login_result = #{loginResult}</if>
+            <if test="loginResultCode != null and loginResultCode !=''">and login_result_code = #{loginResultCode}</if>
+            <if test="isp != null and isp !=''">and isp = #{isp}</if>
+        </where>
     </select>
 
     <!--新增所有列-->
@@ -129,51 +134,55 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        user_id,        ip_addr,        country,        province,        city,        county,        login_time,        login_result,        login_result_code,        isp)
+        ( tenant_id, user_id, ip_addr, country, province, city, county, login_time, login_result, login_result_code,
+        isp)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (            #{entity.tenantId},            #{entity.userId},            #{entity.ipAddr},            #{entity.country},            #{entity.province},            #{entity.city},            #{entity.county},            #{entity.loginTime},            #{entity.loginResult},            #{entity.loginResultCode},            #{entity.isp})
+            ( #{entity.tenantId}, #{entity.userId}, #{entity.ipAddr}, #{entity.country}, #{entity.province},
+            #{entity.city}, #{entity.county}, #{entity.loginTime}, #{entity.loginResult}, #{entity.loginResultCode},
+            #{entity.isp})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        user_id,        ip_addr,        country,        province,        city,        county,        login_time,        login_result,        login_result_code,        isp)
+        ( tenant_id, user_id, ip_addr, country, province, city, county, login_time, login_result, login_result_code,
+        isp)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.userId},#{entity.ipAddr},#{entity.country},#{entity.province},#{entity.city},#{entity.county},#{entity.loginTime},#{entity.loginResult},#{entity.loginResultCode},#{entity.isp})
         </foreach>
         on duplicate key update
         tenant_id=values(tenant_id),
-    user_id=values(user_id),
-    ip_addr=values(ip_addr),
-    country=values(country),
-    province=values(province),
-    city=values(city),
-    county=values(county),
-    login_time=values(login_time),
-    login_result=values(login_result),
-    login_result_code=values(login_result_code),
-    isp=values(isp)
-        </insert>
+        user_id=values(user_id),
+        ip_addr=values(ip_addr),
+        country=values(country),
+        province=values(province),
+        city=values(city),
+        county=values(county),
+        login_time=values(login_time),
+        login_result=values(login_result),
+        login_result_code=values(login_result_code),
+        isp=values(isp)
+    </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
         update
         <include refid="Table_Name"/>
         <set>
-    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-    <if test="userId != null and userId != ''">user_id = #{userId},</if>
-    <if test="ipAddr != null and ipAddr != ''">ip_addr = #{ipAddr},</if>
-    <if test="country != null and country != ''">country = #{country},</if>
-    <if test="province != null and province != ''">province = #{province},</if>
-    <if test="city != null and city != ''">city = #{city},</if>
-    <if test="county != null and county != ''">county = #{county},</if>
-    <if test="loginTime != null and loginTime != ''">login_time = #{loginTime},</if>
-    <if test="loginResult != null and loginResult != ''">login_result = #{loginResult},</if>
-    <if test="loginResultCode != null and loginResultCode != ''">login_result_code = #{loginResultCode},</if>
-    <if test="isp != null and isp != ''">isp = #{isp},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+            <if test="userId != null and userId != ''">user_id = #{userId},</if>
+            <if test="ipAddr != null and ipAddr != ''">ip_addr = #{ipAddr},</if>
+            <if test="country != null and country != ''">country = #{country},</if>
+            <if test="province != null and province != ''">province = #{province},</if>
+            <if test="city != null and city != ''">city = #{city},</if>
+            <if test="county != null and county != ''">county = #{county},</if>
+            <if test="loginTime != null and loginTime != ''">login_time = #{loginTime},</if>
+            <if test="loginResult != null and loginResult != ''">login_result = #{loginResult},</if>
+            <if test="loginResultCode != null and loginResultCode != ''">login_result_code = #{loginResultCode},</if>
+            <if test="isp != null and isp != ''">isp = #{isp},</if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>

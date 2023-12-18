@@ -3,7 +3,7 @@
 <mapper namespace="com.nuoding.wechat.common.dao.crm.CrmBrandInfoDao">
 
     <resultMap type="com.nuoding.wechat.common.entity.crm.CrmBrandInfoEntity" id="CrmBrandInfoMap">
-            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
         <result property="brandId" column="brand_id" jdbcType="VARCHAR"/>
         <result property="brandName" column="brand_name" jdbcType="VARCHAR"/>
@@ -51,57 +51,57 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="brandId != null and brandId !=''">and brand_id = #{brandId}</if>
-                                                <if test="brandName != null and brandName !=''">and brand_name = #{brandName}</if>
-                                                <if test="brandLogo != null and brandLogo !=''">and brand_logo = #{brandLogo}</if>
-                                                <if test="companyName != null and companyName !=''">and company_name = #{companyName}</if>
-                                                <if test="brandUscc != null and brandUscc !=''">and brand_uscc = #{brandUscc}</if>
-                                                <if test="connectUname != null and connectUname !=''">and connect_uname = #{connectUname}</if>
-                                                <if test="connectMobileNo != null and connectMobileNo !=''">and connect_mobile_no = #{connectMobileNo}</if>
-                                                <if test="connectWechatId != null and connectWechatId !=''">and connect_wechat_id = #{connectWechatId}</if>
-                                                <if test="brandDesc != null and brandDesc !=''">and brand_desc = #{brandDesc}</if>
-                                                <if test="companyDesc != null and companyDesc !=''">and company_desc = #{companyDesc}</if>
-                                                <if test="brandDetail != null and brandDetail !=''">and brand_detail = #{brandDetail}</if>
-                                                <if test="companyDetail != null and companyDetail !=''">and company_detail = #{companyDetail}</if>
-                                                <if test="vaildDate != null and vaildDate !=''">and vaild_date = #{vaildDate}</if>
-                                                <if test="expiredDate != null and expiredDate !=''">and expired_date = #{expiredDate}</if>
-                                                <if test="brandFee != null and brandFee !=''">and brand_fee = #{brandFee}</if>
-                                                <if test="brandMargin != null and brandMargin !=''">and brand_margin = #{brandMargin}</if>
-                                                <if test="remark != null and remark !=''">and remark = #{remark}</if>
-                                                <if test="status != null and status !=''">and status = #{status}</if>
-                                                                                        <if test="brandCommonDesc != null and brandCommonDesc !=''">and brand_common_desc = #{brandCommonDesc}</if>
-                    </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="brandId != null and brandId !=''">and brand_id = #{brandId}</if>
+            <if test="brandName != null and brandName !=''">and brand_name = #{brandName}</if>
+            <if test="brandLogo != null and brandLogo !=''">and brand_logo = #{brandLogo}</if>
+            <if test="companyName != null and companyName !=''">and company_name = #{companyName}</if>
+            <if test="brandUscc != null and brandUscc !=''">and brand_uscc = #{brandUscc}</if>
+            <if test="connectUname != null and connectUname !=''">and connect_uname = #{connectUname}</if>
+            <if test="connectMobileNo != null and connectMobileNo !=''">and connect_mobile_no = #{connectMobileNo}</if>
+            <if test="connectWechatId != null and connectWechatId !=''">and connect_wechat_id = #{connectWechatId}</if>
+            <if test="brandDesc != null and brandDesc !=''">and brand_desc = #{brandDesc}</if>
+            <if test="companyDesc != null and companyDesc !=''">and company_desc = #{companyDesc}</if>
+            <if test="brandDetail != null and brandDetail !=''">and brand_detail = #{brandDetail}</if>
+            <if test="companyDetail != null and companyDetail !=''">and company_detail = #{companyDetail}</if>
+            <if test="vaildDate != null and vaildDate !=''">and vaild_date = #{vaildDate}</if>
+            <if test="expiredDate != null and expiredDate !=''">and expired_date = #{expiredDate}</if>
+            <if test="brandFee != null and brandFee !=''">and brand_fee = #{brandFee}</if>
+            <if test="brandMargin != null and brandMargin !=''">and brand_margin = #{brandMargin}</if>
+            <if test="remark != null and remark !=''">and remark = #{remark}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="brandCommonDesc != null and brandCommonDesc !=''">and brand_common_desc = #{brandCommonDesc}</if>
+        </where>
     </select>
 
     <!--查询一条-->
     <select id="selectOne" resultMap="CrmBrandInfoMap">
-    select
-    <include refid="Base_Column_List"/>
-    from
-    <include refid="Table_Name"/>
-    <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="brandId != null and brandId !=''">and brand_id = #{brandId}</if>
-                                                <if test="brandName != null and brandName !=''">and brand_name = #{brandName}</if>
-                                                <if test="brandLogo != null and brandLogo !=''">and brand_logo = #{brandLogo}</if>
-                                                <if test="companyName != null and companyName !=''">and company_name = #{companyName}</if>
-                                                <if test="brandUscc != null and brandUscc !=''">and brand_uscc = #{brandUscc}</if>
-                                                <if test="connectUname != null and connectUname !=''">and connect_uname = #{connectUname}</if>
-                                                <if test="connectMobileNo != null and connectMobileNo !=''">and connect_mobile_no = #{connectMobileNo}</if>
-                                                <if test="connectWechatId != null and connectWechatId !=''">and connect_wechat_id = #{connectWechatId}</if>
-                                                <if test="brandDesc != null and brandDesc !=''">and brand_desc = #{brandDesc}</if>
-                                                <if test="companyDesc != null and companyDesc !=''">and company_desc = #{companyDesc}</if>
-                                                <if test="brandDetail != null and brandDetail !=''">and brand_detail = #{brandDetail}</if>
-                                                <if test="companyDetail != null and companyDetail !=''">and company_detail = #{companyDetail}</if>
-                                                <if test="vaildDate != null and vaildDate !=''">and vaild_date = #{vaildDate}</if>
-                                                <if test="expiredDate != null and expiredDate !=''">and expired_date = #{expiredDate}</if>
-                                                <if test="brandFee != null and brandFee !=''">and brand_fee = #{brandFee}</if>
-                                                <if test="brandMargin != null and brandMargin !=''">and brand_margin = #{brandMargin}</if>
-                                                <if test="remark != null and remark !=''">and remark = #{remark}</if>
-                                                <if test="status != null and status !=''">and status = #{status}</if>
-                                                                                        <if test="brandCommonDesc != null and brandCommonDesc !=''">and brand_common_desc = #{brandCommonDesc}</if>
-                        </where>
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="brandId != null and brandId !=''">and brand_id = #{brandId}</if>
+            <if test="brandName != null and brandName !=''">and brand_name = #{brandName}</if>
+            <if test="brandLogo != null and brandLogo !=''">and brand_logo = #{brandLogo}</if>
+            <if test="companyName != null and companyName !=''">and company_name = #{companyName}</if>
+            <if test="brandUscc != null and brandUscc !=''">and brand_uscc = #{brandUscc}</if>
+            <if test="connectUname != null and connectUname !=''">and connect_uname = #{connectUname}</if>
+            <if test="connectMobileNo != null and connectMobileNo !=''">and connect_mobile_no = #{connectMobileNo}</if>
+            <if test="connectWechatId != null and connectWechatId !=''">and connect_wechat_id = #{connectWechatId}</if>
+            <if test="brandDesc != null and brandDesc !=''">and brand_desc = #{brandDesc}</if>
+            <if test="companyDesc != null and companyDesc !=''">and company_desc = #{companyDesc}</if>
+            <if test="brandDetail != null and brandDetail !=''">and brand_detail = #{brandDetail}</if>
+            <if test="companyDetail != null and companyDetail !=''">and company_detail = #{companyDetail}</if>
+            <if test="vaildDate != null and vaildDate !=''">and vaild_date = #{vaildDate}</if>
+            <if test="expiredDate != null and expiredDate !=''">and expired_date = #{expiredDate}</if>
+            <if test="brandFee != null and brandFee !=''">and brand_fee = #{brandFee}</if>
+            <if test="brandMargin != null and brandMargin !=''">and brand_margin = #{brandMargin}</if>
+            <if test="remark != null and remark !=''">and remark = #{remark}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="brandCommonDesc != null and brandCommonDesc !=''">and brand_common_desc = #{brandCommonDesc}</if>
+        </where>
     </select>
 
     <!--查询指定行数据-->
@@ -111,27 +111,52 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                                                                    <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                                                                            <if test="brandId != null and brandId !=''">and brand_id like CONCAT(CONCAT('%',  #{brandId}), '%')</if>
-                                                                                                            <if test="brandName != null and brandName !=''">and brand_name like CONCAT(CONCAT('%',  #{brandName}), '%')</if>
-                                                                                                            <if test="brandLogo != null and brandLogo !=''">and brand_logo like CONCAT(CONCAT('%',  #{brandLogo}), '%')</if>
-                                                                                                            <if test="companyName != null and companyName !=''">and company_name like CONCAT(CONCAT('%',  #{companyName}), '%')</if>
-                                                                                                            <if test="brandUscc != null and brandUscc !=''">and brand_uscc like CONCAT(CONCAT('%',  #{brandUscc}), '%')</if>
-                                                                                                            <if test="connectUname != null and connectUname !=''">and connect_uname like CONCAT(CONCAT('%',  #{connectUname}), '%')</if>
-                                                                                                            <if test="connectMobileNo != null and connectMobileNo !=''">and connect_mobile_no like CONCAT(CONCAT('%',  #{connectMobileNo}), '%')</if>
-                                                                                                            <if test="connectWechatId != null and connectWechatId !=''">and connect_wechat_id like CONCAT(CONCAT('%',  #{connectWechatId}), '%')</if>
-                                                                                                            <if test="brandDesc != null and brandDesc !=''">and brand_desc like CONCAT(CONCAT('%',  #{brandDesc}), '%')</if>
-                                                                                                            <if test="companyDesc != null and companyDesc !=''">and company_desc like CONCAT(CONCAT('%',  #{companyDesc}), '%')</if>
-                                                                                                            <if test="brandDetail != null and brandDetail !=''">and brand_detail like CONCAT(CONCAT('%',  #{brandDetail}), '%')</if>
-                                                                                                            <if test="companyDetail != null and companyDetail !=''">and company_detail like CONCAT(CONCAT('%',  #{companyDetail}), '%')</if>
-                                                                                                            <if test="vaildDate != null and vaildDate !=''">and vaild_date like CONCAT(CONCAT('%',  #{vaildDate}), '%')</if>
-                                                                                                            <if test="expiredDate != null and expiredDate !=''">and expired_date like CONCAT(CONCAT('%',  #{expiredDate}), '%')</if>
-                                                                                                            <if test="brandFee != null and brandFee !=''">and brand_fee like CONCAT(CONCAT('%',  #{brandFee}), '%')</if>
-                                                                                                            <if test="brandMargin != null and brandMargin !=''">and brand_margin like CONCAT(CONCAT('%',  #{brandMargin}), '%')</if>
-                                                                                                            <if test="remark != null and remark !=''">and remark like CONCAT(CONCAT('%',  #{remark}), '%')</if>
-                                                                                                            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%',  #{status}), '%')</if>
-                                                                                                                                                                    <if test="brandCommonDesc != null and brandCommonDesc !=''">and brand_common_desc like CONCAT(CONCAT('%',  #{brandCommonDesc}), '%')</if>
-                                                        </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="brandId != null and brandId !=''">and brand_id like CONCAT(CONCAT('%', #{brandId}), '%')</if>
+            <if test="brandName != null and brandName !=''">and brand_name like CONCAT(CONCAT('%', #{brandName}), '%')
+            </if>
+            <if test="brandLogo != null and brandLogo !=''">and brand_logo like CONCAT(CONCAT('%', #{brandLogo}), '%')
+            </if>
+            <if test="companyName != null and companyName !=''">and company_name like CONCAT(CONCAT('%',
+                #{companyName}), '%')
+            </if>
+            <if test="brandUscc != null and brandUscc !=''">and brand_uscc like CONCAT(CONCAT('%', #{brandUscc}), '%')
+            </if>
+            <if test="connectUname != null and connectUname !=''">and connect_uname like CONCAT(CONCAT('%',
+                #{connectUname}), '%')
+            </if>
+            <if test="connectMobileNo != null and connectMobileNo !=''">and connect_mobile_no like CONCAT(CONCAT('%',
+                #{connectMobileNo}), '%')
+            </if>
+            <if test="connectWechatId != null and connectWechatId !=''">and connect_wechat_id like CONCAT(CONCAT('%',
+                #{connectWechatId}), '%')
+            </if>
+            <if test="brandDesc != null and brandDesc !=''">and brand_desc like CONCAT(CONCAT('%', #{brandDesc}), '%')
+            </if>
+            <if test="companyDesc != null and companyDesc !=''">and company_desc like CONCAT(CONCAT('%',
+                #{companyDesc}), '%')
+            </if>
+            <if test="brandDetail != null and brandDetail !=''">and brand_detail like CONCAT(CONCAT('%',
+                #{brandDetail}), '%')
+            </if>
+            <if test="companyDetail != null and companyDetail !=''">and company_detail like CONCAT(CONCAT('%',
+                #{companyDetail}), '%')
+            </if>
+            <if test="vaildDate != null and vaildDate !=''">and vaild_date like CONCAT(CONCAT('%', #{vaildDate}), '%')
+            </if>
+            <if test="expiredDate != null and expiredDate !=''">and expired_date like CONCAT(CONCAT('%',
+                #{expiredDate}), '%')
+            </if>
+            <if test="brandFee != null and brandFee !=''">and brand_fee like CONCAT(CONCAT('%', #{brandFee}), '%')</if>
+            <if test="brandMargin != null and brandMargin !=''">and brand_margin like CONCAT(CONCAT('%',
+                #{brandMargin}), '%')
+            </if>
+            <if test="remark != null and remark !=''">and remark like CONCAT(CONCAT('%', #{remark}), '%')</if>
+            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
+            <if test="brandCommonDesc != null and brandCommonDesc !=''">and brand_common_desc like CONCAT(CONCAT('%',
+                #{brandCommonDesc}), '%')
+            </if>
+        </where>
 
     </select>
 
@@ -141,27 +166,27 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                        <if test="brandId != null and brandId !=''">and brand_id = #{brandId}</if>
-                                        <if test="brandName != null and brandName !=''">and brand_name = #{brandName}</if>
-                                        <if test="brandLogo != null and brandLogo !=''">and brand_logo = #{brandLogo}</if>
-                                        <if test="companyName != null and companyName !=''">and company_name = #{companyName}</if>
-                                        <if test="brandUscc != null and brandUscc !=''">and brand_uscc = #{brandUscc}</if>
-                                        <if test="connectUname != null and connectUname !=''">and connect_uname = #{connectUname}</if>
-                                        <if test="connectMobileNo != null and connectMobileNo !=''">and connect_mobile_no = #{connectMobileNo}</if>
-                                        <if test="connectWechatId != null and connectWechatId !=''">and connect_wechat_id = #{connectWechatId}</if>
-                                        <if test="brandDesc != null and brandDesc !=''">and brand_desc = #{brandDesc}</if>
-                                        <if test="companyDesc != null and companyDesc !=''">and company_desc = #{companyDesc}</if>
-                                        <if test="brandDetail != null and brandDetail !=''">and brand_detail = #{brandDetail}</if>
-                                        <if test="companyDetail != null and companyDetail !=''">and company_detail = #{companyDetail}</if>
-                                        <if test="vaildDate != null and vaildDate !=''">and vaild_date = #{vaildDate}</if>
-                                        <if test="expiredDate != null and expiredDate !=''">and expired_date = #{expiredDate}</if>
-                                        <if test="brandFee != null and brandFee !=''">and brand_fee = #{brandFee}</if>
-                                        <if test="brandMargin != null and brandMargin !=''">and brand_margin = #{brandMargin}</if>
-                                        <if test="remark != null and remark !=''">and remark = #{remark}</if>
-                                        <if test="status != null and status !=''">and status = #{status}</if>
-                                                                <if test="brandCommonDesc != null and brandCommonDesc !=''">and brand_common_desc = #{brandCommonDesc}</if>
-            </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="brandId != null and brandId !=''">and brand_id = #{brandId}</if>
+            <if test="brandName != null and brandName !=''">and brand_name = #{brandName}</if>
+            <if test="brandLogo != null and brandLogo !=''">and brand_logo = #{brandLogo}</if>
+            <if test="companyName != null and companyName !=''">and company_name = #{companyName}</if>
+            <if test="brandUscc != null and brandUscc !=''">and brand_uscc = #{brandUscc}</if>
+            <if test="connectUname != null and connectUname !=''">and connect_uname = #{connectUname}</if>
+            <if test="connectMobileNo != null and connectMobileNo !=''">and connect_mobile_no = #{connectMobileNo}</if>
+            <if test="connectWechatId != null and connectWechatId !=''">and connect_wechat_id = #{connectWechatId}</if>
+            <if test="brandDesc != null and brandDesc !=''">and brand_desc = #{brandDesc}</if>
+            <if test="companyDesc != null and companyDesc !=''">and company_desc = #{companyDesc}</if>
+            <if test="brandDetail != null and brandDetail !=''">and brand_detail = #{brandDetail}</if>
+            <if test="companyDetail != null and companyDetail !=''">and company_detail = #{companyDetail}</if>
+            <if test="vaildDate != null and vaildDate !=''">and vaild_date = #{vaildDate}</if>
+            <if test="expiredDate != null and expiredDate !=''">and expired_date = #{expiredDate}</if>
+            <if test="brandFee != null and brandFee !=''">and brand_fee = #{brandFee}</if>
+            <if test="brandMargin != null and brandMargin !=''">and brand_margin = #{brandMargin}</if>
+            <if test="remark != null and remark !=''">and remark = #{remark}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="brandCommonDesc != null and brandCommonDesc !=''">and brand_common_desc = #{brandCommonDesc}</if>
+        </where>
     </select>
 
     <!--新增所有列-->
@@ -176,69 +201,77 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        brand_id,        brand_name,        brand_logo,        company_name,        brand_uscc,        connect_uname,        connect_mobile_no,        connect_wechat_id,        brand_desc,        company_desc,        brand_detail,        company_detail,        vaild_date,        expired_date,        brand_fee,        brand_margin,        remark,        brand_common_desc)
+        ( tenant_id, brand_id, brand_name, brand_logo, company_name, brand_uscc, connect_uname, connect_mobile_no,
+        connect_wechat_id, brand_desc, company_desc, brand_detail, company_detail, vaild_date, expired_date, brand_fee,
+        brand_margin, remark, brand_common_desc)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (            #{entity.tenantId},            #{entity.brandId},            #{entity.brandName},            #{entity.brandLogo},            #{entity.companyName},            #{entity.brandUscc},            #{entity.connectUname},            #{entity.connectMobileNo},            #{entity.connectWechatId},            #{entity.brandDesc},            #{entity.companyDesc},            #{entity.brandDetail},            #{entity.companyDetail},            #{entity.vaildDate},            #{entity.expiredDate},            #{entity.brandFee},            #{entity.brandMargin},            #{entity.remark},            #{entity.brandCommonDesc})
+            ( #{entity.tenantId}, #{entity.brandId}, #{entity.brandName}, #{entity.brandLogo}, #{entity.companyName},
+            #{entity.brandUscc}, #{entity.connectUname}, #{entity.connectMobileNo}, #{entity.connectWechatId},
+            #{entity.brandDesc}, #{entity.companyDesc}, #{entity.brandDetail}, #{entity.companyDetail},
+            #{entity.vaildDate}, #{entity.expiredDate}, #{entity.brandFee}, #{entity.brandMargin}, #{entity.remark},
+            #{entity.brandCommonDesc})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        brand_id,        brand_name,        brand_logo,        company_name,        brand_uscc,        connect_uname,        connect_mobile_no,        connect_wechat_id,        brand_desc,        company_desc,        brand_detail,        company_detail,        vaild_date,        expired_date,        brand_fee,        brand_margin,        remark,        status,        brand_common_desc)
+        ( tenant_id, brand_id, brand_name, brand_logo, company_name, brand_uscc, connect_uname, connect_mobile_no,
+        connect_wechat_id, brand_desc, company_desc, brand_detail, company_detail, vaild_date, expired_date, brand_fee,
+        brand_margin, remark, status, brand_common_desc)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.brandId},#{entity.brandName},#{entity.brandLogo},#{entity.companyName},#{entity.brandUscc},#{entity.connectUname},#{entity.connectMobileNo},#{entity.connectWechatId},#{entity.brandDesc},#{entity.companyDesc},#{entity.brandDetail},#{entity.companyDetail},#{entity.vaildDate},#{entity.expiredDate},#{entity.brandFee},#{entity.brandMargin},#{entity.remark},#{entity.status},#{entity.brandCommonDesc})
         </foreach>
         on duplicate key update
         tenant_id=values(tenant_id),
-    brand_id=values(brand_id),
-    brand_name=values(brand_name),
-    brand_logo=values(brand_logo),
-    company_name=values(company_name),
-    brand_uscc=values(brand_uscc),
-    connect_uname=values(connect_uname),
-    connect_mobile_no=values(connect_mobile_no),
-    connect_wechat_id=values(connect_wechat_id),
-    brand_desc=values(brand_desc),
-    company_desc=values(company_desc),
-    brand_detail=values(brand_detail),
-    company_detail=values(company_detail),
-    vaild_date=values(vaild_date),
-    expired_date=values(expired_date),
-    brand_fee=values(brand_fee),
-    brand_margin=values(brand_margin),
-    remark=values(remark),
-    status=values(status),
-            brand_common_desc=values(brand_common_desc)
-        </insert>
+        brand_id=values(brand_id),
+        brand_name=values(brand_name),
+        brand_logo=values(brand_logo),
+        company_name=values(company_name),
+        brand_uscc=values(brand_uscc),
+        connect_uname=values(connect_uname),
+        connect_mobile_no=values(connect_mobile_no),
+        connect_wechat_id=values(connect_wechat_id),
+        brand_desc=values(brand_desc),
+        company_desc=values(company_desc),
+        brand_detail=values(brand_detail),
+        company_detail=values(company_detail),
+        vaild_date=values(vaild_date),
+        expired_date=values(expired_date),
+        brand_fee=values(brand_fee),
+        brand_margin=values(brand_margin),
+        remark=values(remark),
+        status=values(status),
+        brand_common_desc=values(brand_common_desc)
+    </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
         update
         <include refid="Table_Name"/>
         <set>
-    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-    <if test="brandId != null and brandId != ''">brand_id = #{brandId},</if>
-    <if test="brandName != null and brandName != ''">brand_name = #{brandName},</if>
-    <if test="brandLogo != null and brandLogo != ''">brand_logo = #{brandLogo},</if>
-    <if test="companyName != null and companyName != ''">company_name = #{companyName},</if>
-    <if test="brandUscc != null and brandUscc != ''">brand_uscc = #{brandUscc},</if>
-    <if test="connectUname != null and connectUname != ''">connect_uname = #{connectUname},</if>
-    <if test="connectMobileNo != null and connectMobileNo != ''">connect_mobile_no = #{connectMobileNo},</if>
-    <if test="connectWechatId != null and connectWechatId != ''">connect_wechat_id = #{connectWechatId},</if>
-    <if test="brandDesc != null and brandDesc != ''">brand_desc = #{brandDesc},</if>
-    <if test="companyDesc != null and companyDesc != ''">company_desc = #{companyDesc},</if>
-    <if test="brandDetail != null and brandDetail != ''">brand_detail = #{brandDetail},</if>
-    <if test="companyDetail != null and companyDetail != ''">company_detail = #{companyDetail},</if>
-    <if test="vaildDate != null and vaildDate != ''">vaild_date = #{vaildDate},</if>
-    <if test="expiredDate != null and expiredDate != ''">expired_date = #{expiredDate},</if>
-    <if test="brandFee != null and brandFee != ''">brand_fee = #{brandFee},</if>
-    <if test="brandMargin != null and brandMargin != ''">brand_margin = #{brandMargin},</if>
-    <if test="remark != null and remark != ''">remark = #{remark},</if>
-    <if test="status != null and status != ''">status = #{status},</if>
-    <if test="brandCommonDesc != null and brandCommonDesc != ''">brand_common_desc = #{brandCommonDesc},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+            <if test="brandId != null and brandId != ''">brand_id = #{brandId},</if>
+            <if test="brandName != null and brandName != ''">brand_name = #{brandName},</if>
+            <if test="brandLogo != null and brandLogo != ''">brand_logo = #{brandLogo},</if>
+            <if test="companyName != null and companyName != ''">company_name = #{companyName},</if>
+            <if test="brandUscc != null and brandUscc != ''">brand_uscc = #{brandUscc},</if>
+            <if test="connectUname != null and connectUname != ''">connect_uname = #{connectUname},</if>
+            <if test="connectMobileNo != null and connectMobileNo != ''">connect_mobile_no = #{connectMobileNo},</if>
+            <if test="connectWechatId != null and connectWechatId != ''">connect_wechat_id = #{connectWechatId},</if>
+            <if test="brandDesc != null and brandDesc != ''">brand_desc = #{brandDesc},</if>
+            <if test="companyDesc != null and companyDesc != ''">company_desc = #{companyDesc},</if>
+            <if test="brandDetail != null and brandDetail != ''">brand_detail = #{brandDetail},</if>
+            <if test="companyDetail != null and companyDetail != ''">company_detail = #{companyDetail},</if>
+            <if test="vaildDate != null and vaildDate != ''">vaild_date = #{vaildDate},</if>
+            <if test="expiredDate != null and expiredDate != ''">expired_date = #{expiredDate},</if>
+            <if test="brandFee != null and brandFee != ''">brand_fee = #{brandFee},</if>
+            <if test="brandMargin != null and brandMargin != ''">brand_margin = #{brandMargin},</if>
+            <if test="remark != null and remark != ''">remark = #{remark},</if>
+            <if test="status != null and status != ''">status = #{status},</if>
+            <if test="brandCommonDesc != null and brandCommonDesc != ''">brand_common_desc = #{brandCommonDesc},</if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>

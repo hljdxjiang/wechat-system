@@ -3,7 +3,7 @@
 <mapper namespace="com.nuoding.wechat.common.dao.bbs.BbsCourseInfoDao">
 
     <resultMap type="com.nuoding.wechat.common.entity.bbs.BbsCourseInfoEntity" id="BbsCourseInfoMap">
-            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
         <result property="courseId" column="course_id" jdbcType="VARCHAR"/>
         <result property="courseType" column="course_type" jdbcType="VARCHAR"/>
@@ -45,45 +45,45 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="courseId != null and courseId !=''">and course_id = #{courseId}</if>
-                                                <if test="courseType != null and courseType !=''">and course_type = #{courseType}</if>
-                                                <if test="courseTitle != null and courseTitle !=''">and course_title = #{courseTitle}</if>
-                                                <if test="userId != null and userId !=''">and user_id = #{userId}</if>
-                                                <if test="remark != null and remark !=''">and remark = #{remark}</if>
-                                                <if test="columnId != null and columnId !=''">and column_id = #{columnId}</if>
-                                                <if test="labelId != null and labelId !=''">and label_id = #{labelId}</if>
-                                                <if test="status != null and status !=''">and status = #{status}</if>
-                                                                                        <if test="courseSummary != null and courseSummary !=''">and course_summary = #{courseSummary}</if>
-                                                <if test="courseDesc != null and courseDesc !=''">and course_desc = #{courseDesc}</if>
-                                                <if test="price != null and price !=''">and price = #{price}</if>
-                                                <if test="custLevel != null and custLevel !=''">and cust_level = #{custLevel}</if>
-                                                <if test="vipType != null and vipType !=''">and vip_type = #{vipType}</if>
-                    </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="courseId != null and courseId !=''">and course_id = #{courseId}</if>
+            <if test="courseType != null and courseType !=''">and course_type = #{courseType}</if>
+            <if test="courseTitle != null and courseTitle !=''">and course_title = #{courseTitle}</if>
+            <if test="userId != null and userId !=''">and user_id = #{userId}</if>
+            <if test="remark != null and remark !=''">and remark = #{remark}</if>
+            <if test="columnId != null and columnId !=''">and column_id = #{columnId}</if>
+            <if test="labelId != null and labelId !=''">and label_id = #{labelId}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="courseSummary != null and courseSummary !=''">and course_summary = #{courseSummary}</if>
+            <if test="courseDesc != null and courseDesc !=''">and course_desc = #{courseDesc}</if>
+            <if test="price != null and price !=''">and price = #{price}</if>
+            <if test="custLevel != null and custLevel !=''">and cust_level = #{custLevel}</if>
+            <if test="vipType != null and vipType !=''">and vip_type = #{vipType}</if>
+        </where>
     </select>
 
     <!--查询一条-->
     <select id="selectOne" resultMap="BbsCourseInfoMap">
-    select
-    <include refid="Base_Column_List"/>
-    from
-    <include refid="Table_Name"/>
-    <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="courseId != null and courseId !=''">and course_id = #{courseId}</if>
-                                                <if test="courseType != null and courseType !=''">and course_type = #{courseType}</if>
-                                                <if test="courseTitle != null and courseTitle !=''">and course_title = #{courseTitle}</if>
-                                                <if test="userId != null and userId !=''">and user_id = #{userId}</if>
-                                                <if test="remark != null and remark !=''">and remark = #{remark}</if>
-                                                <if test="columnId != null and columnId !=''">and column_id = #{columnId}</if>
-                                                <if test="labelId != null and labelId !=''">and label_id = #{labelId}</if>
-                                                <if test="status != null and status !=''">and status = #{status}</if>
-                                                                                        <if test="courseSummary != null and courseSummary !=''">and course_summary = #{courseSummary}</if>
-                                                <if test="courseDesc != null and courseDesc !=''">and course_desc = #{courseDesc}</if>
-                                                <if test="price != null and price !=''">and price = #{price}</if>
-                                                <if test="custLevel != null and custLevel !=''">and cust_level = #{custLevel}</if>
-                                                <if test="vipType != null and vipType !=''">and vip_type = #{vipType}</if>
-                        </where>
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="courseId != null and courseId !=''">and course_id = #{courseId}</if>
+            <if test="courseType != null and courseType !=''">and course_type = #{courseType}</if>
+            <if test="courseTitle != null and courseTitle !=''">and course_title = #{courseTitle}</if>
+            <if test="userId != null and userId !=''">and user_id = #{userId}</if>
+            <if test="remark != null and remark !=''">and remark = #{remark}</if>
+            <if test="columnId != null and columnId !=''">and column_id = #{columnId}</if>
+            <if test="labelId != null and labelId !=''">and label_id = #{labelId}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="courseSummary != null and courseSummary !=''">and course_summary = #{courseSummary}</if>
+            <if test="courseDesc != null and courseDesc !=''">and course_desc = #{courseDesc}</if>
+            <if test="price != null and price !=''">and price = #{price}</if>
+            <if test="custLevel != null and custLevel !=''">and cust_level = #{custLevel}</if>
+            <if test="vipType != null and vipType !=''">and vip_type = #{vipType}</if>
+        </where>
     </select>
 
     <!--查询指定行数据-->
@@ -93,21 +93,30 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                                                                    <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                                                                            <if test="courseId != null and courseId !=''">and course_id like CONCAT(CONCAT('%',  #{courseId}), '%')</if>
-                                                                                                            <if test="courseType != null and courseType !=''">and course_type like CONCAT(CONCAT('%',  #{courseType}), '%')</if>
-                                                                                                            <if test="courseTitle != null and courseTitle !=''">and course_title like CONCAT(CONCAT('%',  #{courseTitle}), '%')</if>
-                                                                                                            <if test="userId != null and userId !=''">and user_id like CONCAT(CONCAT('%',  #{userId}), '%')</if>
-                                                                                                            <if test="remark != null and remark !=''">and remark like CONCAT(CONCAT('%',  #{remark}), '%')</if>
-                                                                                                            <if test="columnId != null and columnId !=''">and column_id like CONCAT(CONCAT('%',  #{columnId}), '%')</if>
-                                                                                                            <if test="labelId != null and labelId !=''">and label_id like CONCAT(CONCAT('%',  #{labelId}), '%')</if>
-                                                                                                            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%',  #{status}), '%')</if>
-                                                                                                                                                                    <if test="courseSummary != null and courseSummary !=''">and course_summary like CONCAT(CONCAT('%',  #{courseSummary}), '%')</if>
-                                                                                                            <if test="courseDesc != null and courseDesc !=''">and course_desc like CONCAT(CONCAT('%',  #{courseDesc}), '%')</if>
-                                                                                                            <if test="price != null and price !=''">and price like CONCAT(CONCAT('%',  #{price}), '%')</if>
-                                                                                                            <if test="custLevel != null and custLevel !=''">and cust_level like CONCAT(CONCAT('%',  #{custLevel}), '%')</if>
-                                                                                                            <if test="vipType != null and vipType !=''">and vip_type like CONCAT(CONCAT('%',  #{vipType}), '%')</if>
-                                                        </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="courseId != null and courseId !=''">and course_id like CONCAT(CONCAT('%', #{courseId}), '%')</if>
+            <if test="courseType != null and courseType !=''">and course_type like CONCAT(CONCAT('%', #{courseType}),
+                '%')
+            </if>
+            <if test="courseTitle != null and courseTitle !=''">and course_title like CONCAT(CONCAT('%',
+                #{courseTitle}), '%')
+            </if>
+            <if test="userId != null and userId !=''">and user_id like CONCAT(CONCAT('%', #{userId}), '%')</if>
+            <if test="remark != null and remark !=''">and remark like CONCAT(CONCAT('%', #{remark}), '%')</if>
+            <if test="columnId != null and columnId !=''">and column_id like CONCAT(CONCAT('%', #{columnId}), '%')</if>
+            <if test="labelId != null and labelId !=''">and label_id like CONCAT(CONCAT('%', #{labelId}), '%')</if>
+            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
+            <if test="courseSummary != null and courseSummary !=''">and course_summary like CONCAT(CONCAT('%',
+                #{courseSummary}), '%')
+            </if>
+            <if test="courseDesc != null and courseDesc !=''">and course_desc like CONCAT(CONCAT('%', #{courseDesc}),
+                '%')
+            </if>
+            <if test="price != null and price !=''">and price like CONCAT(CONCAT('%', #{price}), '%')</if>
+            <if test="custLevel != null and custLevel !=''">and cust_level like CONCAT(CONCAT('%', #{custLevel}), '%')
+            </if>
+            <if test="vipType != null and vipType !=''">and vip_type like CONCAT(CONCAT('%', #{vipType}), '%')</if>
+        </where>
 
     </select>
 
@@ -117,21 +126,21 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                        <if test="courseId != null and courseId !=''">and course_id = #{courseId}</if>
-                                        <if test="courseType != null and courseType !=''">and course_type = #{courseType}</if>
-                                        <if test="courseTitle != null and courseTitle !=''">and course_title = #{courseTitle}</if>
-                                        <if test="userId != null and userId !=''">and user_id = #{userId}</if>
-                                        <if test="remark != null and remark !=''">and remark = #{remark}</if>
-                                        <if test="columnId != null and columnId !=''">and column_id = #{columnId}</if>
-                                        <if test="labelId != null and labelId !=''">and label_id = #{labelId}</if>
-                                        <if test="status != null and status !=''">and status = #{status}</if>
-                                                                <if test="courseSummary != null and courseSummary !=''">and course_summary = #{courseSummary}</if>
-                                        <if test="courseDesc != null and courseDesc !=''">and course_desc = #{courseDesc}</if>
-                                        <if test="price != null and price !=''">and price = #{price}</if>
-                                        <if test="custLevel != null and custLevel !=''">and cust_level = #{custLevel}</if>
-                                        <if test="vipType != null and vipType !=''">and vip_type = #{vipType}</if>
-            </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="courseId != null and courseId !=''">and course_id = #{courseId}</if>
+            <if test="courseType != null and courseType !=''">and course_type = #{courseType}</if>
+            <if test="courseTitle != null and courseTitle !=''">and course_title = #{courseTitle}</if>
+            <if test="userId != null and userId !=''">and user_id = #{userId}</if>
+            <if test="remark != null and remark !=''">and remark = #{remark}</if>
+            <if test="columnId != null and columnId !=''">and column_id = #{columnId}</if>
+            <if test="labelId != null and labelId !=''">and label_id = #{labelId}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="courseSummary != null and courseSummary !=''">and course_summary = #{courseSummary}</if>
+            <if test="courseDesc != null and courseDesc !=''">and course_desc = #{courseDesc}</if>
+            <if test="price != null and price !=''">and price = #{price}</if>
+            <if test="custLevel != null and custLevel !=''">and cust_level = #{custLevel}</if>
+            <if test="vipType != null and vipType !=''">and vip_type = #{vipType}</if>
+        </where>
     </select>
 
     <!--新增所有列-->
@@ -146,57 +155,61 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        course_id,        course_type,        course_title,        user_id,        remark,        column_id,        label_id,        course_summary,        course_desc,        price,        cust_level,        vip_type)
+        ( tenant_id, course_id, course_type, course_title, user_id, remark, column_id, label_id, course_summary,
+        course_desc, price, cust_level, vip_type)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (            #{entity.tenantId},            #{entity.courseId},            #{entity.courseType},            #{entity.courseTitle},            #{entity.userId},            #{entity.remark},            #{entity.columnId},            #{entity.labelId},            #{entity.courseSummary},            #{entity.courseDesc},            #{entity.price},            #{entity.custLevel},            #{entity.vipType})
+            ( #{entity.tenantId}, #{entity.courseId}, #{entity.courseType}, #{entity.courseTitle}, #{entity.userId},
+            #{entity.remark}, #{entity.columnId}, #{entity.labelId}, #{entity.courseSummary}, #{entity.courseDesc},
+            #{entity.price}, #{entity.custLevel}, #{entity.vipType})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        course_id,        course_type,        course_title,        user_id,        remark,        column_id,        label_id,        status,        course_summary,        course_desc,        price,        cust_level,        vip_type)
+        ( tenant_id, course_id, course_type, course_title, user_id, remark, column_id, label_id, status, course_summary,
+        course_desc, price, cust_level, vip_type)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.courseId},#{entity.courseType},#{entity.courseTitle},#{entity.userId},#{entity.remark},#{entity.columnId},#{entity.labelId},#{entity.status},#{entity.courseSummary},#{entity.courseDesc},#{entity.price},#{entity.custLevel},#{entity.vipType})
         </foreach>
         on duplicate key update
         tenant_id=values(tenant_id),
-    course_id=values(course_id),
-    course_type=values(course_type),
-    course_title=values(course_title),
-    user_id=values(user_id),
-    remark=values(remark),
-    column_id=values(column_id),
-    label_id=values(label_id),
-    status=values(status),
-            course_summary=values(course_summary),
-    course_desc=values(course_desc),
-    price=values(price),
-    cust_level=values(cust_level),
-    vip_type=values(vip_type)
-        </insert>
+        course_id=values(course_id),
+        course_type=values(course_type),
+        course_title=values(course_title),
+        user_id=values(user_id),
+        remark=values(remark),
+        column_id=values(column_id),
+        label_id=values(label_id),
+        status=values(status),
+        course_summary=values(course_summary),
+        course_desc=values(course_desc),
+        price=values(price),
+        cust_level=values(cust_level),
+        vip_type=values(vip_type)
+    </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
         update
         <include refid="Table_Name"/>
         <set>
-    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-    <if test="courseId != null and courseId != ''">course_id = #{courseId},</if>
-    <if test="courseType != null and courseType != ''">course_type = #{courseType},</if>
-    <if test="courseTitle != null and courseTitle != ''">course_title = #{courseTitle},</if>
-    <if test="userId != null and userId != ''">user_id = #{userId},</if>
-    <if test="remark != null and remark != ''">remark = #{remark},</if>
-    <if test="columnId != null and columnId != ''">column_id = #{columnId},</if>
-    <if test="labelId != null and labelId != ''">label_id = #{labelId},</if>
-    <if test="status != null and status != ''">status = #{status},</if>
-    <if test="courseSummary != null and courseSummary != ''">course_summary = #{courseSummary},</if>
-    <if test="courseDesc != null and courseDesc != ''">course_desc = #{courseDesc},</if>
-    <if test="price != null and price != ''">price = #{price},</if>
-    <if test="custLevel != null and custLevel != ''">cust_level = #{custLevel},</if>
-    <if test="vipType != null and vipType != ''">vip_type = #{vipType},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+            <if test="courseId != null and courseId != ''">course_id = #{courseId},</if>
+            <if test="courseType != null and courseType != ''">course_type = #{courseType},</if>
+            <if test="courseTitle != null and courseTitle != ''">course_title = #{courseTitle},</if>
+            <if test="userId != null and userId != ''">user_id = #{userId},</if>
+            <if test="remark != null and remark != ''">remark = #{remark},</if>
+            <if test="columnId != null and columnId != ''">column_id = #{columnId},</if>
+            <if test="labelId != null and labelId != ''">label_id = #{labelId},</if>
+            <if test="status != null and status != ''">status = #{status},</if>
+            <if test="courseSummary != null and courseSummary != ''">course_summary = #{courseSummary},</if>
+            <if test="courseDesc != null and courseDesc != ''">course_desc = #{courseDesc},</if>
+            <if test="price != null and price != ''">price = #{price},</if>
+            <if test="custLevel != null and custLevel != ''">cust_level = #{custLevel},</if>
+            <if test="vipType != null and vipType != ''">vip_type = #{vipType},</if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>

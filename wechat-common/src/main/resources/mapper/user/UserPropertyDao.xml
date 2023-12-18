@@ -3,7 +3,7 @@
 <mapper namespace="com.nuoding.wechat.common.dao.user.UserPropertyDao">
 
     <resultMap type="com.nuoding.wechat.common.entity.user.UserPropertyEntity" id="UserPropertyMap">
-            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
         <result property="userid" column="userid" jdbcType="VARCHAR"/>
         <result property="integral" column="integral" jdbcType="VARCHAR"/>
@@ -38,35 +38,37 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="userid != null and userid !=''">and userid = #{userid}</if>
-                                                <if test="integral != null and integral !=''">and integral = #{integral}</if>
-                                                <if test="species != null and species !=''">and species = #{species}</if>
-                                                <if test="silverIcon != null and silverIcon !=''">and silver_icon = #{silverIcon}</if>
-                                                <if test="balance != null and balance !=''">and balance = #{balance}</if>
-                                                <if test="giftAmount != null and giftAmount !=''">and gift_amount = #{giftAmount}</if>
-                                                <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
-                                                <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}</if>
-                    </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="userid != null and userid !=''">and userid = #{userid}</if>
+            <if test="integral != null and integral !=''">and integral = #{integral}</if>
+            <if test="species != null and species !=''">and species = #{species}</if>
+            <if test="silverIcon != null and silverIcon !=''">and silver_icon = #{silverIcon}</if>
+            <if test="balance != null and balance !=''">and balance = #{balance}</if>
+            <if test="giftAmount != null and giftAmount !=''">and gift_amount = #{giftAmount}</if>
+            <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
+            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}
+            </if>
+        </where>
     </select>
 
     <!--查询一条-->
     <select id="selectOne" resultMap="UserPropertyMap">
-    select
-    <include refid="Base_Column_List"/>
-    from
-    <include refid="Table_Name"/>
-    <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="userid != null and userid !=''">and userid = #{userid}</if>
-                                                <if test="integral != null and integral !=''">and integral = #{integral}</if>
-                                                <if test="species != null and species !=''">and species = #{species}</if>
-                                                <if test="silverIcon != null and silverIcon !=''">and silver_icon = #{silverIcon}</if>
-                                                <if test="balance != null and balance !=''">and balance = #{balance}</if>
-                                                <if test="giftAmount != null and giftAmount !=''">and gift_amount = #{giftAmount}</if>
-                                                <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
-                                                <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}</if>
-                        </where>
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="userid != null and userid !=''">and userid = #{userid}</if>
+            <if test="integral != null and integral !=''">and integral = #{integral}</if>
+            <if test="species != null and species !=''">and species = #{species}</if>
+            <if test="silverIcon != null and silverIcon !=''">and silver_icon = #{silverIcon}</if>
+            <if test="balance != null and balance !=''">and balance = #{balance}</if>
+            <if test="giftAmount != null and giftAmount !=''">and gift_amount = #{giftAmount}</if>
+            <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
+            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}
+            </if>
+        </where>
     </select>
 
     <!--查询指定行数据-->
@@ -76,16 +78,24 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                                                                    <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                                                                            <if test="userid != null and userid !=''">and userid like CONCAT(CONCAT('%',  #{userid}), '%')</if>
-                                                                                                            <if test="integral != null and integral !=''">and integral like CONCAT(CONCAT('%',  #{integral}), '%')</if>
-                                                                                                            <if test="species != null and species !=''">and species like CONCAT(CONCAT('%',  #{species}), '%')</if>
-                                                                                                            <if test="silverIcon != null and silverIcon !=''">and silver_icon like CONCAT(CONCAT('%',  #{silverIcon}), '%')</if>
-                                                                                                            <if test="balance != null and balance !=''">and balance like CONCAT(CONCAT('%',  #{balance}), '%')</if>
-                                                                                                            <if test="giftAmount != null and giftAmount !=''">and gift_amount like CONCAT(CONCAT('%',  #{giftAmount}), '%')</if>
-                                                                                                            <if test="createtime != null and createtime !=''">and createtime like CONCAT(CONCAT('%',  #{createtime}), '%')</if>
-                                                                                                            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime like CONCAT(CONCAT('%',  #{lastmodifiedtime}), '%')</if>
-                                                        </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="userid != null and userid !=''">and userid like CONCAT(CONCAT('%', #{userid}), '%')</if>
+            <if test="integral != null and integral !=''">and integral like CONCAT(CONCAT('%', #{integral}), '%')</if>
+            <if test="species != null and species !=''">and species like CONCAT(CONCAT('%', #{species}), '%')</if>
+            <if test="silverIcon != null and silverIcon !=''">and silver_icon like CONCAT(CONCAT('%', #{silverIcon}),
+                '%')
+            </if>
+            <if test="balance != null and balance !=''">and balance like CONCAT(CONCAT('%', #{balance}), '%')</if>
+            <if test="giftAmount != null and giftAmount !=''">and gift_amount like CONCAT(CONCAT('%', #{giftAmount}),
+                '%')
+            </if>
+            <if test="createtime != null and createtime !=''">and createtime like CONCAT(CONCAT('%', #{createtime}),
+                '%')
+            </if>
+            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime like CONCAT(CONCAT('%',
+                #{lastmodifiedtime}), '%')
+            </if>
+        </where>
 
     </select>
 
@@ -95,16 +105,17 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                        <if test="userid != null and userid !=''">and userid = #{userid}</if>
-                                        <if test="integral != null and integral !=''">and integral = #{integral}</if>
-                                        <if test="species != null and species !=''">and species = #{species}</if>
-                                        <if test="silverIcon != null and silverIcon !=''">and silver_icon = #{silverIcon}</if>
-                                        <if test="balance != null and balance !=''">and balance = #{balance}</if>
-                                        <if test="giftAmount != null and giftAmount !=''">and gift_amount = #{giftAmount}</if>
-                                        <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
-                                        <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}</if>
-            </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="userid != null and userid !=''">and userid = #{userid}</if>
+            <if test="integral != null and integral !=''">and integral = #{integral}</if>
+            <if test="species != null and species !=''">and species = #{species}</if>
+            <if test="silverIcon != null and silverIcon !=''">and silver_icon = #{silverIcon}</if>
+            <if test="balance != null and balance !=''">and balance = #{balance}</if>
+            <if test="giftAmount != null and giftAmount !=''">and gift_amount = #{giftAmount}</if>
+            <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
+            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}
+            </if>
+        </where>
     </select>
 
     <!--新增所有列-->
@@ -119,47 +130,48 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        userid,        integral,        species,        silver_icon,        balance,        gift_amount,        createtime,        lastmodifiedtime)
+        ( tenant_id, userid, integral, species, silver_icon, balance, gift_amount, createtime, lastmodifiedtime)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (            #{entity.tenantId},            #{entity.userid},            #{entity.integral},            #{entity.species},            #{entity.silverIcon},            #{entity.balance},            #{entity.giftAmount},            #{entity.createtime},            #{entity.lastmodifiedtime})
+            ( #{entity.tenantId}, #{entity.userid}, #{entity.integral}, #{entity.species}, #{entity.silverIcon},
+            #{entity.balance}, #{entity.giftAmount}, #{entity.createtime}, #{entity.lastmodifiedtime})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        userid,        integral,        species,        silver_icon,        balance,        gift_amount,        createtime,        lastmodifiedtime)
+        ( tenant_id, userid, integral, species, silver_icon, balance, gift_amount, createtime, lastmodifiedtime)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.userid},#{entity.integral},#{entity.species},#{entity.silverIcon},#{entity.balance},#{entity.giftAmount},#{entity.createtime},#{entity.lastmodifiedtime})
         </foreach>
         on duplicate key update
         tenant_id=values(tenant_id),
-    userid=values(userid),
-    integral=values(integral),
-    species=values(species),
-    silver_icon=values(silver_icon),
-    balance=values(balance),
-    gift_amount=values(gift_amount),
-    createtime=values(createtime),
-    lastmodifiedtime=values(lastmodifiedtime)
-        </insert>
+        userid=values(userid),
+        integral=values(integral),
+        species=values(species),
+        silver_icon=values(silver_icon),
+        balance=values(balance),
+        gift_amount=values(gift_amount),
+        createtime=values(createtime),
+        lastmodifiedtime=values(lastmodifiedtime)
+    </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
         update
         <include refid="Table_Name"/>
         <set>
-    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-    <if test="userid != null and userid != ''">userid = #{userid},</if>
-    <if test="integral != null and integral != ''">integral = #{integral},</if>
-    <if test="species != null and species != ''">species = #{species},</if>
-    <if test="silverIcon != null and silverIcon != ''">silver_icon = #{silverIcon},</if>
-    <if test="balance != null and balance != ''">balance = #{balance},</if>
-    <if test="giftAmount != null and giftAmount != ''">gift_amount = #{giftAmount},</if>
-    <if test="createtime != null and createtime != ''">createtime = #{createtime},</if>
-    <if test="lastmodifiedtime != null and lastmodifiedtime != ''">lastmodifiedtime = #{lastmodifiedtime},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+            <if test="userid != null and userid != ''">userid = #{userid},</if>
+            <if test="integral != null and integral != ''">integral = #{integral},</if>
+            <if test="species != null and species != ''">species = #{species},</if>
+            <if test="silverIcon != null and silverIcon != ''">silver_icon = #{silverIcon},</if>
+            <if test="balance != null and balance != ''">balance = #{balance},</if>
+            <if test="giftAmount != null and giftAmount != ''">gift_amount = #{giftAmount},</if>
+            <if test="createtime != null and createtime != ''">createtime = #{createtime},</if>
+            <if test="lastmodifiedtime != null and lastmodifiedtime != ''">lastmodifiedtime = #{lastmodifiedtime},</if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>

@@ -3,7 +3,7 @@
 <mapper namespace="com.nuoding.wechat.common.dao.mall.MallUserCouponInfoDao">
 
     <resultMap type="com.nuoding.wechat.common.entity.mall.MallUserCouponInfoEntity" id="MallUserCouponInfoMap">
-            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
         <result property="userId" column="user_id" jdbcType="VARCHAR"/>
         <result property="userCouponId" column="user_coupon_id" jdbcType="VARCHAR"/>
@@ -44,43 +44,43 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="userId != null and userId !=''">and user_id = #{userId}</if>
-                                                <if test="userCouponId != null and userCouponId !=''">and user_coupon_id = #{userCouponId}</if>
-                                                <if test="couponId != null and couponId !=''">and coupon_id = #{couponId}</if>
-                                                <if test="couponType != null and couponType !=''">and coupon_type = #{couponType}</if>
-                                                <if test="couponMethod != null and couponMethod !=''">and coupon_method = #{couponMethod}</if>
-                                                <if test="couponAmount != null and couponAmount !=''">and coupon_amount = #{couponAmount}</if>
-                                                <if test="useVaildDate != null and useVaildDate !=''">and use_vaild_date = #{useVaildDate}</if>
-                                                <if test="useExpireDate != null and useExpireDate !=''">and use_expire_date = #{useExpireDate}</if>
-                                                <if test="status != null and status !=''">and status = #{status}</if>
-                                                                                        <if test="relateType != null and relateType !=''">and relate_type = #{relateType}</if>
-                                                <if test="relateId != null and relateId !=''">and relate_id = #{relateId}</if>
-                                                <if test="access != null and access !=''">and access = #{access}</if>
-                    </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="userId != null and userId !=''">and user_id = #{userId}</if>
+            <if test="userCouponId != null and userCouponId !=''">and user_coupon_id = #{userCouponId}</if>
+            <if test="couponId != null and couponId !=''">and coupon_id = #{couponId}</if>
+            <if test="couponType != null and couponType !=''">and coupon_type = #{couponType}</if>
+            <if test="couponMethod != null and couponMethod !=''">and coupon_method = #{couponMethod}</if>
+            <if test="couponAmount != null and couponAmount !=''">and coupon_amount = #{couponAmount}</if>
+            <if test="useVaildDate != null and useVaildDate !=''">and use_vaild_date = #{useVaildDate}</if>
+            <if test="useExpireDate != null and useExpireDate !=''">and use_expire_date = #{useExpireDate}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="relateType != null and relateType !=''">and relate_type = #{relateType}</if>
+            <if test="relateId != null and relateId !=''">and relate_id = #{relateId}</if>
+            <if test="access != null and access !=''">and access = #{access}</if>
+        </where>
     </select>
 
     <!--查询一条-->
     <select id="selectOne" resultMap="MallUserCouponInfoMap">
-    select
-    <include refid="Base_Column_List"/>
-    from
-    <include refid="Table_Name"/>
-    <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="userId != null and userId !=''">and user_id = #{userId}</if>
-                                                <if test="userCouponId != null and userCouponId !=''">and user_coupon_id = #{userCouponId}</if>
-                                                <if test="couponId != null and couponId !=''">and coupon_id = #{couponId}</if>
-                                                <if test="couponType != null and couponType !=''">and coupon_type = #{couponType}</if>
-                                                <if test="couponMethod != null and couponMethod !=''">and coupon_method = #{couponMethod}</if>
-                                                <if test="couponAmount != null and couponAmount !=''">and coupon_amount = #{couponAmount}</if>
-                                                <if test="useVaildDate != null and useVaildDate !=''">and use_vaild_date = #{useVaildDate}</if>
-                                                <if test="useExpireDate != null and useExpireDate !=''">and use_expire_date = #{useExpireDate}</if>
-                                                <if test="status != null and status !=''">and status = #{status}</if>
-                                                                                        <if test="relateType != null and relateType !=''">and relate_type = #{relateType}</if>
-                                                <if test="relateId != null and relateId !=''">and relate_id = #{relateId}</if>
-                                                <if test="access != null and access !=''">and access = #{access}</if>
-                        </where>
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="userId != null and userId !=''">and user_id = #{userId}</if>
+            <if test="userCouponId != null and userCouponId !=''">and user_coupon_id = #{userCouponId}</if>
+            <if test="couponId != null and couponId !=''">and coupon_id = #{couponId}</if>
+            <if test="couponType != null and couponType !=''">and coupon_type = #{couponType}</if>
+            <if test="couponMethod != null and couponMethod !=''">and coupon_method = #{couponMethod}</if>
+            <if test="couponAmount != null and couponAmount !=''">and coupon_amount = #{couponAmount}</if>
+            <if test="useVaildDate != null and useVaildDate !=''">and use_vaild_date = #{useVaildDate}</if>
+            <if test="useExpireDate != null and useExpireDate !=''">and use_expire_date = #{useExpireDate}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="relateType != null and relateType !=''">and relate_type = #{relateType}</if>
+            <if test="relateId != null and relateId !=''">and relate_id = #{relateId}</if>
+            <if test="access != null and access !=''">and access = #{access}</if>
+        </where>
     </select>
 
     <!--查询指定行数据-->
@@ -90,20 +90,34 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                                                                    <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                                                                            <if test="userId != null and userId !=''">and user_id like CONCAT(CONCAT('%',  #{userId}), '%')</if>
-                                                                                                            <if test="userCouponId != null and userCouponId !=''">and user_coupon_id like CONCAT(CONCAT('%',  #{userCouponId}), '%')</if>
-                                                                                                            <if test="couponId != null and couponId !=''">and coupon_id like CONCAT(CONCAT('%',  #{couponId}), '%')</if>
-                                                                                                            <if test="couponType != null and couponType !=''">and coupon_type like CONCAT(CONCAT('%',  #{couponType}), '%')</if>
-                                                                                                            <if test="couponMethod != null and couponMethod !=''">and coupon_method like CONCAT(CONCAT('%',  #{couponMethod}), '%')</if>
-                                                                                                            <if test="couponAmount != null and couponAmount !=''">and coupon_amount like CONCAT(CONCAT('%',  #{couponAmount}), '%')</if>
-                                                                                                            <if test="useVaildDate != null and useVaildDate !=''">and use_vaild_date like CONCAT(CONCAT('%',  #{useVaildDate}), '%')</if>
-                                                                                                            <if test="useExpireDate != null and useExpireDate !=''">and use_expire_date like CONCAT(CONCAT('%',  #{useExpireDate}), '%')</if>
-                                                                                                            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%',  #{status}), '%')</if>
-                                                                                                                                                                    <if test="relateType != null and relateType !=''">and relate_type like CONCAT(CONCAT('%',  #{relateType}), '%')</if>
-                                                                                                            <if test="relateId != null and relateId !=''">and relate_id like CONCAT(CONCAT('%',  #{relateId}), '%')</if>
-                                                                                                            <if test="access != null and access !=''">and access like CONCAT(CONCAT('%',  #{access}), '%')</if>
-                                                        </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="userId != null and userId !=''">and user_id like CONCAT(CONCAT('%', #{userId}), '%')</if>
+            <if test="userCouponId != null and userCouponId !=''">and user_coupon_id like CONCAT(CONCAT('%',
+                #{userCouponId}), '%')
+            </if>
+            <if test="couponId != null and couponId !=''">and coupon_id like CONCAT(CONCAT('%', #{couponId}), '%')</if>
+            <if test="couponType != null and couponType !=''">and coupon_type like CONCAT(CONCAT('%', #{couponType}),
+                '%')
+            </if>
+            <if test="couponMethod != null and couponMethod !=''">and coupon_method like CONCAT(CONCAT('%',
+                #{couponMethod}), '%')
+            </if>
+            <if test="couponAmount != null and couponAmount !=''">and coupon_amount like CONCAT(CONCAT('%',
+                #{couponAmount}), '%')
+            </if>
+            <if test="useVaildDate != null and useVaildDate !=''">and use_vaild_date like CONCAT(CONCAT('%',
+                #{useVaildDate}), '%')
+            </if>
+            <if test="useExpireDate != null and useExpireDate !=''">and use_expire_date like CONCAT(CONCAT('%',
+                #{useExpireDate}), '%')
+            </if>
+            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
+            <if test="relateType != null and relateType !=''">and relate_type like CONCAT(CONCAT('%', #{relateType}),
+                '%')
+            </if>
+            <if test="relateId != null and relateId !=''">and relate_id like CONCAT(CONCAT('%', #{relateId}), '%')</if>
+            <if test="access != null and access !=''">and access like CONCAT(CONCAT('%', #{access}), '%')</if>
+        </where>
 
     </select>
 
@@ -113,20 +127,20 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                        <if test="userId != null and userId !=''">and user_id = #{userId}</if>
-                                        <if test="userCouponId != null and userCouponId !=''">and user_coupon_id = #{userCouponId}</if>
-                                        <if test="couponId != null and couponId !=''">and coupon_id = #{couponId}</if>
-                                        <if test="couponType != null and couponType !=''">and coupon_type = #{couponType}</if>
-                                        <if test="couponMethod != null and couponMethod !=''">and coupon_method = #{couponMethod}</if>
-                                        <if test="couponAmount != null and couponAmount !=''">and coupon_amount = #{couponAmount}</if>
-                                        <if test="useVaildDate != null and useVaildDate !=''">and use_vaild_date = #{useVaildDate}</if>
-                                        <if test="useExpireDate != null and useExpireDate !=''">and use_expire_date = #{useExpireDate}</if>
-                                        <if test="status != null and status !=''">and status = #{status}</if>
-                                                                <if test="relateType != null and relateType !=''">and relate_type = #{relateType}</if>
-                                        <if test="relateId != null and relateId !=''">and relate_id = #{relateId}</if>
-                                        <if test="access != null and access !=''">and access = #{access}</if>
-            </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="userId != null and userId !=''">and user_id = #{userId}</if>
+            <if test="userCouponId != null and userCouponId !=''">and user_coupon_id = #{userCouponId}</if>
+            <if test="couponId != null and couponId !=''">and coupon_id = #{couponId}</if>
+            <if test="couponType != null and couponType !=''">and coupon_type = #{couponType}</if>
+            <if test="couponMethod != null and couponMethod !=''">and coupon_method = #{couponMethod}</if>
+            <if test="couponAmount != null and couponAmount !=''">and coupon_amount = #{couponAmount}</if>
+            <if test="useVaildDate != null and useVaildDate !=''">and use_vaild_date = #{useVaildDate}</if>
+            <if test="useExpireDate != null and useExpireDate !=''">and use_expire_date = #{useExpireDate}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="relateType != null and relateType !=''">and relate_type = #{relateType}</if>
+            <if test="relateId != null and relateId !=''">and relate_id = #{relateId}</if>
+            <if test="access != null and access !=''">and access = #{access}</if>
+        </where>
     </select>
 
     <!--新增所有列-->
@@ -141,55 +155,59 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        user_id,        user_coupon_id,        coupon_id,        coupon_type,        coupon_method,        coupon_amount,        use_vaild_date,        use_expire_date,        relate_type,        relate_id,        access)
+        ( tenant_id, user_id, user_coupon_id, coupon_id, coupon_type, coupon_method, coupon_amount, use_vaild_date,
+        use_expire_date, relate_type, relate_id, access)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (            #{entity.tenantId},            #{entity.userId},            #{entity.userCouponId},            #{entity.couponId},            #{entity.couponType},            #{entity.couponMethod},            #{entity.couponAmount},            #{entity.useVaildDate},            #{entity.useExpireDate},            #{entity.relateType},            #{entity.relateId},            #{entity.access})
+            ( #{entity.tenantId}, #{entity.userId}, #{entity.userCouponId}, #{entity.couponId}, #{entity.couponType},
+            #{entity.couponMethod}, #{entity.couponAmount}, #{entity.useVaildDate}, #{entity.useExpireDate},
+            #{entity.relateType}, #{entity.relateId}, #{entity.access})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        user_id,        user_coupon_id,        coupon_id,        coupon_type,        coupon_method,        coupon_amount,        use_vaild_date,        use_expire_date,        status,        relate_type,        relate_id,        access)
+        ( tenant_id, user_id, user_coupon_id, coupon_id, coupon_type, coupon_method, coupon_amount, use_vaild_date,
+        use_expire_date, status, relate_type, relate_id, access)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.userId},#{entity.userCouponId},#{entity.couponId},#{entity.couponType},#{entity.couponMethod},#{entity.couponAmount},#{entity.useVaildDate},#{entity.useExpireDate},#{entity.status},#{entity.relateType},#{entity.relateId},#{entity.access})
         </foreach>
         on duplicate key update
         tenant_id=values(tenant_id),
-    user_id=values(user_id),
-    user_coupon_id=values(user_coupon_id),
-    coupon_id=values(coupon_id),
-    coupon_type=values(coupon_type),
-    coupon_method=values(coupon_method),
-    coupon_amount=values(coupon_amount),
-    use_vaild_date=values(use_vaild_date),
-    use_expire_date=values(use_expire_date),
-    status=values(status),
-            relate_type=values(relate_type),
-    relate_id=values(relate_id),
-    access=values(access)
-        </insert>
+        user_id=values(user_id),
+        user_coupon_id=values(user_coupon_id),
+        coupon_id=values(coupon_id),
+        coupon_type=values(coupon_type),
+        coupon_method=values(coupon_method),
+        coupon_amount=values(coupon_amount),
+        use_vaild_date=values(use_vaild_date),
+        use_expire_date=values(use_expire_date),
+        status=values(status),
+        relate_type=values(relate_type),
+        relate_id=values(relate_id),
+        access=values(access)
+    </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
         update
         <include refid="Table_Name"/>
         <set>
-    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-    <if test="userId != null and userId != ''">user_id = #{userId},</if>
-    <if test="userCouponId != null and userCouponId != ''">user_coupon_id = #{userCouponId},</if>
-    <if test="couponId != null and couponId != ''">coupon_id = #{couponId},</if>
-    <if test="couponType != null and couponType != ''">coupon_type = #{couponType},</if>
-    <if test="couponMethod != null and couponMethod != ''">coupon_method = #{couponMethod},</if>
-    <if test="couponAmount != null and couponAmount != ''">coupon_amount = #{couponAmount},</if>
-    <if test="useVaildDate != null and useVaildDate != ''">use_vaild_date = #{useVaildDate},</if>
-    <if test="useExpireDate != null and useExpireDate != ''">use_expire_date = #{useExpireDate},</if>
-    <if test="status != null and status != ''">status = #{status},</if>
-    <if test="relateType != null and relateType != ''">relate_type = #{relateType},</if>
-    <if test="relateId != null and relateId != ''">relate_id = #{relateId},</if>
-    <if test="access != null and access != ''">access = #{access},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+            <if test="userId != null and userId != ''">user_id = #{userId},</if>
+            <if test="userCouponId != null and userCouponId != ''">user_coupon_id = #{userCouponId},</if>
+            <if test="couponId != null and couponId != ''">coupon_id = #{couponId},</if>
+            <if test="couponType != null and couponType != ''">coupon_type = #{couponType},</if>
+            <if test="couponMethod != null and couponMethod != ''">coupon_method = #{couponMethod},</if>
+            <if test="couponAmount != null and couponAmount != ''">coupon_amount = #{couponAmount},</if>
+            <if test="useVaildDate != null and useVaildDate != ''">use_vaild_date = #{useVaildDate},</if>
+            <if test="useExpireDate != null and useExpireDate != ''">use_expire_date = #{useExpireDate},</if>
+            <if test="status != null and status != ''">status = #{status},</if>
+            <if test="relateType != null and relateType != ''">relate_type = #{relateType},</if>
+            <if test="relateId != null and relateId != ''">relate_id = #{relateId},</if>
+            <if test="access != null and access != ''">access = #{access},</if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>

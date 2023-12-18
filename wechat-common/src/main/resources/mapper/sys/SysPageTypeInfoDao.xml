@@ -3,7 +3,7 @@
 <mapper namespace="com.nuoding.wechat.common.dao.sys.SysPageTypeInfoDao">
 
     <resultMap type="com.nuoding.wechat.common.entity.sys.SysPageTypeInfoEntity" id="SysPageTypeInfoMap">
-            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
         <result property="typeId" column="type_id" jdbcType="VARCHAR"/>
         <result property="typeDesc" column="type_desc" jdbcType="VARCHAR"/>
@@ -40,35 +40,35 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="typeId != null and typeId !=''">and type_id = #{typeId}</if>
-                                                <if test="typeDesc != null and typeDesc !=''">and type_desc = #{typeDesc}</if>
-                                                <if test="status != null and status !=''">and status = #{status}</if>
-                                                <if test="typeRemark != null and typeRemark !=''">and type_remark = #{typeRemark}</if>
-                                                                                        <if test="userid != null and userid !=''">and userid = #{userid}</if>
-                                                <if test="modifyUserid != null and modifyUserid !=''">and modify_userid = #{modifyUserid}</if>
-                                                <if test="typeKind != null and typeKind !=''">and type_kind = #{typeKind}</if>
-                                                <if test="typeSort != null and typeSort !=''">and type_sort = #{typeSort}</if>
-                    </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="typeId != null and typeId !=''">and type_id = #{typeId}</if>
+            <if test="typeDesc != null and typeDesc !=''">and type_desc = #{typeDesc}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="typeRemark != null and typeRemark !=''">and type_remark = #{typeRemark}</if>
+            <if test="userid != null and userid !=''">and userid = #{userid}</if>
+            <if test="modifyUserid != null and modifyUserid !=''">and modify_userid = #{modifyUserid}</if>
+            <if test="typeKind != null and typeKind !=''">and type_kind = #{typeKind}</if>
+            <if test="typeSort != null and typeSort !=''">and type_sort = #{typeSort}</if>
+        </where>
     </select>
 
     <!--查询一条-->
     <select id="selectOne" resultMap="SysPageTypeInfoMap">
-    select
-    <include refid="Base_Column_List"/>
-    from
-    <include refid="Table_Name"/>
-    <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="typeId != null and typeId !=''">and type_id = #{typeId}</if>
-                                                <if test="typeDesc != null and typeDesc !=''">and type_desc = #{typeDesc}</if>
-                                                <if test="status != null and status !=''">and status = #{status}</if>
-                                                <if test="typeRemark != null and typeRemark !=''">and type_remark = #{typeRemark}</if>
-                                                                                        <if test="userid != null and userid !=''">and userid = #{userid}</if>
-                                                <if test="modifyUserid != null and modifyUserid !=''">and modify_userid = #{modifyUserid}</if>
-                                                <if test="typeKind != null and typeKind !=''">and type_kind = #{typeKind}</if>
-                                                <if test="typeSort != null and typeSort !=''">and type_sort = #{typeSort}</if>
-                        </where>
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="typeId != null and typeId !=''">and type_id = #{typeId}</if>
+            <if test="typeDesc != null and typeDesc !=''">and type_desc = #{typeDesc}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="typeRemark != null and typeRemark !=''">and type_remark = #{typeRemark}</if>
+            <if test="userid != null and userid !=''">and userid = #{userid}</if>
+            <if test="modifyUserid != null and modifyUserid !=''">and modify_userid = #{modifyUserid}</if>
+            <if test="typeKind != null and typeKind !=''">and type_kind = #{typeKind}</if>
+            <if test="typeSort != null and typeSort !=''">and type_sort = #{typeSort}</if>
+        </where>
     </select>
 
     <!--查询指定行数据-->
@@ -78,16 +78,20 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                                                                    <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                                                                            <if test="typeId != null and typeId !=''">and type_id like CONCAT(CONCAT('%',  #{typeId}), '%')</if>
-                                                                                                            <if test="typeDesc != null and typeDesc !=''">and type_desc like CONCAT(CONCAT('%',  #{typeDesc}), '%')</if>
-                                                                                                            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%',  #{status}), '%')</if>
-                                                                                                            <if test="typeRemark != null and typeRemark !=''">and type_remark like CONCAT(CONCAT('%',  #{typeRemark}), '%')</if>
-                                                                                                                                                                    <if test="userid != null and userid !=''">and userid like CONCAT(CONCAT('%',  #{userid}), '%')</if>
-                                                                                                            <if test="modifyUserid != null and modifyUserid !=''">and modify_userid like CONCAT(CONCAT('%',  #{modifyUserid}), '%')</if>
-                                                                                                            <if test="typeKind != null and typeKind !=''">and type_kind like CONCAT(CONCAT('%',  #{typeKind}), '%')</if>
-                                                                                                            <if test="typeSort != null and typeSort !=''">and type_sort like CONCAT(CONCAT('%',  #{typeSort}), '%')</if>
-                                                        </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="typeId != null and typeId !=''">and type_id like CONCAT(CONCAT('%', #{typeId}), '%')</if>
+            <if test="typeDesc != null and typeDesc !=''">and type_desc like CONCAT(CONCAT('%', #{typeDesc}), '%')</if>
+            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
+            <if test="typeRemark != null and typeRemark !=''">and type_remark like CONCAT(CONCAT('%', #{typeRemark}),
+                '%')
+            </if>
+            <if test="userid != null and userid !=''">and userid like CONCAT(CONCAT('%', #{userid}), '%')</if>
+            <if test="modifyUserid != null and modifyUserid !=''">and modify_userid like CONCAT(CONCAT('%',
+                #{modifyUserid}), '%')
+            </if>
+            <if test="typeKind != null and typeKind !=''">and type_kind like CONCAT(CONCAT('%', #{typeKind}), '%')</if>
+            <if test="typeSort != null and typeSort !=''">and type_sort like CONCAT(CONCAT('%', #{typeSort}), '%')</if>
+        </where>
 
     </select>
 
@@ -97,16 +101,16 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                        <if test="typeId != null and typeId !=''">and type_id = #{typeId}</if>
-                                        <if test="typeDesc != null and typeDesc !=''">and type_desc = #{typeDesc}</if>
-                                        <if test="status != null and status !=''">and status = #{status}</if>
-                                        <if test="typeRemark != null and typeRemark !=''">and type_remark = #{typeRemark}</if>
-                                                                <if test="userid != null and userid !=''">and userid = #{userid}</if>
-                                        <if test="modifyUserid != null and modifyUserid !=''">and modify_userid = #{modifyUserid}</if>
-                                        <if test="typeKind != null and typeKind !=''">and type_kind = #{typeKind}</if>
-                                        <if test="typeSort != null and typeSort !=''">and type_sort = #{typeSort}</if>
-            </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="typeId != null and typeId !=''">and type_id = #{typeId}</if>
+            <if test="typeDesc != null and typeDesc !=''">and type_desc = #{typeDesc}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="typeRemark != null and typeRemark !=''">and type_remark = #{typeRemark}</if>
+            <if test="userid != null and userid !=''">and userid = #{userid}</if>
+            <if test="modifyUserid != null and modifyUserid !=''">and modify_userid = #{modifyUserid}</if>
+            <if test="typeKind != null and typeKind !=''">and type_kind = #{typeKind}</if>
+            <if test="typeSort != null and typeSort !=''">and type_sort = #{typeSort}</if>
+        </where>
     </select>
 
     <!--新增所有列-->
@@ -121,47 +125,48 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        type_id,        type_desc,        type_remark,        userid,        modify_userid,        type_kind,        type_sort)
+        ( tenant_id, type_id, type_desc, type_remark, userid, modify_userid, type_kind, type_sort)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (            #{entity.tenantId},            #{entity.typeId},            #{entity.typeDesc},            #{entity.typeRemark},            #{entity.userid},            #{entity.modifyUserid},            #{entity.typeKind},            #{entity.typeSort})
+            ( #{entity.tenantId}, #{entity.typeId}, #{entity.typeDesc}, #{entity.typeRemark}, #{entity.userid},
+            #{entity.modifyUserid}, #{entity.typeKind}, #{entity.typeSort})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        type_id,        type_desc,        status,        type_remark,        userid,        modify_userid,        type_kind,        type_sort)
+        ( tenant_id, type_id, type_desc, status, type_remark, userid, modify_userid, type_kind, type_sort)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.typeId},#{entity.typeDesc},#{entity.status},#{entity.typeRemark},#{entity.userid},#{entity.modifyUserid},#{entity.typeKind},#{entity.typeSort})
         </foreach>
         on duplicate key update
         tenant_id=values(tenant_id),
-    type_id=values(type_id),
-    type_desc=values(type_desc),
-    status=values(status),
-    type_remark=values(type_remark),
-            userid=values(userid),
-    modify_userid=values(modify_userid),
-    type_kind=values(type_kind),
-    type_sort=values(type_sort)
-        </insert>
+        type_id=values(type_id),
+        type_desc=values(type_desc),
+        status=values(status),
+        type_remark=values(type_remark),
+        userid=values(userid),
+        modify_userid=values(modify_userid),
+        type_kind=values(type_kind),
+        type_sort=values(type_sort)
+    </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
         update
         <include refid="Table_Name"/>
         <set>
-    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-    <if test="typeId != null and typeId != ''">type_id = #{typeId},</if>
-    <if test="typeDesc != null and typeDesc != ''">type_desc = #{typeDesc},</if>
-    <if test="status != null and status != ''">status = #{status},</if>
-    <if test="typeRemark != null and typeRemark != ''">type_remark = #{typeRemark},</if>
-    <if test="userid != null and userid != ''">userid = #{userid},</if>
-    <if test="modifyUserid != null and modifyUserid != ''">modify_userid = #{modifyUserid},</if>
-    <if test="typeKind != null and typeKind != ''">type_kind = #{typeKind},</if>
-    <if test="typeSort != null and typeSort != ''">type_sort = #{typeSort},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+            <if test="typeId != null and typeId != ''">type_id = #{typeId},</if>
+            <if test="typeDesc != null and typeDesc != ''">type_desc = #{typeDesc},</if>
+            <if test="status != null and status != ''">status = #{status},</if>
+            <if test="typeRemark != null and typeRemark != ''">type_remark = #{typeRemark},</if>
+            <if test="userid != null and userid != ''">userid = #{userid},</if>
+            <if test="modifyUserid != null and modifyUserid != ''">modify_userid = #{modifyUserid},</if>
+            <if test="typeKind != null and typeKind != ''">type_kind = #{typeKind},</if>
+            <if test="typeSort != null and typeSort != ''">type_sort = #{typeSort},</if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>

@@ -3,7 +3,7 @@
 <mapper namespace="com.nuoding.wechat.common.dao.wechat.WechatMenusDetailDao">
 
     <resultMap type="com.nuoding.wechat.common.entity.wechat.WechatMenusDetailEntity" id="WechatMenusDetailMap">
-            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
         <result property="menuId" column="menu_id" jdbcType="VARCHAR"/>
         <result property="itemPid" column="item_pid" jdbcType="VARCHAR"/>
@@ -36,27 +36,27 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="menuId != null and menuId !=''">and menu_id = #{menuId}</if>
-                                                <if test="itemPid != null and itemPid !=''">and item_pid = #{itemPid}</if>
-                                                <if test="itemId != null and itemId !=''">and item_id = #{itemId}</if>
-                                                                                        <if test="sort != null and sort !=''">and sort = #{sort}</if>
-                    </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="menuId != null and menuId !=''">and menu_id = #{menuId}</if>
+            <if test="itemPid != null and itemPid !=''">and item_pid = #{itemPid}</if>
+            <if test="itemId != null and itemId !=''">and item_id = #{itemId}</if>
+            <if test="sort != null and sort !=''">and sort = #{sort}</if>
+        </where>
     </select>
 
     <!--查询一条-->
     <select id="selectOne" resultMap="WechatMenusDetailMap">
-    select
-    <include refid="Base_Column_List"/>
-    from
-    <include refid="Table_Name"/>
-    <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="menuId != null and menuId !=''">and menu_id = #{menuId}</if>
-                                                <if test="itemPid != null and itemPid !=''">and item_pid = #{itemPid}</if>
-                                                <if test="itemId != null and itemId !=''">and item_id = #{itemId}</if>
-                                                                                        <if test="sort != null and sort !=''">and sort = #{sort}</if>
-                        </where>
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="menuId != null and menuId !=''">and menu_id = #{menuId}</if>
+            <if test="itemPid != null and itemPid !=''">and item_pid = #{itemPid}</if>
+            <if test="itemId != null and itemId !=''">and item_id = #{itemId}</if>
+            <if test="sort != null and sort !=''">and sort = #{sort}</if>
+        </where>
     </select>
 
     <!--查询指定行数据-->
@@ -66,12 +66,12 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                                                                    <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                                                                            <if test="menuId != null and menuId !=''">and menu_id like CONCAT(CONCAT('%',  #{menuId}), '%')</if>
-                                                                                                            <if test="itemPid != null and itemPid !=''">and item_pid like CONCAT(CONCAT('%',  #{itemPid}), '%')</if>
-                                                                                                            <if test="itemId != null and itemId !=''">and item_id like CONCAT(CONCAT('%',  #{itemId}), '%')</if>
-                                                                                                                                                                    <if test="sort != null and sort !=''">and sort like CONCAT(CONCAT('%',  #{sort}), '%')</if>
-                                                        </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="menuId != null and menuId !=''">and menu_id like CONCAT(CONCAT('%', #{menuId}), '%')</if>
+            <if test="itemPid != null and itemPid !=''">and item_pid like CONCAT(CONCAT('%', #{itemPid}), '%')</if>
+            <if test="itemId != null and itemId !=''">and item_id like CONCAT(CONCAT('%', #{itemId}), '%')</if>
+            <if test="sort != null and sort !=''">and sort like CONCAT(CONCAT('%', #{sort}), '%')</if>
+        </where>
 
     </select>
 
@@ -81,12 +81,12 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                        <if test="menuId != null and menuId !=''">and menu_id = #{menuId}</if>
-                                        <if test="itemPid != null and itemPid !=''">and item_pid = #{itemPid}</if>
-                                        <if test="itemId != null and itemId !=''">and item_id = #{itemId}</if>
-                                                                <if test="sort != null and sort !=''">and sort = #{sort}</if>
-            </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="menuId != null and menuId !=''">and menu_id = #{menuId}</if>
+            <if test="itemPid != null and itemPid !=''">and item_pid = #{itemPid}</if>
+            <if test="itemId != null and itemId !=''">and item_id = #{itemId}</if>
+            <if test="sort != null and sort !=''">and sort = #{sort}</if>
+        </where>
     </select>
 
     <!--新增所有列-->
@@ -101,39 +101,39 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        menu_id,        item_pid,        item_id,        sort)
+        ( tenant_id, menu_id, item_pid, item_id, sort)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (            #{entity.tenantId},            #{entity.menuId},            #{entity.itemPid},            #{entity.itemId},            #{entity.sort})
+            ( #{entity.tenantId}, #{entity.menuId}, #{entity.itemPid}, #{entity.itemId}, #{entity.sort})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        menu_id,        item_pid,        item_id,        sort)
+        ( tenant_id, menu_id, item_pid, item_id, sort)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.menuId},#{entity.itemPid},#{entity.itemId},#{entity.sort})
         </foreach>
         on duplicate key update
         tenant_id=values(tenant_id),
-    menu_id=values(menu_id),
-    item_pid=values(item_pid),
-    item_id=values(item_id),
-            sort=values(sort)
-        </insert>
+        menu_id=values(menu_id),
+        item_pid=values(item_pid),
+        item_id=values(item_id),
+        sort=values(sort)
+    </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
         update
         <include refid="Table_Name"/>
         <set>
-    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-    <if test="menuId != null and menuId != ''">menu_id = #{menuId},</if>
-    <if test="itemPid != null and itemPid != ''">item_pid = #{itemPid},</if>
-    <if test="itemId != null and itemId != ''">item_id = #{itemId},</if>
-    <if test="sort != null and sort != ''">sort = #{sort},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+            <if test="menuId != null and menuId != ''">menu_id = #{menuId},</if>
+            <if test="itemPid != null and itemPid != ''">item_pid = #{itemPid},</if>
+            <if test="itemId != null and itemId != ''">item_id = #{itemId},</if>
+            <if test="sort != null and sort != ''">sort = #{sort},</if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>

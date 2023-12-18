@@ -3,7 +3,7 @@
 <mapper namespace="com.nuoding.wechat.common.dao.sys.SysTenantInfoDao">
 
     <resultMap type="com.nuoding.wechat.common.entity.sys.SysTenantInfoEntity" id="SysTenantInfoMap">
-            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
         <result property="tenantName" column="tenant_name" jdbcType="VARCHAR"/>
         <result property="tenantDesc" column="tenant_desc" jdbcType="VARCHAR"/>
@@ -48,55 +48,57 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="tenantName != null and tenantName !=''">and tenant_name = #{tenantName}</if>
-                                                <if test="tenantDesc != null and tenantDesc !=''">and tenant_desc = #{tenantDesc}</if>
-                                                <if test="registerTime != null and registerTime !=''">and register_time = #{registerTime}</if>
-                                                <if test="mobileNo != null and mobileNo !=''">and mobile_no = #{mobileNo}</if>
-                                                <if test="vipLevel != null and vipLevel !=''">and vip_level = #{vipLevel}</if>
-                                                <if test="vipExpireDay != null and vipExpireDay !=''">and vip_expire_day = #{vipExpireDay}</if>
-                                                <if test="tenantCardNo != null and tenantCardNo !=''">and tenant_card_no = #{tenantCardNo}</if>
-                                                <if test="status != null and status !=''">and status = #{status}</if>
-                                                <if test="remark != null and remark !=''">and remark = #{remark}</if>
-                                                <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
-                                                <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}</if>
-                                                <if test="tenantFavicon != null and tenantFavicon !=''">and tenant_favicon = #{tenantFavicon}</if>
-                                                <if test="tenantLogo != null and tenantLogo !=''">and tenant_logo = #{tenantLogo}</if>
-                                                <if test="email != null and email !=''">and email = #{email}</if>
-                                                <if test="appid != null and appid !=''">and appid = #{appid}</if>
-                                                <if test="appSecret != null and appSecret !=''">and app_secret = #{appSecret}</if>
-                                                <if test="wechatToken != null and wechatToken !=''">and wechat_token = #{wechatToken}</if>
-                                                <if test="minipSecret != null and minipSecret !=''">and minip_secret = #{minipSecret}</if>
-                    </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="tenantName != null and tenantName !=''">and tenant_name = #{tenantName}</if>
+            <if test="tenantDesc != null and tenantDesc !=''">and tenant_desc = #{tenantDesc}</if>
+            <if test="registerTime != null and registerTime !=''">and register_time = #{registerTime}</if>
+            <if test="mobileNo != null and mobileNo !=''">and mobile_no = #{mobileNo}</if>
+            <if test="vipLevel != null and vipLevel !=''">and vip_level = #{vipLevel}</if>
+            <if test="vipExpireDay != null and vipExpireDay !=''">and vip_expire_day = #{vipExpireDay}</if>
+            <if test="tenantCardNo != null and tenantCardNo !=''">and tenant_card_no = #{tenantCardNo}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="remark != null and remark !=''">and remark = #{remark}</if>
+            <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
+            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}
+            </if>
+            <if test="tenantFavicon != null and tenantFavicon !=''">and tenant_favicon = #{tenantFavicon}</if>
+            <if test="tenantLogo != null and tenantLogo !=''">and tenant_logo = #{tenantLogo}</if>
+            <if test="email != null and email !=''">and email = #{email}</if>
+            <if test="appid != null and appid !=''">and appid = #{appid}</if>
+            <if test="appSecret != null and appSecret !=''">and app_secret = #{appSecret}</if>
+            <if test="wechatToken != null and wechatToken !=''">and wechat_token = #{wechatToken}</if>
+            <if test="minipSecret != null and minipSecret !=''">and minip_secret = #{minipSecret}</if>
+        </where>
     </select>
 
     <!--查询一条-->
     <select id="selectOne" resultMap="SysTenantInfoMap">
-    select
-    <include refid="Base_Column_List"/>
-    from
-    <include refid="Table_Name"/>
-    <where>
-                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                <if test="tenantName != null and tenantName !=''">and tenant_name = #{tenantName}</if>
-                                                <if test="tenantDesc != null and tenantDesc !=''">and tenant_desc = #{tenantDesc}</if>
-                                                <if test="registerTime != null and registerTime !=''">and register_time = #{registerTime}</if>
-                                                <if test="mobileNo != null and mobileNo !=''">and mobile_no = #{mobileNo}</if>
-                                                <if test="vipLevel != null and vipLevel !=''">and vip_level = #{vipLevel}</if>
-                                                <if test="vipExpireDay != null and vipExpireDay !=''">and vip_expire_day = #{vipExpireDay}</if>
-                                                <if test="tenantCardNo != null and tenantCardNo !=''">and tenant_card_no = #{tenantCardNo}</if>
-                                                <if test="status != null and status !=''">and status = #{status}</if>
-                                                <if test="remark != null and remark !=''">and remark = #{remark}</if>
-                                                <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
-                                                <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}</if>
-                                                <if test="tenantFavicon != null and tenantFavicon !=''">and tenant_favicon = #{tenantFavicon}</if>
-                                                <if test="tenantLogo != null and tenantLogo !=''">and tenant_logo = #{tenantLogo}</if>
-                                                <if test="email != null and email !=''">and email = #{email}</if>
-                                                <if test="appid != null and appid !=''">and appid = #{appid}</if>
-                                                <if test="appSecret != null and appSecret !=''">and app_secret = #{appSecret}</if>
-                                                <if test="wechatToken != null and wechatToken !=''">and wechat_token = #{wechatToken}</if>
-                                                <if test="minipSecret != null and minipSecret !=''">and minip_secret = #{minipSecret}</if>
-                        </where>
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="tenantName != null and tenantName !=''">and tenant_name = #{tenantName}</if>
+            <if test="tenantDesc != null and tenantDesc !=''">and tenant_desc = #{tenantDesc}</if>
+            <if test="registerTime != null and registerTime !=''">and register_time = #{registerTime}</if>
+            <if test="mobileNo != null and mobileNo !=''">and mobile_no = #{mobileNo}</if>
+            <if test="vipLevel != null and vipLevel !=''">and vip_level = #{vipLevel}</if>
+            <if test="vipExpireDay != null and vipExpireDay !=''">and vip_expire_day = #{vipExpireDay}</if>
+            <if test="tenantCardNo != null and tenantCardNo !=''">and tenant_card_no = #{tenantCardNo}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="remark != null and remark !=''">and remark = #{remark}</if>
+            <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
+            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}
+            </if>
+            <if test="tenantFavicon != null and tenantFavicon !=''">and tenant_favicon = #{tenantFavicon}</if>
+            <if test="tenantLogo != null and tenantLogo !=''">and tenant_logo = #{tenantLogo}</if>
+            <if test="email != null and email !=''">and email = #{email}</if>
+            <if test="appid != null and appid !=''">and appid = #{appid}</if>
+            <if test="appSecret != null and appSecret !=''">and app_secret = #{appSecret}</if>
+            <if test="wechatToken != null and wechatToken !=''">and wechat_token = #{wechatToken}</if>
+            <if test="minipSecret != null and minipSecret !=''">and minip_secret = #{minipSecret}</if>
+        </where>
     </select>
 
     <!--查询指定行数据-->
@@ -106,26 +108,49 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                                                                    <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                                                                                            <if test="tenantName != null and tenantName !=''">and tenant_name like CONCAT(CONCAT('%',  #{tenantName}), '%')</if>
-                                                                                                            <if test="tenantDesc != null and tenantDesc !=''">and tenant_desc like CONCAT(CONCAT('%',  #{tenantDesc}), '%')</if>
-                                                                                                            <if test="registerTime != null and registerTime !=''">and register_time like CONCAT(CONCAT('%',  #{registerTime}), '%')</if>
-                                                                                                            <if test="mobileNo != null and mobileNo !=''">and mobile_no like CONCAT(CONCAT('%',  #{mobileNo}), '%')</if>
-                                                                                                            <if test="vipLevel != null and vipLevel !=''">and vip_level like CONCAT(CONCAT('%',  #{vipLevel}), '%')</if>
-                                                                                                            <if test="vipExpireDay != null and vipExpireDay !=''">and vip_expire_day like CONCAT(CONCAT('%',  #{vipExpireDay}), '%')</if>
-                                                                                                            <if test="tenantCardNo != null and tenantCardNo !=''">and tenant_card_no like CONCAT(CONCAT('%',  #{tenantCardNo}), '%')</if>
-                                                                                                            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%',  #{status}), '%')</if>
-                                                                                                            <if test="remark != null and remark !=''">and remark like CONCAT(CONCAT('%',  #{remark}), '%')</if>
-                                                                                                            <if test="createtime != null and createtime !=''">and createtime like CONCAT(CONCAT('%',  #{createtime}), '%')</if>
-                                                                                                            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime like CONCAT(CONCAT('%',  #{lastmodifiedtime}), '%')</if>
-                                                                                                            <if test="tenantFavicon != null and tenantFavicon !=''">and tenant_favicon like CONCAT(CONCAT('%',  #{tenantFavicon}), '%')</if>
-                                                                                                            <if test="tenantLogo != null and tenantLogo !=''">and tenant_logo like CONCAT(CONCAT('%',  #{tenantLogo}), '%')</if>
-                                                                                                            <if test="email != null and email !=''">and email like CONCAT(CONCAT('%',  #{email}), '%')</if>
-                                                                                                            <if test="appid != null and appid !=''">and appid like CONCAT(CONCAT('%',  #{appid}), '%')</if>
-                                                                                                            <if test="appSecret != null and appSecret !=''">and app_secret like CONCAT(CONCAT('%',  #{appSecret}), '%')</if>
-                                                                                                            <if test="wechatToken != null and wechatToken !=''">and wechat_token like CONCAT(CONCAT('%',  #{wechatToken}), '%')</if>
-                                                                                                            <if test="minipSecret != null and minipSecret !=''">and minip_secret like CONCAT(CONCAT('%',  #{minipSecret}), '%')</if>
-                                                        </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="tenantName != null and tenantName !=''">and tenant_name like CONCAT(CONCAT('%', #{tenantName}),
+                '%')
+            </if>
+            <if test="tenantDesc != null and tenantDesc !=''">and tenant_desc like CONCAT(CONCAT('%', #{tenantDesc}),
+                '%')
+            </if>
+            <if test="registerTime != null and registerTime !=''">and register_time like CONCAT(CONCAT('%',
+                #{registerTime}), '%')
+            </if>
+            <if test="mobileNo != null and mobileNo !=''">and mobile_no like CONCAT(CONCAT('%', #{mobileNo}), '%')</if>
+            <if test="vipLevel != null and vipLevel !=''">and vip_level like CONCAT(CONCAT('%', #{vipLevel}), '%')</if>
+            <if test="vipExpireDay != null and vipExpireDay !=''">and vip_expire_day like CONCAT(CONCAT('%',
+                #{vipExpireDay}), '%')
+            </if>
+            <if test="tenantCardNo != null and tenantCardNo !=''">and tenant_card_no like CONCAT(CONCAT('%',
+                #{tenantCardNo}), '%')
+            </if>
+            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
+            <if test="remark != null and remark !=''">and remark like CONCAT(CONCAT('%', #{remark}), '%')</if>
+            <if test="createtime != null and createtime !=''">and createtime like CONCAT(CONCAT('%', #{createtime}),
+                '%')
+            </if>
+            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime like CONCAT(CONCAT('%',
+                #{lastmodifiedtime}), '%')
+            </if>
+            <if test="tenantFavicon != null and tenantFavicon !=''">and tenant_favicon like CONCAT(CONCAT('%',
+                #{tenantFavicon}), '%')
+            </if>
+            <if test="tenantLogo != null and tenantLogo !=''">and tenant_logo like CONCAT(CONCAT('%', #{tenantLogo}),
+                '%')
+            </if>
+            <if test="email != null and email !=''">and email like CONCAT(CONCAT('%', #{email}), '%')</if>
+            <if test="appid != null and appid !=''">and appid like CONCAT(CONCAT('%', #{appid}), '%')</if>
+            <if test="appSecret != null and appSecret !=''">and app_secret like CONCAT(CONCAT('%', #{appSecret}), '%')
+            </if>
+            <if test="wechatToken != null and wechatToken !=''">and wechat_token like CONCAT(CONCAT('%',
+                #{wechatToken}), '%')
+            </if>
+            <if test="minipSecret != null and minipSecret !=''">and minip_secret like CONCAT(CONCAT('%',
+                #{minipSecret}), '%')
+            </if>
+        </where>
 
     </select>
 
@@ -135,26 +160,27 @@
         from
         <include refid="Table_Name"/>
         <where>
-                                                <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-                                        <if test="tenantName != null and tenantName !=''">and tenant_name = #{tenantName}</if>
-                                        <if test="tenantDesc != null and tenantDesc !=''">and tenant_desc = #{tenantDesc}</if>
-                                        <if test="registerTime != null and registerTime !=''">and register_time = #{registerTime}</if>
-                                        <if test="mobileNo != null and mobileNo !=''">and mobile_no = #{mobileNo}</if>
-                                        <if test="vipLevel != null and vipLevel !=''">and vip_level = #{vipLevel}</if>
-                                        <if test="vipExpireDay != null and vipExpireDay !=''">and vip_expire_day = #{vipExpireDay}</if>
-                                        <if test="tenantCardNo != null and tenantCardNo !=''">and tenant_card_no = #{tenantCardNo}</if>
-                                        <if test="status != null and status !=''">and status = #{status}</if>
-                                        <if test="remark != null and remark !=''">and remark = #{remark}</if>
-                                        <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
-                                        <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}</if>
-                                        <if test="tenantFavicon != null and tenantFavicon !=''">and tenant_favicon = #{tenantFavicon}</if>
-                                        <if test="tenantLogo != null and tenantLogo !=''">and tenant_logo = #{tenantLogo}</if>
-                                        <if test="email != null and email !=''">and email = #{email}</if>
-                                        <if test="appid != null and appid !=''">and appid = #{appid}</if>
-                                        <if test="appSecret != null and appSecret !=''">and app_secret = #{appSecret}</if>
-                                        <if test="wechatToken != null and wechatToken !=''">and wechat_token = #{wechatToken}</if>
-                                        <if test="minipSecret != null and minipSecret !=''">and minip_secret = #{minipSecret}</if>
-            </where>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="tenantName != null and tenantName !=''">and tenant_name = #{tenantName}</if>
+            <if test="tenantDesc != null and tenantDesc !=''">and tenant_desc = #{tenantDesc}</if>
+            <if test="registerTime != null and registerTime !=''">and register_time = #{registerTime}</if>
+            <if test="mobileNo != null and mobileNo !=''">and mobile_no = #{mobileNo}</if>
+            <if test="vipLevel != null and vipLevel !=''">and vip_level = #{vipLevel}</if>
+            <if test="vipExpireDay != null and vipExpireDay !=''">and vip_expire_day = #{vipExpireDay}</if>
+            <if test="tenantCardNo != null and tenantCardNo !=''">and tenant_card_no = #{tenantCardNo}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="remark != null and remark !=''">and remark = #{remark}</if>
+            <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
+            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}
+            </if>
+            <if test="tenantFavicon != null and tenantFavicon !=''">and tenant_favicon = #{tenantFavicon}</if>
+            <if test="tenantLogo != null and tenantLogo !=''">and tenant_logo = #{tenantLogo}</if>
+            <if test="email != null and email !=''">and email = #{email}</if>
+            <if test="appid != null and appid !=''">and appid = #{appid}</if>
+            <if test="appSecret != null and appSecret !=''">and app_secret = #{appSecret}</if>
+            <if test="wechatToken != null and wechatToken !=''">and wechat_token = #{wechatToken}</if>
+            <if test="minipSecret != null and minipSecret !=''">and minip_secret = #{minipSecret}</if>
+        </where>
     </select>
 
     <!--新增所有列-->
@@ -169,67 +195,74 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        tenant_name,        tenant_desc,        register_time,        mobile_no,        vip_level,        vip_expire_day,        tenant_card_no,        remark,        createtime,        lastmodifiedtime,        tenant_favicon,        tenant_logo,        email,        appid,        app_secret,        wechat_token,        minip_secret)
+        ( tenant_id, tenant_name, tenant_desc, register_time, mobile_no, vip_level, vip_expire_day, tenant_card_no,
+        remark, createtime, lastmodifiedtime, tenant_favicon, tenant_logo, email, appid, app_secret, wechat_token,
+        minip_secret)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (            #{entity.tenantId},            #{entity.tenantName},            #{entity.tenantDesc},            #{entity.registerTime},            #{entity.mobileNo},            #{entity.vipLevel},            #{entity.vipExpireDay},            #{entity.tenantCardNo},            #{entity.remark},            #{entity.createtime},            #{entity.lastmodifiedtime},            #{entity.tenantFavicon},            #{entity.tenantLogo},            #{entity.email},            #{entity.appid},            #{entity.appSecret},            #{entity.wechatToken},            #{entity.minipSecret})
+            ( #{entity.tenantId}, #{entity.tenantName}, #{entity.tenantDesc}, #{entity.registerTime},
+            #{entity.mobileNo}, #{entity.vipLevel}, #{entity.vipExpireDay}, #{entity.tenantCardNo}, #{entity.remark},
+            #{entity.createtime}, #{entity.lastmodifiedtime}, #{entity.tenantFavicon}, #{entity.tenantLogo},
+            #{entity.email}, #{entity.appid}, #{entity.appSecret}, #{entity.wechatToken}, #{entity.minipSecret})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (        tenant_id,        tenant_name,        tenant_desc,        register_time,        mobile_no,        vip_level,        vip_expire_day,        tenant_card_no,        status,        remark,        createtime,        lastmodifiedtime,        tenant_favicon,        tenant_logo,        email,        appid,        app_secret,        wechat_token,        minip_secret)
+        ( tenant_id, tenant_name, tenant_desc, register_time, mobile_no, vip_level, vip_expire_day, tenant_card_no,
+        status, remark, createtime, lastmodifiedtime, tenant_favicon, tenant_logo, email, appid, app_secret,
+        wechat_token, minip_secret)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.tenantName},#{entity.tenantDesc},#{entity.registerTime},#{entity.mobileNo},#{entity.vipLevel},#{entity.vipExpireDay},#{entity.tenantCardNo},#{entity.status},#{entity.remark},#{entity.createtime},#{entity.lastmodifiedtime},#{entity.tenantFavicon},#{entity.tenantLogo},#{entity.email},#{entity.appid},#{entity.appSecret},#{entity.wechatToken},#{entity.minipSecret})
         </foreach>
         on duplicate key update
         tenant_id=values(tenant_id),
-    tenant_name=values(tenant_name),
-    tenant_desc=values(tenant_desc),
-    register_time=values(register_time),
-    mobile_no=values(mobile_no),
-    vip_level=values(vip_level),
-    vip_expire_day=values(vip_expire_day),
-    tenant_card_no=values(tenant_card_no),
-    status=values(status),
-    remark=values(remark),
-    createtime=values(createtime),
-    lastmodifiedtime=values(lastmodifiedtime),
-    tenant_favicon=values(tenant_favicon),
-    tenant_logo=values(tenant_logo),
-    email=values(email),
-    appid=values(appid),
-    app_secret=values(app_secret),
-    wechat_token=values(wechat_token),
-    minip_secret=values(minip_secret)
-        </insert>
+        tenant_name=values(tenant_name),
+        tenant_desc=values(tenant_desc),
+        register_time=values(register_time),
+        mobile_no=values(mobile_no),
+        vip_level=values(vip_level),
+        vip_expire_day=values(vip_expire_day),
+        tenant_card_no=values(tenant_card_no),
+        status=values(status),
+        remark=values(remark),
+        createtime=values(createtime),
+        lastmodifiedtime=values(lastmodifiedtime),
+        tenant_favicon=values(tenant_favicon),
+        tenant_logo=values(tenant_logo),
+        email=values(email),
+        appid=values(appid),
+        app_secret=values(app_secret),
+        wechat_token=values(wechat_token),
+        minip_secret=values(minip_secret)
+    </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
         update
         <include refid="Table_Name"/>
         <set>
-    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-    <if test="tenantName != null and tenantName != ''">tenant_name = #{tenantName},</if>
-    <if test="tenantDesc != null and tenantDesc != ''">tenant_desc = #{tenantDesc},</if>
-    <if test="registerTime != null and registerTime != ''">register_time = #{registerTime},</if>
-    <if test="mobileNo != null and mobileNo != ''">mobile_no = #{mobileNo},</if>
-    <if test="vipLevel != null and vipLevel != ''">vip_level = #{vipLevel},</if>
-    <if test="vipExpireDay != null and vipExpireDay != ''">vip_expire_day = #{vipExpireDay},</if>
-    <if test="tenantCardNo != null and tenantCardNo != ''">tenant_card_no = #{tenantCardNo},</if>
-    <if test="status != null and status != ''">status = #{status},</if>
-    <if test="remark != null and remark != ''">remark = #{remark},</if>
-    <if test="createtime != null and createtime != ''">createtime = #{createtime},</if>
-    <if test="lastmodifiedtime != null and lastmodifiedtime != ''">lastmodifiedtime = #{lastmodifiedtime},</if>
-    <if test="tenantFavicon != null and tenantFavicon != ''">tenant_favicon = #{tenantFavicon},</if>
-    <if test="tenantLogo != null and tenantLogo != ''">tenant_logo = #{tenantLogo},</if>
-    <if test="email != null and email != ''">email = #{email},</if>
-    <if test="appid != null and appid != ''">appid = #{appid},</if>
-    <if test="appSecret != null and appSecret != ''">app_secret = #{appSecret},</if>
-    <if test="wechatToken != null and wechatToken != ''">wechat_token = #{wechatToken},</if>
-    <if test="minipSecret != null and minipSecret != ''">minip_secret = #{minipSecret},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+            <if test="tenantName != null and tenantName != ''">tenant_name = #{tenantName},</if>
+            <if test="tenantDesc != null and tenantDesc != ''">tenant_desc = #{tenantDesc},</if>
+            <if test="registerTime != null and registerTime != ''">register_time = #{registerTime},</if>
+            <if test="mobileNo != null and mobileNo != ''">mobile_no = #{mobileNo},</if>
+            <if test="vipLevel != null and vipLevel != ''">vip_level = #{vipLevel},</if>
+            <if test="vipExpireDay != null and vipExpireDay != ''">vip_expire_day = #{vipExpireDay},</if>
+            <if test="tenantCardNo != null and tenantCardNo != ''">tenant_card_no = #{tenantCardNo},</if>
+            <if test="status != null and status != ''">status = #{status},</if>
+            <if test="remark != null and remark != ''">remark = #{remark},</if>
+            <if test="createtime != null and createtime != ''">createtime = #{createtime},</if>
+            <if test="lastmodifiedtime != null and lastmodifiedtime != ''">lastmodifiedtime = #{lastmodifiedtime},</if>
+            <if test="tenantFavicon != null and tenantFavicon != ''">tenant_favicon = #{tenantFavicon},</if>
+            <if test="tenantLogo != null and tenantLogo != ''">tenant_logo = #{tenantLogo},</if>
+            <if test="email != null and email != ''">email = #{email},</if>
+            <if test="appid != null and appid != ''">appid = #{appid},</if>
+            <if test="appSecret != null and appSecret != ''">app_secret = #{appSecret},</if>
+            <if test="wechatToken != null and wechatToken != ''">wechat_token = #{wechatToken},</if>
+            <if test="minipSecret != null and minipSecret != ''">minip_secret = #{minipSecret},</if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
