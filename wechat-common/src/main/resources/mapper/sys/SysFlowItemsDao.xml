@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nuoding.wechat.common.dao.sys.SysFlowItemsDao">
+
+    <resultMap type="com.nuoding.wechat.common.entity.sys.SysFlowItemsEntity" id="SysFlowItemsMap">
+            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
+        <result property="flowId" column="flow_id" jdbcType="VARCHAR"/>
+        <result property="itemId" column="item_id" jdbcType="VARCHAR"/>
+        <result property="itemSort" column="item_sort" jdbcType="INTEGER"/>
+        <result property="itemType" column="item_type" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="channel" column="channel" jdbcType="VARCHAR"/>
+        <result property="controlFlag" column="control_flag" jdbcType="VARCHAR"/>
+        <result property="dataType" column="data_type" jdbcType="VARCHAR"/>
+        <result property="dataValue" column="data_value" jdbcType="VARCHAR"/>
+        <result property="dataMatch" column="data_match" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Table_Name">
+        sys_flow_items
+    </sql>
+
+    <sql id="Base_Column_List">
+        id,tenant_id,flow_id,item_id,item_sort,item_type,status,last_modified_time,create_time,channel,control_flag,data_type,data_value,data_match    </sql>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="SysFlowItemsMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="SysFlowItemsMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                <if test="flowId != null and flowId !=''">and flow_id = #{flowId}</if>
+                                                <if test="itemId != null and itemId !=''">and item_id = #{itemId}</if>
+                                                <if test="itemSort != null and itemSort !=''">and item_sort = #{itemSort}</if>
+                                                <if test="itemType != null and itemType !=''">and item_type = #{itemType}</if>
+                                                <if test="status != null and status !=''">and status = #{status}</if>
+                                                                                        <if test="channel != null and channel !=''">and channel = #{channel}</if>
+                                                <if test="controlFlag != null and controlFlag !=''">and control_flag = #{controlFlag}</if>
+                                                <if test="dataType != null and dataType !=''">and data_type = #{dataType}</if>
+                                                <if test="dataValue != null and dataValue !=''">and data_value = #{dataValue}</if>
+                                                <if test="dataMatch != null and dataMatch !=''">and data_match = #{dataMatch}</if>
+                    </where>
+    </select>
+
+    <!--查询一条-->
+    <select id="selectOne" resultMap="SysFlowItemsMap">
+    select
+    <include refid="Base_Column_List"/>
+    from
+    <include refid="Table_Name"/>
+    <where>
+                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                <if test="flowId != null and flowId !=''">and flow_id = #{flowId}</if>
+                                                <if test="itemId != null and itemId !=''">and item_id = #{itemId}</if>
+                                                <if test="itemSort != null and itemSort !=''">and item_sort = #{itemSort}</if>
+                                                <if test="itemType != null and itemType !=''">and item_type = #{itemType}</if>
+                                                <if test="status != null and status !=''">and status = #{status}</if>
+                                                                                        <if test="channel != null and channel !=''">and channel = #{channel}</if>
+                                                <if test="controlFlag != null and controlFlag !=''">and control_flag = #{controlFlag}</if>
+                                                <if test="dataType != null and dataType !=''">and data_type = #{dataType}</if>
+                                                <if test="dataValue != null and dataValue !=''">and data_value = #{dataValue}</if>
+                                                <if test="dataMatch != null and dataMatch !=''">and data_match = #{dataMatch}</if>
+                        </where>
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="fuzzyQuery" resultMap="SysFlowItemsMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                                                                    <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                                                                            <if test="flowId != null and flowId !=''">and flow_id like CONCAT(CONCAT('%',  #{flowId}), '%')</if>
+                                                                                                            <if test="itemId != null and itemId !=''">and item_id like CONCAT(CONCAT('%',  #{itemId}), '%')</if>
+                                                                                                            <if test="itemSort != null and itemSort !=''">and item_sort like CONCAT(CONCAT('%',  #{itemSort}), '%')</if>
+                                                                                                            <if test="itemType != null and itemType !=''">and item_type like CONCAT(CONCAT('%',  #{itemType}), '%')</if>
+                                                                                                            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%',  #{status}), '%')</if>
+                                                                                                                                                                    <if test="channel != null and channel !=''">and channel like CONCAT(CONCAT('%',  #{channel}), '%')</if>
+                                                                                                            <if test="controlFlag != null and controlFlag !=''">and control_flag like CONCAT(CONCAT('%',  #{controlFlag}), '%')</if>
+                                                                                                            <if test="dataType != null and dataType !=''">and data_type like CONCAT(CONCAT('%',  #{dataType}), '%')</if>
+                                                                                                            <if test="dataValue != null and dataValue !=''">and data_value like CONCAT(CONCAT('%',  #{dataValue}), '%')</if>
+                                                                                                            <if test="dataMatch != null and dataMatch !=''">and data_match like CONCAT(CONCAT('%',  #{dataMatch}), '%')</if>
+                                                        </where>
+
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                        <if test="flowId != null and flowId !=''">and flow_id = #{flowId}</if>
+                                        <if test="itemId != null and itemId !=''">and item_id = #{itemId}</if>
+                                        <if test="itemSort != null and itemSort !=''">and item_sort = #{itemSort}</if>
+                                        <if test="itemType != null and itemType !=''">and item_type = #{itemType}</if>
+                                        <if test="status != null and status !=''">and status = #{status}</if>
+                                                                <if test="channel != null and channel !=''">and channel = #{channel}</if>
+                                        <if test="controlFlag != null and controlFlag !=''">and control_flag = #{controlFlag}</if>
+                                        <if test="dataType != null and dataType !=''">and data_type = #{dataType}</if>
+                                        <if test="dataValue != null and dataValue !=''">and data_value = #{dataValue}</if>
+                                        <if test="dataMatch != null and dataMatch !=''">and data_match = #{dataMatch}</if>
+            </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+        (tenant_id,flow_id,item_id,item_sort,item_type,channel,control_flag,data_type,data_value,data_match)
+        values
+        (#{tenantId},#{flowId},#{itemId},#{itemSort},#{itemType},#{channel},#{controlFlag},#{dataType},#{dataValue},#{dataMatch})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (        tenant_id,        flow_id,        item_id,        item_sort,        item_type,        channel,        control_flag,        data_type,        data_value,        data_match)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (            #{entity.tenantId},            #{entity.flowId},            #{entity.itemId},            #{entity.itemSort},            #{entity.itemType},            #{entity.channel},            #{entity.controlFlag},            #{entity.dataType},            #{entity.dataValue},            #{entity.dataMatch})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (        tenant_id,        flow_id,        item_id,        item_sort,        item_type,        status,        channel,        control_flag,        data_type,        data_value,        data_match)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tenantId},#{entity.flowId},#{entity.itemId},#{entity.itemSort},#{entity.itemType},#{entity.status},#{entity.channel},#{entity.controlFlag},#{entity.dataType},#{entity.dataValue},#{entity.dataMatch})
+        </foreach>
+        on duplicate key update
+        tenant_id=values(tenant_id),
+    flow_id=values(flow_id),
+    item_id=values(item_id),
+    item_sort=values(item_sort),
+    item_type=values(item_type),
+    status=values(status),
+            channel=values(channel),
+    control_flag=values(control_flag),
+    data_type=values(data_type),
+    data_value=values(data_value),
+    data_match=values(data_match)
+        </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update
+        <include refid="Table_Name"/>
+        <set>
+    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+    <if test="flowId != null and flowId != ''">flow_id = #{flowId},</if>
+    <if test="itemId != null and itemId != ''">item_id = #{itemId},</if>
+    <if test="itemSort != null and itemSort != ''">item_sort = #{itemSort},</if>
+    <if test="itemType != null and itemType != ''">item_type = #{itemType},</if>
+    <if test="status != null and status != ''">status = #{status},</if>
+    <if test="channel != null and channel != ''">channel = #{channel},</if>
+    <if test="controlFlag != null and controlFlag != ''">control_flag = #{controlFlag},</if>
+    <if test="dataType != null and dataType != ''">data_type = #{dataType},</if>
+    <if test="dataValue != null and dataValue != ''">data_value = #{dataValue},</if>
+    <if test="dataMatch != null and dataMatch != ''">data_match = #{dataMatch},</if>
+        </set>
+        where id = #{id}
+        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from
+        <include refid="Table_Name"/>
+        where id = #{id}
+        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+    </delete>
+
+</mapper>
+

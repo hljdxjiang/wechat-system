@@ -35,14 +35,42 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="id != null and id !=''">and id = #{id}</if>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="lastModifiedTime != null and lastModifiedTime !=''">and last_modified_time = #{lastModifiedTime}</if>
-            <if test="optionId != null and optionId !=''">and option_id = #{optionId}</if>
-            <if test="optionKey != null and optionKey !=''">and option_key = #{optionKey}</if>
-            <if test="optionDesc != null and optionDesc !=''">and option_desc = #{optionDesc}</if>
-            <if test="optionType != null and optionType !=''">and option_type = #{optionType}</if>
-        </where>
+                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                                    <if test="optionId != null and optionId !=''">and option_id = #{optionId}</if>
+                                                <if test="optionKey != null and optionKey !=''">and option_key = #{optionKey}</if>
+                                                <if test="optionDesc != null and optionDesc !=''">and option_desc = #{optionDesc}</if>
+                                                <if test="optionType != null and optionType !=''">and option_type = #{optionType}</if>
+                    </where>
+    </select>
+
+    <!--查询一条-->
+    <select id="selectOne" resultMap="WechatMenusVersionMap">
+    select
+    <include refid="Base_Column_List"/>
+    from
+    <include refid="Table_Name"/>
+    <where>
+                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                                    <if test="optionId != null and optionId !=''">and option_id = #{optionId}</if>
+                                                <if test="optionKey != null and optionKey !=''">and option_key = #{optionKey}</if>
+                                                <if test="optionDesc != null and optionDesc !=''">and option_desc = #{optionDesc}</if>
+                                                <if test="optionType != null and optionType !=''">and option_type = #{optionType}</if>
+                        </where>
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="fuzzyQuery" resultMap="WechatMenusVersionMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                                                                    <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                                                                                                        <if test="optionId != null and optionId !=''">and option_id like CONCAT(CONCAT('%',  #{optionId}), '%')</if>
+                                                                                                            <if test="optionKey != null and optionKey !=''">and option_key like CONCAT(CONCAT('%',  #{optionKey}), '%')</if>
+                                                                                                            <if test="optionDesc != null and optionDesc !=''">and option_desc like CONCAT(CONCAT('%',  #{optionDesc}), '%')</if>
+                                                                                                            <if test="optionType != null and optionType !=''">and option_type like CONCAT(CONCAT('%',  #{optionType}), '%')</if>
+                                                        </where>
 
     </select>
 
@@ -52,50 +80,47 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="id != null and id != ''">and id = #{id}</if>
-            <if test="tenantId != null and tenantId != ''">and tenant_id = #{tenantId}</if>
-            <if test="lastModifiedTime != null and lastModifiedTime != ''">and last_modified_time = #{lastModifiedTime}</if>
-            <if test="optionId != null and optionId != ''">and option_id = #{optionId}</if>
-            <if test="optionKey != null and optionKey != ''">and option_key = #{optionKey}</if>
-            <if test="optionDesc != null and optionDesc != ''">and option_desc = #{optionDesc}</if>
-            <if test="optionType != null and optionType != ''">and option_type = #{optionType}</if>
-        </where>
+                                                <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                    <if test="optionId != null and optionId !=''">and option_id = #{optionId}</if>
+                                        <if test="optionKey != null and optionKey !=''">and option_key = #{optionKey}</if>
+                                        <if test="optionDesc != null and optionDesc !=''">and option_desc = #{optionDesc}</if>
+                                        <if test="optionType != null and optionType !=''">and option_type = #{optionType}</if>
+            </where>
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,last_modified_time,option_id,option_key,option_desc,option_type)
+        (tenant_id,option_id,option_key,option_desc,option_type)
         values
-        (#{tenantId},#{lastModifiedTime},#{optionId},#{optionKey},#{optionDesc},#{optionType})
+        (#{tenantId},#{optionId},#{optionKey},#{optionDesc},#{optionType})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (tenant_id,last_modified_time,option_id,option_key,option_desc,option_type)
+            (        tenant_id,        option_id,        option_key,        option_desc,        option_type)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.lastModifiedTime},#{entity.optionId},#{entity.optionKey},#{entity.optionDesc},#{entity.optionType})
+            (            #{entity.tenantId},            #{entity.optionId},            #{entity.optionKey},            #{entity.optionDesc},            #{entity.optionType})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (tenant_id,last_modified_time,option_id,option_key,option_desc,option_type)
+            (        tenant_id,        option_id,        option_key,        option_desc,        option_type)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.lastModifiedTime},#{entity.optionId},#{entity.optionKey},#{entity.optionDesc},#{entity.optionType})
+            (#{entity.tenantId},#{entity.optionId},#{entity.optionKey},#{entity.optionDesc},#{entity.optionType})
         </foreach>
         on duplicate key update
-                tenant_id=values(tenant_id),
-        last_modified_time=values(last_modified_time),
+        tenant_id=values(tenant_id),
         option_id=values(option_id),
-        option_key=values(option_key),
-        option_desc=values(option_desc),
-        option_type=values(option_type)
+    option_key=values(option_key),
+    option_desc=values(option_desc),
+    option_type=values(option_type)
         </insert>
 
     <!--通过主键修改数据-->
@@ -104,13 +129,13 @@
         <include refid="Table_Name"/>
         <set>
     <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-    <if test="lastModifiedTime != null and lastModifiedTime != ''">last_modified_time = #{lastModifiedTime},</if>
     <if test="optionId != null and optionId != ''">option_id = #{optionId},</if>
     <if test="optionKey != null and optionKey != ''">option_key = #{optionKey},</if>
     <if test="optionDesc != null and optionDesc != ''">option_desc = #{optionDesc},</if>
     <if test="optionType != null and optionType != ''">option_type = #{optionType},</if>
         </set>
         where id = #{id}
+        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </update>
 
     <!--通过主键删除-->
@@ -118,6 +143,7 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
+        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

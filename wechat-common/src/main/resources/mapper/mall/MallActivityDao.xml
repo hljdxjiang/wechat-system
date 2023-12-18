@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nuoding.wechat.common.dao.mall.MallActivityDao">
+
+    <resultMap type="com.nuoding.wechat.common.entity.mall.MallActivityEntity" id="MallActivityMap">
+            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
+        <result property="activityId" column="activity_id" jdbcType="VARCHAR"/>
+        <result property="activityTitle" column="activity_title" jdbcType="VARCHAR"/>
+        <result property="activityDetail" column="activity_detail" jdbcType="VARCHAR"/>
+        <result property="activityType" column="activity_type" jdbcType="VARCHAR"/>
+        <result property="reward" column="reward" jdbcType="VARCHAR"/>
+        <result property="rewardAmount" column="reward_amount" jdbcType="DECIMAL"/>
+        <result property="vaildDate" column="vaild_date" jdbcType="TIMESTAMP"/>
+        <result property="expireDate" column="expire_date" jdbcType="TIMESTAMP"/>
+        <result property="rewardValidDate" column="reward_valid_date" jdbcType="TIMESTAMP"/>
+        <result property="rewardExpireDate" column="reward_expire_date" jdbcType="TIMESTAMP"/>
+        <result property="numbero" column="numbero" jdbcType="INTEGER"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Table_Name">
+        mall_activity
+    </sql>
+
+    <sql id="Base_Column_List">
+        id,tenant_id,activity_id,activity_title,activity_detail,activity_type,reward,reward_amount,vaild_date,expire_date,reward_valid_date,reward_expire_date,numbero,status,create_time,last_modified_time    </sql>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="MallActivityMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="MallActivityMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                <if test="activityId != null and activityId !=''">and activity_id = #{activityId}</if>
+                                                <if test="activityTitle != null and activityTitle !=''">and activity_title = #{activityTitle}</if>
+                                                <if test="activityDetail != null and activityDetail !=''">and activity_detail = #{activityDetail}</if>
+                                                <if test="activityType != null and activityType !=''">and activity_type = #{activityType}</if>
+                                                <if test="reward != null and reward !=''">and reward = #{reward}</if>
+                                                <if test="rewardAmount != null and rewardAmount !=''">and reward_amount = #{rewardAmount}</if>
+                                                <if test="vaildDate != null and vaildDate !=''">and vaild_date = #{vaildDate}</if>
+                                                <if test="expireDate != null and expireDate !=''">and expire_date = #{expireDate}</if>
+                                                <if test="rewardValidDate != null and rewardValidDate !=''">and reward_valid_date = #{rewardValidDate}</if>
+                                                <if test="rewardExpireDate != null and rewardExpireDate !=''">and reward_expire_date = #{rewardExpireDate}</if>
+                                                <if test="numbero != null and numbero !=''">and numbero = #{numbero}</if>
+                                                <if test="status != null and status !=''">and status = #{status}</if>
+                                                            </where>
+    </select>
+
+    <!--查询一条-->
+    <select id="selectOne" resultMap="MallActivityMap">
+    select
+    <include refid="Base_Column_List"/>
+    from
+    <include refid="Table_Name"/>
+    <where>
+                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                <if test="activityId != null and activityId !=''">and activity_id = #{activityId}</if>
+                                                <if test="activityTitle != null and activityTitle !=''">and activity_title = #{activityTitle}</if>
+                                                <if test="activityDetail != null and activityDetail !=''">and activity_detail = #{activityDetail}</if>
+                                                <if test="activityType != null and activityType !=''">and activity_type = #{activityType}</if>
+                                                <if test="reward != null and reward !=''">and reward = #{reward}</if>
+                                                <if test="rewardAmount != null and rewardAmount !=''">and reward_amount = #{rewardAmount}</if>
+                                                <if test="vaildDate != null and vaildDate !=''">and vaild_date = #{vaildDate}</if>
+                                                <if test="expireDate != null and expireDate !=''">and expire_date = #{expireDate}</if>
+                                                <if test="rewardValidDate != null and rewardValidDate !=''">and reward_valid_date = #{rewardValidDate}</if>
+                                                <if test="rewardExpireDate != null and rewardExpireDate !=''">and reward_expire_date = #{rewardExpireDate}</if>
+                                                <if test="numbero != null and numbero !=''">and numbero = #{numbero}</if>
+                                                <if test="status != null and status !=''">and status = #{status}</if>
+                                                                </where>
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="fuzzyQuery" resultMap="MallActivityMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                                                                    <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                                                                            <if test="activityId != null and activityId !=''">and activity_id like CONCAT(CONCAT('%',  #{activityId}), '%')</if>
+                                                                                                            <if test="activityTitle != null and activityTitle !=''">and activity_title like CONCAT(CONCAT('%',  #{activityTitle}), '%')</if>
+                                                                                                            <if test="activityDetail != null and activityDetail !=''">and activity_detail like CONCAT(CONCAT('%',  #{activityDetail}), '%')</if>
+                                                                                                            <if test="activityType != null and activityType !=''">and activity_type like CONCAT(CONCAT('%',  #{activityType}), '%')</if>
+                                                                                                            <if test="reward != null and reward !=''">and reward like CONCAT(CONCAT('%',  #{reward}), '%')</if>
+                                                                                                            <if test="rewardAmount != null and rewardAmount !=''">and reward_amount like CONCAT(CONCAT('%',  #{rewardAmount}), '%')</if>
+                                                                                                            <if test="vaildDate != null and vaildDate !=''">and vaild_date like CONCAT(CONCAT('%',  #{vaildDate}), '%')</if>
+                                                                                                            <if test="expireDate != null and expireDate !=''">and expire_date like CONCAT(CONCAT('%',  #{expireDate}), '%')</if>
+                                                                                                            <if test="rewardValidDate != null and rewardValidDate !=''">and reward_valid_date like CONCAT(CONCAT('%',  #{rewardValidDate}), '%')</if>
+                                                                                                            <if test="rewardExpireDate != null and rewardExpireDate !=''">and reward_expire_date like CONCAT(CONCAT('%',  #{rewardExpireDate}), '%')</if>
+                                                                                                            <if test="numbero != null and numbero !=''">and numbero like CONCAT(CONCAT('%',  #{numbero}), '%')</if>
+                                                                                                            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%',  #{status}), '%')</if>
+                                                                                                                </where>
+
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                        <if test="activityId != null and activityId !=''">and activity_id = #{activityId}</if>
+                                        <if test="activityTitle != null and activityTitle !=''">and activity_title = #{activityTitle}</if>
+                                        <if test="activityDetail != null and activityDetail !=''">and activity_detail = #{activityDetail}</if>
+                                        <if test="activityType != null and activityType !=''">and activity_type = #{activityType}</if>
+                                        <if test="reward != null and reward !=''">and reward = #{reward}</if>
+                                        <if test="rewardAmount != null and rewardAmount !=''">and reward_amount = #{rewardAmount}</if>
+                                        <if test="vaildDate != null and vaildDate !=''">and vaild_date = #{vaildDate}</if>
+                                        <if test="expireDate != null and expireDate !=''">and expire_date = #{expireDate}</if>
+                                        <if test="rewardValidDate != null and rewardValidDate !=''">and reward_valid_date = #{rewardValidDate}</if>
+                                        <if test="rewardExpireDate != null and rewardExpireDate !=''">and reward_expire_date = #{rewardExpireDate}</if>
+                                        <if test="numbero != null and numbero !=''">and numbero = #{numbero}</if>
+                                        <if test="status != null and status !=''">and status = #{status}</if>
+                                    </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+        (tenant_id,activity_id,activity_title,activity_detail,activity_type,reward,reward_amount,vaild_date,expire_date,reward_valid_date,reward_expire_date,numbero,)
+        values
+        (#{tenantId},#{activityId},#{activityTitle},#{activityDetail},#{activityType},#{reward},#{rewardAmount},#{vaildDate},#{expireDate},#{rewardValidDate},#{rewardExpireDate},#{numbero},)
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (        tenant_id,        activity_id,        activity_title,        activity_detail,        activity_type,        reward,        reward_amount,        vaild_date,        expire_date,        reward_valid_date,        reward_expire_date,        numbero,)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (            #{entity.tenantId},            #{entity.activityId},            #{entity.activityTitle},            #{entity.activityDetail},            #{entity.activityType},            #{entity.reward},            #{entity.rewardAmount},            #{entity.vaildDate},            #{entity.expireDate},            #{entity.rewardValidDate},            #{entity.rewardExpireDate},            #{entity.numbero},)
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (        tenant_id,        activity_id,        activity_title,        activity_detail,        activity_type,        reward,        reward_amount,        vaild_date,        expire_date,        reward_valid_date,        reward_expire_date,        numbero,        status,)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tenantId},#{entity.activityId},#{entity.activityTitle},#{entity.activityDetail},#{entity.activityType},#{entity.reward},#{entity.rewardAmount},#{entity.vaildDate},#{entity.expireDate},#{entity.rewardValidDate},#{entity.rewardExpireDate},#{entity.numbero},#{entity.status},)
+        </foreach>
+        on duplicate key update
+        tenant_id=values(tenant_id),
+    activity_id=values(activity_id),
+    activity_title=values(activity_title),
+    activity_detail=values(activity_detail),
+    activity_type=values(activity_type),
+    reward=values(reward),
+    reward_amount=values(reward_amount),
+    vaild_date=values(vaild_date),
+    expire_date=values(expire_date),
+    reward_valid_date=values(reward_valid_date),
+    reward_expire_date=values(reward_expire_date),
+    numbero=values(numbero),
+    status=values(status),
+        
+        </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update
+        <include refid="Table_Name"/>
+        <set>
+    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+    <if test="activityId != null and activityId != ''">activity_id = #{activityId},</if>
+    <if test="activityTitle != null and activityTitle != ''">activity_title = #{activityTitle},</if>
+    <if test="activityDetail != null and activityDetail != ''">activity_detail = #{activityDetail},</if>
+    <if test="activityType != null and activityType != ''">activity_type = #{activityType},</if>
+    <if test="reward != null and reward != ''">reward = #{reward},</if>
+    <if test="rewardAmount != null and rewardAmount != ''">reward_amount = #{rewardAmount},</if>
+    <if test="vaildDate != null and vaildDate != ''">vaild_date = #{vaildDate},</if>
+    <if test="expireDate != null and expireDate != ''">expire_date = #{expireDate},</if>
+    <if test="rewardValidDate != null and rewardValidDate != ''">reward_valid_date = #{rewardValidDate},</if>
+    <if test="rewardExpireDate != null and rewardExpireDate != ''">reward_expire_date = #{rewardExpireDate},</if>
+    <if test="numbero != null and numbero != ''">numbero = #{numbero},</if>
+    <if test="status != null and status != ''">status = #{status},</if>
+        </set>
+        where id = #{id}
+        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from
+        <include refid="Table_Name"/>
+        where id = #{id}
+        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+    </delete>
+
+</mapper>
+

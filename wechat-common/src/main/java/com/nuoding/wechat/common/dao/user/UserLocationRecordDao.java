@@ -9,7 +9,7 @@ import java.util.List;
  * 用户地理位置记录表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:38
  */
 public interface UserLocationRecordDao {
 
@@ -28,6 +28,22 @@ public interface UserLocationRecordDao {
      * @return 对象列表
      */
     List<UserLocationRecordEntity> queryAllByLimit(UserLocationRecordEntity userLocationRecordEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param userLocationRecordEntity 查询条件
+     * @return 对象列表
+     */
+    UserLocationRecordEntity selectOne(UserLocationRecordEntity userLocationRecordEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param userLocationRecordEntity 查询条件
+     * @return 对象列表
+     */
+    List<UserLocationRecordEntity> fuzzyQuery(UserLocationRecordEntity userLocationRecordEntity);
 
     /**
      * 统计总行数

@@ -9,7 +9,7 @@ import java.util.List;
  * 用户操作历史表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:38
  */
 public interface UserOperaRecordDao {
 
@@ -28,6 +28,22 @@ public interface UserOperaRecordDao {
      * @return 对象列表
      */
     List<UserOperaRecordEntity> queryAllByLimit(UserOperaRecordEntity userOperaRecordEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param userOperaRecordEntity 查询条件
+     * @return 对象列表
+     */
+    UserOperaRecordEntity selectOne(UserOperaRecordEntity userOperaRecordEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param userOperaRecordEntity 查询条件
+     * @return 对象列表
+     */
+    List<UserOperaRecordEntity> fuzzyQuery(UserOperaRecordEntity userOperaRecordEntity);
 
     /**
      * 统计总行数

@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nuoding.wechat.common.dao.user.UserRegInfoDao">
+
+    <resultMap type="com.nuoding.wechat.common.entity.user.UserRegInfoEntity" id="UserRegInfoMap">
+            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
+        <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+        <result property="mobileNo" column="mobile_no" jdbcType="VARCHAR"/>
+        <result property="idType" column="id_type" jdbcType="VARCHAR"/>
+        <result property="idNo" column="id_no" jdbcType="VARCHAR"/>
+        <result property="validDate" column="valid_date" jdbcType="VARCHAR"/>
+        <result property="expiredDate" column="expired_date" jdbcType="VARCHAR"/>
+        <result property="issueAuthority" column="issue_authority" jdbcType="VARCHAR"/>
+        <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+        <result property="gender" column="gender" jdbcType="VARCHAR"/>
+        <result property="birthDate" column="birth_date" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="tranPwd" column="tran_pwd" jdbcType="VARCHAR"/>
+        <result property="saverId" column="saver_id" jdbcType="VARCHAR"/>
+        <result property="sourcePlatform" column="source_platform" jdbcType="VARCHAR"/>
+        <result property="referee" column="referee" jdbcType="VARCHAR"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+        <result property="occupation" column="occupation" jdbcType="VARCHAR"/>
+        <result property="regSource" column="reg_source" jdbcType="VARCHAR"/>
+        <result property="idPathFace" column="id_path_face" jdbcType="VARCHAR"/>
+        <result property="idPathEmblem" column="id_path_emblem" jdbcType="VARCHAR"/>
+        <result property="idPathHand" column="id_path_hand" jdbcType="VARCHAR"/>
+        <result property="distCode" column="dist_code" jdbcType="VARCHAR"/>
+        <result property="userIp" column="user_ip" jdbcType="VARCHAR"/>
+        <result property="setTranPwdTime" column="set_tran_pwd_time" jdbcType="TIMESTAMP"/>
+        <result property="deviceId" column="device_id" jdbcType="VARCHAR"/>
+        <result property="loginPwd" column="login_pwd" jdbcType="VARCHAR"/>
+        <result property="gesturePwd" column="gesture_pwd" jdbcType="VARCHAR"/>
+        <result property="faceIdPwd" column="face_id_pwd" jdbcType="VARCHAR"/>
+        <result property="userLabel" column="user_label" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Table_Name">
+        user_reg_info
+    </sql>
+
+    <sql id="Base_Column_List">
+        id,tenant_id,user_id,mobile_no,id_type,id_no,valid_date,expired_date,issue_authority,user_name,gender,birth_date,email,tran_pwd,saver_id,source_platform,referee,address,occupation,reg_source,id_path_face,id_path_emblem,id_path_hand,dist_code,user_ip,set_tran_pwd_time,device_id,login_pwd,gesture_pwd,face_id_pwd,user_label,status,create_time,last_modified_time    </sql>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="UserRegInfoMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="UserRegInfoMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                <if test="userId != null and userId !=''">and user_id = #{userId}</if>
+                                                <if test="mobileNo != null and mobileNo !=''">and mobile_no = #{mobileNo}</if>
+                                                <if test="idType != null and idType !=''">and id_type = #{idType}</if>
+                                                <if test="idNo != null and idNo !=''">and id_no = #{idNo}</if>
+                                                <if test="validDate != null and validDate !=''">and valid_date = #{validDate}</if>
+                                                <if test="expiredDate != null and expiredDate !=''">and expired_date = #{expiredDate}</if>
+                                                <if test="issueAuthority != null and issueAuthority !=''">and issue_authority = #{issueAuthority}</if>
+                                                <if test="userName != null and userName !=''">and user_name = #{userName}</if>
+                                                <if test="gender != null and gender !=''">and gender = #{gender}</if>
+                                                <if test="birthDate != null and birthDate !=''">and birth_date = #{birthDate}</if>
+                                                <if test="email != null and email !=''">and email = #{email}</if>
+                                                <if test="tranPwd != null and tranPwd !=''">and tran_pwd = #{tranPwd}</if>
+                                                <if test="saverId != null and saverId !=''">and saver_id = #{saverId}</if>
+                                                <if test="sourcePlatform != null and sourcePlatform !=''">and source_platform = #{sourcePlatform}</if>
+                                                <if test="referee != null and referee !=''">and referee = #{referee}</if>
+                                                <if test="address != null and address !=''">and address = #{address}</if>
+                                                <if test="occupation != null and occupation !=''">and occupation = #{occupation}</if>
+                                                <if test="regSource != null and regSource !=''">and reg_source = #{regSource}</if>
+                                                <if test="idPathFace != null and idPathFace !=''">and id_path_face = #{idPathFace}</if>
+                                                <if test="idPathEmblem != null and idPathEmblem !=''">and id_path_emblem = #{idPathEmblem}</if>
+                                                <if test="idPathHand != null and idPathHand !=''">and id_path_hand = #{idPathHand}</if>
+                                                <if test="distCode != null and distCode !=''">and dist_code = #{distCode}</if>
+                                                <if test="userIp != null and userIp !=''">and user_ip = #{userIp}</if>
+                                                <if test="setTranPwdTime != null and setTranPwdTime !=''">and set_tran_pwd_time = #{setTranPwdTime}</if>
+                                                <if test="deviceId != null and deviceId !=''">and device_id = #{deviceId}</if>
+                                                <if test="loginPwd != null and loginPwd !=''">and login_pwd = #{loginPwd}</if>
+                                                <if test="gesturePwd != null and gesturePwd !=''">and gesture_pwd = #{gesturePwd}</if>
+                                                <if test="faceIdPwd != null and faceIdPwd !=''">and face_id_pwd = #{faceIdPwd}</if>
+                                                <if test="userLabel != null and userLabel !=''">and user_label = #{userLabel}</if>
+                                                <if test="status != null and status !=''">and status = #{status}</if>
+                                                            </where>
+    </select>
+
+    <!--查询一条-->
+    <select id="selectOne" resultMap="UserRegInfoMap">
+    select
+    <include refid="Base_Column_List"/>
+    from
+    <include refid="Table_Name"/>
+    <where>
+                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                <if test="userId != null and userId !=''">and user_id = #{userId}</if>
+                                                <if test="mobileNo != null and mobileNo !=''">and mobile_no = #{mobileNo}</if>
+                                                <if test="idType != null and idType !=''">and id_type = #{idType}</if>
+                                                <if test="idNo != null and idNo !=''">and id_no = #{idNo}</if>
+                                                <if test="validDate != null and validDate !=''">and valid_date = #{validDate}</if>
+                                                <if test="expiredDate != null and expiredDate !=''">and expired_date = #{expiredDate}</if>
+                                                <if test="issueAuthority != null and issueAuthority !=''">and issue_authority = #{issueAuthority}</if>
+                                                <if test="userName != null and userName !=''">and user_name = #{userName}</if>
+                                                <if test="gender != null and gender !=''">and gender = #{gender}</if>
+                                                <if test="birthDate != null and birthDate !=''">and birth_date = #{birthDate}</if>
+                                                <if test="email != null and email !=''">and email = #{email}</if>
+                                                <if test="tranPwd != null and tranPwd !=''">and tran_pwd = #{tranPwd}</if>
+                                                <if test="saverId != null and saverId !=''">and saver_id = #{saverId}</if>
+                                                <if test="sourcePlatform != null and sourcePlatform !=''">and source_platform = #{sourcePlatform}</if>
+                                                <if test="referee != null and referee !=''">and referee = #{referee}</if>
+                                                <if test="address != null and address !=''">and address = #{address}</if>
+                                                <if test="occupation != null and occupation !=''">and occupation = #{occupation}</if>
+                                                <if test="regSource != null and regSource !=''">and reg_source = #{regSource}</if>
+                                                <if test="idPathFace != null and idPathFace !=''">and id_path_face = #{idPathFace}</if>
+                                                <if test="idPathEmblem != null and idPathEmblem !=''">and id_path_emblem = #{idPathEmblem}</if>
+                                                <if test="idPathHand != null and idPathHand !=''">and id_path_hand = #{idPathHand}</if>
+                                                <if test="distCode != null and distCode !=''">and dist_code = #{distCode}</if>
+                                                <if test="userIp != null and userIp !=''">and user_ip = #{userIp}</if>
+                                                <if test="setTranPwdTime != null and setTranPwdTime !=''">and set_tran_pwd_time = #{setTranPwdTime}</if>
+                                                <if test="deviceId != null and deviceId !=''">and device_id = #{deviceId}</if>
+                                                <if test="loginPwd != null and loginPwd !=''">and login_pwd = #{loginPwd}</if>
+                                                <if test="gesturePwd != null and gesturePwd !=''">and gesture_pwd = #{gesturePwd}</if>
+                                                <if test="faceIdPwd != null and faceIdPwd !=''">and face_id_pwd = #{faceIdPwd}</if>
+                                                <if test="userLabel != null and userLabel !=''">and user_label = #{userLabel}</if>
+                                                <if test="status != null and status !=''">and status = #{status}</if>
+                                                                </where>
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="fuzzyQuery" resultMap="UserRegInfoMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                                                                    <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                                                                            <if test="userId != null and userId !=''">and user_id like CONCAT(CONCAT('%',  #{userId}), '%')</if>
+                                                                                                            <if test="mobileNo != null and mobileNo !=''">and mobile_no like CONCAT(CONCAT('%',  #{mobileNo}), '%')</if>
+                                                                                                            <if test="idType != null and idType !=''">and id_type like CONCAT(CONCAT('%',  #{idType}), '%')</if>
+                                                                                                            <if test="idNo != null and idNo !=''">and id_no like CONCAT(CONCAT('%',  #{idNo}), '%')</if>
+                                                                                                            <if test="validDate != null and validDate !=''">and valid_date like CONCAT(CONCAT('%',  #{validDate}), '%')</if>
+                                                                                                            <if test="expiredDate != null and expiredDate !=''">and expired_date like CONCAT(CONCAT('%',  #{expiredDate}), '%')</if>
+                                                                                                            <if test="issueAuthority != null and issueAuthority !=''">and issue_authority like CONCAT(CONCAT('%',  #{issueAuthority}), '%')</if>
+                                                                                                            <if test="userName != null and userName !=''">and user_name like CONCAT(CONCAT('%',  #{userName}), '%')</if>
+                                                                                                            <if test="gender != null and gender !=''">and gender like CONCAT(CONCAT('%',  #{gender}), '%')</if>
+                                                                                                            <if test="birthDate != null and birthDate !=''">and birth_date like CONCAT(CONCAT('%',  #{birthDate}), '%')</if>
+                                                                                                            <if test="email != null and email !=''">and email like CONCAT(CONCAT('%',  #{email}), '%')</if>
+                                                                                                            <if test="tranPwd != null and tranPwd !=''">and tran_pwd like CONCAT(CONCAT('%',  #{tranPwd}), '%')</if>
+                                                                                                            <if test="saverId != null and saverId !=''">and saver_id like CONCAT(CONCAT('%',  #{saverId}), '%')</if>
+                                                                                                            <if test="sourcePlatform != null and sourcePlatform !=''">and source_platform like CONCAT(CONCAT('%',  #{sourcePlatform}), '%')</if>
+                                                                                                            <if test="referee != null and referee !=''">and referee like CONCAT(CONCAT('%',  #{referee}), '%')</if>
+                                                                                                            <if test="address != null and address !=''">and address like CONCAT(CONCAT('%',  #{address}), '%')</if>
+                                                                                                            <if test="occupation != null and occupation !=''">and occupation like CONCAT(CONCAT('%',  #{occupation}), '%')</if>
+                                                                                                            <if test="regSource != null and regSource !=''">and reg_source like CONCAT(CONCAT('%',  #{regSource}), '%')</if>
+                                                                                                            <if test="idPathFace != null and idPathFace !=''">and id_path_face like CONCAT(CONCAT('%',  #{idPathFace}), '%')</if>
+                                                                                                            <if test="idPathEmblem != null and idPathEmblem !=''">and id_path_emblem like CONCAT(CONCAT('%',  #{idPathEmblem}), '%')</if>
+                                                                                                            <if test="idPathHand != null and idPathHand !=''">and id_path_hand like CONCAT(CONCAT('%',  #{idPathHand}), '%')</if>
+                                                                                                            <if test="distCode != null and distCode !=''">and dist_code like CONCAT(CONCAT('%',  #{distCode}), '%')</if>
+                                                                                                            <if test="userIp != null and userIp !=''">and user_ip like CONCAT(CONCAT('%',  #{userIp}), '%')</if>
+                                                                                                            <if test="setTranPwdTime != null and setTranPwdTime !=''">and set_tran_pwd_time like CONCAT(CONCAT('%',  #{setTranPwdTime}), '%')</if>
+                                                                                                            <if test="deviceId != null and deviceId !=''">and device_id like CONCAT(CONCAT('%',  #{deviceId}), '%')</if>
+                                                                                                            <if test="loginPwd != null and loginPwd !=''">and login_pwd like CONCAT(CONCAT('%',  #{loginPwd}), '%')</if>
+                                                                                                            <if test="gesturePwd != null and gesturePwd !=''">and gesture_pwd like CONCAT(CONCAT('%',  #{gesturePwd}), '%')</if>
+                                                                                                            <if test="faceIdPwd != null and faceIdPwd !=''">and face_id_pwd like CONCAT(CONCAT('%',  #{faceIdPwd}), '%')</if>
+                                                                                                            <if test="userLabel != null and userLabel !=''">and user_label like CONCAT(CONCAT('%',  #{userLabel}), '%')</if>
+                                                                                                            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%',  #{status}), '%')</if>
+                                                                                                                </where>
+
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                        <if test="userId != null and userId !=''">and user_id = #{userId}</if>
+                                        <if test="mobileNo != null and mobileNo !=''">and mobile_no = #{mobileNo}</if>
+                                        <if test="idType != null and idType !=''">and id_type = #{idType}</if>
+                                        <if test="idNo != null and idNo !=''">and id_no = #{idNo}</if>
+                                        <if test="validDate != null and validDate !=''">and valid_date = #{validDate}</if>
+                                        <if test="expiredDate != null and expiredDate !=''">and expired_date = #{expiredDate}</if>
+                                        <if test="issueAuthority != null and issueAuthority !=''">and issue_authority = #{issueAuthority}</if>
+                                        <if test="userName != null and userName !=''">and user_name = #{userName}</if>
+                                        <if test="gender != null and gender !=''">and gender = #{gender}</if>
+                                        <if test="birthDate != null and birthDate !=''">and birth_date = #{birthDate}</if>
+                                        <if test="email != null and email !=''">and email = #{email}</if>
+                                        <if test="tranPwd != null and tranPwd !=''">and tran_pwd = #{tranPwd}</if>
+                                        <if test="saverId != null and saverId !=''">and saver_id = #{saverId}</if>
+                                        <if test="sourcePlatform != null and sourcePlatform !=''">and source_platform = #{sourcePlatform}</if>
+                                        <if test="referee != null and referee !=''">and referee = #{referee}</if>
+                                        <if test="address != null and address !=''">and address = #{address}</if>
+                                        <if test="occupation != null and occupation !=''">and occupation = #{occupation}</if>
+                                        <if test="regSource != null and regSource !=''">and reg_source = #{regSource}</if>
+                                        <if test="idPathFace != null and idPathFace !=''">and id_path_face = #{idPathFace}</if>
+                                        <if test="idPathEmblem != null and idPathEmblem !=''">and id_path_emblem = #{idPathEmblem}</if>
+                                        <if test="idPathHand != null and idPathHand !=''">and id_path_hand = #{idPathHand}</if>
+                                        <if test="distCode != null and distCode !=''">and dist_code = #{distCode}</if>
+                                        <if test="userIp != null and userIp !=''">and user_ip = #{userIp}</if>
+                                        <if test="setTranPwdTime != null and setTranPwdTime !=''">and set_tran_pwd_time = #{setTranPwdTime}</if>
+                                        <if test="deviceId != null and deviceId !=''">and device_id = #{deviceId}</if>
+                                        <if test="loginPwd != null and loginPwd !=''">and login_pwd = #{loginPwd}</if>
+                                        <if test="gesturePwd != null and gesturePwd !=''">and gesture_pwd = #{gesturePwd}</if>
+                                        <if test="faceIdPwd != null and faceIdPwd !=''">and face_id_pwd = #{faceIdPwd}</if>
+                                        <if test="userLabel != null and userLabel !=''">and user_label = #{userLabel}</if>
+                                        <if test="status != null and status !=''">and status = #{status}</if>
+                                    </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+        (tenant_id,user_id,mobile_no,id_type,id_no,valid_date,expired_date,issue_authority,user_name,gender,birth_date,email,tran_pwd,saver_id,source_platform,referee,address,occupation,reg_source,id_path_face,id_path_emblem,id_path_hand,dist_code,user_ip,set_tran_pwd_time,device_id,login_pwd,gesture_pwd,face_id_pwd,user_label,)
+        values
+        (#{tenantId},#{userId},#{mobileNo},#{idType},#{idNo},#{validDate},#{expiredDate},#{issueAuthority},#{userName},#{gender},#{birthDate},#{email},#{tranPwd},#{saverId},#{sourcePlatform},#{referee},#{address},#{occupation},#{regSource},#{idPathFace},#{idPathEmblem},#{idPathHand},#{distCode},#{userIp},#{setTranPwdTime},#{deviceId},#{loginPwd},#{gesturePwd},#{faceIdPwd},#{userLabel},)
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (        tenant_id,        user_id,        mobile_no,        id_type,        id_no,        valid_date,        expired_date,        issue_authority,        user_name,        gender,        birth_date,        email,        tran_pwd,        saver_id,        source_platform,        referee,        address,        occupation,        reg_source,        id_path_face,        id_path_emblem,        id_path_hand,        dist_code,        user_ip,        set_tran_pwd_time,        device_id,        login_pwd,        gesture_pwd,        face_id_pwd,        user_label,)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (            #{entity.tenantId},            #{entity.userId},            #{entity.mobileNo},            #{entity.idType},            #{entity.idNo},            #{entity.validDate},            #{entity.expiredDate},            #{entity.issueAuthority},            #{entity.userName},            #{entity.gender},            #{entity.birthDate},            #{entity.email},            #{entity.tranPwd},            #{entity.saverId},            #{entity.sourcePlatform},            #{entity.referee},            #{entity.address},            #{entity.occupation},            #{entity.regSource},            #{entity.idPathFace},            #{entity.idPathEmblem},            #{entity.idPathHand},            #{entity.distCode},            #{entity.userIp},            #{entity.setTranPwdTime},            #{entity.deviceId},            #{entity.loginPwd},            #{entity.gesturePwd},            #{entity.faceIdPwd},            #{entity.userLabel},)
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (        tenant_id,        user_id,        mobile_no,        id_type,        id_no,        valid_date,        expired_date,        issue_authority,        user_name,        gender,        birth_date,        email,        tran_pwd,        saver_id,        source_platform,        referee,        address,        occupation,        reg_source,        id_path_face,        id_path_emblem,        id_path_hand,        dist_code,        user_ip,        set_tran_pwd_time,        device_id,        login_pwd,        gesture_pwd,        face_id_pwd,        user_label,        status,)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tenantId},#{entity.userId},#{entity.mobileNo},#{entity.idType},#{entity.idNo},#{entity.validDate},#{entity.expiredDate},#{entity.issueAuthority},#{entity.userName},#{entity.gender},#{entity.birthDate},#{entity.email},#{entity.tranPwd},#{entity.saverId},#{entity.sourcePlatform},#{entity.referee},#{entity.address},#{entity.occupation},#{entity.regSource},#{entity.idPathFace},#{entity.idPathEmblem},#{entity.idPathHand},#{entity.distCode},#{entity.userIp},#{entity.setTranPwdTime},#{entity.deviceId},#{entity.loginPwd},#{entity.gesturePwd},#{entity.faceIdPwd},#{entity.userLabel},#{entity.status},)
+        </foreach>
+        on duplicate key update
+        tenant_id=values(tenant_id),
+    user_id=values(user_id),
+    mobile_no=values(mobile_no),
+    id_type=values(id_type),
+    id_no=values(id_no),
+    valid_date=values(valid_date),
+    expired_date=values(expired_date),
+    issue_authority=values(issue_authority),
+    user_name=values(user_name),
+    gender=values(gender),
+    birth_date=values(birth_date),
+    email=values(email),
+    tran_pwd=values(tran_pwd),
+    saver_id=values(saver_id),
+    source_platform=values(source_platform),
+    referee=values(referee),
+    address=values(address),
+    occupation=values(occupation),
+    reg_source=values(reg_source),
+    id_path_face=values(id_path_face),
+    id_path_emblem=values(id_path_emblem),
+    id_path_hand=values(id_path_hand),
+    dist_code=values(dist_code),
+    user_ip=values(user_ip),
+    set_tran_pwd_time=values(set_tran_pwd_time),
+    device_id=values(device_id),
+    login_pwd=values(login_pwd),
+    gesture_pwd=values(gesture_pwd),
+    face_id_pwd=values(face_id_pwd),
+    user_label=values(user_label),
+    status=values(status),
+        
+        </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update
+        <include refid="Table_Name"/>
+        <set>
+    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+    <if test="userId != null and userId != ''">user_id = #{userId},</if>
+    <if test="mobileNo != null and mobileNo != ''">mobile_no = #{mobileNo},</if>
+    <if test="idType != null and idType != ''">id_type = #{idType},</if>
+    <if test="idNo != null and idNo != ''">id_no = #{idNo},</if>
+    <if test="validDate != null and validDate != ''">valid_date = #{validDate},</if>
+    <if test="expiredDate != null and expiredDate != ''">expired_date = #{expiredDate},</if>
+    <if test="issueAuthority != null and issueAuthority != ''">issue_authority = #{issueAuthority},</if>
+    <if test="userName != null and userName != ''">user_name = #{userName},</if>
+    <if test="gender != null and gender != ''">gender = #{gender},</if>
+    <if test="birthDate != null and birthDate != ''">birth_date = #{birthDate},</if>
+    <if test="email != null and email != ''">email = #{email},</if>
+    <if test="tranPwd != null and tranPwd != ''">tran_pwd = #{tranPwd},</if>
+    <if test="saverId != null and saverId != ''">saver_id = #{saverId},</if>
+    <if test="sourcePlatform != null and sourcePlatform != ''">source_platform = #{sourcePlatform},</if>
+    <if test="referee != null and referee != ''">referee = #{referee},</if>
+    <if test="address != null and address != ''">address = #{address},</if>
+    <if test="occupation != null and occupation != ''">occupation = #{occupation},</if>
+    <if test="regSource != null and regSource != ''">reg_source = #{regSource},</if>
+    <if test="idPathFace != null and idPathFace != ''">id_path_face = #{idPathFace},</if>
+    <if test="idPathEmblem != null and idPathEmblem != ''">id_path_emblem = #{idPathEmblem},</if>
+    <if test="idPathHand != null and idPathHand != ''">id_path_hand = #{idPathHand},</if>
+    <if test="distCode != null and distCode != ''">dist_code = #{distCode},</if>
+    <if test="userIp != null and userIp != ''">user_ip = #{userIp},</if>
+    <if test="setTranPwdTime != null and setTranPwdTime != ''">set_tran_pwd_time = #{setTranPwdTime},</if>
+    <if test="deviceId != null and deviceId != ''">device_id = #{deviceId},</if>
+    <if test="loginPwd != null and loginPwd != ''">login_pwd = #{loginPwd},</if>
+    <if test="gesturePwd != null and gesturePwd != ''">gesture_pwd = #{gesturePwd},</if>
+    <if test="faceIdPwd != null and faceIdPwd != ''">face_id_pwd = #{faceIdPwd},</if>
+    <if test="userLabel != null and userLabel != ''">user_label = #{userLabel},</if>
+    <if test="status != null and status != ''">status = #{status},</if>
+        </set>
+        where id = #{id}
+        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from
+        <include refid="Table_Name"/>
+        where id = #{id}
+        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+    </delete>
+
+</mapper>
+

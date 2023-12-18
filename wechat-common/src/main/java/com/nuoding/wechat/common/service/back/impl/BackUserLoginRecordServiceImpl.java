@@ -34,6 +34,8 @@ public class BackUserLoginRecordServiceImpl implements BackUserLoginRecordServic
      */
     @Override
     public BackUserLoginRecordEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.backUserLoginRecordDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class BackUserLoginRecordServiceImpl implements BackUserLoginRecordServic
     public List<BackUserLoginRecordEntity> queryAllByLimit(BackUserLoginRecordEntity backUserLoginRecordEntity) {
         logger.info("queryAllByLimit begin.backUserLoginRecordEntity:{}", JsonUtil.obj2Json(backUserLoginRecordEntity));
         return this.backUserLoginRecordDao.queryAllByLimit(backUserLoginRecordEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param backUserLoginRecordEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<BackUserLoginRecordEntity> fuzzyQuery(BackUserLoginRecordEntity backUserLoginRecordEntity) {
+        logger.info("queryAllByLimit begin.backUserLoginRecordEntity:{}", JsonUtil.obj2Json(backUserLoginRecordEntity));
+        return this.backUserLoginRecordDao.fuzzyQuery(backUserLoginRecordEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param backUserLoginRecordEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public BackUserLoginRecordEntity selectOne(BackUserLoginRecordEntity backUserLoginRecordEntity) {
+        logger.info("queryAllByLimit begin.backUserLoginRecordEntity:{}", JsonUtil.obj2Json(backUserLoginRecordEntity));
+        return this.backUserLoginRecordDao.selectOne(backUserLoginRecordEntity);
     }
 
     /**

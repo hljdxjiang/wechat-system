@@ -34,6 +34,8 @@ public class SysPageInfoServiceImpl implements SysPageInfoService {
      */
     @Override
     public SysPageInfoEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.sysPageInfoDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class SysPageInfoServiceImpl implements SysPageInfoService {
     public List<SysPageInfoEntity> queryAllByLimit(SysPageInfoEntity sysPageInfoEntity) {
         logger.info("queryAllByLimit begin.sysPageInfoEntity:{}", JsonUtil.obj2Json(sysPageInfoEntity));
         return this.sysPageInfoDao.queryAllByLimit(sysPageInfoEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param sysPageInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<SysPageInfoEntity> fuzzyQuery(SysPageInfoEntity sysPageInfoEntity) {
+        logger.info("queryAllByLimit begin.sysPageInfoEntity:{}", JsonUtil.obj2Json(sysPageInfoEntity));
+        return this.sysPageInfoDao.fuzzyQuery(sysPageInfoEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param sysPageInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public SysPageInfoEntity selectOne(SysPageInfoEntity sysPageInfoEntity) {
+        logger.info("queryAllByLimit begin.sysPageInfoEntity:{}", JsonUtil.obj2Json(sysPageInfoEntity));
+        return this.sysPageInfoDao.selectOne(sysPageInfoEntity);
     }
 
     /**

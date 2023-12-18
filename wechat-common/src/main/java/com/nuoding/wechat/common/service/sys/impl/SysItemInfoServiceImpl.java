@@ -34,6 +34,8 @@ public class SysItemInfoServiceImpl implements SysItemInfoService {
      */
     @Override
     public SysItemInfoEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.sysItemInfoDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class SysItemInfoServiceImpl implements SysItemInfoService {
     public List<SysItemInfoEntity> queryAllByLimit(SysItemInfoEntity sysItemInfoEntity) {
         logger.info("queryAllByLimit begin.sysItemInfoEntity:{}", JsonUtil.obj2Json(sysItemInfoEntity));
         return this.sysItemInfoDao.queryAllByLimit(sysItemInfoEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param sysItemInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<SysItemInfoEntity> fuzzyQuery(SysItemInfoEntity sysItemInfoEntity) {
+        logger.info("queryAllByLimit begin.sysItemInfoEntity:{}", JsonUtil.obj2Json(sysItemInfoEntity));
+        return this.sysItemInfoDao.fuzzyQuery(sysItemInfoEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param sysItemInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public SysItemInfoEntity selectOne(SysItemInfoEntity sysItemInfoEntity) {
+        logger.info("queryAllByLimit begin.sysItemInfoEntity:{}", JsonUtil.obj2Json(sysItemInfoEntity));
+        return this.sysItemInfoDao.selectOne(sysItemInfoEntity);
     }
 
     /**

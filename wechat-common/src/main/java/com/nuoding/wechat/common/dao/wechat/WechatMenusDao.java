@@ -9,7 +9,7 @@ import java.util.List;
  * 微信菜单表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:38
  */
 public interface WechatMenusDao {
 
@@ -28,6 +28,22 @@ public interface WechatMenusDao {
      * @return 对象列表
      */
     List<WechatMenusEntity> queryAllByLimit(WechatMenusEntity wechatMenusEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param wechatMenusEntity 查询条件
+     * @return 对象列表
+     */
+    WechatMenusEntity selectOne(WechatMenusEntity wechatMenusEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param wechatMenusEntity 查询条件
+     * @return 对象列表
+     */
+    List<WechatMenusEntity> fuzzyQuery(WechatMenusEntity wechatMenusEntity);
 
     /**
      * 统计总行数

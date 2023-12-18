@@ -9,7 +9,7 @@ import java.util.List;
  * 系统菜单表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:04
+ * @Date: 2023-12-18 14:57:37
  */
 public interface BackSysMenusDao {
 
@@ -28,6 +28,22 @@ public interface BackSysMenusDao {
      * @return 对象列表
      */
     List<BackSysMenusEntity> queryAllByLimit(BackSysMenusEntity backSysMenusEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param backSysMenusEntity 查询条件
+     * @return 对象列表
+     */
+    BackSysMenusEntity selectOne(BackSysMenusEntity backSysMenusEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param backSysMenusEntity 查询条件
+     * @return 对象列表
+     */
+    List<BackSysMenusEntity> fuzzyQuery(BackSysMenusEntity backSysMenusEntity);
 
     /**
      * 统计总行数

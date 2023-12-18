@@ -34,6 +34,8 @@ public class SysPageTypeInfoServiceImpl implements SysPageTypeInfoService {
      */
     @Override
     public SysPageTypeInfoEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.sysPageTypeInfoDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class SysPageTypeInfoServiceImpl implements SysPageTypeInfoService {
     public List<SysPageTypeInfoEntity> queryAllByLimit(SysPageTypeInfoEntity sysPageTypeInfoEntity) {
         logger.info("queryAllByLimit begin.sysPageTypeInfoEntity:{}", JsonUtil.obj2Json(sysPageTypeInfoEntity));
         return this.sysPageTypeInfoDao.queryAllByLimit(sysPageTypeInfoEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param sysPageTypeInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<SysPageTypeInfoEntity> fuzzyQuery(SysPageTypeInfoEntity sysPageTypeInfoEntity) {
+        logger.info("queryAllByLimit begin.sysPageTypeInfoEntity:{}", JsonUtil.obj2Json(sysPageTypeInfoEntity));
+        return this.sysPageTypeInfoDao.fuzzyQuery(sysPageTypeInfoEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param sysPageTypeInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public SysPageTypeInfoEntity selectOne(SysPageTypeInfoEntity sysPageTypeInfoEntity) {
+        logger.info("queryAllByLimit begin.sysPageTypeInfoEntity:{}", JsonUtil.obj2Json(sysPageTypeInfoEntity));
+        return this.sysPageTypeInfoDao.selectOne(sysPageTypeInfoEntity);
     }
 
     /**

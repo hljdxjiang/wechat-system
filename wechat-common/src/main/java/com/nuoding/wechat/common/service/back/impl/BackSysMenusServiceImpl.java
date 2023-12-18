@@ -34,6 +34,8 @@ public class BackSysMenusServiceImpl implements BackSysMenusService {
      */
     @Override
     public BackSysMenusEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.backSysMenusDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class BackSysMenusServiceImpl implements BackSysMenusService {
     public List<BackSysMenusEntity> queryAllByLimit(BackSysMenusEntity backSysMenusEntity) {
         logger.info("queryAllByLimit begin.backSysMenusEntity:{}", JsonUtil.obj2Json(backSysMenusEntity));
         return this.backSysMenusDao.queryAllByLimit(backSysMenusEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param backSysMenusEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<BackSysMenusEntity> fuzzyQuery(BackSysMenusEntity backSysMenusEntity) {
+        logger.info("queryAllByLimit begin.backSysMenusEntity:{}", JsonUtil.obj2Json(backSysMenusEntity));
+        return this.backSysMenusDao.fuzzyQuery(backSysMenusEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param backSysMenusEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public BackSysMenusEntity selectOne(BackSysMenusEntity backSysMenusEntity) {
+        logger.info("queryAllByLimit begin.backSysMenusEntity:{}", JsonUtil.obj2Json(backSysMenusEntity));
+        return this.backSysMenusDao.selectOne(backSysMenusEntity);
     }
 
     /**

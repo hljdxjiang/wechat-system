@@ -34,6 +34,8 @@ public class SysPageFlowInfoServiceImpl implements SysPageFlowInfoService {
      */
     @Override
     public SysPageFlowInfoEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.sysPageFlowInfoDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class SysPageFlowInfoServiceImpl implements SysPageFlowInfoService {
     public List<SysPageFlowInfoEntity> queryAllByLimit(SysPageFlowInfoEntity sysPageFlowInfoEntity) {
         logger.info("queryAllByLimit begin.sysPageFlowInfoEntity:{}", JsonUtil.obj2Json(sysPageFlowInfoEntity));
         return this.sysPageFlowInfoDao.queryAllByLimit(sysPageFlowInfoEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param sysPageFlowInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<SysPageFlowInfoEntity> fuzzyQuery(SysPageFlowInfoEntity sysPageFlowInfoEntity) {
+        logger.info("queryAllByLimit begin.sysPageFlowInfoEntity:{}", JsonUtil.obj2Json(sysPageFlowInfoEntity));
+        return this.sysPageFlowInfoDao.fuzzyQuery(sysPageFlowInfoEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param sysPageFlowInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public SysPageFlowInfoEntity selectOne(SysPageFlowInfoEntity sysPageFlowInfoEntity) {
+        logger.info("queryAllByLimit begin.sysPageFlowInfoEntity:{}", JsonUtil.obj2Json(sysPageFlowInfoEntity));
+        return this.sysPageFlowInfoDao.selectOne(sysPageFlowInfoEntity);
     }
 
     /**

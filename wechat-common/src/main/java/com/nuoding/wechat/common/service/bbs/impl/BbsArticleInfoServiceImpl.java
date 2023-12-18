@@ -34,6 +34,8 @@ public class BbsArticleInfoServiceImpl implements BbsArticleInfoService {
      */
     @Override
     public BbsArticleInfoEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.bbsArticleInfoDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class BbsArticleInfoServiceImpl implements BbsArticleInfoService {
     public List<BbsArticleInfoEntity> queryAllByLimit(BbsArticleInfoEntity bbsArticleInfoEntity) {
         logger.info("queryAllByLimit begin.bbsArticleInfoEntity:{}", JsonUtil.obj2Json(bbsArticleInfoEntity));
         return this.bbsArticleInfoDao.queryAllByLimit(bbsArticleInfoEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param bbsArticleInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<BbsArticleInfoEntity> fuzzyQuery(BbsArticleInfoEntity bbsArticleInfoEntity) {
+        logger.info("queryAllByLimit begin.bbsArticleInfoEntity:{}", JsonUtil.obj2Json(bbsArticleInfoEntity));
+        return this.bbsArticleInfoDao.fuzzyQuery(bbsArticleInfoEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param bbsArticleInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public BbsArticleInfoEntity selectOne(BbsArticleInfoEntity bbsArticleInfoEntity) {
+        logger.info("queryAllByLimit begin.bbsArticleInfoEntity:{}", JsonUtil.obj2Json(bbsArticleInfoEntity));
+        return this.bbsArticleInfoDao.selectOne(bbsArticleInfoEntity);
     }
 
     /**

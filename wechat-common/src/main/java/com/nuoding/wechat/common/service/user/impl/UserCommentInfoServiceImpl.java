@@ -34,6 +34,8 @@ public class UserCommentInfoServiceImpl implements UserCommentInfoService {
      */
     @Override
     public UserCommentInfoEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.userCommentInfoDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class UserCommentInfoServiceImpl implements UserCommentInfoService {
     public List<UserCommentInfoEntity> queryAllByLimit(UserCommentInfoEntity userCommentInfoEntity) {
         logger.info("queryAllByLimit begin.userCommentInfoEntity:{}", JsonUtil.obj2Json(userCommentInfoEntity));
         return this.userCommentInfoDao.queryAllByLimit(userCommentInfoEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param userCommentInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<UserCommentInfoEntity> fuzzyQuery(UserCommentInfoEntity userCommentInfoEntity) {
+        logger.info("queryAllByLimit begin.userCommentInfoEntity:{}", JsonUtil.obj2Json(userCommentInfoEntity));
+        return this.userCommentInfoDao.fuzzyQuery(userCommentInfoEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param userCommentInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public UserCommentInfoEntity selectOne(UserCommentInfoEntity userCommentInfoEntity) {
+        logger.info("queryAllByLimit begin.userCommentInfoEntity:{}", JsonUtil.obj2Json(userCommentInfoEntity));
+        return this.userCommentInfoDao.selectOne(userCommentInfoEntity);
     }
 
     /**

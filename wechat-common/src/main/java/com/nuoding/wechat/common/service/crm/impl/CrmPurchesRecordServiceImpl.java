@@ -34,6 +34,8 @@ public class CrmPurchesRecordServiceImpl implements CrmPurchesRecordService {
      */
     @Override
     public CrmPurchesRecordEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.crmPurchesRecordDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class CrmPurchesRecordServiceImpl implements CrmPurchesRecordService {
     public List<CrmPurchesRecordEntity> queryAllByLimit(CrmPurchesRecordEntity crmPurchesRecordEntity) {
         logger.info("queryAllByLimit begin.crmPurchesRecordEntity:{}", JsonUtil.obj2Json(crmPurchesRecordEntity));
         return this.crmPurchesRecordDao.queryAllByLimit(crmPurchesRecordEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param crmPurchesRecordEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<CrmPurchesRecordEntity> fuzzyQuery(CrmPurchesRecordEntity crmPurchesRecordEntity) {
+        logger.info("queryAllByLimit begin.crmPurchesRecordEntity:{}", JsonUtil.obj2Json(crmPurchesRecordEntity));
+        return this.crmPurchesRecordDao.fuzzyQuery(crmPurchesRecordEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param crmPurchesRecordEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public CrmPurchesRecordEntity selectOne(CrmPurchesRecordEntity crmPurchesRecordEntity) {
+        logger.info("queryAllByLimit begin.crmPurchesRecordEntity:{}", JsonUtil.obj2Json(crmPurchesRecordEntity));
+        return this.crmPurchesRecordDao.selectOne(crmPurchesRecordEntity);
     }
 
     /**

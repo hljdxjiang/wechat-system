@@ -29,6 +29,22 @@ public interface UserOperaRecordService {
     List<UserOperaRecordEntity> queryAllByLimit(UserOperaRecordEntity userOperaRecordEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param userOperaRecordEntity 筛选条件
+     * @return 查询结果
+     */
+    List<UserOperaRecordEntity> fuzzyQuery(UserOperaRecordEntity userOperaRecordEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param userOperaRecordEntity 筛选条件
+     * @return 查询结果
+     */
+    UserOperaRecordEntity selectOne(UserOperaRecordEntity userOperaRecordEntity);
+
+    /**
      * 新增数据
      *
      * @param userOperaRecordEntity 实例对象

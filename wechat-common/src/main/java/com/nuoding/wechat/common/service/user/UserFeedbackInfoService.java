@@ -29,6 +29,22 @@ public interface UserFeedbackInfoService {
     List<UserFeedbackInfoEntity> queryAllByLimit(UserFeedbackInfoEntity userFeedbackInfoEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param userFeedbackInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    List<UserFeedbackInfoEntity> fuzzyQuery(UserFeedbackInfoEntity userFeedbackInfoEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param userFeedbackInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    UserFeedbackInfoEntity selectOne(UserFeedbackInfoEntity userFeedbackInfoEntity);
+
+    /**
      * 新增数据
      *
      * @param userFeedbackInfoEntity 实例对象

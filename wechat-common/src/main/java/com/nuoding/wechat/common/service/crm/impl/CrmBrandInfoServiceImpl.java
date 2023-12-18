@@ -34,6 +34,8 @@ public class CrmBrandInfoServiceImpl implements CrmBrandInfoService {
      */
     @Override
     public CrmBrandInfoEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.crmBrandInfoDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class CrmBrandInfoServiceImpl implements CrmBrandInfoService {
     public List<CrmBrandInfoEntity> queryAllByLimit(CrmBrandInfoEntity crmBrandInfoEntity) {
         logger.info("queryAllByLimit begin.crmBrandInfoEntity:{}", JsonUtil.obj2Json(crmBrandInfoEntity));
         return this.crmBrandInfoDao.queryAllByLimit(crmBrandInfoEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param crmBrandInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<CrmBrandInfoEntity> fuzzyQuery(CrmBrandInfoEntity crmBrandInfoEntity) {
+        logger.info("queryAllByLimit begin.crmBrandInfoEntity:{}", JsonUtil.obj2Json(crmBrandInfoEntity));
+        return this.crmBrandInfoDao.fuzzyQuery(crmBrandInfoEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param crmBrandInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public CrmBrandInfoEntity selectOne(CrmBrandInfoEntity crmBrandInfoEntity) {
+        logger.info("queryAllByLimit begin.crmBrandInfoEntity:{}", JsonUtil.obj2Json(crmBrandInfoEntity));
+        return this.crmBrandInfoDao.selectOne(crmBrandInfoEntity);
     }
 
     /**

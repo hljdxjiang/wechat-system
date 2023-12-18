@@ -34,6 +34,8 @@ public class SysTenantTokenServiceImpl implements SysTenantTokenService {
      */
     @Override
     public SysTenantTokenEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.sysTenantTokenDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class SysTenantTokenServiceImpl implements SysTenantTokenService {
     public List<SysTenantTokenEntity> queryAllByLimit(SysTenantTokenEntity sysTenantTokenEntity) {
         logger.info("queryAllByLimit begin.sysTenantTokenEntity:{}", JsonUtil.obj2Json(sysTenantTokenEntity));
         return this.sysTenantTokenDao.queryAllByLimit(sysTenantTokenEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param sysTenantTokenEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<SysTenantTokenEntity> fuzzyQuery(SysTenantTokenEntity sysTenantTokenEntity) {
+        logger.info("queryAllByLimit begin.sysTenantTokenEntity:{}", JsonUtil.obj2Json(sysTenantTokenEntity));
+        return this.sysTenantTokenDao.fuzzyQuery(sysTenantTokenEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param sysTenantTokenEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public SysTenantTokenEntity selectOne(SysTenantTokenEntity sysTenantTokenEntity) {
+        logger.info("queryAllByLimit begin.sysTenantTokenEntity:{}", JsonUtil.obj2Json(sysTenantTokenEntity));
+        return this.sysTenantTokenDao.selectOne(sysTenantTokenEntity);
     }
 
     /**

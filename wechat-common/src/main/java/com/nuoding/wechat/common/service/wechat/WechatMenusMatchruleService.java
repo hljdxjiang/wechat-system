@@ -29,6 +29,22 @@ public interface WechatMenusMatchruleService {
     List<WechatMenusMatchruleEntity> queryAllByLimit(WechatMenusMatchruleEntity wechatMenusMatchruleEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param wechatMenusMatchruleEntity 筛选条件
+     * @return 查询结果
+     */
+    List<WechatMenusMatchruleEntity> fuzzyQuery(WechatMenusMatchruleEntity wechatMenusMatchruleEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param wechatMenusMatchruleEntity 筛选条件
+     * @return 查询结果
+     */
+    WechatMenusMatchruleEntity selectOne(WechatMenusMatchruleEntity wechatMenusMatchruleEntity);
+
+    /**
      * 新增数据
      *
      * @param wechatMenusMatchruleEntity 实例对象

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nuoding.wechat.common.dao.user.UserCommentInfoDao">
+
+    <resultMap type="com.nuoding.wechat.common.entity.user.UserCommentInfoEntity" id="UserCommentInfoMap">
+            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
+        <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+        <result property="commentId" column="comment_id" jdbcType="VARCHAR"/>
+        <result property="commentPid" column="comment_pid" jdbcType="VARCHAR"/>
+        <result property="commentDetail" column="comment_detail" jdbcType="VARCHAR"/>
+        <result property="relateType" column="relate_type" jdbcType="VARCHAR"/>
+        <result property="relateId" column="relate_id" jdbcType="VARCHAR"/>
+        <result property="trampleAmount" column="trample_amount" jdbcType="INTEGER"/>
+        <result property="crownAmount" column="crown_amount" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Table_Name">
+        user_comment_info
+    </sql>
+
+    <sql id="Base_Column_List">
+        id,tenant_id,user_id,comment_id,comment_pid,comment_detail,relate_type,relate_id,trample_amount,crown_amount,create_time,last_modified_time    </sql>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="UserCommentInfoMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="UserCommentInfoMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                <if test="userId != null and userId !=''">and user_id = #{userId}</if>
+                                                <if test="commentId != null and commentId !=''">and comment_id = #{commentId}</if>
+                                                <if test="commentPid != null and commentPid !=''">and comment_pid = #{commentPid}</if>
+                                                <if test="commentDetail != null and commentDetail !=''">and comment_detail = #{commentDetail}</if>
+                                                <if test="relateType != null and relateType !=''">and relate_type = #{relateType}</if>
+                                                <if test="relateId != null and relateId !=''">and relate_id = #{relateId}</if>
+                                                <if test="trampleAmount != null and trampleAmount !=''">and trample_amount = #{trampleAmount}</if>
+                                                <if test="crownAmount != null and crownAmount !=''">and crown_amount = #{crownAmount}</if>
+                                                            </where>
+    </select>
+
+    <!--查询一条-->
+    <select id="selectOne" resultMap="UserCommentInfoMap">
+    select
+    <include refid="Base_Column_List"/>
+    from
+    <include refid="Table_Name"/>
+    <where>
+                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                <if test="userId != null and userId !=''">and user_id = #{userId}</if>
+                                                <if test="commentId != null and commentId !=''">and comment_id = #{commentId}</if>
+                                                <if test="commentPid != null and commentPid !=''">and comment_pid = #{commentPid}</if>
+                                                <if test="commentDetail != null and commentDetail !=''">and comment_detail = #{commentDetail}</if>
+                                                <if test="relateType != null and relateType !=''">and relate_type = #{relateType}</if>
+                                                <if test="relateId != null and relateId !=''">and relate_id = #{relateId}</if>
+                                                <if test="trampleAmount != null and trampleAmount !=''">and trample_amount = #{trampleAmount}</if>
+                                                <if test="crownAmount != null and crownAmount !=''">and crown_amount = #{crownAmount}</if>
+                                                                </where>
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="fuzzyQuery" resultMap="UserCommentInfoMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                                                                    <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                                                                            <if test="userId != null and userId !=''">and user_id like CONCAT(CONCAT('%',  #{userId}), '%')</if>
+                                                                                                            <if test="commentId != null and commentId !=''">and comment_id like CONCAT(CONCAT('%',  #{commentId}), '%')</if>
+                                                                                                            <if test="commentPid != null and commentPid !=''">and comment_pid like CONCAT(CONCAT('%',  #{commentPid}), '%')</if>
+                                                                                                            <if test="commentDetail != null and commentDetail !=''">and comment_detail like CONCAT(CONCAT('%',  #{commentDetail}), '%')</if>
+                                                                                                            <if test="relateType != null and relateType !=''">and relate_type like CONCAT(CONCAT('%',  #{relateType}), '%')</if>
+                                                                                                            <if test="relateId != null and relateId !=''">and relate_id like CONCAT(CONCAT('%',  #{relateId}), '%')</if>
+                                                                                                            <if test="trampleAmount != null and trampleAmount !=''">and trample_amount like CONCAT(CONCAT('%',  #{trampleAmount}), '%')</if>
+                                                                                                            <if test="crownAmount != null and crownAmount !=''">and crown_amount like CONCAT(CONCAT('%',  #{crownAmount}), '%')</if>
+                                                                                                                </where>
+
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                        <if test="userId != null and userId !=''">and user_id = #{userId}</if>
+                                        <if test="commentId != null and commentId !=''">and comment_id = #{commentId}</if>
+                                        <if test="commentPid != null and commentPid !=''">and comment_pid = #{commentPid}</if>
+                                        <if test="commentDetail != null and commentDetail !=''">and comment_detail = #{commentDetail}</if>
+                                        <if test="relateType != null and relateType !=''">and relate_type = #{relateType}</if>
+                                        <if test="relateId != null and relateId !=''">and relate_id = #{relateId}</if>
+                                        <if test="trampleAmount != null and trampleAmount !=''">and trample_amount = #{trampleAmount}</if>
+                                        <if test="crownAmount != null and crownAmount !=''">and crown_amount = #{crownAmount}</if>
+                                    </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+        (tenant_id,user_id,comment_id,comment_pid,comment_detail,relate_type,relate_id,trample_amount,crown_amount,)
+        values
+        (#{tenantId},#{userId},#{commentId},#{commentPid},#{commentDetail},#{relateType},#{relateId},#{trampleAmount},#{crownAmount},)
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (        tenant_id,        user_id,        comment_id,        comment_pid,        comment_detail,        relate_type,        relate_id,        trample_amount,        crown_amount,)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (            #{entity.tenantId},            #{entity.userId},            #{entity.commentId},            #{entity.commentPid},            #{entity.commentDetail},            #{entity.relateType},            #{entity.relateId},            #{entity.trampleAmount},            #{entity.crownAmount},)
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (        tenant_id,        user_id,        comment_id,        comment_pid,        comment_detail,        relate_type,        relate_id,        trample_amount,        crown_amount,)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tenantId},#{entity.userId},#{entity.commentId},#{entity.commentPid},#{entity.commentDetail},#{entity.relateType},#{entity.relateId},#{entity.trampleAmount},#{entity.crownAmount},)
+        </foreach>
+        on duplicate key update
+        tenant_id=values(tenant_id),
+    user_id=values(user_id),
+    comment_id=values(comment_id),
+    comment_pid=values(comment_pid),
+    comment_detail=values(comment_detail),
+    relate_type=values(relate_type),
+    relate_id=values(relate_id),
+    trample_amount=values(trample_amount),
+    crown_amount=values(crown_amount),
+        
+        </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update
+        <include refid="Table_Name"/>
+        <set>
+    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+    <if test="userId != null and userId != ''">user_id = #{userId},</if>
+    <if test="commentId != null and commentId != ''">comment_id = #{commentId},</if>
+    <if test="commentPid != null and commentPid != ''">comment_pid = #{commentPid},</if>
+    <if test="commentDetail != null and commentDetail != ''">comment_detail = #{commentDetail},</if>
+    <if test="relateType != null and relateType != ''">relate_type = #{relateType},</if>
+    <if test="relateId != null and relateId != ''">relate_id = #{relateId},</if>
+    <if test="trampleAmount != null and trampleAmount != ''">trample_amount = #{trampleAmount},</if>
+    <if test="crownAmount != null and crownAmount != ''">crown_amount = #{crownAmount},</if>
+        </set>
+        where id = #{id}
+        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from
+        <include refid="Table_Name"/>
+        where id = #{id}
+        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+    </delete>
+
+</mapper>
+

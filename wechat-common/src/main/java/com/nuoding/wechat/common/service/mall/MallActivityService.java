@@ -29,6 +29,22 @@ public interface MallActivityService {
     List<MallActivityEntity> queryAllByLimit(MallActivityEntity mallActivityEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param mallActivityEntity 筛选条件
+     * @return 查询结果
+     */
+    List<MallActivityEntity> fuzzyQuery(MallActivityEntity mallActivityEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param mallActivityEntity 筛选条件
+     * @return 查询结果
+     */
+    MallActivityEntity selectOne(MallActivityEntity mallActivityEntity);
+
+    /**
      * 新增数据
      *
      * @param mallActivityEntity 实例对象

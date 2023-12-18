@@ -34,6 +34,8 @@ public class MallCouponInfoServiceImpl implements MallCouponInfoService {
      */
     @Override
     public MallCouponInfoEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.mallCouponInfoDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class MallCouponInfoServiceImpl implements MallCouponInfoService {
     public List<MallCouponInfoEntity> queryAllByLimit(MallCouponInfoEntity mallCouponInfoEntity) {
         logger.info("queryAllByLimit begin.mallCouponInfoEntity:{}", JsonUtil.obj2Json(mallCouponInfoEntity));
         return this.mallCouponInfoDao.queryAllByLimit(mallCouponInfoEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param mallCouponInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<MallCouponInfoEntity> fuzzyQuery(MallCouponInfoEntity mallCouponInfoEntity) {
+        logger.info("queryAllByLimit begin.mallCouponInfoEntity:{}", JsonUtil.obj2Json(mallCouponInfoEntity));
+        return this.mallCouponInfoDao.fuzzyQuery(mallCouponInfoEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param mallCouponInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public MallCouponInfoEntity selectOne(MallCouponInfoEntity mallCouponInfoEntity) {
+        logger.info("queryAllByLimit begin.mallCouponInfoEntity:{}", JsonUtil.obj2Json(mallCouponInfoEntity));
+        return this.mallCouponInfoDao.selectOne(mallCouponInfoEntity);
     }
 
     /**

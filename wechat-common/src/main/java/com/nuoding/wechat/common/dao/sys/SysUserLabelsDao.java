@@ -9,7 +9,7 @@ import java.util.List;
  * 客户信息表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:38
  */
 public interface SysUserLabelsDao {
 
@@ -28,6 +28,22 @@ public interface SysUserLabelsDao {
      * @return 对象列表
      */
     List<SysUserLabelsEntity> queryAllByLimit(SysUserLabelsEntity sysUserLabelsEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param sysUserLabelsEntity 查询条件
+     * @return 对象列表
+     */
+    SysUserLabelsEntity selectOne(SysUserLabelsEntity sysUserLabelsEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param sysUserLabelsEntity 查询条件
+     * @return 对象列表
+     */
+    List<SysUserLabelsEntity> fuzzyQuery(SysUserLabelsEntity sysUserLabelsEntity);
 
     /**
      * 统计总行数

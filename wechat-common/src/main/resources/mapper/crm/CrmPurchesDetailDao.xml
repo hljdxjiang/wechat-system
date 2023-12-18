@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nuoding.wechat.common.dao.crm.CrmPurchesDetailDao">
+
+    <resultMap type="com.nuoding.wechat.common.entity.crm.CrmPurchesDetailEntity" id="CrmPurchesDetailMap">
+            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
+        <result property="brandId" column="brand_id" jdbcType="VARCHAR"/>
+        <result property="batchId" column="batch_id" jdbcType="VARCHAR"/>
+        <result property="prodId" column="prod_id" jdbcType="VARCHAR"/>
+        <result property="amount" column="amount" jdbcType="INTEGER"/>
+        <result property="prodPrice" column="prod_price" jdbcType="INTEGER"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Table_Name">
+        crm_purches_detail
+    </sql>
+
+    <sql id="Base_Column_List">
+        id,tenant_id,brand_id,batch_id,prod_id,amount,prod_price,remark,create_time    </sql>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="CrmPurchesDetailMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="CrmPurchesDetailMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                <if test="brandId != null and brandId !=''">and brand_id = #{brandId}</if>
+                                                <if test="batchId != null and batchId !=''">and batch_id = #{batchId}</if>
+                                                <if test="prodId != null and prodId !=''">and prod_id = #{prodId}</if>
+                                                <if test="amount != null and amount !=''">and amount = #{amount}</if>
+                                                <if test="prodPrice != null and prodPrice !=''">and prod_price = #{prodPrice}</if>
+                                                <if test="remark != null and remark !=''">and remark = #{remark}</if>
+                                        </where>
+    </select>
+
+    <!--查询一条-->
+    <select id="selectOne" resultMap="CrmPurchesDetailMap">
+    select
+    <include refid="Base_Column_List"/>
+    from
+    <include refid="Table_Name"/>
+    <where>
+                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                <if test="brandId != null and brandId !=''">and brand_id = #{brandId}</if>
+                                                <if test="batchId != null and batchId !=''">and batch_id = #{batchId}</if>
+                                                <if test="prodId != null and prodId !=''">and prod_id = #{prodId}</if>
+                                                <if test="amount != null and amount !=''">and amount = #{amount}</if>
+                                                <if test="prodPrice != null and prodPrice !=''">and prod_price = #{prodPrice}</if>
+                                                <if test="remark != null and remark !=''">and remark = #{remark}</if>
+                                            </where>
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="fuzzyQuery" resultMap="CrmPurchesDetailMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                                                                    <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                                                                            <if test="brandId != null and brandId !=''">and brand_id like CONCAT(CONCAT('%',  #{brandId}), '%')</if>
+                                                                                                            <if test="batchId != null and batchId !=''">and batch_id like CONCAT(CONCAT('%',  #{batchId}), '%')</if>
+                                                                                                            <if test="prodId != null and prodId !=''">and prod_id like CONCAT(CONCAT('%',  #{prodId}), '%')</if>
+                                                                                                            <if test="amount != null and amount !=''">and amount like CONCAT(CONCAT('%',  #{amount}), '%')</if>
+                                                                                                            <if test="prodPrice != null and prodPrice !=''">and prod_price like CONCAT(CONCAT('%',  #{prodPrice}), '%')</if>
+                                                                                                            <if test="remark != null and remark !=''">and remark like CONCAT(CONCAT('%',  #{remark}), '%')</if>
+                                                                                    </where>
+
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                        <if test="brandId != null and brandId !=''">and brand_id = #{brandId}</if>
+                                        <if test="batchId != null and batchId !=''">and batch_id = #{batchId}</if>
+                                        <if test="prodId != null and prodId !=''">and prod_id = #{prodId}</if>
+                                        <if test="amount != null and amount !=''">and amount = #{amount}</if>
+                                        <if test="prodPrice != null and prodPrice !=''">and prod_price = #{prodPrice}</if>
+                                        <if test="remark != null and remark !=''">and remark = #{remark}</if>
+                        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+        (tenant_id,brand_id,batch_id,prod_id,amount,prod_price,remark,)
+        values
+        (#{tenantId},#{brandId},#{batchId},#{prodId},#{amount},#{prodPrice},#{remark},)
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (        tenant_id,        brand_id,        batch_id,        prod_id,        amount,        prod_price,        remark,)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (            #{entity.tenantId},            #{entity.brandId},            #{entity.batchId},            #{entity.prodId},            #{entity.amount},            #{entity.prodPrice},            #{entity.remark},)
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (        tenant_id,        brand_id,        batch_id,        prod_id,        amount,        prod_price,        remark,)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tenantId},#{entity.brandId},#{entity.batchId},#{entity.prodId},#{entity.amount},#{entity.prodPrice},#{entity.remark},)
+        </foreach>
+        on duplicate key update
+        tenant_id=values(tenant_id),
+    brand_id=values(brand_id),
+    batch_id=values(batch_id),
+    prod_id=values(prod_id),
+    amount=values(amount),
+    prod_price=values(prod_price),
+    remark=values(remark),
+    
+        </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update
+        <include refid="Table_Name"/>
+        <set>
+    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+    <if test="brandId != null and brandId != ''">brand_id = #{brandId},</if>
+    <if test="batchId != null and batchId != ''">batch_id = #{batchId},</if>
+    <if test="prodId != null and prodId != ''">prod_id = #{prodId},</if>
+    <if test="amount != null and amount != ''">amount = #{amount},</if>
+    <if test="prodPrice != null and prodPrice != ''">prod_price = #{prodPrice},</if>
+    <if test="remark != null and remark != ''">remark = #{remark},</if>
+        </set>
+        where id = #{id}
+        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from
+        <include refid="Table_Name"/>
+        where id = #{id}
+        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+    </delete>
+
+</mapper>
+

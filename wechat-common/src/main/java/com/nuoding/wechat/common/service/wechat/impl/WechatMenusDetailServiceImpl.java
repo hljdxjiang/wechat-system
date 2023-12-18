@@ -34,6 +34,8 @@ public class WechatMenusDetailServiceImpl implements WechatMenusDetailService {
      */
     @Override
     public WechatMenusDetailEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.wechatMenusDetailDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class WechatMenusDetailServiceImpl implements WechatMenusDetailService {
     public List<WechatMenusDetailEntity> queryAllByLimit(WechatMenusDetailEntity wechatMenusDetailEntity) {
         logger.info("queryAllByLimit begin.wechatMenusDetailEntity:{}", JsonUtil.obj2Json(wechatMenusDetailEntity));
         return this.wechatMenusDetailDao.queryAllByLimit(wechatMenusDetailEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param wechatMenusDetailEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<WechatMenusDetailEntity> fuzzyQuery(WechatMenusDetailEntity wechatMenusDetailEntity) {
+        logger.info("queryAllByLimit begin.wechatMenusDetailEntity:{}", JsonUtil.obj2Json(wechatMenusDetailEntity));
+        return this.wechatMenusDetailDao.fuzzyQuery(wechatMenusDetailEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param wechatMenusDetailEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public WechatMenusDetailEntity selectOne(WechatMenusDetailEntity wechatMenusDetailEntity) {
+        logger.info("queryAllByLimit begin.wechatMenusDetailEntity:{}", JsonUtil.obj2Json(wechatMenusDetailEntity));
+        return this.wechatMenusDetailDao.selectOne(wechatMenusDetailEntity);
     }
 
     /**

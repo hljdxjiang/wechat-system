@@ -34,6 +34,8 @@ public class UserCollectInfoServiceImpl implements UserCollectInfoService {
      */
     @Override
     public UserCollectInfoEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.userCollectInfoDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class UserCollectInfoServiceImpl implements UserCollectInfoService {
     public List<UserCollectInfoEntity> queryAllByLimit(UserCollectInfoEntity userCollectInfoEntity) {
         logger.info("queryAllByLimit begin.userCollectInfoEntity:{}", JsonUtil.obj2Json(userCollectInfoEntity));
         return this.userCollectInfoDao.queryAllByLimit(userCollectInfoEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param userCollectInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<UserCollectInfoEntity> fuzzyQuery(UserCollectInfoEntity userCollectInfoEntity) {
+        logger.info("queryAllByLimit begin.userCollectInfoEntity:{}", JsonUtil.obj2Json(userCollectInfoEntity));
+        return this.userCollectInfoDao.fuzzyQuery(userCollectInfoEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param userCollectInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public UserCollectInfoEntity selectOne(UserCollectInfoEntity userCollectInfoEntity) {
+        logger.info("queryAllByLimit begin.userCollectInfoEntity:{}", JsonUtil.obj2Json(userCollectInfoEntity));
+        return this.userCollectInfoDao.selectOne(userCollectInfoEntity);
     }
 
     /**

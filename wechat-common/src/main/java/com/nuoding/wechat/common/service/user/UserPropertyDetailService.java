@@ -29,6 +29,22 @@ public interface UserPropertyDetailService {
     List<UserPropertyDetailEntity> queryAllByLimit(UserPropertyDetailEntity userPropertyDetailEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param userPropertyDetailEntity 筛选条件
+     * @return 查询结果
+     */
+    List<UserPropertyDetailEntity> fuzzyQuery(UserPropertyDetailEntity userPropertyDetailEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param userPropertyDetailEntity 筛选条件
+     * @return 查询结果
+     */
+    UserPropertyDetailEntity selectOne(UserPropertyDetailEntity userPropertyDetailEntity);
+
+    /**
      * 新增数据
      *
      * @param userPropertyDetailEntity 实例对象

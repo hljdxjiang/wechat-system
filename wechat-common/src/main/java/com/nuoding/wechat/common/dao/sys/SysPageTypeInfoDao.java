@@ -9,7 +9,7 @@ import java.util.List;
  * 类型配置表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:38
  */
 public interface SysPageTypeInfoDao {
 
@@ -28,6 +28,22 @@ public interface SysPageTypeInfoDao {
      * @return 对象列表
      */
     List<SysPageTypeInfoEntity> queryAllByLimit(SysPageTypeInfoEntity sysPageTypeInfoEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param sysPageTypeInfoEntity 查询条件
+     * @return 对象列表
+     */
+    SysPageTypeInfoEntity selectOne(SysPageTypeInfoEntity sysPageTypeInfoEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param sysPageTypeInfoEntity 查询条件
+     * @return 对象列表
+     */
+    List<SysPageTypeInfoEntity> fuzzyQuery(SysPageTypeInfoEntity sysPageTypeInfoEntity);
 
     /**
      * 统计总行数

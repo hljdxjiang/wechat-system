@@ -9,7 +9,7 @@ import java.util.List;
  * 楼层要素表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:38
  */
 public interface SysItemInfoDao {
 
@@ -28,6 +28,22 @@ public interface SysItemInfoDao {
      * @return 对象列表
      */
     List<SysItemInfoEntity> queryAllByLimit(SysItemInfoEntity sysItemInfoEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param sysItemInfoEntity 查询条件
+     * @return 对象列表
+     */
+    SysItemInfoEntity selectOne(SysItemInfoEntity sysItemInfoEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param sysItemInfoEntity 查询条件
+     * @return 对象列表
+     */
+    List<SysItemInfoEntity> fuzzyQuery(SysItemInfoEntity sysItemInfoEntity);
 
     /**
      * 统计总行数

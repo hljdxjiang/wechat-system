@@ -34,6 +34,8 @@ public class CrmProdTypeServiceImpl implements CrmProdTypeService {
      */
     @Override
     public CrmProdTypeEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.crmProdTypeDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class CrmProdTypeServiceImpl implements CrmProdTypeService {
     public List<CrmProdTypeEntity> queryAllByLimit(CrmProdTypeEntity crmProdTypeEntity) {
         logger.info("queryAllByLimit begin.crmProdTypeEntity:{}", JsonUtil.obj2Json(crmProdTypeEntity));
         return this.crmProdTypeDao.queryAllByLimit(crmProdTypeEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param crmProdTypeEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<CrmProdTypeEntity> fuzzyQuery(CrmProdTypeEntity crmProdTypeEntity) {
+        logger.info("queryAllByLimit begin.crmProdTypeEntity:{}", JsonUtil.obj2Json(crmProdTypeEntity));
+        return this.crmProdTypeDao.fuzzyQuery(crmProdTypeEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param crmProdTypeEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public CrmProdTypeEntity selectOne(CrmProdTypeEntity crmProdTypeEntity) {
+        logger.info("queryAllByLimit begin.crmProdTypeEntity:{}", JsonUtil.obj2Json(crmProdTypeEntity));
+        return this.crmProdTypeDao.selectOne(crmProdTypeEntity);
     }
 
     /**

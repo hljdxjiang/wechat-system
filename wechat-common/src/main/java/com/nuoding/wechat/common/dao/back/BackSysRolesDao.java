@@ -9,7 +9,7 @@ import java.util.List;
  * 角色信息表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:39
  */
 public interface BackSysRolesDao {
 
@@ -28,6 +28,22 @@ public interface BackSysRolesDao {
      * @return 对象列表
      */
     List<BackSysRolesEntity> queryAllByLimit(BackSysRolesEntity backSysRolesEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param backSysRolesEntity 查询条件
+     * @return 对象列表
+     */
+    BackSysRolesEntity selectOne(BackSysRolesEntity backSysRolesEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param backSysRolesEntity 查询条件
+     * @return 对象列表
+     */
+    List<BackSysRolesEntity> fuzzyQuery(BackSysRolesEntity backSysRolesEntity);
 
     /**
      * 统计总行数

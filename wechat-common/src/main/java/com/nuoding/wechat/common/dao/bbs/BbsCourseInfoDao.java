@@ -9,7 +9,7 @@ import java.util.List;
  * 课程信息表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:04
+ * @Date: 2023-12-18 14:57:37
  */
 public interface BbsCourseInfoDao {
 
@@ -28,6 +28,22 @@ public interface BbsCourseInfoDao {
      * @return 对象列表
      */
     List<BbsCourseInfoEntity> queryAllByLimit(BbsCourseInfoEntity bbsCourseInfoEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param bbsCourseInfoEntity 查询条件
+     * @return 对象列表
+     */
+    BbsCourseInfoEntity selectOne(BbsCourseInfoEntity bbsCourseInfoEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param bbsCourseInfoEntity 查询条件
+     * @return 对象列表
+     */
+    List<BbsCourseInfoEntity> fuzzyQuery(BbsCourseInfoEntity bbsCourseInfoEntity);
 
     /**
      * 统计总行数

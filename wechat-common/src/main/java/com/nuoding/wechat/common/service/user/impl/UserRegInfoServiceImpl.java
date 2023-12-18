@@ -34,6 +34,8 @@ public class UserRegInfoServiceImpl implements UserRegInfoService {
      */
     @Override
     public UserRegInfoEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.userRegInfoDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class UserRegInfoServiceImpl implements UserRegInfoService {
     public List<UserRegInfoEntity> queryAllByLimit(UserRegInfoEntity userRegInfoEntity) {
         logger.info("queryAllByLimit begin.userRegInfoEntity:{}", JsonUtil.obj2Json(userRegInfoEntity));
         return this.userRegInfoDao.queryAllByLimit(userRegInfoEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param userRegInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<UserRegInfoEntity> fuzzyQuery(UserRegInfoEntity userRegInfoEntity) {
+        logger.info("queryAllByLimit begin.userRegInfoEntity:{}", JsonUtil.obj2Json(userRegInfoEntity));
+        return this.userRegInfoDao.fuzzyQuery(userRegInfoEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param userRegInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public UserRegInfoEntity selectOne(UserRegInfoEntity userRegInfoEntity) {
+        logger.info("queryAllByLimit begin.userRegInfoEntity:{}", JsonUtil.obj2Json(userRegInfoEntity));
+        return this.userRegInfoDao.selectOne(userRegInfoEntity);
     }
 
     /**

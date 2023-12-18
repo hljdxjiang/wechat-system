@@ -40,19 +40,54 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="id != null and id !=''">and id = #{id}</if>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="templateId != null and templateId !=''">and template_id = #{templateId}</if>
-            <if test="templateType != null and templateType !=''">and template_type = #{templateType}</if>
-            <if test="templateDes != null and templateDes !=''">and template_des = #{templateDes}</if>
-            <if test="templateUrl != null and templateUrl !=''">and template_url = #{templateUrl}</if>
-            <if test="templateConfig != null and templateConfig !=''">and template_config = #{templateConfig}</if>
-            <if test="minipAppid != null and minipAppid !=''">and minip_appid = #{minipAppid}</if>
-            <if test="minipPagePath != null and minipPagePath !=''">and minip_page_path = #{minipPagePath}</if>
-            <if test="messageType != null and messageType !=''">and message_type = #{messageType}</if>
-            <if test="createTime != null and createTime !=''">and create_time = #{createTime}</if>
-            <if test="lastModifiedTime != null and lastModifiedTime !=''">and last_modified_time = #{lastModifiedTime}</if>
-        </where>
+                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                <if test="templateId != null and templateId !=''">and template_id = #{templateId}</if>
+                                                <if test="templateType != null and templateType !=''">and template_type = #{templateType}</if>
+                                                <if test="templateDes != null and templateDes !=''">and template_des = #{templateDes}</if>
+                                                <if test="templateUrl != null and templateUrl !=''">and template_url = #{templateUrl}</if>
+                                                <if test="templateConfig != null and templateConfig !=''">and template_config = #{templateConfig}</if>
+                                                <if test="minipAppid != null and minipAppid !=''">and minip_appid = #{minipAppid}</if>
+                                                <if test="minipPagePath != null and minipPagePath !=''">and minip_page_path = #{minipPagePath}</if>
+                                                <if test="messageType != null and messageType !=''">and message_type = #{messageType}</if>
+                                                            </where>
+    </select>
+
+    <!--查询一条-->
+    <select id="selectOne" resultMap="WechatTemplateInfoMap">
+    select
+    <include refid="Base_Column_List"/>
+    from
+    <include refid="Table_Name"/>
+    <where>
+                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                <if test="templateId != null and templateId !=''">and template_id = #{templateId}</if>
+                                                <if test="templateType != null and templateType !=''">and template_type = #{templateType}</if>
+                                                <if test="templateDes != null and templateDes !=''">and template_des = #{templateDes}</if>
+                                                <if test="templateUrl != null and templateUrl !=''">and template_url = #{templateUrl}</if>
+                                                <if test="templateConfig != null and templateConfig !=''">and template_config = #{templateConfig}</if>
+                                                <if test="minipAppid != null and minipAppid !=''">and minip_appid = #{minipAppid}</if>
+                                                <if test="minipPagePath != null and minipPagePath !=''">and minip_page_path = #{minipPagePath}</if>
+                                                <if test="messageType != null and messageType !=''">and message_type = #{messageType}</if>
+                                                                </where>
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="fuzzyQuery" resultMap="WechatTemplateInfoMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                                                                    <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                                                                            <if test="templateId != null and templateId !=''">and template_id like CONCAT(CONCAT('%',  #{templateId}), '%')</if>
+                                                                                                            <if test="templateType != null and templateType !=''">and template_type like CONCAT(CONCAT('%',  #{templateType}), '%')</if>
+                                                                                                            <if test="templateDes != null and templateDes !=''">and template_des like CONCAT(CONCAT('%',  #{templateDes}), '%')</if>
+                                                                                                            <if test="templateUrl != null and templateUrl !=''">and template_url like CONCAT(CONCAT('%',  #{templateUrl}), '%')</if>
+                                                                                                            <if test="templateConfig != null and templateConfig !=''">and template_config like CONCAT(CONCAT('%',  #{templateConfig}), '%')</if>
+                                                                                                            <if test="minipAppid != null and minipAppid !=''">and minip_appid like CONCAT(CONCAT('%',  #{minipAppid}), '%')</if>
+                                                                                                            <if test="minipPagePath != null and minipPagePath !=''">and minip_page_path like CONCAT(CONCAT('%',  #{minipPagePath}), '%')</if>
+                                                                                                            <if test="messageType != null and messageType !=''">and message_type like CONCAT(CONCAT('%',  #{messageType}), '%')</if>
+                                                                                                                </where>
 
     </select>
 
@@ -62,60 +97,56 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="id != null and id != ''">and id = #{id}</if>
-            <if test="tenantId != null and tenantId != ''">and tenant_id = #{tenantId}</if>
-            <if test="templateId != null and templateId != ''">and template_id = #{templateId}</if>
-            <if test="templateType != null and templateType != ''">and template_type = #{templateType}</if>
-            <if test="templateDes != null and templateDes != ''">and template_des = #{templateDes}</if>
-            <if test="templateUrl != null and templateUrl != ''">and template_url = #{templateUrl}</if>
-            <if test="templateConfig != null and templateConfig != ''">and template_config = #{templateConfig}</if>
-            <if test="minipAppid != null and minipAppid != ''">and minip_appid = #{minipAppid}</if>
-            <if test="minipPagePath != null and minipPagePath != ''">and minip_page_path = #{minipPagePath}</if>
-            <if test="messageType != null and messageType != ''">and message_type = #{messageType}</if>
-            <if test="createTime != null and createTime != ''">and create_time = #{createTime}</if>
-            <if test="lastModifiedTime != null and lastModifiedTime != ''">and last_modified_time = #{lastModifiedTime}</if>
-        </where>
+                                                <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                        <if test="templateId != null and templateId !=''">and template_id = #{templateId}</if>
+                                        <if test="templateType != null and templateType !=''">and template_type = #{templateType}</if>
+                                        <if test="templateDes != null and templateDes !=''">and template_des = #{templateDes}</if>
+                                        <if test="templateUrl != null and templateUrl !=''">and template_url = #{templateUrl}</if>
+                                        <if test="templateConfig != null and templateConfig !=''">and template_config = #{templateConfig}</if>
+                                        <if test="minipAppid != null and minipAppid !=''">and minip_appid = #{minipAppid}</if>
+                                        <if test="minipPagePath != null and minipPagePath !=''">and minip_page_path = #{minipPagePath}</if>
+                                        <if test="messageType != null and messageType !=''">and message_type = #{messageType}</if>
+                                    </where>
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,template_id,template_type,template_des,template_url,template_config,minip_appid,minip_page_path,message_type,create_time,last_modified_time)
+        (tenant_id,template_id,template_type,template_des,template_url,template_config,minip_appid,minip_page_path,message_type,)
         values
-        (#{tenantId},#{templateId},#{templateType},#{templateDes},#{templateUrl},#{templateConfig},#{minipAppid},#{minipPagePath},#{messageType},#{createTime},#{lastModifiedTime})
+        (#{tenantId},#{templateId},#{templateType},#{templateDes},#{templateUrl},#{templateConfig},#{minipAppid},#{minipPagePath},#{messageType},)
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (tenant_id,template_id,template_type,template_des,template_url,template_config,minip_appid,minip_page_path,message_type,create_time,last_modified_time)
+            (        tenant_id,        template_id,        template_type,        template_des,        template_url,        template_config,        minip_appid,        minip_page_path,        message_type,)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.templateId},#{entity.templateType},#{entity.templateDes},#{entity.templateUrl},#{entity.templateConfig},#{entity.minipAppid},#{entity.minipPagePath},#{entity.messageType},#{entity.createTime},#{entity.lastModifiedTime})
+            (            #{entity.tenantId},            #{entity.templateId},            #{entity.templateType},            #{entity.templateDes},            #{entity.templateUrl},            #{entity.templateConfig},            #{entity.minipAppid},            #{entity.minipPagePath},            #{entity.messageType},)
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (tenant_id,template_id,template_type,template_des,template_url,template_config,minip_appid,minip_page_path,message_type,create_time,last_modified_time)
+            (        tenant_id,        template_id,        template_type,        template_des,        template_url,        template_config,        minip_appid,        minip_page_path,        message_type,)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.templateId},#{entity.templateType},#{entity.templateDes},#{entity.templateUrl},#{entity.templateConfig},#{entity.minipAppid},#{entity.minipPagePath},#{entity.messageType},#{entity.createTime},#{entity.lastModifiedTime})
+            (#{entity.tenantId},#{entity.templateId},#{entity.templateType},#{entity.templateDes},#{entity.templateUrl},#{entity.templateConfig},#{entity.minipAppid},#{entity.minipPagePath},#{entity.messageType},)
         </foreach>
         on duplicate key update
-                tenant_id=values(tenant_id),
-        template_id=values(template_id),
-        template_type=values(template_type),
-        template_des=values(template_des),
-        template_url=values(template_url),
-        template_config=values(template_config),
-        minip_appid=values(minip_appid),
-        minip_page_path=values(minip_page_path),
-        message_type=values(message_type),
-        create_time=values(create_time),
-        last_modified_time=values(last_modified_time)
+        tenant_id=values(tenant_id),
+    template_id=values(template_id),
+    template_type=values(template_type),
+    template_des=values(template_des),
+    template_url=values(template_url),
+    template_config=values(template_config),
+    minip_appid=values(minip_appid),
+    minip_page_path=values(minip_page_path),
+    message_type=values(message_type),
+        
         </insert>
 
     <!--通过主键修改数据-->
@@ -132,10 +163,9 @@
     <if test="minipAppid != null and minipAppid != ''">minip_appid = #{minipAppid},</if>
     <if test="minipPagePath != null and minipPagePath != ''">minip_page_path = #{minipPagePath},</if>
     <if test="messageType != null and messageType != ''">message_type = #{messageType},</if>
-    <if test="createTime != null and createTime != ''">create_time = #{createTime},</if>
-    <if test="lastModifiedTime != null and lastModifiedTime != ''">last_modified_time = #{lastModifiedTime},</if>
         </set>
         where id = #{id}
+        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </update>
 
     <!--通过主键删除-->
@@ -143,6 +173,7 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
+        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

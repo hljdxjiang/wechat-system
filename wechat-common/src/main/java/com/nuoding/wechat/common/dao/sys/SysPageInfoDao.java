@@ -9,7 +9,7 @@ import java.util.List;
  * 页面信息表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:38
  */
 public interface SysPageInfoDao {
 
@@ -28,6 +28,22 @@ public interface SysPageInfoDao {
      * @return 对象列表
      */
     List<SysPageInfoEntity> queryAllByLimit(SysPageInfoEntity sysPageInfoEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param sysPageInfoEntity 查询条件
+     * @return 对象列表
+     */
+    SysPageInfoEntity selectOne(SysPageInfoEntity sysPageInfoEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param sysPageInfoEntity 查询条件
+     * @return 对象列表
+     */
+    List<SysPageInfoEntity> fuzzyQuery(SysPageInfoEntity sysPageInfoEntity);
 
     /**
      * 统计总行数

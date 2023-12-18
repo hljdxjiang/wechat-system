@@ -29,6 +29,22 @@ public interface CrmProdGroupService {
     List<CrmProdGroupEntity> queryAllByLimit(CrmProdGroupEntity crmProdGroupEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param crmProdGroupEntity 筛选条件
+     * @return 查询结果
+     */
+    List<CrmProdGroupEntity> fuzzyQuery(CrmProdGroupEntity crmProdGroupEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param crmProdGroupEntity 筛选条件
+     * @return 查询结果
+     */
+    CrmProdGroupEntity selectOne(CrmProdGroupEntity crmProdGroupEntity);
+
+    /**
      * 新增数据
      *
      * @param crmProdGroupEntity 实例对象

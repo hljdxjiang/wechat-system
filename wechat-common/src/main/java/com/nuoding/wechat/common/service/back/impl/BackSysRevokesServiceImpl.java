@@ -34,6 +34,8 @@ public class BackSysRevokesServiceImpl implements BackSysRevokesService {
      */
     @Override
     public BackSysRevokesEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.backSysRevokesDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class BackSysRevokesServiceImpl implements BackSysRevokesService {
     public List<BackSysRevokesEntity> queryAllByLimit(BackSysRevokesEntity backSysRevokesEntity) {
         logger.info("queryAllByLimit begin.backSysRevokesEntity:{}", JsonUtil.obj2Json(backSysRevokesEntity));
         return this.backSysRevokesDao.queryAllByLimit(backSysRevokesEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param backSysRevokesEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<BackSysRevokesEntity> fuzzyQuery(BackSysRevokesEntity backSysRevokesEntity) {
+        logger.info("queryAllByLimit begin.backSysRevokesEntity:{}", JsonUtil.obj2Json(backSysRevokesEntity));
+        return this.backSysRevokesDao.fuzzyQuery(backSysRevokesEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param backSysRevokesEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public BackSysRevokesEntity selectOne(BackSysRevokesEntity backSysRevokesEntity) {
+        logger.info("queryAllByLimit begin.backSysRevokesEntity:{}", JsonUtil.obj2Json(backSysRevokesEntity));
+        return this.backSysRevokesDao.selectOne(backSysRevokesEntity);
     }
 
     /**

@@ -9,7 +9,7 @@ import java.util.List;
  * 品牌信息表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:38
  */
 public interface CrmBrandInfoDao {
 
@@ -28,6 +28,22 @@ public interface CrmBrandInfoDao {
      * @return 对象列表
      */
     List<CrmBrandInfoEntity> queryAllByLimit(CrmBrandInfoEntity crmBrandInfoEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param crmBrandInfoEntity 查询条件
+     * @return 对象列表
+     */
+    CrmBrandInfoEntity selectOne(CrmBrandInfoEntity crmBrandInfoEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param crmBrandInfoEntity 查询条件
+     * @return 对象列表
+     */
+    List<CrmBrandInfoEntity> fuzzyQuery(CrmBrandInfoEntity crmBrandInfoEntity);
 
     /**
      * 统计总行数

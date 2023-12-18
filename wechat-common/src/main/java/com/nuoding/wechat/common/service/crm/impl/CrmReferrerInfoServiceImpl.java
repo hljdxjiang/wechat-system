@@ -34,6 +34,8 @@ public class CrmReferrerInfoServiceImpl implements CrmReferrerInfoService {
      */
     @Override
     public CrmReferrerInfoEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.crmReferrerInfoDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class CrmReferrerInfoServiceImpl implements CrmReferrerInfoService {
     public List<CrmReferrerInfoEntity> queryAllByLimit(CrmReferrerInfoEntity crmReferrerInfoEntity) {
         logger.info("queryAllByLimit begin.crmReferrerInfoEntity:{}", JsonUtil.obj2Json(crmReferrerInfoEntity));
         return this.crmReferrerInfoDao.queryAllByLimit(crmReferrerInfoEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param crmReferrerInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<CrmReferrerInfoEntity> fuzzyQuery(CrmReferrerInfoEntity crmReferrerInfoEntity) {
+        logger.info("queryAllByLimit begin.crmReferrerInfoEntity:{}", JsonUtil.obj2Json(crmReferrerInfoEntity));
+        return this.crmReferrerInfoDao.fuzzyQuery(crmReferrerInfoEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param crmReferrerInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public CrmReferrerInfoEntity selectOne(CrmReferrerInfoEntity crmReferrerInfoEntity) {
+        logger.info("queryAllByLimit begin.crmReferrerInfoEntity:{}", JsonUtil.obj2Json(crmReferrerInfoEntity));
+        return this.crmReferrerInfoDao.selectOne(crmReferrerInfoEntity);
     }
 
     /**

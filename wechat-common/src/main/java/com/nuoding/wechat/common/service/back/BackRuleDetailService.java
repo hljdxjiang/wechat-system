@@ -29,6 +29,22 @@ public interface BackRuleDetailService {
     List<BackRuleDetailEntity> queryAllByLimit(BackRuleDetailEntity backRuleDetailEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param backRuleDetailEntity 筛选条件
+     * @return 查询结果
+     */
+    List<BackRuleDetailEntity> fuzzyQuery(BackRuleDetailEntity backRuleDetailEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param backRuleDetailEntity 筛选条件
+     * @return 查询结果
+     */
+    BackRuleDetailEntity selectOne(BackRuleDetailEntity backRuleDetailEntity);
+
+    /**
      * 新增数据
      *
      * @param backRuleDetailEntity 实例对象

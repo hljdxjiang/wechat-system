@@ -9,7 +9,7 @@ import java.util.List;
  * 优惠券信息表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:38
  */
 public interface MallCouponInfoDao {
 
@@ -28,6 +28,22 @@ public interface MallCouponInfoDao {
      * @return 对象列表
      */
     List<MallCouponInfoEntity> queryAllByLimit(MallCouponInfoEntity mallCouponInfoEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param mallCouponInfoEntity 查询条件
+     * @return 对象列表
+     */
+    MallCouponInfoEntity selectOne(MallCouponInfoEntity mallCouponInfoEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param mallCouponInfoEntity 查询条件
+     * @return 对象列表
+     */
+    List<MallCouponInfoEntity> fuzzyQuery(MallCouponInfoEntity mallCouponInfoEntity);
 
     /**
      * 统计总行数

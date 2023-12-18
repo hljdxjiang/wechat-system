@@ -29,6 +29,22 @@ public interface CrmSalePayInfoService {
     List<CrmSalePayInfoEntity> queryAllByLimit(CrmSalePayInfoEntity crmSalePayInfoEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param crmSalePayInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    List<CrmSalePayInfoEntity> fuzzyQuery(CrmSalePayInfoEntity crmSalePayInfoEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param crmSalePayInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    CrmSalePayInfoEntity selectOne(CrmSalePayInfoEntity crmSalePayInfoEntity);
+
+    /**
      * 新增数据
      *
      * @param crmSalePayInfoEntity 实例对象

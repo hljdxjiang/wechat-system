@@ -29,6 +29,22 @@ public interface WechatMinipUserService {
     List<WechatMinipUserEntity> queryAllByLimit(WechatMinipUserEntity wechatMinipUserEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param wechatMinipUserEntity 筛选条件
+     * @return 查询结果
+     */
+    List<WechatMinipUserEntity> fuzzyQuery(WechatMinipUserEntity wechatMinipUserEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param wechatMinipUserEntity 筛选条件
+     * @return 查询结果
+     */
+    WechatMinipUserEntity selectOne(WechatMinipUserEntity wechatMinipUserEntity);
+
+    /**
      * 新增数据
      *
      * @param wechatMinipUserEntity 实例对象

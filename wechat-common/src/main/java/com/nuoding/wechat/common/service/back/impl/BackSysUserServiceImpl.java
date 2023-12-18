@@ -34,6 +34,8 @@ public class BackSysUserServiceImpl implements BackSysUserService {
      */
     @Override
     public BackSysUserEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.backSysUserDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class BackSysUserServiceImpl implements BackSysUserService {
     public List<BackSysUserEntity> queryAllByLimit(BackSysUserEntity backSysUserEntity) {
         logger.info("queryAllByLimit begin.backSysUserEntity:{}", JsonUtil.obj2Json(backSysUserEntity));
         return this.backSysUserDao.queryAllByLimit(backSysUserEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param backSysUserEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<BackSysUserEntity> fuzzyQuery(BackSysUserEntity backSysUserEntity) {
+        logger.info("queryAllByLimit begin.backSysUserEntity:{}", JsonUtil.obj2Json(backSysUserEntity));
+        return this.backSysUserDao.fuzzyQuery(backSysUserEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param backSysUserEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public BackSysUserEntity selectOne(BackSysUserEntity backSysUserEntity) {
+        logger.info("queryAllByLimit begin.backSysUserEntity:{}", JsonUtil.obj2Json(backSysUserEntity));
+        return this.backSysUserDao.selectOne(backSysUserEntity);
     }
 
     /**

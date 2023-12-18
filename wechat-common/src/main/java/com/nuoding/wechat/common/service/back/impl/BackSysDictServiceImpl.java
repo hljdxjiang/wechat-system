@@ -34,6 +34,8 @@ public class BackSysDictServiceImpl implements BackSysDictService {
      */
     @Override
     public BackSysDictEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.backSysDictDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class BackSysDictServiceImpl implements BackSysDictService {
     public List<BackSysDictEntity> queryAllByLimit(BackSysDictEntity backSysDictEntity) {
         logger.info("queryAllByLimit begin.backSysDictEntity:{}", JsonUtil.obj2Json(backSysDictEntity));
         return this.backSysDictDao.queryAllByLimit(backSysDictEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param backSysDictEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<BackSysDictEntity> fuzzyQuery(BackSysDictEntity backSysDictEntity) {
+        logger.info("queryAllByLimit begin.backSysDictEntity:{}", JsonUtil.obj2Json(backSysDictEntity));
+        return this.backSysDictDao.fuzzyQuery(backSysDictEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param backSysDictEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public BackSysDictEntity selectOne(BackSysDictEntity backSysDictEntity) {
+        logger.info("queryAllByLimit begin.backSysDictEntity:{}", JsonUtil.obj2Json(backSysDictEntity));
+        return this.backSysDictDao.selectOne(backSysDictEntity);
     }
 
     /**

@@ -29,6 +29,22 @@ public interface MallLotteryWinnerService {
     List<MallLotteryWinnerEntity> queryAllByLimit(MallLotteryWinnerEntity mallLotteryWinnerEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param mallLotteryWinnerEntity 筛选条件
+     * @return 查询结果
+     */
+    List<MallLotteryWinnerEntity> fuzzyQuery(MallLotteryWinnerEntity mallLotteryWinnerEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param mallLotteryWinnerEntity 筛选条件
+     * @return 查询结果
+     */
+    MallLotteryWinnerEntity selectOne(MallLotteryWinnerEntity mallLotteryWinnerEntity);
+
+    /**
      * 新增数据
      *
      * @param mallLotteryWinnerEntity 实例对象

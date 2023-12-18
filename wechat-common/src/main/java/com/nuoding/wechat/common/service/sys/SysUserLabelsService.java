@@ -29,6 +29,22 @@ public interface SysUserLabelsService {
     List<SysUserLabelsEntity> queryAllByLimit(SysUserLabelsEntity sysUserLabelsEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param sysUserLabelsEntity 筛选条件
+     * @return 查询结果
+     */
+    List<SysUserLabelsEntity> fuzzyQuery(SysUserLabelsEntity sysUserLabelsEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param sysUserLabelsEntity 筛选条件
+     * @return 查询结果
+     */
+    SysUserLabelsEntity selectOne(SysUserLabelsEntity sysUserLabelsEntity);
+
+    /**
      * 新增数据
      *
      * @param sysUserLabelsEntity 实例对象

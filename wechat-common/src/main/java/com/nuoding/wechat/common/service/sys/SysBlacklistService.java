@@ -29,6 +29,22 @@ public interface SysBlacklistService {
     List<SysBlacklistEntity> queryAllByLimit(SysBlacklistEntity sysBlacklistEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param sysBlacklistEntity 筛选条件
+     * @return 查询结果
+     */
+    List<SysBlacklistEntity> fuzzyQuery(SysBlacklistEntity sysBlacklistEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param sysBlacklistEntity 筛选条件
+     * @return 查询结果
+     */
+    SysBlacklistEntity selectOne(SysBlacklistEntity sysBlacklistEntity);
+
+    /**
      * 新增数据
      *
      * @param sysBlacklistEntity 实例对象

@@ -9,7 +9,7 @@ import java.util.List;
  * 抽奖条件表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:38
  */
 public interface MallLotteryConditionDao {
 
@@ -28,6 +28,22 @@ public interface MallLotteryConditionDao {
      * @return 对象列表
      */
     List<MallLotteryConditionEntity> queryAllByLimit(MallLotteryConditionEntity mallLotteryConditionEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param mallLotteryConditionEntity 查询条件
+     * @return 对象列表
+     */
+    MallLotteryConditionEntity selectOne(MallLotteryConditionEntity mallLotteryConditionEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param mallLotteryConditionEntity 查询条件
+     * @return 对象列表
+     */
+    List<MallLotteryConditionEntity> fuzzyQuery(MallLotteryConditionEntity mallLotteryConditionEntity);
 
     /**
      * 统计总行数

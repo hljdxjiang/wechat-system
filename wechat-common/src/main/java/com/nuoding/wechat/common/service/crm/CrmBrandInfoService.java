@@ -29,6 +29,22 @@ public interface CrmBrandInfoService {
     List<CrmBrandInfoEntity> queryAllByLimit(CrmBrandInfoEntity crmBrandInfoEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param crmBrandInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    List<CrmBrandInfoEntity> fuzzyQuery(CrmBrandInfoEntity crmBrandInfoEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param crmBrandInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    CrmBrandInfoEntity selectOne(CrmBrandInfoEntity crmBrandInfoEntity);
+
+    /**
      * 新增数据
      *
      * @param crmBrandInfoEntity 实例对象

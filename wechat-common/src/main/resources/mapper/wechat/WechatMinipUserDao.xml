@@ -43,22 +43,69 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="id != null and id !=''">and id = #{id}</if>
-            <if test="mopenid != null and mopenid !=''">and mopenid = #{mopenid}</if>
-            <if test="unionid != null and unionid !=''">and unionid = #{unionid}</if>
-            <if test="nickname != null and nickname !=''">and nickname = #{nickname}</if>
-            <if test="gender != null and gender !=''">and gender = #{gender}</if>
-            <if test="province != null and province !=''">and province = #{province}</if>
-            <if test="city != null and city !=''">and city = #{city}</if>
-            <if test="country != null and country !=''">and country = #{country}</if>
-            <if test="avatarurl != null and avatarurl !=''">and avatarurl = #{avatarurl}</if>
-            <if test="wartermark != null and wartermark !=''">and wartermark = #{wartermark}</if>
-            <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
-            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}</if>
-            <if test="mobileNo != null and mobileNo !=''">and mobile_no = #{mobileNo}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="userId != null and userId !=''">and user_id = #{userId}</if>
-        </where>
+                                                        <if test="mopenid != null and mopenid !=''">and mopenid = #{mopenid}</if>
+                                                <if test="unionid != null and unionid !=''">and unionid = #{unionid}</if>
+                                                <if test="nickname != null and nickname !=''">and nickname = #{nickname}</if>
+                                                <if test="gender != null and gender !=''">and gender = #{gender}</if>
+                                                <if test="province != null and province !=''">and province = #{province}</if>
+                                                <if test="city != null and city !=''">and city = #{city}</if>
+                                                <if test="country != null and country !=''">and country = #{country}</if>
+                                                <if test="avatarurl != null and avatarurl !=''">and avatarurl = #{avatarurl}</if>
+                                                <if test="wartermark != null and wartermark !=''">and wartermark = #{wartermark}</if>
+                                                <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
+                                                <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}</if>
+                                                <if test="mobileNo != null and mobileNo !=''">and mobile_no = #{mobileNo}</if>
+                                                <if test="status != null and status !=''">and status = #{status}</if>
+                                                <if test="userId != null and userId !=''">and user_id = #{userId}</if>
+                    </where>
+    </select>
+
+    <!--查询一条-->
+    <select id="selectOne" resultMap="WechatMinipUserMap">
+    select
+    <include refid="Base_Column_List"/>
+    from
+    <include refid="Table_Name"/>
+    <where>
+                                                        <if test="mopenid != null and mopenid !=''">and mopenid = #{mopenid}</if>
+                                                <if test="unionid != null and unionid !=''">and unionid = #{unionid}</if>
+                                                <if test="nickname != null and nickname !=''">and nickname = #{nickname}</if>
+                                                <if test="gender != null and gender !=''">and gender = #{gender}</if>
+                                                <if test="province != null and province !=''">and province = #{province}</if>
+                                                <if test="city != null and city !=''">and city = #{city}</if>
+                                                <if test="country != null and country !=''">and country = #{country}</if>
+                                                <if test="avatarurl != null and avatarurl !=''">and avatarurl = #{avatarurl}</if>
+                                                <if test="wartermark != null and wartermark !=''">and wartermark = #{wartermark}</if>
+                                                <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
+                                                <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}</if>
+                                                <if test="mobileNo != null and mobileNo !=''">and mobile_no = #{mobileNo}</if>
+                                                <if test="status != null and status !=''">and status = #{status}</if>
+                                                <if test="userId != null and userId !=''">and user_id = #{userId}</if>
+                        </where>
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="fuzzyQuery" resultMap="WechatMinipUserMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                                                                    <if test="mopenid != null and mopenid !=''">and mopenid like CONCAT(CONCAT('%',  #{mopenid}), '%')</if>
+                                                                                                            <if test="unionid != null and unionid !=''">and unionid like CONCAT(CONCAT('%',  #{unionid}), '%')</if>
+                                                                                                            <if test="nickname != null and nickname !=''">and nickname like CONCAT(CONCAT('%',  #{nickname}), '%')</if>
+                                                                                                            <if test="gender != null and gender !=''">and gender like CONCAT(CONCAT('%',  #{gender}), '%')</if>
+                                                                                                            <if test="province != null and province !=''">and province like CONCAT(CONCAT('%',  #{province}), '%')</if>
+                                                                                                            <if test="city != null and city !=''">and city like CONCAT(CONCAT('%',  #{city}), '%')</if>
+                                                                                                            <if test="country != null and country !=''">and country like CONCAT(CONCAT('%',  #{country}), '%')</if>
+                                                                                                            <if test="avatarurl != null and avatarurl !=''">and avatarurl like CONCAT(CONCAT('%',  #{avatarurl}), '%')</if>
+                                                                                                            <if test="wartermark != null and wartermark !=''">and wartermark like CONCAT(CONCAT('%',  #{wartermark}), '%')</if>
+                                                                                                            <if test="createtime != null and createtime !=''">and createtime like CONCAT(CONCAT('%',  #{createtime}), '%')</if>
+                                                                                                            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime like CONCAT(CONCAT('%',  #{lastmodifiedtime}), '%')</if>
+                                                                                                            <if test="mobileNo != null and mobileNo !=''">and mobile_no like CONCAT(CONCAT('%',  #{mobileNo}), '%')</if>
+                                                                                                            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%',  #{status}), '%')</if>
+                                                                                                            <if test="userId != null and userId !=''">and user_id like CONCAT(CONCAT('%',  #{userId}), '%')</if>
+                                                        </where>
 
     </select>
 
@@ -68,66 +115,65 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="id != null and id != ''">and id = #{id}</if>
-            <if test="mopenid != null and mopenid != ''">and mopenid = #{mopenid}</if>
-            <if test="unionid != null and unionid != ''">and unionid = #{unionid}</if>
-            <if test="nickname != null and nickname != ''">and nickname = #{nickname}</if>
-            <if test="gender != null and gender != ''">and gender = #{gender}</if>
-            <if test="province != null and province != ''">and province = #{province}</if>
-            <if test="city != null and city != ''">and city = #{city}</if>
-            <if test="country != null and country != ''">and country = #{country}</if>
-            <if test="avatarurl != null and avatarurl != ''">and avatarurl = #{avatarurl}</if>
-            <if test="wartermark != null and wartermark != ''">and wartermark = #{wartermark}</if>
-            <if test="createtime != null and createtime != ''">and createtime = #{createtime}</if>
-            <if test="lastmodifiedtime != null and lastmodifiedtime != ''">and lastmodifiedtime = #{lastmodifiedtime}</if>
-            <if test="mobileNo != null and mobileNo != ''">and mobile_no = #{mobileNo}</if>
-            <if test="status != null and status != ''">and status = #{status}</if>
-            <if test="userId != null and userId != ''">and user_id = #{userId}</if>
-        </where>
+                                                <if test="mopenid != null and mopenid !=''">and mopenid = #{mopenid}</if>
+                                        <if test="unionid != null and unionid !=''">and unionid = #{unionid}</if>
+                                        <if test="nickname != null and nickname !=''">and nickname = #{nickname}</if>
+                                        <if test="gender != null and gender !=''">and gender = #{gender}</if>
+                                        <if test="province != null and province !=''">and province = #{province}</if>
+                                        <if test="city != null and city !=''">and city = #{city}</if>
+                                        <if test="country != null and country !=''">and country = #{country}</if>
+                                        <if test="avatarurl != null and avatarurl !=''">and avatarurl = #{avatarurl}</if>
+                                        <if test="wartermark != null and wartermark !=''">and wartermark = #{wartermark}</if>
+                                        <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
+                                        <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}</if>
+                                        <if test="mobileNo != null and mobileNo !=''">and mobile_no = #{mobileNo}</if>
+                                        <if test="status != null and status !=''">and status = #{status}</if>
+                                        <if test="userId != null and userId !=''">and user_id = #{userId}</if>
+            </where>
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (mopenid,unionid,nickname,gender,province,city,country,avatarurl,wartermark,createtime,lastmodifiedtime,mobile_no,status,user_id)
+        (mopenid,unionid,nickname,gender,province,city,country,avatarurl,wartermark,createtime,lastmodifiedtime,mobile_no,user_id)
         values
-        (#{mopenid},#{unionid},#{nickname},#{gender},#{province},#{city},#{country},#{avatarurl},#{wartermark},#{createtime},#{lastmodifiedtime},#{mobileNo},#{status},#{userId})
+        (#{mopenid},#{unionid},#{nickname},#{gender},#{province},#{city},#{country},#{avatarurl},#{wartermark},#{createtime},#{lastmodifiedtime},#{mobileNo},#{userId})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (mopenid,unionid,nickname,gender,province,city,country,avatarurl,wartermark,createtime,lastmodifiedtime,mobile_no,status,user_id)
+            (        mopenid,        unionid,        nickname,        gender,        province,        city,        country,        avatarurl,        wartermark,        createtime,        lastmodifiedtime,        mobile_no,        user_id)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.mopenid},#{entity.unionid},#{entity.nickname},#{entity.gender},#{entity.province},#{entity.city},#{entity.country},#{entity.avatarurl},#{entity.wartermark},#{entity.createtime},#{entity.lastmodifiedtime},#{entity.mobileNo},#{entity.status},#{entity.userId})
+            (            #{entity.mopenid},            #{entity.unionid},            #{entity.nickname},            #{entity.gender},            #{entity.province},            #{entity.city},            #{entity.country},            #{entity.avatarurl},            #{entity.wartermark},            #{entity.createtime},            #{entity.lastmodifiedtime},            #{entity.mobileNo},            #{entity.userId})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (mopenid,unionid,nickname,gender,province,city,country,avatarurl,wartermark,createtime,lastmodifiedtime,mobile_no,status,user_id)
+            (        mopenid,        unionid,        nickname,        gender,        province,        city,        country,        avatarurl,        wartermark,        createtime,        lastmodifiedtime,        mobile_no,        status,        user_id)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.mopenid},#{entity.unionid},#{entity.nickname},#{entity.gender},#{entity.province},#{entity.city},#{entity.country},#{entity.avatarurl},#{entity.wartermark},#{entity.createtime},#{entity.lastmodifiedtime},#{entity.mobileNo},#{entity.status},#{entity.userId})
         </foreach>
         on duplicate key update
-                mopenid=values(mopenid),
-        unionid=values(unionid),
-        nickname=values(nickname),
-        gender=values(gender),
-        province=values(province),
-        city=values(city),
-        country=values(country),
-        avatarurl=values(avatarurl),
-        wartermark=values(wartermark),
-        createtime=values(createtime),
-        lastmodifiedtime=values(lastmodifiedtime),
-        mobile_no=values(mobile_no),
-        status=values(status),
-        user_id=values(user_id)
+        mopenid=values(mopenid),
+    unionid=values(unionid),
+    nickname=values(nickname),
+    gender=values(gender),
+    province=values(province),
+    city=values(city),
+    country=values(country),
+    avatarurl=values(avatarurl),
+    wartermark=values(wartermark),
+    createtime=values(createtime),
+    lastmodifiedtime=values(lastmodifiedtime),
+    mobile_no=values(mobile_no),
+    status=values(status),
+    user_id=values(user_id)
         </insert>
 
     <!--通过主键修改数据-->
@@ -151,6 +197,7 @@
     <if test="userId != null and userId != ''">user_id = #{userId},</if>
         </set>
         where id = #{id}
+        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </update>
 
     <!--通过主键删除-->
@@ -158,6 +205,7 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
+        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

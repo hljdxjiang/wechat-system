@@ -29,6 +29,22 @@ public interface UserAddrInfoService {
     List<UserAddrInfoEntity> queryAllByLimit(UserAddrInfoEntity userAddrInfoEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param userAddrInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    List<UserAddrInfoEntity> fuzzyQuery(UserAddrInfoEntity userAddrInfoEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param userAddrInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    UserAddrInfoEntity selectOne(UserAddrInfoEntity userAddrInfoEntity);
+
+    /**
      * 新增数据
      *
      * @param userAddrInfoEntity 实例对象

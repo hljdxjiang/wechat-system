@@ -9,7 +9,7 @@ import java.util.List;
  * 用户订阅信息表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:38
  */
 public interface WechatSubscribeInfoDao {
 
@@ -28,6 +28,22 @@ public interface WechatSubscribeInfoDao {
      * @return 对象列表
      */
     List<WechatSubscribeInfoEntity> queryAllByLimit(WechatSubscribeInfoEntity wechatSubscribeInfoEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param wechatSubscribeInfoEntity 查询条件
+     * @return 对象列表
+     */
+    WechatSubscribeInfoEntity selectOne(WechatSubscribeInfoEntity wechatSubscribeInfoEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param wechatSubscribeInfoEntity 查询条件
+     * @return 对象列表
+     */
+    List<WechatSubscribeInfoEntity> fuzzyQuery(WechatSubscribeInfoEntity wechatSubscribeInfoEntity);
 
     /**
      * 统计总行数

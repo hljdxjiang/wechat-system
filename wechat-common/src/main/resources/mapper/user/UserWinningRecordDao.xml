@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nuoding.wechat.common.dao.user.UserWinningRecordDao">
+
+    <resultMap type="com.nuoding.wechat.common.entity.user.UserWinningRecordEntity" id="UserWinningRecordMap">
+            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
+        <result property="userid" column="userid" jdbcType="VARCHAR"/>
+        <result property="createtime" column="createtime" jdbcType="TIMESTAMP"/>
+        <result property="lastmodifiedtime" column="lastmodifiedtime" jdbcType="TIMESTAMP"/>
+        <result property="lotteryId" column="lottery_id" jdbcType="VARCHAR"/>
+        <result property="winType" column="win_type" jdbcType="VARCHAR"/>
+        <result property="winProdCode" column="win_prod_code" jdbcType="VARCHAR"/>
+        <result property="winProdPass" column="win_prod_pass" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Table_Name">
+        user_winning_record
+    </sql>
+
+    <sql id="Base_Column_List">
+        id,tenant_id,userid,createtime,lastmodifiedtime,lottery_id,win_type,win_prod_code,win_prod_pass    </sql>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="UserWinningRecordMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="UserWinningRecordMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                <if test="userid != null and userid !=''">and userid = #{userid}</if>
+                                                <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
+                                                <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}</if>
+                                                <if test="lotteryId != null and lotteryId !=''">and lottery_id = #{lotteryId}</if>
+                                                <if test="winType != null and winType !=''">and win_type = #{winType}</if>
+                                                <if test="winProdCode != null and winProdCode !=''">and win_prod_code = #{winProdCode}</if>
+                                                <if test="winProdPass != null and winProdPass !=''">and win_prod_pass = #{winProdPass}</if>
+                    </where>
+    </select>
+
+    <!--查询一条-->
+    <select id="selectOne" resultMap="UserWinningRecordMap">
+    select
+    <include refid="Base_Column_List"/>
+    from
+    <include refid="Table_Name"/>
+    <where>
+                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                <if test="userid != null and userid !=''">and userid = #{userid}</if>
+                                                <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
+                                                <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}</if>
+                                                <if test="lotteryId != null and lotteryId !=''">and lottery_id = #{lotteryId}</if>
+                                                <if test="winType != null and winType !=''">and win_type = #{winType}</if>
+                                                <if test="winProdCode != null and winProdCode !=''">and win_prod_code = #{winProdCode}</if>
+                                                <if test="winProdPass != null and winProdPass !=''">and win_prod_pass = #{winProdPass}</if>
+                        </where>
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="fuzzyQuery" resultMap="UserWinningRecordMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                                                                    <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                                                                            <if test="userid != null and userid !=''">and userid like CONCAT(CONCAT('%',  #{userid}), '%')</if>
+                                                                                                            <if test="createtime != null and createtime !=''">and createtime like CONCAT(CONCAT('%',  #{createtime}), '%')</if>
+                                                                                                            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime like CONCAT(CONCAT('%',  #{lastmodifiedtime}), '%')</if>
+                                                                                                            <if test="lotteryId != null and lotteryId !=''">and lottery_id like CONCAT(CONCAT('%',  #{lotteryId}), '%')</if>
+                                                                                                            <if test="winType != null and winType !=''">and win_type like CONCAT(CONCAT('%',  #{winType}), '%')</if>
+                                                                                                            <if test="winProdCode != null and winProdCode !=''">and win_prod_code like CONCAT(CONCAT('%',  #{winProdCode}), '%')</if>
+                                                                                                            <if test="winProdPass != null and winProdPass !=''">and win_prod_pass like CONCAT(CONCAT('%',  #{winProdPass}), '%')</if>
+                                                        </where>
+
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                        <if test="userid != null and userid !=''">and userid = #{userid}</if>
+                                        <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
+                                        <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}</if>
+                                        <if test="lotteryId != null and lotteryId !=''">and lottery_id = #{lotteryId}</if>
+                                        <if test="winType != null and winType !=''">and win_type = #{winType}</if>
+                                        <if test="winProdCode != null and winProdCode !=''">and win_prod_code = #{winProdCode}</if>
+                                        <if test="winProdPass != null and winProdPass !=''">and win_prod_pass = #{winProdPass}</if>
+            </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+        (tenant_id,userid,createtime,lastmodifiedtime,lottery_id,win_type,win_prod_code,win_prod_pass)
+        values
+        (#{tenantId},#{userid},#{createtime},#{lastmodifiedtime},#{lotteryId},#{winType},#{winProdCode},#{winProdPass})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (        tenant_id,        userid,        createtime,        lastmodifiedtime,        lottery_id,        win_type,        win_prod_code,        win_prod_pass)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (            #{entity.tenantId},            #{entity.userid},            #{entity.createtime},            #{entity.lastmodifiedtime},            #{entity.lotteryId},            #{entity.winType},            #{entity.winProdCode},            #{entity.winProdPass})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (        tenant_id,        userid,        createtime,        lastmodifiedtime,        lottery_id,        win_type,        win_prod_code,        win_prod_pass)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tenantId},#{entity.userid},#{entity.createtime},#{entity.lastmodifiedtime},#{entity.lotteryId},#{entity.winType},#{entity.winProdCode},#{entity.winProdPass})
+        </foreach>
+        on duplicate key update
+        tenant_id=values(tenant_id),
+    userid=values(userid),
+    createtime=values(createtime),
+    lastmodifiedtime=values(lastmodifiedtime),
+    lottery_id=values(lottery_id),
+    win_type=values(win_type),
+    win_prod_code=values(win_prod_code),
+    win_prod_pass=values(win_prod_pass)
+        </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update
+        <include refid="Table_Name"/>
+        <set>
+    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+    <if test="userid != null and userid != ''">userid = #{userid},</if>
+    <if test="createtime != null and createtime != ''">createtime = #{createtime},</if>
+    <if test="lastmodifiedtime != null and lastmodifiedtime != ''">lastmodifiedtime = #{lastmodifiedtime},</if>
+    <if test="lotteryId != null and lotteryId != ''">lottery_id = #{lotteryId},</if>
+    <if test="winType != null and winType != ''">win_type = #{winType},</if>
+    <if test="winProdCode != null and winProdCode != ''">win_prod_code = #{winProdCode},</if>
+    <if test="winProdPass != null and winProdPass != ''">win_prod_pass = #{winProdPass},</if>
+        </set>
+        where id = #{id}
+        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from
+        <include refid="Table_Name"/>
+        where id = #{id}
+        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+    </delete>
+
+</mapper>
+

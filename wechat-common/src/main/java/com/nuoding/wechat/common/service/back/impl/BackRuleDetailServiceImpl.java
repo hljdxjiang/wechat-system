@@ -34,6 +34,8 @@ public class BackRuleDetailServiceImpl implements BackRuleDetailService {
      */
     @Override
     public BackRuleDetailEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.backRuleDetailDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class BackRuleDetailServiceImpl implements BackRuleDetailService {
     public List<BackRuleDetailEntity> queryAllByLimit(BackRuleDetailEntity backRuleDetailEntity) {
         logger.info("queryAllByLimit begin.backRuleDetailEntity:{}", JsonUtil.obj2Json(backRuleDetailEntity));
         return this.backRuleDetailDao.queryAllByLimit(backRuleDetailEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param backRuleDetailEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<BackRuleDetailEntity> fuzzyQuery(BackRuleDetailEntity backRuleDetailEntity) {
+        logger.info("queryAllByLimit begin.backRuleDetailEntity:{}", JsonUtil.obj2Json(backRuleDetailEntity));
+        return this.backRuleDetailDao.fuzzyQuery(backRuleDetailEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param backRuleDetailEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public BackRuleDetailEntity selectOne(BackRuleDetailEntity backRuleDetailEntity) {
+        logger.info("queryAllByLimit begin.backRuleDetailEntity:{}", JsonUtil.obj2Json(backRuleDetailEntity));
+        return this.backRuleDetailDao.selectOne(backRuleDetailEntity);
     }
 
     /**

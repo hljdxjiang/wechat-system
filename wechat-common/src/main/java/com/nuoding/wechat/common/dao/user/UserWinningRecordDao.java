@@ -9,7 +9,7 @@ import java.util.List;
  * 抽奖获奖记录表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:38
  */
 public interface UserWinningRecordDao {
 
@@ -28,6 +28,22 @@ public interface UserWinningRecordDao {
      * @return 对象列表
      */
     List<UserWinningRecordEntity> queryAllByLimit(UserWinningRecordEntity userWinningRecordEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param userWinningRecordEntity 查询条件
+     * @return 对象列表
+     */
+    UserWinningRecordEntity selectOne(UserWinningRecordEntity userWinningRecordEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param userWinningRecordEntity 查询条件
+     * @return 对象列表
+     */
+    List<UserWinningRecordEntity> fuzzyQuery(UserWinningRecordEntity userWinningRecordEntity);
 
     /**
      * 统计总行数

@@ -9,7 +9,7 @@ import java.util.List;
  * 销售支付记录表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:37
  */
 public interface CrmSalePayInfoDao {
 
@@ -28,6 +28,22 @@ public interface CrmSalePayInfoDao {
      * @return 对象列表
      */
     List<CrmSalePayInfoEntity> queryAllByLimit(CrmSalePayInfoEntity crmSalePayInfoEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param crmSalePayInfoEntity 查询条件
+     * @return 对象列表
+     */
+    CrmSalePayInfoEntity selectOne(CrmSalePayInfoEntity crmSalePayInfoEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param crmSalePayInfoEntity 查询条件
+     * @return 对象列表
+     */
+    List<CrmSalePayInfoEntity> fuzzyQuery(CrmSalePayInfoEntity crmSalePayInfoEntity);
 
     /**
      * 统计总行数

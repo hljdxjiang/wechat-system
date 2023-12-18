@@ -9,7 +9,7 @@ import java.util.List;
  * 文章记录表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:38
  */
 public interface BbsArticleInfoDao {
 
@@ -28,6 +28,22 @@ public interface BbsArticleInfoDao {
      * @return 对象列表
      */
     List<BbsArticleInfoEntity> queryAllByLimit(BbsArticleInfoEntity bbsArticleInfoEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param bbsArticleInfoEntity 查询条件
+     * @return 对象列表
+     */
+    BbsArticleInfoEntity selectOne(BbsArticleInfoEntity bbsArticleInfoEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param bbsArticleInfoEntity 查询条件
+     * @return 对象列表
+     */
+    List<BbsArticleInfoEntity> fuzzyQuery(BbsArticleInfoEntity bbsArticleInfoEntity);
 
     /**
      * 统计总行数

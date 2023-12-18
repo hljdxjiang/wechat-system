@@ -34,6 +34,8 @@ public class SysBlacklistServiceImpl implements SysBlacklistService {
      */
     @Override
     public SysBlacklistEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.sysBlacklistDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class SysBlacklistServiceImpl implements SysBlacklistService {
     public List<SysBlacklistEntity> queryAllByLimit(SysBlacklistEntity sysBlacklistEntity) {
         logger.info("queryAllByLimit begin.sysBlacklistEntity:{}", JsonUtil.obj2Json(sysBlacklistEntity));
         return this.sysBlacklistDao.queryAllByLimit(sysBlacklistEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param sysBlacklistEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<SysBlacklistEntity> fuzzyQuery(SysBlacklistEntity sysBlacklistEntity) {
+        logger.info("queryAllByLimit begin.sysBlacklistEntity:{}", JsonUtil.obj2Json(sysBlacklistEntity));
+        return this.sysBlacklistDao.fuzzyQuery(sysBlacklistEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param sysBlacklistEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public SysBlacklistEntity selectOne(SysBlacklistEntity sysBlacklistEntity) {
+        logger.info("queryAllByLimit begin.sysBlacklistEntity:{}", JsonUtil.obj2Json(sysBlacklistEntity));
+        return this.sysBlacklistDao.selectOne(sysBlacklistEntity);
     }
 
     /**

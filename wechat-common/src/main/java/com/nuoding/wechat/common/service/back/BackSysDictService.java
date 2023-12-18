@@ -29,6 +29,22 @@ public interface BackSysDictService {
     List<BackSysDictEntity> queryAllByLimit(BackSysDictEntity backSysDictEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param backSysDictEntity 筛选条件
+     * @return 查询结果
+     */
+    List<BackSysDictEntity> fuzzyQuery(BackSysDictEntity backSysDictEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param backSysDictEntity 筛选条件
+     * @return 查询结果
+     */
+    BackSysDictEntity selectOne(BackSysDictEntity backSysDictEntity);
+
+    /**
      * 新增数据
      *
      * @param backSysDictEntity 实例对象

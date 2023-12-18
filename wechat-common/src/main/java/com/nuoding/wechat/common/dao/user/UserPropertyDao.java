@@ -9,7 +9,7 @@ import java.util.List;
  * 用户资产信息表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:38
  */
 public interface UserPropertyDao {
 
@@ -28,6 +28,22 @@ public interface UserPropertyDao {
      * @return 对象列表
      */
     List<UserPropertyEntity> queryAllByLimit(UserPropertyEntity userPropertyEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param userPropertyEntity 查询条件
+     * @return 对象列表
+     */
+    UserPropertyEntity selectOne(UserPropertyEntity userPropertyEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param userPropertyEntity 查询条件
+     * @return 对象列表
+     */
+    List<UserPropertyEntity> fuzzyQuery(UserPropertyEntity userPropertyEntity);
 
     /**
      * 统计总行数

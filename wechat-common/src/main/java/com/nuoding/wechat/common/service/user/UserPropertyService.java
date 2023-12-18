@@ -29,6 +29,22 @@ public interface UserPropertyService {
     List<UserPropertyEntity> queryAllByLimit(UserPropertyEntity userPropertyEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param userPropertyEntity 筛选条件
+     * @return 查询结果
+     */
+    List<UserPropertyEntity> fuzzyQuery(UserPropertyEntity userPropertyEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param userPropertyEntity 筛选条件
+     * @return 查询结果
+     */
+    UserPropertyEntity selectOne(UserPropertyEntity userPropertyEntity);
+
+    /**
      * 新增数据
      *
      * @param userPropertyEntity 实例对象

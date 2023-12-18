@@ -9,7 +9,7 @@ import java.util.List;
  * 产品详情表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:38
  */
 public interface CrmProdDetailDao {
 
@@ -28,6 +28,22 @@ public interface CrmProdDetailDao {
      * @return 对象列表
      */
     List<CrmProdDetailEntity> queryAllByLimit(CrmProdDetailEntity crmProdDetailEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param crmProdDetailEntity 查询条件
+     * @return 对象列表
+     */
+    CrmProdDetailEntity selectOne(CrmProdDetailEntity crmProdDetailEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param crmProdDetailEntity 查询条件
+     * @return 对象列表
+     */
+    List<CrmProdDetailEntity> fuzzyQuery(CrmProdDetailEntity crmProdDetailEntity);
 
     /**
      * 统计总行数

@@ -34,6 +34,8 @@ public class SysFlowItemsServiceImpl implements SysFlowItemsService {
      */
     @Override
     public SysFlowItemsEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.sysFlowItemsDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class SysFlowItemsServiceImpl implements SysFlowItemsService {
     public List<SysFlowItemsEntity> queryAllByLimit(SysFlowItemsEntity sysFlowItemsEntity) {
         logger.info("queryAllByLimit begin.sysFlowItemsEntity:{}", JsonUtil.obj2Json(sysFlowItemsEntity));
         return this.sysFlowItemsDao.queryAllByLimit(sysFlowItemsEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param sysFlowItemsEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<SysFlowItemsEntity> fuzzyQuery(SysFlowItemsEntity sysFlowItemsEntity) {
+        logger.info("queryAllByLimit begin.sysFlowItemsEntity:{}", JsonUtil.obj2Json(sysFlowItemsEntity));
+        return this.sysFlowItemsDao.fuzzyQuery(sysFlowItemsEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param sysFlowItemsEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public SysFlowItemsEntity selectOne(SysFlowItemsEntity sysFlowItemsEntity) {
+        logger.info("queryAllByLimit begin.sysFlowItemsEntity:{}", JsonUtil.obj2Json(sysFlowItemsEntity));
+        return this.sysFlowItemsDao.selectOne(sysFlowItemsEntity);
     }
 
     /**

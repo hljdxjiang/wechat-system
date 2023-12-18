@@ -9,7 +9,7 @@ import java.util.List;
  * 抽奖用户清单表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:37
  */
 public interface MallLotteryUserDao {
 
@@ -28,6 +28,22 @@ public interface MallLotteryUserDao {
      * @return 对象列表
      */
     List<MallLotteryUserEntity> queryAllByLimit(MallLotteryUserEntity mallLotteryUserEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param mallLotteryUserEntity 查询条件
+     * @return 对象列表
+     */
+    MallLotteryUserEntity selectOne(MallLotteryUserEntity mallLotteryUserEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param mallLotteryUserEntity 查询条件
+     * @return 对象列表
+     */
+    List<MallLotteryUserEntity> fuzzyQuery(MallLotteryUserEntity mallLotteryUserEntity);
 
     /**
      * 统计总行数

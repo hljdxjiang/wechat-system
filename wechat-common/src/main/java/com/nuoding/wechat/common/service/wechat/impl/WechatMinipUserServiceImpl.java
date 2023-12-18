@@ -34,6 +34,8 @@ public class WechatMinipUserServiceImpl implements WechatMinipUserService {
      */
     @Override
     public WechatMinipUserEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.wechatMinipUserDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class WechatMinipUserServiceImpl implements WechatMinipUserService {
     public List<WechatMinipUserEntity> queryAllByLimit(WechatMinipUserEntity wechatMinipUserEntity) {
         logger.info("queryAllByLimit begin.wechatMinipUserEntity:{}", JsonUtil.obj2Json(wechatMinipUserEntity));
         return this.wechatMinipUserDao.queryAllByLimit(wechatMinipUserEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param wechatMinipUserEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<WechatMinipUserEntity> fuzzyQuery(WechatMinipUserEntity wechatMinipUserEntity) {
+        logger.info("queryAllByLimit begin.wechatMinipUserEntity:{}", JsonUtil.obj2Json(wechatMinipUserEntity));
+        return this.wechatMinipUserDao.fuzzyQuery(wechatMinipUserEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param wechatMinipUserEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public WechatMinipUserEntity selectOne(WechatMinipUserEntity wechatMinipUserEntity) {
+        logger.info("queryAllByLimit begin.wechatMinipUserEntity:{}", JsonUtil.obj2Json(wechatMinipUserEntity));
+        return this.wechatMinipUserDao.selectOne(wechatMinipUserEntity);
     }
 
     /**

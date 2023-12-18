@@ -29,6 +29,22 @@ public interface MallActivityConditionService {
     List<MallActivityConditionEntity> queryAllByLimit(MallActivityConditionEntity mallActivityConditionEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param mallActivityConditionEntity 筛选条件
+     * @return 查询结果
+     */
+    List<MallActivityConditionEntity> fuzzyQuery(MallActivityConditionEntity mallActivityConditionEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param mallActivityConditionEntity 筛选条件
+     * @return 查询结果
+     */
+    MallActivityConditionEntity selectOne(MallActivityConditionEntity mallActivityConditionEntity);
+
+    /**
      * 新增数据
      *
      * @param mallActivityConditionEntity 实例对象

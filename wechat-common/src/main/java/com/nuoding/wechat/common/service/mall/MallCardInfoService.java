@@ -29,6 +29,22 @@ public interface MallCardInfoService {
     List<MallCardInfoEntity> queryAllByLimit(MallCardInfoEntity mallCardInfoEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param mallCardInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    List<MallCardInfoEntity> fuzzyQuery(MallCardInfoEntity mallCardInfoEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param mallCardInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    MallCardInfoEntity selectOne(MallCardInfoEntity mallCardInfoEntity);
+
+    /**
      * 新增数据
      *
      * @param mallCardInfoEntity 实例对象

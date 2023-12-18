@@ -9,7 +9,7 @@ import java.util.List;
  * 资源信息表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:04
+ * @Date: 2023-12-18 14:57:37
  */
 public interface SysResourceInfoDao {
 
@@ -28,6 +28,22 @@ public interface SysResourceInfoDao {
      * @return 对象列表
      */
     List<SysResourceInfoEntity> queryAllByLimit(SysResourceInfoEntity sysResourceInfoEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param sysResourceInfoEntity 查询条件
+     * @return 对象列表
+     */
+    SysResourceInfoEntity selectOne(SysResourceInfoEntity sysResourceInfoEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param sysResourceInfoEntity 查询条件
+     * @return 对象列表
+     */
+    List<SysResourceInfoEntity> fuzzyQuery(SysResourceInfoEntity sysResourceInfoEntity);
 
     /**
      * 统计总行数

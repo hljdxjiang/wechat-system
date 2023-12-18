@@ -5,12 +5,13 @@ import com.nuoding.wechat.common.entity.crm.CrmProdInfoEntity;
 import com.nuoding.wechat.common.entity.crm.CrmProdInfoOutEntity;
 import com.nuoding.wechat.common.model.crm.ProdFuzzyFuzzyQueryDTO;
 import com.nuoding.wechat.common.service.crm.CrmProdInfoService;
-import com.nuoding.wechat.common.utils.JsonUtil;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Service;
+import com.nuoding.wechat.common.utils.JsonUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -18,7 +19,6 @@ import java.util.List;
 /**
  * (crmProdInfo)表服务实现类
  * 产品信息表
- *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -26,7 +26,7 @@ import java.util.List;
 public class CrmProdInfoServiceImpl implements CrmProdInfoService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
+    
     @Resource
     private CrmProdInfoDao crmProdInfoDao;
 
@@ -38,6 +38,8 @@ public class CrmProdInfoServiceImpl implements CrmProdInfoService {
      */
     @Override
     public CrmProdInfoEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.crmProdInfoDao.queryById(id);
     }
 
@@ -51,6 +53,30 @@ public class CrmProdInfoServiceImpl implements CrmProdInfoService {
     public List<CrmProdInfoEntity> queryAllByLimit(CrmProdInfoEntity crmProdInfoEntity) {
         logger.info("queryAllByLimit begin.crmProdInfoEntity:{}", JsonUtil.obj2Json(crmProdInfoEntity));
         return this.crmProdInfoDao.queryAllByLimit(crmProdInfoEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param crmProdInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<CrmProdInfoEntity> fuzzyQuery(CrmProdInfoEntity crmProdInfoEntity) {
+        logger.info("queryAllByLimit begin.crmProdInfoEntity:{}", JsonUtil.obj2Json(crmProdInfoEntity));
+        return this.crmProdInfoDao.fuzzyQuery(crmProdInfoEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param crmProdInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public CrmProdInfoEntity selectOne(CrmProdInfoEntity crmProdInfoEntity) {
+        logger.info("queryAllByLimit begin.crmProdInfoEntity:{}", JsonUtil.obj2Json(crmProdInfoEntity));
+        return this.crmProdInfoDao.selectOne(crmProdInfoEntity);
     }
 
     /**
@@ -80,7 +106,7 @@ public class CrmProdInfoServiceImpl implements CrmProdInfoService {
     }
 
     @Override
-    public List<CrmProdInfoOutEntity> queryFuzzyList(ProdFuzzyFuzzyQueryDTO dto) {
+    public List<CrmProdInfoEntity> queryFuzzyList(CrmProdInfoEntity dto) {
         return crmProdInfoDao.fuzzyQuery(dto);
     }
 

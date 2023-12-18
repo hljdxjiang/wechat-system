@@ -34,6 +34,8 @@ public class SysTokenConfigServiceImpl implements SysTokenConfigService {
      */
     @Override
     public SysTokenConfigEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.sysTokenConfigDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class SysTokenConfigServiceImpl implements SysTokenConfigService {
     public List<SysTokenConfigEntity> queryAllByLimit(SysTokenConfigEntity sysTokenConfigEntity) {
         logger.info("queryAllByLimit begin.sysTokenConfigEntity:{}", JsonUtil.obj2Json(sysTokenConfigEntity));
         return this.sysTokenConfigDao.queryAllByLimit(sysTokenConfigEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param sysTokenConfigEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<SysTokenConfigEntity> fuzzyQuery(SysTokenConfigEntity sysTokenConfigEntity) {
+        logger.info("queryAllByLimit begin.sysTokenConfigEntity:{}", JsonUtil.obj2Json(sysTokenConfigEntity));
+        return this.sysTokenConfigDao.fuzzyQuery(sysTokenConfigEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param sysTokenConfigEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public SysTokenConfigEntity selectOne(SysTokenConfigEntity sysTokenConfigEntity) {
+        logger.info("queryAllByLimit begin.sysTokenConfigEntity:{}", JsonUtil.obj2Json(sysTokenConfigEntity));
+        return this.sysTokenConfigDao.selectOne(sysTokenConfigEntity);
     }
 
     /**

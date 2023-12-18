@@ -34,6 +34,8 @@ public class CrmSaleRecordServiceImpl implements CrmSaleRecordService {
      */
     @Override
     public CrmSaleRecordEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.crmSaleRecordDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class CrmSaleRecordServiceImpl implements CrmSaleRecordService {
     public List<CrmSaleRecordEntity> queryAllByLimit(CrmSaleRecordEntity crmSaleRecordEntity) {
         logger.info("queryAllByLimit begin.crmSaleRecordEntity:{}", JsonUtil.obj2Json(crmSaleRecordEntity));
         return this.crmSaleRecordDao.queryAllByLimit(crmSaleRecordEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param crmSaleRecordEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<CrmSaleRecordEntity> fuzzyQuery(CrmSaleRecordEntity crmSaleRecordEntity) {
+        logger.info("queryAllByLimit begin.crmSaleRecordEntity:{}", JsonUtil.obj2Json(crmSaleRecordEntity));
+        return this.crmSaleRecordDao.fuzzyQuery(crmSaleRecordEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param crmSaleRecordEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public CrmSaleRecordEntity selectOne(CrmSaleRecordEntity crmSaleRecordEntity) {
+        logger.info("queryAllByLimit begin.crmSaleRecordEntity:{}", JsonUtil.obj2Json(crmSaleRecordEntity));
+        return this.crmSaleRecordDao.selectOne(crmSaleRecordEntity);
     }
 
     /**

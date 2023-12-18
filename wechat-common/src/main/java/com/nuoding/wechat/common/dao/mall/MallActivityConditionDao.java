@@ -9,7 +9,7 @@ import java.util.List;
  * 活动条件表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:38
  */
 public interface MallActivityConditionDao {
 
@@ -28,6 +28,22 @@ public interface MallActivityConditionDao {
      * @return 对象列表
      */
     List<MallActivityConditionEntity> queryAllByLimit(MallActivityConditionEntity mallActivityConditionEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param mallActivityConditionEntity 查询条件
+     * @return 对象列表
+     */
+    MallActivityConditionEntity selectOne(MallActivityConditionEntity mallActivityConditionEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param mallActivityConditionEntity 查询条件
+     * @return 对象列表
+     */
+    List<MallActivityConditionEntity> fuzzyQuery(MallActivityConditionEntity mallActivityConditionEntity);
 
     /**
      * 统计总行数

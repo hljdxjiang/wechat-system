@@ -9,7 +9,7 @@ import java.util.List;
  * 黑名单表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:04
+ * @Date: 2023-12-18 14:57:37
  */
 public interface SysBlacklistDao {
 
@@ -28,6 +28,22 @@ public interface SysBlacklistDao {
      * @return 对象列表
      */
     List<SysBlacklistEntity> queryAllByLimit(SysBlacklistEntity sysBlacklistEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param sysBlacklistEntity 查询条件
+     * @return 对象列表
+     */
+    SysBlacklistEntity selectOne(SysBlacklistEntity sysBlacklistEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param sysBlacklistEntity 查询条件
+     * @return 对象列表
+     */
+    List<SysBlacklistEntity> fuzzyQuery(SysBlacklistEntity sysBlacklistEntity);
 
     /**
      * 统计总行数

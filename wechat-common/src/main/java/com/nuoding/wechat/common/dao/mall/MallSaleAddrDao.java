@@ -9,7 +9,7 @@ import java.util.List;
  * 客户信息表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:37
  */
 public interface MallSaleAddrDao {
 
@@ -28,6 +28,22 @@ public interface MallSaleAddrDao {
      * @return 对象列表
      */
     List<MallSaleAddrEntity> queryAllByLimit(MallSaleAddrEntity mallSaleAddrEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param mallSaleAddrEntity 查询条件
+     * @return 对象列表
+     */
+    MallSaleAddrEntity selectOne(MallSaleAddrEntity mallSaleAddrEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param mallSaleAddrEntity 查询条件
+     * @return 对象列表
+     */
+    List<MallSaleAddrEntity> fuzzyQuery(MallSaleAddrEntity mallSaleAddrEntity);
 
     /**
      * 统计总行数

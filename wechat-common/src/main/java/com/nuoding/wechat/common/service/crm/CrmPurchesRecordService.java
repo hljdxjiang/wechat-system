@@ -29,6 +29,22 @@ public interface CrmPurchesRecordService {
     List<CrmPurchesRecordEntity> queryAllByLimit(CrmPurchesRecordEntity crmPurchesRecordEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param crmPurchesRecordEntity 筛选条件
+     * @return 查询结果
+     */
+    List<CrmPurchesRecordEntity> fuzzyQuery(CrmPurchesRecordEntity crmPurchesRecordEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param crmPurchesRecordEntity 筛选条件
+     * @return 查询结果
+     */
+    CrmPurchesRecordEntity selectOne(CrmPurchesRecordEntity crmPurchesRecordEntity);
+
+    /**
      * 新增数据
      *
      * @param crmPurchesRecordEntity 实例对象

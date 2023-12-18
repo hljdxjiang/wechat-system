@@ -29,6 +29,22 @@ public interface WechatTemplateInfoService {
     List<WechatTemplateInfoEntity> queryAllByLimit(WechatTemplateInfoEntity wechatTemplateInfoEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param wechatTemplateInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    List<WechatTemplateInfoEntity> fuzzyQuery(WechatTemplateInfoEntity wechatTemplateInfoEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param wechatTemplateInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    WechatTemplateInfoEntity selectOne(WechatTemplateInfoEntity wechatTemplateInfoEntity);
+
+    /**
      * 新增数据
      *
      * @param wechatTemplateInfoEntity 实例对象

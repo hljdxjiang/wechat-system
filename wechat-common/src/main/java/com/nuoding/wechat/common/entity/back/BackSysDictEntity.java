@@ -14,7 +14,7 @@ import java.util.Date;
  * 字典表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:39
  */
 @Entity
 @Table(name = "back_sys_dict")

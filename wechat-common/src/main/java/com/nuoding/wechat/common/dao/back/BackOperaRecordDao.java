@@ -9,7 +9,7 @@ import java.util.List;
  * 后管操作记录表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:38
  */
 public interface BackOperaRecordDao {
 
@@ -28,6 +28,22 @@ public interface BackOperaRecordDao {
      * @return 对象列表
      */
     List<BackOperaRecordEntity> queryAllByLimit(BackOperaRecordEntity backOperaRecordEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param backOperaRecordEntity 查询条件
+     * @return 对象列表
+     */
+    BackOperaRecordEntity selectOne(BackOperaRecordEntity backOperaRecordEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param backOperaRecordEntity 查询条件
+     * @return 对象列表
+     */
+    List<BackOperaRecordEntity> fuzzyQuery(BackOperaRecordEntity backOperaRecordEntity);
 
     /**
      * 统计总行数

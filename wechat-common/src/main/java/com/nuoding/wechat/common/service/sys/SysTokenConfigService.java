@@ -29,6 +29,22 @@ public interface SysTokenConfigService {
     List<SysTokenConfigEntity> queryAllByLimit(SysTokenConfigEntity sysTokenConfigEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param sysTokenConfigEntity 筛选条件
+     * @return 查询结果
+     */
+    List<SysTokenConfigEntity> fuzzyQuery(SysTokenConfigEntity sysTokenConfigEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param sysTokenConfigEntity 筛选条件
+     * @return 查询结果
+     */
+    SysTokenConfigEntity selectOne(SysTokenConfigEntity sysTokenConfigEntity);
+
+    /**
      * 新增数据
      *
      * @param sysTokenConfigEntity 实例对象

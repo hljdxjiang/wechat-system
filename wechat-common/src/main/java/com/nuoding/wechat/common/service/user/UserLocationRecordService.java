@@ -29,6 +29,22 @@ public interface UserLocationRecordService {
     List<UserLocationRecordEntity> queryAllByLimit(UserLocationRecordEntity userLocationRecordEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param userLocationRecordEntity 筛选条件
+     * @return 查询结果
+     */
+    List<UserLocationRecordEntity> fuzzyQuery(UserLocationRecordEntity userLocationRecordEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param userLocationRecordEntity 筛选条件
+     * @return 查询结果
+     */
+    UserLocationRecordEntity selectOne(UserLocationRecordEntity userLocationRecordEntity);
+
+    /**
      * 新增数据
      *
      * @param userLocationRecordEntity 实例对象

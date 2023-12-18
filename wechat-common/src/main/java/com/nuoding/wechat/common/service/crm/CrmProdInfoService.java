@@ -1,8 +1,6 @@
 package com.nuoding.wechat.common.service.crm;
 
 import com.nuoding.wechat.common.entity.crm.CrmProdInfoEntity;
-import com.nuoding.wechat.common.entity.crm.CrmProdInfoOutEntity;
-import com.nuoding.wechat.common.model.crm.ProdFuzzyFuzzyQueryDTO;
 
 import java.util.List;
 
@@ -32,6 +30,22 @@ public interface CrmProdInfoService {
     List<CrmProdInfoEntity> queryAllByLimit(CrmProdInfoEntity crmProdInfoEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param crmProdInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    List<CrmProdInfoEntity> fuzzyQuery(CrmProdInfoEntity crmProdInfoEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param crmProdInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    CrmProdInfoEntity selectOne(CrmProdInfoEntity crmProdInfoEntity);
+
+    /**
      * 新增数据
      *
      * @param crmProdInfoEntity 实例对象
@@ -54,7 +68,7 @@ public interface CrmProdInfoService {
      * @return 实例对象
      * @page 分页属性
      */
-    List<CrmProdInfoOutEntity> queryFuzzyList(ProdFuzzyFuzzyQueryDTO dto);
+    List<CrmProdInfoEntity> queryFuzzyList(CrmProdInfoEntity dto);
 
 
     /**

@@ -9,7 +9,7 @@ import java.util.List;
  * 卡券信息表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:37
  */
 public interface MallCardInfoDao {
 
@@ -28,6 +28,22 @@ public interface MallCardInfoDao {
      * @return 对象列表
      */
     List<MallCardInfoEntity> queryAllByLimit(MallCardInfoEntity mallCardInfoEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param mallCardInfoEntity 查询条件
+     * @return 对象列表
+     */
+    MallCardInfoEntity selectOne(MallCardInfoEntity mallCardInfoEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param mallCardInfoEntity 查询条件
+     * @return 对象列表
+     */
+    List<MallCardInfoEntity> fuzzyQuery(MallCardInfoEntity mallCardInfoEntity);
 
     /**
      * 统计总行数

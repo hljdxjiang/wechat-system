@@ -34,6 +34,8 @@ public class BbsColumnInfoServiceImpl implements BbsColumnInfoService {
      */
     @Override
     public BbsColumnInfoEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.bbsColumnInfoDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class BbsColumnInfoServiceImpl implements BbsColumnInfoService {
     public List<BbsColumnInfoEntity> queryAllByLimit(BbsColumnInfoEntity bbsColumnInfoEntity) {
         logger.info("queryAllByLimit begin.bbsColumnInfoEntity:{}", JsonUtil.obj2Json(bbsColumnInfoEntity));
         return this.bbsColumnInfoDao.queryAllByLimit(bbsColumnInfoEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param bbsColumnInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<BbsColumnInfoEntity> fuzzyQuery(BbsColumnInfoEntity bbsColumnInfoEntity) {
+        logger.info("queryAllByLimit begin.bbsColumnInfoEntity:{}", JsonUtil.obj2Json(bbsColumnInfoEntity));
+        return this.bbsColumnInfoDao.fuzzyQuery(bbsColumnInfoEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param bbsColumnInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public BbsColumnInfoEntity selectOne(BbsColumnInfoEntity bbsColumnInfoEntity) {
+        logger.info("queryAllByLimit begin.bbsColumnInfoEntity:{}", JsonUtil.obj2Json(bbsColumnInfoEntity));
+        return this.bbsColumnInfoDao.selectOne(bbsColumnInfoEntity);
     }
 
     /**

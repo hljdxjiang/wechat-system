@@ -1,12 +1,8 @@
 package com.nuoding.wechat.common.service.sys.impl;
 
-import com.nuoding.wechat.common.constant.RedisKey;
 import com.nuoding.wechat.common.dao.sys.SysParamConfigDao;
 import com.nuoding.wechat.common.entity.sys.SysParamConfigEntity;
-import com.nuoding.wechat.common.service.RedisService;
 import com.nuoding.wechat.common.service.sys.SysParamConfigService;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
 
@@ -26,15 +22,9 @@ import java.util.List;
 public class SysParamConfigServiceImpl implements SysParamConfigService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
+    
+    @Resource
     private SysParamConfigDao sysParamConfigDao;
-
-    private RedisService redisService;
-
-    public SysParamConfigServiceImpl(SysParamConfigDao sysParamConfigDao, RedisService redisService) {
-        this.sysParamConfigDao = sysParamConfigDao;
-        this.redisService = redisService;
-    }
 
     /**
      * 通过ID查询单条数据
@@ -44,6 +34,8 @@ public class SysParamConfigServiceImpl implements SysParamConfigService {
      */
     @Override
     public SysParamConfigEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.sysParamConfigDao.queryById(id);
     }
 
@@ -57,6 +49,30 @@ public class SysParamConfigServiceImpl implements SysParamConfigService {
     public List<SysParamConfigEntity> queryAllByLimit(SysParamConfigEntity sysParamConfigEntity) {
         logger.info("queryAllByLimit begin.sysParamConfigEntity:{}", JsonUtil.obj2Json(sysParamConfigEntity));
         return this.sysParamConfigDao.queryAllByLimit(sysParamConfigEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param sysParamConfigEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<SysParamConfigEntity> fuzzyQuery(SysParamConfigEntity sysParamConfigEntity) {
+        logger.info("queryAllByLimit begin.sysParamConfigEntity:{}", JsonUtil.obj2Json(sysParamConfigEntity));
+        return this.sysParamConfigDao.fuzzyQuery(sysParamConfigEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param sysParamConfigEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public SysParamConfigEntity selectOne(SysParamConfigEntity sysParamConfigEntity) {
+        logger.info("queryAllByLimit begin.sysParamConfigEntity:{}", JsonUtil.obj2Json(sysParamConfigEntity));
+        return this.sysParamConfigDao.selectOne(sysParamConfigEntity);
     }
 
     /**
@@ -95,27 +111,5 @@ public class SysParamConfigServiceImpl implements SysParamConfigService {
     public boolean deleteById(Integer id) {
         logger.info("deleteById begin.sysParamConfigEntity:{}", id);
         return this.sysParamConfigDao.deleteById(id) > 0;
-    }
-
-
-    @Override
-    public String getConfigByCatch(String code) {
-        SysParamConfigEntity config;
-        String val = redisService.getValue(RedisKey.SYS_PARAM_CONFIG_KEY_PRE
-                .concat(code));
-        if (val != null) {
-            config = JsonUtil.json2Obj(val, SysParamConfigEntity.class);
-            return config.getConfigValue();
-        }
-        config = new SysParamConfigEntity();
-        config.setConfigKey(code);
-        List<SysParamConfigEntity> list = this.queryAllByLimit(config);
-        if (!CollectionUtils.isEmpty(list)) {
-            config = list.get(0);
-            redisService.setValue(RedisKey.SYS_PARAM_CONFIG_KEY_PRE
-                    .concat(code), JsonUtil.obj2Json(config));
-            return config.getConfigValue();
-        }
-        return Strings.EMPTY;
     }
 }

@@ -29,6 +29,22 @@ public interface BackOperaRecordService {
     List<BackOperaRecordEntity> queryAllByLimit(BackOperaRecordEntity backOperaRecordEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param backOperaRecordEntity 筛选条件
+     * @return 查询结果
+     */
+    List<BackOperaRecordEntity> fuzzyQuery(BackOperaRecordEntity backOperaRecordEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param backOperaRecordEntity 筛选条件
+     * @return 查询结果
+     */
+    BackOperaRecordEntity selectOne(BackOperaRecordEntity backOperaRecordEntity);
+
+    /**
      * 新增数据
      *
      * @param backOperaRecordEntity 实例对象

@@ -9,7 +9,7 @@ import java.util.List;
  * 后管用户表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:38
  */
 public interface BackSysUserDao {
 
@@ -28,6 +28,22 @@ public interface BackSysUserDao {
      * @return 对象列表
      */
     List<BackSysUserEntity> queryAllByLimit(BackSysUserEntity backSysUserEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param backSysUserEntity 查询条件
+     * @return 对象列表
+     */
+    BackSysUserEntity selectOne(BackSysUserEntity backSysUserEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param backSysUserEntity 查询条件
+     * @return 对象列表
+     */
+    List<BackSysUserEntity> fuzzyQuery(BackSysUserEntity backSysUserEntity);
 
     /**
      * 统计总行数

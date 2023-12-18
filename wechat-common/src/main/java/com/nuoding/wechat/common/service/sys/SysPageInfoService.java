@@ -29,6 +29,22 @@ public interface SysPageInfoService {
     List<SysPageInfoEntity> queryAllByLimit(SysPageInfoEntity sysPageInfoEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param sysPageInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    List<SysPageInfoEntity> fuzzyQuery(SysPageInfoEntity sysPageInfoEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param sysPageInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    SysPageInfoEntity selectOne(SysPageInfoEntity sysPageInfoEntity);
+
+    /**
      * 新增数据
      *
      * @param sysPageInfoEntity 实例对象

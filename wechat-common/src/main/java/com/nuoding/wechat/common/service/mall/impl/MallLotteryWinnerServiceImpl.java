@@ -34,6 +34,8 @@ public class MallLotteryWinnerServiceImpl implements MallLotteryWinnerService {
      */
     @Override
     public MallLotteryWinnerEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.mallLotteryWinnerDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class MallLotteryWinnerServiceImpl implements MallLotteryWinnerService {
     public List<MallLotteryWinnerEntity> queryAllByLimit(MallLotteryWinnerEntity mallLotteryWinnerEntity) {
         logger.info("queryAllByLimit begin.mallLotteryWinnerEntity:{}", JsonUtil.obj2Json(mallLotteryWinnerEntity));
         return this.mallLotteryWinnerDao.queryAllByLimit(mallLotteryWinnerEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param mallLotteryWinnerEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<MallLotteryWinnerEntity> fuzzyQuery(MallLotteryWinnerEntity mallLotteryWinnerEntity) {
+        logger.info("queryAllByLimit begin.mallLotteryWinnerEntity:{}", JsonUtil.obj2Json(mallLotteryWinnerEntity));
+        return this.mallLotteryWinnerDao.fuzzyQuery(mallLotteryWinnerEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param mallLotteryWinnerEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public MallLotteryWinnerEntity selectOne(MallLotteryWinnerEntity mallLotteryWinnerEntity) {
+        logger.info("queryAllByLimit begin.mallLotteryWinnerEntity:{}", JsonUtil.obj2Json(mallLotteryWinnerEntity));
+        return this.mallLotteryWinnerDao.selectOne(mallLotteryWinnerEntity);
     }
 
     /**

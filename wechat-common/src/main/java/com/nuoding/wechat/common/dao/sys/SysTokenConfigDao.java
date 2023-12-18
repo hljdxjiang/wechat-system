@@ -9,7 +9,7 @@ import java.util.List;
  * token信息表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:04
+ * @Date: 2023-12-18 14:57:37
  */
 public interface SysTokenConfigDao {
 
@@ -28,6 +28,22 @@ public interface SysTokenConfigDao {
      * @return 对象列表
      */
     List<SysTokenConfigEntity> queryAllByLimit(SysTokenConfigEntity sysTokenConfigEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param sysTokenConfigEntity 查询条件
+     * @return 对象列表
+     */
+    SysTokenConfigEntity selectOne(SysTokenConfigEntity sysTokenConfigEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param sysTokenConfigEntity 查询条件
+     * @return 对象列表
+     */
+    List<SysTokenConfigEntity> fuzzyQuery(SysTokenConfigEntity sysTokenConfigEntity);
 
     /**
      * 统计总行数

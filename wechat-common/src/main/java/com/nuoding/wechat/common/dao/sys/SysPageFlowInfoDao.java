@@ -9,7 +9,7 @@ import java.util.List;
  * 页面楼层表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:37
  */
 public interface SysPageFlowInfoDao {
 
@@ -28,6 +28,22 @@ public interface SysPageFlowInfoDao {
      * @return 对象列表
      */
     List<SysPageFlowInfoEntity> queryAllByLimit(SysPageFlowInfoEntity sysPageFlowInfoEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param sysPageFlowInfoEntity 查询条件
+     * @return 对象列表
+     */
+    SysPageFlowInfoEntity selectOne(SysPageFlowInfoEntity sysPageFlowInfoEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param sysPageFlowInfoEntity 查询条件
+     * @return 对象列表
+     */
+    List<SysPageFlowInfoEntity> fuzzyQuery(SysPageFlowInfoEntity sysPageFlowInfoEntity);
 
     /**
      * 统计总行数

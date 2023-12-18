@@ -16,6 +16,7 @@ import com.nuoding.wechat.common.model.MapResponse;
 import com.nuoding.wechat.common.service.sys.SysFlowItemsService;
 import com.nuoding.wechat.common.service.sys.SysPageFlowInfoService;
 import com.nuoding.wechat.common.service.sys.SysPageInfoService;
+import com.nuoding.wechat.common.utils.JsonUtil;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -46,11 +47,11 @@ public class PageServiceImpl implements PageService {
     @Override
     public MapResponse getPageFLowInfo(MapRequest mapRequest) {
         MapResponse mapResponse = new MapResponse();
-        String channel = mapRequest.getHeader().getChannelNo();
-        PageDTO dto = (PageDTO) mapRequest.getBody();
-        String pageID = dto.getPageId();
-        logger.info("getPageFLowInfo.begin.channel:{},pageID:{}", channel, pageID);
-        mapRequest.setBody(ItemShowCheckUtil.getCheckedLIst(channel, this.getPageFlowInfoByPageID(pageID)));
+//        String channel = mapRequest.getHeader().getChannelNo();
+//        PageDTO dto = (PageDTO) mapRequest.getBody();
+//        String pageID = dto.getPageId();
+//        logger.info("getPageFLowInfo.begin.channel:{},pageID:{}", channel, pageID);
+//        mapRequest.setBody(ItemShowCheckUtil.getCheckedLIst(channel, this.getPageFlowInfoByPageID(pageID)));
         return mapResponse;
     }
 
@@ -67,15 +68,15 @@ public class PageServiceImpl implements PageService {
     @Override
     public MapResponse getFlowItemInfo(MapRequest mapRequest) {
         MapResponse mapResponse = new MapResponse();
-        String channel = mapRequest.getHeader().getChannelNo();
-        FlowItemDTO dto = (FlowItemDTO) mapRequest.getBody(FlowItemDTO.class);
-        String flowId = dto.getFlowId();
-        logger.info("getFlowItemInfo.begin.channelL:{},pageID:{}", channel, flowId);
-        SysFlowItemsEntity entity = new SysFlowItemsEntity();
-        entity.setFlowId(flowId);
-        entity.setStatus(StatusEnum.DEFAULT.getStatus());
-        List<SysFlowItemsEntity> list = ItemShowCheckUtil.getCheckedLIst(channel, flowItemsService.queryAllByLimit(entity));
-        mapRequest.setBody(list);
+//        String channel = mapRequest.getHeader().getChannelNo();
+//        FlowItemDTO dto = (FlowItemDTO) mapRequest.getBody(FlowItemDTO.class);
+//        String flowId = dto.getFlowId();
+//        logger.info("getFlowItemInfo.begin.channelL:{},pageID:{}", channel, flowId);
+//        SysFlowItemsEntity entity = new SysFlowItemsEntity();
+//        entity.setFlowId(flowId);
+//        entity.setStatus(StatusEnum.DEFAULT.getStatus());
+//        List<SysFlowItemsEntity> list = ItemShowCheckUtil.getCheckedLIst(channel, flowItemsService.queryAllByLimit(entity));
+//        mapRequest.setBody(list);
         return mapResponse;
     }
 
@@ -83,7 +84,7 @@ public class PageServiceImpl implements PageService {
     public MapResponse getPageInfo(MapRequest mapRequest) {
         MapResponse mapResponse = new MapResponse();
         String channel = mapRequest.getHeader().getChannelNo();
-        PageDTO dto = (PageDTO) mapRequest.getBody(PageDTO.class);
+        PageDTO dto = JsonUtil.json2Obj(mapRequest.getBody().toString(),PageDTO.class);
         String pageID = dto.getPageId();
         logger.info("getPageInfo.begin.channel:{},pageID:{}", channel, pageID);
         if (StringUtils.isBlank(pageID)) {
@@ -109,26 +110,26 @@ public class PageServiceImpl implements PageService {
     @Override
     public MapResponse getIntemInfo(MapRequest mapRequest) {
         MapResponse mapResponse = new MapResponse();
-        String channel = mapRequest.getHeader().getChannelNo();
-        FlowInfoDTO dto = (FlowInfoDTO) mapRequest.getBody();
-        String itemType = dto.getItemType();
-        String flowId = dto.getFlowId();
-        List retList = new ArrayList();
-        switch (itemType.toUpperCase()) {
-            case "ITEM":
-                retList = null;
-                break;
-            case "FLOW":
-                retList = null;
-                break;
-            case "IMAGE":
-                retList = null;
-                break;
-            case "BANNER":
-                retList = null;
-                break;
-        }
-        mapRequest.setBody(retList);
+//        String channel = mapRequest.getHeader().getChannelNo();
+//        FlowInfoDTO dto = (FlowInfoDTO) mapRequest.getBody();
+//        String itemType = dto.getItemType();
+//        String flowId = dto.getFlowId();
+//        List retList = new ArrayList();
+//        switch (itemType.toUpperCase()) {
+//            case "ITEM":
+//                retList = null;
+//                break;
+//            case "FLOW":
+//                retList = null;
+//                break;
+//            case "IMAGE":
+//                retList = null;
+//                break;
+//            case "BANNER":
+//                retList = null;
+//                break;
+//        }
+//        mapRequest.setBody(retList);
         return mapResponse;
     }
 }

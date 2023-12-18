@@ -34,6 +34,8 @@ public class BackSysRolesServiceImpl implements BackSysRolesService {
      */
     @Override
     public BackSysRolesEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.backSysRolesDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class BackSysRolesServiceImpl implements BackSysRolesService {
     public List<BackSysRolesEntity> queryAllByLimit(BackSysRolesEntity backSysRolesEntity) {
         logger.info("queryAllByLimit begin.backSysRolesEntity:{}", JsonUtil.obj2Json(backSysRolesEntity));
         return this.backSysRolesDao.queryAllByLimit(backSysRolesEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param backSysRolesEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<BackSysRolesEntity> fuzzyQuery(BackSysRolesEntity backSysRolesEntity) {
+        logger.info("queryAllByLimit begin.backSysRolesEntity:{}", JsonUtil.obj2Json(backSysRolesEntity));
+        return this.backSysRolesDao.fuzzyQuery(backSysRolesEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param backSysRolesEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public BackSysRolesEntity selectOne(BackSysRolesEntity backSysRolesEntity) {
+        logger.info("queryAllByLimit begin.backSysRolesEntity:{}", JsonUtil.obj2Json(backSysRolesEntity));
+        return this.backSysRolesDao.selectOne(backSysRolesEntity);
     }
 
     /**

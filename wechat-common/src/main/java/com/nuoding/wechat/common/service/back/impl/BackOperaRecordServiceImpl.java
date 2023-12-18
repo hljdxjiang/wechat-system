@@ -34,6 +34,8 @@ public class BackOperaRecordServiceImpl implements BackOperaRecordService {
      */
     @Override
     public BackOperaRecordEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.backOperaRecordDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class BackOperaRecordServiceImpl implements BackOperaRecordService {
     public List<BackOperaRecordEntity> queryAllByLimit(BackOperaRecordEntity backOperaRecordEntity) {
         logger.info("queryAllByLimit begin.backOperaRecordEntity:{}", JsonUtil.obj2Json(backOperaRecordEntity));
         return this.backOperaRecordDao.queryAllByLimit(backOperaRecordEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param backOperaRecordEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<BackOperaRecordEntity> fuzzyQuery(BackOperaRecordEntity backOperaRecordEntity) {
+        logger.info("queryAllByLimit begin.backOperaRecordEntity:{}", JsonUtil.obj2Json(backOperaRecordEntity));
+        return this.backOperaRecordDao.fuzzyQuery(backOperaRecordEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param backOperaRecordEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public BackOperaRecordEntity selectOne(BackOperaRecordEntity backOperaRecordEntity) {
+        logger.info("queryAllByLimit begin.backOperaRecordEntity:{}", JsonUtil.obj2Json(backOperaRecordEntity));
+        return this.backOperaRecordDao.selectOne(backOperaRecordEntity);
     }
 
     /**

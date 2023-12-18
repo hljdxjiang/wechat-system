@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nuoding.wechat.common.dao.user.UserAddrInfoDao">
+
+    <resultMap type="com.nuoding.wechat.common.entity.user.UserAddrInfoEntity" id="UserAddrInfoMap">
+            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
+        <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+        <result property="mobileNo" column="mobile_no" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
+        <result property="country" column="country" jdbcType="VARCHAR"/>
+        <result property="province" column="province" jdbcType="VARCHAR"/>
+        <result property="city" column="city" jdbcType="VARCHAR"/>
+        <result property="street" column="street" jdbcType="VARCHAR"/>
+        <result property="detail" column="detail" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Table_Name">
+        user_addr_info
+    </sql>
+
+    <sql id="Base_Column_List">
+        id,tenant_id,user_id,mobile_no,name,address,status,create_time,last_modified_time,country,province,city,street,detail    </sql>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="UserAddrInfoMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="UserAddrInfoMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                <if test="userId != null and userId !=''">and user_id = #{userId}</if>
+                                                <if test="mobileNo != null and mobileNo !=''">and mobile_no = #{mobileNo}</if>
+                                                <if test="name != null and name !=''">and name = #{name}</if>
+                                                <if test="address != null and address !=''">and address = #{address}</if>
+                                                <if test="status != null and status !=''">and status = #{status}</if>
+                                                                                        <if test="country != null and country !=''">and country = #{country}</if>
+                                                <if test="province != null and province !=''">and province = #{province}</if>
+                                                <if test="city != null and city !=''">and city = #{city}</if>
+                                                <if test="street != null and street !=''">and street = #{street}</if>
+                                                <if test="detail != null and detail !=''">and detail = #{detail}</if>
+                    </where>
+    </select>
+
+    <!--查询一条-->
+    <select id="selectOne" resultMap="UserAddrInfoMap">
+    select
+    <include refid="Base_Column_List"/>
+    from
+    <include refid="Table_Name"/>
+    <where>
+                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                <if test="userId != null and userId !=''">and user_id = #{userId}</if>
+                                                <if test="mobileNo != null and mobileNo !=''">and mobile_no = #{mobileNo}</if>
+                                                <if test="name != null and name !=''">and name = #{name}</if>
+                                                <if test="address != null and address !=''">and address = #{address}</if>
+                                                <if test="status != null and status !=''">and status = #{status}</if>
+                                                                                        <if test="country != null and country !=''">and country = #{country}</if>
+                                                <if test="province != null and province !=''">and province = #{province}</if>
+                                                <if test="city != null and city !=''">and city = #{city}</if>
+                                                <if test="street != null and street !=''">and street = #{street}</if>
+                                                <if test="detail != null and detail !=''">and detail = #{detail}</if>
+                        </where>
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="fuzzyQuery" resultMap="UserAddrInfoMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                                                                    <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                                                                            <if test="userId != null and userId !=''">and user_id like CONCAT(CONCAT('%',  #{userId}), '%')</if>
+                                                                                                            <if test="mobileNo != null and mobileNo !=''">and mobile_no like CONCAT(CONCAT('%',  #{mobileNo}), '%')</if>
+                                                                                                            <if test="name != null and name !=''">and name like CONCAT(CONCAT('%',  #{name}), '%')</if>
+                                                                                                            <if test="address != null and address !=''">and address like CONCAT(CONCAT('%',  #{address}), '%')</if>
+                                                                                                            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%',  #{status}), '%')</if>
+                                                                                                                                                                    <if test="country != null and country !=''">and country like CONCAT(CONCAT('%',  #{country}), '%')</if>
+                                                                                                            <if test="province != null and province !=''">and province like CONCAT(CONCAT('%',  #{province}), '%')</if>
+                                                                                                            <if test="city != null and city !=''">and city like CONCAT(CONCAT('%',  #{city}), '%')</if>
+                                                                                                            <if test="street != null and street !=''">and street like CONCAT(CONCAT('%',  #{street}), '%')</if>
+                                                                                                            <if test="detail != null and detail !=''">and detail like CONCAT(CONCAT('%',  #{detail}), '%')</if>
+                                                        </where>
+
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                        <if test="userId != null and userId !=''">and user_id = #{userId}</if>
+                                        <if test="mobileNo != null and mobileNo !=''">and mobile_no = #{mobileNo}</if>
+                                        <if test="name != null and name !=''">and name = #{name}</if>
+                                        <if test="address != null and address !=''">and address = #{address}</if>
+                                        <if test="status != null and status !=''">and status = #{status}</if>
+                                                                <if test="country != null and country !=''">and country = #{country}</if>
+                                        <if test="province != null and province !=''">and province = #{province}</if>
+                                        <if test="city != null and city !=''">and city = #{city}</if>
+                                        <if test="street != null and street !=''">and street = #{street}</if>
+                                        <if test="detail != null and detail !=''">and detail = #{detail}</if>
+            </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+        (tenant_id,user_id,mobile_no,name,address,country,province,city,street,detail)
+        values
+        (#{tenantId},#{userId},#{mobileNo},#{name},#{address},#{country},#{province},#{city},#{street},#{detail})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (        tenant_id,        user_id,        mobile_no,        name,        address,        country,        province,        city,        street,        detail)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (            #{entity.tenantId},            #{entity.userId},            #{entity.mobileNo},            #{entity.name},            #{entity.address},            #{entity.country},            #{entity.province},            #{entity.city},            #{entity.street},            #{entity.detail})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (        tenant_id,        user_id,        mobile_no,        name,        address,        status,        country,        province,        city,        street,        detail)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tenantId},#{entity.userId},#{entity.mobileNo},#{entity.name},#{entity.address},#{entity.status},#{entity.country},#{entity.province},#{entity.city},#{entity.street},#{entity.detail})
+        </foreach>
+        on duplicate key update
+        tenant_id=values(tenant_id),
+    user_id=values(user_id),
+    mobile_no=values(mobile_no),
+    name=values(name),
+    address=values(address),
+    status=values(status),
+            country=values(country),
+    province=values(province),
+    city=values(city),
+    street=values(street),
+    detail=values(detail)
+        </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update
+        <include refid="Table_Name"/>
+        <set>
+    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+    <if test="userId != null and userId != ''">user_id = #{userId},</if>
+    <if test="mobileNo != null and mobileNo != ''">mobile_no = #{mobileNo},</if>
+    <if test="name != null and name != ''">name = #{name},</if>
+    <if test="address != null and address != ''">address = #{address},</if>
+    <if test="status != null and status != ''">status = #{status},</if>
+    <if test="country != null and country != ''">country = #{country},</if>
+    <if test="province != null and province != ''">province = #{province},</if>
+    <if test="city != null and city != ''">city = #{city},</if>
+    <if test="street != null and street != ''">street = #{street},</if>
+    <if test="detail != null and detail != ''">detail = #{detail},</if>
+        </set>
+        where id = #{id}
+        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from
+        <include refid="Table_Name"/>
+        where id = #{id}
+        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+    </delete>
+
+</mapper>
+

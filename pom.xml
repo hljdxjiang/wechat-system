@@ -19,7 +19,7 @@
     <parent>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-parent</artifactId>
-        <version>2022.0.4</version>
+        <version>2021.0.6</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -27,7 +27,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>11</java.version>
-        <spring-cloud.version>2022.0.4</spring-cloud.version>
+        <spring-cloud.version>2021.0.6</spring-cloud.version>
         <pagehelper-starter.version>1.4.6</pagehelper-starter.version>
         <cn.hutool.version>5.4.0</cn.hutool.version>
         <org.bouncycastle.version>1.67</org.bouncycastle.version>

@@ -9,7 +9,7 @@ import java.util.List;
  * 系统参数配置表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:38
  */
 public interface SysParamConfigDao {
 
@@ -28,6 +28,22 @@ public interface SysParamConfigDao {
      * @return 对象列表
      */
     List<SysParamConfigEntity> queryAllByLimit(SysParamConfigEntity sysParamConfigEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param sysParamConfigEntity 查询条件
+     * @return 对象列表
+     */
+    SysParamConfigEntity selectOne(SysParamConfigEntity sysParamConfigEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param sysParamConfigEntity 查询条件
+     * @return 对象列表
+     */
+    List<SysParamConfigEntity> fuzzyQuery(SysParamConfigEntity sysParamConfigEntity);
 
     /**
      * 统计总行数

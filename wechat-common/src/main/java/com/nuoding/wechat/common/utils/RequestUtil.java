@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 public class RequestUtil {
 
     public static HttpServletRequest getRequest() {
-        return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        return (HttpServletRequest) ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
     }
 
     public static HttpSession getSession() {

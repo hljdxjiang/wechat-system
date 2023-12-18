@@ -29,6 +29,22 @@ public interface BackUserLoginRecordService {
     List<BackUserLoginRecordEntity> queryAllByLimit(BackUserLoginRecordEntity backUserLoginRecordEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param backUserLoginRecordEntity 筛选条件
+     * @return 查询结果
+     */
+    List<BackUserLoginRecordEntity> fuzzyQuery(BackUserLoginRecordEntity backUserLoginRecordEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param backUserLoginRecordEntity 筛选条件
+     * @return 查询结果
+     */
+    BackUserLoginRecordEntity selectOne(BackUserLoginRecordEntity backUserLoginRecordEntity);
+
+    /**
      * 新增数据
      *
      * @param backUserLoginRecordEntity 实例对象

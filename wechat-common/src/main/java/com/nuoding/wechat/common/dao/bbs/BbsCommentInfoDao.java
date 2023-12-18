@@ -9,7 +9,7 @@ import java.util.List;
  * 评论记录表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:38
  */
 public interface BbsCommentInfoDao {
 
@@ -28,6 +28,22 @@ public interface BbsCommentInfoDao {
      * @return 对象列表
      */
     List<BbsCommentInfoEntity> queryAllByLimit(BbsCommentInfoEntity bbsCommentInfoEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param bbsCommentInfoEntity 查询条件
+     * @return 对象列表
+     */
+    BbsCommentInfoEntity selectOne(BbsCommentInfoEntity bbsCommentInfoEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param bbsCommentInfoEntity 查询条件
+     * @return 对象列表
+     */
+    List<BbsCommentInfoEntity> fuzzyQuery(BbsCommentInfoEntity bbsCommentInfoEntity);
 
     /**
      * 统计总行数

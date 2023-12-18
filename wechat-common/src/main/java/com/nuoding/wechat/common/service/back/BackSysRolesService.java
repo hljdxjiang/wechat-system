@@ -29,6 +29,22 @@ public interface BackSysRolesService {
     List<BackSysRolesEntity> queryAllByLimit(BackSysRolesEntity backSysRolesEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param backSysRolesEntity 筛选条件
+     * @return 查询结果
+     */
+    List<BackSysRolesEntity> fuzzyQuery(BackSysRolesEntity backSysRolesEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param backSysRolesEntity 筛选条件
+     * @return 查询结果
+     */
+    BackSysRolesEntity selectOne(BackSysRolesEntity backSysRolesEntity);
+
+    /**
      * 新增数据
      *
      * @param backSysRolesEntity 实例对象

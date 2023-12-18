@@ -3,6 +3,7 @@ package com.nuoding.wechat.common.service.crm.impl;
 import com.nuoding.wechat.common.dao.crm.CrmProdDetailDao;
 import com.nuoding.wechat.common.entity.crm.CrmProdDetailEntity;
 import com.nuoding.wechat.common.service.crm.CrmProdDetailService;
+import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -15,7 +16,6 @@ import java.util.List;
 /**
  * (crmProdDetail)表服务实现类
  * 产品详情表
- *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -23,7 +23,7 @@ import java.util.List;
 public class CrmProdDetailServiceImpl implements CrmProdDetailService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
+    
     @Resource
     private CrmProdDetailDao crmProdDetailDao;
 
@@ -35,6 +35,8 @@ public class CrmProdDetailServiceImpl implements CrmProdDetailService {
      */
     @Override
     public CrmProdDetailEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.crmProdDetailDao.queryById(id);
     }
 
@@ -48,6 +50,30 @@ public class CrmProdDetailServiceImpl implements CrmProdDetailService {
     public List<CrmProdDetailEntity> queryAllByLimit(CrmProdDetailEntity crmProdDetailEntity) {
         logger.info("queryAllByLimit begin.crmProdDetailEntity:{}", JsonUtil.obj2Json(crmProdDetailEntity));
         return this.crmProdDetailDao.queryAllByLimit(crmProdDetailEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param crmProdDetailEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<CrmProdDetailEntity> fuzzyQuery(CrmProdDetailEntity crmProdDetailEntity) {
+        logger.info("queryAllByLimit begin.crmProdDetailEntity:{}", JsonUtil.obj2Json(crmProdDetailEntity));
+        return this.crmProdDetailDao.fuzzyQuery(crmProdDetailEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param crmProdDetailEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public CrmProdDetailEntity selectOne(CrmProdDetailEntity crmProdDetailEntity) {
+        logger.info("queryAllByLimit begin.crmProdDetailEntity:{}", JsonUtil.obj2Json(crmProdDetailEntity));
+        return this.crmProdDetailDao.selectOne(crmProdDetailEntity);
     }
 
     /**

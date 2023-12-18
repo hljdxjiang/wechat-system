@@ -34,6 +34,8 @@ public class UserWinningRecordServiceImpl implements UserWinningRecordService {
      */
     @Override
     public UserWinningRecordEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.userWinningRecordDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class UserWinningRecordServiceImpl implements UserWinningRecordService {
     public List<UserWinningRecordEntity> queryAllByLimit(UserWinningRecordEntity userWinningRecordEntity) {
         logger.info("queryAllByLimit begin.userWinningRecordEntity:{}", JsonUtil.obj2Json(userWinningRecordEntity));
         return this.userWinningRecordDao.queryAllByLimit(userWinningRecordEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param userWinningRecordEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<UserWinningRecordEntity> fuzzyQuery(UserWinningRecordEntity userWinningRecordEntity) {
+        logger.info("queryAllByLimit begin.userWinningRecordEntity:{}", JsonUtil.obj2Json(userWinningRecordEntity));
+        return this.userWinningRecordDao.fuzzyQuery(userWinningRecordEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param userWinningRecordEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public UserWinningRecordEntity selectOne(UserWinningRecordEntity userWinningRecordEntity) {
+        logger.info("queryAllByLimit begin.userWinningRecordEntity:{}", JsonUtil.obj2Json(userWinningRecordEntity));
+        return this.userWinningRecordDao.selectOne(userWinningRecordEntity);
     }
 
     /**

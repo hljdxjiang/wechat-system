@@ -34,6 +34,8 @@ public class BbsCommentInfoServiceImpl implements BbsCommentInfoService {
      */
     @Override
     public BbsCommentInfoEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.bbsCommentInfoDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class BbsCommentInfoServiceImpl implements BbsCommentInfoService {
     public List<BbsCommentInfoEntity> queryAllByLimit(BbsCommentInfoEntity bbsCommentInfoEntity) {
         logger.info("queryAllByLimit begin.bbsCommentInfoEntity:{}", JsonUtil.obj2Json(bbsCommentInfoEntity));
         return this.bbsCommentInfoDao.queryAllByLimit(bbsCommentInfoEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param bbsCommentInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<BbsCommentInfoEntity> fuzzyQuery(BbsCommentInfoEntity bbsCommentInfoEntity) {
+        logger.info("queryAllByLimit begin.bbsCommentInfoEntity:{}", JsonUtil.obj2Json(bbsCommentInfoEntity));
+        return this.bbsCommentInfoDao.fuzzyQuery(bbsCommentInfoEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param bbsCommentInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public BbsCommentInfoEntity selectOne(BbsCommentInfoEntity bbsCommentInfoEntity) {
+        logger.info("queryAllByLimit begin.bbsCommentInfoEntity:{}", JsonUtil.obj2Json(bbsCommentInfoEntity));
+        return this.bbsCommentInfoDao.selectOne(bbsCommentInfoEntity);
     }
 
     /**

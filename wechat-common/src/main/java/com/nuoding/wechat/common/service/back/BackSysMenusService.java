@@ -29,6 +29,22 @@ public interface BackSysMenusService {
     List<BackSysMenusEntity> queryAllByLimit(BackSysMenusEntity backSysMenusEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param backSysMenusEntity 筛选条件
+     * @return 查询结果
+     */
+    List<BackSysMenusEntity> fuzzyQuery(BackSysMenusEntity backSysMenusEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param backSysMenusEntity 筛选条件
+     * @return 查询结果
+     */
+    BackSysMenusEntity selectOne(BackSysMenusEntity backSysMenusEntity);
+
+    /**
      * 新增数据
      *
      * @param backSysMenusEntity 实例对象

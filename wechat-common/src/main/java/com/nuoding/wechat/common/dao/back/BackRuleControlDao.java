@@ -9,7 +9,7 @@ import java.util.List;
  * 开关控制表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:39
  */
 public interface BackRuleControlDao {
 
@@ -28,6 +28,22 @@ public interface BackRuleControlDao {
      * @return 对象列表
      */
     List<BackRuleControlEntity> queryAllByLimit(BackRuleControlEntity backRuleControlEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param backRuleControlEntity 查询条件
+     * @return 对象列表
+     */
+    BackRuleControlEntity selectOne(BackRuleControlEntity backRuleControlEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param backRuleControlEntity 查询条件
+     * @return 对象列表
+     */
+    List<BackRuleControlEntity> fuzzyQuery(BackRuleControlEntity backRuleControlEntity);
 
     /**
      * 统计总行数

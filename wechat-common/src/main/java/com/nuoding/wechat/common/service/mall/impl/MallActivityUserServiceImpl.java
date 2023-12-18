@@ -34,6 +34,8 @@ public class MallActivityUserServiceImpl implements MallActivityUserService {
      */
     @Override
     public MallActivityUserEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.mallActivityUserDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class MallActivityUserServiceImpl implements MallActivityUserService {
     public List<MallActivityUserEntity> queryAllByLimit(MallActivityUserEntity mallActivityUserEntity) {
         logger.info("queryAllByLimit begin.mallActivityUserEntity:{}", JsonUtil.obj2Json(mallActivityUserEntity));
         return this.mallActivityUserDao.queryAllByLimit(mallActivityUserEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param mallActivityUserEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<MallActivityUserEntity> fuzzyQuery(MallActivityUserEntity mallActivityUserEntity) {
+        logger.info("queryAllByLimit begin.mallActivityUserEntity:{}", JsonUtil.obj2Json(mallActivityUserEntity));
+        return this.mallActivityUserDao.fuzzyQuery(mallActivityUserEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param mallActivityUserEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public MallActivityUserEntity selectOne(MallActivityUserEntity mallActivityUserEntity) {
+        logger.info("queryAllByLimit begin.mallActivityUserEntity:{}", JsonUtil.obj2Json(mallActivityUserEntity));
+        return this.mallActivityUserDao.selectOne(mallActivityUserEntity);
     }
 
     /**

@@ -34,6 +34,8 @@ public class MallActivityServiceImpl implements MallActivityService {
      */
     @Override
     public MallActivityEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.mallActivityDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class MallActivityServiceImpl implements MallActivityService {
     public List<MallActivityEntity> queryAllByLimit(MallActivityEntity mallActivityEntity) {
         logger.info("queryAllByLimit begin.mallActivityEntity:{}", JsonUtil.obj2Json(mallActivityEntity));
         return this.mallActivityDao.queryAllByLimit(mallActivityEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param mallActivityEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<MallActivityEntity> fuzzyQuery(MallActivityEntity mallActivityEntity) {
+        logger.info("queryAllByLimit begin.mallActivityEntity:{}", JsonUtil.obj2Json(mallActivityEntity));
+        return this.mallActivityDao.fuzzyQuery(mallActivityEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param mallActivityEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public MallActivityEntity selectOne(MallActivityEntity mallActivityEntity) {
+        logger.info("queryAllByLimit begin.mallActivityEntity:{}", JsonUtil.obj2Json(mallActivityEntity));
+        return this.mallActivityDao.selectOne(mallActivityEntity);
     }
 
     /**

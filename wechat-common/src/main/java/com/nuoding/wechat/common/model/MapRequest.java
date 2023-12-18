@@ -1,17 +1,19 @@
 package com.nuoding.wechat.common.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.nuoding.wechat.common.utils.JsonUtil;
 
 import java.io.Serializable;
 import java.util.Map;
 
-public class MapRequest<T extends BaseDTO> implements Serializable {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class MapRequest implements Serializable {
 
     public MapRequest() {
     }
 
-    public MapRequest(ReqHeader header, T body) {
+    public MapRequest(ReqHeader header, Map body) {
         super();
         this.header = header;
         this.body = body;
@@ -21,7 +23,7 @@ public class MapRequest<T extends BaseDTO> implements Serializable {
     private ReqHeader header;
 
     @JsonProperty(value = "body")
-    private T body;
+    private Map body;
 
     public ReqHeader getHeader() {
         return header;
@@ -31,16 +33,11 @@ public class MapRequest<T extends BaseDTO> implements Serializable {
         this.header = header;
     }
 
-    public T getBody() {
-        return (T) body;
+    public Map getBody() {
+        return  body;
     }
 
-    public T getBody(Class<T> valueType) {
-        Map map = (Map) body;
-        return (T) JsonUtil.jsonMap2Obj(map, valueType);
-    }
-
-    public void setBody(T body) {
+    public void setBody(Map body) {
         this.body = body;
     }
 }

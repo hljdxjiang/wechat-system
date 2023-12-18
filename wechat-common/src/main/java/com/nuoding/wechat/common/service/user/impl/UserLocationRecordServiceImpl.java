@@ -34,6 +34,8 @@ public class UserLocationRecordServiceImpl implements UserLocationRecordService 
      */
     @Override
     public UserLocationRecordEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.userLocationRecordDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class UserLocationRecordServiceImpl implements UserLocationRecordService 
     public List<UserLocationRecordEntity> queryAllByLimit(UserLocationRecordEntity userLocationRecordEntity) {
         logger.info("queryAllByLimit begin.userLocationRecordEntity:{}", JsonUtil.obj2Json(userLocationRecordEntity));
         return this.userLocationRecordDao.queryAllByLimit(userLocationRecordEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param userLocationRecordEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<UserLocationRecordEntity> fuzzyQuery(UserLocationRecordEntity userLocationRecordEntity) {
+        logger.info("queryAllByLimit begin.userLocationRecordEntity:{}", JsonUtil.obj2Json(userLocationRecordEntity));
+        return this.userLocationRecordDao.fuzzyQuery(userLocationRecordEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param userLocationRecordEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public UserLocationRecordEntity selectOne(UserLocationRecordEntity userLocationRecordEntity) {
+        logger.info("queryAllByLimit begin.userLocationRecordEntity:{}", JsonUtil.obj2Json(userLocationRecordEntity));
+        return this.userLocationRecordDao.selectOne(userLocationRecordEntity);
     }
 
     /**

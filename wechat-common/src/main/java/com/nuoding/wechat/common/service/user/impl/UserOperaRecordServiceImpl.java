@@ -35,6 +35,8 @@ public class UserOperaRecordServiceImpl implements UserOperaRecordService {
      */
     @Override
     public UserOperaRecordEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.userOperaRecordDao.queryById(id);
     }
 
@@ -48,6 +50,30 @@ public class UserOperaRecordServiceImpl implements UserOperaRecordService {
     public List<UserOperaRecordEntity> queryAllByLimit(UserOperaRecordEntity userOperaRecordEntity) {
         logger.info("queryAllByLimit begin.userOperaRecordEntity:{}", JsonUtil.obj2Json(userOperaRecordEntity));
         return this.userOperaRecordDao.queryAllByLimit(userOperaRecordEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param userOperaRecordEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<UserOperaRecordEntity> fuzzyQuery(UserOperaRecordEntity userOperaRecordEntity) {
+        logger.info("queryAllByLimit begin.userOperaRecordEntity:{}", JsonUtil.obj2Json(userOperaRecordEntity));
+        return this.userOperaRecordDao.fuzzyQuery(userOperaRecordEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param userOperaRecordEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public UserOperaRecordEntity selectOne(UserOperaRecordEntity userOperaRecordEntity) {
+        logger.info("queryAllByLimit begin.userOperaRecordEntity:{}", JsonUtil.obj2Json(userOperaRecordEntity));
+        return this.userOperaRecordDao.selectOne(userOperaRecordEntity);
     }
 
     /**

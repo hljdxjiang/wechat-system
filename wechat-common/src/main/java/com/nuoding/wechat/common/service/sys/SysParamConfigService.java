@@ -29,6 +29,22 @@ public interface SysParamConfigService {
     List<SysParamConfigEntity> queryAllByLimit(SysParamConfigEntity sysParamConfigEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param sysParamConfigEntity 筛选条件
+     * @return 查询结果
+     */
+    List<SysParamConfigEntity> fuzzyQuery(SysParamConfigEntity sysParamConfigEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param sysParamConfigEntity 筛选条件
+     * @return 查询结果
+     */
+    SysParamConfigEntity selectOne(SysParamConfigEntity sysParamConfigEntity);
+
+    /**
      * 新增数据
      *
      * @param sysParamConfigEntity 实例对象
@@ -52,10 +68,4 @@ public interface SysParamConfigService {
      */
     boolean deleteById(Integer id);
 
-    /**
-     * @Ahther:JHC
-     * @Description:根据缓存查询配置信息
-     * @Date:2023/5/8 下午9:05
-     */
-    String getConfigByCatch(String configKey);
 }

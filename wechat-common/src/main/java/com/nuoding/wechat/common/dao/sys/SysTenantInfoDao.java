@@ -9,7 +9,7 @@ import java.util.List;
  * 租户信息表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:04
+ * @Date: 2023-12-18 14:57:37
  */
 public interface SysTenantInfoDao {
 
@@ -28,6 +28,22 @@ public interface SysTenantInfoDao {
      * @return 对象列表
      */
     List<SysTenantInfoEntity> queryAllByLimit(SysTenantInfoEntity sysTenantInfoEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param sysTenantInfoEntity 查询条件
+     * @return 对象列表
+     */
+    SysTenantInfoEntity selectOne(SysTenantInfoEntity sysTenantInfoEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param sysTenantInfoEntity 查询条件
+     * @return 对象列表
+     */
+    List<SysTenantInfoEntity> fuzzyQuery(SysTenantInfoEntity sysTenantInfoEntity);
 
     /**
      * 统计总行数

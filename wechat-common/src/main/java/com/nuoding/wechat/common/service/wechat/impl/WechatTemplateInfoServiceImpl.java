@@ -34,6 +34,8 @@ public class WechatTemplateInfoServiceImpl implements WechatTemplateInfoService 
      */
     @Override
     public WechatTemplateInfoEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.wechatTemplateInfoDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class WechatTemplateInfoServiceImpl implements WechatTemplateInfoService 
     public List<WechatTemplateInfoEntity> queryAllByLimit(WechatTemplateInfoEntity wechatTemplateInfoEntity) {
         logger.info("queryAllByLimit begin.wechatTemplateInfoEntity:{}", JsonUtil.obj2Json(wechatTemplateInfoEntity));
         return this.wechatTemplateInfoDao.queryAllByLimit(wechatTemplateInfoEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param wechatTemplateInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<WechatTemplateInfoEntity> fuzzyQuery(WechatTemplateInfoEntity wechatTemplateInfoEntity) {
+        logger.info("queryAllByLimit begin.wechatTemplateInfoEntity:{}", JsonUtil.obj2Json(wechatTemplateInfoEntity));
+        return this.wechatTemplateInfoDao.fuzzyQuery(wechatTemplateInfoEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param wechatTemplateInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public WechatTemplateInfoEntity selectOne(WechatTemplateInfoEntity wechatTemplateInfoEntity) {
+        logger.info("queryAllByLimit begin.wechatTemplateInfoEntity:{}", JsonUtil.obj2Json(wechatTemplateInfoEntity));
+        return this.wechatTemplateInfoDao.selectOne(wechatTemplateInfoEntity);
     }
 
     /**

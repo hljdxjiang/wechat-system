@@ -29,6 +29,22 @@ public interface MallUserCouponInfoService {
     List<MallUserCouponInfoEntity> queryAllByLimit(MallUserCouponInfoEntity mallUserCouponInfoEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param mallUserCouponInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    List<MallUserCouponInfoEntity> fuzzyQuery(MallUserCouponInfoEntity mallUserCouponInfoEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param mallUserCouponInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    MallUserCouponInfoEntity selectOne(MallUserCouponInfoEntity mallUserCouponInfoEntity);
+
+    /**
      * 新增数据
      *
      * @param mallUserCouponInfoEntity 实例对象

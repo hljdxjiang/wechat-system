@@ -29,6 +29,22 @@ public interface BackImgInfoService {
     List<BackImgInfoEntity> queryAllByLimit(BackImgInfoEntity backImgInfoEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param backImgInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    List<BackImgInfoEntity> fuzzyQuery(BackImgInfoEntity backImgInfoEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param backImgInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    BackImgInfoEntity selectOne(BackImgInfoEntity backImgInfoEntity);
+
+    /**
      * 新增数据
      *
      * @param backImgInfoEntity 实例对象

@@ -34,6 +34,8 @@ public class BbsCourseResourceServiceImpl implements BbsCourseResourceService {
      */
     @Override
     public BbsCourseResourceEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.bbsCourseResourceDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class BbsCourseResourceServiceImpl implements BbsCourseResourceService {
     public List<BbsCourseResourceEntity> queryAllByLimit(BbsCourseResourceEntity bbsCourseResourceEntity) {
         logger.info("queryAllByLimit begin.bbsCourseResourceEntity:{}", JsonUtil.obj2Json(bbsCourseResourceEntity));
         return this.bbsCourseResourceDao.queryAllByLimit(bbsCourseResourceEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param bbsCourseResourceEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<BbsCourseResourceEntity> fuzzyQuery(BbsCourseResourceEntity bbsCourseResourceEntity) {
+        logger.info("queryAllByLimit begin.bbsCourseResourceEntity:{}", JsonUtil.obj2Json(bbsCourseResourceEntity));
+        return this.bbsCourseResourceDao.fuzzyQuery(bbsCourseResourceEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param bbsCourseResourceEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public BbsCourseResourceEntity selectOne(BbsCourseResourceEntity bbsCourseResourceEntity) {
+        logger.info("queryAllByLimit begin.bbsCourseResourceEntity:{}", JsonUtil.obj2Json(bbsCourseResourceEntity));
+        return this.bbsCourseResourceDao.selectOne(bbsCourseResourceEntity);
     }
 
     /**

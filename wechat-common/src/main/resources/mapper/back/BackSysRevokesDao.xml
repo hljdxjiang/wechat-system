@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nuoding.wechat.common.dao.back.BackSysRevokesDao">
+
+    <resultMap type="com.nuoding.wechat.common.entity.back.BackSysRevokesEntity" id="BackSysRevokesMap">
+            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="revokeId" column="revoke_id" jdbcType="VARCHAR"/>
+        <result property="revokeTitle" column="revoke_title" jdbcType="VARCHAR"/>
+        <result property="revokeType" column="revoke_type" jdbcType="VARCHAR"/>
+        <result property="revokeParentid" column="revoke_parentid" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Table_Name">
+        back_sys_revokes
+    </sql>
+
+    <sql id="Base_Column_List">
+        id,revoke_id,revoke_title,revoke_type,revoke_parentid,create_time,last_modified_time,remark    </sql>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BackSysRevokesMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BackSysRevokesMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                        <if test="revokeId != null and revokeId !=''">and revoke_id = #{revokeId}</if>
+                                                <if test="revokeTitle != null and revokeTitle !=''">and revoke_title = #{revokeTitle}</if>
+                                                <if test="revokeType != null and revokeType !=''">and revoke_type = #{revokeType}</if>
+                                                <if test="revokeParentid != null and revokeParentid !=''">and revoke_parentid = #{revokeParentid}</if>
+                                                                                        <if test="remark != null and remark !=''">and remark = #{remark}</if>
+                    </where>
+    </select>
+
+    <!--查询一条-->
+    <select id="selectOne" resultMap="BackSysRevokesMap">
+    select
+    <include refid="Base_Column_List"/>
+    from
+    <include refid="Table_Name"/>
+    <where>
+                                                        <if test="revokeId != null and revokeId !=''">and revoke_id = #{revokeId}</if>
+                                                <if test="revokeTitle != null and revokeTitle !=''">and revoke_title = #{revokeTitle}</if>
+                                                <if test="revokeType != null and revokeType !=''">and revoke_type = #{revokeType}</if>
+                                                <if test="revokeParentid != null and revokeParentid !=''">and revoke_parentid = #{revokeParentid}</if>
+                                                                                        <if test="remark != null and remark !=''">and remark = #{remark}</if>
+                        </where>
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="fuzzyQuery" resultMap="BackSysRevokesMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                                                                    <if test="revokeId != null and revokeId !=''">and revoke_id like CONCAT(CONCAT('%',  #{revokeId}), '%')</if>
+                                                                                                            <if test="revokeTitle != null and revokeTitle !=''">and revoke_title like CONCAT(CONCAT('%',  #{revokeTitle}), '%')</if>
+                                                                                                            <if test="revokeType != null and revokeType !=''">and revoke_type like CONCAT(CONCAT('%',  #{revokeType}), '%')</if>
+                                                                                                            <if test="revokeParentid != null and revokeParentid !=''">and revoke_parentid like CONCAT(CONCAT('%',  #{revokeParentid}), '%')</if>
+                                                                                                                                                                    <if test="remark != null and remark !=''">and remark like CONCAT(CONCAT('%',  #{remark}), '%')</if>
+                                                        </where>
+
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                <if test="revokeId != null and revokeId !=''">and revoke_id = #{revokeId}</if>
+                                        <if test="revokeTitle != null and revokeTitle !=''">and revoke_title = #{revokeTitle}</if>
+                                        <if test="revokeType != null and revokeType !=''">and revoke_type = #{revokeType}</if>
+                                        <if test="revokeParentid != null and revokeParentid !=''">and revoke_parentid = #{revokeParentid}</if>
+                                                                <if test="remark != null and remark !=''">and remark = #{remark}</if>
+            </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+        (revoke_id,revoke_title,revoke_type,revoke_parentid,remark)
+        values
+        (#{revokeId},#{revokeTitle},#{revokeType},#{revokeParentid},#{remark})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (        revoke_id,        revoke_title,        revoke_type,        revoke_parentid,        remark)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (            #{entity.revokeId},            #{entity.revokeTitle},            #{entity.revokeType},            #{entity.revokeParentid},            #{entity.remark})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (        revoke_id,        revoke_title,        revoke_type,        revoke_parentid,        remark)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.revokeId},#{entity.revokeTitle},#{entity.revokeType},#{entity.revokeParentid},#{entity.remark})
+        </foreach>
+        on duplicate key update
+        revoke_id=values(revoke_id),
+    revoke_title=values(revoke_title),
+    revoke_type=values(revoke_type),
+    revoke_parentid=values(revoke_parentid),
+            remark=values(remark)
+        </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update
+        <include refid="Table_Name"/>
+        <set>
+    <if test="revokeId != null and revokeId != ''">revoke_id = #{revokeId},</if>
+    <if test="revokeTitle != null and revokeTitle != ''">revoke_title = #{revokeTitle},</if>
+    <if test="revokeType != null and revokeType != ''">revoke_type = #{revokeType},</if>
+    <if test="revokeParentid != null and revokeParentid != ''">revoke_parentid = #{revokeParentid},</if>
+    <if test="remark != null and remark != ''">remark = #{remark},</if>
+        </set>
+        where id = #{id}
+        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from
+        <include refid="Table_Name"/>
+        where id = #{id}
+        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+    </delete>
+
+</mapper>
+

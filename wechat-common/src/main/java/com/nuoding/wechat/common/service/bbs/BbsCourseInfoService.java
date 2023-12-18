@@ -29,6 +29,22 @@ public interface BbsCourseInfoService {
     List<BbsCourseInfoEntity> queryAllByLimit(BbsCourseInfoEntity bbsCourseInfoEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param bbsCourseInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    List<BbsCourseInfoEntity> fuzzyQuery(BbsCourseInfoEntity bbsCourseInfoEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param bbsCourseInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    BbsCourseInfoEntity selectOne(BbsCourseInfoEntity bbsCourseInfoEntity);
+
+    /**
      * 新增数据
      *
      * @param bbsCourseInfoEntity 实例对象

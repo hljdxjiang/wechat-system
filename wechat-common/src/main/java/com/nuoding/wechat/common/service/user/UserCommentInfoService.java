@@ -29,6 +29,22 @@ public interface UserCommentInfoService {
     List<UserCommentInfoEntity> queryAllByLimit(UserCommentInfoEntity userCommentInfoEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param userCommentInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    List<UserCommentInfoEntity> fuzzyQuery(UserCommentInfoEntity userCommentInfoEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param userCommentInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    UserCommentInfoEntity selectOne(UserCommentInfoEntity userCommentInfoEntity);
+
+    /**
      * 新增数据
      *
      * @param userCommentInfoEntity 实例对象

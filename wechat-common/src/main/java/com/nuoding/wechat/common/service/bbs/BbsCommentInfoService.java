@@ -29,6 +29,22 @@ public interface BbsCommentInfoService {
     List<BbsCommentInfoEntity> queryAllByLimit(BbsCommentInfoEntity bbsCommentInfoEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param bbsCommentInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    List<BbsCommentInfoEntity> fuzzyQuery(BbsCommentInfoEntity bbsCommentInfoEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param bbsCommentInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    BbsCommentInfoEntity selectOne(BbsCommentInfoEntity bbsCommentInfoEntity);
+
+    /**
      * 新增数据
      *
      * @param bbsCommentInfoEntity 实例对象

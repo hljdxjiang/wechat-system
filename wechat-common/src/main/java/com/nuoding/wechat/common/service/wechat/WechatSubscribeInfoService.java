@@ -29,6 +29,22 @@ public interface WechatSubscribeInfoService {
     List<WechatSubscribeInfoEntity> queryAllByLimit(WechatSubscribeInfoEntity wechatSubscribeInfoEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param wechatSubscribeInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    List<WechatSubscribeInfoEntity> fuzzyQuery(WechatSubscribeInfoEntity wechatSubscribeInfoEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param wechatSubscribeInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    WechatSubscribeInfoEntity selectOne(WechatSubscribeInfoEntity wechatSubscribeInfoEntity);
+
+    /**
      * 新增数据
      *
      * @param wechatSubscribeInfoEntity 实例对象

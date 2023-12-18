@@ -29,6 +29,22 @@ public interface UserCollectInfoService {
     List<UserCollectInfoEntity> queryAllByLimit(UserCollectInfoEntity userCollectInfoEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param userCollectInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    List<UserCollectInfoEntity> fuzzyQuery(UserCollectInfoEntity userCollectInfoEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param userCollectInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    UserCollectInfoEntity selectOne(UserCollectInfoEntity userCollectInfoEntity);
+
+    /**
      * 新增数据
      *
      * @param userCollectInfoEntity 实例对象

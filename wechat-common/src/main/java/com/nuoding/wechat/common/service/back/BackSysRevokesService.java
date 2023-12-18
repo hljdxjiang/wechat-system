@@ -29,6 +29,22 @@ public interface BackSysRevokesService {
     List<BackSysRevokesEntity> queryAllByLimit(BackSysRevokesEntity backSysRevokesEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param backSysRevokesEntity 筛选条件
+     * @return 查询结果
+     */
+    List<BackSysRevokesEntity> fuzzyQuery(BackSysRevokesEntity backSysRevokesEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param backSysRevokesEntity 筛选条件
+     * @return 查询结果
+     */
+    BackSysRevokesEntity selectOne(BackSysRevokesEntity backSysRevokesEntity);
+
+    /**
      * 新增数据
      *
      * @param backSysRevokesEntity 实例对象

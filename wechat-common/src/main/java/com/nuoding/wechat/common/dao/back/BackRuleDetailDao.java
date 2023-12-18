@@ -9,7 +9,7 @@ import java.util.List;
  * 角色权限详情表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:39
  */
 public interface BackRuleDetailDao {
 
@@ -28,6 +28,22 @@ public interface BackRuleDetailDao {
      * @return 对象列表
      */
     List<BackRuleDetailEntity> queryAllByLimit(BackRuleDetailEntity backRuleDetailEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param backRuleDetailEntity 查询条件
+     * @return 对象列表
+     */
+    BackRuleDetailEntity selectOne(BackRuleDetailEntity backRuleDetailEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param backRuleDetailEntity 查询条件
+     * @return 对象列表
+     */
+    List<BackRuleDetailEntity> fuzzyQuery(BackRuleDetailEntity backRuleDetailEntity);
 
     /**
      * 统计总行数

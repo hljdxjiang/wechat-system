@@ -9,7 +9,7 @@ import java.util.List;
  * 活动信息表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:38
  */
 public interface MallActivityDao {
 
@@ -28,6 +28,22 @@ public interface MallActivityDao {
      * @return 对象列表
      */
     List<MallActivityEntity> queryAllByLimit(MallActivityEntity mallActivityEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param mallActivityEntity 查询条件
+     * @return 对象列表
+     */
+    MallActivityEntity selectOne(MallActivityEntity mallActivityEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param mallActivityEntity 查询条件
+     * @return 对象列表
+     */
+    List<MallActivityEntity> fuzzyQuery(MallActivityEntity mallActivityEntity);
 
     /**
      * 统计总行数

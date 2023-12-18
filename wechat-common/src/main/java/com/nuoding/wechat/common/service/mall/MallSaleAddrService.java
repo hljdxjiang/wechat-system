@@ -29,6 +29,22 @@ public interface MallSaleAddrService {
     List<MallSaleAddrEntity> queryAllByLimit(MallSaleAddrEntity mallSaleAddrEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param mallSaleAddrEntity 筛选条件
+     * @return 查询结果
+     */
+    List<MallSaleAddrEntity> fuzzyQuery(MallSaleAddrEntity mallSaleAddrEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param mallSaleAddrEntity 筛选条件
+     * @return 查询结果
+     */
+    MallSaleAddrEntity selectOne(MallSaleAddrEntity mallSaleAddrEntity);
+
+    /**
      * 新增数据
      *
      * @param mallSaleAddrEntity 实例对象

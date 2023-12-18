@@ -34,6 +34,8 @@ public class UserFeedbackInfoServiceImpl implements UserFeedbackInfoService {
      */
     @Override
     public UserFeedbackInfoEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.userFeedbackInfoDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class UserFeedbackInfoServiceImpl implements UserFeedbackInfoService {
     public List<UserFeedbackInfoEntity> queryAllByLimit(UserFeedbackInfoEntity userFeedbackInfoEntity) {
         logger.info("queryAllByLimit begin.userFeedbackInfoEntity:{}", JsonUtil.obj2Json(userFeedbackInfoEntity));
         return this.userFeedbackInfoDao.queryAllByLimit(userFeedbackInfoEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param userFeedbackInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<UserFeedbackInfoEntity> fuzzyQuery(UserFeedbackInfoEntity userFeedbackInfoEntity) {
+        logger.info("queryAllByLimit begin.userFeedbackInfoEntity:{}", JsonUtil.obj2Json(userFeedbackInfoEntity));
+        return this.userFeedbackInfoDao.fuzzyQuery(userFeedbackInfoEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param userFeedbackInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public UserFeedbackInfoEntity selectOne(UserFeedbackInfoEntity userFeedbackInfoEntity) {
+        logger.info("queryAllByLimit begin.userFeedbackInfoEntity:{}", JsonUtil.obj2Json(userFeedbackInfoEntity));
+        return this.userFeedbackInfoDao.selectOne(userFeedbackInfoEntity);
     }
 
     /**

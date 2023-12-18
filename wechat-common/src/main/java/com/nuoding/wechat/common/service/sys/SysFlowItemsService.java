@@ -29,6 +29,22 @@ public interface SysFlowItemsService {
     List<SysFlowItemsEntity> queryAllByLimit(SysFlowItemsEntity sysFlowItemsEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param sysFlowItemsEntity 筛选条件
+     * @return 查询结果
+     */
+    List<SysFlowItemsEntity> fuzzyQuery(SysFlowItemsEntity sysFlowItemsEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param sysFlowItemsEntity 筛选条件
+     * @return 查询结果
+     */
+    SysFlowItemsEntity selectOne(SysFlowItemsEntity sysFlowItemsEntity);
+
+    /**
      * 新增数据
      *
      * @param sysFlowItemsEntity 实例对象

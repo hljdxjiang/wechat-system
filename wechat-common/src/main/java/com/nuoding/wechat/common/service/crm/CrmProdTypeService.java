@@ -29,6 +29,22 @@ public interface CrmProdTypeService {
     List<CrmProdTypeEntity> queryAllByLimit(CrmProdTypeEntity crmProdTypeEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param crmProdTypeEntity 筛选条件
+     * @return 查询结果
+     */
+    List<CrmProdTypeEntity> fuzzyQuery(CrmProdTypeEntity crmProdTypeEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param crmProdTypeEntity 筛选条件
+     * @return 查询结果
+     */
+    CrmProdTypeEntity selectOne(CrmProdTypeEntity crmProdTypeEntity);
+
+    /**
      * 新增数据
      *
      * @param crmProdTypeEntity 实例对象

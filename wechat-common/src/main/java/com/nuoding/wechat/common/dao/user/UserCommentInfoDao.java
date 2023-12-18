@@ -9,7 +9,7 @@ import java.util.List;
  * 客户信息表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:04
+ * @Date: 2023-12-18 14:57:37
  */
 public interface UserCommentInfoDao {
 
@@ -28,6 +28,22 @@ public interface UserCommentInfoDao {
      * @return 对象列表
      */
     List<UserCommentInfoEntity> queryAllByLimit(UserCommentInfoEntity userCommentInfoEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param userCommentInfoEntity 查询条件
+     * @return 对象列表
+     */
+    UserCommentInfoEntity selectOne(UserCommentInfoEntity userCommentInfoEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param userCommentInfoEntity 查询条件
+     * @return 对象列表
+     */
+    List<UserCommentInfoEntity> fuzzyQuery(UserCommentInfoEntity userCommentInfoEntity);
 
     /**
      * 统计总行数

@@ -34,6 +34,8 @@ public class UserAddrInfoServiceImpl implements UserAddrInfoService {
      */
     @Override
     public UserAddrInfoEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.userAddrInfoDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class UserAddrInfoServiceImpl implements UserAddrInfoService {
     public List<UserAddrInfoEntity> queryAllByLimit(UserAddrInfoEntity userAddrInfoEntity) {
         logger.info("queryAllByLimit begin.userAddrInfoEntity:{}", JsonUtil.obj2Json(userAddrInfoEntity));
         return this.userAddrInfoDao.queryAllByLimit(userAddrInfoEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param userAddrInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<UserAddrInfoEntity> fuzzyQuery(UserAddrInfoEntity userAddrInfoEntity) {
+        logger.info("queryAllByLimit begin.userAddrInfoEntity:{}", JsonUtil.obj2Json(userAddrInfoEntity));
+        return this.userAddrInfoDao.fuzzyQuery(userAddrInfoEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param userAddrInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public UserAddrInfoEntity selectOne(UserAddrInfoEntity userAddrInfoEntity) {
+        logger.info("queryAllByLimit begin.userAddrInfoEntity:{}", JsonUtil.obj2Json(userAddrInfoEntity));
+        return this.userAddrInfoDao.selectOne(userAddrInfoEntity);
     }
 
     /**

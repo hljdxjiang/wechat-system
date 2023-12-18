@@ -34,6 +34,8 @@ public class MallSaleAddrServiceImpl implements MallSaleAddrService {
      */
     @Override
     public MallSaleAddrEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.mallSaleAddrDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class MallSaleAddrServiceImpl implements MallSaleAddrService {
     public List<MallSaleAddrEntity> queryAllByLimit(MallSaleAddrEntity mallSaleAddrEntity) {
         logger.info("queryAllByLimit begin.mallSaleAddrEntity:{}", JsonUtil.obj2Json(mallSaleAddrEntity));
         return this.mallSaleAddrDao.queryAllByLimit(mallSaleAddrEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param mallSaleAddrEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<MallSaleAddrEntity> fuzzyQuery(MallSaleAddrEntity mallSaleAddrEntity) {
+        logger.info("queryAllByLimit begin.mallSaleAddrEntity:{}", JsonUtil.obj2Json(mallSaleAddrEntity));
+        return this.mallSaleAddrDao.fuzzyQuery(mallSaleAddrEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param mallSaleAddrEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public MallSaleAddrEntity selectOne(MallSaleAddrEntity mallSaleAddrEntity) {
+        logger.info("queryAllByLimit begin.mallSaleAddrEntity:{}", JsonUtil.obj2Json(mallSaleAddrEntity));
+        return this.mallSaleAddrDao.selectOne(mallSaleAddrEntity);
     }
 
     /**

@@ -34,6 +34,8 @@ public class SysResourceInfoServiceImpl implements SysResourceInfoService {
      */
     @Override
     public SysResourceInfoEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.sysResourceInfoDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class SysResourceInfoServiceImpl implements SysResourceInfoService {
     public List<SysResourceInfoEntity> queryAllByLimit(SysResourceInfoEntity sysResourceInfoEntity) {
         logger.info("queryAllByLimit begin.sysResourceInfoEntity:{}", JsonUtil.obj2Json(sysResourceInfoEntity));
         return this.sysResourceInfoDao.queryAllByLimit(sysResourceInfoEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param sysResourceInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<SysResourceInfoEntity> fuzzyQuery(SysResourceInfoEntity sysResourceInfoEntity) {
+        logger.info("queryAllByLimit begin.sysResourceInfoEntity:{}", JsonUtil.obj2Json(sysResourceInfoEntity));
+        return this.sysResourceInfoDao.fuzzyQuery(sysResourceInfoEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param sysResourceInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public SysResourceInfoEntity selectOne(SysResourceInfoEntity sysResourceInfoEntity) {
+        logger.info("queryAllByLimit begin.sysResourceInfoEntity:{}", JsonUtil.obj2Json(sysResourceInfoEntity));
+        return this.sysResourceInfoDao.selectOne(sysResourceInfoEntity);
     }
 
     /**

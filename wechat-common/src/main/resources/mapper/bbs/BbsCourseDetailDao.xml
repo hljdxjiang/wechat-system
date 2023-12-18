@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nuoding.wechat.common.dao.bbs.BbsCourseDetailDao">
+
+    <resultMap type="com.nuoding.wechat.common.entity.bbs.BbsCourseDetailEntity" id="BbsCourseDetailMap">
+            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
+        <result property="courseId" column="course_id" jdbcType="VARCHAR"/>
+        <result property="partId" column="part_id" jdbcType="VARCHAR"/>
+        <result property="partTitle" column="part_title" jdbcType="VARCHAR"/>
+        <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+        <result property="columnId" column="column_id" jdbcType="VARCHAR"/>
+        <result property="labelId" column="label_id" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
+        <result property="partSummary" column="part_summary" jdbcType="VARCHAR"/>
+        <result property="partDesc" column="part_desc" jdbcType="VARCHAR"/>
+        <result property="custLevel" column="cust_level" jdbcType="INTEGER"/>
+        <result property="vipType" column="vip_type" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Table_Name">
+        bbs_course_detail
+    </sql>
+
+    <sql id="Base_Column_List">
+        id,tenant_id,course_id,part_id,part_title,user_id,remark,column_id,label_id,status,create_time,last_modified_time,part_summary,part_desc,cust_level,vip_type    </sql>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BbsCourseDetailMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BbsCourseDetailMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                <if test="courseId != null and courseId !=''">and course_id = #{courseId}</if>
+                                                <if test="partId != null and partId !=''">and part_id = #{partId}</if>
+                                                <if test="partTitle != null and partTitle !=''">and part_title = #{partTitle}</if>
+                                                <if test="userId != null and userId !=''">and user_id = #{userId}</if>
+                                                <if test="remark != null and remark !=''">and remark = #{remark}</if>
+                                                <if test="columnId != null and columnId !=''">and column_id = #{columnId}</if>
+                                                <if test="labelId != null and labelId !=''">and label_id = #{labelId}</if>
+                                                <if test="status != null and status !=''">and status = #{status}</if>
+                                                                                        <if test="partSummary != null and partSummary !=''">and part_summary = #{partSummary}</if>
+                                                <if test="partDesc != null and partDesc !=''">and part_desc = #{partDesc}</if>
+                                                <if test="custLevel != null and custLevel !=''">and cust_level = #{custLevel}</if>
+                                                <if test="vipType != null and vipType !=''">and vip_type = #{vipType}</if>
+                    </where>
+    </select>
+
+    <!--查询一条-->
+    <select id="selectOne" resultMap="BbsCourseDetailMap">
+    select
+    <include refid="Base_Column_List"/>
+    from
+    <include refid="Table_Name"/>
+    <where>
+                                                        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                <if test="courseId != null and courseId !=''">and course_id = #{courseId}</if>
+                                                <if test="partId != null and partId !=''">and part_id = #{partId}</if>
+                                                <if test="partTitle != null and partTitle !=''">and part_title = #{partTitle}</if>
+                                                <if test="userId != null and userId !=''">and user_id = #{userId}</if>
+                                                <if test="remark != null and remark !=''">and remark = #{remark}</if>
+                                                <if test="columnId != null and columnId !=''">and column_id = #{columnId}</if>
+                                                <if test="labelId != null and labelId !=''">and label_id = #{labelId}</if>
+                                                <if test="status != null and status !=''">and status = #{status}</if>
+                                                                                        <if test="partSummary != null and partSummary !=''">and part_summary = #{partSummary}</if>
+                                                <if test="partDesc != null and partDesc !=''">and part_desc = #{partDesc}</if>
+                                                <if test="custLevel != null and custLevel !=''">and cust_level = #{custLevel}</if>
+                                                <if test="vipType != null and vipType !=''">and vip_type = #{vipType}</if>
+                        </where>
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="fuzzyQuery" resultMap="BbsCourseDetailMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                                                                    <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                                                                                            <if test="courseId != null and courseId !=''">and course_id like CONCAT(CONCAT('%',  #{courseId}), '%')</if>
+                                                                                                            <if test="partId != null and partId !=''">and part_id like CONCAT(CONCAT('%',  #{partId}), '%')</if>
+                                                                                                            <if test="partTitle != null and partTitle !=''">and part_title like CONCAT(CONCAT('%',  #{partTitle}), '%')</if>
+                                                                                                            <if test="userId != null and userId !=''">and user_id like CONCAT(CONCAT('%',  #{userId}), '%')</if>
+                                                                                                            <if test="remark != null and remark !=''">and remark like CONCAT(CONCAT('%',  #{remark}), '%')</if>
+                                                                                                            <if test="columnId != null and columnId !=''">and column_id like CONCAT(CONCAT('%',  #{columnId}), '%')</if>
+                                                                                                            <if test="labelId != null and labelId !=''">and label_id like CONCAT(CONCAT('%',  #{labelId}), '%')</if>
+                                                                                                            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%',  #{status}), '%')</if>
+                                                                                                                                                                    <if test="partSummary != null and partSummary !=''">and part_summary like CONCAT(CONCAT('%',  #{partSummary}), '%')</if>
+                                                                                                            <if test="partDesc != null and partDesc !=''">and part_desc like CONCAT(CONCAT('%',  #{partDesc}), '%')</if>
+                                                                                                            <if test="custLevel != null and custLevel !=''">and cust_level like CONCAT(CONCAT('%',  #{custLevel}), '%')</if>
+                                                                                                            <if test="vipType != null and vipType !=''">and vip_type like CONCAT(CONCAT('%',  #{vipType}), '%')</if>
+                                                        </where>
+
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from
+        <include refid="Table_Name"/>
+        <where>
+                                                <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+                                        <if test="courseId != null and courseId !=''">and course_id = #{courseId}</if>
+                                        <if test="partId != null and partId !=''">and part_id = #{partId}</if>
+                                        <if test="partTitle != null and partTitle !=''">and part_title = #{partTitle}</if>
+                                        <if test="userId != null and userId !=''">and user_id = #{userId}</if>
+                                        <if test="remark != null and remark !=''">and remark = #{remark}</if>
+                                        <if test="columnId != null and columnId !=''">and column_id = #{columnId}</if>
+                                        <if test="labelId != null and labelId !=''">and label_id = #{labelId}</if>
+                                        <if test="status != null and status !=''">and status = #{status}</if>
+                                                                <if test="partSummary != null and partSummary !=''">and part_summary = #{partSummary}</if>
+                                        <if test="partDesc != null and partDesc !=''">and part_desc = #{partDesc}</if>
+                                        <if test="custLevel != null and custLevel !=''">and cust_level = #{custLevel}</if>
+                                        <if test="vipType != null and vipType !=''">and vip_type = #{vipType}</if>
+            </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+        (tenant_id,course_id,part_id,part_title,user_id,remark,column_id,label_id,part_summary,part_desc,cust_level,vip_type)
+        values
+        (#{tenantId},#{courseId},#{partId},#{partTitle},#{userId},#{remark},#{columnId},#{labelId},#{partSummary},#{partDesc},#{custLevel},#{vipType})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (        tenant_id,        course_id,        part_id,        part_title,        user_id,        remark,        column_id,        label_id,        part_summary,        part_desc,        cust_level,        vip_type)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (            #{entity.tenantId},            #{entity.courseId},            #{entity.partId},            #{entity.partTitle},            #{entity.userId},            #{entity.remark},            #{entity.columnId},            #{entity.labelId},            #{entity.partSummary},            #{entity.partDesc},            #{entity.custLevel},            #{entity.vipType})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (        tenant_id,        course_id,        part_id,        part_title,        user_id,        remark,        column_id,        label_id,        status,        part_summary,        part_desc,        cust_level,        vip_type)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tenantId},#{entity.courseId},#{entity.partId},#{entity.partTitle},#{entity.userId},#{entity.remark},#{entity.columnId},#{entity.labelId},#{entity.status},#{entity.partSummary},#{entity.partDesc},#{entity.custLevel},#{entity.vipType})
+        </foreach>
+        on duplicate key update
+        tenant_id=values(tenant_id),
+    course_id=values(course_id),
+    part_id=values(part_id),
+    part_title=values(part_title),
+    user_id=values(user_id),
+    remark=values(remark),
+    column_id=values(column_id),
+    label_id=values(label_id),
+    status=values(status),
+            part_summary=values(part_summary),
+    part_desc=values(part_desc),
+    cust_level=values(cust_level),
+    vip_type=values(vip_type)
+        </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update
+        <include refid="Table_Name"/>
+        <set>
+    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+    <if test="courseId != null and courseId != ''">course_id = #{courseId},</if>
+    <if test="partId != null and partId != ''">part_id = #{partId},</if>
+    <if test="partTitle != null and partTitle != ''">part_title = #{partTitle},</if>
+    <if test="userId != null and userId != ''">user_id = #{userId},</if>
+    <if test="remark != null and remark != ''">remark = #{remark},</if>
+    <if test="columnId != null and columnId != ''">column_id = #{columnId},</if>
+    <if test="labelId != null and labelId != ''">label_id = #{labelId},</if>
+    <if test="status != null and status != ''">status = #{status},</if>
+    <if test="partSummary != null and partSummary != ''">part_summary = #{partSummary},</if>
+    <if test="partDesc != null and partDesc != ''">part_desc = #{partDesc},</if>
+    <if test="custLevel != null and custLevel != ''">cust_level = #{custLevel},</if>
+    <if test="vipType != null and vipType != ''">vip_type = #{vipType},</if>
+        </set>
+        where id = #{id}
+        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from
+        <include refid="Table_Name"/>
+        where id = #{id}
+        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+    </delete>
+
+</mapper>
+

@@ -34,6 +34,8 @@ public class MallCardInfoServiceImpl implements MallCardInfoService {
      */
     @Override
     public MallCardInfoEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.mallCardInfoDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class MallCardInfoServiceImpl implements MallCardInfoService {
     public List<MallCardInfoEntity> queryAllByLimit(MallCardInfoEntity mallCardInfoEntity) {
         logger.info("queryAllByLimit begin.mallCardInfoEntity:{}", JsonUtil.obj2Json(mallCardInfoEntity));
         return this.mallCardInfoDao.queryAllByLimit(mallCardInfoEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param mallCardInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<MallCardInfoEntity> fuzzyQuery(MallCardInfoEntity mallCardInfoEntity) {
+        logger.info("queryAllByLimit begin.mallCardInfoEntity:{}", JsonUtil.obj2Json(mallCardInfoEntity));
+        return this.mallCardInfoDao.fuzzyQuery(mallCardInfoEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param mallCardInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public MallCardInfoEntity selectOne(MallCardInfoEntity mallCardInfoEntity) {
+        logger.info("queryAllByLimit begin.mallCardInfoEntity:{}", JsonUtil.obj2Json(mallCardInfoEntity));
+        return this.mallCardInfoDao.selectOne(mallCardInfoEntity);
     }
 
     /**

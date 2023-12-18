@@ -9,7 +9,7 @@ import java.util.List;
  * 进货记录表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:39
  */
 public interface CrmPurchesRecordDao {
 
@@ -28,6 +28,22 @@ public interface CrmPurchesRecordDao {
      * @return 对象列表
      */
     List<CrmPurchesRecordEntity> queryAllByLimit(CrmPurchesRecordEntity crmPurchesRecordEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param crmPurchesRecordEntity 查询条件
+     * @return 对象列表
+     */
+    CrmPurchesRecordEntity selectOne(CrmPurchesRecordEntity crmPurchesRecordEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param crmPurchesRecordEntity 查询条件
+     * @return 对象列表
+     */
+    List<CrmPurchesRecordEntity> fuzzyQuery(CrmPurchesRecordEntity crmPurchesRecordEntity);
 
     /**
      * 统计总行数

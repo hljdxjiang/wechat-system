@@ -29,6 +29,22 @@ public interface CrmReferrerInfoService {
     List<CrmReferrerInfoEntity> queryAllByLimit(CrmReferrerInfoEntity crmReferrerInfoEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param crmReferrerInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    List<CrmReferrerInfoEntity> fuzzyQuery(CrmReferrerInfoEntity crmReferrerInfoEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param crmReferrerInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    CrmReferrerInfoEntity selectOne(CrmReferrerInfoEntity crmReferrerInfoEntity);
+
+    /**
      * 新增数据
      *
      * @param crmReferrerInfoEntity 实例对象

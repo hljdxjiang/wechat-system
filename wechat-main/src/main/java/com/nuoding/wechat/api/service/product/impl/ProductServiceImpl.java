@@ -45,14 +45,14 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public MapResponse getProductList(MapRequest mapRequest) {
         MapResponse mapResponse = new MapResponse();
-        String channel = mapRequest.getHeader().getChannelNo();
-        ProdFuzzyFuzzyQueryDTO dto = (ProdFuzzyFuzzyQueryDTO) mapRequest.getBody(ProdFuzzyFuzzyQueryDTO.class);
-        PageQueryBaseDTO pageQueryBaseDTO = (PageQueryBaseDTO) mapRequest.getBody(PageQueryBaseDTO.class);
-        PageHelper.startPage(pageQueryBaseDTO.getPage(), pageQueryBaseDTO.getSize());
-        List<CrmProdInfoOutEntity> list = prodInfoService.queryFuzzyList(dto);
-        PageInfo pageInfo = new PageInfo(list);
-        Map map = PageInfoUtil.parseReturnMap(pageInfo);
-        mapResponse.setData(map);
+//        String channel = mapRequest.getHeader().getChannelNo();
+//        ProdFuzzyFuzzyQueryDTO dto = (ProdFuzzyFuzzyQueryDTO) mapRequest.getBody(ProdFuzzyFuzzyQueryDTO.class);
+//        PageQueryBaseDTO pageQueryBaseDTO = (PageQueryBaseDTO) mapRequest.getBody(PageQueryBaseDTO.class);
+//        PageHelper.startPage(pageQueryBaseDTO.getPage(), pageQueryBaseDTO.getSize());
+//        List<CrmProdInfoOutEntity> list = prodInfoService.queryFuzzyList(dto);
+//        PageInfo pageInfo = new PageInfo(list);
+//        Map map = PageInfoUtil.parseReturnMap(pageInfo);
+//        mapResponse.setData(map);
         return mapResponse;
     }
 

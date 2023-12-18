@@ -34,6 +34,8 @@ public class BackImgInfoServiceImpl implements BackImgInfoService {
      */
     @Override
     public BackImgInfoEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.backImgInfoDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class BackImgInfoServiceImpl implements BackImgInfoService {
     public List<BackImgInfoEntity> queryAllByLimit(BackImgInfoEntity backImgInfoEntity) {
         logger.info("queryAllByLimit begin.backImgInfoEntity:{}", JsonUtil.obj2Json(backImgInfoEntity));
         return this.backImgInfoDao.queryAllByLimit(backImgInfoEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param backImgInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<BackImgInfoEntity> fuzzyQuery(BackImgInfoEntity backImgInfoEntity) {
+        logger.info("queryAllByLimit begin.backImgInfoEntity:{}", JsonUtil.obj2Json(backImgInfoEntity));
+        return this.backImgInfoDao.fuzzyQuery(backImgInfoEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param backImgInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public BackImgInfoEntity selectOne(BackImgInfoEntity backImgInfoEntity) {
+        logger.info("queryAllByLimit begin.backImgInfoEntity:{}", JsonUtil.obj2Json(backImgInfoEntity));
+        return this.backImgInfoDao.selectOne(backImgInfoEntity);
     }
 
     /**

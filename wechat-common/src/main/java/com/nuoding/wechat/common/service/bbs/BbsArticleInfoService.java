@@ -29,6 +29,22 @@ public interface BbsArticleInfoService {
     List<BbsArticleInfoEntity> queryAllByLimit(BbsArticleInfoEntity bbsArticleInfoEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param bbsArticleInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    List<BbsArticleInfoEntity> fuzzyQuery(BbsArticleInfoEntity bbsArticleInfoEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param bbsArticleInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    BbsArticleInfoEntity selectOne(BbsArticleInfoEntity bbsArticleInfoEntity);
+
+    /**
      * 新增数据
      *
      * @param bbsArticleInfoEntity 实例对象

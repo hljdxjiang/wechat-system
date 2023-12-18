@@ -29,6 +29,22 @@ public interface UserRegInfoService {
     List<UserRegInfoEntity> queryAllByLimit(UserRegInfoEntity userRegInfoEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param userRegInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    List<UserRegInfoEntity> fuzzyQuery(UserRegInfoEntity userRegInfoEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param userRegInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    UserRegInfoEntity selectOne(UserRegInfoEntity userRegInfoEntity);
+
+    /**
      * 新增数据
      *
      * @param userRegInfoEntity 实例对象

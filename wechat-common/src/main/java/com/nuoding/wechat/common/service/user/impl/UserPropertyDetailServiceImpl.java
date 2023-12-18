@@ -34,6 +34,8 @@ public class UserPropertyDetailServiceImpl implements UserPropertyDetailService 
      */
     @Override
     public UserPropertyDetailEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.userPropertyDetailDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class UserPropertyDetailServiceImpl implements UserPropertyDetailService 
     public List<UserPropertyDetailEntity> queryAllByLimit(UserPropertyDetailEntity userPropertyDetailEntity) {
         logger.info("queryAllByLimit begin.userPropertyDetailEntity:{}", JsonUtil.obj2Json(userPropertyDetailEntity));
         return this.userPropertyDetailDao.queryAllByLimit(userPropertyDetailEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param userPropertyDetailEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<UserPropertyDetailEntity> fuzzyQuery(UserPropertyDetailEntity userPropertyDetailEntity) {
+        logger.info("queryAllByLimit begin.userPropertyDetailEntity:{}", JsonUtil.obj2Json(userPropertyDetailEntity));
+        return this.userPropertyDetailDao.fuzzyQuery(userPropertyDetailEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param userPropertyDetailEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public UserPropertyDetailEntity selectOne(UserPropertyDetailEntity userPropertyDetailEntity) {
+        logger.info("queryAllByLimit begin.userPropertyDetailEntity:{}", JsonUtil.obj2Json(userPropertyDetailEntity));
+        return this.userPropertyDetailDao.selectOne(userPropertyDetailEntity);
     }
 
     /**

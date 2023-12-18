@@ -9,7 +9,7 @@ import java.util.List;
  * 企业token信息表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:04
+ * @Date: 2023-12-18 14:57:37
  */
 public interface SysTenantTokenDao {
 
@@ -28,6 +28,22 @@ public interface SysTenantTokenDao {
      * @return 对象列表
      */
     List<SysTenantTokenEntity> queryAllByLimit(SysTenantTokenEntity sysTenantTokenEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param sysTenantTokenEntity 查询条件
+     * @return 对象列表
+     */
+    SysTenantTokenEntity selectOne(SysTenantTokenEntity sysTenantTokenEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param sysTenantTokenEntity 查询条件
+     * @return 对象列表
+     */
+    List<SysTenantTokenEntity> fuzzyQuery(SysTenantTokenEntity sysTenantTokenEntity);
 
     /**
      * 统计总行数

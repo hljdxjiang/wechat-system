@@ -34,6 +34,8 @@ public class SysUserLabelsServiceImpl implements SysUserLabelsService {
      */
     @Override
     public SysUserLabelsEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.sysUserLabelsDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class SysUserLabelsServiceImpl implements SysUserLabelsService {
     public List<SysUserLabelsEntity> queryAllByLimit(SysUserLabelsEntity sysUserLabelsEntity) {
         logger.info("queryAllByLimit begin.sysUserLabelsEntity:{}", JsonUtil.obj2Json(sysUserLabelsEntity));
         return this.sysUserLabelsDao.queryAllByLimit(sysUserLabelsEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param sysUserLabelsEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<SysUserLabelsEntity> fuzzyQuery(SysUserLabelsEntity sysUserLabelsEntity) {
+        logger.info("queryAllByLimit begin.sysUserLabelsEntity:{}", JsonUtil.obj2Json(sysUserLabelsEntity));
+        return this.sysUserLabelsDao.fuzzyQuery(sysUserLabelsEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param sysUserLabelsEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public SysUserLabelsEntity selectOne(SysUserLabelsEntity sysUserLabelsEntity) {
+        logger.info("queryAllByLimit begin.sysUserLabelsEntity:{}", JsonUtil.obj2Json(sysUserLabelsEntity));
+        return this.sysUserLabelsDao.selectOne(sysUserLabelsEntity);
     }
 
     /**

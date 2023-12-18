@@ -29,6 +29,22 @@ public interface CrmSaleDetailService {
     List<CrmSaleDetailEntity> queryAllByLimit(CrmSaleDetailEntity crmSaleDetailEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param crmSaleDetailEntity 筛选条件
+     * @return 查询结果
+     */
+    List<CrmSaleDetailEntity> fuzzyQuery(CrmSaleDetailEntity crmSaleDetailEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param crmSaleDetailEntity 筛选条件
+     * @return 查询结果
+     */
+    CrmSaleDetailEntity selectOne(CrmSaleDetailEntity crmSaleDetailEntity);
+
+    /**
      * 新增数据
      *
      * @param crmSaleDetailEntity 实例对象

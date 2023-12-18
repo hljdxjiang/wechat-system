@@ -29,6 +29,22 @@ public interface SysTenantTokenService {
     List<SysTenantTokenEntity> queryAllByLimit(SysTenantTokenEntity sysTenantTokenEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param sysTenantTokenEntity 筛选条件
+     * @return 查询结果
+     */
+    List<SysTenantTokenEntity> fuzzyQuery(SysTenantTokenEntity sysTenantTokenEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param sysTenantTokenEntity 筛选条件
+     * @return 查询结果
+     */
+    SysTenantTokenEntity selectOne(SysTenantTokenEntity sysTenantTokenEntity);
+
+    /**
      * 新增数据
      *
      * @param sysTenantTokenEntity 实例对象

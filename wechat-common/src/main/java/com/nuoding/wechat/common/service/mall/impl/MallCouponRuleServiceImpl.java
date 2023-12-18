@@ -34,6 +34,8 @@ public class MallCouponRuleServiceImpl implements MallCouponRuleService {
      */
     @Override
     public MallCouponRuleEntity queryById(Integer id) {
+        logger.info("queryById begin.id:{}", id);
+
         return this.mallCouponRuleDao.queryById(id);
     }
 
@@ -47,6 +49,30 @@ public class MallCouponRuleServiceImpl implements MallCouponRuleService {
     public List<MallCouponRuleEntity> queryAllByLimit(MallCouponRuleEntity mallCouponRuleEntity) {
         logger.info("queryAllByLimit begin.mallCouponRuleEntity:{}", JsonUtil.obj2Json(mallCouponRuleEntity));
         return this.mallCouponRuleDao.queryAllByLimit(mallCouponRuleEntity);
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @param mallCouponRuleEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public List<MallCouponRuleEntity> fuzzyQuery(MallCouponRuleEntity mallCouponRuleEntity) {
+        logger.info("queryAllByLimit begin.mallCouponRuleEntity:{}", JsonUtil.obj2Json(mallCouponRuleEntity));
+        return this.mallCouponRuleDao.fuzzyQuery(mallCouponRuleEntity);
+    }
+
+    /**
+     * 单挑查询
+     *
+     * @param mallCouponRuleEntity 筛选条件
+     * @return 查询结果
+     */
+    @Override
+    public MallCouponRuleEntity selectOne(MallCouponRuleEntity mallCouponRuleEntity) {
+        logger.info("queryAllByLimit begin.mallCouponRuleEntity:{}", JsonUtil.obj2Json(mallCouponRuleEntity));
+        return this.mallCouponRuleDao.selectOne(mallCouponRuleEntity);
     }
 
     /**

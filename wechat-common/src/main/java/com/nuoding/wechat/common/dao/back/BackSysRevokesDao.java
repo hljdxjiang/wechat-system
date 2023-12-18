@@ -9,7 +9,7 @@ import java.util.List;
  * 系统权限表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:39
  */
 public interface BackSysRevokesDao {
 
@@ -28,6 +28,22 @@ public interface BackSysRevokesDao {
      * @return 对象列表
      */
     List<BackSysRevokesEntity> queryAllByLimit(BackSysRevokesEntity backSysRevokesEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param backSysRevokesEntity 查询条件
+     * @return 对象列表
+     */
+    BackSysRevokesEntity selectOne(BackSysRevokesEntity backSysRevokesEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param backSysRevokesEntity 查询条件
+     * @return 对象列表
+     */
+    List<BackSysRevokesEntity> fuzzyQuery(BackSysRevokesEntity backSysRevokesEntity);
 
     /**
      * 统计总行数

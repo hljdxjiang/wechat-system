@@ -29,6 +29,22 @@ public interface SysTenantInfoService {
     List<SysTenantInfoEntity> queryAllByLimit(SysTenantInfoEntity sysTenantInfoEntity);
 
     /**
+     * 模糊查询
+     *
+     * @param sysTenantInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    List<SysTenantInfoEntity> fuzzyQuery(SysTenantInfoEntity sysTenantInfoEntity);
+
+    /**
+     * 单挑查询
+     *
+     * @param sysTenantInfoEntity 筛选条件
+     * @return 查询结果
+     */
+    SysTenantInfoEntity selectOne(SysTenantInfoEntity sysTenantInfoEntity);
+
+    /**
      * 新增数据
      *
      * @param sysTenantInfoEntity 实例对象

@@ -9,7 +9,7 @@ import java.util.List;
  * 字典表
  *
  * @Author: hzq
- * @Date: 2023-06-08 17:37:05
+ * @Date: 2023-12-18 14:57:39
  */
 public interface BackSysDictDao {
 
@@ -28,6 +28,22 @@ public interface BackSysDictDao {
      * @return 对象列表
      */
     List<BackSysDictEntity> queryAllByLimit(BackSysDictEntity backSysDictEntity);
+
+    /**
+     * 查询单行数据
+     *
+     * @param backSysDictEntity 查询条件
+     * @return 对象列表
+     */
+    BackSysDictEntity selectOne(BackSysDictEntity backSysDictEntity);
+
+    /**
+     * 模糊查询
+     *
+     * @param backSysDictEntity 查询条件
+     * @return 对象列表
+     */
+    List<BackSysDictEntity> fuzzyQuery(BackSysDictEntity backSysDictEntity);
 
     /**
      * 统计总行数
