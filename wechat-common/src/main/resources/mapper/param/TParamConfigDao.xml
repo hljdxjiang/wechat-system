@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nuoding.wechat.common.dao.sys.SysParamConfigDao">
+<mapper namespace="com.nuoding.wechat.common.dao.param.TParamConfigDao">
 
-    <resultMap type="com.nuoding.wechat.common.entity.sys.SysParamConfigEntity" id="SysParamConfigMap">
+    <resultMap type="com.nuoding.wechat.common.entity.param.TParamConfigEntity" id="TParamConfigMap">
             <result property="id" column="ID" jdbcType="INTEGER"/>
         <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
-        <result property="configName" column="config_name" jdbcType="VARCHAR"/>
         <result property="configKey" column="config_key" jdbcType="VARCHAR"/>
+        <result property="configName" column="config_name" jdbcType="VARCHAR"/>
         <result property="configValue" column="config_value" jdbcType="VARCHAR"/>
         <result property="configDesc" column="config_desc" jdbcType="VARCHAR"/>
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
@@ -14,14 +14,14 @@
     </resultMap>
 
     <sql id="Table_Name">
-        sys_param_config
+        t_param_config
     </sql>
 
     <sql id="Base_Column_List">
-        ID,tenant_id,config_name,config_key,config_value,config_desc,create_time,last_update_time    </sql>
+        ID,tenant_id,config_key,config_name,config_value,config_desc,create_time,last_update_time    </sql>
 
     <!--查询单个-->
-    <select id="queryById" resultMap="SysParamConfigMap">
+    <select id="queryById" resultMap="TParamConfigMap">
         select
         <include refid="Base_Column_List"/>
         from
@@ -30,7 +30,7 @@
     </select>
 
     <!--查询指定行数据-->
-    <select id="queryAllByLimit" resultMap="SysParamConfigMap">
+    <select id="queryAllByLimit" resultMap="TParamConfigMap">
         select
         <include refid="Base_Column_List"/>
         from
@@ -38,8 +38,8 @@
         <where>
             <if test="id != null and id !=''">and ID = #{id}</if>
             <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="configName != null and configName !=''">and config_name = #{configName}</if>
             <if test="configKey != null and configKey !=''">and config_key = #{configKey}</if>
+            <if test="configName != null and configName !=''">and config_name = #{configName}</if>
             <if test="configValue != null and configValue !=''">and config_value = #{configValue}</if>
             <if test="configDesc != null and configDesc !=''">and config_desc = #{configDesc}</if>
             <if test="createTime != null and createTime !=''">and create_time = #{createTime}</if>
@@ -56,8 +56,8 @@
         <where>
             <if test="id != null and id != ''">and ID = #{id}</if>
             <if test="tenantId != null and tenantId != ''">and tenant_id = #{tenantId}</if>
-            <if test="configName != null and configName != ''">and config_name = #{configName}</if>
             <if test="configKey != null and configKey != ''">and config_key = #{configKey}</if>
+            <if test="configName != null and configName != ''">and config_name = #{configName}</if>
             <if test="configValue != null and configValue != ''">and config_value = #{configValue}</if>
             <if test="configDesc != null and configDesc != ''">and config_desc = #{configDesc}</if>
             <if test="createTime != null and createTime != ''">and create_time = #{createTime}</if>
@@ -69,34 +69,34 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (ID,tenant_id,config_name,config_key,config_value,config_desc,create_time,last_update_time)
+        (ID,tenant_id,config_key,config_name,config_value,config_desc,create_time,last_update_time)
         values
-        (#{id},#{tenantId},#{configName},#{configKey},#{configValue},#{configDesc},#{createTime},#{lastUpdateTime})
+        (#{id},#{tenantId},#{configKey},#{configName},#{configValue},#{configDesc},#{createTime},#{lastUpdateTime})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (ID,tenant_id,config_name,config_key,config_value,config_desc,create_time,last_update_time)
+            (ID,tenant_id,config_key,config_name,config_value,config_desc,create_time,last_update_time)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.id},#{entity.tenantId},#{entity.configName},#{entity.configKey},#{entity.configValue},#{entity.configDesc},#{entity.createTime},#{entity.lastUpdateTime})
+            (#{entity.id},#{entity.tenantId},#{entity.configKey},#{entity.configName},#{entity.configValue},#{entity.configDesc},#{entity.createTime},#{entity.lastUpdateTime})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-            (ID,tenant_id,config_name,config_key,config_value,config_desc,create_time,last_update_time)
+            (ID,tenant_id,config_key,config_name,config_value,config_desc,create_time,last_update_time)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.id},#{entity.tenantId},#{entity.configName},#{entity.configKey},#{entity.configValue},#{entity.configDesc},#{entity.createTime},#{entity.lastUpdateTime})
+            (#{entity.id},#{entity.tenantId},#{entity.configKey},#{entity.configName},#{entity.configValue},#{entity.configDesc},#{entity.createTime},#{entity.lastUpdateTime})
         </foreach>
         on duplicate key update
         ID=values(ID),
         tenant_id=values(tenant_id),
-        config_name=values(config_name),
         config_key=values(config_key),
+        config_name=values(config_name),
         config_value=values(config_value),
         config_desc=values(config_desc),
         create_time=values(create_time),
@@ -110,8 +110,8 @@
         <set>
     <if test="id != null and id != ''">ID = #{id},</if>
     <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-    <if test="configName != null and configName != ''">config_name = #{configName},</if>
     <if test="configKey != null and configKey != ''">config_key = #{configKey},</if>
+    <if test="configName != null and configName != ''">config_name = #{configName},</if>
     <if test="configValue != null and configValue != ''">config_value = #{configValue},</if>
     <if test="configDesc != null and configDesc != ''">config_desc = #{configDesc},</if>
     <if test="createTime != null and createTime != ''">create_time = #{createTime},</if>

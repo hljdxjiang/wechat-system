@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nuoding.wechat.common.dao.back.BackSysRevokesDao">
+<mapper namespace="com.nuoding.wechat.common.dao.sys.TSysRevokeDao">
 
-    <resultMap type="com.nuoding.wechat.common.entity.back.BackSysRevokesEntity" id="BackSysRevokesMap">
+    <resultMap type="com.nuoding.wechat.common.entity.sys.TSysRevokeEntity" id="TSysRevokeMap">
             <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="revokeId" column="revoke_id" jdbcType="VARCHAR"/>
         <result property="revokeTitle" column="revoke_title" jdbcType="VARCHAR"/>
@@ -14,14 +14,14 @@
     </resultMap>
 
     <sql id="Table_Name">
-        back_sys_revokes
+        t_sys_revoke
     </sql>
 
     <sql id="Base_Column_List">
         id,revoke_id,revoke_title,revoke_type,revoke_parentid,create_time,last_modified_time,remark    </sql>
 
     <!--查询单个-->
-    <select id="queryById" resultMap="BackSysRevokesMap">
+    <select id="queryById" resultMap="TSysRevokeMap">
         select
         <include refid="Base_Column_List"/>
         from
@@ -30,7 +30,7 @@
     </select>
 
     <!--查询指定行数据-->
-    <select id="queryAllByLimit" resultMap="BackSysRevokesMap">
+    <select id="queryAllByLimit" resultMap="TSysRevokeMap">
         select
         <include refid="Base_Column_List"/>
         from

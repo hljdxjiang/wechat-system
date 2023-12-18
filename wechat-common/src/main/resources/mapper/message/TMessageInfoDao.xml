@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nuoding.wechat.common.dao.message.TMessageInfoDao">
+
+    <resultMap type="com.nuoding.wechat.common.entity.message.TMessageInfoEntity" id="TMessageInfoMap">
+            <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
+        <result property="hotelName" column="hotel_name" jdbcType="VARCHAR"/>
+        <result property="roomName" column="room_Name" jdbcType="VARCHAR"/>
+        <result property="useableArea" column="useable_Area" jdbcType="VARCHAR"/>
+        <result property="floor" column="floor" jdbcType="VARCHAR"/>
+        <result property="lastJustPrice" column="last_just_price" jdbcType="VARCHAR"/>
+        <result property="capacity" column="capacity" jdbcType="VARCHAR"/>
+        <result property="myPrice" column="my_price" jdbcType="VARCHAR"/>
+        <result property="bedType" column="bed_Type" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="priceDiff" column="price_diff" jdbcType="VARCHAR"/>
+        <result property="price" column="price" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Table_Name">
+        t_message_info
+    </sql>
+
+    <sql id="Base_Column_List">
+        id,tenant_id,hotel_name,room_Name,useable_Area,floor,last_just_price,capacity,my_price,bed_Type,status,price_diff,price,create_time,last_modified_time    </sql>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="TMessageInfoMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="TMessageInfoMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Table_Name"/>
+        <where>
+            <if test="id != null and id !=''">and id = #{id}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
+            <if test="hotelName != null and hotelName !=''">and hotel_name = #{hotelName}</if>
+            <if test="roomName != null and roomName !=''">and room_Name = #{roomName}</if>
+            <if test="useableArea != null and useableArea !=''">and useable_Area = #{useableArea}</if>
+            <if test="floor != null and floor !=''">and floor = #{floor}</if>
+            <if test="lastJustPrice != null and lastJustPrice !=''">and last_just_price = #{lastJustPrice}</if>
+            <if test="capacity != null and capacity !=''">and capacity = #{capacity}</if>
+            <if test="myPrice != null and myPrice !=''">and my_price = #{myPrice}</if>
+            <if test="bedType != null and bedType !=''">and bed_Type = #{bedType}</if>
+            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="priceDiff != null and priceDiff !=''">and price_diff = #{priceDiff}</if>
+            <if test="price != null and price !=''">and price = #{price}</if>
+            <if test="createTime != null and createTime !=''">and create_time = #{createTime}</if>
+            <if test="lastModifiedTime != null and lastModifiedTime !=''">and last_modified_time = #{lastModifiedTime}</if>
+        </where>
+
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from
+        <include refid="Table_Name"/>
+        <where>
+            <if test="id != null and id != ''">and id = #{id}</if>
+            <if test="tenantId != null and tenantId != ''">and tenant_id = #{tenantId}</if>
+            <if test="hotelName != null and hotelName != ''">and hotel_name = #{hotelName}</if>
+            <if test="roomName != null and roomName != ''">and room_Name = #{roomName}</if>
+            <if test="useableArea != null and useableArea != ''">and useable_Area = #{useableArea}</if>
+            <if test="floor != null and floor != ''">and floor = #{floor}</if>
+            <if test="lastJustPrice != null and lastJustPrice != ''">and last_just_price = #{lastJustPrice}</if>
+            <if test="capacity != null and capacity != ''">and capacity = #{capacity}</if>
+            <if test="myPrice != null and myPrice != ''">and my_price = #{myPrice}</if>
+            <if test="bedType != null and bedType != ''">and bed_Type = #{bedType}</if>
+            <if test="status != null and status != ''">and status = #{status}</if>
+            <if test="priceDiff != null and priceDiff != ''">and price_diff = #{priceDiff}</if>
+            <if test="price != null and price != ''">and price = #{price}</if>
+            <if test="createTime != null and createTime != ''">and create_time = #{createTime}</if>
+            <if test="lastModifiedTime != null and lastModifiedTime != ''">and last_modified_time = #{lastModifiedTime}</if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+        (tenant_id,hotel_name,room_Name,useable_Area,floor,last_just_price,capacity,my_price,bed_Type,status,price_diff,price,create_time,last_modified_time)
+        values
+        (#{tenantId},#{hotelName},#{roomName},#{useableArea},#{floor},#{lastJustPrice},#{capacity},#{myPrice},#{bedType},#{status},#{priceDiff},#{price},#{createTime},#{lastModifiedTime})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (tenant_id,hotel_name,room_Name,useable_Area,floor,last_just_price,capacity,my_price,bed_Type,status,price_diff,price,create_time,last_modified_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tenantId},#{entity.hotelName},#{entity.roomName},#{entity.useableArea},#{entity.floor},#{entity.lastJustPrice},#{entity.capacity},#{entity.myPrice},#{entity.bedType},#{entity.status},#{entity.priceDiff},#{entity.price},#{entity.createTime},#{entity.lastModifiedTime})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into
+        <include refid="Table_Name"/>
+            (tenant_id,hotel_name,room_Name,useable_Area,floor,last_just_price,capacity,my_price,bed_Type,status,price_diff,price,create_time,last_modified_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.tenantId},#{entity.hotelName},#{entity.roomName},#{entity.useableArea},#{entity.floor},#{entity.lastJustPrice},#{entity.capacity},#{entity.myPrice},#{entity.bedType},#{entity.status},#{entity.priceDiff},#{entity.price},#{entity.createTime},#{entity.lastModifiedTime})
+        </foreach>
+        on duplicate key update
+                tenant_id=values(tenant_id),
+        hotel_name=values(hotel_name),
+        room_Name=values(room_Name),
+        useable_Area=values(useable_Area),
+        floor=values(floor),
+        last_just_price=values(last_just_price),
+        capacity=values(capacity),
+        my_price=values(my_price),
+        bed_Type=values(bed_Type),
+        status=values(status),
+        price_diff=values(price_diff),
+        price=values(price),
+        create_time=values(create_time),
+        last_modified_time=values(last_modified_time)
+        </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update
+        <include refid="Table_Name"/>
+        <set>
+    <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
+    <if test="hotelName != null and hotelName != ''">hotel_name = #{hotelName},</if>
+    <if test="roomName != null and roomName != ''">room_Name = #{roomName},</if>
+    <if test="useableArea != null and useableArea != ''">useable_Area = #{useableArea},</if>
+    <if test="floor != null and floor != ''">floor = #{floor},</if>
+    <if test="lastJustPrice != null and lastJustPrice != ''">last_just_price = #{lastJustPrice},</if>
+    <if test="capacity != null and capacity != ''">capacity = #{capacity},</if>
+    <if test="myPrice != null and myPrice != ''">my_price = #{myPrice},</if>
+    <if test="bedType != null and bedType != ''">bed_Type = #{bedType},</if>
+    <if test="status != null and status != ''">status = #{status},</if>
+    <if test="priceDiff != null and priceDiff != ''">price_diff = #{priceDiff},</if>
+    <if test="price != null and price != ''">price = #{price},</if>
+    <if test="createTime != null and createTime != ''">create_time = #{createTime},</if>
+    <if test="lastModifiedTime != null and lastModifiedTime != ''">last_modified_time = #{lastModifiedTime},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from
+        <include refid="Table_Name"/>
+        where id = #{id}
+    </delete>
+
+</mapper>
+

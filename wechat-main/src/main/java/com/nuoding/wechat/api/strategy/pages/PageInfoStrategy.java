@@ -1,5 +1,6 @@
 package com.nuoding.wechat.api.strategy.pages;
 
+import com.nuoding.wechat.api.model.PageDTO;
 import com.nuoding.wechat.api.service.page.PageService;
 import com.nuoding.wechat.common.model.MapRequest;
 import com.nuoding.wechat.common.model.MapResponse;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Component;
  * @Date:2023/6/8 下午5:10 
  */
 @Component("P001001")
-public class PageInfoStrategy  implements BaseStrategy {
+public class PageInfoStrategy  implements BaseStrategy<PageDTO> {
 
     private final PageService pageService;
 

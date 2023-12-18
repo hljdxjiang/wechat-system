@@ -6,12 +6,12 @@ import com.nuoding.wechat.common.utils.JsonUtil;
 import java.io.Serializable;
 import java.util.Map;
 
-public class MapRequest<header extends ReqHeader, T> implements Serializable {
+public class MapRequest<T extends BaseDTO> implements Serializable {
 
     public MapRequest() {
     }
 
-    public MapRequest(header header, T body) {
+    public MapRequest(ReqHeader header, T body) {
         super();
         this.header = header;
         this.body = body;
@@ -37,7 +37,7 @@ public class MapRequest<header extends ReqHeader, T> implements Serializable {
 
     public T getBody(Class<T> valueType) {
         Map map = (Map) body;
-        return (T)JsonUtil.jsonMap2Obj(map, valueType);
+        return (T) JsonUtil.jsonMap2Obj(map, valueType);
     }
 
     public void setBody(T body) {

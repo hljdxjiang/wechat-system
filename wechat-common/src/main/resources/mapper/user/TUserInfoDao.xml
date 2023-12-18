@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nuoding.wechat.common.dao.back.BackSysUserDao">
+<mapper namespace="com.nuoding.wechat.common.dao.user.TUserInfoDao">
 
-    <resultMap type="com.nuoding.wechat.common.entity.back.BackSysUserEntity" id="BackSysUserMap">
+    <resultMap type="com.nuoding.wechat.common.entity.user.TUserInfoEntity" id="TUserInfoMap">
             <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
         <result property="userId" column="user_id" jdbcType="VARCHAR"/>
@@ -22,14 +22,14 @@
     </resultMap>
 
     <sql id="Table_Name">
-        back_sys_user
+        t_user_info
     </sql>
 
     <sql id="Base_Column_List">
         id,tenant_id,user_id,passwd,group_id,role_id,user_name,mobile_no,email,id_no,id_type,oauth_code,remark,status,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
-    <select id="queryById" resultMap="BackSysUserMap">
+    <select id="queryById" resultMap="TUserInfoMap">
         select
         <include refid="Base_Column_List"/>
         from
@@ -38,7 +38,7 @@
     </select>
 
     <!--查询指定行数据-->
-    <select id="queryAllByLimit" resultMap="BackSysUserMap">
+    <select id="queryAllByLimit" resultMap="TUserInfoMap">
         select
         <include refid="Base_Column_List"/>
         from

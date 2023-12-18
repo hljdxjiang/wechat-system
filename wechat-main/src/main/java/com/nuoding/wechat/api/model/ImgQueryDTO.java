@@ -1,6 +1,8 @@
 package com.nuoding.wechat.api.model;
 
-public class ImgQueryDTO {
+import com.nuoding.wechat.common.model.BaseDTO;
+
+public class ImgQueryDTO extends BaseDTO {
     private String imgType;
 
     public String getImgType() {
