@@ -8,7 +8,7 @@ import com.nuoding.wechat.common.constant.SessionKey;
 import com.nuoding.wechat.common.enums.RespStatusEnum;
 import com.nuoding.wechat.common.interceptor.LockTrade;
 import com.nuoding.wechat.common.interceptor.StaticTrade;
-import com.nuoding.wechat.common.model.MapResponse;
+import com.nuoding.wechat.common.model.base.MapResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

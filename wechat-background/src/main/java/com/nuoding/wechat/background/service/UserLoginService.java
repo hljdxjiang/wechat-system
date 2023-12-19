@@ -1,7 +1,7 @@
 package com.nuoding.wechat.background.service;
 
 import com.nuoding.wechat.background.model.LoginDTO;
-import com.nuoding.wechat.common.model.MapResponse;
+import com.nuoding.wechat.common.model.base.MapResponse;
 
 /**
  * @Ahther:JHC

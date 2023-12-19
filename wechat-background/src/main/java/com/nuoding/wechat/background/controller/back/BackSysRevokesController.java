@@ -6,14 +6,14 @@ import com.nuoding.wechat.common.constant.SessionKey;
 import com.nuoding.wechat.common.entity.back.BackSysRevokesEntity;
 import com.nuoding.wechat.common.enums.RespStatusEnum;
 import com.nuoding.wechat.common.interceptor.SessionValue;
-import com.nuoding.wechat.common.model.MapResponse;
-import com.nuoding.wechat.common.model.PageQueryBaseDTO;
+import com.nuoding.wechat.common.model.base.MapResponse;
+import com.nuoding.wechat.common.model.base.PageQueryBaseDTO;
 import com.nuoding.wechat.common.service.back.BackSysRevokesService;
 import com.nuoding.wechat.common.utils.JsonUtil;
 import com.nuoding.wechat.common.utils.PageInfoUtil;
+import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,7 +22,6 @@ import java.util.Map;
 /**
  * 后管(backSysRevokes)服务接口
  * 系统权限表
- *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -43,15 +42,37 @@ public class BackSysRevokesController {
      * 分页查询
      *
      * @param backSysRevokesEntity 筛选条件
-     * @param dto                  size     分页对象
+     * @param dto             size     分页对象
      * @return 查询结果
      */
     @PostMapping("/queryByPage")
     public MapResponse queryByPage(@RequestBody BackSysRevokesEntity backSysRevokesEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("queryByPage begin.backSysRevokesEntity:{},dto:{}", JsonUtil.obj2Json(backSysRevokesEntity), JsonUtil.obj2Json(dto));
-        PageHelper.startPage(dto.getPage(), dto.getSize());
+        logger.info("queryByPage begin.backSysRevokesEntity:{},dto:{}", JsonUtil.obj2Json(backSysRevokesEntity),JsonUtil.obj2Json(dto));
+        PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
+        // backSysRevokesEntity.setTenantId(SessionKey.getTenantId);
         List<BackSysRevokesEntity> list = this.backSysRevokesService.queryAllByLimit(backSysRevokesEntity);
+        PageInfo pageInfo = new PageInfo(list);
+        Map map = PageInfoUtil.parseReturnMap(pageInfo);
+        mapResponse.setData(map);
+        logger.info("queryByPage end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
+        return mapResponse;
+    }
+
+    /**
+     * 分页查询
+     *
+     * @param backSysRevokesEntity 筛选条件
+     * @param dto             size     分页对象
+     * @return 查询结果
+     */
+    @PostMapping("/fuzzyQuery")
+    public MapResponse fuzzyQuery(@RequestBody BackSysRevokesEntity backSysRevokesEntity, @RequestBody PageQueryBaseDTO dto) {
+        MapResponse mapResponse = new MapResponse();
+        logger.info("fuzzyQuery begin.backSysRevokesEntity:{},dto:{}", JsonUtil.obj2Json(backSysRevokesEntity),JsonUtil.obj2Json(dto));
+        PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
+        // backSysRevokesEntity.setTenantId(SessionKey.getTenantId);
+        List<BackSysRevokesEntity> list = this.backSysRevokesService.fuzzyQuery(backSysRevokesEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);
@@ -67,7 +88,7 @@ public class BackSysRevokesController {
      */
     @GetMapping("{id}")
     public MapResponse queryById(@PathVariable("id") Integer id) {
-        logger.info("queryById begin.id:{}", id);
+        logger.info("queryById begin.id:{}",id);
         MapResponse mapResponse = new MapResponse();
         mapResponse.put("data", this.backSysRevokesService.queryById(id));
         logger.info("queryById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
@@ -81,9 +102,10 @@ public class BackSysRevokesController {
      * @return 新增结果
      */
     @PostMapping("/add")
-    public MapResponse add(BackSysRevokesEntity backSysRevokesEntity) {
-        logger.info("add begin.backSysRevokesEntity:{}", JsonUtil.obj2Json(backSysRevokesEntity));
+    public MapResponse add(@RequestBody BackSysRevokesEntity backSysRevokesEntity) {
+        logger.info("add begin.backSysRevokesEntity:{}",JsonUtil.obj2Json(backSysRevokesEntity));
         MapResponse mapResponse = new MapResponse();
+        // backSysRevokesEntity.setTenantId(SessionKey.getTenantId);
         mapResponse.put("data", this.backSysRevokesService.insert(backSysRevokesEntity));
         logger.info("add end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
@@ -96,9 +118,9 @@ public class BackSysRevokesController {
      * @return 编辑结果
      */
     @PostMapping("/edit")
-    public MapResponse edit(BackSysRevokesEntity backSysRevokesEntity) {
+    public MapResponse edit(@RequestBody BackSysRevokesEntity backSysRevokesEntity) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("edit begin.backSysRevokesEntity:{}", JsonUtil.obj2Json(backSysRevokesEntity));
+        logger.info("edit begin.backSysRevokesEntity:{}",JsonUtil.obj2Json(backSysRevokesEntity));
         mapResponse.put("data", this.backSysRevokesService.update(backSysRevokesEntity));
         logger.info("edit end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
@@ -111,19 +133,17 @@ public class BackSysRevokesController {
      * @return 删除是否成功
      */
     @PostMapping("/delete")
-    public MapResponse deleteById(BackSysRevokesEntity backSysRevokesEntity) {
+    public MapResponse deleteById(@RequestBody BackSysRevokesEntity backSysRevokesEntity) {
 
         MapResponse mapResponse = new MapResponse();
-        logger.info("deleteById begin.backSysRevokesEntity:{}", JsonUtil.obj2Json(backSysRevokesEntity));
+        logger.info("deleteById begin.backSysRevokesEntity:{}",JsonUtil.obj2Json(backSysRevokesEntity));
         Integer id = backSysRevokesEntity.getId();
         if (id == null || id == 0) {
             mapResponse.setResponse(RespStatusEnum.ARGS_ERROR);
             return mapResponse;
         }
-        boolean b = this.backSysRevokesService.deleteById(id);
-        if (b) {
-            mapResponse.setResponse(RespStatusEnum.DATA_DELETE_FAIL);
-        }
+        this.backSysRevokesService.deleteById(id);
+
         logger.info("deleteById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }

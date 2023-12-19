@@ -1,22 +1,16 @@
 package com.nuoding.wechat.api.service.product.impl;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.nuoding.wechat.api.model.ProductDetailDTO;
 import com.nuoding.wechat.api.service.product.ProductService;
 import com.nuoding.wechat.common.entity.crm.CrmProdDetailEntity;
 import com.nuoding.wechat.common.entity.crm.CrmProdDetailOutEntity;
 import com.nuoding.wechat.common.entity.crm.CrmProdInfoEntity;
-import com.nuoding.wechat.common.entity.crm.CrmProdInfoOutEntity;
 import com.nuoding.wechat.common.enums.RespStatusEnum;
-import com.nuoding.wechat.common.model.MapRequest;
-import com.nuoding.wechat.common.model.MapResponse;
-import com.nuoding.wechat.common.model.PageQueryBaseDTO;
-import com.nuoding.wechat.common.model.crm.ProdFuzzyFuzzyQueryDTO;
+import com.nuoding.wechat.common.model.base.MapRequest;
+import com.nuoding.wechat.common.model.base.MapResponse;
 import com.nuoding.wechat.common.service.crm.CrmProdDetailService;
 import com.nuoding.wechat.common.service.crm.CrmProdInfoService;
 import com.nuoding.wechat.common.utils.JsonUtil;
-import com.nuoding.wechat.common.utils.PageInfoUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

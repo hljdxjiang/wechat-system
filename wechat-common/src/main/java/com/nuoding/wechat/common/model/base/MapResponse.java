@@ -1,4 +1,4 @@
-package com.nuoding.wechat.common.model;
+package com.nuoding.wechat.common.model.base;
 
 import com.nuoding.wechat.common.enums.RespStatusEnum;
 

@@ -6,14 +6,14 @@ import com.nuoding.wechat.common.constant.SessionKey;
 import com.nuoding.wechat.common.entity.back.BackSysRolesEntity;
 import com.nuoding.wechat.common.enums.RespStatusEnum;
 import com.nuoding.wechat.common.interceptor.SessionValue;
-import com.nuoding.wechat.common.model.MapResponse;
-import com.nuoding.wechat.common.model.PageQueryBaseDTO;
+import com.nuoding.wechat.common.model.base.MapResponse;
+import com.nuoding.wechat.common.model.base.PageQueryBaseDTO;
 import com.nuoding.wechat.common.service.back.BackSysRolesService;
 import com.nuoding.wechat.common.utils.JsonUtil;
 import com.nuoding.wechat.common.utils.PageInfoUtil;
+import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,7 +22,6 @@ import java.util.Map;
 /**
  * 后管(backSysRoles)服务接口
  * 角色信息表
- *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -43,15 +42,37 @@ public class BackSysRolesController {
      * 分页查询
      *
      * @param backSysRolesEntity 筛选条件
-     * @param dto                size     分页对象
+     * @param dto             size     分页对象
      * @return 查询结果
      */
     @PostMapping("/queryByPage")
     public MapResponse queryByPage(@RequestBody BackSysRolesEntity backSysRolesEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("queryByPage begin.backSysRolesEntity:{},dto:{}", JsonUtil.obj2Json(backSysRolesEntity), JsonUtil.obj2Json(dto));
-        PageHelper.startPage(dto.getPage(), dto.getSize());
+        logger.info("queryByPage begin.backSysRolesEntity:{},dto:{}", JsonUtil.obj2Json(backSysRolesEntity),JsonUtil.obj2Json(dto));
+        PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
+        // backSysRolesEntity.setTenantId(SessionKey.getTenantId);
         List<BackSysRolesEntity> list = this.backSysRolesService.queryAllByLimit(backSysRolesEntity);
+        PageInfo pageInfo = new PageInfo(list);
+        Map map = PageInfoUtil.parseReturnMap(pageInfo);
+        mapResponse.setData(map);
+        logger.info("queryByPage end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
+        return mapResponse;
+    }
+
+    /**
+     * 分页查询
+     *
+     * @param backSysRolesEntity 筛选条件
+     * @param dto             size     分页对象
+     * @return 查询结果
+     */
+    @PostMapping("/fuzzyQuery")
+    public MapResponse fuzzyQuery(@RequestBody BackSysRolesEntity backSysRolesEntity, @RequestBody PageQueryBaseDTO dto) {
+        MapResponse mapResponse = new MapResponse();
+        logger.info("fuzzyQuery begin.backSysRolesEntity:{},dto:{}", JsonUtil.obj2Json(backSysRolesEntity),JsonUtil.obj2Json(dto));
+        PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
+        // backSysRolesEntity.setTenantId(SessionKey.getTenantId);
+        List<BackSysRolesEntity> list = this.backSysRolesService.fuzzyQuery(backSysRolesEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);
@@ -67,7 +88,7 @@ public class BackSysRolesController {
      */
     @GetMapping("{id}")
     public MapResponse queryById(@PathVariable("id") Integer id) {
-        logger.info("queryById begin.id:{}", id);
+        logger.info("queryById begin.id:{}",id);
         MapResponse mapResponse = new MapResponse();
         mapResponse.put("data", this.backSysRolesService.queryById(id));
         logger.info("queryById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
@@ -81,9 +102,10 @@ public class BackSysRolesController {
      * @return 新增结果
      */
     @PostMapping("/add")
-    public MapResponse add(BackSysRolesEntity backSysRolesEntity) {
-        logger.info("add begin.backSysRolesEntity:{}", JsonUtil.obj2Json(backSysRolesEntity));
+    public MapResponse add(@RequestBody BackSysRolesEntity backSysRolesEntity) {
+        logger.info("add begin.backSysRolesEntity:{}",JsonUtil.obj2Json(backSysRolesEntity));
         MapResponse mapResponse = new MapResponse();
+        // backSysRolesEntity.setTenantId(SessionKey.getTenantId);
         mapResponse.put("data", this.backSysRolesService.insert(backSysRolesEntity));
         logger.info("add end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
@@ -96,9 +118,9 @@ public class BackSysRolesController {
      * @return 编辑结果
      */
     @PostMapping("/edit")
-    public MapResponse edit(BackSysRolesEntity backSysRolesEntity) {
+    public MapResponse edit(@RequestBody BackSysRolesEntity backSysRolesEntity) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("edit begin.backSysRolesEntity:{}", JsonUtil.obj2Json(backSysRolesEntity));
+        logger.info("edit begin.backSysRolesEntity:{}",JsonUtil.obj2Json(backSysRolesEntity));
         mapResponse.put("data", this.backSysRolesService.update(backSysRolesEntity));
         logger.info("edit end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
@@ -111,19 +133,17 @@ public class BackSysRolesController {
      * @return 删除是否成功
      */
     @PostMapping("/delete")
-    public MapResponse deleteById(BackSysRolesEntity backSysRolesEntity) {
+    public MapResponse deleteById(@RequestBody BackSysRolesEntity backSysRolesEntity) {
 
         MapResponse mapResponse = new MapResponse();
-        logger.info("deleteById begin.backSysRolesEntity:{}", JsonUtil.obj2Json(backSysRolesEntity));
+        logger.info("deleteById begin.backSysRolesEntity:{}",JsonUtil.obj2Json(backSysRolesEntity));
         Integer id = backSysRolesEntity.getId();
         if (id == null || id == 0) {
             mapResponse.setResponse(RespStatusEnum.ARGS_ERROR);
             return mapResponse;
         }
-        boolean b = this.backSysRolesService.deleteById(id);
-        if (b) {
-            mapResponse.setResponse(RespStatusEnum.DATA_DELETE_FAIL);
-        }
+        this.backSysRolesService.deleteById(id);
+
         logger.info("deleteById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }

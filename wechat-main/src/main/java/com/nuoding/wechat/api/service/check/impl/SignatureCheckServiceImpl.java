@@ -2,7 +2,7 @@ package com.nuoding.wechat.api.service.check.impl;
 
 import com.nuoding.wechat.common.constant.RedisKey;
 import com.nuoding.wechat.common.constant.SwitchKey;
-import com.nuoding.wechat.common.model.MapRequest;
+import com.nuoding.wechat.common.model.base.MapRequest;
 import com.nuoding.wechat.common.model.ReqHeader;
 import com.nuoding.wechat.common.service.RedisService;
 import com.nuoding.wechat.api.service.check.SignatureCheckService;

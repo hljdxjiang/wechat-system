@@ -6,14 +6,14 @@ import com.nuoding.wechat.common.constant.SessionKey;
 import com.nuoding.wechat.common.entity.crm.CrmProdInfoEntity;
 import com.nuoding.wechat.common.enums.RespStatusEnum;
 import com.nuoding.wechat.common.interceptor.SessionValue;
-import com.nuoding.wechat.common.model.MapResponse;
-import com.nuoding.wechat.common.model.PageQueryBaseDTO;
+import com.nuoding.wechat.common.model.base.MapResponse;
+import com.nuoding.wechat.common.model.base.PageQueryBaseDTO;
 import com.nuoding.wechat.common.service.crm.CrmProdInfoService;
 import com.nuoding.wechat.common.utils.JsonUtil;
 import com.nuoding.wechat.common.utils.PageInfoUtil;
+import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,7 +22,6 @@ import java.util.Map;
 /**
  * 后管(crmProdInfo)服务接口
  * 产品信息表
- *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -43,15 +42,37 @@ public class CrmProdInfoController {
      * 分页查询
      *
      * @param crmProdInfoEntity 筛选条件
-     * @param dto               size     分页对象
+     * @param dto             size     分页对象
      * @return 查询结果
      */
     @PostMapping("/queryByPage")
     public MapResponse queryByPage(@RequestBody CrmProdInfoEntity crmProdInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("queryByPage begin.crmProdInfoEntity:{},dto:{}", JsonUtil.obj2Json(crmProdInfoEntity), JsonUtil.obj2Json(dto));
-        PageHelper.startPage(dto.getPage(), dto.getSize());
+        logger.info("queryByPage begin.crmProdInfoEntity:{},dto:{}", JsonUtil.obj2Json(crmProdInfoEntity),JsonUtil.obj2Json(dto));
+        PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
+        // crmProdInfoEntity.setTenantId(SessionKey.getTenantId);
         List<CrmProdInfoEntity> list = this.crmProdInfoService.queryAllByLimit(crmProdInfoEntity);
+        PageInfo pageInfo = new PageInfo(list);
+        Map map = PageInfoUtil.parseReturnMap(pageInfo);
+        mapResponse.setData(map);
+        logger.info("queryByPage end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
+        return mapResponse;
+    }
+
+    /**
+     * 分页查询
+     *
+     * @param crmProdInfoEntity 筛选条件
+     * @param dto             size     分页对象
+     * @return 查询结果
+     */
+    @PostMapping("/fuzzyQuery")
+    public MapResponse fuzzyQuery(@RequestBody CrmProdInfoEntity crmProdInfoEntity, @RequestBody PageQueryBaseDTO dto) {
+        MapResponse mapResponse = new MapResponse();
+        logger.info("fuzzyQuery begin.crmProdInfoEntity:{},dto:{}", JsonUtil.obj2Json(crmProdInfoEntity),JsonUtil.obj2Json(dto));
+        PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
+        // crmProdInfoEntity.setTenantId(SessionKey.getTenantId);
+        List<CrmProdInfoEntity> list = this.crmProdInfoService.fuzzyQuery(crmProdInfoEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);
@@ -67,7 +88,7 @@ public class CrmProdInfoController {
      */
     @GetMapping("{id}")
     public MapResponse queryById(@PathVariable("id") Integer id) {
-        logger.info("queryById begin.id:{}", id);
+        logger.info("queryById begin.id:{}",id);
         MapResponse mapResponse = new MapResponse();
         mapResponse.put("data", this.crmProdInfoService.queryById(id));
         logger.info("queryById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
@@ -81,9 +102,10 @@ public class CrmProdInfoController {
      * @return 新增结果
      */
     @PostMapping("/add")
-    public MapResponse add(CrmProdInfoEntity crmProdInfoEntity) {
-        logger.info("add begin.crmProdInfoEntity:{}", JsonUtil.obj2Json(crmProdInfoEntity));
+    public MapResponse add(@RequestBody CrmProdInfoEntity crmProdInfoEntity) {
+        logger.info("add begin.crmProdInfoEntity:{}",JsonUtil.obj2Json(crmProdInfoEntity));
         MapResponse mapResponse = new MapResponse();
+        // crmProdInfoEntity.setTenantId(SessionKey.getTenantId);
         mapResponse.put("data", this.crmProdInfoService.insert(crmProdInfoEntity));
         logger.info("add end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
@@ -96,9 +118,9 @@ public class CrmProdInfoController {
      * @return 编辑结果
      */
     @PostMapping("/edit")
-    public MapResponse edit(CrmProdInfoEntity crmProdInfoEntity) {
+    public MapResponse edit(@RequestBody CrmProdInfoEntity crmProdInfoEntity) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("edit begin.crmProdInfoEntity:{}", JsonUtil.obj2Json(crmProdInfoEntity));
+        logger.info("edit begin.crmProdInfoEntity:{}",JsonUtil.obj2Json(crmProdInfoEntity));
         mapResponse.put("data", this.crmProdInfoService.update(crmProdInfoEntity));
         logger.info("edit end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
@@ -111,19 +133,17 @@ public class CrmProdInfoController {
      * @return 删除是否成功
      */
     @PostMapping("/delete")
-    public MapResponse deleteById(CrmProdInfoEntity crmProdInfoEntity) {
+    public MapResponse deleteById(@RequestBody CrmProdInfoEntity crmProdInfoEntity) {
 
         MapResponse mapResponse = new MapResponse();
-        logger.info("deleteById begin.crmProdInfoEntity:{}", JsonUtil.obj2Json(crmProdInfoEntity));
+        logger.info("deleteById begin.crmProdInfoEntity:{}",JsonUtil.obj2Json(crmProdInfoEntity));
         Integer id = crmProdInfoEntity.getId();
         if (id == null || id == 0) {
             mapResponse.setResponse(RespStatusEnum.ARGS_ERROR);
             return mapResponse;
         }
-        boolean b = this.crmProdInfoService.deleteById(id);
-        if (b) {
-            mapResponse.setResponse(RespStatusEnum.DATA_DELETE_FAIL);
-        }
+        this.crmProdInfoService.deleteById(id);
+
         logger.info("deleteById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }

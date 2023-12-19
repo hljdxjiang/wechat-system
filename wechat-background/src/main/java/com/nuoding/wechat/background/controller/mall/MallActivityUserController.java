@@ -6,14 +6,14 @@ import com.nuoding.wechat.common.constant.SessionKey;
 import com.nuoding.wechat.common.entity.mall.MallActivityUserEntity;
 import com.nuoding.wechat.common.enums.RespStatusEnum;
 import com.nuoding.wechat.common.interceptor.SessionValue;
-import com.nuoding.wechat.common.model.MapResponse;
-import com.nuoding.wechat.common.model.PageQueryBaseDTO;
+import com.nuoding.wechat.common.model.base.MapResponse;
+import com.nuoding.wechat.common.model.base.PageQueryBaseDTO;
 import com.nuoding.wechat.common.service.mall.MallActivityUserService;
 import com.nuoding.wechat.common.utils.JsonUtil;
 import com.nuoding.wechat.common.utils.PageInfoUtil;
+import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,7 +22,6 @@ import java.util.Map;
 /**
  * 后管(mallActivityUser)服务接口
  * 活动参与用户清单表
- *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -43,15 +42,37 @@ public class MallActivityUserController {
      * 分页查询
      *
      * @param mallActivityUserEntity 筛选条件
-     * @param dto                    size     分页对象
+     * @param dto             size     分页对象
      * @return 查询结果
      */
     @PostMapping("/queryByPage")
     public MapResponse queryByPage(@RequestBody MallActivityUserEntity mallActivityUserEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("queryByPage begin.mallActivityUserEntity:{},dto:{}", JsonUtil.obj2Json(mallActivityUserEntity), JsonUtil.obj2Json(dto));
-        PageHelper.startPage(dto.getPage(), dto.getSize());
+        logger.info("queryByPage begin.mallActivityUserEntity:{},dto:{}", JsonUtil.obj2Json(mallActivityUserEntity),JsonUtil.obj2Json(dto));
+        PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
+        // mallActivityUserEntity.setTenantId(SessionKey.getTenantId);
         List<MallActivityUserEntity> list = this.mallActivityUserService.queryAllByLimit(mallActivityUserEntity);
+        PageInfo pageInfo = new PageInfo(list);
+        Map map = PageInfoUtil.parseReturnMap(pageInfo);
+        mapResponse.setData(map);
+        logger.info("queryByPage end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
+        return mapResponse;
+    }
+
+    /**
+     * 分页查询
+     *
+     * @param mallActivityUserEntity 筛选条件
+     * @param dto             size     分页对象
+     * @return 查询结果
+     */
+    @PostMapping("/fuzzyQuery")
+    public MapResponse fuzzyQuery(@RequestBody MallActivityUserEntity mallActivityUserEntity, @RequestBody PageQueryBaseDTO dto) {
+        MapResponse mapResponse = new MapResponse();
+        logger.info("fuzzyQuery begin.mallActivityUserEntity:{},dto:{}", JsonUtil.obj2Json(mallActivityUserEntity),JsonUtil.obj2Json(dto));
+        PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
+        // mallActivityUserEntity.setTenantId(SessionKey.getTenantId);
+        List<MallActivityUserEntity> list = this.mallActivityUserService.fuzzyQuery(mallActivityUserEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);
@@ -67,7 +88,7 @@ public class MallActivityUserController {
      */
     @GetMapping("{id}")
     public MapResponse queryById(@PathVariable("id") Integer id) {
-        logger.info("queryById begin.id:{}", id);
+        logger.info("queryById begin.id:{}",id);
         MapResponse mapResponse = new MapResponse();
         mapResponse.put("data", this.mallActivityUserService.queryById(id));
         logger.info("queryById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
@@ -81,9 +102,10 @@ public class MallActivityUserController {
      * @return 新增结果
      */
     @PostMapping("/add")
-    public MapResponse add(MallActivityUserEntity mallActivityUserEntity) {
-        logger.info("add begin.mallActivityUserEntity:{}", JsonUtil.obj2Json(mallActivityUserEntity));
+    public MapResponse add(@RequestBody MallActivityUserEntity mallActivityUserEntity) {
+        logger.info("add begin.mallActivityUserEntity:{}",JsonUtil.obj2Json(mallActivityUserEntity));
         MapResponse mapResponse = new MapResponse();
+        // mallActivityUserEntity.setTenantId(SessionKey.getTenantId);
         mapResponse.put("data", this.mallActivityUserService.insert(mallActivityUserEntity));
         logger.info("add end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
@@ -96,9 +118,9 @@ public class MallActivityUserController {
      * @return 编辑结果
      */
     @PostMapping("/edit")
-    public MapResponse edit(MallActivityUserEntity mallActivityUserEntity) {
+    public MapResponse edit(@RequestBody MallActivityUserEntity mallActivityUserEntity) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("edit begin.mallActivityUserEntity:{}", JsonUtil.obj2Json(mallActivityUserEntity));
+        logger.info("edit begin.mallActivityUserEntity:{}",JsonUtil.obj2Json(mallActivityUserEntity));
         mapResponse.put("data", this.mallActivityUserService.update(mallActivityUserEntity));
         logger.info("edit end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
@@ -111,19 +133,17 @@ public class MallActivityUserController {
      * @return 删除是否成功
      */
     @PostMapping("/delete")
-    public MapResponse deleteById(MallActivityUserEntity mallActivityUserEntity) {
+    public MapResponse deleteById(@RequestBody MallActivityUserEntity mallActivityUserEntity) {
 
         MapResponse mapResponse = new MapResponse();
-        logger.info("deleteById begin.mallActivityUserEntity:{}", JsonUtil.obj2Json(mallActivityUserEntity));
+        logger.info("deleteById begin.mallActivityUserEntity:{}",JsonUtil.obj2Json(mallActivityUserEntity));
         Integer id = mallActivityUserEntity.getId();
         if (id == null || id == 0) {
             mapResponse.setResponse(RespStatusEnum.ARGS_ERROR);
             return mapResponse;
         }
-        boolean b = this.mallActivityUserService.deleteById(id);
-        if (b) {
-            mapResponse.setResponse(RespStatusEnum.DATA_DELETE_FAIL);
-        }
+        this.mallActivityUserService.deleteById(id);
+
         logger.info("deleteById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }

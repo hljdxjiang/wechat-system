@@ -1,18 +1,15 @@
 package com.nuoding.wechat.api.service.page.impl;
 
-import com.nuoding.wechat.api.model.FlowInfoDTO;
-import com.nuoding.wechat.api.model.FlowItemDTO;
 import com.nuoding.wechat.api.model.PageBackDTO;
 import com.nuoding.wechat.api.model.PageDTO;
 import com.nuoding.wechat.api.service.page.PageService;
 import com.nuoding.wechat.api.util.ItemShowCheckUtil;
-import com.nuoding.wechat.common.entity.sys.SysFlowItemsEntity;
 import com.nuoding.wechat.common.entity.sys.SysPageFlowInfoEntity;
 import com.nuoding.wechat.common.entity.sys.SysPageInfoEntity;
 import com.nuoding.wechat.common.enums.RespStatusEnum;
 import com.nuoding.wechat.common.enums.StatusEnum;
-import com.nuoding.wechat.common.model.MapRequest;
-import com.nuoding.wechat.common.model.MapResponse;
+import com.nuoding.wechat.common.model.base.MapRequest;
+import com.nuoding.wechat.common.model.base.MapResponse;
 import com.nuoding.wechat.common.service.sys.SysFlowItemsService;
 import com.nuoding.wechat.common.service.sys.SysPageFlowInfoService;
 import com.nuoding.wechat.common.service.sys.SysPageInfoService;
@@ -24,7 +21,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

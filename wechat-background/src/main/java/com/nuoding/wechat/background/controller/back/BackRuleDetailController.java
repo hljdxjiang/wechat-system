@@ -6,14 +6,14 @@ import com.nuoding.wechat.common.constant.SessionKey;
 import com.nuoding.wechat.common.entity.back.BackRuleDetailEntity;
 import com.nuoding.wechat.common.enums.RespStatusEnum;
 import com.nuoding.wechat.common.interceptor.SessionValue;
-import com.nuoding.wechat.common.model.MapResponse;
-import com.nuoding.wechat.common.model.PageQueryBaseDTO;
+import com.nuoding.wechat.common.model.base.MapResponse;
+import com.nuoding.wechat.common.model.base.PageQueryBaseDTO;
 import com.nuoding.wechat.common.service.back.BackRuleDetailService;
 import com.nuoding.wechat.common.utils.JsonUtil;
 import com.nuoding.wechat.common.utils.PageInfoUtil;
+import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,7 +22,6 @@ import java.util.Map;
 /**
  * 后管(backRuleDetail)服务接口
  * 角色权限详情表
- *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -43,15 +42,37 @@ public class BackRuleDetailController {
      * 分页查询
      *
      * @param backRuleDetailEntity 筛选条件
-     * @param dto                  size     分页对象
+     * @param dto             size     分页对象
      * @return 查询结果
      */
     @PostMapping("/queryByPage")
     public MapResponse queryByPage(@RequestBody BackRuleDetailEntity backRuleDetailEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("queryByPage begin.backRuleDetailEntity:{},dto:{}", JsonUtil.obj2Json(backRuleDetailEntity), JsonUtil.obj2Json(dto));
-        PageHelper.startPage(dto.getPage(), dto.getSize());
+        logger.info("queryByPage begin.backRuleDetailEntity:{},dto:{}", JsonUtil.obj2Json(backRuleDetailEntity),JsonUtil.obj2Json(dto));
+        PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
+        // backRuleDetailEntity.setTenantId(SessionKey.getTenantId);
         List<BackRuleDetailEntity> list = this.backRuleDetailService.queryAllByLimit(backRuleDetailEntity);
+        PageInfo pageInfo = new PageInfo(list);
+        Map map = PageInfoUtil.parseReturnMap(pageInfo);
+        mapResponse.setData(map);
+        logger.info("queryByPage end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
+        return mapResponse;
+    }
+
+    /**
+     * 分页查询
+     *
+     * @param backRuleDetailEntity 筛选条件
+     * @param dto             size     分页对象
+     * @return 查询结果
+     */
+    @PostMapping("/fuzzyQuery")
+    public MapResponse fuzzyQuery(@RequestBody BackRuleDetailEntity backRuleDetailEntity, @RequestBody PageQueryBaseDTO dto) {
+        MapResponse mapResponse = new MapResponse();
+        logger.info("fuzzyQuery begin.backRuleDetailEntity:{},dto:{}", JsonUtil.obj2Json(backRuleDetailEntity),JsonUtil.obj2Json(dto));
+        PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
+        // backRuleDetailEntity.setTenantId(SessionKey.getTenantId);
+        List<BackRuleDetailEntity> list = this.backRuleDetailService.fuzzyQuery(backRuleDetailEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);
@@ -67,7 +88,7 @@ public class BackRuleDetailController {
      */
     @GetMapping("{id}")
     public MapResponse queryById(@PathVariable("id") Integer id) {
-        logger.info("queryById begin.id:{}", id);
+        logger.info("queryById begin.id:{}",id);
         MapResponse mapResponse = new MapResponse();
         mapResponse.put("data", this.backRuleDetailService.queryById(id));
         logger.info("queryById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
@@ -81,9 +102,10 @@ public class BackRuleDetailController {
      * @return 新增结果
      */
     @PostMapping("/add")
-    public MapResponse add(BackRuleDetailEntity backRuleDetailEntity) {
-        logger.info("add begin.backRuleDetailEntity:{}", JsonUtil.obj2Json(backRuleDetailEntity));
+    public MapResponse add(@RequestBody BackRuleDetailEntity backRuleDetailEntity) {
+        logger.info("add begin.backRuleDetailEntity:{}",JsonUtil.obj2Json(backRuleDetailEntity));
         MapResponse mapResponse = new MapResponse();
+        // backRuleDetailEntity.setTenantId(SessionKey.getTenantId);
         mapResponse.put("data", this.backRuleDetailService.insert(backRuleDetailEntity));
         logger.info("add end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
@@ -96,9 +118,9 @@ public class BackRuleDetailController {
      * @return 编辑结果
      */
     @PostMapping("/edit")
-    public MapResponse edit(BackRuleDetailEntity backRuleDetailEntity) {
+    public MapResponse edit(@RequestBody BackRuleDetailEntity backRuleDetailEntity) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("edit begin.backRuleDetailEntity:{}", JsonUtil.obj2Json(backRuleDetailEntity));
+        logger.info("edit begin.backRuleDetailEntity:{}",JsonUtil.obj2Json(backRuleDetailEntity));
         mapResponse.put("data", this.backRuleDetailService.update(backRuleDetailEntity));
         logger.info("edit end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
@@ -111,19 +133,17 @@ public class BackRuleDetailController {
      * @return 删除是否成功
      */
     @PostMapping("/delete")
-    public MapResponse deleteById(BackRuleDetailEntity backRuleDetailEntity) {
+    public MapResponse deleteById(@RequestBody BackRuleDetailEntity backRuleDetailEntity) {
 
         MapResponse mapResponse = new MapResponse();
-        logger.info("deleteById begin.backRuleDetailEntity:{}", JsonUtil.obj2Json(backRuleDetailEntity));
+        logger.info("deleteById begin.backRuleDetailEntity:{}",JsonUtil.obj2Json(backRuleDetailEntity));
         Integer id = backRuleDetailEntity.getId();
         if (id == null || id == 0) {
             mapResponse.setResponse(RespStatusEnum.ARGS_ERROR);
             return mapResponse;
         }
-        boolean b = this.backRuleDetailService.deleteById(id);
-        if (b) {
-            mapResponse.setResponse(RespStatusEnum.DATA_DELETE_FAIL);
-        }
+        this.backRuleDetailService.deleteById(id);
+
         logger.info("deleteById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }

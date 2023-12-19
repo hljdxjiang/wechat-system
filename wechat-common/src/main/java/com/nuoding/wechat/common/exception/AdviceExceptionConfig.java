@@ -3,7 +3,7 @@ package com.nuoding.wechat.common.exception;
 
 import com.alibaba.excel.exception.ExcelAnalysisException;
 import com.nuoding.wechat.common.enums.RespStatusEnum;
-import com.nuoding.wechat.common.model.MapResponse;
+import com.nuoding.wechat.common.model.base.MapResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

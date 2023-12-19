@@ -6,14 +6,14 @@ import com.nuoding.wechat.common.constant.SessionKey;
 import com.nuoding.wechat.common.entity.user.UserRegInfoEntity;
 import com.nuoding.wechat.common.enums.RespStatusEnum;
 import com.nuoding.wechat.common.interceptor.SessionValue;
-import com.nuoding.wechat.common.model.MapResponse;
-import com.nuoding.wechat.common.model.PageQueryBaseDTO;
+import com.nuoding.wechat.common.model.base.MapResponse;
+import com.nuoding.wechat.common.model.base.PageQueryBaseDTO;
 import com.nuoding.wechat.common.service.user.UserRegInfoService;
 import com.nuoding.wechat.common.utils.JsonUtil;
 import com.nuoding.wechat.common.utils.PageInfoUtil;
+import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,7 +22,6 @@ import java.util.Map;
 /**
  * 后管(userRegInfo)服务接口
  * 客户信息表
- *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -43,15 +42,37 @@ public class UserRegInfoController {
      * 分页查询
      *
      * @param userRegInfoEntity 筛选条件
-     * @param dto               size     分页对象
+     * @param dto             size     分页对象
      * @return 查询结果
      */
     @PostMapping("/queryByPage")
     public MapResponse queryByPage(@RequestBody UserRegInfoEntity userRegInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("queryByPage begin.userRegInfoEntity:{},dto:{}", JsonUtil.obj2Json(userRegInfoEntity), JsonUtil.obj2Json(dto));
-        PageHelper.startPage(dto.getPage(), dto.getSize());
+        logger.info("queryByPage begin.userRegInfoEntity:{},dto:{}", JsonUtil.obj2Json(userRegInfoEntity),JsonUtil.obj2Json(dto));
+        PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
+        // userRegInfoEntity.setTenantId(SessionKey.getTenantId);
         List<UserRegInfoEntity> list = this.userRegInfoService.queryAllByLimit(userRegInfoEntity);
+        PageInfo pageInfo = new PageInfo(list);
+        Map map = PageInfoUtil.parseReturnMap(pageInfo);
+        mapResponse.setData(map);
+        logger.info("queryByPage end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
+        return mapResponse;
+    }
+
+    /**
+     * 分页查询
+     *
+     * @param userRegInfoEntity 筛选条件
+     * @param dto             size     分页对象
+     * @return 查询结果
+     */
+    @PostMapping("/fuzzyQuery")
+    public MapResponse fuzzyQuery(@RequestBody UserRegInfoEntity userRegInfoEntity, @RequestBody PageQueryBaseDTO dto) {
+        MapResponse mapResponse = new MapResponse();
+        logger.info("fuzzyQuery begin.userRegInfoEntity:{},dto:{}", JsonUtil.obj2Json(userRegInfoEntity),JsonUtil.obj2Json(dto));
+        PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
+        // userRegInfoEntity.setTenantId(SessionKey.getTenantId);
+        List<UserRegInfoEntity> list = this.userRegInfoService.fuzzyQuery(userRegInfoEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);
@@ -67,7 +88,7 @@ public class UserRegInfoController {
      */
     @GetMapping("{id}")
     public MapResponse queryById(@PathVariable("id") Integer id) {
-        logger.info("queryById begin.id:{}", id);
+        logger.info("queryById begin.id:{}",id);
         MapResponse mapResponse = new MapResponse();
         mapResponse.put("data", this.userRegInfoService.queryById(id));
         logger.info("queryById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
@@ -81,9 +102,10 @@ public class UserRegInfoController {
      * @return 新增结果
      */
     @PostMapping("/add")
-    public MapResponse add(UserRegInfoEntity userRegInfoEntity) {
-        logger.info("add begin.userRegInfoEntity:{}", JsonUtil.obj2Json(userRegInfoEntity));
+    public MapResponse add(@RequestBody UserRegInfoEntity userRegInfoEntity) {
+        logger.info("add begin.userRegInfoEntity:{}",JsonUtil.obj2Json(userRegInfoEntity));
         MapResponse mapResponse = new MapResponse();
+        // userRegInfoEntity.setTenantId(SessionKey.getTenantId);
         mapResponse.put("data", this.userRegInfoService.insert(userRegInfoEntity));
         logger.info("add end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
@@ -96,9 +118,9 @@ public class UserRegInfoController {
      * @return 编辑结果
      */
     @PostMapping("/edit")
-    public MapResponse edit(UserRegInfoEntity userRegInfoEntity) {
+    public MapResponse edit(@RequestBody UserRegInfoEntity userRegInfoEntity) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("edit begin.userRegInfoEntity:{}", JsonUtil.obj2Json(userRegInfoEntity));
+        logger.info("edit begin.userRegInfoEntity:{}",JsonUtil.obj2Json(userRegInfoEntity));
         mapResponse.put("data", this.userRegInfoService.update(userRegInfoEntity));
         logger.info("edit end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
@@ -111,19 +133,17 @@ public class UserRegInfoController {
      * @return 删除是否成功
      */
     @PostMapping("/delete")
-    public MapResponse deleteById(UserRegInfoEntity userRegInfoEntity) {
+    public MapResponse deleteById(@RequestBody UserRegInfoEntity userRegInfoEntity) {
 
         MapResponse mapResponse = new MapResponse();
-        logger.info("deleteById begin.userRegInfoEntity:{}", JsonUtil.obj2Json(userRegInfoEntity));
+        logger.info("deleteById begin.userRegInfoEntity:{}",JsonUtil.obj2Json(userRegInfoEntity));
         Integer id = userRegInfoEntity.getId();
         if (id == null || id == 0) {
             mapResponse.setResponse(RespStatusEnum.ARGS_ERROR);
             return mapResponse;
         }
-        boolean b = this.userRegInfoService.deleteById(id);
-        if (b) {
-            mapResponse.setResponse(RespStatusEnum.DATA_DELETE_FAIL);
-        }
+        this.userRegInfoService.deleteById(id);
+
         logger.info("deleteById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }

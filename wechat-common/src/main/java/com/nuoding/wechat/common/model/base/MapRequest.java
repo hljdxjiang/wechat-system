@@ -1,7 +1,8 @@
-package com.nuoding.wechat.common.model;
+package com.nuoding.wechat.common.model.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.nuoding.wechat.common.model.ReqHeader;
 import com.nuoding.wechat.common.utils.JsonUtil;
 
 import java.io.Serializable;

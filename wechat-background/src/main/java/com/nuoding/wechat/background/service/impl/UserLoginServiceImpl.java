@@ -7,7 +7,7 @@ import com.nuoding.wechat.common.constant.SessionKey;
 import com.nuoding.wechat.common.dao.back.BackSysUserDao;
 import com.nuoding.wechat.common.entity.back.BackSysUserEntity;
 import com.nuoding.wechat.common.enums.RespStatusEnum;
-import com.nuoding.wechat.common.model.MapResponse;
+import com.nuoding.wechat.common.model.base.MapResponse;
 import com.nuoding.wechat.common.service.RedisService;
 import com.nuoding.wechat.common.service.sys.SysParamConfigService;
 import org.apache.commons.lang3.StringUtils;

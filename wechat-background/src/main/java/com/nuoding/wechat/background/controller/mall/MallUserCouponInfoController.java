@@ -6,14 +6,14 @@ import com.nuoding.wechat.common.constant.SessionKey;
 import com.nuoding.wechat.common.entity.mall.MallUserCouponInfoEntity;
 import com.nuoding.wechat.common.enums.RespStatusEnum;
 import com.nuoding.wechat.common.interceptor.SessionValue;
-import com.nuoding.wechat.common.model.MapResponse;
-import com.nuoding.wechat.common.model.PageQueryBaseDTO;
+import com.nuoding.wechat.common.model.base.MapResponse;
+import com.nuoding.wechat.common.model.base.PageQueryBaseDTO;
 import com.nuoding.wechat.common.service.mall.MallUserCouponInfoService;
 import com.nuoding.wechat.common.utils.JsonUtil;
 import com.nuoding.wechat.common.utils.PageInfoUtil;
+import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,7 +22,6 @@ import java.util.Map;
 /**
  * 后管(mallUserCouponInfo)服务接口
  * 优惠券领取信息表
- *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -43,15 +42,37 @@ public class MallUserCouponInfoController {
      * 分页查询
      *
      * @param mallUserCouponInfoEntity 筛选条件
-     * @param dto                      size     分页对象
+     * @param dto             size     分页对象
      * @return 查询结果
      */
     @PostMapping("/queryByPage")
     public MapResponse queryByPage(@RequestBody MallUserCouponInfoEntity mallUserCouponInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("queryByPage begin.mallUserCouponInfoEntity:{},dto:{}", JsonUtil.obj2Json(mallUserCouponInfoEntity), JsonUtil.obj2Json(dto));
-        PageHelper.startPage(dto.getPage(), dto.getSize());
+        logger.info("queryByPage begin.mallUserCouponInfoEntity:{},dto:{}", JsonUtil.obj2Json(mallUserCouponInfoEntity),JsonUtil.obj2Json(dto));
+        PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
+        // mallUserCouponInfoEntity.setTenantId(SessionKey.getTenantId);
         List<MallUserCouponInfoEntity> list = this.mallUserCouponInfoService.queryAllByLimit(mallUserCouponInfoEntity);
+        PageInfo pageInfo = new PageInfo(list);
+        Map map = PageInfoUtil.parseReturnMap(pageInfo);
+        mapResponse.setData(map);
+        logger.info("queryByPage end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
+        return mapResponse;
+    }
+
+    /**
+     * 分页查询
+     *
+     * @param mallUserCouponInfoEntity 筛选条件
+     * @param dto             size     分页对象
+     * @return 查询结果
+     */
+    @PostMapping("/fuzzyQuery")
+    public MapResponse fuzzyQuery(@RequestBody MallUserCouponInfoEntity mallUserCouponInfoEntity, @RequestBody PageQueryBaseDTO dto) {
+        MapResponse mapResponse = new MapResponse();
+        logger.info("fuzzyQuery begin.mallUserCouponInfoEntity:{},dto:{}", JsonUtil.obj2Json(mallUserCouponInfoEntity),JsonUtil.obj2Json(dto));
+        PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
+        // mallUserCouponInfoEntity.setTenantId(SessionKey.getTenantId);
+        List<MallUserCouponInfoEntity> list = this.mallUserCouponInfoService.fuzzyQuery(mallUserCouponInfoEntity);
         PageInfo pageInfo = new PageInfo(list);
         Map map = PageInfoUtil.parseReturnMap(pageInfo);
         mapResponse.setData(map);
@@ -67,7 +88,7 @@ public class MallUserCouponInfoController {
      */
     @GetMapping("{id}")
     public MapResponse queryById(@PathVariable("id") Integer id) {
-        logger.info("queryById begin.id:{}", id);
+        logger.info("queryById begin.id:{}",id);
         MapResponse mapResponse = new MapResponse();
         mapResponse.put("data", this.mallUserCouponInfoService.queryById(id));
         logger.info("queryById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
@@ -81,9 +102,10 @@ public class MallUserCouponInfoController {
      * @return 新增结果
      */
     @PostMapping("/add")
-    public MapResponse add(MallUserCouponInfoEntity mallUserCouponInfoEntity) {
-        logger.info("add begin.mallUserCouponInfoEntity:{}", JsonUtil.obj2Json(mallUserCouponInfoEntity));
+    public MapResponse add(@RequestBody MallUserCouponInfoEntity mallUserCouponInfoEntity) {
+        logger.info("add begin.mallUserCouponInfoEntity:{}",JsonUtil.obj2Json(mallUserCouponInfoEntity));
         MapResponse mapResponse = new MapResponse();
+        // mallUserCouponInfoEntity.setTenantId(SessionKey.getTenantId);
         mapResponse.put("data", this.mallUserCouponInfoService.insert(mallUserCouponInfoEntity));
         logger.info("add end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
@@ -96,9 +118,9 @@ public class MallUserCouponInfoController {
      * @return 编辑结果
      */
     @PostMapping("/edit")
-    public MapResponse edit(MallUserCouponInfoEntity mallUserCouponInfoEntity) {
+    public MapResponse edit(@RequestBody MallUserCouponInfoEntity mallUserCouponInfoEntity) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("edit begin.mallUserCouponInfoEntity:{}", JsonUtil.obj2Json(mallUserCouponInfoEntity));
+        logger.info("edit begin.mallUserCouponInfoEntity:{}",JsonUtil.obj2Json(mallUserCouponInfoEntity));
         mapResponse.put("data", this.mallUserCouponInfoService.update(mallUserCouponInfoEntity));
         logger.info("edit end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
@@ -111,19 +133,17 @@ public class MallUserCouponInfoController {
      * @return 删除是否成功
      */
     @PostMapping("/delete")
-    public MapResponse deleteById(MallUserCouponInfoEntity mallUserCouponInfoEntity) {
+    public MapResponse deleteById(@RequestBody MallUserCouponInfoEntity mallUserCouponInfoEntity) {
 
         MapResponse mapResponse = new MapResponse();
-        logger.info("deleteById begin.mallUserCouponInfoEntity:{}", JsonUtil.obj2Json(mallUserCouponInfoEntity));
+        logger.info("deleteById begin.mallUserCouponInfoEntity:{}",JsonUtil.obj2Json(mallUserCouponInfoEntity));
         Integer id = mallUserCouponInfoEntity.getId();
         if (id == null || id == 0) {
             mapResponse.setResponse(RespStatusEnum.ARGS_ERROR);
             return mapResponse;
         }
-        boolean b = this.mallUserCouponInfoService.deleteById(id);
-        if (b) {
-            mapResponse.setResponse(RespStatusEnum.DATA_DELETE_FAIL);
-        }
+        this.mallUserCouponInfoService.deleteById(id);
+
         logger.info("deleteById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }

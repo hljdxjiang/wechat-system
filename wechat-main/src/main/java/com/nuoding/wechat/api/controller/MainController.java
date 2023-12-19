@@ -2,12 +2,11 @@ package com.nuoding.wechat.api.controller;
 
 
 import com.nuoding.wechat.api.service.base.BaseProcessService;
-import com.nuoding.wechat.common.model.MapRequest;
-import com.nuoding.wechat.common.model.MapResponse;
+import com.nuoding.wechat.common.model.base.MapRequest;
+import com.nuoding.wechat.common.model.base.MapResponse;
 import com.nuoding.wechat.common.utils.JsonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;

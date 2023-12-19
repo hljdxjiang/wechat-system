@@ -1,4 +1,4 @@
-package com.nuoding.wechat.common.model;
+package com.nuoding.wechat.common.model.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -12,28 +12,28 @@ import java.io.Serializable;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PageQueryBaseDTO implements Serializable {
     private static final long serialVersionUID = -8635327507859410192L;
-    int page;
-    int size;
+    int pagemNum;
+    int pageSize;
 
-    public int getPage() {
-        if (page < 1) {
+    public int getPageNum() {
+        if (pageSize < 1) {
             return 1;
         }
-        return page;
+        return pageSize;
     }
 
-    public void setPage(int page) {
-        this.page = page;
+    public void setPageNum(int page) {
+        this.pagemNum = page;
     }
 
-    public int getSize() {
-        if (size < 1) {
+    public int getPageSize() {
+        if (pageSize < 1) {
             return 10;
         }
-        return size;
+        return pageSize;
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public void setPageSize(int size) {
+        this.pageSize = size;
     }
 }

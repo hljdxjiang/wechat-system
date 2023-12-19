@@ -1,12 +1,7 @@
 package com.nuoding.wechat.api.service.page;
 
-import com.nuoding.wechat.common.entity.sys.SysFlowInfoEntity;
-import com.nuoding.wechat.common.entity.sys.SysPageFlowInfoEntity;
-import com.nuoding.wechat.common.model.MapRequest;
-import com.nuoding.wechat.common.model.MapResponse;
-
-import java.util.List;
-import java.util.Map;
+import com.nuoding.wechat.common.model.base.MapRequest;
+import com.nuoding.wechat.common.model.base.MapResponse;
 
 public interface PageService {
     MapResponse getPageFLowInfo(MapRequest mapRequest);
