@@ -1,6 +1,5 @@
 package com.nuoding.wechat.common.entity.crm;
 
-import javax.persistence.Column;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
