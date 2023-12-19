@@ -68,4 +68,11 @@ public interface SysParamConfigService {
      */
     boolean deleteById(Integer id);
 
+    /**
+     * @Ahther:JHC
+     * @Description:根据缓存查询配置信息
+     * @Date:2023/5/8 下午9:05
+     */
+    String getConfigByCatch(String configKey);
+
 }

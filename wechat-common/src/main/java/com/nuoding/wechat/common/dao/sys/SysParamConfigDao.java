@@ -1,6 +1,7 @@
 package com.nuoding.wechat.common.dao.sys;
 
 import com.nuoding.wechat.common.entity.sys.SysParamConfigEntity;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

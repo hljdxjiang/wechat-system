@@ -1,8 +1,10 @@
 package com.nuoding.wechat.common.dao.sys;
 
 import com.nuoding.wechat.common.entity.sys.SysPageTypeInfoEntity;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -11,6 +13,8 @@ import java.util.List;
  * @Author: hzq
  * @Date: 2023-12-18 14:57:38
  */
+@Mapper
+@Resource
 public interface SysPageTypeInfoDao {
 
     /**
