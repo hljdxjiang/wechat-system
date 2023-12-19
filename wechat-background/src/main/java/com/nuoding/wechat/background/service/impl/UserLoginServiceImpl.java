@@ -4,17 +4,19 @@ import com.nuoding.wechat.background.model.LoginDTO;
 import com.nuoding.wechat.background.service.UserLoginService;
 import com.nuoding.wechat.common.constant.RedisKey;
 import com.nuoding.wechat.common.constant.SessionKey;
-import com.nuoding.wechat.common.dao.back.BackSysRoleDetailDao;
 import com.nuoding.wechat.common.dao.back.BackSysUserDao;
+import com.nuoding.wechat.common.entity.back.BackSysRoleDetailEntity;
 import com.nuoding.wechat.common.entity.back.BackSysUserEntity;
 import com.nuoding.wechat.common.enums.RespStatusEnum;
 import com.nuoding.wechat.common.model.base.MapResponse;
 import com.nuoding.wechat.common.service.RedisService;
+import com.nuoding.wechat.common.service.back.BackSysRoleDetailService;
 import com.nuoding.wechat.common.service.sys.SysParamConfigService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,14 +33,14 @@ public class UserLoginServiceImpl implements UserLoginService {
 
     private SysParamConfigService sysParamConfigService;
 
-    private BackSysRoleDetailDao backSysRoleDetailDao;
+    private BackSysRoleDetailService backSysRoleDetailService;
 
     private RedisService redisService;
 
-    public UserLoginServiceImpl(BackSysUserDao backSysUserDao, SysParamConfigService sysParamConfigService, BackSysRoleDetailDao backSysRoleDetailDao, RedisService redisService) {
+    public UserLoginServiceImpl(BackSysUserDao backSysUserDao, SysParamConfigService sysParamConfigService, BackSysRoleDetailService backSysRoleDetailService, RedisService redisService) {
         this.backSysUserDao = backSysUserDao;
         this.sysParamConfigService = sysParamConfigService;
-        this.backSysRoleDetailDao = backSysRoleDetailDao;
+        this.backSysRoleDetailService = backSysRoleDetailService;
         this.redisService = redisService;
     }
 
@@ -66,22 +68,48 @@ public class UserLoginServiceImpl implements UserLoginService {
         BackSysUserEntity backSysUser = new BackSysUserEntity();
         backSysUser.setUserId(userId);
         backSysUser.setTenantId(SessionKey.getValue(SessionKey.TENANT_ID));
+        Map retMap = new HashMap<>();
         List<BackSysUserEntity> list = backSysUserDao.queryAllByLimit(backSysUser);
         if (!CollectionUtils.isEmpty(list)) {
             backSysUser = list.get(0);
             if (!StringUtils.equals(passWD, backSysUser.getPasswd())) {
                 mapResponse.setResponse(RespStatusEnum.LOGIN_SUCCESS);
-                Map map = new HashMap<>();
-                map.put("userId", userId);
-                map.put("roleId", backSysUser.getRoleId());
-                map.put("userName", backSysUser.getUserName());
-                map.put("tenantId", backSysUser.getTenantId());
-                mapResponse.put("data", map);
+                retMap.put("userId", userId);
+                retMap.put("roleId", backSysUser.getRoleId());
+                retMap.put("userName", backSysUser.getUserName());
                 redisService.delValue(RedisKey.USER_ERROR_CNT.concat(userId));
             } else {
                 mapResponse.setResponse(RespStatusEnum.PASSWD_CODE_ERROR);
                 redisService.setValue(RedisKey.USER_ERROR_CNT.concat(userId)
                         , String.valueOf(errCnt + 1), 10 * 60);
+            }
+            String roleID = backSysUser.getRoleId();
+            if (StringUtils.isBlank(roleID)) {
+                SessionKey.setValue(SessionKey.LOGIN_KEY, backSysUser.getUserId());
+                SessionKey.setValue(SessionKey.LOGIN_ROLE_ID, roleID);
+                SessionKey.setValue(SessionKey.TENANT_ID, backSysUser.getTenantId());
+                List<BackSysRoleDetailEntity> menus = new ArrayList<>();
+                List<BackSysRoleDetailEntity> revokes = new ArrayList<>();
+                BackSysRoleDetailEntity entity = new BackSysRoleDetailEntity();
+                entity.setRoleid(roleID);
+                List<BackSysRoleDetailEntity> detailEntities = backSysRoleDetailService.queryAllByLimit(entity);
+                if (!CollectionUtils.isEmpty(detailEntities)) {
+                    for (BackSysRoleDetailEntity entity2 : detailEntities) {
+                        String type = entity2.getType();
+                        if (StringUtils.equalsIgnoreCase(type, "MENU")) {
+                            menus.add(entity2);
+                        }
+
+                        if (StringUtils.equalsIgnoreCase(type, "REVOKE")) {
+                            revokes.add(entity2);
+                        }
+                    }
+                }
+                retMap.put("menus", menus);
+                retMap.put("permission", revokes);
+                mapResponse.put("data", retMap);
+            } else {
+                mapResponse.setResponse(RespStatusEnum.USER_NO_ROLEID);
             }
         } else {
             mapResponse.setResponse(RespStatusEnum.USER_NULL);
