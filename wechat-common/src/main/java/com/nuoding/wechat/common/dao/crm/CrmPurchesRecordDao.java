@@ -2,6 +2,7 @@ package com.nuoding.wechat.common.dao.crm;
 
 import com.nuoding.wechat.common.entity.crm.CrmPurchesRecordEntity;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -9,8 +10,9 @@ import java.util.List;
  * 进货记录表
  *
  * @Author: hzq
- * @Date: 2023-12-18 14:57:39
+ * @Date: 2023-12-19 13:50:20
  */
+@Repository
 public interface CrmPurchesRecordDao {
 
     /**

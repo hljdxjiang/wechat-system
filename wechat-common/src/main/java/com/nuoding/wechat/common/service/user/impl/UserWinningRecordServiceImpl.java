@@ -3,18 +3,17 @@ package com.nuoding.wechat.common.service.user.impl;
 import com.nuoding.wechat.common.dao.user.UserWinningRecordDao;
 import com.nuoding.wechat.common.entity.user.UserWinningRecordEntity;
 import com.nuoding.wechat.common.service.user.UserWinningRecordService;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (userWinningRecord)表服务实现类
  * 抽奖获奖记录表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -22,9 +21,12 @@ import java.util.List;
 public class UserWinningRecordServiceImpl implements UserWinningRecordService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private UserWinningRecordDao userWinningRecordDao;
+
+    public UserWinningRecordServiceImpl(UserWinningRecordDao userWinningRecordDao) {
+        this.userWinningRecordDao = userWinningRecordDao;
+    }
 
     /**
      * 通过ID查询单条数据

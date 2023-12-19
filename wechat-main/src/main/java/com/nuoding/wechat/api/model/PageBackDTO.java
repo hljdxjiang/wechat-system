@@ -1,9 +1,7 @@
 package com.nuoding.wechat.api.model;
 
 import com.nuoding.wechat.common.entity.sys.SysPageFlowInfoEntity;
-import com.nuoding.wechat.common.entity.sys.SysPageInfoEntity;
 
-import javax.persistence.Column;
 import java.util.List;
 
 public class PageBackDTO {
@@ -22,7 +20,6 @@ public class PageBackDTO {
      * 页面类型
      */
     private String pageType;
-
 
 
     /**

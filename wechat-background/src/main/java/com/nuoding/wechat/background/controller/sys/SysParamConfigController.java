@@ -11,9 +11,9 @@ import com.nuoding.wechat.common.model.base.PageQueryBaseDTO;
 import com.nuoding.wechat.common.service.sys.SysParamConfigService;
 import com.nuoding.wechat.common.utils.JsonUtil;
 import com.nuoding.wechat.common.utils.PageInfoUtil;
-import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,6 +22,7 @@ import java.util.Map;
 /**
  * 后管(sysParamConfig)服务接口
  * 系统参数配置表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -42,13 +43,13 @@ public class SysParamConfigController {
      * 分页查询
      *
      * @param sysParamConfigEntity 筛选条件
-     * @param dto             size     分页对象
+     * @param dto                  size     分页对象
      * @return 查询结果
      */
     @PostMapping("/queryByPage")
     public MapResponse queryByPage(@RequestBody SysParamConfigEntity sysParamConfigEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("queryByPage begin.sysParamConfigEntity:{},dto:{}", JsonUtil.obj2Json(sysParamConfigEntity),JsonUtil.obj2Json(dto));
+        logger.info("queryByPage begin.sysParamConfigEntity:{},dto:{}", JsonUtil.obj2Json(sysParamConfigEntity), JsonUtil.obj2Json(dto));
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
         // sysParamConfigEntity.setTenantId(SessionKey.getTenantId);
         List<SysParamConfigEntity> list = this.sysParamConfigService.queryAllByLimit(sysParamConfigEntity);
@@ -63,13 +64,13 @@ public class SysParamConfigController {
      * 分页查询
      *
      * @param sysParamConfigEntity 筛选条件
-     * @param dto             size     分页对象
+     * @param dto                  size     分页对象
      * @return 查询结果
      */
     @PostMapping("/fuzzyQuery")
     public MapResponse fuzzyQuery(@RequestBody SysParamConfigEntity sysParamConfigEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("fuzzyQuery begin.sysParamConfigEntity:{},dto:{}", JsonUtil.obj2Json(sysParamConfigEntity),JsonUtil.obj2Json(dto));
+        logger.info("fuzzyQuery begin.sysParamConfigEntity:{},dto:{}", JsonUtil.obj2Json(sysParamConfigEntity), JsonUtil.obj2Json(dto));
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
         // sysParamConfigEntity.setTenantId(SessionKey.getTenantId);
         List<SysParamConfigEntity> list = this.sysParamConfigService.fuzzyQuery(sysParamConfigEntity);
@@ -88,7 +89,7 @@ public class SysParamConfigController {
      */
     @GetMapping("{id}")
     public MapResponse queryById(@PathVariable("id") Integer id) {
-        logger.info("queryById begin.id:{}",id);
+        logger.info("queryById begin.id:{}", id);
         MapResponse mapResponse = new MapResponse();
         mapResponse.put("data", this.sysParamConfigService.queryById(id));
         logger.info("queryById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
@@ -103,7 +104,7 @@ public class SysParamConfigController {
      */
     @PostMapping("/add")
     public MapResponse add(@RequestBody SysParamConfigEntity sysParamConfigEntity) {
-        logger.info("add begin.sysParamConfigEntity:{}",JsonUtil.obj2Json(sysParamConfigEntity));
+        logger.info("add begin.sysParamConfigEntity:{}", JsonUtil.obj2Json(sysParamConfigEntity));
         MapResponse mapResponse = new MapResponse();
         // sysParamConfigEntity.setTenantId(SessionKey.getTenantId);
         mapResponse.put("data", this.sysParamConfigService.insert(sysParamConfigEntity));
@@ -120,7 +121,7 @@ public class SysParamConfigController {
     @PostMapping("/edit")
     public MapResponse edit(@RequestBody SysParamConfigEntity sysParamConfigEntity) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("edit begin.sysParamConfigEntity:{}",JsonUtil.obj2Json(sysParamConfigEntity));
+        logger.info("edit begin.sysParamConfigEntity:{}", JsonUtil.obj2Json(sysParamConfigEntity));
         mapResponse.put("data", this.sysParamConfigService.update(sysParamConfigEntity));
         logger.info("edit end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
@@ -136,7 +137,7 @@ public class SysParamConfigController {
     public MapResponse deleteById(@RequestBody SysParamConfigEntity sysParamConfigEntity) {
 
         MapResponse mapResponse = new MapResponse();
-        logger.info("deleteById begin.sysParamConfigEntity:{}",JsonUtil.obj2Json(sysParamConfigEntity));
+        logger.info("deleteById begin.sysParamConfigEntity:{}", JsonUtil.obj2Json(sysParamConfigEntity));
         Integer id = sysParamConfigEntity.getId();
         if (id == null || id == 0) {
             mapResponse.setResponse(RespStatusEnum.ARGS_ERROR);

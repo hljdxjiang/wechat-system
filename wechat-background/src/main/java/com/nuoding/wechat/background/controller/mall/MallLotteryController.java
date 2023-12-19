@@ -11,9 +11,9 @@ import com.nuoding.wechat.common.model.base.PageQueryBaseDTO;
 import com.nuoding.wechat.common.service.mall.MallLotteryService;
 import com.nuoding.wechat.common.utils.JsonUtil;
 import com.nuoding.wechat.common.utils.PageInfoUtil;
-import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,6 +22,7 @@ import java.util.Map;
 /**
  * 后管(mallLottery)服务接口
  * 抽奖活动信息表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -42,13 +43,13 @@ public class MallLotteryController {
      * 分页查询
      *
      * @param mallLotteryEntity 筛选条件
-     * @param dto             size     分页对象
+     * @param dto               size     分页对象
      * @return 查询结果
      */
     @PostMapping("/queryByPage")
     public MapResponse queryByPage(@RequestBody MallLotteryEntity mallLotteryEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("queryByPage begin.mallLotteryEntity:{},dto:{}", JsonUtil.obj2Json(mallLotteryEntity),JsonUtil.obj2Json(dto));
+        logger.info("queryByPage begin.mallLotteryEntity:{},dto:{}", JsonUtil.obj2Json(mallLotteryEntity), JsonUtil.obj2Json(dto));
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
         // mallLotteryEntity.setTenantId(SessionKey.getTenantId);
         List<MallLotteryEntity> list = this.mallLotteryService.queryAllByLimit(mallLotteryEntity);
@@ -63,13 +64,13 @@ public class MallLotteryController {
      * 分页查询
      *
      * @param mallLotteryEntity 筛选条件
-     * @param dto             size     分页对象
+     * @param dto               size     分页对象
      * @return 查询结果
      */
     @PostMapping("/fuzzyQuery")
     public MapResponse fuzzyQuery(@RequestBody MallLotteryEntity mallLotteryEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("fuzzyQuery begin.mallLotteryEntity:{},dto:{}", JsonUtil.obj2Json(mallLotteryEntity),JsonUtil.obj2Json(dto));
+        logger.info("fuzzyQuery begin.mallLotteryEntity:{},dto:{}", JsonUtil.obj2Json(mallLotteryEntity), JsonUtil.obj2Json(dto));
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
         // mallLotteryEntity.setTenantId(SessionKey.getTenantId);
         List<MallLotteryEntity> list = this.mallLotteryService.fuzzyQuery(mallLotteryEntity);
@@ -88,7 +89,7 @@ public class MallLotteryController {
      */
     @GetMapping("{id}")
     public MapResponse queryById(@PathVariable("id") Integer id) {
-        logger.info("queryById begin.id:{}",id);
+        logger.info("queryById begin.id:{}", id);
         MapResponse mapResponse = new MapResponse();
         mapResponse.put("data", this.mallLotteryService.queryById(id));
         logger.info("queryById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
@@ -103,7 +104,7 @@ public class MallLotteryController {
      */
     @PostMapping("/add")
     public MapResponse add(@RequestBody MallLotteryEntity mallLotteryEntity) {
-        logger.info("add begin.mallLotteryEntity:{}",JsonUtil.obj2Json(mallLotteryEntity));
+        logger.info("add begin.mallLotteryEntity:{}", JsonUtil.obj2Json(mallLotteryEntity));
         MapResponse mapResponse = new MapResponse();
         // mallLotteryEntity.setTenantId(SessionKey.getTenantId);
         mapResponse.put("data", this.mallLotteryService.insert(mallLotteryEntity));
@@ -120,7 +121,7 @@ public class MallLotteryController {
     @PostMapping("/edit")
     public MapResponse edit(@RequestBody MallLotteryEntity mallLotteryEntity) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("edit begin.mallLotteryEntity:{}",JsonUtil.obj2Json(mallLotteryEntity));
+        logger.info("edit begin.mallLotteryEntity:{}", JsonUtil.obj2Json(mallLotteryEntity));
         mapResponse.put("data", this.mallLotteryService.update(mallLotteryEntity));
         logger.info("edit end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
@@ -136,7 +137,7 @@ public class MallLotteryController {
     public MapResponse deleteById(@RequestBody MallLotteryEntity mallLotteryEntity) {
 
         MapResponse mapResponse = new MapResponse();
-        logger.info("deleteById begin.mallLotteryEntity:{}",JsonUtil.obj2Json(mallLotteryEntity));
+        logger.info("deleteById begin.mallLotteryEntity:{}", JsonUtil.obj2Json(mallLotteryEntity));
         Integer id = mallLotteryEntity.getId();
         if (id == null || id == 0) {
             mapResponse.setResponse(RespStatusEnum.ARGS_ERROR);

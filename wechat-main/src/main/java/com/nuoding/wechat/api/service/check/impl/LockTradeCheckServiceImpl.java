@@ -1,8 +1,8 @@
 package com.nuoding.wechat.api.service.check.impl;
 
+import com.nuoding.wechat.api.service.check.LockTradeCheckService;
 import com.nuoding.wechat.common.constant.RedisKey;
 import com.nuoding.wechat.common.service.RedisService;
-import com.nuoding.wechat.api.service.check.LockTradeCheckService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

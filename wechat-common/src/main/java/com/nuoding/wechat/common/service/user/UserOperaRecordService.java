@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * (userOperaRecord)表服务接口
  * 用户操作历史表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:18
  */
@@ -51,14 +52,6 @@ public interface UserOperaRecordService {
      * @return 实例对象
      */
     UserOperaRecordEntity insert(UserOperaRecordEntity userOperaRecordEntity);
-
-    /**
-     * 异步新增数据
-     *
-     * @param userOperaRecordEntity 实例对象
-     * @return 实例对象
-     */
-    UserOperaRecordEntity asyncInsert(UserOperaRecordEntity userOperaRecordEntity);
 
     /**
      * 修改数据

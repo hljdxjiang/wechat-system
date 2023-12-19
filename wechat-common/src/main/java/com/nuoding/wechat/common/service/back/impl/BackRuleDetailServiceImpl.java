@@ -3,18 +3,17 @@ package com.nuoding.wechat.common.service.back.impl;
 import com.nuoding.wechat.common.dao.back.BackRuleDetailDao;
 import com.nuoding.wechat.common.entity.back.BackRuleDetailEntity;
 import com.nuoding.wechat.common.service.back.BackRuleDetailService;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (backRuleDetail)表服务实现类
  * 角色权限详情表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -22,9 +21,12 @@ import java.util.List;
 public class BackRuleDetailServiceImpl implements BackRuleDetailService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private BackRuleDetailDao backRuleDetailDao;
+
+    public BackRuleDetailServiceImpl(BackRuleDetailDao backRuleDetailDao) {
+        this.backRuleDetailDao = backRuleDetailDao;
+    }
 
     /**
      * 通过ID查询单条数据

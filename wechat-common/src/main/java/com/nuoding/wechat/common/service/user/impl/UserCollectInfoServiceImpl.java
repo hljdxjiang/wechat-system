@@ -3,18 +3,17 @@ package com.nuoding.wechat.common.service.user.impl;
 import com.nuoding.wechat.common.dao.user.UserCollectInfoDao;
 import com.nuoding.wechat.common.entity.user.UserCollectInfoEntity;
 import com.nuoding.wechat.common.service.user.UserCollectInfoService;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (userCollectInfo)表服务实现类
  * 用户收藏表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -22,9 +21,12 @@ import java.util.List;
 public class UserCollectInfoServiceImpl implements UserCollectInfoService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private UserCollectInfoDao userCollectInfoDao;
+
+    public UserCollectInfoServiceImpl(UserCollectInfoDao userCollectInfoDao) {
+        this.userCollectInfoDao = userCollectInfoDao;
+    }
 
     /**
      * 通过ID查询单条数据

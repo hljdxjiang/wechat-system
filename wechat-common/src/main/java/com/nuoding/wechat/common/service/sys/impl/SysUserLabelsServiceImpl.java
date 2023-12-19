@@ -3,18 +3,17 @@ package com.nuoding.wechat.common.service.sys.impl;
 import com.nuoding.wechat.common.dao.sys.SysUserLabelsDao;
 import com.nuoding.wechat.common.entity.sys.SysUserLabelsEntity;
 import com.nuoding.wechat.common.service.sys.SysUserLabelsService;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (sysUserLabels)表服务实现类
  * 客户信息表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -22,9 +21,12 @@ import java.util.List;
 public class SysUserLabelsServiceImpl implements SysUserLabelsService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private SysUserLabelsDao sysUserLabelsDao;
+
+    public SysUserLabelsServiceImpl(SysUserLabelsDao sysUserLabelsDao) {
+        this.sysUserLabelsDao = sysUserLabelsDao;
+    }
 
     /**
      * 通过ID查询单条数据

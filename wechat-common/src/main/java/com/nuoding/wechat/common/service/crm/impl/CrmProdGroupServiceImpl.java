@@ -3,18 +3,17 @@ package com.nuoding.wechat.common.service.crm.impl;
 import com.nuoding.wechat.common.dao.crm.CrmProdGroupDao;
 import com.nuoding.wechat.common.entity.crm.CrmProdGroupEntity;
 import com.nuoding.wechat.common.service.crm.CrmProdGroupService;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (crmProdGroup)表服务实现类
  * 产品分组表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -22,9 +21,12 @@ import java.util.List;
 public class CrmProdGroupServiceImpl implements CrmProdGroupService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private CrmProdGroupDao crmProdGroupDao;
+
+    public CrmProdGroupServiceImpl(CrmProdGroupDao crmProdGroupDao) {
+        this.crmProdGroupDao = crmProdGroupDao;
+    }
 
     /**
      * 通过ID查询单条数据

@@ -11,9 +11,9 @@ import com.nuoding.wechat.common.model.base.PageQueryBaseDTO;
 import com.nuoding.wechat.common.service.sys.SysPageTypeInfoService;
 import com.nuoding.wechat.common.utils.JsonUtil;
 import com.nuoding.wechat.common.utils.PageInfoUtil;
-import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,6 +22,7 @@ import java.util.Map;
 /**
  * 后管(sysPageTypeInfo)服务接口
  * 类型配置表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -42,13 +43,13 @@ public class SysPageTypeInfoController {
      * 分页查询
      *
      * @param sysPageTypeInfoEntity 筛选条件
-     * @param dto             size     分页对象
+     * @param dto                   size     分页对象
      * @return 查询结果
      */
     @PostMapping("/queryByPage")
     public MapResponse queryByPage(@RequestBody SysPageTypeInfoEntity sysPageTypeInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("queryByPage begin.sysPageTypeInfoEntity:{},dto:{}", JsonUtil.obj2Json(sysPageTypeInfoEntity),JsonUtil.obj2Json(dto));
+        logger.info("queryByPage begin.sysPageTypeInfoEntity:{},dto:{}", JsonUtil.obj2Json(sysPageTypeInfoEntity), JsonUtil.obj2Json(dto));
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
         // sysPageTypeInfoEntity.setTenantId(SessionKey.getTenantId);
         List<SysPageTypeInfoEntity> list = this.sysPageTypeInfoService.queryAllByLimit(sysPageTypeInfoEntity);
@@ -63,13 +64,13 @@ public class SysPageTypeInfoController {
      * 分页查询
      *
      * @param sysPageTypeInfoEntity 筛选条件
-     * @param dto             size     分页对象
+     * @param dto                   size     分页对象
      * @return 查询结果
      */
     @PostMapping("/fuzzyQuery")
     public MapResponse fuzzyQuery(@RequestBody SysPageTypeInfoEntity sysPageTypeInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("fuzzyQuery begin.sysPageTypeInfoEntity:{},dto:{}", JsonUtil.obj2Json(sysPageTypeInfoEntity),JsonUtil.obj2Json(dto));
+        logger.info("fuzzyQuery begin.sysPageTypeInfoEntity:{},dto:{}", JsonUtil.obj2Json(sysPageTypeInfoEntity), JsonUtil.obj2Json(dto));
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
         // sysPageTypeInfoEntity.setTenantId(SessionKey.getTenantId);
         List<SysPageTypeInfoEntity> list = this.sysPageTypeInfoService.fuzzyQuery(sysPageTypeInfoEntity);
@@ -88,7 +89,7 @@ public class SysPageTypeInfoController {
      */
     @GetMapping("{id}")
     public MapResponse queryById(@PathVariable("id") Integer id) {
-        logger.info("queryById begin.id:{}",id);
+        logger.info("queryById begin.id:{}", id);
         MapResponse mapResponse = new MapResponse();
         mapResponse.put("data", this.sysPageTypeInfoService.queryById(id));
         logger.info("queryById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
@@ -103,7 +104,7 @@ public class SysPageTypeInfoController {
      */
     @PostMapping("/add")
     public MapResponse add(@RequestBody SysPageTypeInfoEntity sysPageTypeInfoEntity) {
-        logger.info("add begin.sysPageTypeInfoEntity:{}",JsonUtil.obj2Json(sysPageTypeInfoEntity));
+        logger.info("add begin.sysPageTypeInfoEntity:{}", JsonUtil.obj2Json(sysPageTypeInfoEntity));
         MapResponse mapResponse = new MapResponse();
         // sysPageTypeInfoEntity.setTenantId(SessionKey.getTenantId);
         mapResponse.put("data", this.sysPageTypeInfoService.insert(sysPageTypeInfoEntity));
@@ -120,7 +121,7 @@ public class SysPageTypeInfoController {
     @PostMapping("/edit")
     public MapResponse edit(@RequestBody SysPageTypeInfoEntity sysPageTypeInfoEntity) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("edit begin.sysPageTypeInfoEntity:{}",JsonUtil.obj2Json(sysPageTypeInfoEntity));
+        logger.info("edit begin.sysPageTypeInfoEntity:{}", JsonUtil.obj2Json(sysPageTypeInfoEntity));
         mapResponse.put("data", this.sysPageTypeInfoService.update(sysPageTypeInfoEntity));
         logger.info("edit end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
@@ -136,7 +137,7 @@ public class SysPageTypeInfoController {
     public MapResponse deleteById(@RequestBody SysPageTypeInfoEntity sysPageTypeInfoEntity) {
 
         MapResponse mapResponse = new MapResponse();
-        logger.info("deleteById begin.sysPageTypeInfoEntity:{}",JsonUtil.obj2Json(sysPageTypeInfoEntity));
+        logger.info("deleteById begin.sysPageTypeInfoEntity:{}", JsonUtil.obj2Json(sysPageTypeInfoEntity));
         Integer id = sysPageTypeInfoEntity.getId();
         if (id == null || id == 0) {
             mapResponse.setResponse(RespStatusEnum.ARGS_ERROR);

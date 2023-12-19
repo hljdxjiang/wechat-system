@@ -3,18 +3,17 @@ package com.nuoding.wechat.common.service.user.impl;
 import com.nuoding.wechat.common.dao.user.UserCommentInfoDao;
 import com.nuoding.wechat.common.entity.user.UserCommentInfoEntity;
 import com.nuoding.wechat.common.service.user.UserCommentInfoService;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (userCommentInfo)表服务实现类
  * 客户信息表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -22,9 +21,12 @@ import java.util.List;
 public class UserCommentInfoServiceImpl implements UserCommentInfoService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private UserCommentInfoDao userCommentInfoDao;
+
+    public UserCommentInfoServiceImpl(UserCommentInfoDao userCommentInfoDao) {
+        this.userCommentInfoDao = userCommentInfoDao;
+    }
 
     /**
      * 通过ID查询单条数据

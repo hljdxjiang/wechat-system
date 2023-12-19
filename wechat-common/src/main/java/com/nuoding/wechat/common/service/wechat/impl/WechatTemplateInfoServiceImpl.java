@@ -3,18 +3,17 @@ package com.nuoding.wechat.common.service.wechat.impl;
 import com.nuoding.wechat.common.dao.wechat.WechatTemplateInfoDao;
 import com.nuoding.wechat.common.entity.wechat.WechatTemplateInfoEntity;
 import com.nuoding.wechat.common.service.wechat.WechatTemplateInfoService;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (wechatTemplateInfo)表服务实现类
  * 微信推送模板
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -22,9 +21,12 @@ import java.util.List;
 public class WechatTemplateInfoServiceImpl implements WechatTemplateInfoService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private WechatTemplateInfoDao wechatTemplateInfoDao;
+
+    public WechatTemplateInfoServiceImpl(WechatTemplateInfoDao wechatTemplateInfoDao) {
+        this.wechatTemplateInfoDao = wechatTemplateInfoDao;
+    }
 
     /**
      * 通过ID查询单条数据

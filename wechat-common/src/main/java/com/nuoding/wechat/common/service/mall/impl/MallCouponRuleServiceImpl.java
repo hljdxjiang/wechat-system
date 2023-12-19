@@ -3,18 +3,17 @@ package com.nuoding.wechat.common.service.mall.impl;
 import com.nuoding.wechat.common.dao.mall.MallCouponRuleDao;
 import com.nuoding.wechat.common.entity.mall.MallCouponRuleEntity;
 import com.nuoding.wechat.common.service.mall.MallCouponRuleService;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (mallCouponRule)表服务实现类
  * 优惠券使用规则控制
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -22,9 +21,12 @@ import java.util.List;
 public class MallCouponRuleServiceImpl implements MallCouponRuleService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private MallCouponRuleDao mallCouponRuleDao;
+
+    public MallCouponRuleServiceImpl(MallCouponRuleDao mallCouponRuleDao) {
+        this.mallCouponRuleDao = mallCouponRuleDao;
+    }
 
     /**
      * 通过ID查询单条数据

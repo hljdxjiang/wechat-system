@@ -1,10 +1,10 @@
 package com.nuoding.wechat.api.service.check.impl;
 
+import com.nuoding.wechat.api.service.check.SessionCheckService;
 import com.nuoding.wechat.common.constant.SessionKey;
 import com.nuoding.wechat.common.constant.SwitchKey;
 import com.nuoding.wechat.common.constant.UtilConstant;
 import com.nuoding.wechat.common.interceptor.SessionValue;
-import com.nuoding.wechat.api.service.check.SessionCheckService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

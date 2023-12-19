@@ -3,7 +3,6 @@ package com.nuoding.wechat.api.model;
 import com.nuoding.wechat.common.model.BaseDTO;
 import com.nuoding.wechat.common.model.Order;
 
-import javax.persistence.Column;
 import java.util.List;
 
 public class ProductInfoDTO extends BaseDTO {

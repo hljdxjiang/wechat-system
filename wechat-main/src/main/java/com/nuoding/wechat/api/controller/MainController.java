@@ -25,7 +25,7 @@ public class MainController {
     @PostMapping("/process")
     public MapResponse process(@RequestBody MapRequest request) throws IOException {
         logger.info("process begin.request;{}", JsonUtil.obj2Json(request));
-        MapResponse mapResponse= baseProcessService.processTask(request);
+        MapResponse mapResponse = baseProcessService.processTask(request);
         logger.info("process end.response;{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }

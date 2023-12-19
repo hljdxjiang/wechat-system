@@ -3,18 +3,17 @@ package com.nuoding.wechat.common.service.back.impl;
 import com.nuoding.wechat.common.dao.back.BackSysUserDao;
 import com.nuoding.wechat.common.entity.back.BackSysUserEntity;
 import com.nuoding.wechat.common.service.back.BackSysUserService;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (backSysUser)表服务实现类
  * 后管用户表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -22,9 +21,12 @@ import java.util.List;
 public class BackSysUserServiceImpl implements BackSysUserService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private BackSysUserDao backSysUserDao;
+
+    public BackSysUserServiceImpl(BackSysUserDao backSysUserDao) {
+        this.backSysUserDao = backSysUserDao;
+    }
 
     /**
      * 通过ID查询单条数据

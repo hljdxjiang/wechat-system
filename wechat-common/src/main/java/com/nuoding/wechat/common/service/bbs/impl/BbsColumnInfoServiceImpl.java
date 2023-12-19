@@ -3,18 +3,17 @@ package com.nuoding.wechat.common.service.bbs.impl;
 import com.nuoding.wechat.common.dao.bbs.BbsColumnInfoDao;
 import com.nuoding.wechat.common.entity.bbs.BbsColumnInfoEntity;
 import com.nuoding.wechat.common.service.bbs.BbsColumnInfoService;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (bbsColumnInfo)表服务实现类
  * 文章栏目信息表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -22,9 +21,12 @@ import java.util.List;
 public class BbsColumnInfoServiceImpl implements BbsColumnInfoService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private BbsColumnInfoDao bbsColumnInfoDao;
+
+    public BbsColumnInfoServiceImpl(BbsColumnInfoDao bbsColumnInfoDao) {
+        this.bbsColumnInfoDao = bbsColumnInfoDao;
+    }
 
     /**
      * 通过ID查询单条数据

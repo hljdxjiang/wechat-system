@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * (userProperty)表服务接口
  * 用户资产信息表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:18
  */

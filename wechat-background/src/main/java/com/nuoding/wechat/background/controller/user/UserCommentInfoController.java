@@ -11,9 +11,9 @@ import com.nuoding.wechat.common.model.base.PageQueryBaseDTO;
 import com.nuoding.wechat.common.service.user.UserCommentInfoService;
 import com.nuoding.wechat.common.utils.JsonUtil;
 import com.nuoding.wechat.common.utils.PageInfoUtil;
-import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,6 +22,7 @@ import java.util.Map;
 /**
  * 后管(userCommentInfo)服务接口
  * 客户信息表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -42,13 +43,13 @@ public class UserCommentInfoController {
      * 分页查询
      *
      * @param userCommentInfoEntity 筛选条件
-     * @param dto             size     分页对象
+     * @param dto                   size     分页对象
      * @return 查询结果
      */
     @PostMapping("/queryByPage")
     public MapResponse queryByPage(@RequestBody UserCommentInfoEntity userCommentInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("queryByPage begin.userCommentInfoEntity:{},dto:{}", JsonUtil.obj2Json(userCommentInfoEntity),JsonUtil.obj2Json(dto));
+        logger.info("queryByPage begin.userCommentInfoEntity:{},dto:{}", JsonUtil.obj2Json(userCommentInfoEntity), JsonUtil.obj2Json(dto));
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
         // userCommentInfoEntity.setTenantId(SessionKey.getTenantId);
         List<UserCommentInfoEntity> list = this.userCommentInfoService.queryAllByLimit(userCommentInfoEntity);
@@ -63,13 +64,13 @@ public class UserCommentInfoController {
      * 分页查询
      *
      * @param userCommentInfoEntity 筛选条件
-     * @param dto             size     分页对象
+     * @param dto                   size     分页对象
      * @return 查询结果
      */
     @PostMapping("/fuzzyQuery")
     public MapResponse fuzzyQuery(@RequestBody UserCommentInfoEntity userCommentInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("fuzzyQuery begin.userCommentInfoEntity:{},dto:{}", JsonUtil.obj2Json(userCommentInfoEntity),JsonUtil.obj2Json(dto));
+        logger.info("fuzzyQuery begin.userCommentInfoEntity:{},dto:{}", JsonUtil.obj2Json(userCommentInfoEntity), JsonUtil.obj2Json(dto));
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
         // userCommentInfoEntity.setTenantId(SessionKey.getTenantId);
         List<UserCommentInfoEntity> list = this.userCommentInfoService.fuzzyQuery(userCommentInfoEntity);
@@ -88,7 +89,7 @@ public class UserCommentInfoController {
      */
     @GetMapping("{id}")
     public MapResponse queryById(@PathVariable("id") Integer id) {
-        logger.info("queryById begin.id:{}",id);
+        logger.info("queryById begin.id:{}", id);
         MapResponse mapResponse = new MapResponse();
         mapResponse.put("data", this.userCommentInfoService.queryById(id));
         logger.info("queryById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
@@ -103,7 +104,7 @@ public class UserCommentInfoController {
      */
     @PostMapping("/add")
     public MapResponse add(@RequestBody UserCommentInfoEntity userCommentInfoEntity) {
-        logger.info("add begin.userCommentInfoEntity:{}",JsonUtil.obj2Json(userCommentInfoEntity));
+        logger.info("add begin.userCommentInfoEntity:{}", JsonUtil.obj2Json(userCommentInfoEntity));
         MapResponse mapResponse = new MapResponse();
         // userCommentInfoEntity.setTenantId(SessionKey.getTenantId);
         mapResponse.put("data", this.userCommentInfoService.insert(userCommentInfoEntity));
@@ -120,7 +121,7 @@ public class UserCommentInfoController {
     @PostMapping("/edit")
     public MapResponse edit(@RequestBody UserCommentInfoEntity userCommentInfoEntity) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("edit begin.userCommentInfoEntity:{}",JsonUtil.obj2Json(userCommentInfoEntity));
+        logger.info("edit begin.userCommentInfoEntity:{}", JsonUtil.obj2Json(userCommentInfoEntity));
         mapResponse.put("data", this.userCommentInfoService.update(userCommentInfoEntity));
         logger.info("edit end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
@@ -136,7 +137,7 @@ public class UserCommentInfoController {
     public MapResponse deleteById(@RequestBody UserCommentInfoEntity userCommentInfoEntity) {
 
         MapResponse mapResponse = new MapResponse();
-        logger.info("deleteById begin.userCommentInfoEntity:{}",JsonUtil.obj2Json(userCommentInfoEntity));
+        logger.info("deleteById begin.userCommentInfoEntity:{}", JsonUtil.obj2Json(userCommentInfoEntity));
         Integer id = userCommentInfoEntity.getId();
         if (id == null || id == 0) {
             mapResponse.setResponse(RespStatusEnum.ARGS_ERROR);

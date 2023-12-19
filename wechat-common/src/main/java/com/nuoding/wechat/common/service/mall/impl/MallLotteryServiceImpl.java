@@ -3,18 +3,17 @@ package com.nuoding.wechat.common.service.mall.impl;
 import com.nuoding.wechat.common.dao.mall.MallLotteryDao;
 import com.nuoding.wechat.common.entity.mall.MallLotteryEntity;
 import com.nuoding.wechat.common.service.mall.MallLotteryService;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (mallLottery)表服务实现类
  * 抽奖活动信息表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -22,9 +21,12 @@ import java.util.List;
 public class MallLotteryServiceImpl implements MallLotteryService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private MallLotteryDao mallLotteryDao;
+
+    public MallLotteryServiceImpl(MallLotteryDao mallLotteryDao) {
+        this.mallLotteryDao = mallLotteryDao;
+    }
 
     /**
      * 通过ID查询单条数据

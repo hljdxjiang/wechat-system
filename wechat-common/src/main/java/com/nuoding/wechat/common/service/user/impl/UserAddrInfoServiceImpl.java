@@ -3,18 +3,17 @@ package com.nuoding.wechat.common.service.user.impl;
 import com.nuoding.wechat.common.dao.user.UserAddrInfoDao;
 import com.nuoding.wechat.common.entity.user.UserAddrInfoEntity;
 import com.nuoding.wechat.common.service.user.UserAddrInfoService;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (userAddrInfo)表服务实现类
  * 客户信息表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -22,9 +21,12 @@ import java.util.List;
 public class UserAddrInfoServiceImpl implements UserAddrInfoService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private UserAddrInfoDao userAddrInfoDao;
+
+    public UserAddrInfoServiceImpl(UserAddrInfoDao userAddrInfoDao) {
+        this.userAddrInfoDao = userAddrInfoDao;
+    }
 
     /**
      * 通过ID查询单条数据

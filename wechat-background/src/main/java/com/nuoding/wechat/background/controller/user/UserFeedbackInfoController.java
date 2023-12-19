@@ -11,9 +11,9 @@ import com.nuoding.wechat.common.model.base.PageQueryBaseDTO;
 import com.nuoding.wechat.common.service.user.UserFeedbackInfoService;
 import com.nuoding.wechat.common.utils.JsonUtil;
 import com.nuoding.wechat.common.utils.PageInfoUtil;
-import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,6 +22,7 @@ import java.util.Map;
 /**
  * 后管(userFeedbackInfo)服务接口
  * 用户反馈信息表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -42,13 +43,13 @@ public class UserFeedbackInfoController {
      * 分页查询
      *
      * @param userFeedbackInfoEntity 筛选条件
-     * @param dto             size     分页对象
+     * @param dto                    size     分页对象
      * @return 查询结果
      */
     @PostMapping("/queryByPage")
     public MapResponse queryByPage(@RequestBody UserFeedbackInfoEntity userFeedbackInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("queryByPage begin.userFeedbackInfoEntity:{},dto:{}", JsonUtil.obj2Json(userFeedbackInfoEntity),JsonUtil.obj2Json(dto));
+        logger.info("queryByPage begin.userFeedbackInfoEntity:{},dto:{}", JsonUtil.obj2Json(userFeedbackInfoEntity), JsonUtil.obj2Json(dto));
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
         // userFeedbackInfoEntity.setTenantId(SessionKey.getTenantId);
         List<UserFeedbackInfoEntity> list = this.userFeedbackInfoService.queryAllByLimit(userFeedbackInfoEntity);
@@ -63,13 +64,13 @@ public class UserFeedbackInfoController {
      * 分页查询
      *
      * @param userFeedbackInfoEntity 筛选条件
-     * @param dto             size     分页对象
+     * @param dto                    size     分页对象
      * @return 查询结果
      */
     @PostMapping("/fuzzyQuery")
     public MapResponse fuzzyQuery(@RequestBody UserFeedbackInfoEntity userFeedbackInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("fuzzyQuery begin.userFeedbackInfoEntity:{},dto:{}", JsonUtil.obj2Json(userFeedbackInfoEntity),JsonUtil.obj2Json(dto));
+        logger.info("fuzzyQuery begin.userFeedbackInfoEntity:{},dto:{}", JsonUtil.obj2Json(userFeedbackInfoEntity), JsonUtil.obj2Json(dto));
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
         // userFeedbackInfoEntity.setTenantId(SessionKey.getTenantId);
         List<UserFeedbackInfoEntity> list = this.userFeedbackInfoService.fuzzyQuery(userFeedbackInfoEntity);
@@ -88,7 +89,7 @@ public class UserFeedbackInfoController {
      */
     @GetMapping("{id}")
     public MapResponse queryById(@PathVariable("id") Integer id) {
-        logger.info("queryById begin.id:{}",id);
+        logger.info("queryById begin.id:{}", id);
         MapResponse mapResponse = new MapResponse();
         mapResponse.put("data", this.userFeedbackInfoService.queryById(id));
         logger.info("queryById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
@@ -103,7 +104,7 @@ public class UserFeedbackInfoController {
      */
     @PostMapping("/add")
     public MapResponse add(@RequestBody UserFeedbackInfoEntity userFeedbackInfoEntity) {
-        logger.info("add begin.userFeedbackInfoEntity:{}",JsonUtil.obj2Json(userFeedbackInfoEntity));
+        logger.info("add begin.userFeedbackInfoEntity:{}", JsonUtil.obj2Json(userFeedbackInfoEntity));
         MapResponse mapResponse = new MapResponse();
         // userFeedbackInfoEntity.setTenantId(SessionKey.getTenantId);
         mapResponse.put("data", this.userFeedbackInfoService.insert(userFeedbackInfoEntity));
@@ -120,7 +121,7 @@ public class UserFeedbackInfoController {
     @PostMapping("/edit")
     public MapResponse edit(@RequestBody UserFeedbackInfoEntity userFeedbackInfoEntity) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("edit begin.userFeedbackInfoEntity:{}",JsonUtil.obj2Json(userFeedbackInfoEntity));
+        logger.info("edit begin.userFeedbackInfoEntity:{}", JsonUtil.obj2Json(userFeedbackInfoEntity));
         mapResponse.put("data", this.userFeedbackInfoService.update(userFeedbackInfoEntity));
         logger.info("edit end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
@@ -136,7 +137,7 @@ public class UserFeedbackInfoController {
     public MapResponse deleteById(@RequestBody UserFeedbackInfoEntity userFeedbackInfoEntity) {
 
         MapResponse mapResponse = new MapResponse();
-        logger.info("deleteById begin.userFeedbackInfoEntity:{}",JsonUtil.obj2Json(userFeedbackInfoEntity));
+        logger.info("deleteById begin.userFeedbackInfoEntity:{}", JsonUtil.obj2Json(userFeedbackInfoEntity));
         Integer id = userFeedbackInfoEntity.getId();
         if (id == null || id == 0) {
             mapResponse.setResponse(RespStatusEnum.ARGS_ERROR);

@@ -62,28 +62,11 @@ public interface CrmProdInfoService {
     CrmProdInfoEntity update(CrmProdInfoEntity crmProdInfoEntity);
 
     /**
-     * 模糊查询
-     *
-     * @param dto 实例对象
-     * @return 实例对象
-     * @page 分页属性
-     */
-    List<CrmProdInfoEntity> queryFuzzyList(CrmProdInfoEntity dto);
-
-
-    /**
      * 通过主键删除数据
      *
      * @param id 主键
      * @return 是否成功
      */
     boolean deleteById(Integer id);
-
-    /***
-     * 根据产品编号查询
-     * @param prodId
-     * @return
-     */
-    CrmProdInfoEntity queryByProdId(String prodId);
 
 }

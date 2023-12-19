@@ -80,7 +80,7 @@ public class PageServiceImpl implements PageService {
     public MapResponse getPageInfo(MapRequest mapRequest) {
         MapResponse mapResponse = new MapResponse();
         String channel = mapRequest.getHeader().getChannelNo();
-        PageDTO dto = JsonUtil.json2Obj(mapRequest.getBody().toString(),PageDTO.class);
+        PageDTO dto = JsonUtil.json2Obj(mapRequest.getBody().toString(), PageDTO.class);
         String pageID = dto.getPageId();
         logger.info("getPageInfo.begin.channel:{},pageID:{}", channel, pageID);
         if (StringUtils.isBlank(pageID)) {

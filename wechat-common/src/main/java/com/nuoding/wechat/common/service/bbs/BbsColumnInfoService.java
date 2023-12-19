@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * (bbsColumnInfo)表服务接口
  * 文章栏目信息表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:18
  */

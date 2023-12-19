@@ -11,9 +11,9 @@ import com.nuoding.wechat.common.model.base.PageQueryBaseDTO;
 import com.nuoding.wechat.common.service.user.UserPropertyDetailService;
 import com.nuoding.wechat.common.utils.JsonUtil;
 import com.nuoding.wechat.common.utils.PageInfoUtil;
-import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,6 +22,7 @@ import java.util.Map;
 /**
  * 后管(userPropertyDetail)服务接口
  * 用户资产记录表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -42,13 +43,13 @@ public class UserPropertyDetailController {
      * 分页查询
      *
      * @param userPropertyDetailEntity 筛选条件
-     * @param dto             size     分页对象
+     * @param dto                      size     分页对象
      * @return 查询结果
      */
     @PostMapping("/queryByPage")
     public MapResponse queryByPage(@RequestBody UserPropertyDetailEntity userPropertyDetailEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("queryByPage begin.userPropertyDetailEntity:{},dto:{}", JsonUtil.obj2Json(userPropertyDetailEntity),JsonUtil.obj2Json(dto));
+        logger.info("queryByPage begin.userPropertyDetailEntity:{},dto:{}", JsonUtil.obj2Json(userPropertyDetailEntity), JsonUtil.obj2Json(dto));
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
         // userPropertyDetailEntity.setTenantId(SessionKey.getTenantId);
         List<UserPropertyDetailEntity> list = this.userPropertyDetailService.queryAllByLimit(userPropertyDetailEntity);
@@ -63,13 +64,13 @@ public class UserPropertyDetailController {
      * 分页查询
      *
      * @param userPropertyDetailEntity 筛选条件
-     * @param dto             size     分页对象
+     * @param dto                      size     分页对象
      * @return 查询结果
      */
     @PostMapping("/fuzzyQuery")
     public MapResponse fuzzyQuery(@RequestBody UserPropertyDetailEntity userPropertyDetailEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("fuzzyQuery begin.userPropertyDetailEntity:{},dto:{}", JsonUtil.obj2Json(userPropertyDetailEntity),JsonUtil.obj2Json(dto));
+        logger.info("fuzzyQuery begin.userPropertyDetailEntity:{},dto:{}", JsonUtil.obj2Json(userPropertyDetailEntity), JsonUtil.obj2Json(dto));
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
         // userPropertyDetailEntity.setTenantId(SessionKey.getTenantId);
         List<UserPropertyDetailEntity> list = this.userPropertyDetailService.fuzzyQuery(userPropertyDetailEntity);
@@ -88,7 +89,7 @@ public class UserPropertyDetailController {
      */
     @GetMapping("{id}")
     public MapResponse queryById(@PathVariable("id") Integer id) {
-        logger.info("queryById begin.id:{}",id);
+        logger.info("queryById begin.id:{}", id);
         MapResponse mapResponse = new MapResponse();
         mapResponse.put("data", this.userPropertyDetailService.queryById(id));
         logger.info("queryById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
@@ -103,7 +104,7 @@ public class UserPropertyDetailController {
      */
     @PostMapping("/add")
     public MapResponse add(@RequestBody UserPropertyDetailEntity userPropertyDetailEntity) {
-        logger.info("add begin.userPropertyDetailEntity:{}",JsonUtil.obj2Json(userPropertyDetailEntity));
+        logger.info("add begin.userPropertyDetailEntity:{}", JsonUtil.obj2Json(userPropertyDetailEntity));
         MapResponse mapResponse = new MapResponse();
         // userPropertyDetailEntity.setTenantId(SessionKey.getTenantId);
         mapResponse.put("data", this.userPropertyDetailService.insert(userPropertyDetailEntity));
@@ -120,7 +121,7 @@ public class UserPropertyDetailController {
     @PostMapping("/edit")
     public MapResponse edit(@RequestBody UserPropertyDetailEntity userPropertyDetailEntity) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("edit begin.userPropertyDetailEntity:{}",JsonUtil.obj2Json(userPropertyDetailEntity));
+        logger.info("edit begin.userPropertyDetailEntity:{}", JsonUtil.obj2Json(userPropertyDetailEntity));
         mapResponse.put("data", this.userPropertyDetailService.update(userPropertyDetailEntity));
         logger.info("edit end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
@@ -136,7 +137,7 @@ public class UserPropertyDetailController {
     public MapResponse deleteById(@RequestBody UserPropertyDetailEntity userPropertyDetailEntity) {
 
         MapResponse mapResponse = new MapResponse();
-        logger.info("deleteById begin.userPropertyDetailEntity:{}",JsonUtil.obj2Json(userPropertyDetailEntity));
+        logger.info("deleteById begin.userPropertyDetailEntity:{}", JsonUtil.obj2Json(userPropertyDetailEntity));
         Integer id = userPropertyDetailEntity.getId();
         if (id == null || id == 0) {
             mapResponse.setResponse(RespStatusEnum.ARGS_ERROR);

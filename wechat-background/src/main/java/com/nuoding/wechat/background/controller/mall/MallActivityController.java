@@ -11,9 +11,9 @@ import com.nuoding.wechat.common.model.base.PageQueryBaseDTO;
 import com.nuoding.wechat.common.service.mall.MallActivityService;
 import com.nuoding.wechat.common.utils.JsonUtil;
 import com.nuoding.wechat.common.utils.PageInfoUtil;
-import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,6 +22,7 @@ import java.util.Map;
 /**
  * 后管(mallActivity)服务接口
  * 活动信息表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -42,13 +43,13 @@ public class MallActivityController {
      * 分页查询
      *
      * @param mallActivityEntity 筛选条件
-     * @param dto             size     分页对象
+     * @param dto                size     分页对象
      * @return 查询结果
      */
     @PostMapping("/queryByPage")
     public MapResponse queryByPage(@RequestBody MallActivityEntity mallActivityEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("queryByPage begin.mallActivityEntity:{},dto:{}", JsonUtil.obj2Json(mallActivityEntity),JsonUtil.obj2Json(dto));
+        logger.info("queryByPage begin.mallActivityEntity:{},dto:{}", JsonUtil.obj2Json(mallActivityEntity), JsonUtil.obj2Json(dto));
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
         // mallActivityEntity.setTenantId(SessionKey.getTenantId);
         List<MallActivityEntity> list = this.mallActivityService.queryAllByLimit(mallActivityEntity);
@@ -63,13 +64,13 @@ public class MallActivityController {
      * 分页查询
      *
      * @param mallActivityEntity 筛选条件
-     * @param dto             size     分页对象
+     * @param dto                size     分页对象
      * @return 查询结果
      */
     @PostMapping("/fuzzyQuery")
     public MapResponse fuzzyQuery(@RequestBody MallActivityEntity mallActivityEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("fuzzyQuery begin.mallActivityEntity:{},dto:{}", JsonUtil.obj2Json(mallActivityEntity),JsonUtil.obj2Json(dto));
+        logger.info("fuzzyQuery begin.mallActivityEntity:{},dto:{}", JsonUtil.obj2Json(mallActivityEntity), JsonUtil.obj2Json(dto));
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
         // mallActivityEntity.setTenantId(SessionKey.getTenantId);
         List<MallActivityEntity> list = this.mallActivityService.fuzzyQuery(mallActivityEntity);
@@ -88,7 +89,7 @@ public class MallActivityController {
      */
     @GetMapping("{id}")
     public MapResponse queryById(@PathVariable("id") Integer id) {
-        logger.info("queryById begin.id:{}",id);
+        logger.info("queryById begin.id:{}", id);
         MapResponse mapResponse = new MapResponse();
         mapResponse.put("data", this.mallActivityService.queryById(id));
         logger.info("queryById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
@@ -103,7 +104,7 @@ public class MallActivityController {
      */
     @PostMapping("/add")
     public MapResponse add(@RequestBody MallActivityEntity mallActivityEntity) {
-        logger.info("add begin.mallActivityEntity:{}",JsonUtil.obj2Json(mallActivityEntity));
+        logger.info("add begin.mallActivityEntity:{}", JsonUtil.obj2Json(mallActivityEntity));
         MapResponse mapResponse = new MapResponse();
         // mallActivityEntity.setTenantId(SessionKey.getTenantId);
         mapResponse.put("data", this.mallActivityService.insert(mallActivityEntity));
@@ -120,7 +121,7 @@ public class MallActivityController {
     @PostMapping("/edit")
     public MapResponse edit(@RequestBody MallActivityEntity mallActivityEntity) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("edit begin.mallActivityEntity:{}",JsonUtil.obj2Json(mallActivityEntity));
+        logger.info("edit begin.mallActivityEntity:{}", JsonUtil.obj2Json(mallActivityEntity));
         mapResponse.put("data", this.mallActivityService.update(mallActivityEntity));
         logger.info("edit end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
@@ -136,7 +137,7 @@ public class MallActivityController {
     public MapResponse deleteById(@RequestBody MallActivityEntity mallActivityEntity) {
 
         MapResponse mapResponse = new MapResponse();
-        logger.info("deleteById begin.mallActivityEntity:{}",JsonUtil.obj2Json(mallActivityEntity));
+        logger.info("deleteById begin.mallActivityEntity:{}", JsonUtil.obj2Json(mallActivityEntity));
         Integer id = mallActivityEntity.getId();
         if (id == null || id == 0) {
             mapResponse.setResponse(RespStatusEnum.ARGS_ERROR);

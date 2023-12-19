@@ -3,18 +3,17 @@ package com.nuoding.wechat.common.service.mall.impl;
 import com.nuoding.wechat.common.dao.mall.MallSaleAddrDao;
 import com.nuoding.wechat.common.entity.mall.MallSaleAddrEntity;
 import com.nuoding.wechat.common.service.mall.MallSaleAddrService;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (mallSaleAddr)表服务实现类
  * 客户信息表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -22,9 +21,12 @@ import java.util.List;
 public class MallSaleAddrServiceImpl implements MallSaleAddrService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private MallSaleAddrDao mallSaleAddrDao;
+
+    public MallSaleAddrServiceImpl(MallSaleAddrDao mallSaleAddrDao) {
+        this.mallSaleAddrDao = mallSaleAddrDao;
+    }
 
     /**
      * 通过ID查询单条数据

@@ -3,18 +3,17 @@ package com.nuoding.wechat.common.service.sys.impl;
 import com.nuoding.wechat.common.dao.sys.SysTenantInfoDao;
 import com.nuoding.wechat.common.entity.sys.SysTenantInfoEntity;
 import com.nuoding.wechat.common.service.sys.SysTenantInfoService;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (sysTenantInfo)表服务实现类
  * 租户信息表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -22,9 +21,12 @@ import java.util.List;
 public class SysTenantInfoServiceImpl implements SysTenantInfoService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private SysTenantInfoDao sysTenantInfoDao;
+
+    public SysTenantInfoServiceImpl(SysTenantInfoDao sysTenantInfoDao) {
+        this.sysTenantInfoDao = sysTenantInfoDao;
+    }
 
     /**
      * 通过ID查询单条数据

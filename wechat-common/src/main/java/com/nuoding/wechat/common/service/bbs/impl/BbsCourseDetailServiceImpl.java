@@ -3,18 +3,17 @@ package com.nuoding.wechat.common.service.bbs.impl;
 import com.nuoding.wechat.common.dao.bbs.BbsCourseDetailDao;
 import com.nuoding.wechat.common.entity.bbs.BbsCourseDetailEntity;
 import com.nuoding.wechat.common.service.bbs.BbsCourseDetailService;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (bbsCourseDetail)表服务实现类
  * 课程详情表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -22,9 +21,12 @@ import java.util.List;
 public class BbsCourseDetailServiceImpl implements BbsCourseDetailService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private BbsCourseDetailDao bbsCourseDetailDao;
+
+    public BbsCourseDetailServiceImpl(BbsCourseDetailDao bbsCourseDetailDao) {
+        this.bbsCourseDetailDao = bbsCourseDetailDao;
+    }
 
     /**
      * 通过ID查询单条数据

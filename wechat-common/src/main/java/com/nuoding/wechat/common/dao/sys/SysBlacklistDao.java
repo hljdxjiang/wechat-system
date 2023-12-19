@@ -2,6 +2,7 @@ package com.nuoding.wechat.common.dao.sys;
 
 import com.nuoding.wechat.common.entity.sys.SysBlacklistEntity;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -9,8 +10,9 @@ import java.util.List;
  * 黑名单表
  *
  * @Author: hzq
- * @Date: 2023-12-18 14:57:37
+ * @Date: 2023-12-19 13:50:18
  */
+@Repository
 public interface SysBlacklistDao {
 
     /**

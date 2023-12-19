@@ -47,7 +47,11 @@ public class SessionKey {
         return getValue(LOGIN_KEY);
     }
 
-    public static String getLoginUserLabel(){return getValue(LOGIN_USER_LABEL);};
+    public static String getLoginUserLabel() {
+        return getValue(LOGIN_USER_LABEL);
+    }
+
+    ;
 
     public static String getRoleID() {
         return getValue(LOGIN_ROLE_ID);

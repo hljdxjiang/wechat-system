@@ -3,18 +3,17 @@ package com.nuoding.wechat.common.service.wechat.impl;
 import com.nuoding.wechat.common.dao.wechat.WechatMenusDetailDao;
 import com.nuoding.wechat.common.entity.wechat.WechatMenusDetailEntity;
 import com.nuoding.wechat.common.service.wechat.WechatMenusDetailService;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (wechatMenusDetail)表服务实现类
  * 微信菜单要素表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -22,9 +21,12 @@ import java.util.List;
 public class WechatMenusDetailServiceImpl implements WechatMenusDetailService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private WechatMenusDetailDao wechatMenusDetailDao;
+
+    public WechatMenusDetailServiceImpl(WechatMenusDetailDao wechatMenusDetailDao) {
+        this.wechatMenusDetailDao = wechatMenusDetailDao;
+    }
 
     /**
      * 通过ID查询单条数据

@@ -11,9 +11,9 @@ import com.nuoding.wechat.common.model.base.PageQueryBaseDTO;
 import com.nuoding.wechat.common.service.bbs.BbsArticleInfoService;
 import com.nuoding.wechat.common.utils.JsonUtil;
 import com.nuoding.wechat.common.utils.PageInfoUtil;
-import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,6 +22,7 @@ import java.util.Map;
 /**
  * 后管(bbsArticleInfo)服务接口
  * 文章记录表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -42,13 +43,13 @@ public class BbsArticleInfoController {
      * 分页查询
      *
      * @param bbsArticleInfoEntity 筛选条件
-     * @param dto             size     分页对象
+     * @param dto                  size     分页对象
      * @return 查询结果
      */
     @PostMapping("/queryByPage")
     public MapResponse queryByPage(@RequestBody BbsArticleInfoEntity bbsArticleInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("queryByPage begin.bbsArticleInfoEntity:{},dto:{}", JsonUtil.obj2Json(bbsArticleInfoEntity),JsonUtil.obj2Json(dto));
+        logger.info("queryByPage begin.bbsArticleInfoEntity:{},dto:{}", JsonUtil.obj2Json(bbsArticleInfoEntity), JsonUtil.obj2Json(dto));
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
         // bbsArticleInfoEntity.setTenantId(SessionKey.getTenantId);
         List<BbsArticleInfoEntity> list = this.bbsArticleInfoService.queryAllByLimit(bbsArticleInfoEntity);
@@ -63,13 +64,13 @@ public class BbsArticleInfoController {
      * 分页查询
      *
      * @param bbsArticleInfoEntity 筛选条件
-     * @param dto             size     分页对象
+     * @param dto                  size     分页对象
      * @return 查询结果
      */
     @PostMapping("/fuzzyQuery")
     public MapResponse fuzzyQuery(@RequestBody BbsArticleInfoEntity bbsArticleInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("fuzzyQuery begin.bbsArticleInfoEntity:{},dto:{}", JsonUtil.obj2Json(bbsArticleInfoEntity),JsonUtil.obj2Json(dto));
+        logger.info("fuzzyQuery begin.bbsArticleInfoEntity:{},dto:{}", JsonUtil.obj2Json(bbsArticleInfoEntity), JsonUtil.obj2Json(dto));
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
         // bbsArticleInfoEntity.setTenantId(SessionKey.getTenantId);
         List<BbsArticleInfoEntity> list = this.bbsArticleInfoService.fuzzyQuery(bbsArticleInfoEntity);
@@ -88,7 +89,7 @@ public class BbsArticleInfoController {
      */
     @GetMapping("{id}")
     public MapResponse queryById(@PathVariable("id") Integer id) {
-        logger.info("queryById begin.id:{}",id);
+        logger.info("queryById begin.id:{}", id);
         MapResponse mapResponse = new MapResponse();
         mapResponse.put("data", this.bbsArticleInfoService.queryById(id));
         logger.info("queryById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
@@ -103,7 +104,7 @@ public class BbsArticleInfoController {
      */
     @PostMapping("/add")
     public MapResponse add(@RequestBody BbsArticleInfoEntity bbsArticleInfoEntity) {
-        logger.info("add begin.bbsArticleInfoEntity:{}",JsonUtil.obj2Json(bbsArticleInfoEntity));
+        logger.info("add begin.bbsArticleInfoEntity:{}", JsonUtil.obj2Json(bbsArticleInfoEntity));
         MapResponse mapResponse = new MapResponse();
         // bbsArticleInfoEntity.setTenantId(SessionKey.getTenantId);
         mapResponse.put("data", this.bbsArticleInfoService.insert(bbsArticleInfoEntity));
@@ -120,7 +121,7 @@ public class BbsArticleInfoController {
     @PostMapping("/edit")
     public MapResponse edit(@RequestBody BbsArticleInfoEntity bbsArticleInfoEntity) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("edit begin.bbsArticleInfoEntity:{}",JsonUtil.obj2Json(bbsArticleInfoEntity));
+        logger.info("edit begin.bbsArticleInfoEntity:{}", JsonUtil.obj2Json(bbsArticleInfoEntity));
         mapResponse.put("data", this.bbsArticleInfoService.update(bbsArticleInfoEntity));
         logger.info("edit end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
@@ -136,7 +137,7 @@ public class BbsArticleInfoController {
     public MapResponse deleteById(@RequestBody BbsArticleInfoEntity bbsArticleInfoEntity) {
 
         MapResponse mapResponse = new MapResponse();
-        logger.info("deleteById begin.bbsArticleInfoEntity:{}",JsonUtil.obj2Json(bbsArticleInfoEntity));
+        logger.info("deleteById begin.bbsArticleInfoEntity:{}", JsonUtil.obj2Json(bbsArticleInfoEntity));
         Integer id = bbsArticleInfoEntity.getId();
         if (id == null || id == 0) {
             mapResponse.setResponse(RespStatusEnum.ARGS_ERROR);

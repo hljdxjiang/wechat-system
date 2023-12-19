@@ -3,18 +3,17 @@ package com.nuoding.wechat.common.service.sys.impl;
 import com.nuoding.wechat.common.dao.sys.SysFlowItemsDao;
 import com.nuoding.wechat.common.entity.sys.SysFlowItemsEntity;
 import com.nuoding.wechat.common.service.sys.SysFlowItemsService;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (sysFlowItems)表服务实现类
  * 楼层要素表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -22,9 +21,12 @@ import java.util.List;
 public class SysFlowItemsServiceImpl implements SysFlowItemsService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private SysFlowItemsDao sysFlowItemsDao;
+
+    public SysFlowItemsServiceImpl(SysFlowItemsDao sysFlowItemsDao) {
+        this.sysFlowItemsDao = sysFlowItemsDao;
+    }
 
     /**
      * 通过ID查询单条数据

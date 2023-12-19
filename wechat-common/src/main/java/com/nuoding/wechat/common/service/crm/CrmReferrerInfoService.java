@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * (crmReferrerInfo)表服务接口
  * 推荐人信息表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:18
  */

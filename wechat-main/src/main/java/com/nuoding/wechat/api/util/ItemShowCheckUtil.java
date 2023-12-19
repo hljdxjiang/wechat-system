@@ -4,13 +4,9 @@ import com.nuoding.wechat.common.constant.CommonConstant;
 import com.nuoding.wechat.common.constant.SessionKey;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.logging.log4j.util.Strings;
-import org.apache.poi.ss.formula.functions.T;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -44,19 +40,19 @@ public class ItemShowCheckUtil<statiic> {
         return false;
     }
 
-    private static boolean checkLabel(String label){
-        if(StringUtils.isBlank(label)){
+    private static boolean checkLabel(String label) {
+        if (StringUtils.isBlank(label)) {
             return true;
         }
-        String userLabel= SessionKey.getLoginUserLabel();
-        if(StringUtils.isBlank(userLabel)){
+        String userLabel = SessionKey.getLoginUserLabel();
+        if (StringUtils.isBlank(userLabel)) {
             return false;
         }
-        String[] uarr=userLabel.split(CommonConstant.LABEL_SPLIT_FLAG);
-        String[] larr=label.split(CommonConstant.LABEL_SPLIT_FLAG);
-        for(String u:uarr){
-            for(String l:larr){
-                if(StringUtils.equalsIgnoreCase(u,l)){
+        String[] uarr = userLabel.split(CommonConstant.LABEL_SPLIT_FLAG);
+        String[] larr = label.split(CommonConstant.LABEL_SPLIT_FLAG);
+        for (String u : uarr) {
+            for (String l : larr) {
+                if (StringUtils.equalsIgnoreCase(u, l)) {
                     return true;
                 }
             }
@@ -69,22 +65,22 @@ public class ItemShowCheckUtil<statiic> {
      * @param list
      * @return
      */
-    public static List getCheckedLIst(String channel,List list){
-        List ret=new ArrayList<>();
-        if(!CollectionUtils.isEmpty(list)){
-            for(Object t:list){
-                boolean isShow=true;
-                if(!checkChannel(channel,(String)getFieldValueByName("channelNo",t))){
-                    isShow=false;
+    public static List getCheckedLIst(String channel, List list) {
+        List ret = new ArrayList<>();
+        if (!CollectionUtils.isEmpty(list)) {
+            for (Object t : list) {
+                boolean isShow = true;
+                if (!checkChannel(channel, (String) getFieldValueByName("channelNo", t))) {
+                    isShow = false;
                 }
-                if(isShow&&!checkStatus((Date)getFieldValueByName("validTime",t),(Date)getFieldValueByName("expireTime",t))){
-                    isShow=false;
+                if (isShow && !checkStatus((Date) getFieldValueByName("validTime", t), (Date) getFieldValueByName("expireTime", t))) {
+                    isShow = false;
                 }
-                if(isShow&&checkLabel((String)getFieldValueByName("labelId",t))){
-                    isShow=false;
+                if (isShow && checkLabel((String) getFieldValueByName("labelId", t))) {
+                    isShow = false;
                 }
 
-                if(isShow){
+                if (isShow) {
                     ret.add(t);
                 }
             }
@@ -98,8 +94,8 @@ public class ItemShowCheckUtil<statiic> {
         try {
             String firstLetter = fieldName.substring(0, 1).toUpperCase();
             String getter = "get" + firstLetter + fieldName.substring(1);
-            Method method = o.getClass().getMethod(getter, new Class[] {});
-            Object value = ((Method) method).invoke(o, new Object[] {});
+            Method method = o.getClass().getMethod(getter, new Class[]{});
+            Object value = ((Method) method).invoke(o, new Object[]{});
             return value;
         } catch (Exception e) {
 

@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * (wechatSubscribeInfo)表服务接口
  * 用户订阅信息表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:18
  */

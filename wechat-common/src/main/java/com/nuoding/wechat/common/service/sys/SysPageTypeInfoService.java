@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * (sysPageTypeInfo)表服务接口
  * 类型配置表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:18
  */

@@ -3,18 +3,17 @@ package com.nuoding.wechat.common.service.user.impl;
 import com.nuoding.wechat.common.dao.user.UserPropertyDetailDao;
 import com.nuoding.wechat.common.entity.user.UserPropertyDetailEntity;
 import com.nuoding.wechat.common.service.user.UserPropertyDetailService;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (userPropertyDetail)表服务实现类
  * 用户资产记录表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -22,9 +21,12 @@ import java.util.List;
 public class UserPropertyDetailServiceImpl implements UserPropertyDetailService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private UserPropertyDetailDao userPropertyDetailDao;
+
+    public UserPropertyDetailServiceImpl(UserPropertyDetailDao userPropertyDetailDao) {
+        this.userPropertyDetailDao = userPropertyDetailDao;
+    }
 
     /**
      * 通过ID查询单条数据

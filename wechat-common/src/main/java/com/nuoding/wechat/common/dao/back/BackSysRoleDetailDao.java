@@ -2,6 +2,7 @@ package com.nuoding.wechat.common.dao.back;
 
 import com.nuoding.wechat.common.entity.back.BackSysRoleDetailEntity;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -9,8 +10,9 @@ import java.util.List;
  * 角色详情表
  *
  * @Author: hzq
- * @Date: 2023-12-19 11:12:08
+ * @Date: 2023-12-19 13:50:18
  */
+@Repository
 public interface BackSysRoleDetailDao {
 
     /**

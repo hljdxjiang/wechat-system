@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * (mallLotteryWinner)表服务接口
  * 抽奖中奖记录表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:18
  */

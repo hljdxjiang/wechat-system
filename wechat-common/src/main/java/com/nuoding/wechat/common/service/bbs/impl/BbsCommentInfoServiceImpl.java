@@ -3,18 +3,17 @@ package com.nuoding.wechat.common.service.bbs.impl;
 import com.nuoding.wechat.common.dao.bbs.BbsCommentInfoDao;
 import com.nuoding.wechat.common.entity.bbs.BbsCommentInfoEntity;
 import com.nuoding.wechat.common.service.bbs.BbsCommentInfoService;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (bbsCommentInfo)表服务实现类
  * 评论记录表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -22,9 +21,12 @@ import java.util.List;
 public class BbsCommentInfoServiceImpl implements BbsCommentInfoService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private BbsCommentInfoDao bbsCommentInfoDao;
+
+    public BbsCommentInfoServiceImpl(BbsCommentInfoDao bbsCommentInfoDao) {
+        this.bbsCommentInfoDao = bbsCommentInfoDao;
+    }
 
     /**
      * 通过ID查询单条数据

@@ -3,18 +3,17 @@ package com.nuoding.wechat.common.service.mall.impl;
 import com.nuoding.wechat.common.dao.mall.MallCouponInfoDao;
 import com.nuoding.wechat.common.entity.mall.MallCouponInfoEntity;
 import com.nuoding.wechat.common.service.mall.MallCouponInfoService;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (mallCouponInfo)表服务实现类
  * 优惠券信息表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -22,9 +21,12 @@ import java.util.List;
 public class MallCouponInfoServiceImpl implements MallCouponInfoService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private MallCouponInfoDao mallCouponInfoDao;
+
+    public MallCouponInfoServiceImpl(MallCouponInfoDao mallCouponInfoDao) {
+        this.mallCouponInfoDao = mallCouponInfoDao;
+    }
 
     /**
      * 通过ID查询单条数据

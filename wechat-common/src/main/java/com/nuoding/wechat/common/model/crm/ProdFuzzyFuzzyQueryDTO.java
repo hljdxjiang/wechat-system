@@ -1,6 +1,5 @@
 package com.nuoding.wechat.common.model.crm;
 
-import com.nuoding.wechat.common.model.FuzzyQueryBaseDTO;
 import com.nuoding.wechat.common.model.Order;
 
 import java.io.Serializable;

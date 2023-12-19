@@ -10,10 +10,8 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.logging.log4j.util.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -28,11 +26,14 @@ public class SysParamConfigServiceImpl implements SysParamConfigService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Resource
     private SysParamConfigDao sysParamConfigDao;
 
-    @Autowired
     private RedisService redisService;
+
+    public SysParamConfigServiceImpl(SysParamConfigDao sysParamConfigDao, RedisService redisService) {
+        this.sysParamConfigDao = sysParamConfigDao;
+        this.redisService = redisService;
+    }
 
     /**
      * 通过ID查询单条数据

@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * (backRuleDetail)表服务接口
  * 角色权限详情表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:18
  */

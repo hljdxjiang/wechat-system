@@ -3,18 +3,17 @@ package com.nuoding.wechat.common.service.mall.impl;
 import com.nuoding.wechat.common.dao.mall.MallActivityDao;
 import com.nuoding.wechat.common.entity.mall.MallActivityEntity;
 import com.nuoding.wechat.common.service.mall.MallActivityService;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (mallActivity)表服务实现类
  * 活动信息表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -22,9 +21,12 @@ import java.util.List;
 public class MallActivityServiceImpl implements MallActivityService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private MallActivityDao mallActivityDao;
+
+    public MallActivityServiceImpl(MallActivityDao mallActivityDao) {
+        this.mallActivityDao = mallActivityDao;
+    }
 
     /**
      * 通过ID查询单条数据

@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * (crmProdGroup)表服务接口
  * 产品分组表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:18
  */

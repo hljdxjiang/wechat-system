@@ -3,18 +3,17 @@ package com.nuoding.wechat.common.service.crm.impl;
 import com.nuoding.wechat.common.dao.crm.CrmSaleRecordDao;
 import com.nuoding.wechat.common.entity.crm.CrmSaleRecordEntity;
 import com.nuoding.wechat.common.service.crm.CrmSaleRecordService;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (crmSaleRecord)表服务实现类
  * 销售记录表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -22,9 +21,12 @@ import java.util.List;
 public class CrmSaleRecordServiceImpl implements CrmSaleRecordService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private CrmSaleRecordDao crmSaleRecordDao;
+
+    public CrmSaleRecordServiceImpl(CrmSaleRecordDao crmSaleRecordDao) {
+        this.crmSaleRecordDao = crmSaleRecordDao;
+    }
 
     /**
      * 通过ID查询单条数据

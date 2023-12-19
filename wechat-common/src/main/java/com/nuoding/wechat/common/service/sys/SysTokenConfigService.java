@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * (sysTokenConfig)表服务接口
  * token信息表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:18
  */

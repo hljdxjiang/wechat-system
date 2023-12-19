@@ -3,18 +3,17 @@ package com.nuoding.wechat.common.service.user.impl;
 import com.nuoding.wechat.common.dao.user.UserFeedbackInfoDao;
 import com.nuoding.wechat.common.entity.user.UserFeedbackInfoEntity;
 import com.nuoding.wechat.common.service.user.UserFeedbackInfoService;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (userFeedbackInfo)表服务实现类
  * 用户反馈信息表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -22,9 +21,12 @@ import java.util.List;
 public class UserFeedbackInfoServiceImpl implements UserFeedbackInfoService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private UserFeedbackInfoDao userFeedbackInfoDao;
+
+    public UserFeedbackInfoServiceImpl(UserFeedbackInfoDao userFeedbackInfoDao) {
+        this.userFeedbackInfoDao = userFeedbackInfoDao;
+    }
 
     /**
      * 通过ID查询单条数据

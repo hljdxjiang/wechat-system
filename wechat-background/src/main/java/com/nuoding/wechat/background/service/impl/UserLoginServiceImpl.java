@@ -4,6 +4,7 @@ import com.nuoding.wechat.background.model.LoginDTO;
 import com.nuoding.wechat.background.service.UserLoginService;
 import com.nuoding.wechat.common.constant.RedisKey;
 import com.nuoding.wechat.common.constant.SessionKey;
+import com.nuoding.wechat.common.dao.back.BackSysRoleDetailDao;
 import com.nuoding.wechat.common.dao.back.BackSysUserDao;
 import com.nuoding.wechat.common.entity.back.BackSysUserEntity;
 import com.nuoding.wechat.common.enums.RespStatusEnum;
@@ -11,11 +12,9 @@ import com.nuoding.wechat.common.model.base.MapResponse;
 import com.nuoding.wechat.common.service.RedisService;
 import com.nuoding.wechat.common.service.sys.SysParamConfigService;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,14 +27,20 @@ import java.util.Map;
 @Service
 public class UserLoginServiceImpl implements UserLoginService {
 
-    @Resource
     private BackSysUserDao backSysUserDao;
 
-    @Autowired
     private SysParamConfigService sysParamConfigService;
 
-    @Autowired
+    private BackSysRoleDetailDao backSysRoleDetailDao;
+
     private RedisService redisService;
+
+    public UserLoginServiceImpl(BackSysUserDao backSysUserDao, SysParamConfigService sysParamConfigService, BackSysRoleDetailDao backSysRoleDetailDao, RedisService redisService) {
+        this.backSysUserDao = backSysUserDao;
+        this.sysParamConfigService = sysParamConfigService;
+        this.backSysRoleDetailDao = backSysRoleDetailDao;
+        this.redisService = redisService;
+    }
 
     @Override
     public MapResponse login(LoginDTO loginDTO) {

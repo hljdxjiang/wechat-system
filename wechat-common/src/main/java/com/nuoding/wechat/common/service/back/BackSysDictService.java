@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * (backSysDict)表服务接口
  * 字典表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:18
  */

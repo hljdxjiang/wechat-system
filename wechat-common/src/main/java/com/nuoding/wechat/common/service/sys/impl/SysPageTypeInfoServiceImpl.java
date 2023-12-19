@@ -3,18 +3,17 @@ package com.nuoding.wechat.common.service.sys.impl;
 import com.nuoding.wechat.common.dao.sys.SysPageTypeInfoDao;
 import com.nuoding.wechat.common.entity.sys.SysPageTypeInfoEntity;
 import com.nuoding.wechat.common.service.sys.SysPageTypeInfoService;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (sysPageTypeInfo)表服务实现类
  * 类型配置表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -22,9 +21,12 @@ import java.util.List;
 public class SysPageTypeInfoServiceImpl implements SysPageTypeInfoService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private SysPageTypeInfoDao sysPageTypeInfoDao;
+
+    public SysPageTypeInfoServiceImpl(SysPageTypeInfoDao sysPageTypeInfoDao) {
+        this.sysPageTypeInfoDao = sysPageTypeInfoDao;
+    }
 
     /**
      * 通过ID查询单条数据

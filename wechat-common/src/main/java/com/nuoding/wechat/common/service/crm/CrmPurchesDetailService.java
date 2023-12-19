@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * (crmPurchesDetail)表服务接口
  * 进货详情表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:18
  */

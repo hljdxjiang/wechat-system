@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * (backSysRevokes)表服务接口
  * 系统权限表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:18
  */

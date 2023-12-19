@@ -11,9 +11,9 @@ import com.nuoding.wechat.common.model.base.PageQueryBaseDTO;
 import com.nuoding.wechat.common.service.crm.CrmReferrerInfoService;
 import com.nuoding.wechat.common.utils.JsonUtil;
 import com.nuoding.wechat.common.utils.PageInfoUtil;
-import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,6 +22,7 @@ import java.util.Map;
 /**
  * 后管(crmReferrerInfo)服务接口
  * 推荐人信息表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -42,13 +43,13 @@ public class CrmReferrerInfoController {
      * 分页查询
      *
      * @param crmReferrerInfoEntity 筛选条件
-     * @param dto             size     分页对象
+     * @param dto                   size     分页对象
      * @return 查询结果
      */
     @PostMapping("/queryByPage")
     public MapResponse queryByPage(@RequestBody CrmReferrerInfoEntity crmReferrerInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("queryByPage begin.crmReferrerInfoEntity:{},dto:{}", JsonUtil.obj2Json(crmReferrerInfoEntity),JsonUtil.obj2Json(dto));
+        logger.info("queryByPage begin.crmReferrerInfoEntity:{},dto:{}", JsonUtil.obj2Json(crmReferrerInfoEntity), JsonUtil.obj2Json(dto));
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
         // crmReferrerInfoEntity.setTenantId(SessionKey.getTenantId);
         List<CrmReferrerInfoEntity> list = this.crmReferrerInfoService.queryAllByLimit(crmReferrerInfoEntity);
@@ -63,13 +64,13 @@ public class CrmReferrerInfoController {
      * 分页查询
      *
      * @param crmReferrerInfoEntity 筛选条件
-     * @param dto             size     分页对象
+     * @param dto                   size     分页对象
      * @return 查询结果
      */
     @PostMapping("/fuzzyQuery")
     public MapResponse fuzzyQuery(@RequestBody CrmReferrerInfoEntity crmReferrerInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("fuzzyQuery begin.crmReferrerInfoEntity:{},dto:{}", JsonUtil.obj2Json(crmReferrerInfoEntity),JsonUtil.obj2Json(dto));
+        logger.info("fuzzyQuery begin.crmReferrerInfoEntity:{},dto:{}", JsonUtil.obj2Json(crmReferrerInfoEntity), JsonUtil.obj2Json(dto));
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
         // crmReferrerInfoEntity.setTenantId(SessionKey.getTenantId);
         List<CrmReferrerInfoEntity> list = this.crmReferrerInfoService.fuzzyQuery(crmReferrerInfoEntity);
@@ -88,7 +89,7 @@ public class CrmReferrerInfoController {
      */
     @GetMapping("{id}")
     public MapResponse queryById(@PathVariable("id") Integer id) {
-        logger.info("queryById begin.id:{}",id);
+        logger.info("queryById begin.id:{}", id);
         MapResponse mapResponse = new MapResponse();
         mapResponse.put("data", this.crmReferrerInfoService.queryById(id));
         logger.info("queryById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
@@ -103,7 +104,7 @@ public class CrmReferrerInfoController {
      */
     @PostMapping("/add")
     public MapResponse add(@RequestBody CrmReferrerInfoEntity crmReferrerInfoEntity) {
-        logger.info("add begin.crmReferrerInfoEntity:{}",JsonUtil.obj2Json(crmReferrerInfoEntity));
+        logger.info("add begin.crmReferrerInfoEntity:{}", JsonUtil.obj2Json(crmReferrerInfoEntity));
         MapResponse mapResponse = new MapResponse();
         // crmReferrerInfoEntity.setTenantId(SessionKey.getTenantId);
         mapResponse.put("data", this.crmReferrerInfoService.insert(crmReferrerInfoEntity));
@@ -120,7 +121,7 @@ public class CrmReferrerInfoController {
     @PostMapping("/edit")
     public MapResponse edit(@RequestBody CrmReferrerInfoEntity crmReferrerInfoEntity) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("edit begin.crmReferrerInfoEntity:{}",JsonUtil.obj2Json(crmReferrerInfoEntity));
+        logger.info("edit begin.crmReferrerInfoEntity:{}", JsonUtil.obj2Json(crmReferrerInfoEntity));
         mapResponse.put("data", this.crmReferrerInfoService.update(crmReferrerInfoEntity));
         logger.info("edit end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
@@ -136,7 +137,7 @@ public class CrmReferrerInfoController {
     public MapResponse deleteById(@RequestBody CrmReferrerInfoEntity crmReferrerInfoEntity) {
 
         MapResponse mapResponse = new MapResponse();
-        logger.info("deleteById begin.crmReferrerInfoEntity:{}",JsonUtil.obj2Json(crmReferrerInfoEntity));
+        logger.info("deleteById begin.crmReferrerInfoEntity:{}", JsonUtil.obj2Json(crmReferrerInfoEntity));
         Integer id = crmReferrerInfoEntity.getId();
         if (id == null || id == 0) {
             mapResponse.setResponse(RespStatusEnum.ARGS_ERROR);

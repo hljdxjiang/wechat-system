@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * (userWinningRecord)表服务接口
  * 抽奖获奖记录表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:18
  */

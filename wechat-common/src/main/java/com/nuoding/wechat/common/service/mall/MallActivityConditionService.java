@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * (mallActivityCondition)表服务接口
  * 活动条件表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:18
  */

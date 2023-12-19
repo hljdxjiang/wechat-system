@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * (wechatMinipUser)表服务接口
  * 小程序用户信息表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:18
  */

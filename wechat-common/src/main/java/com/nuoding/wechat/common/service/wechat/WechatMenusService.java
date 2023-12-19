@@ -7,6 +7,7 @@ import java.util.List;
 /**
  * (wechatMenus)表服务接口
  * 微信菜单表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:18
  */

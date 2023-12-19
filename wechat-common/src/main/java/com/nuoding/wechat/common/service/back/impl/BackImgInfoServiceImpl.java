@@ -3,18 +3,17 @@ package com.nuoding.wechat.common.service.back.impl;
 import com.nuoding.wechat.common.dao.back.BackImgInfoDao;
 import com.nuoding.wechat.common.entity.back.BackImgInfoEntity;
 import com.nuoding.wechat.common.service.back.BackImgInfoService;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (backImgInfo)表服务实现类
  * 系统图片配置表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -22,9 +21,12 @@ import java.util.List;
 public class BackImgInfoServiceImpl implements BackImgInfoService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private BackImgInfoDao backImgInfoDao;
+
+    public BackImgInfoServiceImpl(BackImgInfoDao backImgInfoDao) {
+        this.backImgInfoDao = backImgInfoDao;
+    }
 
     /**
      * 通过ID查询单条数据

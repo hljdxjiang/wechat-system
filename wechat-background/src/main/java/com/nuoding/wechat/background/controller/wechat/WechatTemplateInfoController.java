@@ -11,9 +11,9 @@ import com.nuoding.wechat.common.model.base.PageQueryBaseDTO;
 import com.nuoding.wechat.common.service.wechat.WechatTemplateInfoService;
 import com.nuoding.wechat.common.utils.JsonUtil;
 import com.nuoding.wechat.common.utils.PageInfoUtil;
-import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,6 +22,7 @@ import java.util.Map;
 /**
  * 后管(wechatTemplateInfo)服务接口
  * 微信推送模板
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -42,13 +43,13 @@ public class WechatTemplateInfoController {
      * 分页查询
      *
      * @param wechatTemplateInfoEntity 筛选条件
-     * @param dto             size     分页对象
+     * @param dto                      size     分页对象
      * @return 查询结果
      */
     @PostMapping("/queryByPage")
     public MapResponse queryByPage(@RequestBody WechatTemplateInfoEntity wechatTemplateInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("queryByPage begin.wechatTemplateInfoEntity:{},dto:{}", JsonUtil.obj2Json(wechatTemplateInfoEntity),JsonUtil.obj2Json(dto));
+        logger.info("queryByPage begin.wechatTemplateInfoEntity:{},dto:{}", JsonUtil.obj2Json(wechatTemplateInfoEntity), JsonUtil.obj2Json(dto));
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
         // wechatTemplateInfoEntity.setTenantId(SessionKey.getTenantId);
         List<WechatTemplateInfoEntity> list = this.wechatTemplateInfoService.queryAllByLimit(wechatTemplateInfoEntity);
@@ -63,13 +64,13 @@ public class WechatTemplateInfoController {
      * 分页查询
      *
      * @param wechatTemplateInfoEntity 筛选条件
-     * @param dto             size     分页对象
+     * @param dto                      size     分页对象
      * @return 查询结果
      */
     @PostMapping("/fuzzyQuery")
     public MapResponse fuzzyQuery(@RequestBody WechatTemplateInfoEntity wechatTemplateInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("fuzzyQuery begin.wechatTemplateInfoEntity:{},dto:{}", JsonUtil.obj2Json(wechatTemplateInfoEntity),JsonUtil.obj2Json(dto));
+        logger.info("fuzzyQuery begin.wechatTemplateInfoEntity:{},dto:{}", JsonUtil.obj2Json(wechatTemplateInfoEntity), JsonUtil.obj2Json(dto));
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
         // wechatTemplateInfoEntity.setTenantId(SessionKey.getTenantId);
         List<WechatTemplateInfoEntity> list = this.wechatTemplateInfoService.fuzzyQuery(wechatTemplateInfoEntity);
@@ -88,7 +89,7 @@ public class WechatTemplateInfoController {
      */
     @GetMapping("{id}")
     public MapResponse queryById(@PathVariable("id") Integer id) {
-        logger.info("queryById begin.id:{}",id);
+        logger.info("queryById begin.id:{}", id);
         MapResponse mapResponse = new MapResponse();
         mapResponse.put("data", this.wechatTemplateInfoService.queryById(id));
         logger.info("queryById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
@@ -103,7 +104,7 @@ public class WechatTemplateInfoController {
      */
     @PostMapping("/add")
     public MapResponse add(@RequestBody WechatTemplateInfoEntity wechatTemplateInfoEntity) {
-        logger.info("add begin.wechatTemplateInfoEntity:{}",JsonUtil.obj2Json(wechatTemplateInfoEntity));
+        logger.info("add begin.wechatTemplateInfoEntity:{}", JsonUtil.obj2Json(wechatTemplateInfoEntity));
         MapResponse mapResponse = new MapResponse();
         // wechatTemplateInfoEntity.setTenantId(SessionKey.getTenantId);
         mapResponse.put("data", this.wechatTemplateInfoService.insert(wechatTemplateInfoEntity));
@@ -120,7 +121,7 @@ public class WechatTemplateInfoController {
     @PostMapping("/edit")
     public MapResponse edit(@RequestBody WechatTemplateInfoEntity wechatTemplateInfoEntity) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("edit begin.wechatTemplateInfoEntity:{}",JsonUtil.obj2Json(wechatTemplateInfoEntity));
+        logger.info("edit begin.wechatTemplateInfoEntity:{}", JsonUtil.obj2Json(wechatTemplateInfoEntity));
         mapResponse.put("data", this.wechatTemplateInfoService.update(wechatTemplateInfoEntity));
         logger.info("edit end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
@@ -136,7 +137,7 @@ public class WechatTemplateInfoController {
     public MapResponse deleteById(@RequestBody WechatTemplateInfoEntity wechatTemplateInfoEntity) {
 
         MapResponse mapResponse = new MapResponse();
-        logger.info("deleteById begin.wechatTemplateInfoEntity:{}",JsonUtil.obj2Json(wechatTemplateInfoEntity));
+        logger.info("deleteById begin.wechatTemplateInfoEntity:{}", JsonUtil.obj2Json(wechatTemplateInfoEntity));
         Integer id = wechatTemplateInfoEntity.getId();
         if (id == null || id == 0) {
             mapResponse.setResponse(RespStatusEnum.ARGS_ERROR);

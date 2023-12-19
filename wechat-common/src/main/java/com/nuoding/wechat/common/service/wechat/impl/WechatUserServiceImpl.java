@@ -3,18 +3,17 @@ package com.nuoding.wechat.common.service.wechat.impl;
 import com.nuoding.wechat.common.dao.wechat.WechatUserDao;
 import com.nuoding.wechat.common.entity.wechat.WechatUserEntity;
 import com.nuoding.wechat.common.service.wechat.WechatUserService;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (wechatUser)表服务实现类
  * 微信用户信息表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -22,9 +21,12 @@ import java.util.List;
 public class WechatUserServiceImpl implements WechatUserService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private WechatUserDao wechatUserDao;
+
+    public WechatUserServiceImpl(WechatUserDao wechatUserDao) {
+        this.wechatUserDao = wechatUserDao;
+    }
 
     /**
      * 通过ID查询单条数据

@@ -10,7 +10,7 @@ import java.util.List;
  * @Date:2023/4/11 下午6:31
  */
 public class CollectionUtil {
-    public static <T> List<T> containsByField(List<T> list , String field, Object value, Class<T> clazz){
+    public static <T> List<T> containsByField(List<T> list, String field, Object value, Class<T> clazz) {
         List<T> res = new ArrayList<>();
 
         try {
@@ -21,7 +21,7 @@ public class CollectionUtil {
             for (T t : list) {
                 // 遍历list,获取到对应属性的值
                 Object o = dbField.get(t);
-                if(value.equals(o)){
+                if (value.equals(o)) {
                     // 如值和预期想等的话,则加入到返回值中
                     res.add(t);
                 }

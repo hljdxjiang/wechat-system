@@ -11,9 +11,9 @@ import com.nuoding.wechat.common.model.base.PageQueryBaseDTO;
 import com.nuoding.wechat.common.service.sys.SysFlowInfoService;
 import com.nuoding.wechat.common.utils.JsonUtil;
 import com.nuoding.wechat.common.utils.PageInfoUtil;
-import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,6 +22,7 @@ import java.util.Map;
 /**
  * 后管(sysFlowInfo)服务接口
  * 楼层信息表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -42,13 +43,13 @@ public class SysFlowInfoController {
      * 分页查询
      *
      * @param sysFlowInfoEntity 筛选条件
-     * @param dto             size     分页对象
+     * @param dto               size     分页对象
      * @return 查询结果
      */
     @PostMapping("/queryByPage")
     public MapResponse queryByPage(@RequestBody SysFlowInfoEntity sysFlowInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("queryByPage begin.sysFlowInfoEntity:{},dto:{}", JsonUtil.obj2Json(sysFlowInfoEntity),JsonUtil.obj2Json(dto));
+        logger.info("queryByPage begin.sysFlowInfoEntity:{},dto:{}", JsonUtil.obj2Json(sysFlowInfoEntity), JsonUtil.obj2Json(dto));
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
         // sysFlowInfoEntity.setTenantId(SessionKey.getTenantId);
         List<SysFlowInfoEntity> list = this.sysFlowInfoService.queryAllByLimit(sysFlowInfoEntity);
@@ -63,13 +64,13 @@ public class SysFlowInfoController {
      * 分页查询
      *
      * @param sysFlowInfoEntity 筛选条件
-     * @param dto             size     分页对象
+     * @param dto               size     分页对象
      * @return 查询结果
      */
     @PostMapping("/fuzzyQuery")
     public MapResponse fuzzyQuery(@RequestBody SysFlowInfoEntity sysFlowInfoEntity, @RequestBody PageQueryBaseDTO dto) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("fuzzyQuery begin.sysFlowInfoEntity:{},dto:{}", JsonUtil.obj2Json(sysFlowInfoEntity),JsonUtil.obj2Json(dto));
+        logger.info("fuzzyQuery begin.sysFlowInfoEntity:{},dto:{}", JsonUtil.obj2Json(sysFlowInfoEntity), JsonUtil.obj2Json(dto));
         PageHelper.startPage(dto.getPageNum(), dto.getPageSize());
         // sysFlowInfoEntity.setTenantId(SessionKey.getTenantId);
         List<SysFlowInfoEntity> list = this.sysFlowInfoService.fuzzyQuery(sysFlowInfoEntity);
@@ -88,7 +89,7 @@ public class SysFlowInfoController {
      */
     @GetMapping("{id}")
     public MapResponse queryById(@PathVariable("id") Integer id) {
-        logger.info("queryById begin.id:{}",id);
+        logger.info("queryById begin.id:{}", id);
         MapResponse mapResponse = new MapResponse();
         mapResponse.put("data", this.sysFlowInfoService.queryById(id));
         logger.info("queryById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
@@ -103,7 +104,7 @@ public class SysFlowInfoController {
      */
     @PostMapping("/add")
     public MapResponse add(@RequestBody SysFlowInfoEntity sysFlowInfoEntity) {
-        logger.info("add begin.sysFlowInfoEntity:{}",JsonUtil.obj2Json(sysFlowInfoEntity));
+        logger.info("add begin.sysFlowInfoEntity:{}", JsonUtil.obj2Json(sysFlowInfoEntity));
         MapResponse mapResponse = new MapResponse();
         // sysFlowInfoEntity.setTenantId(SessionKey.getTenantId);
         mapResponse.put("data", this.sysFlowInfoService.insert(sysFlowInfoEntity));
@@ -120,7 +121,7 @@ public class SysFlowInfoController {
     @PostMapping("/edit")
     public MapResponse edit(@RequestBody SysFlowInfoEntity sysFlowInfoEntity) {
         MapResponse mapResponse = new MapResponse();
-        logger.info("edit begin.sysFlowInfoEntity:{}",JsonUtil.obj2Json(sysFlowInfoEntity));
+        logger.info("edit begin.sysFlowInfoEntity:{}", JsonUtil.obj2Json(sysFlowInfoEntity));
         mapResponse.put("data", this.sysFlowInfoService.update(sysFlowInfoEntity));
         logger.info("edit end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
@@ -136,7 +137,7 @@ public class SysFlowInfoController {
     public MapResponse deleteById(@RequestBody SysFlowInfoEntity sysFlowInfoEntity) {
 
         MapResponse mapResponse = new MapResponse();
-        logger.info("deleteById begin.sysFlowInfoEntity:{}",JsonUtil.obj2Json(sysFlowInfoEntity));
+        logger.info("deleteById begin.sysFlowInfoEntity:{}", JsonUtil.obj2Json(sysFlowInfoEntity));
         Integer id = sysFlowInfoEntity.getId();
         if (id == null || id == 0) {
             mapResponse.setResponse(RespStatusEnum.ARGS_ERROR);

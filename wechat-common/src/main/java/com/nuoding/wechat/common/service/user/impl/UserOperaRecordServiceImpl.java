@@ -3,19 +3,17 @@ package com.nuoding.wechat.common.service.user.impl;
 import com.nuoding.wechat.common.dao.user.UserOperaRecordDao;
 import com.nuoding.wechat.common.entity.user.UserOperaRecordEntity;
 import com.nuoding.wechat.common.service.user.UserOperaRecordService;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (userOperaRecord)表服务实现类
  * 用户操作历史表
+ *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */
@@ -23,9 +21,12 @@ import java.util.List;
 public class UserOperaRecordServiceImpl implements UserOperaRecordService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
-    @Resource
+
     private UserOperaRecordDao userOperaRecordDao;
+
+    public UserOperaRecordServiceImpl(UserOperaRecordDao userOperaRecordDao) {
+        this.userOperaRecordDao = userOperaRecordDao;
+    }
 
     /**
      * 通过ID查询单条数据
@@ -88,13 +89,6 @@ public class UserOperaRecordServiceImpl implements UserOperaRecordService {
         this.userOperaRecordDao.insert(userOperaRecordEntity);
         return userOperaRecordEntity;
     }
-
-    @Override
-    @Async
-    public UserOperaRecordEntity asyncInsert(UserOperaRecordEntity userOperaRecordEntity) {
-        logger.info("asyncInsert begin.userOperaRecordEntity:{}", JsonUtil.obj2Json(userOperaRecordEntity));
-        this.userOperaRecordDao.insert(userOperaRecordEntity);
-        return userOperaRecordEntity;    }
 
     /**
      * 修改数据

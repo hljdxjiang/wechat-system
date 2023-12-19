@@ -11,7 +11,8 @@ public enum StatusEnum {
      * 历史表修改类型
      */
     DEFAULT(0, "正常"),
-    DISABLED(1, "时效"),;
+    DISABLED(1, "时效"),
+    ;
     private final Integer code;
 
     private final String message;
