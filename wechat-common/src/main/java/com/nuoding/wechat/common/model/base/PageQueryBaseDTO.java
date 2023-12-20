@@ -12,18 +12,18 @@ import java.io.Serializable;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PageQueryBaseDTO implements Serializable {
     private static final long serialVersionUID = -8635327507859410192L;
-    int pagemNum;
+    int pageNum;
     int pageSize;
 
     public int getPageNum() {
-        if (pageSize < 1) {
+        if (pageNum < 1) {
             return 1;
         }
-        return pageSize;
+        return pageNum;
     }
 
     public void setPageNum(int page) {
-        this.pagemNum = page;
+        this.pageNum = page;
     }
 
     public int getPageSize() {

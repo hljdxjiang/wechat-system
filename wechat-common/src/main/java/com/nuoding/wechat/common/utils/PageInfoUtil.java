@@ -8,10 +8,10 @@ import java.util.Map;
 public class PageInfoUtil {
     public static Map parseReturnMap(PageInfo pageInfo) {
         Map map = new HashMap();
-        map.put("pageSize", pageInfo.getPageSize());
         map.put("pageNum", pageInfo.getPageNum());
-        map.put("total", pageInfo.getTotal());
+        map.put("pageSize", pageInfo.getPageSize());
         map.put("pages", pageInfo.getPages());
+        map.put("total", pageInfo.getTotal());
         map.put("list", pageInfo.getList());
         return map;
     }
