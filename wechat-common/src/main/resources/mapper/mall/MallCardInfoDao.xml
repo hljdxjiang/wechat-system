@@ -23,7 +23,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,card_id,card_name,card_no,card_pwd,card_desc,card_type,vaild_date,expire_date,status,create_time,last_modified_time    </sql>
+                id,tenant_id,card_id,card_name,card_no,card_pwd,card_desc,card_type,vaild_date,expire_date,status,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="MallCardInfoMap">
@@ -121,42 +121,34 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,card_id,card_name,card_no,card_pwd,card_desc,card_type,vaild_date,expire_date,)
+        (tenant_id ,card_id ,card_name ,card_no ,card_pwd ,card_desc ,card_type ,vaild_date ,expire_date )
         values
-        (#{tenantId},#{cardId},#{cardName},#{cardNo},#{cardPwd},#{cardDesc},#{cardType},#{vaildDate},#{expireDate},)
+        (#{tenantId},#{cardId},#{cardName},#{cardNo},#{cardPwd},#{cardDesc},#{cardType},#{vaildDate},#{expireDate})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, card_id, card_name, card_no, card_pwd, card_desc, card_type, vaild_date, expire_date,)
+        ( tenant_id ,card_id ,card_name ,card_no ,card_pwd ,card_desc ,card_type ,vaild_date ,expire_date)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.cardId}, #{entity.cardName}, #{entity.cardNo}, #{entity.cardPwd},
-            #{entity.cardDesc}, #{entity.cardType}, #{entity.vaildDate}, #{entity.expireDate},)
+            ( #{entity.tenantId} ,#{entity.cardId} ,#{entity.cardName} ,#{entity.cardNo} ,#{entity.cardPwd}
+            ,#{entity.cardDesc} ,#{entity.cardType} ,#{entity.vaildDate} ,#{entity.expireDate})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, card_id, card_name, card_no, card_pwd, card_desc, card_type, vaild_date, expire_date, status,)
+        ( tenant_id ,card_id ,card_name ,card_no ,card_pwd ,card_desc ,card_type ,vaild_date ,expire_date ,status)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.cardId},#{entity.cardName},#{entity.cardNo},#{entity.cardPwd},#{entity.cardDesc},#{entity.cardType},#{entity.vaildDate},#{entity.expireDate},#{entity.status},)
+            (#{entity.tenantId},#{entity.cardId},#{entity.cardName},#{entity.cardNo},#{entity.cardPwd},#{entity.cardDesc},#{entity.cardType},#{entity.vaildDate},#{entity.expireDate},#{entity.status})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        card_id=values(card_id),
-        card_name=values(card_name),
-        card_no=values(card_no),
-        card_pwd=values(card_pwd),
-        card_desc=values(card_desc),
-        card_type=values(card_type),
-        vaild_date=values(vaild_date),
-        expire_date=values(expire_date),
-        status=values(status),
-
+        tenant_id=values(tenant_id) ,card_id=values(card_id) ,card_name=values(card_name) ,card_no=values(card_no)
+        ,card_pwd=values(card_pwd) ,card_desc=values(card_desc) ,card_type=values(card_type)
+        ,vaild_date=values(vaild_date) ,expire_date=values(expire_date) ,status=values(status)
     </insert>
 
     <!--通过主键修改数据-->

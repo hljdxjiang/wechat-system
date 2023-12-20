@@ -23,7 +23,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,item_id,name,type,key,url,appid,pagepath,article_id,article_view_limited,create_time,last_modified_time    </sql>
+                id,tenant_id,item_id,name,type,key,url,appid,pagepath,article_id,article_view_limited,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="WechatMenusItemMap">
@@ -127,42 +127,34 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,item_id,name,type,key,url,appid,pagepath,article_id,article_view_limited,)
+        (tenant_id ,item_id ,name ,type ,key ,url ,appid ,pagepath ,article_id ,article_view_limited )
         values
-        (#{tenantId},#{itemId},#{name},#{type},#{key},#{url},#{appid},#{pagepath},#{articleId},#{articleViewLimited},)
+        (#{tenantId},#{itemId},#{name},#{type},#{key},#{url},#{appid},#{pagepath},#{articleId},#{articleViewLimited})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, item_id, name, type, key, url, appid, pagepath, article_id, article_view_limited,)
+        ( tenant_id ,item_id ,name ,type ,key ,url ,appid ,pagepath ,article_id ,article_view_limited)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.itemId}, #{entity.name}, #{entity.type}, #{entity.key}, #{entity.url},
-            #{entity.appid}, #{entity.pagepath}, #{entity.articleId}, #{entity.articleViewLimited},)
+            ( #{entity.tenantId} ,#{entity.itemId} ,#{entity.name} ,#{entity.type} ,#{entity.key} ,#{entity.url}
+            ,#{entity.appid} ,#{entity.pagepath} ,#{entity.articleId} ,#{entity.articleViewLimited})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, item_id, name, type, key, url, appid, pagepath, article_id, article_view_limited,)
+        ( tenant_id ,item_id ,name ,type ,key ,url ,appid ,pagepath ,article_id ,article_view_limited)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.itemId},#{entity.name},#{entity.type},#{entity.key},#{entity.url},#{entity.appid},#{entity.pagepath},#{entity.articleId},#{entity.articleViewLimited},)
+            (#{entity.tenantId},#{entity.itemId},#{entity.name},#{entity.type},#{entity.key},#{entity.url},#{entity.appid},#{entity.pagepath},#{entity.articleId},#{entity.articleViewLimited})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        item_id=values(item_id),
-        name=values(name),
-        type=values(type),
-        key=values(key),
-        url=values(url),
-        appid=values(appid),
-        pagepath=values(pagepath),
-        article_id=values(article_id),
-        article_view_limited=values(article_view_limited),
-
+        tenant_id=values(tenant_id) ,item_id=values(item_id) ,name=values(name) ,type=values(type) ,key=values(key)
+        ,url=values(url) ,appid=values(appid) ,pagepath=values(pagepath) ,article_id=values(article_id)
+        ,article_view_limited=values(article_view_limited)
     </insert>
 
     <!--通过主键修改数据-->

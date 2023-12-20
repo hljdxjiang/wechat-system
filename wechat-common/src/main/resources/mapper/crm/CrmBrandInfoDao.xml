@@ -33,7 +33,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,brand_id,brand_name,brand_logo,company_name,brand_uscc,connect_uname,connect_mobile_no,connect_wechat_id,brand_desc,company_desc,brand_detail,company_detail,vaild_date,expired_date,brand_fee,brand_margin,remark,status,create_time,last_modified_time,brand_common_desc    </sql>
+                id,tenant_id,brand_id,brand_name,brand_logo,company_name,brand_uscc,connect_uname,connect_mobile_no,connect_wechat_id,brand_desc,company_desc,brand_detail,company_detail,vaild_date,expired_date,brand_fee,brand_margin,remark,status,create_time,last_modified_time,brand_common_desc    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="CrmBrandInfoMap">
@@ -193,7 +193,9 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,brand_id,brand_name,brand_logo,company_name,brand_uscc,connect_uname,connect_mobile_no,connect_wechat_id,brand_desc,company_desc,brand_detail,company_detail,vaild_date,expired_date,brand_fee,brand_margin,remark,brand_common_desc)
+        (tenant_id ,brand_id ,brand_name ,brand_logo ,company_name ,brand_uscc ,connect_uname ,connect_mobile_no
+        ,connect_wechat_id ,brand_desc ,company_desc ,brand_detail ,company_detail ,vaild_date ,expired_date ,brand_fee
+        ,brand_margin ,remark ,brand_common_desc )
         values
         (#{tenantId},#{brandId},#{brandName},#{brandLogo},#{companyName},#{brandUscc},#{connectUname},#{connectMobileNo},#{connectWechatId},#{brandDesc},#{companyDesc},#{brandDetail},#{companyDetail},#{vaildDate},#{expiredDate},#{brandFee},#{brandMargin},#{remark},#{brandCommonDesc})
     </insert>
@@ -201,50 +203,37 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, brand_id, brand_name, brand_logo, company_name, brand_uscc, connect_uname, connect_mobile_no,
-        connect_wechat_id, brand_desc, company_desc, brand_detail, company_detail, vaild_date, expired_date, brand_fee,
-        brand_margin, remark, brand_common_desc)
+        ( tenant_id ,brand_id ,brand_name ,brand_logo ,company_name ,brand_uscc ,connect_uname ,connect_mobile_no
+        ,connect_wechat_id ,brand_desc ,company_desc ,brand_detail ,company_detail ,vaild_date ,expired_date ,brand_fee
+        ,brand_margin ,remark ,brand_common_desc)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.brandId}, #{entity.brandName}, #{entity.brandLogo}, #{entity.companyName},
-            #{entity.brandUscc}, #{entity.connectUname}, #{entity.connectMobileNo}, #{entity.connectWechatId},
-            #{entity.brandDesc}, #{entity.companyDesc}, #{entity.brandDetail}, #{entity.companyDetail},
-            #{entity.vaildDate}, #{entity.expiredDate}, #{entity.brandFee}, #{entity.brandMargin}, #{entity.remark},
-            #{entity.brandCommonDesc})
+            ( #{entity.tenantId} ,#{entity.brandId} ,#{entity.brandName} ,#{entity.brandLogo} ,#{entity.companyName}
+            ,#{entity.brandUscc} ,#{entity.connectUname} ,#{entity.connectMobileNo} ,#{entity.connectWechatId}
+            ,#{entity.brandDesc} ,#{entity.companyDesc} ,#{entity.brandDetail} ,#{entity.companyDetail}
+            ,#{entity.vaildDate} ,#{entity.expiredDate} ,#{entity.brandFee} ,#{entity.brandMargin} ,#{entity.remark}
+            ,#{entity.brandCommonDesc})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, brand_id, brand_name, brand_logo, company_name, brand_uscc, connect_uname, connect_mobile_no,
-        connect_wechat_id, brand_desc, company_desc, brand_detail, company_detail, vaild_date, expired_date, brand_fee,
-        brand_margin, remark, status, brand_common_desc)
+        ( tenant_id ,brand_id ,brand_name ,brand_logo ,company_name ,brand_uscc ,connect_uname ,connect_mobile_no
+        ,connect_wechat_id ,brand_desc ,company_desc ,brand_detail ,company_detail ,vaild_date ,expired_date ,brand_fee
+        ,brand_margin ,remark ,status ,brand_common_desc)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.brandId},#{entity.brandName},#{entity.brandLogo},#{entity.companyName},#{entity.brandUscc},#{entity.connectUname},#{entity.connectMobileNo},#{entity.connectWechatId},#{entity.brandDesc},#{entity.companyDesc},#{entity.brandDetail},#{entity.companyDetail},#{entity.vaildDate},#{entity.expiredDate},#{entity.brandFee},#{entity.brandMargin},#{entity.remark},#{entity.status},#{entity.brandCommonDesc})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        brand_id=values(brand_id),
-        brand_name=values(brand_name),
-        brand_logo=values(brand_logo),
-        company_name=values(company_name),
-        brand_uscc=values(brand_uscc),
-        connect_uname=values(connect_uname),
-        connect_mobile_no=values(connect_mobile_no),
-        connect_wechat_id=values(connect_wechat_id),
-        brand_desc=values(brand_desc),
-        company_desc=values(company_desc),
-        brand_detail=values(brand_detail),
-        company_detail=values(company_detail),
-        vaild_date=values(vaild_date),
-        expired_date=values(expired_date),
-        brand_fee=values(brand_fee),
-        brand_margin=values(brand_margin),
-        remark=values(remark),
-        status=values(status),
-        brand_common_desc=values(brand_common_desc)
+        tenant_id=values(tenant_id) ,brand_id=values(brand_id) ,brand_name=values(brand_name)
+        ,brand_logo=values(brand_logo) ,company_name=values(company_name) ,brand_uscc=values(brand_uscc)
+        ,connect_uname=values(connect_uname) ,connect_mobile_no=values(connect_mobile_no)
+        ,connect_wechat_id=values(connect_wechat_id) ,brand_desc=values(brand_desc) ,company_desc=values(company_desc)
+        ,brand_detail=values(brand_detail) ,company_detail=values(company_detail) ,vaild_date=values(vaild_date)
+        ,expired_date=values(expired_date) ,brand_fee=values(brand_fee) ,brand_margin=values(brand_margin)
+        ,remark=values(remark) ,status=values(status) ,brand_common_desc=values(brand_common_desc)
     </insert>
 
     <!--通过主键修改数据-->

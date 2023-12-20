@@ -19,7 +19,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,control_type,control_desc,rule_range,control_switch,rule_expr,create_time,last_modified_time    </sql>
+                id,tenant_id,control_type,control_desc,rule_range,control_switch,rule_expr,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="BackRuleControlMap">
@@ -105,38 +105,33 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,control_type,control_desc,rule_range,control_switch,rule_expr,)
+        (tenant_id ,control_type ,control_desc ,rule_range ,control_switch ,rule_expr )
         values
-        (#{tenantId},#{controlType},#{controlDesc},#{ruleRange},#{controlSwitch},#{ruleExpr},)
+        (#{tenantId},#{controlType},#{controlDesc},#{ruleRange},#{controlSwitch},#{ruleExpr})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, control_type, control_desc, rule_range, control_switch, rule_expr,)
+        ( tenant_id ,control_type ,control_desc ,rule_range ,control_switch ,rule_expr)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.controlType}, #{entity.controlDesc}, #{entity.ruleRange},
-            #{entity.controlSwitch}, #{entity.ruleExpr},)
+            ( #{entity.tenantId} ,#{entity.controlType} ,#{entity.controlDesc} ,#{entity.ruleRange}
+            ,#{entity.controlSwitch} ,#{entity.ruleExpr})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, control_type, control_desc, rule_range, control_switch, rule_expr,)
+        ( tenant_id ,control_type ,control_desc ,rule_range ,control_switch ,rule_expr)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.controlType},#{entity.controlDesc},#{entity.ruleRange},#{entity.controlSwitch},#{entity.ruleExpr},)
+            (#{entity.tenantId},#{entity.controlType},#{entity.controlDesc},#{entity.ruleRange},#{entity.controlSwitch},#{entity.ruleExpr})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        control_type=values(control_type),
-        control_desc=values(control_desc),
-        rule_range=values(rule_range),
-        control_switch=values(control_switch),
-        rule_expr=values(rule_expr),
-
+        tenant_id=values(tenant_id) ,control_type=values(control_type) ,control_desc=values(control_desc)
+        ,rule_range=values(rule_range) ,control_switch=values(control_switch) ,rule_expr=values(rule_expr)
     </insert>
 
     <!--通过主键修改数据-->

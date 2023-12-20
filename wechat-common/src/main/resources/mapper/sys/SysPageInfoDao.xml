@@ -23,7 +23,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,page_id,page_title,page_type,control_flag,need_login,page_remark,status,create_time,last_modified_time,userid,modify_userid    </sql>
+                id,tenant_id,page_id,page_title,page_type,control_flag,need_login,page_remark,status,create_time,last_modified_time,userid,modify_userid    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="SysPageInfoMap">
@@ -126,7 +126,7 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,page_id,page_title,page_type,control_flag,need_login,page_remark,userid,modify_userid)
+        (tenant_id ,page_id ,page_title ,page_type ,control_flag ,need_login ,page_remark ,userid ,modify_userid )
         values
         (#{tenantId},#{pageId},#{pageTitle},#{pageType},#{controlFlag},#{needLogin},#{pageRemark},#{userid},#{modifyUserid})
     </insert>
@@ -134,34 +134,27 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, page_id, page_title, page_type, control_flag, need_login, page_remark, userid, modify_userid)
+        ( tenant_id ,page_id ,page_title ,page_type ,control_flag ,need_login ,page_remark ,userid ,modify_userid)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.pageId}, #{entity.pageTitle}, #{entity.pageType}, #{entity.controlFlag},
-            #{entity.needLogin}, #{entity.pageRemark}, #{entity.userid}, #{entity.modifyUserid})
+            ( #{entity.tenantId} ,#{entity.pageId} ,#{entity.pageTitle} ,#{entity.pageType} ,#{entity.controlFlag}
+            ,#{entity.needLogin} ,#{entity.pageRemark} ,#{entity.userid} ,#{entity.modifyUserid})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, page_id, page_title, page_type, control_flag, need_login, page_remark, status, userid,
-        modify_userid)
+        ( tenant_id ,page_id ,page_title ,page_type ,control_flag ,need_login ,page_remark ,status ,userid
+        ,modify_userid)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.pageId},#{entity.pageTitle},#{entity.pageType},#{entity.controlFlag},#{entity.needLogin},#{entity.pageRemark},#{entity.status},#{entity.userid},#{entity.modifyUserid})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        page_id=values(page_id),
-        page_title=values(page_title),
-        page_type=values(page_type),
-        control_flag=values(control_flag),
-        need_login=values(need_login),
-        page_remark=values(page_remark),
-        status=values(status),
-        userid=values(userid),
-        modify_userid=values(modify_userid)
+        tenant_id=values(tenant_id) ,page_id=values(page_id) ,page_title=values(page_title) ,page_type=values(page_type)
+        ,control_flag=values(control_flag) ,need_login=values(need_login) ,page_remark=values(page_remark)
+        ,status=values(status) ,userid=values(userid) ,modify_userid=values(modify_userid)
     </insert>
 
     <!--通过主键修改数据-->

@@ -17,7 +17,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,last_modified_time,option_id,option_key,option_desc,option_type    </sql>
+                id,tenant_id,last_modified_time,option_id,option_key,option_desc,option_type    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="WechatMenusVersionMap">
@@ -97,7 +97,7 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,option_id,option_key,option_desc,option_type)
+        (tenant_id ,option_id ,option_key ,option_desc ,option_type )
         values
         (#{tenantId},#{optionId},#{optionKey},#{optionDesc},#{optionType})
     </insert>
@@ -105,27 +105,24 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, option_id, option_key, option_desc, option_type)
+        ( tenant_id ,option_id ,option_key ,option_desc ,option_type)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.optionId}, #{entity.optionKey}, #{entity.optionDesc}, #{entity.optionType})
+            ( #{entity.tenantId} ,#{entity.optionId} ,#{entity.optionKey} ,#{entity.optionDesc} ,#{entity.optionType})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, option_id, option_key, option_desc, option_type)
+        ( tenant_id ,option_id ,option_key ,option_desc ,option_type)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.optionId},#{entity.optionKey},#{entity.optionDesc},#{entity.optionType})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        option_id=values(option_id),
-        option_key=values(option_key),
-        option_desc=values(option_desc),
-        option_type=values(option_type)
+        tenant_id=values(tenant_id) ,option_id=values(option_id) ,option_key=values(option_key)
+        ,option_desc=values(option_desc) ,option_type=values(option_type)
     </insert>
 
     <!--通过主键修改数据-->

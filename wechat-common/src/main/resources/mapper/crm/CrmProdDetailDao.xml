@@ -29,7 +29,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,prod_id,prod_name,prod_group_id,prod_title,prod_desc,prod_detail,prod_logo,prod_bid,prod_price,prod_amount,prod_limit,prod_module,prod_specs,remark,status,create_time,last_modified_time    </sql>
+                id,tenant_id,prod_id,prod_name,prod_group_id,prod_title,prod_desc,prod_detail,prod_logo,prod_bid,prod_price,prod_amount,prod_limit,prod_module,prod_specs,remark,status,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="CrmProdDetailMap">
@@ -160,51 +160,40 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,prod_id,prod_name,prod_group_id,prod_title,prod_desc,prod_detail,prod_logo,prod_bid,prod_price,prod_amount,prod_limit,prod_module,prod_specs,remark,)
+        (tenant_id ,prod_id ,prod_name ,prod_group_id ,prod_title ,prod_desc ,prod_detail ,prod_logo ,prod_bid
+        ,prod_price ,prod_amount ,prod_limit ,prod_module ,prod_specs ,remark )
         values
-        (#{tenantId},#{prodId},#{prodName},#{prodGroupId},#{prodTitle},#{prodDesc},#{prodDetail},#{prodLogo},#{prodBid},#{prodPrice},#{prodAmount},#{prodLimit},#{prodModule},#{prodSpecs},#{remark},)
+        (#{tenantId},#{prodId},#{prodName},#{prodGroupId},#{prodTitle},#{prodDesc},#{prodDetail},#{prodLogo},#{prodBid},#{prodPrice},#{prodAmount},#{prodLimit},#{prodModule},#{prodSpecs},#{remark})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, prod_id, prod_name, prod_group_id, prod_title, prod_desc, prod_detail, prod_logo, prod_bid,
-        prod_price, prod_amount, prod_limit, prod_module, prod_specs, remark,)
+        ( tenant_id ,prod_id ,prod_name ,prod_group_id ,prod_title ,prod_desc ,prod_detail ,prod_logo ,prod_bid
+        ,prod_price ,prod_amount ,prod_limit ,prod_module ,prod_specs ,remark)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.prodId}, #{entity.prodName}, #{entity.prodGroupId}, #{entity.prodTitle},
-            #{entity.prodDesc}, #{entity.prodDetail}, #{entity.prodLogo}, #{entity.prodBid}, #{entity.prodPrice},
-            #{entity.prodAmount}, #{entity.prodLimit}, #{entity.prodModule}, #{entity.prodSpecs}, #{entity.remark},)
+            ( #{entity.tenantId} ,#{entity.prodId} ,#{entity.prodName} ,#{entity.prodGroupId} ,#{entity.prodTitle}
+            ,#{entity.prodDesc} ,#{entity.prodDetail} ,#{entity.prodLogo} ,#{entity.prodBid} ,#{entity.prodPrice}
+            ,#{entity.prodAmount} ,#{entity.prodLimit} ,#{entity.prodModule} ,#{entity.prodSpecs} ,#{entity.remark})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, prod_id, prod_name, prod_group_id, prod_title, prod_desc, prod_detail, prod_logo, prod_bid,
-        prod_price, prod_amount, prod_limit, prod_module, prod_specs, remark, status,)
+        ( tenant_id ,prod_id ,prod_name ,prod_group_id ,prod_title ,prod_desc ,prod_detail ,prod_logo ,prod_bid
+        ,prod_price ,prod_amount ,prod_limit ,prod_module ,prod_specs ,remark ,status)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.prodId},#{entity.prodName},#{entity.prodGroupId},#{entity.prodTitle},#{entity.prodDesc},#{entity.prodDetail},#{entity.prodLogo},#{entity.prodBid},#{entity.prodPrice},#{entity.prodAmount},#{entity.prodLimit},#{entity.prodModule},#{entity.prodSpecs},#{entity.remark},#{entity.status},)
+            (#{entity.tenantId},#{entity.prodId},#{entity.prodName},#{entity.prodGroupId},#{entity.prodTitle},#{entity.prodDesc},#{entity.prodDetail},#{entity.prodLogo},#{entity.prodBid},#{entity.prodPrice},#{entity.prodAmount},#{entity.prodLimit},#{entity.prodModule},#{entity.prodSpecs},#{entity.remark},#{entity.status})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        prod_id=values(prod_id),
-        prod_name=values(prod_name),
-        prod_group_id=values(prod_group_id),
-        prod_title=values(prod_title),
-        prod_desc=values(prod_desc),
-        prod_detail=values(prod_detail),
-        prod_logo=values(prod_logo),
-        prod_bid=values(prod_bid),
-        prod_price=values(prod_price),
-        prod_amount=values(prod_amount),
-        prod_limit=values(prod_limit),
-        prod_module=values(prod_module),
-        prod_specs=values(prod_specs),
-        remark=values(remark),
-        status=values(status),
-
+        tenant_id=values(tenant_id) ,prod_id=values(prod_id) ,prod_name=values(prod_name)
+        ,prod_group_id=values(prod_group_id) ,prod_title=values(prod_title) ,prod_desc=values(prod_desc)
+        ,prod_detail=values(prod_detail) ,prod_logo=values(prod_logo) ,prod_bid=values(prod_bid)
+        ,prod_price=values(prod_price) ,prod_amount=values(prod_amount) ,prod_limit=values(prod_limit)
+        ,prod_module=values(prod_module) ,prod_specs=values(prod_specs) ,remark=values(remark) ,status=values(status)
     </insert>
 
     <!--通过主键修改数据-->

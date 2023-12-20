@@ -17,7 +17,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,menu_id,rule_id,rule_value,create_time,last_modified_time    </sql>
+                id,tenant_id,menu_id,rule_id,rule_value,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="WechatMenusMatchruleMap">
@@ -89,35 +89,31 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,menu_id,rule_id,rule_value,)
+        (tenant_id ,menu_id ,rule_id ,rule_value )
         values
-        (#{tenantId},#{menuId},#{ruleId},#{ruleValue},)
+        (#{tenantId},#{menuId},#{ruleId},#{ruleValue})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, menu_id, rule_id, rule_value,)
+        ( tenant_id ,menu_id ,rule_id ,rule_value)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.menuId}, #{entity.ruleId}, #{entity.ruleValue},)
+            ( #{entity.tenantId} ,#{entity.menuId} ,#{entity.ruleId} ,#{entity.ruleValue})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, menu_id, rule_id, rule_value,)
+        ( tenant_id ,menu_id ,rule_id ,rule_value)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.menuId},#{entity.ruleId},#{entity.ruleValue},)
+            (#{entity.tenantId},#{entity.menuId},#{entity.ruleId},#{entity.ruleValue})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        menu_id=values(menu_id),
-        rule_id=values(rule_id),
-        rule_value=values(rule_value),
-
+        tenant_id=values(tenant_id) ,menu_id=values(menu_id) ,rule_id=values(rule_id) ,rule_value=values(rule_value)
     </insert>
 
     <!--通过主键修改数据-->

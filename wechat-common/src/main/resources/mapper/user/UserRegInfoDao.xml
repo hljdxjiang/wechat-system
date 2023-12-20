@@ -44,7 +44,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,user_id,mobile_no,id_type,id_no,valid_date,expired_date,issue_authority,user_name,gender,birth_date,email,tran_pwd,saver_id,source_platform,referee,address,occupation,reg_source,id_path_face,id_path_emblem,id_path_hand,dist_code,user_ip,set_tran_pwd_time,device_id,login_pwd,gesture_pwd,face_id_pwd,user_label,status,create_time,last_modified_time    </sql>
+                id,tenant_id,user_id,mobile_no,id_type,id_no,valid_date,expired_date,issue_authority,user_name,gender,birth_date,email,tran_pwd,saver_id,source_platform,referee,address,occupation,reg_source,id_path_face,id_path_emblem,id_path_hand,dist_code,user_ip,set_tran_pwd_time,device_id,login_pwd,gesture_pwd,face_id_pwd,user_label,status,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="UserRegInfoMap">
@@ -247,74 +247,55 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,user_id,mobile_no,id_type,id_no,valid_date,expired_date,issue_authority,user_name,gender,birth_date,email,tran_pwd,saver_id,source_platform,referee,address,occupation,reg_source,id_path_face,id_path_emblem,id_path_hand,dist_code,user_ip,set_tran_pwd_time,device_id,login_pwd,gesture_pwd,face_id_pwd,user_label,)
+        (tenant_id ,user_id ,mobile_no ,id_type ,id_no ,valid_date ,expired_date ,issue_authority ,user_name ,gender
+        ,birth_date ,email ,tran_pwd ,saver_id ,source_platform ,referee ,address ,occupation ,reg_source ,id_path_face
+        ,id_path_emblem ,id_path_hand ,dist_code ,user_ip ,set_tran_pwd_time ,device_id ,login_pwd ,gesture_pwd
+        ,face_id_pwd ,user_label )
         values
-        (#{tenantId},#{userId},#{mobileNo},#{idType},#{idNo},#{validDate},#{expiredDate},#{issueAuthority},#{userName},#{gender},#{birthDate},#{email},#{tranPwd},#{saverId},#{sourcePlatform},#{referee},#{address},#{occupation},#{regSource},#{idPathFace},#{idPathEmblem},#{idPathHand},#{distCode},#{userIp},#{setTranPwdTime},#{deviceId},#{loginPwd},#{gesturePwd},#{faceIdPwd},#{userLabel},)
+        (#{tenantId},#{userId},#{mobileNo},#{idType},#{idNo},#{validDate},#{expiredDate},#{issueAuthority},#{userName},#{gender},#{birthDate},#{email},#{tranPwd},#{saverId},#{sourcePlatform},#{referee},#{address},#{occupation},#{regSource},#{idPathFace},#{idPathEmblem},#{idPathHand},#{distCode},#{userIp},#{setTranPwdTime},#{deviceId},#{loginPwd},#{gesturePwd},#{faceIdPwd},#{userLabel})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, user_id, mobile_no, id_type, id_no, valid_date, expired_date, issue_authority, user_name, gender,
-        birth_date, email, tran_pwd, saver_id, source_platform, referee, address, occupation, reg_source, id_path_face,
-        id_path_emblem, id_path_hand, dist_code, user_ip, set_tran_pwd_time, device_id, login_pwd, gesture_pwd,
-        face_id_pwd, user_label,)
+        ( tenant_id ,user_id ,mobile_no ,id_type ,id_no ,valid_date ,expired_date ,issue_authority ,user_name ,gender
+        ,birth_date ,email ,tran_pwd ,saver_id ,source_platform ,referee ,address ,occupation ,reg_source ,id_path_face
+        ,id_path_emblem ,id_path_hand ,dist_code ,user_ip ,set_tran_pwd_time ,device_id ,login_pwd ,gesture_pwd
+        ,face_id_pwd ,user_label)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.userId}, #{entity.mobileNo}, #{entity.idType}, #{entity.idNo},
-            #{entity.validDate}, #{entity.expiredDate}, #{entity.issueAuthority}, #{entity.userName}, #{entity.gender},
-            #{entity.birthDate}, #{entity.email}, #{entity.tranPwd}, #{entity.saverId}, #{entity.sourcePlatform},
-            #{entity.referee}, #{entity.address}, #{entity.occupation}, #{entity.regSource}, #{entity.idPathFace},
-            #{entity.idPathEmblem}, #{entity.idPathHand}, #{entity.distCode}, #{entity.userIp},
-            #{entity.setTranPwdTime}, #{entity.deviceId}, #{entity.loginPwd}, #{entity.gesturePwd}, #{entity.faceIdPwd},
-            #{entity.userLabel},)
+            ( #{entity.tenantId} ,#{entity.userId} ,#{entity.mobileNo} ,#{entity.idType} ,#{entity.idNo}
+            ,#{entity.validDate} ,#{entity.expiredDate} ,#{entity.issueAuthority} ,#{entity.userName} ,#{entity.gender}
+            ,#{entity.birthDate} ,#{entity.email} ,#{entity.tranPwd} ,#{entity.saverId} ,#{entity.sourcePlatform}
+            ,#{entity.referee} ,#{entity.address} ,#{entity.occupation} ,#{entity.regSource} ,#{entity.idPathFace}
+            ,#{entity.idPathEmblem} ,#{entity.idPathHand} ,#{entity.distCode} ,#{entity.userIp}
+            ,#{entity.setTranPwdTime} ,#{entity.deviceId} ,#{entity.loginPwd} ,#{entity.gesturePwd} ,#{entity.faceIdPwd}
+            ,#{entity.userLabel})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, user_id, mobile_no, id_type, id_no, valid_date, expired_date, issue_authority, user_name, gender,
-        birth_date, email, tran_pwd, saver_id, source_platform, referee, address, occupation, reg_source, id_path_face,
-        id_path_emblem, id_path_hand, dist_code, user_ip, set_tran_pwd_time, device_id, login_pwd, gesture_pwd,
-        face_id_pwd, user_label, status,)
+        ( tenant_id ,user_id ,mobile_no ,id_type ,id_no ,valid_date ,expired_date ,issue_authority ,user_name ,gender
+        ,birth_date ,email ,tran_pwd ,saver_id ,source_platform ,referee ,address ,occupation ,reg_source ,id_path_face
+        ,id_path_emblem ,id_path_hand ,dist_code ,user_ip ,set_tran_pwd_time ,device_id ,login_pwd ,gesture_pwd
+        ,face_id_pwd ,user_label ,status)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.userId},#{entity.mobileNo},#{entity.idType},#{entity.idNo},#{entity.validDate},#{entity.expiredDate},#{entity.issueAuthority},#{entity.userName},#{entity.gender},#{entity.birthDate},#{entity.email},#{entity.tranPwd},#{entity.saverId},#{entity.sourcePlatform},#{entity.referee},#{entity.address},#{entity.occupation},#{entity.regSource},#{entity.idPathFace},#{entity.idPathEmblem},#{entity.idPathHand},#{entity.distCode},#{entity.userIp},#{entity.setTranPwdTime},#{entity.deviceId},#{entity.loginPwd},#{entity.gesturePwd},#{entity.faceIdPwd},#{entity.userLabel},#{entity.status},)
+            (#{entity.tenantId},#{entity.userId},#{entity.mobileNo},#{entity.idType},#{entity.idNo},#{entity.validDate},#{entity.expiredDate},#{entity.issueAuthority},#{entity.userName},#{entity.gender},#{entity.birthDate},#{entity.email},#{entity.tranPwd},#{entity.saverId},#{entity.sourcePlatform},#{entity.referee},#{entity.address},#{entity.occupation},#{entity.regSource},#{entity.idPathFace},#{entity.idPathEmblem},#{entity.idPathHand},#{entity.distCode},#{entity.userIp},#{entity.setTranPwdTime},#{entity.deviceId},#{entity.loginPwd},#{entity.gesturePwd},#{entity.faceIdPwd},#{entity.userLabel},#{entity.status})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        user_id=values(user_id),
-        mobile_no=values(mobile_no),
-        id_type=values(id_type),
-        id_no=values(id_no),
-        valid_date=values(valid_date),
-        expired_date=values(expired_date),
-        issue_authority=values(issue_authority),
-        user_name=values(user_name),
-        gender=values(gender),
-        birth_date=values(birth_date),
-        email=values(email),
-        tran_pwd=values(tran_pwd),
-        saver_id=values(saver_id),
-        source_platform=values(source_platform),
-        referee=values(referee),
-        address=values(address),
-        occupation=values(occupation),
-        reg_source=values(reg_source),
-        id_path_face=values(id_path_face),
-        id_path_emblem=values(id_path_emblem),
-        id_path_hand=values(id_path_hand),
-        dist_code=values(dist_code),
-        user_ip=values(user_ip),
-        set_tran_pwd_time=values(set_tran_pwd_time),
-        device_id=values(device_id),
-        login_pwd=values(login_pwd),
-        gesture_pwd=values(gesture_pwd),
-        face_id_pwd=values(face_id_pwd),
-        user_label=values(user_label),
-        status=values(status),
-
+        tenant_id=values(tenant_id) ,user_id=values(user_id) ,mobile_no=values(mobile_no) ,id_type=values(id_type)
+        ,id_no=values(id_no) ,valid_date=values(valid_date) ,expired_date=values(expired_date)
+        ,issue_authority=values(issue_authority) ,user_name=values(user_name) ,gender=values(gender)
+        ,birth_date=values(birth_date) ,email=values(email) ,tran_pwd=values(tran_pwd) ,saver_id=values(saver_id)
+        ,source_platform=values(source_platform) ,referee=values(referee) ,address=values(address)
+        ,occupation=values(occupation) ,reg_source=values(reg_source) ,id_path_face=values(id_path_face)
+        ,id_path_emblem=values(id_path_emblem) ,id_path_hand=values(id_path_hand) ,dist_code=values(dist_code)
+        ,user_ip=values(user_ip) ,set_tran_pwd_time=values(set_tran_pwd_time) ,device_id=values(device_id)
+        ,login_pwd=values(login_pwd) ,gesture_pwd=values(gesture_pwd) ,face_id_pwd=values(face_id_pwd)
+        ,user_label=values(user_label) ,status=values(status)
     </insert>
 
     <!--通过主键修改数据-->

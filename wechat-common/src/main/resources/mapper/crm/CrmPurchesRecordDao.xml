@@ -25,7 +25,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,batch_id,brand_id,amount,arrival_time,order_time,spend,postage,trace_code,other_cost,remark,status,create_time,last_modified_time    </sql>
+                id,tenant_id,batch_id,brand_id,amount,arrival_time,order_time,spend,postage,trace_code,other_cost,remark,status,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="CrmPurchesRecordMap">
@@ -133,47 +133,38 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,batch_id,brand_id,amount,arrival_time,order_time,spend,postage,trace_code,other_cost,remark,)
+        (tenant_id ,batch_id ,brand_id ,amount ,arrival_time ,order_time ,spend ,postage ,trace_code ,other_cost ,remark
+        )
         values
-        (#{tenantId},#{batchId},#{brandId},#{amount},#{arrivalTime},#{orderTime},#{spend},#{postage},#{traceCode},#{otherCost},#{remark},)
+        (#{tenantId},#{batchId},#{brandId},#{amount},#{arrivalTime},#{orderTime},#{spend},#{postage},#{traceCode},#{otherCost},#{remark})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, batch_id, brand_id, amount, arrival_time, order_time, spend, postage, trace_code, other_cost,
-        remark,)
+        ( tenant_id ,batch_id ,brand_id ,amount ,arrival_time ,order_time ,spend ,postage ,trace_code ,other_cost
+        ,remark)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.batchId}, #{entity.brandId}, #{entity.amount}, #{entity.arrivalTime},
-            #{entity.orderTime}, #{entity.spend}, #{entity.postage}, #{entity.traceCode}, #{entity.otherCost},
-            #{entity.remark},)
+            ( #{entity.tenantId} ,#{entity.batchId} ,#{entity.brandId} ,#{entity.amount} ,#{entity.arrivalTime}
+            ,#{entity.orderTime} ,#{entity.spend} ,#{entity.postage} ,#{entity.traceCode} ,#{entity.otherCost}
+            ,#{entity.remark})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, batch_id, brand_id, amount, arrival_time, order_time, spend, postage, trace_code, other_cost,
-        remark, status,)
+        ( tenant_id ,batch_id ,brand_id ,amount ,arrival_time ,order_time ,spend ,postage ,trace_code ,other_cost
+        ,remark ,status)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.batchId},#{entity.brandId},#{entity.amount},#{entity.arrivalTime},#{entity.orderTime},#{entity.spend},#{entity.postage},#{entity.traceCode},#{entity.otherCost},#{entity.remark},#{entity.status},)
+            (#{entity.tenantId},#{entity.batchId},#{entity.brandId},#{entity.amount},#{entity.arrivalTime},#{entity.orderTime},#{entity.spend},#{entity.postage},#{entity.traceCode},#{entity.otherCost},#{entity.remark},#{entity.status})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        batch_id=values(batch_id),
-        brand_id=values(brand_id),
-        amount=values(amount),
-        arrival_time=values(arrival_time),
-        order_time=values(order_time),
-        spend=values(spend),
-        postage=values(postage),
-        trace_code=values(trace_code),
-        other_cost=values(other_cost),
-        remark=values(remark),
-        status=values(status),
-
+        tenant_id=values(tenant_id) ,batch_id=values(batch_id) ,brand_id=values(brand_id) ,amount=values(amount)
+        ,arrival_time=values(arrival_time) ,order_time=values(order_time) ,spend=values(spend) ,postage=values(postage)
+        ,trace_code=values(trace_code) ,other_cost=values(other_cost) ,remark=values(remark) ,status=values(status)
     </insert>
 
     <!--通过主键修改数据-->

@@ -24,7 +24,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenantid,referrer_id,referrer_cert_no,referrer_cert_type,referrer_name,referrer_email,mobile_no,referrer_card_no,status,channel_no,createtime,lastmodifiedtime,remark    </sql>
+                id,tenantid,referrer_id,referrer_cert_no,referrer_cert_type,referrer_name,referrer_email,mobile_no,referrer_card_no,status,channel_no,createtime,lastmodifiedtime,remark    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="CrmReferrerInfoMap">
@@ -154,7 +154,8 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenantid,referrer_id,referrer_cert_no,referrer_cert_type,referrer_name,referrer_email,mobile_no,referrer_card_no,channel_no,createtime,lastmodifiedtime,remark)
+        (tenantid ,referrer_id ,referrer_cert_no ,referrer_cert_type ,referrer_name ,referrer_email ,mobile_no
+        ,referrer_card_no ,channel_no ,createtime ,lastmodifiedtime ,remark )
         values
         (#{tenantid},#{referrerId},#{referrerCertNo},#{referrerCertType},#{referrerName},#{referrerEmail},#{mobileNo},#{referrerCardNo},#{channelNo},#{createtime},#{lastmodifiedtime},#{remark})
     </insert>
@@ -162,39 +163,31 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenantid, referrer_id, referrer_cert_no, referrer_cert_type, referrer_name, referrer_email, mobile_no,
-        referrer_card_no, channel_no, createtime, lastmodifiedtime, remark)
+        ( tenantid ,referrer_id ,referrer_cert_no ,referrer_cert_type ,referrer_name ,referrer_email ,mobile_no
+        ,referrer_card_no ,channel_no ,createtime ,lastmodifiedtime ,remark)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantid}, #{entity.referrerId}, #{entity.referrerCertNo}, #{entity.referrerCertType},
-            #{entity.referrerName}, #{entity.referrerEmail}, #{entity.mobileNo}, #{entity.referrerCardNo},
-            #{entity.channelNo}, #{entity.createtime}, #{entity.lastmodifiedtime}, #{entity.remark})
+            ( #{entity.tenantid} ,#{entity.referrerId} ,#{entity.referrerCertNo} ,#{entity.referrerCertType}
+            ,#{entity.referrerName} ,#{entity.referrerEmail} ,#{entity.mobileNo} ,#{entity.referrerCardNo}
+            ,#{entity.channelNo} ,#{entity.createtime} ,#{entity.lastmodifiedtime} ,#{entity.remark})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenantid, referrer_id, referrer_cert_no, referrer_cert_type, referrer_name, referrer_email, mobile_no,
-        referrer_card_no, status, channel_no, createtime, lastmodifiedtime, remark)
+        ( tenantid ,referrer_id ,referrer_cert_no ,referrer_cert_type ,referrer_name ,referrer_email ,mobile_no
+        ,referrer_card_no ,status ,channel_no ,createtime ,lastmodifiedtime ,remark)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantid},#{entity.referrerId},#{entity.referrerCertNo},#{entity.referrerCertType},#{entity.referrerName},#{entity.referrerEmail},#{entity.mobileNo},#{entity.referrerCardNo},#{entity.status},#{entity.channelNo},#{entity.createtime},#{entity.lastmodifiedtime},#{entity.remark})
         </foreach>
         on duplicate key update
-        tenantid=values(tenantid),
-        referrer_id=values(referrer_id),
-        referrer_cert_no=values(referrer_cert_no),
-        referrer_cert_type=values(referrer_cert_type),
-        referrer_name=values(referrer_name),
-        referrer_email=values(referrer_email),
-        mobile_no=values(mobile_no),
-        referrer_card_no=values(referrer_card_no),
-        status=values(status),
-        channel_no=values(channel_no),
-        createtime=values(createtime),
-        lastmodifiedtime=values(lastmodifiedtime),
-        remark=values(remark)
+        tenantid=values(tenantid) ,referrer_id=values(referrer_id) ,referrer_cert_no=values(referrer_cert_no)
+        ,referrer_cert_type=values(referrer_cert_type) ,referrer_name=values(referrer_name)
+        ,referrer_email=values(referrer_email) ,mobile_no=values(mobile_no) ,referrer_card_no=values(referrer_card_no)
+        ,status=values(status) ,channel_no=values(channel_no) ,createtime=values(createtime)
+        ,lastmodifiedtime=values(lastmodifiedtime) ,remark=values(remark)
     </insert>
 
     <!--通过主键修改数据-->

@@ -20,7 +20,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        ID,tenant_id,appid,token_key,token_desc,token_vaild_type,token_valid_time,token_status,create_time,last_update_time    </sql>
+                ID,tenant_id,appid,token_key,token_desc,token_vaild_type,token_valid_time,token_status,create_time,last_update_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="SysTokenConfigMap">
@@ -116,7 +116,7 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,appid,token_key,token_desc,token_vaild_type,token_valid_time,token_status,last_update_time)
+        (tenant_id ,appid ,token_key ,token_desc ,token_vaild_type ,token_valid_time ,token_status ,last_update_time )
         values
         (#{tenantId},#{appid},#{tokenKey},#{tokenDesc},#{tokenVaildType},#{tokenValidTime},#{tokenStatus},#{lastUpdateTime})
     </insert>
@@ -124,31 +124,26 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, appid, token_key, token_desc, token_vaild_type, token_valid_time, token_status, last_update_time)
+        ( tenant_id ,appid ,token_key ,token_desc ,token_vaild_type ,token_valid_time ,token_status ,last_update_time)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.appid}, #{entity.tokenKey}, #{entity.tokenDesc}, #{entity.tokenVaildType},
-            #{entity.tokenValidTime}, #{entity.tokenStatus}, #{entity.lastUpdateTime})
+            ( #{entity.tenantId} ,#{entity.appid} ,#{entity.tokenKey} ,#{entity.tokenDesc} ,#{entity.tokenVaildType}
+            ,#{entity.tokenValidTime} ,#{entity.tokenStatus} ,#{entity.lastUpdateTime})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, appid, token_key, token_desc, token_vaild_type, token_valid_time, token_status, last_update_time)
+        ( tenant_id ,appid ,token_key ,token_desc ,token_vaild_type ,token_valid_time ,token_status ,last_update_time)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.appid},#{entity.tokenKey},#{entity.tokenDesc},#{entity.tokenVaildType},#{entity.tokenValidTime},#{entity.tokenStatus},#{entity.lastUpdateTime})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        appid=values(appid),
-        token_key=values(token_key),
-        token_desc=values(token_desc),
-        token_vaild_type=values(token_vaild_type),
-        token_valid_time=values(token_valid_time),
-        token_status=values(token_status),
-        last_update_time=values(last_update_time)
+        tenant_id=values(tenant_id) ,appid=values(appid) ,token_key=values(token_key) ,token_desc=values(token_desc)
+        ,token_vaild_type=values(token_vaild_type) ,token_valid_time=values(token_valid_time)
+        ,token_status=values(token_status) ,last_update_time=values(last_update_time)
     </insert>
 
     <!--通过主键修改数据-->

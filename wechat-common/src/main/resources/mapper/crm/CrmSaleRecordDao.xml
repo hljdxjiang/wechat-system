@@ -27,7 +27,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,batch_id,amount,order_time,spend,postage,postage_cost,trace_code,post_date,real_price,remark,channel_no,referrer_id,status,create_time,last_modified_time    </sql>
+                id,tenant_id,batch_id,amount,order_time,spend,postage,postage_cost,trace_code,post_date,real_price,remark,channel_no,referrer_id,status,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="CrmSaleRecordMap">
@@ -146,49 +146,39 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,batch_id,amount,order_time,spend,postage,postage_cost,trace_code,post_date,real_price,remark,channel_no,referrer_id,)
+        (tenant_id ,batch_id ,amount ,order_time ,spend ,postage ,postage_cost ,trace_code ,post_date ,real_price
+        ,remark ,channel_no ,referrer_id )
         values
-        (#{tenantId},#{batchId},#{amount},#{orderTime},#{spend},#{postage},#{postageCost},#{traceCode},#{postDate},#{realPrice},#{remark},#{channelNo},#{referrerId},)
+        (#{tenantId},#{batchId},#{amount},#{orderTime},#{spend},#{postage},#{postageCost},#{traceCode},#{postDate},#{realPrice},#{remark},#{channelNo},#{referrerId})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, batch_id, amount, order_time, spend, postage, postage_cost, trace_code, post_date, real_price,
-        remark, channel_no, referrer_id,)
+        ( tenant_id ,batch_id ,amount ,order_time ,spend ,postage ,postage_cost ,trace_code ,post_date ,real_price
+        ,remark ,channel_no ,referrer_id)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.batchId}, #{entity.amount}, #{entity.orderTime}, #{entity.spend},
-            #{entity.postage}, #{entity.postageCost}, #{entity.traceCode}, #{entity.postDate}, #{entity.realPrice},
-            #{entity.remark}, #{entity.channelNo}, #{entity.referrerId},)
+            ( #{entity.tenantId} ,#{entity.batchId} ,#{entity.amount} ,#{entity.orderTime} ,#{entity.spend}
+            ,#{entity.postage} ,#{entity.postageCost} ,#{entity.traceCode} ,#{entity.postDate} ,#{entity.realPrice}
+            ,#{entity.remark} ,#{entity.channelNo} ,#{entity.referrerId})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, batch_id, amount, order_time, spend, postage, postage_cost, trace_code, post_date, real_price,
-        remark, channel_no, referrer_id, status,)
+        ( tenant_id ,batch_id ,amount ,order_time ,spend ,postage ,postage_cost ,trace_code ,post_date ,real_price
+        ,remark ,channel_no ,referrer_id ,status)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.batchId},#{entity.amount},#{entity.orderTime},#{entity.spend},#{entity.postage},#{entity.postageCost},#{entity.traceCode},#{entity.postDate},#{entity.realPrice},#{entity.remark},#{entity.channelNo},#{entity.referrerId},#{entity.status},)
+            (#{entity.tenantId},#{entity.batchId},#{entity.amount},#{entity.orderTime},#{entity.spend},#{entity.postage},#{entity.postageCost},#{entity.traceCode},#{entity.postDate},#{entity.realPrice},#{entity.remark},#{entity.channelNo},#{entity.referrerId},#{entity.status})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        batch_id=values(batch_id),
-        amount=values(amount),
-        order_time=values(order_time),
-        spend=values(spend),
-        postage=values(postage),
-        postage_cost=values(postage_cost),
-        trace_code=values(trace_code),
-        post_date=values(post_date),
-        real_price=values(real_price),
-        remark=values(remark),
-        channel_no=values(channel_no),
-        referrer_id=values(referrer_id),
-        status=values(status),
-
+        tenant_id=values(tenant_id) ,batch_id=values(batch_id) ,amount=values(amount) ,order_time=values(order_time)
+        ,spend=values(spend) ,postage=values(postage) ,postage_cost=values(postage_cost) ,trace_code=values(trace_code)
+        ,post_date=values(post_date) ,real_price=values(real_price) ,remark=values(remark)
+        ,channel_no=values(channel_no) ,referrer_id=values(referrer_id) ,status=values(status)
     </insert>
 
     <!--通过主键修改数据-->

@@ -16,7 +16,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,roleid,path,title,type,parent_path    </sql>
+                id,roleid,path,title,type,parent_path    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="BackSysRoleDetailMap">
@@ -93,7 +93,7 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (roleid,path,title,type,parent_path)
+        (roleid ,path ,title ,type ,parent_path )
         values
         (#{roleid},#{path},#{title},#{type},#{parentPath})
     </insert>
@@ -101,27 +101,24 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( roleid, path, title, type, parent_path)
+        ( roleid ,path ,title ,type ,parent_path)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.roleid}, #{entity.path}, #{entity.title}, #{entity.type}, #{entity.parentPath})
+            ( #{entity.roleid} ,#{entity.path} ,#{entity.title} ,#{entity.type} ,#{entity.parentPath})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( roleid, path, title, type, parent_path)
+        ( roleid ,path ,title ,type ,parent_path)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.roleid},#{entity.path},#{entity.title},#{entity.type},#{entity.parentPath})
         </foreach>
         on duplicate key update
-        roleid=values(roleid),
-        path=values(path),
-        title=values(title),
-        type=values(type),
-        parent_path=values(parent_path)
+        roleid=values(roleid) ,path=values(path) ,title=values(title) ,type=values(type)
+        ,parent_path=values(parent_path)
     </insert>
 
     <!--通过主键修改数据-->

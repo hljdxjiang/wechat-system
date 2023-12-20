@@ -18,7 +18,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,user_id,latitude,longitude,precision,channel,valid_date    </sql>
+                id,tenant_id,user_id,latitude,longitude,precision,channel,valid_date    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="UserLocationRecordMap">
@@ -104,7 +104,7 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,user_id,latitude,longitude,precision,channel,valid_date)
+        (tenant_id ,user_id ,latitude ,longitude ,precision ,channel ,valid_date )
         values
         (#{tenantId},#{userId},#{latitude},#{longitude},#{precision},#{channel},#{validDate})
     </insert>
@@ -112,30 +112,25 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, user_id, latitude, longitude, precision, channel, valid_date)
+        ( tenant_id ,user_id ,latitude ,longitude ,precision ,channel ,valid_date)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.userId}, #{entity.latitude}, #{entity.longitude}, #{entity.precision},
-            #{entity.channel}, #{entity.validDate})
+            ( #{entity.tenantId} ,#{entity.userId} ,#{entity.latitude} ,#{entity.longitude} ,#{entity.precision}
+            ,#{entity.channel} ,#{entity.validDate})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, user_id, latitude, longitude, precision, channel, valid_date)
+        ( tenant_id ,user_id ,latitude ,longitude ,precision ,channel ,valid_date)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.userId},#{entity.latitude},#{entity.longitude},#{entity.precision},#{entity.channel},#{entity.validDate})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        user_id=values(user_id),
-        latitude=values(latitude),
-        longitude=values(longitude),
-        precision=values(precision),
-        channel=values(channel),
-        valid_date=values(valid_date)
+        tenant_id=values(tenant_id) ,user_id=values(user_id) ,latitude=values(latitude) ,longitude=values(longitude)
+        ,precision=values(precision) ,channel=values(channel) ,valid_date=values(valid_date)
     </insert>
 
     <!--通过主键修改数据-->

@@ -2,6 +2,9 @@ package com.nuoding.wechat.background.controller.back;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.nuoding.wechat.background.model.back.RoleDTO;
+import com.nuoding.wechat.background.model.back.SaveRoleDetail;
+import com.nuoding.wechat.background.service.back.RoleService;
 import com.nuoding.wechat.common.constant.SessionKey;
 import com.nuoding.wechat.common.entity.back.BackSysRolesEntity;
 import com.nuoding.wechat.common.enums.RespStatusEnum;
@@ -15,7 +18,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
@@ -33,11 +35,14 @@ public class BackSysRolesController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    /**
-     * 服务对象
-     */
-    @Resource
     private BackSysRolesService backSysRolesService;
+
+    private RoleService roleService;
+
+    public BackSysRolesController(BackSysRolesService backSysRolesService, RoleService roleService) {
+        this.backSysRolesService = backSysRolesService;
+        this.roleService = roleService;
+    }
 
     /**
      * 分页查询
@@ -148,6 +153,34 @@ public class BackSysRolesController {
         logger.info("deleteById end.mapResponse:{}", JsonUtil.obj2Json(mapResponse));
         return mapResponse;
     }
+
+    @PostMapping("/getRoleDetail")
+    public MapResponse getRoleDetail(@RequestBody RoleDTO dto) {
+
+        MapResponse mapResponse = new MapResponse();
+        logger.info("getRoleDetail begin.dto:{}", JsonUtil.obj2Json(dto));
+        mapResponse = roleService.getRoleDetail(dto);
+        return mapResponse;
+    }
+
+    @PostMapping("/saveRole")
+    public MapResponse saveRole(@RequestBody SaveRoleDetail roleDetail) {
+        logger.info("saveRole begin.SaveRoleDetail:{}", JsonUtil.obj2Json(roleDetail));
+        MapResponse mapResponse = new MapResponse();
+        mapResponse = roleService.saveRoleDetail(roleDetail);
+        return mapResponse;
+    }
+
+
+    @PostMapping("/deleteRole")
+    public MapResponse deleteRole(@RequestBody RoleDTO dto) {
+        logger.info("deleteRole begin.dto:{}", JsonUtil.obj2Json(dto));
+
+        MapResponse mapResponse = new MapResponse();
+        mapResponse = roleService.deleteRole(dto);
+        return mapResponse;
+    }
+
 
 }
 

@@ -22,7 +22,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,type_id,type_desc,status,type_remark,create_time,last_modified_time,userid,modify_userid,type_kind,type_sort    </sql>
+                id,tenant_id,type_id,type_desc,status,type_remark,create_time,last_modified_time,userid,modify_userid,type_kind,type_sort    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="SysPageTypeInfoMap">
@@ -117,7 +117,7 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,type_id,type_desc,type_remark,userid,modify_userid,type_kind,type_sort)
+        (tenant_id ,type_id ,type_desc ,type_remark ,userid ,modify_userid ,type_kind ,type_sort )
         values
         (#{tenantId},#{typeId},#{typeDesc},#{typeRemark},#{userid},#{modifyUserid},#{typeKind},#{typeSort})
     </insert>
@@ -125,32 +125,26 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, type_id, type_desc, type_remark, userid, modify_userid, type_kind, type_sort)
+        ( tenant_id ,type_id ,type_desc ,type_remark ,userid ,modify_userid ,type_kind ,type_sort)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.typeId}, #{entity.typeDesc}, #{entity.typeRemark}, #{entity.userid},
-            #{entity.modifyUserid}, #{entity.typeKind}, #{entity.typeSort})
+            ( #{entity.tenantId} ,#{entity.typeId} ,#{entity.typeDesc} ,#{entity.typeRemark} ,#{entity.userid}
+            ,#{entity.modifyUserid} ,#{entity.typeKind} ,#{entity.typeSort})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, type_id, type_desc, status, type_remark, userid, modify_userid, type_kind, type_sort)
+        ( tenant_id ,type_id ,type_desc ,status ,type_remark ,userid ,modify_userid ,type_kind ,type_sort)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.typeId},#{entity.typeDesc},#{entity.status},#{entity.typeRemark},#{entity.userid},#{entity.modifyUserid},#{entity.typeKind},#{entity.typeSort})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        type_id=values(type_id),
-        type_desc=values(type_desc),
-        status=values(status),
-        type_remark=values(type_remark),
-        userid=values(userid),
-        modify_userid=values(modify_userid),
-        type_kind=values(type_kind),
-        type_sort=values(type_sort)
+        tenant_id=values(tenant_id) ,type_id=values(type_id) ,type_desc=values(type_desc) ,status=values(status)
+        ,type_remark=values(type_remark) ,userid=values(userid) ,modify_userid=values(modify_userid)
+        ,type_kind=values(type_kind) ,type_sort=values(type_sort)
     </insert>
 
     <!--通过主键修改数据-->

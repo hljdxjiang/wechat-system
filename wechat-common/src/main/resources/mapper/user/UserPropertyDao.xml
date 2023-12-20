@@ -20,7 +20,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,userid,integral,species,silver_icon,balance,gift_amount,createtime,lastmodifiedtime    </sql>
+                id,tenant_id,userid,integral,species,silver_icon,balance,gift_amount,createtime,lastmodifiedtime    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="UserPropertyMap">
@@ -122,7 +122,7 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,userid,integral,species,silver_icon,balance,gift_amount,createtime,lastmodifiedtime)
+        (tenant_id ,userid ,integral ,species ,silver_icon ,balance ,gift_amount ,createtime ,lastmodifiedtime )
         values
         (#{tenantId},#{userid},#{integral},#{species},#{silverIcon},#{balance},#{giftAmount},#{createtime},#{lastmodifiedtime})
     </insert>
@@ -130,32 +130,26 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, userid, integral, species, silver_icon, balance, gift_amount, createtime, lastmodifiedtime)
+        ( tenant_id ,userid ,integral ,species ,silver_icon ,balance ,gift_amount ,createtime ,lastmodifiedtime)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.userid}, #{entity.integral}, #{entity.species}, #{entity.silverIcon},
-            #{entity.balance}, #{entity.giftAmount}, #{entity.createtime}, #{entity.lastmodifiedtime})
+            ( #{entity.tenantId} ,#{entity.userid} ,#{entity.integral} ,#{entity.species} ,#{entity.silverIcon}
+            ,#{entity.balance} ,#{entity.giftAmount} ,#{entity.createtime} ,#{entity.lastmodifiedtime})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, userid, integral, species, silver_icon, balance, gift_amount, createtime, lastmodifiedtime)
+        ( tenant_id ,userid ,integral ,species ,silver_icon ,balance ,gift_amount ,createtime ,lastmodifiedtime)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.userid},#{entity.integral},#{entity.species},#{entity.silverIcon},#{entity.balance},#{entity.giftAmount},#{entity.createtime},#{entity.lastmodifiedtime})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        userid=values(userid),
-        integral=values(integral),
-        species=values(species),
-        silver_icon=values(silver_icon),
-        balance=values(balance),
-        gift_amount=values(gift_amount),
-        createtime=values(createtime),
-        lastmodifiedtime=values(lastmodifiedtime)
+        tenant_id=values(tenant_id) ,userid=values(userid) ,integral=values(integral) ,species=values(species)
+        ,silver_icon=values(silver_icon) ,balance=values(balance) ,gift_amount=values(gift_amount)
+        ,createtime=values(createtime) ,lastmodifiedtime=values(lastmodifiedtime)
     </insert>
 
     <!--通过主键修改数据-->

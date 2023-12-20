@@ -17,7 +17,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,role_id,role_name,role_remark,create_time,last_modified_time    </sql>
+                id,tenant_id,role_id,role_name,role_remark,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="BackSysRolesMap">
@@ -90,35 +90,32 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,role_id,role_name,role_remark,)
+        (tenant_id ,role_id ,role_name ,role_remark )
         values
-        (#{tenantId},#{roleId},#{roleName},#{roleRemark},)
+        (#{tenantId},#{roleId},#{roleName},#{roleRemark})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, role_id, role_name, role_remark,)
+        ( tenant_id ,role_id ,role_name ,role_remark)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.roleId}, #{entity.roleName}, #{entity.roleRemark},)
+            ( #{entity.tenantId} ,#{entity.roleId} ,#{entity.roleName} ,#{entity.roleRemark})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, role_id, role_name, role_remark,)
+        ( tenant_id ,role_id ,role_name ,role_remark)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.roleId},#{entity.roleName},#{entity.roleRemark},)
+            (#{entity.tenantId},#{entity.roleId},#{entity.roleName},#{entity.roleRemark})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        role_id=values(role_id),
-        role_name=values(role_name),
-        role_remark=values(role_remark),
-
+        tenant_id=values(tenant_id) ,role_id=values(role_id) ,role_name=values(role_name)
+        ,role_remark=values(role_remark)
     </insert>
 
     <!--通过主键修改数据-->

@@ -26,7 +26,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,activity_id,activity_title,activity_detail,activity_type,reward,reward_amount,vaild_date,expire_date,reward_valid_date,reward_expire_date,numbero,status,create_time,last_modified_time    </sql>
+                id,tenant_id,activity_id,activity_title,activity_detail,activity_type,reward,reward_amount,vaild_date,expire_date,reward_valid_date,reward_expire_date,numbero,status,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="MallActivityMap">
@@ -153,48 +153,40 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,activity_id,activity_title,activity_detail,activity_type,reward,reward_amount,vaild_date,expire_date,reward_valid_date,reward_expire_date,numbero,)
+        (tenant_id ,activity_id ,activity_title ,activity_detail ,activity_type ,reward ,reward_amount ,vaild_date
+        ,expire_date ,reward_valid_date ,reward_expire_date ,numbero )
         values
-        (#{tenantId},#{activityId},#{activityTitle},#{activityDetail},#{activityType},#{reward},#{rewardAmount},#{vaildDate},#{expireDate},#{rewardValidDate},#{rewardExpireDate},#{numbero},)
+        (#{tenantId},#{activityId},#{activityTitle},#{activityDetail},#{activityType},#{reward},#{rewardAmount},#{vaildDate},#{expireDate},#{rewardValidDate},#{rewardExpireDate},#{numbero})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, activity_id, activity_title, activity_detail, activity_type, reward, reward_amount, vaild_date,
-        expire_date, reward_valid_date, reward_expire_date, numbero,)
+        ( tenant_id ,activity_id ,activity_title ,activity_detail ,activity_type ,reward ,reward_amount ,vaild_date
+        ,expire_date ,reward_valid_date ,reward_expire_date ,numbero)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.activityId}, #{entity.activityTitle}, #{entity.activityDetail},
-            #{entity.activityType}, #{entity.reward}, #{entity.rewardAmount}, #{entity.vaildDate}, #{entity.expireDate},
-            #{entity.rewardValidDate}, #{entity.rewardExpireDate}, #{entity.numbero},)
+            ( #{entity.tenantId} ,#{entity.activityId} ,#{entity.activityTitle} ,#{entity.activityDetail}
+            ,#{entity.activityType} ,#{entity.reward} ,#{entity.rewardAmount} ,#{entity.vaildDate} ,#{entity.expireDate}
+            ,#{entity.rewardValidDate} ,#{entity.rewardExpireDate} ,#{entity.numbero})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, activity_id, activity_title, activity_detail, activity_type, reward, reward_amount, vaild_date,
-        expire_date, reward_valid_date, reward_expire_date, numbero, status,)
+        ( tenant_id ,activity_id ,activity_title ,activity_detail ,activity_type ,reward ,reward_amount ,vaild_date
+        ,expire_date ,reward_valid_date ,reward_expire_date ,numbero ,status)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.activityId},#{entity.activityTitle},#{entity.activityDetail},#{entity.activityType},#{entity.reward},#{entity.rewardAmount},#{entity.vaildDate},#{entity.expireDate},#{entity.rewardValidDate},#{entity.rewardExpireDate},#{entity.numbero},#{entity.status},)
+            (#{entity.tenantId},#{entity.activityId},#{entity.activityTitle},#{entity.activityDetail},#{entity.activityType},#{entity.reward},#{entity.rewardAmount},#{entity.vaildDate},#{entity.expireDate},#{entity.rewardValidDate},#{entity.rewardExpireDate},#{entity.numbero},#{entity.status})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        activity_id=values(activity_id),
-        activity_title=values(activity_title),
-        activity_detail=values(activity_detail),
-        activity_type=values(activity_type),
-        reward=values(reward),
-        reward_amount=values(reward_amount),
-        vaild_date=values(vaild_date),
-        expire_date=values(expire_date),
-        reward_valid_date=values(reward_valid_date),
-        reward_expire_date=values(reward_expire_date),
-        numbero=values(numbero),
-        status=values(status),
-
+        tenant_id=values(tenant_id) ,activity_id=values(activity_id) ,activity_title=values(activity_title)
+        ,activity_detail=values(activity_detail) ,activity_type=values(activity_type) ,reward=values(reward)
+        ,reward_amount=values(reward_amount) ,vaild_date=values(vaild_date) ,expire_date=values(expire_date)
+        ,reward_valid_date=values(reward_valid_date) ,reward_expire_date=values(reward_expire_date)
+        ,numbero=values(numbero) ,status=values(status)
     </insert>
 
     <!--通过主键修改数据-->

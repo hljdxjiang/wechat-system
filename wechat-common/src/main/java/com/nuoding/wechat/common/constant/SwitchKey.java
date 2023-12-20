@@ -9,8 +9,8 @@ public class SwitchKey {
     /**
      * 开关标识
      */
-    public static final String SWITCH_OFF = "off";
+    public static final String SWITCH_OFF = "0";
 
-    public static final String SWITCH_ON = "on";
+    public static final String SWITCH_ON = "1";
 
 }

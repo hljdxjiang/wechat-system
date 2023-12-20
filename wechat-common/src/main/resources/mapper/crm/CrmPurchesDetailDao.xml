@@ -19,7 +19,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,brand_id,batch_id,prod_id,amount,prod_price,remark,create_time    </sql>
+                id,tenant_id,brand_id,batch_id,prod_id,amount,prod_price,remark,create_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="CrmPurchesDetailMap">
@@ -103,39 +103,33 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,brand_id,batch_id,prod_id,amount,prod_price,remark,)
+        (tenant_id ,brand_id ,batch_id ,prod_id ,amount ,prod_price ,remark )
         values
-        (#{tenantId},#{brandId},#{batchId},#{prodId},#{amount},#{prodPrice},#{remark},)
+        (#{tenantId},#{brandId},#{batchId},#{prodId},#{amount},#{prodPrice},#{remark})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, brand_id, batch_id, prod_id, amount, prod_price, remark,)
+        ( tenant_id ,brand_id ,batch_id ,prod_id ,amount ,prod_price ,remark)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.brandId}, #{entity.batchId}, #{entity.prodId}, #{entity.amount},
-            #{entity.prodPrice}, #{entity.remark},)
+            ( #{entity.tenantId} ,#{entity.brandId} ,#{entity.batchId} ,#{entity.prodId} ,#{entity.amount}
+            ,#{entity.prodPrice} ,#{entity.remark})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, brand_id, batch_id, prod_id, amount, prod_price, remark,)
+        ( tenant_id ,brand_id ,batch_id ,prod_id ,amount ,prod_price ,remark)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.brandId},#{entity.batchId},#{entity.prodId},#{entity.amount},#{entity.prodPrice},#{entity.remark},)
+            (#{entity.tenantId},#{entity.brandId},#{entity.batchId},#{entity.prodId},#{entity.amount},#{entity.prodPrice},#{entity.remark})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        brand_id=values(brand_id),
-        batch_id=values(batch_id),
-        prod_id=values(prod_id),
-        amount=values(amount),
-        prod_price=values(prod_price),
-        remark=values(remark),
-
+        tenant_id=values(tenant_id) ,brand_id=values(brand_id) ,batch_id=values(batch_id) ,prod_id=values(prod_id)
+        ,amount=values(amount) ,prod_price=values(prod_price) ,remark=values(remark)
     </insert>
 
     <!--通过主键修改数据-->

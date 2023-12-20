@@ -22,7 +22,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,resource_id,resource_type,link_url,status,user_id,remark,create_time,last_modified_time,expire_time,valid_time    </sql>
+                id,tenant_id,resource_id,resource_type,link_url,status,user_id,remark,create_time,last_modified_time,expire_time,valid_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="SysResourceInfoMap">
@@ -120,7 +120,7 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,resource_id,resource_type,link_url,user_id,remark,expire_time,valid_time)
+        (tenant_id ,resource_id ,resource_type ,link_url ,user_id ,remark ,expire_time ,valid_time )
         values
         (#{tenantId},#{resourceId},#{resourceType},#{linkUrl},#{userId},#{remark},#{expireTime},#{validTime})
     </insert>
@@ -128,32 +128,26 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, resource_id, resource_type, link_url, user_id, remark, expire_time, valid_time)
+        ( tenant_id ,resource_id ,resource_type ,link_url ,user_id ,remark ,expire_time ,valid_time)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.resourceId}, #{entity.resourceType}, #{entity.linkUrl}, #{entity.userId},
-            #{entity.remark}, #{entity.expireTime}, #{entity.validTime})
+            ( #{entity.tenantId} ,#{entity.resourceId} ,#{entity.resourceType} ,#{entity.linkUrl} ,#{entity.userId}
+            ,#{entity.remark} ,#{entity.expireTime} ,#{entity.validTime})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, resource_id, resource_type, link_url, status, user_id, remark, expire_time, valid_time)
+        ( tenant_id ,resource_id ,resource_type ,link_url ,status ,user_id ,remark ,expire_time ,valid_time)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.resourceId},#{entity.resourceType},#{entity.linkUrl},#{entity.status},#{entity.userId},#{entity.remark},#{entity.expireTime},#{entity.validTime})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        resource_id=values(resource_id),
-        resource_type=values(resource_type),
-        link_url=values(link_url),
-        status=values(status),
-        user_id=values(user_id),
-        remark=values(remark),
-        expire_time=values(expire_time),
-        valid_time=values(valid_time)
+        tenant_id=values(tenant_id) ,resource_id=values(resource_id) ,resource_type=values(resource_type)
+        ,link_url=values(link_url) ,status=values(status) ,user_id=values(user_id) ,remark=values(remark)
+        ,expire_time=values(expire_time) ,valid_time=values(valid_time)
     </insert>
 
     <!--通过主键修改数据-->

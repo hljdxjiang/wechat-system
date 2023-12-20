@@ -22,7 +22,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,user_id,comment_id,comment_pid,comment_detail,relate_type,relate_id,trample_amount,crown_amount,create_time,last_modified_time    </sql>
+                id,tenant_id,user_id,comment_id,comment_pid,comment_detail,relate_type,relate_id,trample_amount,crown_amount,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="UserCommentInfoMap">
@@ -124,43 +124,37 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,user_id,comment_id,comment_pid,comment_detail,relate_type,relate_id,trample_amount,crown_amount,)
+        (tenant_id ,user_id ,comment_id ,comment_pid ,comment_detail ,relate_type ,relate_id ,trample_amount
+        ,crown_amount )
         values
-        (#{tenantId},#{userId},#{commentId},#{commentPid},#{commentDetail},#{relateType},#{relateId},#{trampleAmount},#{crownAmount},)
+        (#{tenantId},#{userId},#{commentId},#{commentPid},#{commentDetail},#{relateType},#{relateId},#{trampleAmount},#{crownAmount})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, user_id, comment_id, comment_pid, comment_detail, relate_type, relate_id, trample_amount,
-        crown_amount,)
+        ( tenant_id ,user_id ,comment_id ,comment_pid ,comment_detail ,relate_type ,relate_id ,trample_amount
+        ,crown_amount)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.userId}, #{entity.commentId}, #{entity.commentPid}, #{entity.commentDetail},
-            #{entity.relateType}, #{entity.relateId}, #{entity.trampleAmount}, #{entity.crownAmount},)
+            ( #{entity.tenantId} ,#{entity.userId} ,#{entity.commentId} ,#{entity.commentPid} ,#{entity.commentDetail}
+            ,#{entity.relateType} ,#{entity.relateId} ,#{entity.trampleAmount} ,#{entity.crownAmount})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, user_id, comment_id, comment_pid, comment_detail, relate_type, relate_id, trample_amount,
-        crown_amount,)
+        ( tenant_id ,user_id ,comment_id ,comment_pid ,comment_detail ,relate_type ,relate_id ,trample_amount
+        ,crown_amount)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.userId},#{entity.commentId},#{entity.commentPid},#{entity.commentDetail},#{entity.relateType},#{entity.relateId},#{entity.trampleAmount},#{entity.crownAmount},)
+            (#{entity.tenantId},#{entity.userId},#{entity.commentId},#{entity.commentPid},#{entity.commentDetail},#{entity.relateType},#{entity.relateId},#{entity.trampleAmount},#{entity.crownAmount})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        user_id=values(user_id),
-        comment_id=values(comment_id),
-        comment_pid=values(comment_pid),
-        comment_detail=values(comment_detail),
-        relate_type=values(relate_type),
-        relate_id=values(relate_id),
-        trample_amount=values(trample_amount),
-        crown_amount=values(crown_amount),
-
+        tenant_id=values(tenant_id) ,user_id=values(user_id) ,comment_id=values(comment_id)
+        ,comment_pid=values(comment_pid) ,comment_detail=values(comment_detail) ,relate_type=values(relate_type)
+        ,relate_id=values(relate_id) ,trample_amount=values(trample_amount) ,crown_amount=values(crown_amount)
     </insert>
 
     <!--通过主键修改数据-->

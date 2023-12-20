@@ -19,7 +19,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,userid,createtime,lastmodifiedtime,lottery_id,win_type,win_prod_code,win_prod_pass    </sql>
+                id,tenant_id,userid,createtime,lastmodifiedtime,lottery_id,win_type,win_prod_code,win_prod_pass    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="UserWinningRecordMap">
@@ -118,7 +118,7 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,userid,createtime,lastmodifiedtime,lottery_id,win_type,win_prod_code,win_prod_pass)
+        (tenant_id ,userid ,createtime ,lastmodifiedtime ,lottery_id ,win_type ,win_prod_code ,win_prod_pass )
         values
         (#{tenantId},#{userid},#{createtime},#{lastmodifiedtime},#{lotteryId},#{winType},#{winProdCode},#{winProdPass})
     </insert>
@@ -126,31 +126,26 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, userid, createtime, lastmodifiedtime, lottery_id, win_type, win_prod_code, win_prod_pass)
+        ( tenant_id ,userid ,createtime ,lastmodifiedtime ,lottery_id ,win_type ,win_prod_code ,win_prod_pass)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.userid}, #{entity.createtime}, #{entity.lastmodifiedtime},
-            #{entity.lotteryId}, #{entity.winType}, #{entity.winProdCode}, #{entity.winProdPass})
+            ( #{entity.tenantId} ,#{entity.userid} ,#{entity.createtime} ,#{entity.lastmodifiedtime}
+            ,#{entity.lotteryId} ,#{entity.winType} ,#{entity.winProdCode} ,#{entity.winProdPass})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, userid, createtime, lastmodifiedtime, lottery_id, win_type, win_prod_code, win_prod_pass)
+        ( tenant_id ,userid ,createtime ,lastmodifiedtime ,lottery_id ,win_type ,win_prod_code ,win_prod_pass)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.userid},#{entity.createtime},#{entity.lastmodifiedtime},#{entity.lotteryId},#{entity.winType},#{entity.winProdCode},#{entity.winProdPass})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        userid=values(userid),
-        createtime=values(createtime),
-        lastmodifiedtime=values(lastmodifiedtime),
-        lottery_id=values(lottery_id),
-        win_type=values(win_type),
-        win_prod_code=values(win_prod_code),
-        win_prod_pass=values(win_prod_pass)
+        tenant_id=values(tenant_id) ,userid=values(userid) ,createtime=values(createtime)
+        ,lastmodifiedtime=values(lastmodifiedtime) ,lottery_id=values(lottery_id) ,win_type=values(win_type)
+        ,win_prod_code=values(win_prod_code) ,win_prod_pass=values(win_prod_pass)
     </insert>
 
     <!--通过主键修改数据-->

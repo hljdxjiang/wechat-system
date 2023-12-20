@@ -25,7 +25,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,mopenid,unionid,nickname,gender,province,city,country,avatarurl,wartermark,createtime,lastmodifiedtime,mobile_no,status,user_id    </sql>
+                id,mopenid,unionid,nickname,gender,province,city,country,avatarurl,wartermark,createtime,lastmodifiedtime,mobile_no,status,user_id    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="WechatMinipUserMap">
@@ -146,7 +146,8 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (mopenid,unionid,nickname,gender,province,city,country,avatarurl,wartermark,createtime,lastmodifiedtime,mobile_no,user_id)
+        (mopenid ,unionid ,nickname ,gender ,province ,city ,country ,avatarurl ,wartermark ,createtime
+        ,lastmodifiedtime ,mobile_no ,user_id )
         values
         (#{mopenid},#{unionid},#{nickname},#{gender},#{province},#{city},#{country},#{avatarurl},#{wartermark},#{createtime},#{lastmodifiedtime},#{mobileNo},#{userId})
     </insert>
@@ -154,40 +155,30 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( mopenid, unionid, nickname, gender, province, city, country, avatarurl, wartermark, createtime,
-        lastmodifiedtime, mobile_no, user_id)
+        ( mopenid ,unionid ,nickname ,gender ,province ,city ,country ,avatarurl ,wartermark ,createtime
+        ,lastmodifiedtime ,mobile_no ,user_id)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.mopenid}, #{entity.unionid}, #{entity.nickname}, #{entity.gender}, #{entity.province},
-            #{entity.city}, #{entity.country}, #{entity.avatarurl}, #{entity.wartermark}, #{entity.createtime},
-            #{entity.lastmodifiedtime}, #{entity.mobileNo}, #{entity.userId})
+            ( #{entity.mopenid} ,#{entity.unionid} ,#{entity.nickname} ,#{entity.gender} ,#{entity.province}
+            ,#{entity.city} ,#{entity.country} ,#{entity.avatarurl} ,#{entity.wartermark} ,#{entity.createtime}
+            ,#{entity.lastmodifiedtime} ,#{entity.mobileNo} ,#{entity.userId})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( mopenid, unionid, nickname, gender, province, city, country, avatarurl, wartermark, createtime,
-        lastmodifiedtime, mobile_no, status, user_id)
+        ( mopenid ,unionid ,nickname ,gender ,province ,city ,country ,avatarurl ,wartermark ,createtime
+        ,lastmodifiedtime ,mobile_no ,status ,user_id)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.mopenid},#{entity.unionid},#{entity.nickname},#{entity.gender},#{entity.province},#{entity.city},#{entity.country},#{entity.avatarurl},#{entity.wartermark},#{entity.createtime},#{entity.lastmodifiedtime},#{entity.mobileNo},#{entity.status},#{entity.userId})
         </foreach>
         on duplicate key update
-        mopenid=values(mopenid),
-        unionid=values(unionid),
-        nickname=values(nickname),
-        gender=values(gender),
-        province=values(province),
-        city=values(city),
-        country=values(country),
-        avatarurl=values(avatarurl),
-        wartermark=values(wartermark),
-        createtime=values(createtime),
-        lastmodifiedtime=values(lastmodifiedtime),
-        mobile_no=values(mobile_no),
-        status=values(status),
-        user_id=values(user_id)
+        mopenid=values(mopenid) ,unionid=values(unionid) ,nickname=values(nickname) ,gender=values(gender)
+        ,province=values(province) ,city=values(city) ,country=values(country) ,avatarurl=values(avatarurl)
+        ,wartermark=values(wartermark) ,createtime=values(createtime) ,lastmodifiedtime=values(lastmodifiedtime)
+        ,mobile_no=values(mobile_no) ,status=values(status) ,user_id=values(user_id)
     </insert>
 
     <!--通过主键修改数据-->

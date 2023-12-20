@@ -18,7 +18,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,menu_id,item_pid,item_id,create_time,last_modified_time,sort    </sql>
+                id,tenant_id,menu_id,item_pid,item_id,create_time,last_modified_time,sort    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="WechatMenusDetailMap">
@@ -93,7 +93,7 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,menu_id,item_pid,item_id,sort)
+        (tenant_id ,menu_id ,item_pid ,item_id ,sort )
         values
         (#{tenantId},#{menuId},#{itemPid},#{itemId},#{sort})
     </insert>
@@ -101,27 +101,24 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, menu_id, item_pid, item_id, sort)
+        ( tenant_id ,menu_id ,item_pid ,item_id ,sort)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.menuId}, #{entity.itemPid}, #{entity.itemId}, #{entity.sort})
+            ( #{entity.tenantId} ,#{entity.menuId} ,#{entity.itemPid} ,#{entity.itemId} ,#{entity.sort})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, menu_id, item_pid, item_id, sort)
+        ( tenant_id ,menu_id ,item_pid ,item_id ,sort)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.menuId},#{entity.itemPid},#{entity.itemId},#{entity.sort})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        menu_id=values(menu_id),
-        item_pid=values(item_pid),
-        item_id=values(item_id),
-        sort=values(sort)
+        tenant_id=values(tenant_id) ,menu_id=values(menu_id) ,item_pid=values(item_pid) ,item_id=values(item_id)
+        ,sort=values(sort)
     </insert>
 
     <!--通过主键修改数据-->

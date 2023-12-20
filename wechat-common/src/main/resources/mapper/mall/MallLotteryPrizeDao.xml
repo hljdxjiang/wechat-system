@@ -23,7 +23,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,lottery_id,tenant_id,prize_id,prize_title,prize_detail,prize_type,rate,amount,sort,status,create_time,last_modified_time    </sql>
+                id,lottery_id,tenant_id,prize_id,prize_title,prize_detail,prize_type,rate,amount,sort,status,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="MallLotteryPrizeMap">
@@ -124,42 +124,34 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (lottery_id,tenant_id,prize_id,prize_title,prize_detail,prize_type,rate,amount,sort,)
+        (lottery_id ,tenant_id ,prize_id ,prize_title ,prize_detail ,prize_type ,rate ,amount ,sort )
         values
-        (#{lotteryId},#{tenantId},#{prizeId},#{prizeTitle},#{prizeDetail},#{prizeType},#{rate},#{amount},#{sort},)
+        (#{lotteryId},#{tenantId},#{prizeId},#{prizeTitle},#{prizeDetail},#{prizeType},#{rate},#{amount},#{sort})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( lottery_id, tenant_id, prize_id, prize_title, prize_detail, prize_type, rate, amount, sort,)
+        ( lottery_id ,tenant_id ,prize_id ,prize_title ,prize_detail ,prize_type ,rate ,amount ,sort)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.lotteryId}, #{entity.tenantId}, #{entity.prizeId}, #{entity.prizeTitle}, #{entity.prizeDetail},
-            #{entity.prizeType}, #{entity.rate}, #{entity.amount}, #{entity.sort},)
+            ( #{entity.lotteryId} ,#{entity.tenantId} ,#{entity.prizeId} ,#{entity.prizeTitle} ,#{entity.prizeDetail}
+            ,#{entity.prizeType} ,#{entity.rate} ,#{entity.amount} ,#{entity.sort})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( lottery_id, tenant_id, prize_id, prize_title, prize_detail, prize_type, rate, amount, sort, status,)
+        ( lottery_id ,tenant_id ,prize_id ,prize_title ,prize_detail ,prize_type ,rate ,amount ,sort ,status)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.lotteryId},#{entity.tenantId},#{entity.prizeId},#{entity.prizeTitle},#{entity.prizeDetail},#{entity.prizeType},#{entity.rate},#{entity.amount},#{entity.sort},#{entity.status},)
+            (#{entity.lotteryId},#{entity.tenantId},#{entity.prizeId},#{entity.prizeTitle},#{entity.prizeDetail},#{entity.prizeType},#{entity.rate},#{entity.amount},#{entity.sort},#{entity.status})
         </foreach>
         on duplicate key update
-        lottery_id=values(lottery_id),
-        tenant_id=values(tenant_id),
-        prize_id=values(prize_id),
-        prize_title=values(prize_title),
-        prize_detail=values(prize_detail),
-        prize_type=values(prize_type),
-        rate=values(rate),
-        amount=values(amount),
-        sort=values(sort),
-        status=values(status),
-
+        lottery_id=values(lottery_id) ,tenant_id=values(tenant_id) ,prize_id=values(prize_id)
+        ,prize_title=values(prize_title) ,prize_detail=values(prize_detail) ,prize_type=values(prize_type)
+        ,rate=values(rate) ,amount=values(amount) ,sort=values(sort) ,status=values(status)
     </insert>
 
     <!--通过主键修改数据-->

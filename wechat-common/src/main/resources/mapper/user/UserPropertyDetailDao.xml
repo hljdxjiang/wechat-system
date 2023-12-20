@@ -23,7 +23,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,userid,createtime,lastmodifiedtime,property_type,opera_type,amount,relate_type,relate_id,expire_date,create_time,vaild_type    </sql>
+                id,tenant_id,userid,createtime,lastmodifiedtime,property_type,opera_type,amount,relate_type,relate_id,expire_date,create_time,vaild_type    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="UserPropertyDetailMap">
@@ -137,7 +137,8 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,userid,createtime,lastmodifiedtime,property_type,opera_type,amount,relate_type,relate_id,expire_date,vaild_type)
+        (tenant_id ,userid ,createtime ,lastmodifiedtime ,property_type ,opera_type ,amount ,relate_type ,relate_id
+        ,expire_date ,vaild_type )
         values
         (#{tenantId},#{userid},#{createtime},#{lastmodifiedtime},#{propertyType},#{operaType},#{amount},#{relateType},#{relateId},#{expireDate},#{vaildType})
     </insert>
@@ -145,37 +146,30 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, userid, createtime, lastmodifiedtime, property_type, opera_type, amount, relate_type, relate_id,
-        expire_date, vaild_type)
+        ( tenant_id ,userid ,createtime ,lastmodifiedtime ,property_type ,opera_type ,amount ,relate_type ,relate_id
+        ,expire_date ,vaild_type)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.userid}, #{entity.createtime}, #{entity.lastmodifiedtime},
-            #{entity.propertyType}, #{entity.operaType}, #{entity.amount}, #{entity.relateType}, #{entity.relateId},
-            #{entity.expireDate}, #{entity.vaildType})
+            ( #{entity.tenantId} ,#{entity.userid} ,#{entity.createtime} ,#{entity.lastmodifiedtime}
+            ,#{entity.propertyType} ,#{entity.operaType} ,#{entity.amount} ,#{entity.relateType} ,#{entity.relateId}
+            ,#{entity.expireDate} ,#{entity.vaildType})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, userid, createtime, lastmodifiedtime, property_type, opera_type, amount, relate_type, relate_id,
-        expire_date, vaild_type)
+        ( tenant_id ,userid ,createtime ,lastmodifiedtime ,property_type ,opera_type ,amount ,relate_type ,relate_id
+        ,expire_date ,vaild_type)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.userid},#{entity.createtime},#{entity.lastmodifiedtime},#{entity.propertyType},#{entity.operaType},#{entity.amount},#{entity.relateType},#{entity.relateId},#{entity.expireDate},#{entity.vaildType})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        userid=values(userid),
-        createtime=values(createtime),
-        lastmodifiedtime=values(lastmodifiedtime),
-        property_type=values(property_type),
-        opera_type=values(opera_type),
-        amount=values(amount),
-        relate_type=values(relate_type),
-        relate_id=values(relate_id),
-        expire_date=values(expire_date),
-        vaild_type=values(vaild_type)
+        tenant_id=values(tenant_id) ,userid=values(userid) ,createtime=values(createtime)
+        ,lastmodifiedtime=values(lastmodifiedtime) ,property_type=values(property_type) ,opera_type=values(opera_type)
+        ,amount=values(amount) ,relate_type=values(relate_type) ,relate_id=values(relate_id)
+        ,expire_date=values(expire_date) ,vaild_type=values(vaild_type)
     </insert>
 
     <!--通过主键修改数据-->

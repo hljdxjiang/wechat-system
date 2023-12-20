@@ -22,7 +22,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,template_id,template_type,template_des,template_url,template_config,minip_appid,minip_page_path,message_type,create_time,last_modified_time    </sql>
+                id,tenant_id,template_id,template_type,template_des,template_url,template_config,minip_appid,minip_page_path,message_type,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="WechatTemplateInfoMap">
@@ -129,44 +129,38 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,template_id,template_type,template_des,template_url,template_config,minip_appid,minip_page_path,message_type,)
+        (tenant_id ,template_id ,template_type ,template_des ,template_url ,template_config ,minip_appid
+        ,minip_page_path ,message_type )
         values
-        (#{tenantId},#{templateId},#{templateType},#{templateDes},#{templateUrl},#{templateConfig},#{minipAppid},#{minipPagePath},#{messageType},)
+        (#{tenantId},#{templateId},#{templateType},#{templateDes},#{templateUrl},#{templateConfig},#{minipAppid},#{minipPagePath},#{messageType})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, template_id, template_type, template_des, template_url, template_config, minip_appid,
-        minip_page_path, message_type,)
+        ( tenant_id ,template_id ,template_type ,template_des ,template_url ,template_config ,minip_appid
+        ,minip_page_path ,message_type)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.templateId}, #{entity.templateType}, #{entity.templateDes},
-            #{entity.templateUrl}, #{entity.templateConfig}, #{entity.minipAppid}, #{entity.minipPagePath},
-            #{entity.messageType},)
+            ( #{entity.tenantId} ,#{entity.templateId} ,#{entity.templateType} ,#{entity.templateDes}
+            ,#{entity.templateUrl} ,#{entity.templateConfig} ,#{entity.minipAppid} ,#{entity.minipPagePath}
+            ,#{entity.messageType})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, template_id, template_type, template_des, template_url, template_config, minip_appid,
-        minip_page_path, message_type,)
+        ( tenant_id ,template_id ,template_type ,template_des ,template_url ,template_config ,minip_appid
+        ,minip_page_path ,message_type)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.templateId},#{entity.templateType},#{entity.templateDes},#{entity.templateUrl},#{entity.templateConfig},#{entity.minipAppid},#{entity.minipPagePath},#{entity.messageType},)
+            (#{entity.tenantId},#{entity.templateId},#{entity.templateType},#{entity.templateDes},#{entity.templateUrl},#{entity.templateConfig},#{entity.minipAppid},#{entity.minipPagePath},#{entity.messageType})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        template_id=values(template_id),
-        template_type=values(template_type),
-        template_des=values(template_des),
-        template_url=values(template_url),
-        template_config=values(template_config),
-        minip_appid=values(minip_appid),
-        minip_page_path=values(minip_page_path),
-        message_type=values(message_type),
-
+        tenant_id=values(tenant_id) ,template_id=values(template_id) ,template_type=values(template_type)
+        ,template_des=values(template_des) ,template_url=values(template_url) ,template_config=values(template_config)
+        ,minip_appid=values(minip_appid) ,minip_page_path=values(minip_page_path) ,message_type=values(message_type)
     </insert>
 
     <!--通过主键修改数据-->

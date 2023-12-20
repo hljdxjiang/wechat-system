@@ -25,7 +25,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,item_id,item_sort,status,create_time,last_modified_time,item_title,item_value,item_desc,item_type,title_show_type,title_url,value_url,value_show_type    </sql>
+                id,tenant_id,item_id,item_sort,status,create_time,last_modified_time,item_title,item_value,item_desc,item_type,title_show_type,title_url,value_url,value_show_type    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="SysItemInfoMap">
@@ -134,7 +134,8 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,item_id,item_sort,item_title,item_value,item_desc,item_type,title_show_type,title_url,value_url,value_show_type)
+        (tenant_id ,item_id ,item_sort ,item_title ,item_value ,item_desc ,item_type ,title_show_type ,title_url
+        ,value_url ,value_show_type )
         values
         (#{tenantId},#{itemId},#{itemSort},#{itemTitle},#{itemValue},#{itemDesc},#{itemType},#{titleShowType},#{titleUrl},#{valueUrl},#{valueShowType})
     </insert>
@@ -142,38 +143,30 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, item_id, item_sort, item_title, item_value, item_desc, item_type, title_show_type, title_url,
-        value_url, value_show_type)
+        ( tenant_id ,item_id ,item_sort ,item_title ,item_value ,item_desc ,item_type ,title_show_type ,title_url
+        ,value_url ,value_show_type)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.itemId}, #{entity.itemSort}, #{entity.itemTitle}, #{entity.itemValue},
-            #{entity.itemDesc}, #{entity.itemType}, #{entity.titleShowType}, #{entity.titleUrl}, #{entity.valueUrl},
-            #{entity.valueShowType})
+            ( #{entity.tenantId} ,#{entity.itemId} ,#{entity.itemSort} ,#{entity.itemTitle} ,#{entity.itemValue}
+            ,#{entity.itemDesc} ,#{entity.itemType} ,#{entity.titleShowType} ,#{entity.titleUrl} ,#{entity.valueUrl}
+            ,#{entity.valueShowType})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, item_id, item_sort, status, item_title, item_value, item_desc, item_type, title_show_type,
-        title_url, value_url, value_show_type)
+        ( tenant_id ,item_id ,item_sort ,status ,item_title ,item_value ,item_desc ,item_type ,title_show_type
+        ,title_url ,value_url ,value_show_type)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.itemId},#{entity.itemSort},#{entity.status},#{entity.itemTitle},#{entity.itemValue},#{entity.itemDesc},#{entity.itemType},#{entity.titleShowType},#{entity.titleUrl},#{entity.valueUrl},#{entity.valueShowType})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        item_id=values(item_id),
-        item_sort=values(item_sort),
-        status=values(status),
-        item_title=values(item_title),
-        item_value=values(item_value),
-        item_desc=values(item_desc),
-        item_type=values(item_type),
-        title_show_type=values(title_show_type),
-        title_url=values(title_url),
-        value_url=values(value_url),
-        value_show_type=values(value_show_type)
+        tenant_id=values(tenant_id) ,item_id=values(item_id) ,item_sort=values(item_sort) ,status=values(status)
+        ,item_title=values(item_title) ,item_value=values(item_value) ,item_desc=values(item_desc)
+        ,item_type=values(item_type) ,title_show_type=values(title_show_type) ,title_url=values(title_url)
+        ,value_url=values(value_url) ,value_show_type=values(value_show_type)
     </insert>
 
     <!--通过主键修改数据-->

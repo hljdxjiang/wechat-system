@@ -30,7 +30,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,tenant_name,tenant_desc,register_time,mobile_no,vip_level,vip_expire_day,tenant_card_no,status,remark,createtime,lastmodifiedtime,tenant_favicon,tenant_logo,email,appid,app_secret,wechat_token,minip_secret    </sql>
+                id,tenant_id,tenant_name,tenant_desc,register_time,mobile_no,vip_level,vip_expire_day,tenant_card_no,status,remark,createtime,lastmodifiedtime,tenant_favicon,tenant_logo,email,appid,app_secret,wechat_token,minip_secret    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="SysTenantInfoMap">
@@ -187,7 +187,9 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,tenant_name,tenant_desc,register_time,mobile_no,vip_level,vip_expire_day,tenant_card_no,remark,createtime,lastmodifiedtime,tenant_favicon,tenant_logo,email,appid,app_secret,wechat_token,minip_secret)
+        (tenant_id ,tenant_name ,tenant_desc ,register_time ,mobile_no ,vip_level ,vip_expire_day ,tenant_card_no
+        ,remark ,createtime ,lastmodifiedtime ,tenant_favicon ,tenant_logo ,email ,appid ,app_secret ,wechat_token
+        ,minip_secret )
         values
         (#{tenantId},#{tenantName},#{tenantDesc},#{registerTime},#{mobileNo},#{vipLevel},#{vipExpireDay},#{tenantCardNo},#{remark},#{createtime},#{lastmodifiedtime},#{tenantFavicon},#{tenantLogo},#{email},#{appid},#{appSecret},#{wechatToken},#{minipSecret})
     </insert>
@@ -195,48 +197,36 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, tenant_name, tenant_desc, register_time, mobile_no, vip_level, vip_expire_day, tenant_card_no,
-        remark, createtime, lastmodifiedtime, tenant_favicon, tenant_logo, email, appid, app_secret, wechat_token,
-        minip_secret)
+        ( tenant_id ,tenant_name ,tenant_desc ,register_time ,mobile_no ,vip_level ,vip_expire_day ,tenant_card_no
+        ,remark ,createtime ,lastmodifiedtime ,tenant_favicon ,tenant_logo ,email ,appid ,app_secret ,wechat_token
+        ,minip_secret)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.tenantName}, #{entity.tenantDesc}, #{entity.registerTime},
-            #{entity.mobileNo}, #{entity.vipLevel}, #{entity.vipExpireDay}, #{entity.tenantCardNo}, #{entity.remark},
-            #{entity.createtime}, #{entity.lastmodifiedtime}, #{entity.tenantFavicon}, #{entity.tenantLogo},
-            #{entity.email}, #{entity.appid}, #{entity.appSecret}, #{entity.wechatToken}, #{entity.minipSecret})
+            ( #{entity.tenantId} ,#{entity.tenantName} ,#{entity.tenantDesc} ,#{entity.registerTime} ,#{entity.mobileNo}
+            ,#{entity.vipLevel} ,#{entity.vipExpireDay} ,#{entity.tenantCardNo} ,#{entity.remark} ,#{entity.createtime}
+            ,#{entity.lastmodifiedtime} ,#{entity.tenantFavicon} ,#{entity.tenantLogo} ,#{entity.email} ,#{entity.appid}
+            ,#{entity.appSecret} ,#{entity.wechatToken} ,#{entity.minipSecret})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, tenant_name, tenant_desc, register_time, mobile_no, vip_level, vip_expire_day, tenant_card_no,
-        status, remark, createtime, lastmodifiedtime, tenant_favicon, tenant_logo, email, appid, app_secret,
-        wechat_token, minip_secret)
+        ( tenant_id ,tenant_name ,tenant_desc ,register_time ,mobile_no ,vip_level ,vip_expire_day ,tenant_card_no
+        ,status ,remark ,createtime ,lastmodifiedtime ,tenant_favicon ,tenant_logo ,email ,appid ,app_secret
+        ,wechat_token ,minip_secret)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.tenantName},#{entity.tenantDesc},#{entity.registerTime},#{entity.mobileNo},#{entity.vipLevel},#{entity.vipExpireDay},#{entity.tenantCardNo},#{entity.status},#{entity.remark},#{entity.createtime},#{entity.lastmodifiedtime},#{entity.tenantFavicon},#{entity.tenantLogo},#{entity.email},#{entity.appid},#{entity.appSecret},#{entity.wechatToken},#{entity.minipSecret})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        tenant_name=values(tenant_name),
-        tenant_desc=values(tenant_desc),
-        register_time=values(register_time),
-        mobile_no=values(mobile_no),
-        vip_level=values(vip_level),
-        vip_expire_day=values(vip_expire_day),
-        tenant_card_no=values(tenant_card_no),
-        status=values(status),
-        remark=values(remark),
-        createtime=values(createtime),
-        lastmodifiedtime=values(lastmodifiedtime),
-        tenant_favicon=values(tenant_favicon),
-        tenant_logo=values(tenant_logo),
-        email=values(email),
-        appid=values(appid),
-        app_secret=values(app_secret),
-        wechat_token=values(wechat_token),
-        minip_secret=values(minip_secret)
+        tenant_id=values(tenant_id) ,tenant_name=values(tenant_name) ,tenant_desc=values(tenant_desc)
+        ,register_time=values(register_time) ,mobile_no=values(mobile_no) ,vip_level=values(vip_level)
+        ,vip_expire_day=values(vip_expire_day) ,tenant_card_no=values(tenant_card_no) ,status=values(status)
+        ,remark=values(remark) ,createtime=values(createtime) ,lastmodifiedtime=values(lastmodifiedtime)
+        ,tenant_favicon=values(tenant_favicon) ,tenant_logo=values(tenant_logo) ,email=values(email)
+        ,appid=values(appid) ,app_secret=values(app_secret) ,wechat_token=values(wechat_token)
+        ,minip_secret=values(minip_secret)
     </insert>
 
     <!--通过主键修改数据-->

@@ -20,7 +20,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,page_id,tenant_id,flow_id,flow_sort,status,create_time,last_modified_time,channel,control_flag    </sql>
+                id,page_id,tenant_id,flow_id,flow_sort,status,create_time,last_modified_time,channel,control_flag    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="SysPageFlowInfoMap">
@@ -105,7 +105,7 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (page_id,tenant_id,flow_id,flow_sort,channel,control_flag)
+        (page_id ,tenant_id ,flow_id ,flow_sort ,channel ,control_flag )
         values
         (#{pageId},#{tenantId},#{flowId},#{flowSort},#{channel},#{controlFlag})
     </insert>
@@ -113,30 +113,25 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( page_id, tenant_id, flow_id, flow_sort, channel, control_flag)
+        ( page_id ,tenant_id ,flow_id ,flow_sort ,channel ,control_flag)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.pageId}, #{entity.tenantId}, #{entity.flowId}, #{entity.flowSort}, #{entity.channel},
-            #{entity.controlFlag})
+            ( #{entity.pageId} ,#{entity.tenantId} ,#{entity.flowId} ,#{entity.flowSort} ,#{entity.channel}
+            ,#{entity.controlFlag})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( page_id, tenant_id, flow_id, flow_sort, status, channel, control_flag)
+        ( page_id ,tenant_id ,flow_id ,flow_sort ,status ,channel ,control_flag)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.pageId},#{entity.tenantId},#{entity.flowId},#{entity.flowSort},#{entity.status},#{entity.channel},#{entity.controlFlag})
         </foreach>
         on duplicate key update
-        page_id=values(page_id),
-        tenant_id=values(tenant_id),
-        flow_id=values(flow_id),
-        flow_sort=values(flow_sort),
-        status=values(status),
-        channel=values(channel),
-        control_flag=values(control_flag)
+        page_id=values(page_id) ,tenant_id=values(tenant_id) ,flow_id=values(flow_id) ,flow_sort=values(flow_sort)
+        ,status=values(status) ,channel=values(channel) ,control_flag=values(control_flag)
     </insert>
 
     <!--通过主键修改数据-->

@@ -50,6 +50,10 @@ public class UserLoginServiceImpl implements UserLoginService {
         String userId = loginDTO.getUserId();
         String passWD = loginDTO.getPassWD();
         String maxConfigCnt = sysParamConfigService.getConfigByCatch(RedisKey.USER_ERROR_CNT);
+        int maxErrCnt = 5;
+        if (StringUtils.isNoneBlank(maxConfigCnt)) {
+            maxErrCnt = Integer.valueOf(maxConfigCnt);
+        }
         String notAllLoginFlag = redisService.getValue(RedisKey.USER_NOT_ALLOW_FLAG.concat(userId));
         if (StringUtils.isNotBlank(notAllLoginFlag)) {
             mapResponse.setResponse(RespStatusEnum.USER_NOT_ALLOW_LOGIN);
@@ -60,7 +64,7 @@ public class UserLoginServiceImpl implements UserLoginService {
         if (!StringUtils.isBlank(err)) {
             errCnt = Integer.valueOf(err);
         }
-        if (errCnt >= Integer.valueOf(maxConfigCnt)) {
+        if (errCnt >= maxErrCnt) {
             mapResponse.setResponse(RespStatusEnum.PASSWD_ERROR_TOO_MATCH);
             return mapResponse;
         }
@@ -72,9 +76,10 @@ public class UserLoginServiceImpl implements UserLoginService {
         List<BackSysUserEntity> list = backSysUserDao.queryAllByLimit(backSysUser);
         if (!CollectionUtils.isEmpty(list)) {
             backSysUser = list.get(0);
-            if (!StringUtils.equals(passWD, backSysUser.getPasswd())) {
+            if (StringUtils.equals(passWD, backSysUser.getPasswd())) {
                 mapResponse.setResponse(RespStatusEnum.LOGIN_SUCCESS);
                 retMap.put("userId", userId);
+                retMap.put("token", userId);
                 retMap.put("roleId", backSysUser.getRoleId());
                 retMap.put("userName", backSysUser.getUserName());
                 redisService.delValue(RedisKey.USER_ERROR_CNT.concat(userId));
@@ -84,7 +89,7 @@ public class UserLoginServiceImpl implements UserLoginService {
                         , String.valueOf(errCnt + 1), 10 * 60);
             }
             String roleID = backSysUser.getRoleId();
-            if (StringUtils.isBlank(roleID)) {
+            if (StringUtils.isNotBlank(roleID)) {
                 SessionKey.setValue(SessionKey.LOGIN_KEY, backSysUser.getUserId());
                 SessionKey.setValue(SessionKey.LOGIN_ROLE_ID, roleID);
                 SessionKey.setValue(SessionKey.TENANT_ID, backSysUser.getTenantId());
@@ -120,6 +125,8 @@ public class UserLoginServiceImpl implements UserLoginService {
     @Override
     public boolean logout(LoginDTO loginDTO) {
         SessionKey.removeKey(SessionKey.LOGIN_KEY);
+        SessionKey.removeKey(SessionKey.TENANT_ID);
+        SessionKey.removeKey(SessionKey.LOGIN_ROLE_ID);
         return true;
     }
 }

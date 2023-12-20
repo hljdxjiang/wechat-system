@@ -24,7 +24,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,user_id,mobile_no,name,address,status,create_time,last_modified_time,country,province,city,street,detail    </sql>
+                id,tenant_id,user_id,mobile_no,name,address,status,create_time,last_modified_time,country,province,city,street,detail    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="UserAddrInfoMap">
@@ -123,7 +123,7 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,user_id,mobile_no,name,address,country,province,city,street,detail)
+        (tenant_id ,user_id ,mobile_no ,name ,address ,country ,province ,city ,street ,detail )
         values
         (#{tenantId},#{userId},#{mobileNo},#{name},#{address},#{country},#{province},#{city},#{street},#{detail})
     </insert>
@@ -131,34 +131,26 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, user_id, mobile_no, name, address, country, province, city, street, detail)
+        ( tenant_id ,user_id ,mobile_no ,name ,address ,country ,province ,city ,street ,detail)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.userId}, #{entity.mobileNo}, #{entity.name}, #{entity.address},
-            #{entity.country}, #{entity.province}, #{entity.city}, #{entity.street}, #{entity.detail})
+            ( #{entity.tenantId} ,#{entity.userId} ,#{entity.mobileNo} ,#{entity.name} ,#{entity.address}
+            ,#{entity.country} ,#{entity.province} ,#{entity.city} ,#{entity.street} ,#{entity.detail})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, user_id, mobile_no, name, address, status, country, province, city, street, detail)
+        ( tenant_id ,user_id ,mobile_no ,name ,address ,status ,country ,province ,city ,street ,detail)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.userId},#{entity.mobileNo},#{entity.name},#{entity.address},#{entity.status},#{entity.country},#{entity.province},#{entity.city},#{entity.street},#{entity.detail})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        user_id=values(user_id),
-        mobile_no=values(mobile_no),
-        name=values(name),
-        address=values(address),
-        status=values(status),
-        country=values(country),
-        province=values(province),
-        city=values(city),
-        street=values(street),
-        detail=values(detail)
+        tenant_id=values(tenant_id) ,user_id=values(user_id) ,mobile_no=values(mobile_no) ,name=values(name)
+        ,address=values(address) ,status=values(status) ,country=values(country) ,province=values(province)
+        ,city=values(city) ,street=values(street) ,detail=values(detail)
     </insert>
 
     <!--通过主键修改数据-->

@@ -22,7 +22,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,user_id,ip_addr,country,province,city,county,login_time,login_result,login_result_code,isp    </sql>
+                id,tenant_id,user_id,ip_addr,country,province,city,county,login_time,login_result,login_result_code,isp    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="BackUserLoginRecordMap">
@@ -126,7 +126,8 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,user_id,ip_addr,country,province,city,county,login_time,login_result,login_result_code,isp)
+        (tenant_id ,user_id ,ip_addr ,country ,province ,city ,county ,login_time ,login_result ,login_result_code ,isp
+        )
         values
         (#{tenantId},#{userId},#{ipAddr},#{country},#{province},#{city},#{county},#{loginTime},#{loginResult},#{loginResultCode},#{isp})
     </insert>
@@ -134,37 +135,29 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, user_id, ip_addr, country, province, city, county, login_time, login_result, login_result_code,
-        isp)
+        ( tenant_id ,user_id ,ip_addr ,country ,province ,city ,county ,login_time ,login_result ,login_result_code
+        ,isp)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.userId}, #{entity.ipAddr}, #{entity.country}, #{entity.province},
-            #{entity.city}, #{entity.county}, #{entity.loginTime}, #{entity.loginResult}, #{entity.loginResultCode},
-            #{entity.isp})
+            ( #{entity.tenantId} ,#{entity.userId} ,#{entity.ipAddr} ,#{entity.country} ,#{entity.province}
+            ,#{entity.city} ,#{entity.county} ,#{entity.loginTime} ,#{entity.loginResult} ,#{entity.loginResultCode}
+            ,#{entity.isp})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, user_id, ip_addr, country, province, city, county, login_time, login_result, login_result_code,
-        isp)
+        ( tenant_id ,user_id ,ip_addr ,country ,province ,city ,county ,login_time ,login_result ,login_result_code
+        ,isp)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.userId},#{entity.ipAddr},#{entity.country},#{entity.province},#{entity.city},#{entity.county},#{entity.loginTime},#{entity.loginResult},#{entity.loginResultCode},#{entity.isp})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        user_id=values(user_id),
-        ip_addr=values(ip_addr),
-        country=values(country),
-        province=values(province),
-        city=values(city),
-        county=values(county),
-        login_time=values(login_time),
-        login_result=values(login_result),
-        login_result_code=values(login_result_code),
-        isp=values(isp)
+        tenant_id=values(tenant_id) ,user_id=values(user_id) ,ip_addr=values(ip_addr) ,country=values(country)
+        ,province=values(province) ,city=values(city) ,county=values(county) ,login_time=values(login_time)
+        ,login_result=values(login_result) ,login_result_code=values(login_result_code) ,isp=values(isp)
     </insert>
 
     <!--通过主键修改数据-->

@@ -27,7 +27,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,unionid,wxopenid,nickname,sex,province,city,country,headimgurl,privilege,mobile_no,status,user_id,remark,create_time,last_modified_time    </sql>
+                id,tenant_id,unionid,wxopenid,nickname,sex,province,city,country,headimgurl,privilege,mobile_no,status,user_id,remark,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="WechatUserMap">
@@ -141,49 +141,39 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,unionid,wxopenid,nickname,sex,province,city,country,headimgurl,privilege,mobile_no,user_id,remark,)
+        (tenant_id ,unionid ,wxopenid ,nickname ,sex ,province ,city ,country ,headimgurl ,privilege ,mobile_no ,user_id
+        ,remark )
         values
-        (#{tenantId},#{unionid},#{wxopenid},#{nickname},#{sex},#{province},#{city},#{country},#{headimgurl},#{privilege},#{mobileNo},#{userId},#{remark},)
+        (#{tenantId},#{unionid},#{wxopenid},#{nickname},#{sex},#{province},#{city},#{country},#{headimgurl},#{privilege},#{mobileNo},#{userId},#{remark})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, unionid, wxopenid, nickname, sex, province, city, country, headimgurl, privilege, mobile_no,
-        user_id, remark,)
+        ( tenant_id ,unionid ,wxopenid ,nickname ,sex ,province ,city ,country ,headimgurl ,privilege ,mobile_no
+        ,user_id ,remark)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.unionid}, #{entity.wxopenid}, #{entity.nickname}, #{entity.sex},
-            #{entity.province}, #{entity.city}, #{entity.country}, #{entity.headimgurl}, #{entity.privilege},
-            #{entity.mobileNo}, #{entity.userId}, #{entity.remark},)
+            ( #{entity.tenantId} ,#{entity.unionid} ,#{entity.wxopenid} ,#{entity.nickname} ,#{entity.sex}
+            ,#{entity.province} ,#{entity.city} ,#{entity.country} ,#{entity.headimgurl} ,#{entity.privilege}
+            ,#{entity.mobileNo} ,#{entity.userId} ,#{entity.remark})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, unionid, wxopenid, nickname, sex, province, city, country, headimgurl, privilege, mobile_no,
-        status, user_id, remark,)
+        ( tenant_id ,unionid ,wxopenid ,nickname ,sex ,province ,city ,country ,headimgurl ,privilege ,mobile_no ,status
+        ,user_id ,remark)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.unionid},#{entity.wxopenid},#{entity.nickname},#{entity.sex},#{entity.province},#{entity.city},#{entity.country},#{entity.headimgurl},#{entity.privilege},#{entity.mobileNo},#{entity.status},#{entity.userId},#{entity.remark},)
+            (#{entity.tenantId},#{entity.unionid},#{entity.wxopenid},#{entity.nickname},#{entity.sex},#{entity.province},#{entity.city},#{entity.country},#{entity.headimgurl},#{entity.privilege},#{entity.mobileNo},#{entity.status},#{entity.userId},#{entity.remark})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        unionid=values(unionid),
-        wxopenid=values(wxopenid),
-        nickname=values(nickname),
-        sex=values(sex),
-        province=values(province),
-        city=values(city),
-        country=values(country),
-        headimgurl=values(headimgurl),
-        privilege=values(privilege),
-        mobile_no=values(mobile_no),
-        status=values(status),
-        user_id=values(user_id),
-        remark=values(remark),
-
+        tenant_id=values(tenant_id) ,unionid=values(unionid) ,wxopenid=values(wxopenid) ,nickname=values(nickname)
+        ,sex=values(sex) ,province=values(province) ,city=values(city) ,country=values(country)
+        ,headimgurl=values(headimgurl) ,privilege=values(privilege) ,mobile_no=values(mobile_no) ,status=values(status)
+        ,user_id=values(user_id) ,remark=values(remark)
     </insert>
 
     <!--通过主键修改数据-->

@@ -32,7 +32,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,lottery_id,lottery_title,lottery_detail,lottery_type,reward,reward_amount,vaild_date,expire_date,reward_valid_date,reward_expire_date,numbero,status,create_time,last_modified_time,cost,cost_type,reward_type,cycle_amount,cycle_period,cycle_type    </sql>
+                id,tenant_id,lottery_id,lottery_title,lottery_detail,lottery_type,reward,reward_amount,vaild_date,expire_date,reward_valid_date,reward_expire_date,numbero,status,create_time,last_modified_time,cost,cost_type,reward_type,cycle_amount,cycle_period,cycle_type    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="MallLotteryMap">
@@ -189,7 +189,9 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,lottery_id,lottery_title,lottery_detail,lottery_type,reward,reward_amount,vaild_date,expire_date,reward_valid_date,reward_expire_date,numbero,cost,cost_type,reward_type,cycle_amount,cycle_period,cycle_type)
+        (tenant_id ,lottery_id ,lottery_title ,lottery_detail ,lottery_type ,reward ,reward_amount ,vaild_date
+        ,expire_date ,reward_valid_date ,reward_expire_date ,numbero ,cost ,cost_type ,reward_type ,cycle_amount
+        ,cycle_period ,cycle_type )
         values
         (#{tenantId},#{lotteryId},#{lotteryTitle},#{lotteryDetail},#{lotteryType},#{reward},#{rewardAmount},#{vaildDate},#{expireDate},#{rewardValidDate},#{rewardExpireDate},#{numbero},#{cost},#{costType},#{rewardType},#{cycleAmount},#{cyclePeriod},#{cycleType})
     </insert>
@@ -197,48 +199,37 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, lottery_id, lottery_title, lottery_detail, lottery_type, reward, reward_amount, vaild_date,
-        expire_date, reward_valid_date, reward_expire_date, numbero, cost, cost_type, reward_type, cycle_amount,
-        cycle_period, cycle_type)
+        ( tenant_id ,lottery_id ,lottery_title ,lottery_detail ,lottery_type ,reward ,reward_amount ,vaild_date
+        ,expire_date ,reward_valid_date ,reward_expire_date ,numbero ,cost ,cost_type ,reward_type ,cycle_amount
+        ,cycle_period ,cycle_type)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.lotteryId}, #{entity.lotteryTitle}, #{entity.lotteryDetail},
-            #{entity.lotteryType}, #{entity.reward}, #{entity.rewardAmount}, #{entity.vaildDate}, #{entity.expireDate},
-            #{entity.rewardValidDate}, #{entity.rewardExpireDate}, #{entity.numbero}, #{entity.cost},
-            #{entity.costType}, #{entity.rewardType}, #{entity.cycleAmount}, #{entity.cyclePeriod}, #{entity.cycleType})
+            ( #{entity.tenantId} ,#{entity.lotteryId} ,#{entity.lotteryTitle} ,#{entity.lotteryDetail}
+            ,#{entity.lotteryType} ,#{entity.reward} ,#{entity.rewardAmount} ,#{entity.vaildDate} ,#{entity.expireDate}
+            ,#{entity.rewardValidDate} ,#{entity.rewardExpireDate} ,#{entity.numbero} ,#{entity.cost}
+            ,#{entity.costType} ,#{entity.rewardType} ,#{entity.cycleAmount} ,#{entity.cyclePeriod}
+            ,#{entity.cycleType})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, lottery_id, lottery_title, lottery_detail, lottery_type, reward, reward_amount, vaild_date,
-        expire_date, reward_valid_date, reward_expire_date, numbero, status, cost, cost_type, reward_type, cycle_amount,
-        cycle_period, cycle_type)
+        ( tenant_id ,lottery_id ,lottery_title ,lottery_detail ,lottery_type ,reward ,reward_amount ,vaild_date
+        ,expire_date ,reward_valid_date ,reward_expire_date ,numbero ,status ,cost ,cost_type ,reward_type ,cycle_amount
+        ,cycle_period ,cycle_type)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.lotteryId},#{entity.lotteryTitle},#{entity.lotteryDetail},#{entity.lotteryType},#{entity.reward},#{entity.rewardAmount},#{entity.vaildDate},#{entity.expireDate},#{entity.rewardValidDate},#{entity.rewardExpireDate},#{entity.numbero},#{entity.status},#{entity.cost},#{entity.costType},#{entity.rewardType},#{entity.cycleAmount},#{entity.cyclePeriod},#{entity.cycleType})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        lottery_id=values(lottery_id),
-        lottery_title=values(lottery_title),
-        lottery_detail=values(lottery_detail),
-        lottery_type=values(lottery_type),
-        reward=values(reward),
-        reward_amount=values(reward_amount),
-        vaild_date=values(vaild_date),
-        expire_date=values(expire_date),
-        reward_valid_date=values(reward_valid_date),
-        reward_expire_date=values(reward_expire_date),
-        numbero=values(numbero),
-        status=values(status),
-        cost=values(cost),
-        cost_type=values(cost_type),
-        reward_type=values(reward_type),
-        cycle_amount=values(cycle_amount),
-        cycle_period=values(cycle_period),
-        cycle_type=values(cycle_type)
+        tenant_id=values(tenant_id) ,lottery_id=values(lottery_id) ,lottery_title=values(lottery_title)
+        ,lottery_detail=values(lottery_detail) ,lottery_type=values(lottery_type) ,reward=values(reward)
+        ,reward_amount=values(reward_amount) ,vaild_date=values(vaild_date) ,expire_date=values(expire_date)
+        ,reward_valid_date=values(reward_valid_date) ,reward_expire_date=values(reward_expire_date)
+        ,numbero=values(numbero) ,status=values(status) ,cost=values(cost) ,cost_type=values(cost_type)
+        ,reward_type=values(reward_type) ,cycle_amount=values(cycle_amount) ,cycle_period=values(cycle_period)
+        ,cycle_type=values(cycle_type)
     </insert>
 
     <!--通过主键修改数据-->

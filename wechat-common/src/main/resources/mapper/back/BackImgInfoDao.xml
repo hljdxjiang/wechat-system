@@ -26,7 +26,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,img_path,img_desc,img_sort,img_type,link_url,status,create_time,last_modified_time,control_flag,white_type,valid_time,expire_time,channel_no,need_login    </sql>
+                id,tenant_id,img_path,img_desc,img_sort,img_type,link_url,status,create_time,last_modified_time,control_flag,white_type,valid_time,expire_time,channel_no,need_login    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="BackImgInfoMap">
@@ -141,7 +141,8 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,img_path,img_desc,img_sort,img_type,link_url,control_flag,white_type,valid_time,expire_time,channel_no,need_login)
+        (tenant_id ,img_path ,img_desc ,img_sort ,img_type ,link_url ,control_flag ,white_type ,valid_time ,expire_time
+        ,channel_no ,need_login )
         values
         (#{tenantId},#{imgPath},#{imgDesc},#{imgSort},#{imgType},#{linkUrl},#{controlFlag},#{whiteType},#{validTime},#{expireTime},#{channelNo},#{needLogin})
     </insert>
@@ -149,39 +150,30 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, img_path, img_desc, img_sort, img_type, link_url, control_flag, white_type, valid_time,
-        expire_time, channel_no, need_login)
+        ( tenant_id ,img_path ,img_desc ,img_sort ,img_type ,link_url ,control_flag ,white_type ,valid_time ,expire_time
+        ,channel_no ,need_login)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.imgPath}, #{entity.imgDesc}, #{entity.imgSort}, #{entity.imgType},
-            #{entity.linkUrl}, #{entity.controlFlag}, #{entity.whiteType}, #{entity.validTime}, #{entity.expireTime},
-            #{entity.channelNo}, #{entity.needLogin})
+            ( #{entity.tenantId} ,#{entity.imgPath} ,#{entity.imgDesc} ,#{entity.imgSort} ,#{entity.imgType}
+            ,#{entity.linkUrl} ,#{entity.controlFlag} ,#{entity.whiteType} ,#{entity.validTime} ,#{entity.expireTime}
+            ,#{entity.channelNo} ,#{entity.needLogin})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, img_path, img_desc, img_sort, img_type, link_url, status, control_flag, white_type, valid_time,
-        expire_time, channel_no, need_login)
+        ( tenant_id ,img_path ,img_desc ,img_sort ,img_type ,link_url ,status ,control_flag ,white_type ,valid_time
+        ,expire_time ,channel_no ,need_login)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.imgPath},#{entity.imgDesc},#{entity.imgSort},#{entity.imgType},#{entity.linkUrl},#{entity.status},#{entity.controlFlag},#{entity.whiteType},#{entity.validTime},#{entity.expireTime},#{entity.channelNo},#{entity.needLogin})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        img_path=values(img_path),
-        img_desc=values(img_desc),
-        img_sort=values(img_sort),
-        img_type=values(img_type),
-        link_url=values(link_url),
-        status=values(status),
-        control_flag=values(control_flag),
-        white_type=values(white_type),
-        valid_time=values(valid_time),
-        expire_time=values(expire_time),
-        channel_no=values(channel_no),
-        need_login=values(need_login)
+        tenant_id=values(tenant_id) ,img_path=values(img_path) ,img_desc=values(img_desc) ,img_sort=values(img_sort)
+        ,img_type=values(img_type) ,link_url=values(link_url) ,status=values(status) ,control_flag=values(control_flag)
+        ,white_type=values(white_type) ,valid_time=values(valid_time) ,expire_time=values(expire_time)
+        ,channel_no=values(channel_no) ,need_login=values(need_login)
     </insert>
 
     <!--通过主键修改数据-->

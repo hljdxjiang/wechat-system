@@ -15,7 +15,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,role_id,key_value,key_type    </sql>
+                id,tenant_id,role_id,key_value,key_type    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="BackRuleDetailMap">
@@ -86,7 +86,7 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,role_id,key_value,key_type)
+        (tenant_id ,role_id ,key_value ,key_type )
         values
         (#{tenantId},#{roleId},#{keyValue},#{keyType})
     </insert>
@@ -94,26 +94,23 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, role_id, key_value, key_type)
+        ( tenant_id ,role_id ,key_value ,key_type)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.roleId}, #{entity.keyValue}, #{entity.keyType})
+            ( #{entity.tenantId} ,#{entity.roleId} ,#{entity.keyValue} ,#{entity.keyType})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, role_id, key_value, key_type)
+        ( tenant_id ,role_id ,key_value ,key_type)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.roleId},#{entity.keyValue},#{entity.keyType})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        role_id=values(role_id),
-        key_value=values(key_value),
-        key_type=values(key_type)
+        tenant_id=values(tenant_id) ,role_id=values(role_id) ,key_value=values(key_value) ,key_type=values(key_type)
     </insert>
 
     <!--通过主键修改数据-->

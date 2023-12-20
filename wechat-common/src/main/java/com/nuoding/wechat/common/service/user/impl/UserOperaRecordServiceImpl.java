@@ -6,6 +6,7 @@ import com.nuoding.wechat.common.service.user.UserOperaRecordService;
 import com.nuoding.wechat.common.utils.JsonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -114,4 +115,13 @@ public class UserOperaRecordServiceImpl implements UserOperaRecordService {
         logger.info("deleteById begin.userOperaRecordEntity:{}", id);
         return this.userOperaRecordDao.deleteById(id) > 0;
     }
+
+    @Override
+    @Async
+    public UserOperaRecordEntity asyncInsert(UserOperaRecordEntity userOperaRecordEntity) {
+        logger.info("asyncInsert begin.userOperaRecordEntity:{}", JsonUtil.obj2Json(userOperaRecordEntity));
+        this.userOperaRecordDao.insert(userOperaRecordEntity);
+        return userOperaRecordEntity;
+    }
+
 }

@@ -18,7 +18,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,status,create_time,last_modified_time,label_id,label_key,label_desc    </sql>
+                id,tenant_id,status,create_time,last_modified_time,label_id,label_key,label_desc    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="SysUserLabelsMap">
@@ -94,7 +94,7 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,label_id,label_key,label_desc)
+        (tenant_id ,label_id ,label_key ,label_desc )
         values
         (#{tenantId},#{labelId},#{labelKey},#{labelDesc})
     </insert>
@@ -102,27 +102,24 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, label_id, label_key, label_desc)
+        ( tenant_id ,label_id ,label_key ,label_desc)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.labelId}, #{entity.labelKey}, #{entity.labelDesc})
+            ( #{entity.tenantId} ,#{entity.labelId} ,#{entity.labelKey} ,#{entity.labelDesc})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, status, label_id, label_key, label_desc)
+        ( tenant_id ,status ,label_id ,label_key ,label_desc)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.status},#{entity.labelId},#{entity.labelKey},#{entity.labelDesc})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        status=values(status),
-        label_id=values(label_id),
-        label_key=values(label_key),
-        label_desc=values(label_desc)
+        tenant_id=values(tenant_id) ,status=values(status) ,label_id=values(label_id) ,label_key=values(label_key)
+        ,label_desc=values(label_desc)
     </insert>
 
     <!--通过主键修改数据-->

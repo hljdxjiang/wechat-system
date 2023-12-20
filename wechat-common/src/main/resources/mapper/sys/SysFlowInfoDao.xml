@@ -28,7 +28,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,flow_id,flow_title,flow_type,flow_show_type,control_flag,flow_remark,userid,modify_userid,flow_data,flow_data_count,flow_img,flow_url,status,create_time,last_modified_time,channel    </sql>
+                id,tenant_id,flow_id,flow_title,flow_type,flow_show_type,control_flag,flow_remark,userid,modify_userid,flow_data,flow_data_count,flow_img,flow_url,status,create_time,last_modified_time,channel    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="SysFlowInfoMap">
@@ -154,7 +154,8 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,flow_id,flow_title,flow_type,flow_show_type,control_flag,flow_remark,userid,modify_userid,flow_data,flow_data_count,flow_img,flow_url,channel)
+        (tenant_id ,flow_id ,flow_title ,flow_type ,flow_show_type ,control_flag ,flow_remark ,userid ,modify_userid
+        ,flow_data ,flow_data_count ,flow_img ,flow_url ,channel )
         values
         (#{tenantId},#{flowId},#{flowTitle},#{flowType},#{flowShowType},#{controlFlag},#{flowRemark},#{userid},#{modifyUserid},#{flowData},#{flowDataCount},#{flowImg},#{flowUrl},#{channel})
     </insert>
@@ -162,41 +163,31 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, flow_id, flow_title, flow_type, flow_show_type, control_flag, flow_remark, userid, modify_userid,
-        flow_data, flow_data_count, flow_img, flow_url, channel)
+        ( tenant_id ,flow_id ,flow_title ,flow_type ,flow_show_type ,control_flag ,flow_remark ,userid ,modify_userid
+        ,flow_data ,flow_data_count ,flow_img ,flow_url ,channel)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.flowId}, #{entity.flowTitle}, #{entity.flowType}, #{entity.flowShowType},
-            #{entity.controlFlag}, #{entity.flowRemark}, #{entity.userid}, #{entity.modifyUserid}, #{entity.flowData},
-            #{entity.flowDataCount}, #{entity.flowImg}, #{entity.flowUrl}, #{entity.channel})
+            ( #{entity.tenantId} ,#{entity.flowId} ,#{entity.flowTitle} ,#{entity.flowType} ,#{entity.flowShowType}
+            ,#{entity.controlFlag} ,#{entity.flowRemark} ,#{entity.userid} ,#{entity.modifyUserid} ,#{entity.flowData}
+            ,#{entity.flowDataCount} ,#{entity.flowImg} ,#{entity.flowUrl} ,#{entity.channel})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, flow_id, flow_title, flow_type, flow_show_type, control_flag, flow_remark, userid, modify_userid,
-        flow_data, flow_data_count, flow_img, flow_url, status, channel)
+        ( tenant_id ,flow_id ,flow_title ,flow_type ,flow_show_type ,control_flag ,flow_remark ,userid ,modify_userid
+        ,flow_data ,flow_data_count ,flow_img ,flow_url ,status ,channel)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.flowId},#{entity.flowTitle},#{entity.flowType},#{entity.flowShowType},#{entity.controlFlag},#{entity.flowRemark},#{entity.userid},#{entity.modifyUserid},#{entity.flowData},#{entity.flowDataCount},#{entity.flowImg},#{entity.flowUrl},#{entity.status},#{entity.channel})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        flow_id=values(flow_id),
-        flow_title=values(flow_title),
-        flow_type=values(flow_type),
-        flow_show_type=values(flow_show_type),
-        control_flag=values(control_flag),
-        flow_remark=values(flow_remark),
-        userid=values(userid),
-        modify_userid=values(modify_userid),
-        flow_data=values(flow_data),
-        flow_data_count=values(flow_data_count),
-        flow_img=values(flow_img),
-        flow_url=values(flow_url),
-        status=values(status),
-        channel=values(channel)
+        tenant_id=values(tenant_id) ,flow_id=values(flow_id) ,flow_title=values(flow_title) ,flow_type=values(flow_type)
+        ,flow_show_type=values(flow_show_type) ,control_flag=values(control_flag) ,flow_remark=values(flow_remark)
+        ,userid=values(userid) ,modify_userid=values(modify_userid) ,flow_data=values(flow_data)
+        ,flow_data_count=values(flow_data_count) ,flow_img=values(flow_img) ,flow_url=values(flow_url)
+        ,status=values(status) ,channel=values(channel)
     </insert>
 
     <!--通过主键修改数据-->

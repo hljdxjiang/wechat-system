@@ -22,7 +22,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,course_id,part_id,user_id,remark,status,create_time,last_modified_time,cust_level,vip_type,resource_id    </sql>
+                id,tenant_id,course_id,part_id,user_id,remark,status,create_time,last_modified_time,cust_level,vip_type,resource_id    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="BbsCourseResourceMap">
@@ -116,7 +116,7 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,course_id,part_id,user_id,remark,cust_level,vip_type,resource_id)
+        (tenant_id ,course_id ,part_id ,user_id ,remark ,cust_level ,vip_type ,resource_id )
         values
         (#{tenantId},#{courseId},#{partId},#{userId},#{remark},#{custLevel},#{vipType},#{resourceId})
     </insert>
@@ -124,32 +124,26 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, course_id, part_id, user_id, remark, cust_level, vip_type, resource_id)
+        ( tenant_id ,course_id ,part_id ,user_id ,remark ,cust_level ,vip_type ,resource_id)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.courseId}, #{entity.partId}, #{entity.userId}, #{entity.remark},
-            #{entity.custLevel}, #{entity.vipType}, #{entity.resourceId})
+            ( #{entity.tenantId} ,#{entity.courseId} ,#{entity.partId} ,#{entity.userId} ,#{entity.remark}
+            ,#{entity.custLevel} ,#{entity.vipType} ,#{entity.resourceId})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, course_id, part_id, user_id, remark, status, cust_level, vip_type, resource_id)
+        ( tenant_id ,course_id ,part_id ,user_id ,remark ,status ,cust_level ,vip_type ,resource_id)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.courseId},#{entity.partId},#{entity.userId},#{entity.remark},#{entity.status},#{entity.custLevel},#{entity.vipType},#{entity.resourceId})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        course_id=values(course_id),
-        part_id=values(part_id),
-        user_id=values(user_id),
-        remark=values(remark),
-        status=values(status),
-        cust_level=values(cust_level),
-        vip_type=values(vip_type),
-        resource_id=values(resource_id)
+        tenant_id=values(tenant_id) ,course_id=values(course_id) ,part_id=values(part_id) ,user_id=values(user_id)
+        ,remark=values(remark) ,status=values(status) ,cust_level=values(cust_level) ,vip_type=values(vip_type)
+        ,resource_id=values(resource_id)
     </insert>
 
     <!--通过主键修改数据-->

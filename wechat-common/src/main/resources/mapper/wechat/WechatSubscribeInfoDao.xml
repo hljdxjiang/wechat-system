@@ -20,7 +20,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,appid,wxopenid,template_id,popup_sence,subscribe_status_string,create_time,last_modified_time,send_status,send_result    </sql>
+                id,appid,wxopenid,template_id,popup_sence,subscribe_status_string,create_time,last_modified_time,send_status,send_result    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="WechatSubscribeInfoMap">
@@ -119,7 +119,7 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (appid,wxopenid,template_id,popup_sence,subscribe_status_string,send_status,send_result)
+        (appid ,wxopenid ,template_id ,popup_sence ,subscribe_status_string ,send_status ,send_result )
         values
         (#{appid},#{wxopenid},#{templateId},#{popupSence},#{subscribeStatusString},#{sendStatus},#{sendResult})
     </insert>
@@ -127,30 +127,26 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( appid, wxopenid, template_id, popup_sence, subscribe_status_string, send_status, send_result)
+        ( appid ,wxopenid ,template_id ,popup_sence ,subscribe_status_string ,send_status ,send_result)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.appid}, #{entity.wxopenid}, #{entity.templateId}, #{entity.popupSence},
-            #{entity.subscribeStatusString}, #{entity.sendStatus}, #{entity.sendResult})
+            ( #{entity.appid} ,#{entity.wxopenid} ,#{entity.templateId} ,#{entity.popupSence}
+            ,#{entity.subscribeStatusString} ,#{entity.sendStatus} ,#{entity.sendResult})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( appid, wxopenid, template_id, popup_sence, subscribe_status_string, send_status, send_result)
+        ( appid ,wxopenid ,template_id ,popup_sence ,subscribe_status_string ,send_status ,send_result)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.appid},#{entity.wxopenid},#{entity.templateId},#{entity.popupSence},#{entity.subscribeStatusString},#{entity.sendStatus},#{entity.sendResult})
         </foreach>
         on duplicate key update
-        appid=values(appid),
-        wxopenid=values(wxopenid),
-        template_id=values(template_id),
-        popup_sence=values(popup_sence),
-        subscribe_status_string=values(subscribe_status_string),
-        send_status=values(send_status),
-        send_result=values(send_result)
+        appid=values(appid) ,wxopenid=values(wxopenid) ,template_id=values(template_id) ,popup_sence=values(popup_sence)
+        ,subscribe_status_string=values(subscribe_status_string) ,send_status=values(send_status)
+        ,send_result=values(send_result)
     </insert>
 
     <!--通过主键修改数据-->

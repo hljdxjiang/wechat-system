@@ -19,7 +19,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,lottery_id,status,userid,create_time,last_modified_time,complate_time,reward_id    </sql>
+                id,tenant_id,lottery_id,status,userid,create_time,last_modified_time,complate_time,reward_id    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="MallLotteryUserMap">
@@ -101,7 +101,7 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,lottery_id,userid,complate_time,reward_id)
+        (tenant_id ,lottery_id ,userid ,complate_time ,reward_id )
         values
         (#{tenantId},#{lotteryId},#{userid},#{complateTime},#{rewardId})
     </insert>
@@ -109,28 +109,24 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, lottery_id, userid, complate_time, reward_id)
+        ( tenant_id ,lottery_id ,userid ,complate_time ,reward_id)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.lotteryId}, #{entity.userid}, #{entity.complateTime}, #{entity.rewardId})
+            ( #{entity.tenantId} ,#{entity.lotteryId} ,#{entity.userid} ,#{entity.complateTime} ,#{entity.rewardId})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, lottery_id, status, userid, complate_time, reward_id)
+        ( tenant_id ,lottery_id ,status ,userid ,complate_time ,reward_id)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.lotteryId},#{entity.status},#{entity.userid},#{entity.complateTime},#{entity.rewardId})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        lottery_id=values(lottery_id),
-        status=values(status),
-        userid=values(userid),
-        complate_time=values(complate_time),
-        reward_id=values(reward_id)
+        tenant_id=values(tenant_id) ,lottery_id=values(lottery_id) ,status=values(status) ,userid=values(userid)
+        ,complate_time=values(complate_time) ,reward_id=values(reward_id)
     </insert>
 
     <!--通过主键修改数据-->

@@ -19,7 +19,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,column_id,column_name,column_desc,remark,status,create_time,last_modified_time    </sql>
+                id,tenant_id,column_id,column_name,column_desc,remark,status,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="BbsColumnInfoMap">
@@ -102,37 +102,32 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,column_id,column_name,column_desc,remark,)
+        (tenant_id ,column_id ,column_name ,column_desc ,remark )
         values
-        (#{tenantId},#{columnId},#{columnName},#{columnDesc},#{remark},)
+        (#{tenantId},#{columnId},#{columnName},#{columnDesc},#{remark})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, column_id, column_name, column_desc, remark,)
+        ( tenant_id ,column_id ,column_name ,column_desc ,remark)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.columnId}, #{entity.columnName}, #{entity.columnDesc}, #{entity.remark},)
+            ( #{entity.tenantId} ,#{entity.columnId} ,#{entity.columnName} ,#{entity.columnDesc} ,#{entity.remark})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, column_id, column_name, column_desc, remark, status,)
+        ( tenant_id ,column_id ,column_name ,column_desc ,remark ,status)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.columnId},#{entity.columnName},#{entity.columnDesc},#{entity.remark},#{entity.status},)
+            (#{entity.tenantId},#{entity.columnId},#{entity.columnName},#{entity.columnDesc},#{entity.remark},#{entity.status})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        column_id=values(column_id),
-        column_name=values(column_name),
-        column_desc=values(column_desc),
-        remark=values(remark),
-        status=values(status),
-
+        tenant_id=values(tenant_id) ,column_id=values(column_id) ,column_name=values(column_name)
+        ,column_desc=values(column_desc) ,remark=values(remark) ,status=values(status)
     </insert>
 
     <!--通过主键修改数据-->

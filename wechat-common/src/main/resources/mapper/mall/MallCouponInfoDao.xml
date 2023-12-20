@@ -29,7 +29,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,coupon_id,coupon_name,coupon_desc,coupon_type,coupon_method,coupon_amount,control_type,grant_type,grant_scope,vaild_date,expire_date,vaild_days,use_vaild_date,use_expire_date,status,create_time,last_modified_time    </sql>
+                id,tenant_id,coupon_id,coupon_name,coupon_desc,coupon_type,coupon_method,coupon_amount,control_type,grant_type,grant_scope,vaild_date,expire_date,vaild_days,use_vaild_date,use_expire_date,status,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="MallCouponInfoMap">
@@ -171,52 +171,42 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,coupon_id,coupon_name,coupon_desc,coupon_type,coupon_method,coupon_amount,control_type,grant_type,grant_scope,vaild_date,expire_date,vaild_days,use_vaild_date,use_expire_date,)
+        (tenant_id ,coupon_id ,coupon_name ,coupon_desc ,coupon_type ,coupon_method ,coupon_amount ,control_type
+        ,grant_type ,grant_scope ,vaild_date ,expire_date ,vaild_days ,use_vaild_date ,use_expire_date )
         values
-        (#{tenantId},#{couponId},#{couponName},#{couponDesc},#{couponType},#{couponMethod},#{couponAmount},#{controlType},#{grantType},#{grantScope},#{vaildDate},#{expireDate},#{vaildDays},#{useVaildDate},#{useExpireDate},)
+        (#{tenantId},#{couponId},#{couponName},#{couponDesc},#{couponType},#{couponMethod},#{couponAmount},#{controlType},#{grantType},#{grantScope},#{vaildDate},#{expireDate},#{vaildDays},#{useVaildDate},#{useExpireDate})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, coupon_id, coupon_name, coupon_desc, coupon_type, coupon_method, coupon_amount, control_type,
-        grant_type, grant_scope, vaild_date, expire_date, vaild_days, use_vaild_date, use_expire_date,)
+        ( tenant_id ,coupon_id ,coupon_name ,coupon_desc ,coupon_type ,coupon_method ,coupon_amount ,control_type
+        ,grant_type ,grant_scope ,vaild_date ,expire_date ,vaild_days ,use_vaild_date ,use_expire_date)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.couponId}, #{entity.couponName}, #{entity.couponDesc}, #{entity.couponType},
-            #{entity.couponMethod}, #{entity.couponAmount}, #{entity.controlType}, #{entity.grantType},
-            #{entity.grantScope}, #{entity.vaildDate}, #{entity.expireDate}, #{entity.vaildDays},
-            #{entity.useVaildDate}, #{entity.useExpireDate},)
+            ( #{entity.tenantId} ,#{entity.couponId} ,#{entity.couponName} ,#{entity.couponDesc} ,#{entity.couponType}
+            ,#{entity.couponMethod} ,#{entity.couponAmount} ,#{entity.controlType} ,#{entity.grantType}
+            ,#{entity.grantScope} ,#{entity.vaildDate} ,#{entity.expireDate} ,#{entity.vaildDays}
+            ,#{entity.useVaildDate} ,#{entity.useExpireDate})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, coupon_id, coupon_name, coupon_desc, coupon_type, coupon_method, coupon_amount, control_type,
-        grant_type, grant_scope, vaild_date, expire_date, vaild_days, use_vaild_date, use_expire_date, status,)
+        ( tenant_id ,coupon_id ,coupon_name ,coupon_desc ,coupon_type ,coupon_method ,coupon_amount ,control_type
+        ,grant_type ,grant_scope ,vaild_date ,expire_date ,vaild_days ,use_vaild_date ,use_expire_date ,status)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.couponId},#{entity.couponName},#{entity.couponDesc},#{entity.couponType},#{entity.couponMethod},#{entity.couponAmount},#{entity.controlType},#{entity.grantType},#{entity.grantScope},#{entity.vaildDate},#{entity.expireDate},#{entity.vaildDays},#{entity.useVaildDate},#{entity.useExpireDate},#{entity.status},)
+            (#{entity.tenantId},#{entity.couponId},#{entity.couponName},#{entity.couponDesc},#{entity.couponType},#{entity.couponMethod},#{entity.couponAmount},#{entity.controlType},#{entity.grantType},#{entity.grantScope},#{entity.vaildDate},#{entity.expireDate},#{entity.vaildDays},#{entity.useVaildDate},#{entity.useExpireDate},#{entity.status})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        coupon_id=values(coupon_id),
-        coupon_name=values(coupon_name),
-        coupon_desc=values(coupon_desc),
-        coupon_type=values(coupon_type),
-        coupon_method=values(coupon_method),
-        coupon_amount=values(coupon_amount),
-        control_type=values(control_type),
-        grant_type=values(grant_type),
-        grant_scope=values(grant_scope),
-        vaild_date=values(vaild_date),
-        expire_date=values(expire_date),
-        vaild_days=values(vaild_days),
-        use_vaild_date=values(use_vaild_date),
-        use_expire_date=values(use_expire_date),
-        status=values(status),
-
+        tenant_id=values(tenant_id) ,coupon_id=values(coupon_id) ,coupon_name=values(coupon_name)
+        ,coupon_desc=values(coupon_desc) ,coupon_type=values(coupon_type) ,coupon_method=values(coupon_method)
+        ,coupon_amount=values(coupon_amount) ,control_type=values(control_type) ,grant_type=values(grant_type)
+        ,grant_scope=values(grant_scope) ,vaild_date=values(vaild_date) ,expire_date=values(expire_date)
+        ,vaild_days=values(vaild_days) ,use_vaild_date=values(use_vaild_date) ,use_expire_date=values(use_expire_date)
+        ,status=values(status)
     </insert>
 
     <!--通过主键修改数据-->

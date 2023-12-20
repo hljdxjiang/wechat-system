@@ -69,4 +69,13 @@ public interface UserOperaRecordService {
      */
     boolean deleteById(Integer id);
 
+    /**
+     * 异步新增数据
+     *
+     * @param userOperaRecordEntity 实例对象
+     * @return 实例对象
+     */
+    UserOperaRecordEntity asyncInsert(UserOperaRecordEntity userOperaRecordEntity);
+
+
 }

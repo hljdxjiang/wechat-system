@@ -23,7 +23,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,article_id,article_type,article_title,user_id,remark,column_id,label_id,status,create_time,last_modified_time,article_content    </sql>
+                id,tenant_id,article_id,article_type,article_title,user_id,remark,column_id,label_id,status,create_time,last_modified_time,article_content    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="BbsArticleInfoMap">
@@ -125,7 +125,7 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,article_id,article_type,article_title,user_id,remark,column_id,label_id,article_content)
+        (tenant_id ,article_id ,article_type ,article_title ,user_id ,remark ,column_id ,label_id ,article_content )
         values
         (#{tenantId},#{articleId},#{articleType},#{articleTitle},#{userId},#{remark},#{columnId},#{labelId},#{articleContent})
     </insert>
@@ -133,34 +133,28 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, article_id, article_type, article_title, user_id, remark, column_id, label_id, article_content)
+        ( tenant_id ,article_id ,article_type ,article_title ,user_id ,remark ,column_id ,label_id ,article_content)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.articleId}, #{entity.articleType}, #{entity.articleTitle}, #{entity.userId},
-            #{entity.remark}, #{entity.columnId}, #{entity.labelId}, #{entity.articleContent})
+            ( #{entity.tenantId} ,#{entity.articleId} ,#{entity.articleType} ,#{entity.articleTitle} ,#{entity.userId}
+            ,#{entity.remark} ,#{entity.columnId} ,#{entity.labelId} ,#{entity.articleContent})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, article_id, article_type, article_title, user_id, remark, column_id, label_id, status,
-        article_content)
+        ( tenant_id ,article_id ,article_type ,article_title ,user_id ,remark ,column_id ,label_id ,status
+        ,article_content)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.articleId},#{entity.articleType},#{entity.articleTitle},#{entity.userId},#{entity.remark},#{entity.columnId},#{entity.labelId},#{entity.status},#{entity.articleContent})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        article_id=values(article_id),
-        article_type=values(article_type),
-        article_title=values(article_title),
-        user_id=values(user_id),
-        remark=values(remark),
-        column_id=values(column_id),
-        label_id=values(label_id),
-        status=values(status),
-        article_content=values(article_content)
+        tenant_id=values(tenant_id) ,article_id=values(article_id) ,article_type=values(article_type)
+        ,article_title=values(article_title) ,user_id=values(user_id) ,remark=values(remark)
+        ,column_id=values(column_id) ,label_id=values(label_id) ,status=values(status)
+        ,article_content=values(article_content)
     </insert>
 
     <!--通过主键修改数据-->

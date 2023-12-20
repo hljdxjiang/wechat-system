@@ -18,7 +18,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        ID,tenant_id,config_name,config_key,config_value,config_desc,create_time,last_update_time    </sql>
+                ID,tenant_id,config_name,config_key,config_value,config_desc,create_time,last_update_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="SysParamConfigMap">
@@ -106,7 +106,7 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,config_name,config_key,config_value,config_desc,last_update_time)
+        (tenant_id ,config_name ,config_key ,config_value ,config_desc ,last_update_time )
         values
         (#{tenantId},#{configName},#{configKey},#{configValue},#{configDesc},#{lastUpdateTime})
     </insert>
@@ -114,29 +114,25 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, config_name, config_key, config_value, config_desc, last_update_time)
+        ( tenant_id ,config_name ,config_key ,config_value ,config_desc ,last_update_time)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.configName}, #{entity.configKey}, #{entity.configValue},
-            #{entity.configDesc}, #{entity.lastUpdateTime})
+            ( #{entity.tenantId} ,#{entity.configName} ,#{entity.configKey} ,#{entity.configValue} ,#{entity.configDesc}
+            ,#{entity.lastUpdateTime})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, config_name, config_key, config_value, config_desc, last_update_time)
+        ( tenant_id ,config_name ,config_key ,config_value ,config_desc ,last_update_time)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.configName},#{entity.configKey},#{entity.configValue},#{entity.configDesc},#{entity.lastUpdateTime})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        config_name=values(config_name),
-        config_key=values(config_key),
-        config_value=values(config_value),
-        config_desc=values(config_desc),
-        last_update_time=values(last_update_time)
+        tenant_id=values(tenant_id) ,config_name=values(config_name) ,config_key=values(config_key)
+        ,config_value=values(config_value) ,config_desc=values(config_desc) ,last_update_time=values(last_update_time)
     </insert>
 
     <!--通过主键修改数据-->

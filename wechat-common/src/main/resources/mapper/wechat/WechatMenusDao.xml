@@ -20,7 +20,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,menu_id,menu_name,wx_menu_id,version,remark,menu_type,create_time,last_modified_time    </sql>
+                id,tenant_id,menu_id,menu_name,wx_menu_id,version,remark,menu_type,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="WechatMenusMap">
@@ -103,39 +103,33 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,menu_id,menu_name,wx_menu_id,version,remark,menu_type,)
+        (tenant_id ,menu_id ,menu_name ,wx_menu_id ,version ,remark ,menu_type )
         values
-        (#{tenantId},#{menuId},#{menuName},#{wxMenuId},#{version},#{remark},#{menuType},)
+        (#{tenantId},#{menuId},#{menuName},#{wxMenuId},#{version},#{remark},#{menuType})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, menu_id, menu_name, wx_menu_id, version, remark, menu_type,)
+        ( tenant_id ,menu_id ,menu_name ,wx_menu_id ,version ,remark ,menu_type)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.menuId}, #{entity.menuName}, #{entity.wxMenuId}, #{entity.version},
-            #{entity.remark}, #{entity.menuType},)
+            ( #{entity.tenantId} ,#{entity.menuId} ,#{entity.menuName} ,#{entity.wxMenuId} ,#{entity.version}
+            ,#{entity.remark} ,#{entity.menuType})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, menu_id, menu_name, wx_menu_id, version, remark, menu_type,)
+        ( tenant_id ,menu_id ,menu_name ,wx_menu_id ,version ,remark ,menu_type)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.menuId},#{entity.menuName},#{entity.wxMenuId},#{entity.version},#{entity.remark},#{entity.menuType},)
+            (#{entity.tenantId},#{entity.menuId},#{entity.menuName},#{entity.wxMenuId},#{entity.version},#{entity.remark},#{entity.menuType})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        menu_id=values(menu_id),
-        menu_name=values(menu_name),
-        wx_menu_id=values(wx_menu_id),
-        version=values(version),
-        remark=values(remark),
-        menu_type=values(menu_type),
-
+        tenant_id=values(tenant_id) ,menu_id=values(menu_id) ,menu_name=values(menu_name) ,wx_menu_id=values(wx_menu_id)
+        ,version=values(version) ,remark=values(remark) ,menu_type=values(menu_type)
     </insert>
 
     <!--通过主键修改数据-->

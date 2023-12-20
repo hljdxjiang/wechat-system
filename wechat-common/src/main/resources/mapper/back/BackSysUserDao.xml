@@ -26,7 +26,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,user_id,passwd,group_id,role_id,user_name,mobile_no,email,id_no,id_type,oauth_code,remark,status,create_time,last_modified_time    </sql>
+                id,tenant_id,user_id,passwd,group_id,role_id,user_name,mobile_no,email,id_no,id_type,oauth_code,remark,status,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="BackSysUserMap">
@@ -134,48 +134,39 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,user_id,passwd,group_id,role_id,user_name,mobile_no,email,id_no,id_type,oauth_code,remark,)
+        (tenant_id ,user_id ,passwd ,group_id ,role_id ,user_name ,mobile_no ,email ,id_no ,id_type ,oauth_code ,remark
+        )
         values
-        (#{tenantId},#{userId},#{passwd},#{groupId},#{roleId},#{userName},#{mobileNo},#{email},#{idNo},#{idType},#{oauthCode},#{remark},)
+        (#{tenantId},#{userId},#{passwd},#{groupId},#{roleId},#{userName},#{mobileNo},#{email},#{idNo},#{idType},#{oauthCode},#{remark})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, user_id, passwd, group_id, role_id, user_name, mobile_no, email, id_no, id_type, oauth_code,
-        remark,)
+        ( tenant_id ,user_id ,passwd ,group_id ,role_id ,user_name ,mobile_no ,email ,id_no ,id_type ,oauth_code
+        ,remark)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.userId}, #{entity.passwd}, #{entity.groupId}, #{entity.roleId},
-            #{entity.userName}, #{entity.mobileNo}, #{entity.email}, #{entity.idNo}, #{entity.idType},
-            #{entity.oauthCode}, #{entity.remark},)
+            ( #{entity.tenantId} ,#{entity.userId} ,#{entity.passwd} ,#{entity.groupId} ,#{entity.roleId}
+            ,#{entity.userName} ,#{entity.mobileNo} ,#{entity.email} ,#{entity.idNo} ,#{entity.idType}
+            ,#{entity.oauthCode} ,#{entity.remark})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, user_id, passwd, group_id, role_id, user_name, mobile_no, email, id_no, id_type, oauth_code,
-        remark, status,)
+        ( tenant_id ,user_id ,passwd ,group_id ,role_id ,user_name ,mobile_no ,email ,id_no ,id_type ,oauth_code ,remark
+        ,status)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.userId},#{entity.passwd},#{entity.groupId},#{entity.roleId},#{entity.userName},#{entity.mobileNo},#{entity.email},#{entity.idNo},#{entity.idType},#{entity.oauthCode},#{entity.remark},#{entity.status},)
+            (#{entity.tenantId},#{entity.userId},#{entity.passwd},#{entity.groupId},#{entity.roleId},#{entity.userName},#{entity.mobileNo},#{entity.email},#{entity.idNo},#{entity.idType},#{entity.oauthCode},#{entity.remark},#{entity.status})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        user_id=values(user_id),
-        passwd=values(passwd),
-        group_id=values(group_id),
-        role_id=values(role_id),
-        user_name=values(user_name),
-        mobile_no=values(mobile_no),
-        email=values(email),
-        id_no=values(id_no),
-        id_type=values(id_type),
-        oauth_code=values(oauth_code),
-        remark=values(remark),
-        status=values(status),
-
+        tenant_id=values(tenant_id) ,user_id=values(user_id) ,passwd=values(passwd) ,group_id=values(group_id)
+        ,role_id=values(role_id) ,user_name=values(user_name) ,mobile_no=values(mobile_no) ,email=values(email)
+        ,id_no=values(id_no) ,id_type=values(id_type) ,oauth_code=values(oauth_code) ,remark=values(remark)
+        ,status=values(status)
     </insert>
 
     <!--通过主键修改数据-->

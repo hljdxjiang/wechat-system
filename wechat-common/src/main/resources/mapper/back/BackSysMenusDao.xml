@@ -23,7 +23,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,menu_id,path,name,icon,hideInMenu,exact,component,type,parent_id,create_time,last_modified_time,remark    </sql>
+                id,menu_id,path,name,icon,hideInMenu,exact,component,type,parent_id,create_time,last_modified_time,remark    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="BackSysMenusMap">
@@ -121,7 +121,7 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (menu_id,path,name,icon,hideInMenu,exact,component,type,parent_id,remark)
+        (menu_id ,path ,name ,icon ,hideInMenu ,exact ,component ,type ,parent_id ,remark )
         values
         (#{menuId},#{path},#{name},#{icon},#{hideinmenu},#{exact},#{component},#{type},#{parentId},#{remark})
     </insert>
@@ -129,33 +129,26 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( menu_id, path, name, icon, hideInMenu, exact, component, type, parent_id, remark)
+        ( menu_id ,path ,name ,icon ,hideInMenu ,exact ,component ,type ,parent_id ,remark)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.menuId}, #{entity.path}, #{entity.name}, #{entity.icon}, #{entity.hideinmenu}, #{entity.exact},
-            #{entity.component}, #{entity.type}, #{entity.parentId}, #{entity.remark})
+            ( #{entity.menuId} ,#{entity.path} ,#{entity.name} ,#{entity.icon} ,#{entity.hideinmenu} ,#{entity.exact}
+            ,#{entity.component} ,#{entity.type} ,#{entity.parentId} ,#{entity.remark})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( menu_id, path, name, icon, hideInMenu, exact, component, type, parent_id, remark)
+        ( menu_id ,path ,name ,icon ,hideInMenu ,exact ,component ,type ,parent_id ,remark)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.menuId},#{entity.path},#{entity.name},#{entity.icon},#{entity.hideinmenu},#{entity.exact},#{entity.component},#{entity.type},#{entity.parentId},#{entity.remark})
         </foreach>
         on duplicate key update
-        menu_id=values(menu_id),
-        path=values(path),
-        name=values(name),
-        icon=values(icon),
-        hideInMenu=values(hideInMenu),
-        exact=values(exact),
-        component=values(component),
-        type=values(type),
-        parent_id=values(parent_id),
-        remark=values(remark)
+        menu_id=values(menu_id) ,path=values(path) ,name=values(name) ,icon=values(icon) ,hideInMenu=values(hideInMenu)
+        ,exact=values(exact) ,component=values(component) ,type=values(type) ,parent_id=values(parent_id)
+        ,remark=values(remark)
     </insert>
 
     <!--通过主键修改数据-->

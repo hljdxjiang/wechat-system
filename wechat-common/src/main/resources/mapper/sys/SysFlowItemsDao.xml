@@ -24,7 +24,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,flow_id,item_id,item_sort,item_type,status,last_modified_time,create_time,channel,control_flag,data_type,data_value,data_match    </sql>
+                id,tenant_id,flow_id,item_id,item_sort,item_type,status,last_modified_time,create_time,channel,control_flag,data_type,data_value,data_match    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="SysFlowItemsMap">
@@ -127,7 +127,7 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,flow_id,item_id,item_sort,item_type,channel,control_flag,data_type,data_value,data_match)
+        (tenant_id ,flow_id ,item_id ,item_sort ,item_type ,channel ,control_flag ,data_type ,data_value ,data_match )
         values
         (#{tenantId},#{flowId},#{itemId},#{itemSort},#{itemType},#{channel},#{controlFlag},#{dataType},#{dataValue},#{dataMatch})
     </insert>
@@ -135,35 +135,27 @@
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, flow_id, item_id, item_sort, item_type, channel, control_flag, data_type, data_value, data_match)
+        ( tenant_id ,flow_id ,item_id ,item_sort ,item_type ,channel ,control_flag ,data_type ,data_value ,data_match)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.flowId}, #{entity.itemId}, #{entity.itemSort}, #{entity.itemType},
-            #{entity.channel}, #{entity.controlFlag}, #{entity.dataType}, #{entity.dataValue}, #{entity.dataMatch})
+            ( #{entity.tenantId} ,#{entity.flowId} ,#{entity.itemId} ,#{entity.itemSort} ,#{entity.itemType}
+            ,#{entity.channel} ,#{entity.controlFlag} ,#{entity.dataType} ,#{entity.dataValue} ,#{entity.dataMatch})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, flow_id, item_id, item_sort, item_type, status, channel, control_flag, data_type, data_value,
-        data_match)
+        ( tenant_id ,flow_id ,item_id ,item_sort ,item_type ,status ,channel ,control_flag ,data_type ,data_value
+        ,data_match)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.tenantId},#{entity.flowId},#{entity.itemId},#{entity.itemSort},#{entity.itemType},#{entity.status},#{entity.channel},#{entity.controlFlag},#{entity.dataType},#{entity.dataValue},#{entity.dataMatch})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        flow_id=values(flow_id),
-        item_id=values(item_id),
-        item_sort=values(item_sort),
-        item_type=values(item_type),
-        status=values(status),
-        channel=values(channel),
-        control_flag=values(control_flag),
-        data_type=values(data_type),
-        data_value=values(data_value),
-        data_match=values(data_match)
+        tenant_id=values(tenant_id) ,flow_id=values(flow_id) ,item_id=values(item_id) ,item_sort=values(item_sort)
+        ,item_type=values(item_type) ,status=values(status) ,channel=values(channel) ,control_flag=values(control_flag)
+        ,data_type=values(data_type) ,data_value=values(data_value) ,data_match=values(data_match)
     </insert>
 
     <!--通过主键修改数据-->

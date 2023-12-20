@@ -19,7 +19,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,dict_value,dict_title,dict_type,dict_sort,status,remark,create_time,last_modified_time    </sql>
+                id,dict_value,dict_title,dict_type,dict_sort,status,remark,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="BackSysDictMap">
@@ -100,37 +100,32 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (dict_value,dict_title,dict_type,dict_sort,remark,)
+        (dict_value ,dict_title ,dict_type ,dict_sort ,remark )
         values
-        (#{dictValue},#{dictTitle},#{dictType},#{dictSort},#{remark},)
+        (#{dictValue},#{dictTitle},#{dictType},#{dictSort},#{remark})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( dict_value, dict_title, dict_type, dict_sort, remark,)
+        ( dict_value ,dict_title ,dict_type ,dict_sort ,remark)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.dictValue}, #{entity.dictTitle}, #{entity.dictType}, #{entity.dictSort}, #{entity.remark},)
+            ( #{entity.dictValue} ,#{entity.dictTitle} ,#{entity.dictType} ,#{entity.dictSort} ,#{entity.remark})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( dict_value, dict_title, dict_type, dict_sort, status, remark,)
+        ( dict_value ,dict_title ,dict_type ,dict_sort ,status ,remark)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.dictValue},#{entity.dictTitle},#{entity.dictType},#{entity.dictSort},#{entity.status},#{entity.remark},)
+            (#{entity.dictValue},#{entity.dictTitle},#{entity.dictType},#{entity.dictSort},#{entity.status},#{entity.remark})
         </foreach>
         on duplicate key update
-        dict_value=values(dict_value),
-        dict_title=values(dict_title),
-        dict_type=values(dict_type),
-        dict_sort=values(dict_sort),
-        status=values(status),
-        remark=values(remark),
-
+        dict_value=values(dict_value) ,dict_title=values(dict_title) ,dict_type=values(dict_type)
+        ,dict_sort=values(dict_sort) ,status=values(status) ,remark=values(remark)
     </insert>
 
     <!--通过主键修改数据-->

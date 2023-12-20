@@ -22,7 +22,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,status,auth_type,appid,app_secret,channel,token,refresh_token,echostr,create_time,last_modified_time    </sql>
+                id,tenant_id,status,auth_type,appid,app_secret,channel,token,refresh_token,echostr,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="SysTenantTokenMap">
@@ -116,41 +116,34 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,auth_type,appid,app_secret,channel,token,refresh_token,echostr,)
+        (tenant_id ,auth_type ,appid ,app_secret ,channel ,token ,refresh_token ,echostr )
         values
-        (#{tenantId},#{authType},#{appid},#{appSecret},#{channel},#{token},#{refreshToken},#{echostr},)
+        (#{tenantId},#{authType},#{appid},#{appSecret},#{channel},#{token},#{refreshToken},#{echostr})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, auth_type, appid, app_secret, channel, token, refresh_token, echostr,)
+        ( tenant_id ,auth_type ,appid ,app_secret ,channel ,token ,refresh_token ,echostr)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.authType}, #{entity.appid}, #{entity.appSecret}, #{entity.channel},
-            #{entity.token}, #{entity.refreshToken}, #{entity.echostr},)
+            ( #{entity.tenantId} ,#{entity.authType} ,#{entity.appid} ,#{entity.appSecret} ,#{entity.channel}
+            ,#{entity.token} ,#{entity.refreshToken} ,#{entity.echostr})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, status, auth_type, appid, app_secret, channel, token, refresh_token, echostr,)
+        ( tenant_id ,status ,auth_type ,appid ,app_secret ,channel ,token ,refresh_token ,echostr)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.status},#{entity.authType},#{entity.appid},#{entity.appSecret},#{entity.channel},#{entity.token},#{entity.refreshToken},#{entity.echostr},)
+            (#{entity.tenantId},#{entity.status},#{entity.authType},#{entity.appid},#{entity.appSecret},#{entity.channel},#{entity.token},#{entity.refreshToken},#{entity.echostr})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        status=values(status),
-        auth_type=values(auth_type),
-        appid=values(appid),
-        app_secret=values(app_secret),
-        channel=values(channel),
-        token=values(token),
-        refresh_token=values(refresh_token),
-        echostr=values(echostr),
-
+        tenant_id=values(tenant_id) ,status=values(status) ,auth_type=values(auth_type) ,appid=values(appid)
+        ,app_secret=values(app_secret) ,channel=values(channel) ,token=values(token)
+        ,refresh_token=values(refresh_token) ,echostr=values(echostr)
     </insert>
 
     <!--通过主键修改数据-->

@@ -19,7 +19,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-        id,tenant_id,prod_id,prod_group_id,prod_group_name,remark,status,create_time,last_modified_time    </sql>
+                id,tenant_id,prod_id,prod_group_id,prod_group_name,remark,status,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="CrmProdGroupMap">
@@ -102,37 +102,32 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id,prod_id,prod_group_id,prod_group_name,remark,)
+        (tenant_id ,prod_id ,prod_group_id ,prod_group_name ,remark )
         values
-        (#{tenantId},#{prodId},#{prodGroupId},#{prodGroupName},#{remark},)
+        (#{tenantId},#{prodId},#{prodGroupId},#{prodGroupName},#{remark})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, prod_id, prod_group_id, prod_group_name, remark,)
+        ( tenant_id ,prod_id ,prod_group_id ,prod_group_name ,remark)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId}, #{entity.prodId}, #{entity.prodGroupId}, #{entity.prodGroupName}, #{entity.remark},)
+            ( #{entity.tenantId} ,#{entity.prodId} ,#{entity.prodGroupId} ,#{entity.prodGroupName} ,#{entity.remark})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id, prod_id, prod_group_id, prod_group_name, remark, status,)
+        ( tenant_id ,prod_id ,prod_group_id ,prod_group_name ,remark ,status)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.prodId},#{entity.prodGroupId},#{entity.prodGroupName},#{entity.remark},#{entity.status},)
+            (#{entity.tenantId},#{entity.prodId},#{entity.prodGroupId},#{entity.prodGroupName},#{entity.remark},#{entity.status})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id),
-        prod_id=values(prod_id),
-        prod_group_id=values(prod_group_id),
-        prod_group_name=values(prod_group_name),
-        remark=values(remark),
-        status=values(status),
-
+        tenant_id=values(tenant_id) ,prod_id=values(prod_id) ,prod_group_id=values(prod_group_id)
+        ,prod_group_name=values(prod_group_name) ,remark=values(remark) ,status=values(status)
     </insert>
 
     <!--通过主键修改数据-->
