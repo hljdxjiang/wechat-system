@@ -49,24 +49,60 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="prodId != null and prodId !=''">and prod_id = #{prodId}</if>
-            <if test="brandId != null and brandId !=''">and brand_id = #{brandId}</if>
-            <if test="prodName != null and prodName !=''">and prod_name = #{prodName}</if>
-            <if test="prodTitle != null and prodTitle !=''">and prod_title = #{prodTitle}</if>
-            <if test="prodDesc != null and prodDesc !=''">and prod_desc = #{prodDesc}</if>
-            <if test="prodDetail != null and prodDetail !=''">and prod_detail = #{prodDetail}</if>
-            <if test="prodTypeId != null and prodTypeId !=''">and prod_type_id = #{prodTypeId}</if>
-            <if test="prodLogo != null and prodLogo !=''">and prod_logo = #{prodLogo}</if>
-            <if test="prodBid != null and prodBid !=''">and prod_bid = #{prodBid}</if>
-            <if test="prodPrice != null and prodPrice !=''">and prod_price = #{prodPrice}</if>
-            <if test="prodAmount != null and prodAmount !=''">and prod_amount = #{prodAmount}</if>
-            <if test="prodLimit != null and prodLimit !=''">and prod_limit = #{prodLimit}</if>
-            <if test="prodModule != null and prodModule !=''">and prod_module = #{prodModule}</if>
-            <if test="prodSpecs != null and prodSpecs !=''">and prod_specs = #{prodSpecs}</if>
-            <if test="channelNo != null and channelNo !=''">and channel_no = #{channelNo}</if>
-            <if test="remark != null and remark !=''">and remark = #{remark}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="prodId != null and prodId !=''">and prod_id =
+                #{prodId}
+            </if>
+            <if test="brandId != null and brandId !=''">and brand_id =
+                #{brandId}
+            </if>
+            <if test="prodName != null and prodName !=''">and prod_name =
+                #{prodName}
+            </if>
+            <if test="prodTitle != null and prodTitle !=''">and prod_title =
+                #{prodTitle}
+            </if>
+            <if test="prodDesc != null and prodDesc !=''">and prod_desc =
+                #{prodDesc}
+            </if>
+            <if test="prodDetail != null and prodDetail !=''">and prod_detail =
+                #{prodDetail}
+            </if>
+            <if test="prodTypeId != null and prodTypeId !=''">and prod_type_id =
+                #{prodTypeId}
+            </if>
+            <if test="prodLogo != null and prodLogo !=''">and prod_logo =
+                #{prodLogo}
+            </if>
+            <if test="prodBid != null and prodBid !=''">and prod_bid =
+                #{prodBid}
+            </if>
+            <if test="prodPrice != null and prodPrice !=''">and prod_price =
+                #{prodPrice}
+            </if>
+            <if test="prodAmount != null and prodAmount !=''">and prod_amount =
+                #{prodAmount}
+            </if>
+            <if test="prodLimit != null and prodLimit !=''">and prod_limit =
+                #{prodLimit}
+            </if>
+            <if test="prodModule != null and prodModule !=''">and prod_module =
+                #{prodModule}
+            </if>
+            <if test="prodSpecs != null and prodSpecs !=''">and prod_specs =
+                #{prodSpecs}
+            </if>
+            <if test="channelNo != null and channelNo !=''">and channel_no =
+                #{channelNo}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
         </where>
     </select>
 
@@ -77,24 +113,60 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="prodId != null and prodId !=''">and prod_id = #{prodId}</if>
-            <if test="brandId != null and brandId !=''">and brand_id = #{brandId}</if>
-            <if test="prodName != null and prodName !=''">and prod_name = #{prodName}</if>
-            <if test="prodTitle != null and prodTitle !=''">and prod_title = #{prodTitle}</if>
-            <if test="prodDesc != null and prodDesc !=''">and prod_desc = #{prodDesc}</if>
-            <if test="prodDetail != null and prodDetail !=''">and prod_detail = #{prodDetail}</if>
-            <if test="prodTypeId != null and prodTypeId !=''">and prod_type_id = #{prodTypeId}</if>
-            <if test="prodLogo != null and prodLogo !=''">and prod_logo = #{prodLogo}</if>
-            <if test="prodBid != null and prodBid !=''">and prod_bid = #{prodBid}</if>
-            <if test="prodPrice != null and prodPrice !=''">and prod_price = #{prodPrice}</if>
-            <if test="prodAmount != null and prodAmount !=''">and prod_amount = #{prodAmount}</if>
-            <if test="prodLimit != null and prodLimit !=''">and prod_limit = #{prodLimit}</if>
-            <if test="prodModule != null and prodModule !=''">and prod_module = #{prodModule}</if>
-            <if test="prodSpecs != null and prodSpecs !=''">and prod_specs = #{prodSpecs}</if>
-            <if test="channelNo != null and channelNo !=''">and channel_no = #{channelNo}</if>
-            <if test="remark != null and remark !=''">and remark = #{remark}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="prodId != null and prodId !=''">and prod_id =
+                #{prodId}
+            </if>
+            <if test="brandId != null and brandId !=''">and brand_id =
+                #{brandId}
+            </if>
+            <if test="prodName != null and prodName !=''">and prod_name =
+                #{prodName}
+            </if>
+            <if test="prodTitle != null and prodTitle !=''">and prod_title =
+                #{prodTitle}
+            </if>
+            <if test="prodDesc != null and prodDesc !=''">and prod_desc =
+                #{prodDesc}
+            </if>
+            <if test="prodDetail != null and prodDetail !=''">and prod_detail =
+                #{prodDetail}
+            </if>
+            <if test="prodTypeId != null and prodTypeId !=''">and prod_type_id =
+                #{prodTypeId}
+            </if>
+            <if test="prodLogo != null and prodLogo !=''">and prod_logo =
+                #{prodLogo}
+            </if>
+            <if test="prodBid != null and prodBid !=''">and prod_bid =
+                #{prodBid}
+            </if>
+            <if test="prodPrice != null and prodPrice !=''">and prod_price =
+                #{prodPrice}
+            </if>
+            <if test="prodAmount != null and prodAmount !=''">and prod_amount =
+                #{prodAmount}
+            </if>
+            <if test="prodLimit != null and prodLimit !=''">and prod_limit =
+                #{prodLimit}
+            </if>
+            <if test="prodModule != null and prodModule !=''">and prod_module =
+                #{prodModule}
+            </if>
+            <if test="prodSpecs != null and prodSpecs !=''">and prod_specs =
+                #{prodSpecs}
+            </if>
+            <if test="channelNo != null and channelNo !=''">and channel_no =
+                #{channelNo}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
         </where>
     </select>
 
@@ -105,37 +177,60 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="prodId != null and prodId !=''">and prod_id like CONCAT(CONCAT('%', #{prodId}), '%')</if>
-            <if test="brandId != null and brandId !=''">and brand_id like CONCAT(CONCAT('%', #{brandId}), '%')</if>
-            <if test="prodName != null and prodName !=''">and prod_name like CONCAT(CONCAT('%', #{prodName}), '%')</if>
-            <if test="prodTitle != null and prodTitle !=''">and prod_title like CONCAT(CONCAT('%', #{prodTitle}), '%')
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
             </if>
-            <if test="prodDesc != null and prodDesc !=''">and prod_desc like CONCAT(CONCAT('%', #{prodDesc}), '%')</if>
-            <if test="prodDetail != null and prodDetail !=''">and prod_detail like CONCAT(CONCAT('%', #{prodDetail}),
-                '%')
+            <if test="prodId != null and prodId !=''">and prod_id like
+                CONCAT(CONCAT('%', #{prodId}), '%')
             </if>
-            <if test="prodTypeId != null and prodTypeId !=''">and prod_type_id like CONCAT(CONCAT('%', #{prodTypeId}),
-                '%')
+            <if test="brandId != null and brandId !=''">and brand_id like
+                CONCAT(CONCAT('%', #{brandId}), '%')
             </if>
-            <if test="prodLogo != null and prodLogo !=''">and prod_logo like CONCAT(CONCAT('%', #{prodLogo}), '%')</if>
-            <if test="prodBid != null and prodBid !=''">and prod_bid like CONCAT(CONCAT('%', #{prodBid}), '%')</if>
-            <if test="prodPrice != null and prodPrice !=''">and prod_price like CONCAT(CONCAT('%', #{prodPrice}), '%')
+            <if test="prodName != null and prodName !=''">and prod_name like
+                CONCAT(CONCAT('%', #{prodName}), '%')
             </if>
-            <if test="prodAmount != null and prodAmount !=''">and prod_amount like CONCAT(CONCAT('%', #{prodAmount}),
-                '%')
+            <if test="prodTitle != null and prodTitle !=''">and prod_title like
+                CONCAT(CONCAT('%', #{prodTitle}), '%')
             </if>
-            <if test="prodLimit != null and prodLimit !=''">and prod_limit like CONCAT(CONCAT('%', #{prodLimit}), '%')
+            <if test="prodDesc != null and prodDesc !=''">and prod_desc like
+                CONCAT(CONCAT('%', #{prodDesc}), '%')
             </if>
-            <if test="prodModule != null and prodModule !=''">and prod_module like CONCAT(CONCAT('%', #{prodModule}),
-                '%')
+            <if test="prodDetail != null and prodDetail !=''">and prod_detail like
+                CONCAT(CONCAT('%', #{prodDetail}), '%')
             </if>
-            <if test="prodSpecs != null and prodSpecs !=''">and prod_specs like CONCAT(CONCAT('%', #{prodSpecs}), '%')
+            <if test="prodTypeId != null and prodTypeId !=''">and prod_type_id like
+                CONCAT(CONCAT('%', #{prodTypeId}), '%')
             </if>
-            <if test="channelNo != null and channelNo !=''">and channel_no like CONCAT(CONCAT('%', #{channelNo}), '%')
+            <if test="prodLogo != null and prodLogo !=''">and prod_logo like
+                CONCAT(CONCAT('%', #{prodLogo}), '%')
             </if>
-            <if test="remark != null and remark !=''">and remark like CONCAT(CONCAT('%', #{remark}), '%')</if>
-            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
+            <if test="prodBid != null and prodBid !=''">and prod_bid like
+                CONCAT(CONCAT('%', #{prodBid}), '%')
+            </if>
+            <if test="prodPrice != null and prodPrice !=''">and prod_price like
+                CONCAT(CONCAT('%', #{prodPrice}), '%')
+            </if>
+            <if test="prodAmount != null and prodAmount !=''">and prod_amount like
+                CONCAT(CONCAT('%', #{prodAmount}), '%')
+            </if>
+            <if test="prodLimit != null and prodLimit !=''">and prod_limit like
+                CONCAT(CONCAT('%', #{prodLimit}), '%')
+            </if>
+            <if test="prodModule != null and prodModule !=''">and prod_module like
+                CONCAT(CONCAT('%', #{prodModule}), '%')
+            </if>
+            <if test="prodSpecs != null and prodSpecs !=''">and prod_specs like
+                CONCAT(CONCAT('%', #{prodSpecs}), '%')
+            </if>
+            <if test="channelNo != null and channelNo !=''">and channel_no like
+                CONCAT(CONCAT('%', #{channelNo}), '%')
+            </if>
+            <if test="remark != null and remark !=''">and remark like
+                CONCAT(CONCAT('%', #{remark}), '%')
+            </if>
+            <if test="status != null and status !=''">and status like
+                CONCAT(CONCAT('%', #{status}), '%')
+            </if>
         </where>
 
     </select>
@@ -146,24 +241,60 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="prodId != null and prodId !=''">and prod_id = #{prodId}</if>
-            <if test="brandId != null and brandId !=''">and brand_id = #{brandId}</if>
-            <if test="prodName != null and prodName !=''">and prod_name = #{prodName}</if>
-            <if test="prodTitle != null and prodTitle !=''">and prod_title = #{prodTitle}</if>
-            <if test="prodDesc != null and prodDesc !=''">and prod_desc = #{prodDesc}</if>
-            <if test="prodDetail != null and prodDetail !=''">and prod_detail = #{prodDetail}</if>
-            <if test="prodTypeId != null and prodTypeId !=''">and prod_type_id = #{prodTypeId}</if>
-            <if test="prodLogo != null and prodLogo !=''">and prod_logo = #{prodLogo}</if>
-            <if test="prodBid != null and prodBid !=''">and prod_bid = #{prodBid}</if>
-            <if test="prodPrice != null and prodPrice !=''">and prod_price = #{prodPrice}</if>
-            <if test="prodAmount != null and prodAmount !=''">and prod_amount = #{prodAmount}</if>
-            <if test="prodLimit != null and prodLimit !=''">and prod_limit = #{prodLimit}</if>
-            <if test="prodModule != null and prodModule !=''">and prod_module = #{prodModule}</if>
-            <if test="prodSpecs != null and prodSpecs !=''">and prod_specs = #{prodSpecs}</if>
-            <if test="channelNo != null and channelNo !=''">and channel_no = #{channelNo}</if>
-            <if test="remark != null and remark !=''">and remark = #{remark}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="prodId != null and prodId !=''">and prod_id =
+                #{prodId}
+            </if>
+            <if test="brandId != null and brandId !=''">and brand_id =
+                #{brandId}
+            </if>
+            <if test="prodName != null and prodName !=''">and prod_name =
+                #{prodName}
+            </if>
+            <if test="prodTitle != null and prodTitle !=''">and prod_title =
+                #{prodTitle}
+            </if>
+            <if test="prodDesc != null and prodDesc !=''">and prod_desc =
+                #{prodDesc}
+            </if>
+            <if test="prodDetail != null and prodDetail !=''">and prod_detail =
+                #{prodDetail}
+            </if>
+            <if test="prodTypeId != null and prodTypeId !=''">and prod_type_id =
+                #{prodTypeId}
+            </if>
+            <if test="prodLogo != null and prodLogo !=''">and prod_logo =
+                #{prodLogo}
+            </if>
+            <if test="prodBid != null and prodBid !=''">and prod_bid =
+                #{prodBid}
+            </if>
+            <if test="prodPrice != null and prodPrice !=''">and prod_price =
+                #{prodPrice}
+            </if>
+            <if test="prodAmount != null and prodAmount !=''">and prod_amount =
+                #{prodAmount}
+            </if>
+            <if test="prodLimit != null and prodLimit !=''">and prod_limit =
+                #{prodLimit}
+            </if>
+            <if test="prodModule != null and prodModule !=''">and prod_module =
+                #{prodModule}
+            </if>
+            <if test="prodSpecs != null and prodSpecs !=''">and prod_specs =
+                #{prodSpecs}
+            </if>
+            <if test="channelNo != null and channelNo !=''">and channel_no =
+                #{channelNo}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
         </where>
     </select>
 
@@ -174,7 +305,9 @@
         (tenant_id ,prod_id ,brand_id ,prod_name ,prod_title ,prod_desc ,prod_detail ,prod_type_id ,prod_logo ,prod_bid
         ,prod_price ,prod_amount ,prod_limit ,prod_module ,prod_specs ,channel_no ,remark )
         values
-        (#{tenantId},#{prodId},#{brandId},#{prodName},#{prodTitle},#{prodDesc},#{prodDetail},#{prodTypeId},#{prodLogo},#{prodBid},#{prodPrice},#{prodAmount},#{prodLimit},#{prodModule},#{prodSpecs},#{channelNo},#{remark})
+        (#{tenantId} ,#{prodId} ,#{brandId} ,#{prodName} ,#{prodTitle} ,#{prodDesc} ,#{prodDetail} ,#{prodTypeId}
+        ,#{prodLogo} ,#{prodBid} ,#{prodPrice} ,#{prodAmount} ,#{prodLimit} ,#{prodModule} ,#{prodSpecs} ,#{channelNo}
+        ,#{remark})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -198,15 +331,31 @@
         ,prod_price ,prod_amount ,prod_limit ,prod_module ,prod_specs ,channel_no ,remark ,status)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.prodId},#{entity.brandId},#{entity.prodName},#{entity.prodTitle},#{entity.prodDesc},#{entity.prodDetail},#{entity.prodTypeId},#{entity.prodLogo},#{entity.prodBid},#{entity.prodPrice},#{entity.prodAmount},#{entity.prodLimit},#{entity.prodModule},#{entity.prodSpecs},#{entity.channelNo},#{entity.remark},#{entity.status})
+            ( #{entity.tenantId}, #{entity.prodId}, #{entity.brandId}, #{entity.prodName}, #{entity.prodTitle},
+            #{entity.prodDesc}, #{entity.prodDetail}, #{entity.prodTypeId}, #{entity.prodLogo}, #{entity.prodBid},
+            #{entity.prodPrice}, #{entity.prodAmount}, #{entity.prodLimit}, #{entity.prodModule}, #{entity.prodSpecs},
+            #{entity.channelNo}, #{entity.remark}, #{entity.status})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id) ,prod_id=values(prod_id) ,brand_id=values(brand_id) ,prod_name=values(prod_name)
-        ,prod_title=values(prod_title) ,prod_desc=values(prod_desc) ,prod_detail=values(prod_detail)
-        ,prod_type_id=values(prod_type_id) ,prod_logo=values(prod_logo) ,prod_bid=values(prod_bid)
-        ,prod_price=values(prod_price) ,prod_amount=values(prod_amount) ,prod_limit=values(prod_limit)
-        ,prod_module=values(prod_module) ,prod_specs=values(prod_specs) ,channel_no=values(channel_no)
-        ,remark=values(remark) ,status=values(status)
+        tenant_id
+        =values(tenant_id) ,prod_id
+        =values(prod_id) ,brand_id
+        =values(brand_id) ,prod_name
+        =values(prod_name) ,prod_title
+        =values(prod_title) ,prod_desc
+        =values(prod_desc) ,prod_detail
+        =values(prod_detail) ,prod_type_id
+        =values(prod_type_id) ,prod_logo
+        =values(prod_logo) ,prod_bid
+        =values(prod_bid) ,prod_price
+        =values(prod_price) ,prod_amount
+        =values(prod_amount) ,prod_limit
+        =values(prod_limit) ,prod_module
+        =values(prod_module) ,prod_specs
+        =values(prod_specs) ,channel_no
+        =values(channel_no) ,remark
+        =values(remark) ,status
+        =values(status)
     </insert>
 
     <!--通过主键修改数据-->
@@ -214,24 +363,60 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="prodId != null and prodId != ''">prod_id = #{prodId},</if>
-            <if test="brandId != null and brandId != ''">brand_id = #{brandId},</if>
-            <if test="prodName != null and prodName != ''">prod_name = #{prodName},</if>
-            <if test="prodTitle != null and prodTitle != ''">prod_title = #{prodTitle},</if>
-            <if test="prodDesc != null and prodDesc != ''">prod_desc = #{prodDesc},</if>
-            <if test="prodDetail != null and prodDetail != ''">prod_detail = #{prodDetail},</if>
-            <if test="prodTypeId != null and prodTypeId != ''">prod_type_id = #{prodTypeId},</if>
-            <if test="prodLogo != null and prodLogo != ''">prod_logo = #{prodLogo},</if>
-            <if test="prodBid != null and prodBid != ''">prod_bid = #{prodBid},</if>
-            <if test="prodPrice != null and prodPrice != ''">prod_price = #{prodPrice},</if>
-            <if test="prodAmount != null and prodAmount != ''">prod_amount = #{prodAmount},</if>
-            <if test="prodLimit != null and prodLimit != ''">prod_limit = #{prodLimit},</if>
-            <if test="prodModule != null and prodModule != ''">prod_module = #{prodModule},</if>
-            <if test="prodSpecs != null and prodSpecs != ''">prod_specs = #{prodSpecs},</if>
-            <if test="channelNo != null and channelNo != ''">channel_no = #{channelNo},</if>
-            <if test="remark != null and remark != ''">remark = #{remark},</if>
-            <if test="status != null and status != ''">status = #{status},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="prodId != null and prodId != ''">prod_id = #{prodId
+                    },
+            </if>
+            <if test="brandId != null and brandId != ''">brand_id = #{brandId
+                    },
+            </if>
+            <if test="prodName != null and prodName != ''">prod_name = #{prodName
+                    },
+            </if>
+            <if test="prodTitle != null and prodTitle != ''">prod_title = #{prodTitle
+                    },
+            </if>
+            <if test="prodDesc != null and prodDesc != ''">prod_desc = #{prodDesc
+                    },
+            </if>
+            <if test="prodDetail != null and prodDetail != ''">prod_detail = #{prodDetail
+                    },
+            </if>
+            <if test="prodTypeId != null and prodTypeId != ''">prod_type_id = #{prodTypeId
+                    },
+            </if>
+            <if test="prodLogo != null and prodLogo != ''">prod_logo = #{prodLogo
+                    },
+            </if>
+            <if test="prodBid != null and prodBid != ''">prod_bid = #{prodBid
+                    },
+            </if>
+            <if test="prodPrice != null and prodPrice != ''">prod_price = #{prodPrice
+                    },
+            </if>
+            <if test="prodAmount != null and prodAmount != ''">prod_amount = #{prodAmount
+                    },
+            </if>
+            <if test="prodLimit != null and prodLimit != ''">prod_limit = #{prodLimit
+                    },
+            </if>
+            <if test="prodModule != null and prodModule != ''">prod_module = #{prodModule
+                    },
+            </if>
+            <if test="prodSpecs != null and prodSpecs != ''">prod_specs = #{prodSpecs
+                    },
+            </if>
+            <if test="channelNo != null and channelNo != ''">channel_no = #{channelNo
+                    },
+            </if>
+            <if test="remark != null and remark != ''">remark = #{remark
+                    },
+            </if>
+            <if test="status != null and status != ''">status = #{status
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -242,7 +427,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

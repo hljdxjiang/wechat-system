@@ -38,13 +38,27 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="pageId != null and pageId !=''">and page_id = #{pageId}</if>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="flowId != null and flowId !=''">and flow_id = #{flowId}</if>
-            <if test="flowSort != null and flowSort !=''">and flow_sort = #{flowSort}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="channel != null and channel !=''">and channel = #{channel}</if>
-            <if test="controlFlag != null and controlFlag !=''">and control_flag = #{controlFlag}</if>
+            <if test="pageId != null and pageId !=''">and page_id =
+                #{pageId}
+            </if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="flowId != null and flowId !=''">and flow_id =
+                #{flowId}
+            </if>
+            <if test="flowSort != null and flowSort !=''">and flow_sort =
+                #{flowSort}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="channel != null and channel !=''">and channel =
+                #{channel}
+            </if>
+            <if test="controlFlag != null and controlFlag !=''">and control_flag =
+                #{controlFlag}
+            </if>
         </where>
     </select>
 
@@ -55,13 +69,27 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="pageId != null and pageId !=''">and page_id = #{pageId}</if>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="flowId != null and flowId !=''">and flow_id = #{flowId}</if>
-            <if test="flowSort != null and flowSort !=''">and flow_sort = #{flowSort}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="channel != null and channel !=''">and channel = #{channel}</if>
-            <if test="controlFlag != null and controlFlag !=''">and control_flag = #{controlFlag}</if>
+            <if test="pageId != null and pageId !=''">and page_id =
+                #{pageId}
+            </if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="flowId != null and flowId !=''">and flow_id =
+                #{flowId}
+            </if>
+            <if test="flowSort != null and flowSort !=''">and flow_sort =
+                #{flowSort}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="channel != null and channel !=''">and channel =
+                #{channel}
+            </if>
+            <if test="controlFlag != null and controlFlag !=''">and control_flag =
+                #{controlFlag}
+            </if>
         </where>
     </select>
 
@@ -72,14 +100,26 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="pageId != null and pageId !=''">and page_id like CONCAT(CONCAT('%', #{pageId}), '%')</if>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="flowId != null and flowId !=''">and flow_id like CONCAT(CONCAT('%', #{flowId}), '%')</if>
-            <if test="flowSort != null and flowSort !=''">and flow_sort like CONCAT(CONCAT('%', #{flowSort}), '%')</if>
-            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
-            <if test="channel != null and channel !=''">and channel like CONCAT(CONCAT('%', #{channel}), '%')</if>
-            <if test="controlFlag != null and controlFlag !=''">and control_flag like CONCAT(CONCAT('%',
-                #{controlFlag}), '%')
+            <if test="pageId != null and pageId !=''">and page_id like
+                CONCAT(CONCAT('%', #{pageId}), '%')
+            </if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="flowId != null and flowId !=''">and flow_id like
+                CONCAT(CONCAT('%', #{flowId}), '%')
+            </if>
+            <if test="flowSort != null and flowSort !=''">and flow_sort like
+                CONCAT(CONCAT('%', #{flowSort}), '%')
+            </if>
+            <if test="status != null and status !=''">and status like
+                CONCAT(CONCAT('%', #{status}), '%')
+            </if>
+            <if test="channel != null and channel !=''">and channel like
+                CONCAT(CONCAT('%', #{channel}), '%')
+            </if>
+            <if test="controlFlag != null and controlFlag !=''">and control_flag like
+                CONCAT(CONCAT('%', #{controlFlag}), '%')
             </if>
         </where>
 
@@ -91,13 +131,27 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="pageId != null and pageId !=''">and page_id = #{pageId}</if>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="flowId != null and flowId !=''">and flow_id = #{flowId}</if>
-            <if test="flowSort != null and flowSort !=''">and flow_sort = #{flowSort}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="channel != null and channel !=''">and channel = #{channel}</if>
-            <if test="controlFlag != null and controlFlag !=''">and control_flag = #{controlFlag}</if>
+            <if test="pageId != null and pageId !=''">and page_id =
+                #{pageId}
+            </if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="flowId != null and flowId !=''">and flow_id =
+                #{flowId}
+            </if>
+            <if test="flowSort != null and flowSort !=''">and flow_sort =
+                #{flowSort}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="channel != null and channel !=''">and channel =
+                #{channel}
+            </if>
+            <if test="controlFlag != null and controlFlag !=''">and control_flag =
+                #{controlFlag}
+            </if>
         </where>
     </select>
 
@@ -107,7 +161,7 @@
         <include refid="Table_Name"/>
         (page_id ,tenant_id ,flow_id ,flow_sort ,channel ,control_flag )
         values
-        (#{pageId},#{tenantId},#{flowId},#{flowSort},#{channel},#{controlFlag})
+        (#{pageId} ,#{tenantId} ,#{flowId} ,#{flowSort} ,#{channel} ,#{controlFlag})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -127,11 +181,18 @@
         ( page_id ,tenant_id ,flow_id ,flow_sort ,status ,channel ,control_flag)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.pageId},#{entity.tenantId},#{entity.flowId},#{entity.flowSort},#{entity.status},#{entity.channel},#{entity.controlFlag})
+            ( #{entity.pageId}, #{entity.tenantId}, #{entity.flowId}, #{entity.flowSort}, #{entity.status},
+            #{entity.channel}, #{entity.controlFlag})
         </foreach>
         on duplicate key update
-        page_id=values(page_id) ,tenant_id=values(tenant_id) ,flow_id=values(flow_id) ,flow_sort=values(flow_sort)
-        ,status=values(status) ,channel=values(channel) ,control_flag=values(control_flag)
+        page_id
+        =values(page_id) ,tenant_id
+        =values(tenant_id) ,flow_id
+        =values(flow_id) ,flow_sort
+        =values(flow_sort) ,status
+        =values(status) ,channel
+        =values(channel) ,control_flag
+        =values(control_flag)
     </insert>
 
     <!--通过主键修改数据-->
@@ -139,13 +200,27 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="pageId != null and pageId != ''">page_id = #{pageId},</if>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="flowId != null and flowId != ''">flow_id = #{flowId},</if>
-            <if test="flowSort != null and flowSort != ''">flow_sort = #{flowSort},</if>
-            <if test="status != null and status != ''">status = #{status},</if>
-            <if test="channel != null and channel != ''">channel = #{channel},</if>
-            <if test="controlFlag != null and controlFlag != ''">control_flag = #{controlFlag},</if>
+            <if test="pageId != null and pageId != ''">page_id = #{pageId
+                    },
+            </if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="flowId != null and flowId != ''">flow_id = #{flowId
+                    },
+            </if>
+            <if test="flowSort != null and flowSort != ''">flow_sort = #{flowSort
+                    },
+            </if>
+            <if test="status != null and status != ''">status = #{status
+                    },
+            </if>
+            <if test="channel != null and channel != ''">channel = #{channel
+                    },
+            </if>
+            <if test="controlFlag != null and controlFlag != ''">control_flag = #{controlFlag
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -156,7 +231,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

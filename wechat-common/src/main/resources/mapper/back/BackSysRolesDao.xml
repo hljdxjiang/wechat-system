@@ -35,10 +35,18 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="roleId != null and roleId !=''">and role_id = #{roleId}</if>
-            <if test="roleName != null and roleName !=''">and role_name = #{roleName}</if>
-            <if test="roleRemark != null and roleRemark !=''">and role_remark = #{roleRemark}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="roleId != null and roleId !=''">and role_id =
+                #{roleId}
+            </if>
+            <if test="roleName != null and roleName !=''">and role_name =
+                #{roleName}
+            </if>
+            <if test="roleRemark != null and roleRemark !=''">and role_remark =
+                #{roleRemark}
+            </if>
         </where>
     </select>
 
@@ -49,10 +57,18 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="roleId != null and roleId !=''">and role_id = #{roleId}</if>
-            <if test="roleName != null and roleName !=''">and role_name = #{roleName}</if>
-            <if test="roleRemark != null and roleRemark !=''">and role_remark = #{roleRemark}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="roleId != null and roleId !=''">and role_id =
+                #{roleId}
+            </if>
+            <if test="roleName != null and roleName !=''">and role_name =
+                #{roleName}
+            </if>
+            <if test="roleRemark != null and roleRemark !=''">and role_remark =
+                #{roleRemark}
+            </if>
         </where>
     </select>
 
@@ -63,11 +79,17 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="roleId != null and roleId !=''">and role_id like CONCAT(CONCAT('%', #{roleId}), '%')</if>
-            <if test="roleName != null and roleName !=''">and role_name like CONCAT(CONCAT('%', #{roleName}), '%')</if>
-            <if test="roleRemark != null and roleRemark !=''">and role_remark like CONCAT(CONCAT('%', #{roleRemark}),
-                '%')
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="roleId != null and roleId !=''">and role_id like
+                CONCAT(CONCAT('%', #{roleId}), '%')
+            </if>
+            <if test="roleName != null and roleName !=''">and role_name like
+                CONCAT(CONCAT('%', #{roleName}), '%')
+            </if>
+            <if test="roleRemark != null and roleRemark !=''">and role_remark like
+                CONCAT(CONCAT('%', #{roleRemark}), '%')
             </if>
         </where>
 
@@ -79,10 +101,18 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="roleId != null and roleId !=''">and role_id = #{roleId}</if>
-            <if test="roleName != null and roleName !=''">and role_name = #{roleName}</if>
-            <if test="roleRemark != null and roleRemark !=''">and role_remark = #{roleRemark}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="roleId != null and roleId !=''">and role_id =
+                #{roleId}
+            </if>
+            <if test="roleName != null and roleName !=''">and role_name =
+                #{roleName}
+            </if>
+            <if test="roleRemark != null and roleRemark !=''">and role_remark =
+                #{roleRemark}
+            </if>
         </where>
     </select>
 
@@ -92,7 +122,7 @@
         <include refid="Table_Name"/>
         (tenant_id ,role_id ,role_name ,role_remark )
         values
-        (#{tenantId},#{roleId},#{roleName},#{roleRemark})
+        (#{tenantId} ,#{roleId} ,#{roleName} ,#{roleRemark})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -111,11 +141,14 @@
         ( tenant_id ,role_id ,role_name ,role_remark)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.roleId},#{entity.roleName},#{entity.roleRemark})
+            ( #{entity.tenantId}, #{entity.roleId}, #{entity.roleName}, #{entity.roleRemark})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id) ,role_id=values(role_id) ,role_name=values(role_name)
-        ,role_remark=values(role_remark)
+        tenant_id
+        =values(tenant_id) ,role_id
+        =values(role_id) ,role_name
+        =values(role_name) ,role_remark
+        =values(role_remark)
     </insert>
 
     <!--通过主键修改数据-->
@@ -123,10 +156,18 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="roleId != null and roleId != ''">role_id = #{roleId},</if>
-            <if test="roleName != null and roleName != ''">role_name = #{roleName},</if>
-            <if test="roleRemark != null and roleRemark != ''">role_remark = #{roleRemark},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="roleId != null and roleId != ''">role_id = #{roleId
+                    },
+            </if>
+            <if test="roleName != null and roleName != ''">role_name = #{roleName
+                    },
+            </if>
+            <if test="roleRemark != null and roleRemark != ''">role_remark = #{roleRemark
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -137,7 +178,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

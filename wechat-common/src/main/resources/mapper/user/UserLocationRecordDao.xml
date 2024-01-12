@@ -36,13 +36,27 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="userId != null and userId !=''">and user_id = #{userId}</if>
-            <if test="latitude != null and latitude !=''">and latitude = #{latitude}</if>
-            <if test="longitude != null and longitude !=''">and longitude = #{longitude}</if>
-            <if test="precision != null and precision !=''">and precision = #{precision}</if>
-            <if test="channel != null and channel !=''">and channel = #{channel}</if>
-            <if test="validDate != null and validDate !=''">and valid_date = #{validDate}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="userId != null and userId !=''">and user_id =
+                #{userId}
+            </if>
+            <if test="latitude != null and latitude !=''">and latitude =
+                #{latitude}
+            </if>
+            <if test="longitude != null and longitude !=''">and longitude =
+                #{longitude}
+            </if>
+            <if test="precision != null and precision !=''">and precision =
+                #{precision}
+            </if>
+            <if test="channel != null and channel !=''">and channel =
+                #{channel}
+            </if>
+            <if test="validDate != null and validDate !=''">and valid_date =
+                #{validDate}
+            </if>
         </where>
     </select>
 
@@ -53,13 +67,27 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="userId != null and userId !=''">and user_id = #{userId}</if>
-            <if test="latitude != null and latitude !=''">and latitude = #{latitude}</if>
-            <if test="longitude != null and longitude !=''">and longitude = #{longitude}</if>
-            <if test="precision != null and precision !=''">and precision = #{precision}</if>
-            <if test="channel != null and channel !=''">and channel = #{channel}</if>
-            <if test="validDate != null and validDate !=''">and valid_date = #{validDate}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="userId != null and userId !=''">and user_id =
+                #{userId}
+            </if>
+            <if test="latitude != null and latitude !=''">and latitude =
+                #{latitude}
+            </if>
+            <if test="longitude != null and longitude !=''">and longitude =
+                #{longitude}
+            </if>
+            <if test="precision != null and precision !=''">and precision =
+                #{precision}
+            </if>
+            <if test="channel != null and channel !=''">and channel =
+                #{channel}
+            </if>
+            <if test="validDate != null and validDate !=''">and valid_date =
+                #{validDate}
+            </if>
         </where>
     </select>
 
@@ -70,15 +98,26 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="userId != null and userId !=''">and user_id like CONCAT(CONCAT('%', #{userId}), '%')</if>
-            <if test="latitude != null and latitude !=''">and latitude like CONCAT(CONCAT('%', #{latitude}), '%')</if>
-            <if test="longitude != null and longitude !=''">and longitude like CONCAT(CONCAT('%', #{longitude}), '%')
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
             </if>
-            <if test="precision != null and precision !=''">and precision like CONCAT(CONCAT('%', #{precision}), '%')
+            <if test="userId != null and userId !=''">and user_id like
+                CONCAT(CONCAT('%', #{userId}), '%')
             </if>
-            <if test="channel != null and channel !=''">and channel like CONCAT(CONCAT('%', #{channel}), '%')</if>
-            <if test="validDate != null and validDate !=''">and valid_date like CONCAT(CONCAT('%', #{validDate}), '%')
+            <if test="latitude != null and latitude !=''">and latitude like
+                CONCAT(CONCAT('%', #{latitude}), '%')
+            </if>
+            <if test="longitude != null and longitude !=''">and longitude like
+                CONCAT(CONCAT('%', #{longitude}), '%')
+            </if>
+            <if test="precision != null and precision !=''">and precision like
+                CONCAT(CONCAT('%', #{precision}), '%')
+            </if>
+            <if test="channel != null and channel !=''">and channel like
+                CONCAT(CONCAT('%', #{channel}), '%')
+            </if>
+            <if test="validDate != null and validDate !=''">and valid_date like
+                CONCAT(CONCAT('%', #{validDate}), '%')
             </if>
         </where>
 
@@ -90,13 +129,27 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="userId != null and userId !=''">and user_id = #{userId}</if>
-            <if test="latitude != null and latitude !=''">and latitude = #{latitude}</if>
-            <if test="longitude != null and longitude !=''">and longitude = #{longitude}</if>
-            <if test="precision != null and precision !=''">and precision = #{precision}</if>
-            <if test="channel != null and channel !=''">and channel = #{channel}</if>
-            <if test="validDate != null and validDate !=''">and valid_date = #{validDate}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="userId != null and userId !=''">and user_id =
+                #{userId}
+            </if>
+            <if test="latitude != null and latitude !=''">and latitude =
+                #{latitude}
+            </if>
+            <if test="longitude != null and longitude !=''">and longitude =
+                #{longitude}
+            </if>
+            <if test="precision != null and precision !=''">and precision =
+                #{precision}
+            </if>
+            <if test="channel != null and channel !=''">and channel =
+                #{channel}
+            </if>
+            <if test="validDate != null and validDate !=''">and valid_date =
+                #{validDate}
+            </if>
         </where>
     </select>
 
@@ -106,7 +159,7 @@
         <include refid="Table_Name"/>
         (tenant_id ,user_id ,latitude ,longitude ,precision ,channel ,valid_date )
         values
-        (#{tenantId},#{userId},#{latitude},#{longitude},#{precision},#{channel},#{validDate})
+        (#{tenantId} ,#{userId} ,#{latitude} ,#{longitude} ,#{precision} ,#{channel} ,#{validDate})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -126,11 +179,18 @@
         ( tenant_id ,user_id ,latitude ,longitude ,precision ,channel ,valid_date)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.userId},#{entity.latitude},#{entity.longitude},#{entity.precision},#{entity.channel},#{entity.validDate})
+            ( #{entity.tenantId}, #{entity.userId}, #{entity.latitude}, #{entity.longitude}, #{entity.precision},
+            #{entity.channel}, #{entity.validDate})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id) ,user_id=values(user_id) ,latitude=values(latitude) ,longitude=values(longitude)
-        ,precision=values(precision) ,channel=values(channel) ,valid_date=values(valid_date)
+        tenant_id
+        =values(tenant_id) ,user_id
+        =values(user_id) ,latitude
+        =values(latitude) ,longitude
+        =values(longitude) ,precision
+        =values(precision) ,channel
+        =values(channel) ,valid_date
+        =values(valid_date)
     </insert>
 
     <!--通过主键修改数据-->
@@ -138,13 +198,27 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="userId != null and userId != ''">user_id = #{userId},</if>
-            <if test="latitude != null and latitude != ''">latitude = #{latitude},</if>
-            <if test="longitude != null and longitude != ''">longitude = #{longitude},</if>
-            <if test="precision != null and precision != ''">precision = #{precision},</if>
-            <if test="channel != null and channel != ''">channel = #{channel},</if>
-            <if test="validDate != null and validDate != ''">valid_date = #{validDate},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="userId != null and userId != ''">user_id = #{userId
+                    },
+            </if>
+            <if test="latitude != null and latitude != ''">latitude = #{latitude
+                    },
+            </if>
+            <if test="longitude != null and longitude != ''">longitude = #{longitude
+                    },
+            </if>
+            <if test="precision != null and precision != ''">precision = #{precision
+                    },
+            </if>
+            <if test="channel != null and channel != ''">channel = #{channel
+                    },
+            </if>
+            <if test="validDate != null and validDate != ''">valid_date = #{validDate
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -155,7 +229,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

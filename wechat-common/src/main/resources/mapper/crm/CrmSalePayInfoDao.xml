@@ -39,14 +39,30 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="batchId != null and batchId !=''">and batch_id = #{batchId}</if>
-            <if test="couponId != null and couponId !=''">and coupon_id = #{couponId}</if>
-            <if test="couponAmount != null and couponAmount !=''">and coupon_amount = #{couponAmount}</if>
-            <if test="couponType != null and couponType !=''">and coupon_type = #{couponType}</if>
-            <if test="userCouponId != null and userCouponId !=''">and user_coupon_id = #{userCouponId}</if>
-            <if test="remark != null and remark !=''">and remark = #{remark}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="batchId != null and batchId !=''">and batch_id =
+                #{batchId}
+            </if>
+            <if test="couponId != null and couponId !=''">and coupon_id =
+                #{couponId}
+            </if>
+            <if test="couponAmount != null and couponAmount !=''">and coupon_amount =
+                #{couponAmount}
+            </if>
+            <if test="couponType != null and couponType !=''">and coupon_type =
+                #{couponType}
+            </if>
+            <if test="userCouponId != null and userCouponId !=''">and user_coupon_id =
+                #{userCouponId}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
         </where>
     </select>
 
@@ -57,14 +73,30 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="batchId != null and batchId !=''">and batch_id = #{batchId}</if>
-            <if test="couponId != null and couponId !=''">and coupon_id = #{couponId}</if>
-            <if test="couponAmount != null and couponAmount !=''">and coupon_amount = #{couponAmount}</if>
-            <if test="couponType != null and couponType !=''">and coupon_type = #{couponType}</if>
-            <if test="userCouponId != null and userCouponId !=''">and user_coupon_id = #{userCouponId}</if>
-            <if test="remark != null and remark !=''">and remark = #{remark}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="batchId != null and batchId !=''">and batch_id =
+                #{batchId}
+            </if>
+            <if test="couponId != null and couponId !=''">and coupon_id =
+                #{couponId}
+            </if>
+            <if test="couponAmount != null and couponAmount !=''">and coupon_amount =
+                #{couponAmount}
+            </if>
+            <if test="couponType != null and couponType !=''">and coupon_type =
+                #{couponType}
+            </if>
+            <if test="userCouponId != null and userCouponId !=''">and user_coupon_id =
+                #{userCouponId}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
         </where>
     </select>
 
@@ -75,20 +107,30 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="batchId != null and batchId !=''">and batch_id like CONCAT(CONCAT('%', #{batchId}), '%')</if>
-            <if test="couponId != null and couponId !=''">and coupon_id like CONCAT(CONCAT('%', #{couponId}), '%')</if>
-            <if test="couponAmount != null and couponAmount !=''">and coupon_amount like CONCAT(CONCAT('%',
-                #{couponAmount}), '%')
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
             </if>
-            <if test="couponType != null and couponType !=''">and coupon_type like CONCAT(CONCAT('%', #{couponType}),
-                '%')
+            <if test="batchId != null and batchId !=''">and batch_id like
+                CONCAT(CONCAT('%', #{batchId}), '%')
             </if>
-            <if test="userCouponId != null and userCouponId !=''">and user_coupon_id like CONCAT(CONCAT('%',
-                #{userCouponId}), '%')
+            <if test="couponId != null and couponId !=''">and coupon_id like
+                CONCAT(CONCAT('%', #{couponId}), '%')
             </if>
-            <if test="remark != null and remark !=''">and remark like CONCAT(CONCAT('%', #{remark}), '%')</if>
-            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
+            <if test="couponAmount != null and couponAmount !=''">and coupon_amount like
+                CONCAT(CONCAT('%', #{couponAmount}), '%')
+            </if>
+            <if test="couponType != null and couponType !=''">and coupon_type like
+                CONCAT(CONCAT('%', #{couponType}), '%')
+            </if>
+            <if test="userCouponId != null and userCouponId !=''">and user_coupon_id like
+                CONCAT(CONCAT('%', #{userCouponId}), '%')
+            </if>
+            <if test="remark != null and remark !=''">and remark like
+                CONCAT(CONCAT('%', #{remark}), '%')
+            </if>
+            <if test="status != null and status !=''">and status like
+                CONCAT(CONCAT('%', #{status}), '%')
+            </if>
         </where>
 
     </select>
@@ -99,14 +141,30 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="batchId != null and batchId !=''">and batch_id = #{batchId}</if>
-            <if test="couponId != null and couponId !=''">and coupon_id = #{couponId}</if>
-            <if test="couponAmount != null and couponAmount !=''">and coupon_amount = #{couponAmount}</if>
-            <if test="couponType != null and couponType !=''">and coupon_type = #{couponType}</if>
-            <if test="userCouponId != null and userCouponId !=''">and user_coupon_id = #{userCouponId}</if>
-            <if test="remark != null and remark !=''">and remark = #{remark}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="batchId != null and batchId !=''">and batch_id =
+                #{batchId}
+            </if>
+            <if test="couponId != null and couponId !=''">and coupon_id =
+                #{couponId}
+            </if>
+            <if test="couponAmount != null and couponAmount !=''">and coupon_amount =
+                #{couponAmount}
+            </if>
+            <if test="couponType != null and couponType !=''">and coupon_type =
+                #{couponType}
+            </if>
+            <if test="userCouponId != null and userCouponId !=''">and user_coupon_id =
+                #{userCouponId}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
         </where>
     </select>
 
@@ -116,7 +174,7 @@
         <include refid="Table_Name"/>
         (tenant_id ,batch_id ,coupon_id ,coupon_amount ,coupon_type ,user_coupon_id ,remark )
         values
-        (#{tenantId},#{batchId},#{couponId},#{couponAmount},#{couponType},#{userCouponId},#{remark})
+        (#{tenantId} ,#{batchId} ,#{couponId} ,#{couponAmount} ,#{couponType} ,#{userCouponId} ,#{remark})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -136,12 +194,19 @@
         ( tenant_id ,batch_id ,coupon_id ,coupon_amount ,coupon_type ,user_coupon_id ,remark ,status)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.batchId},#{entity.couponId},#{entity.couponAmount},#{entity.couponType},#{entity.userCouponId},#{entity.remark},#{entity.status})
+            ( #{entity.tenantId}, #{entity.batchId}, #{entity.couponId}, #{entity.couponAmount}, #{entity.couponType},
+            #{entity.userCouponId}, #{entity.remark}, #{entity.status})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id) ,batch_id=values(batch_id) ,coupon_id=values(coupon_id)
-        ,coupon_amount=values(coupon_amount) ,coupon_type=values(coupon_type) ,user_coupon_id=values(user_coupon_id)
-        ,remark=values(remark) ,status=values(status)
+        tenant_id
+        =values(tenant_id) ,batch_id
+        =values(batch_id) ,coupon_id
+        =values(coupon_id) ,coupon_amount
+        =values(coupon_amount) ,coupon_type
+        =values(coupon_type) ,user_coupon_id
+        =values(user_coupon_id) ,remark
+        =values(remark) ,status
+        =values(status)
     </insert>
 
     <!--通过主键修改数据-->
@@ -149,14 +214,30 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="batchId != null and batchId != ''">batch_id = #{batchId},</if>
-            <if test="couponId != null and couponId != ''">coupon_id = #{couponId},</if>
-            <if test="couponAmount != null and couponAmount != ''">coupon_amount = #{couponAmount},</if>
-            <if test="couponType != null and couponType != ''">coupon_type = #{couponType},</if>
-            <if test="userCouponId != null and userCouponId != ''">user_coupon_id = #{userCouponId},</if>
-            <if test="remark != null and remark != ''">remark = #{remark},</if>
-            <if test="status != null and status != ''">status = #{status},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="batchId != null and batchId != ''">batch_id = #{batchId
+                    },
+            </if>
+            <if test="couponId != null and couponId != ''">coupon_id = #{couponId
+                    },
+            </if>
+            <if test="couponAmount != null and couponAmount != ''">coupon_amount = #{couponAmount
+                    },
+            </if>
+            <if test="couponType != null and couponType != ''">coupon_type = #{couponType
+                    },
+            </if>
+            <if test="userCouponId != null and userCouponId != ''">user_coupon_id = #{userCouponId
+                    },
+            </if>
+            <if test="remark != null and remark != ''">remark = #{remark
+                    },
+            </if>
+            <if test="status != null and status != ''">status = #{status
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -167,7 +248,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

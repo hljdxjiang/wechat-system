@@ -20,7 +20,8 @@
     </sql>
 
     <sql id="Base_Column_List">
-                id,appid,wxopenid,template_id,popup_sence,subscribe_status_string,create_time,last_modified_time,send_status,send_result    </sql>
+        id
+        ,appid,wxopenid,template_id,popup_sence,subscribe_status_string,create_time,last_modified_time,send_status,send_result    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="WechatSubscribeInfoMap">
@@ -38,15 +39,27 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="appid != null and appid !=''">and appid = #{appid}</if>
-            <if test="wxopenid != null and wxopenid !=''">and wxopenid = #{wxopenid}</if>
-            <if test="templateId != null and templateId !=''">and template_id = #{templateId}</if>
-            <if test="popupSence != null and popupSence !=''">and popup_sence = #{popupSence}</if>
+            <if test="appid != null and appid !=''">and appid =
+                #{appid}
+            </if>
+            <if test="wxopenid != null and wxopenid !=''">and wxopenid =
+                #{wxopenid}
+            </if>
+            <if test="templateId != null and templateId !=''">and template_id =
+                #{templateId}
+            </if>
+            <if test="popupSence != null and popupSence !=''">and popup_sence =
+                #{popupSence}
+            </if>
             <if test="subscribeStatusString != null and subscribeStatusString !=''">and subscribe_status_string =
                 #{subscribeStatusString}
             </if>
-            <if test="sendStatus != null and sendStatus !=''">and send_status = #{sendStatus}</if>
-            <if test="sendResult != null and sendResult !=''">and send_result = #{sendResult}</if>
+            <if test="sendStatus != null and sendStatus !=''">and send_status =
+                #{sendStatus}
+            </if>
+            <if test="sendResult != null and sendResult !=''">and send_result =
+                #{sendResult}
+            </if>
         </where>
     </select>
 
@@ -57,15 +70,27 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="appid != null and appid !=''">and appid = #{appid}</if>
-            <if test="wxopenid != null and wxopenid !=''">and wxopenid = #{wxopenid}</if>
-            <if test="templateId != null and templateId !=''">and template_id = #{templateId}</if>
-            <if test="popupSence != null and popupSence !=''">and popup_sence = #{popupSence}</if>
+            <if test="appid != null and appid !=''">and appid =
+                #{appid}
+            </if>
+            <if test="wxopenid != null and wxopenid !=''">and wxopenid =
+                #{wxopenid}
+            </if>
+            <if test="templateId != null and templateId !=''">and template_id =
+                #{templateId}
+            </if>
+            <if test="popupSence != null and popupSence !=''">and popup_sence =
+                #{popupSence}
+            </if>
             <if test="subscribeStatusString != null and subscribeStatusString !=''">and subscribe_status_string =
                 #{subscribeStatusString}
             </if>
-            <if test="sendStatus != null and sendStatus !=''">and send_status = #{sendStatus}</if>
-            <if test="sendResult != null and sendResult !=''">and send_result = #{sendResult}</if>
+            <if test="sendStatus != null and sendStatus !=''">and send_status =
+                #{sendStatus}
+            </if>
+            <if test="sendResult != null and sendResult !=''">and send_result =
+                #{sendResult}
+            </if>
         </where>
     </select>
 
@@ -76,22 +101,26 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="appid != null and appid !=''">and appid like CONCAT(CONCAT('%', #{appid}), '%')</if>
-            <if test="wxopenid != null and wxopenid !=''">and wxopenid like CONCAT(CONCAT('%', #{wxopenid}), '%')</if>
-            <if test="templateId != null and templateId !=''">and template_id like CONCAT(CONCAT('%', #{templateId}),
-                '%')
+            <if test="appid != null and appid !=''">and appid like
+                CONCAT(CONCAT('%', #{appid}), '%')
             </if>
-            <if test="popupSence != null and popupSence !=''">and popup_sence like CONCAT(CONCAT('%', #{popupSence}),
-                '%')
+            <if test="wxopenid != null and wxopenid !=''">and wxopenid like
+                CONCAT(CONCAT('%', #{wxopenid}), '%')
+            </if>
+            <if test="templateId != null and templateId !=''">and template_id like
+                CONCAT(CONCAT('%', #{templateId}), '%')
+            </if>
+            <if test="popupSence != null and popupSence !=''">and popup_sence like
+                CONCAT(CONCAT('%', #{popupSence}), '%')
             </if>
             <if test="subscribeStatusString != null and subscribeStatusString !=''">and subscribe_status_string like
                 CONCAT(CONCAT('%', #{subscribeStatusString}), '%')
             </if>
-            <if test="sendStatus != null and sendStatus !=''">and send_status like CONCAT(CONCAT('%', #{sendStatus}),
-                '%')
+            <if test="sendStatus != null and sendStatus !=''">and send_status like
+                CONCAT(CONCAT('%', #{sendStatus}), '%')
             </if>
-            <if test="sendResult != null and sendResult !=''">and send_result like CONCAT(CONCAT('%', #{sendResult}),
-                '%')
+            <if test="sendResult != null and sendResult !=''">and send_result like
+                CONCAT(CONCAT('%', #{sendResult}), '%')
             </if>
         </where>
 
@@ -103,15 +132,27 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="appid != null and appid !=''">and appid = #{appid}</if>
-            <if test="wxopenid != null and wxopenid !=''">and wxopenid = #{wxopenid}</if>
-            <if test="templateId != null and templateId !=''">and template_id = #{templateId}</if>
-            <if test="popupSence != null and popupSence !=''">and popup_sence = #{popupSence}</if>
+            <if test="appid != null and appid !=''">and appid =
+                #{appid}
+            </if>
+            <if test="wxopenid != null and wxopenid !=''">and wxopenid =
+                #{wxopenid}
+            </if>
+            <if test="templateId != null and templateId !=''">and template_id =
+                #{templateId}
+            </if>
+            <if test="popupSence != null and popupSence !=''">and popup_sence =
+                #{popupSence}
+            </if>
             <if test="subscribeStatusString != null and subscribeStatusString !=''">and subscribe_status_string =
                 #{subscribeStatusString}
             </if>
-            <if test="sendStatus != null and sendStatus !=''">and send_status = #{sendStatus}</if>
-            <if test="sendResult != null and sendResult !=''">and send_result = #{sendResult}</if>
+            <if test="sendStatus != null and sendStatus !=''">and send_status =
+                #{sendStatus}
+            </if>
+            <if test="sendResult != null and sendResult !=''">and send_result =
+                #{sendResult}
+            </if>
         </where>
     </select>
 
@@ -121,7 +162,7 @@
         <include refid="Table_Name"/>
         (appid ,wxopenid ,template_id ,popup_sence ,subscribe_status_string ,send_status ,send_result )
         values
-        (#{appid},#{wxopenid},#{templateId},#{popupSence},#{subscribeStatusString},#{sendStatus},#{sendResult})
+        (#{appid} ,#{wxopenid} ,#{templateId} ,#{popupSence} ,#{subscribeStatusString} ,#{sendStatus} ,#{sendResult})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -141,12 +182,18 @@
         ( appid ,wxopenid ,template_id ,popup_sence ,subscribe_status_string ,send_status ,send_result)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.appid},#{entity.wxopenid},#{entity.templateId},#{entity.popupSence},#{entity.subscribeStatusString},#{entity.sendStatus},#{entity.sendResult})
+            ( #{entity.appid}, #{entity.wxopenid}, #{entity.templateId}, #{entity.popupSence},
+            #{entity.subscribeStatusString}, #{entity.sendStatus}, #{entity.sendResult})
         </foreach>
         on duplicate key update
-        appid=values(appid) ,wxopenid=values(wxopenid) ,template_id=values(template_id) ,popup_sence=values(popup_sence)
-        ,subscribe_status_string=values(subscribe_status_string) ,send_status=values(send_status)
-        ,send_result=values(send_result)
+        appid
+        =values(appid) ,wxopenid
+        =values(wxopenid) ,template_id
+        =values(template_id) ,popup_sence
+        =values(popup_sence) ,subscribe_status_string
+        =values(subscribe_status_string) ,send_status
+        =values(send_status) ,send_result
+        =values(send_result)
     </insert>
 
     <!--通过主键修改数据-->
@@ -154,15 +201,27 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="appid != null and appid != ''">appid = #{appid},</if>
-            <if test="wxopenid != null and wxopenid != ''">wxopenid = #{wxopenid},</if>
-            <if test="templateId != null and templateId != ''">template_id = #{templateId},</if>
-            <if test="popupSence != null and popupSence != ''">popup_sence = #{popupSence},</if>
-            <if test="subscribeStatusString != null and subscribeStatusString != ''">subscribe_status_string =
-                #{subscribeStatusString},
+            <if test="appid != null and appid != ''">appid = #{appid
+                    },
             </if>
-            <if test="sendStatus != null and sendStatus != ''">send_status = #{sendStatus},</if>
-            <if test="sendResult != null and sendResult != ''">send_result = #{sendResult},</if>
+            <if test="wxopenid != null and wxopenid != ''">wxopenid = #{wxopenid
+                    },
+            </if>
+            <if test="templateId != null and templateId != ''">template_id = #{templateId
+                    },
+            </if>
+            <if test="popupSence != null and popupSence != ''">popup_sence = #{popupSence
+                    },
+            </if>
+            <if test="subscribeStatusString != null and subscribeStatusString != ''">subscribe_status_string = #{subscribeStatusString
+                    },
+            </if>
+            <if test="sendStatus != null and sendStatus != ''">send_status = #{sendStatus
+                    },
+            </if>
+            <if test="sendResult != null and sendResult != ''">send_result = #{sendResult
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -173,7 +232,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

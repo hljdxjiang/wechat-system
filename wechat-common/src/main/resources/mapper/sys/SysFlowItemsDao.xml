@@ -42,17 +42,39 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="flowId != null and flowId !=''">and flow_id = #{flowId}</if>
-            <if test="itemId != null and itemId !=''">and item_id = #{itemId}</if>
-            <if test="itemSort != null and itemSort !=''">and item_sort = #{itemSort}</if>
-            <if test="itemType != null and itemType !=''">and item_type = #{itemType}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="channel != null and channel !=''">and channel = #{channel}</if>
-            <if test="controlFlag != null and controlFlag !=''">and control_flag = #{controlFlag}</if>
-            <if test="dataType != null and dataType !=''">and data_type = #{dataType}</if>
-            <if test="dataValue != null and dataValue !=''">and data_value = #{dataValue}</if>
-            <if test="dataMatch != null and dataMatch !=''">and data_match = #{dataMatch}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="flowId != null and flowId !=''">and flow_id =
+                #{flowId}
+            </if>
+            <if test="itemId != null and itemId !=''">and item_id =
+                #{itemId}
+            </if>
+            <if test="itemSort != null and itemSort !=''">and item_sort =
+                #{itemSort}
+            </if>
+            <if test="itemType != null and itemType !=''">and item_type =
+                #{itemType}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="channel != null and channel !=''">and channel =
+                #{channel}
+            </if>
+            <if test="controlFlag != null and controlFlag !=''">and control_flag =
+                #{controlFlag}
+            </if>
+            <if test="dataType != null and dataType !=''">and data_type =
+                #{dataType}
+            </if>
+            <if test="dataValue != null and dataValue !=''">and data_value =
+                #{dataValue}
+            </if>
+            <if test="dataMatch != null and dataMatch !=''">and data_match =
+                #{dataMatch}
+            </if>
         </where>
     </select>
 
@@ -63,17 +85,39 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="flowId != null and flowId !=''">and flow_id = #{flowId}</if>
-            <if test="itemId != null and itemId !=''">and item_id = #{itemId}</if>
-            <if test="itemSort != null and itemSort !=''">and item_sort = #{itemSort}</if>
-            <if test="itemType != null and itemType !=''">and item_type = #{itemType}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="channel != null and channel !=''">and channel = #{channel}</if>
-            <if test="controlFlag != null and controlFlag !=''">and control_flag = #{controlFlag}</if>
-            <if test="dataType != null and dataType !=''">and data_type = #{dataType}</if>
-            <if test="dataValue != null and dataValue !=''">and data_value = #{dataValue}</if>
-            <if test="dataMatch != null and dataMatch !=''">and data_match = #{dataMatch}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="flowId != null and flowId !=''">and flow_id =
+                #{flowId}
+            </if>
+            <if test="itemId != null and itemId !=''">and item_id =
+                #{itemId}
+            </if>
+            <if test="itemSort != null and itemSort !=''">and item_sort =
+                #{itemSort}
+            </if>
+            <if test="itemType != null and itemType !=''">and item_type =
+                #{itemType}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="channel != null and channel !=''">and channel =
+                #{channel}
+            </if>
+            <if test="controlFlag != null and controlFlag !=''">and control_flag =
+                #{controlFlag}
+            </if>
+            <if test="dataType != null and dataType !=''">and data_type =
+                #{dataType}
+            </if>
+            <if test="dataValue != null and dataValue !=''">and data_value =
+                #{dataValue}
+            </if>
+            <if test="dataMatch != null and dataMatch !=''">and data_match =
+                #{dataMatch}
+            </if>
         </where>
     </select>
 
@@ -84,20 +128,38 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="flowId != null and flowId !=''">and flow_id like CONCAT(CONCAT('%', #{flowId}), '%')</if>
-            <if test="itemId != null and itemId !=''">and item_id like CONCAT(CONCAT('%', #{itemId}), '%')</if>
-            <if test="itemSort != null and itemSort !=''">and item_sort like CONCAT(CONCAT('%', #{itemSort}), '%')</if>
-            <if test="itemType != null and itemType !=''">and item_type like CONCAT(CONCAT('%', #{itemType}), '%')</if>
-            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
-            <if test="channel != null and channel !=''">and channel like CONCAT(CONCAT('%', #{channel}), '%')</if>
-            <if test="controlFlag != null and controlFlag !=''">and control_flag like CONCAT(CONCAT('%',
-                #{controlFlag}), '%')
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
             </if>
-            <if test="dataType != null and dataType !=''">and data_type like CONCAT(CONCAT('%', #{dataType}), '%')</if>
-            <if test="dataValue != null and dataValue !=''">and data_value like CONCAT(CONCAT('%', #{dataValue}), '%')
+            <if test="flowId != null and flowId !=''">and flow_id like
+                CONCAT(CONCAT('%', #{flowId}), '%')
             </if>
-            <if test="dataMatch != null and dataMatch !=''">and data_match like CONCAT(CONCAT('%', #{dataMatch}), '%')
+            <if test="itemId != null and itemId !=''">and item_id like
+                CONCAT(CONCAT('%', #{itemId}), '%')
+            </if>
+            <if test="itemSort != null and itemSort !=''">and item_sort like
+                CONCAT(CONCAT('%', #{itemSort}), '%')
+            </if>
+            <if test="itemType != null and itemType !=''">and item_type like
+                CONCAT(CONCAT('%', #{itemType}), '%')
+            </if>
+            <if test="status != null and status !=''">and status like
+                CONCAT(CONCAT('%', #{status}), '%')
+            </if>
+            <if test="channel != null and channel !=''">and channel like
+                CONCAT(CONCAT('%', #{channel}), '%')
+            </if>
+            <if test="controlFlag != null and controlFlag !=''">and control_flag like
+                CONCAT(CONCAT('%', #{controlFlag}), '%')
+            </if>
+            <if test="dataType != null and dataType !=''">and data_type like
+                CONCAT(CONCAT('%', #{dataType}), '%')
+            </if>
+            <if test="dataValue != null and dataValue !=''">and data_value like
+                CONCAT(CONCAT('%', #{dataValue}), '%')
+            </if>
+            <if test="dataMatch != null and dataMatch !=''">and data_match like
+                CONCAT(CONCAT('%', #{dataMatch}), '%')
             </if>
         </where>
 
@@ -109,17 +171,39 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="flowId != null and flowId !=''">and flow_id = #{flowId}</if>
-            <if test="itemId != null and itemId !=''">and item_id = #{itemId}</if>
-            <if test="itemSort != null and itemSort !=''">and item_sort = #{itemSort}</if>
-            <if test="itemType != null and itemType !=''">and item_type = #{itemType}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="channel != null and channel !=''">and channel = #{channel}</if>
-            <if test="controlFlag != null and controlFlag !=''">and control_flag = #{controlFlag}</if>
-            <if test="dataType != null and dataType !=''">and data_type = #{dataType}</if>
-            <if test="dataValue != null and dataValue !=''">and data_value = #{dataValue}</if>
-            <if test="dataMatch != null and dataMatch !=''">and data_match = #{dataMatch}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="flowId != null and flowId !=''">and flow_id =
+                #{flowId}
+            </if>
+            <if test="itemId != null and itemId !=''">and item_id =
+                #{itemId}
+            </if>
+            <if test="itemSort != null and itemSort !=''">and item_sort =
+                #{itemSort}
+            </if>
+            <if test="itemType != null and itemType !=''">and item_type =
+                #{itemType}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="channel != null and channel !=''">and channel =
+                #{channel}
+            </if>
+            <if test="controlFlag != null and controlFlag !=''">and control_flag =
+                #{controlFlag}
+            </if>
+            <if test="dataType != null and dataType !=''">and data_type =
+                #{dataType}
+            </if>
+            <if test="dataValue != null and dataValue !=''">and data_value =
+                #{dataValue}
+            </if>
+            <if test="dataMatch != null and dataMatch !=''">and data_match =
+                #{dataMatch}
+            </if>
         </where>
     </select>
 
@@ -129,7 +213,8 @@
         <include refid="Table_Name"/>
         (tenant_id ,flow_id ,item_id ,item_sort ,item_type ,channel ,control_flag ,data_type ,data_value ,data_match )
         values
-        (#{tenantId},#{flowId},#{itemId},#{itemSort},#{itemType},#{channel},#{controlFlag},#{dataType},#{dataValue},#{dataMatch})
+        (#{tenantId} ,#{flowId} ,#{itemId} ,#{itemSort} ,#{itemType} ,#{channel} ,#{controlFlag} ,#{dataType}
+        ,#{dataValue} ,#{dataMatch})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -150,12 +235,23 @@
         ,data_match)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.flowId},#{entity.itemId},#{entity.itemSort},#{entity.itemType},#{entity.status},#{entity.channel},#{entity.controlFlag},#{entity.dataType},#{entity.dataValue},#{entity.dataMatch})
+            ( #{entity.tenantId}, #{entity.flowId}, #{entity.itemId}, #{entity.itemSort}, #{entity.itemType},
+            #{entity.status}, #{entity.channel}, #{entity.controlFlag}, #{entity.dataType}, #{entity.dataValue},
+            #{entity.dataMatch})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id) ,flow_id=values(flow_id) ,item_id=values(item_id) ,item_sort=values(item_sort)
-        ,item_type=values(item_type) ,status=values(status) ,channel=values(channel) ,control_flag=values(control_flag)
-        ,data_type=values(data_type) ,data_value=values(data_value) ,data_match=values(data_match)
+        tenant_id
+        =values(tenant_id) ,flow_id
+        =values(flow_id) ,item_id
+        =values(item_id) ,item_sort
+        =values(item_sort) ,item_type
+        =values(item_type) ,status
+        =values(status) ,channel
+        =values(channel) ,control_flag
+        =values(control_flag) ,data_type
+        =values(data_type) ,data_value
+        =values(data_value) ,data_match
+        =values(data_match)
     </insert>
 
     <!--通过主键修改数据-->
@@ -163,17 +259,39 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="flowId != null and flowId != ''">flow_id = #{flowId},</if>
-            <if test="itemId != null and itemId != ''">item_id = #{itemId},</if>
-            <if test="itemSort != null and itemSort != ''">item_sort = #{itemSort},</if>
-            <if test="itemType != null and itemType != ''">item_type = #{itemType},</if>
-            <if test="status != null and status != ''">status = #{status},</if>
-            <if test="channel != null and channel != ''">channel = #{channel},</if>
-            <if test="controlFlag != null and controlFlag != ''">control_flag = #{controlFlag},</if>
-            <if test="dataType != null and dataType != ''">data_type = #{dataType},</if>
-            <if test="dataValue != null and dataValue != ''">data_value = #{dataValue},</if>
-            <if test="dataMatch != null and dataMatch != ''">data_match = #{dataMatch},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="flowId != null and flowId != ''">flow_id = #{flowId
+                    },
+            </if>
+            <if test="itemId != null and itemId != ''">item_id = #{itemId
+                    },
+            </if>
+            <if test="itemSort != null and itemSort != ''">item_sort = #{itemSort
+                    },
+            </if>
+            <if test="itemType != null and itemType != ''">item_type = #{itemType
+                    },
+            </if>
+            <if test="status != null and status != ''">status = #{status
+                    },
+            </if>
+            <if test="channel != null and channel != ''">channel = #{channel
+                    },
+            </if>
+            <if test="controlFlag != null and controlFlag != ''">control_flag = #{controlFlag
+                    },
+            </if>
+            <if test="dataType != null and dataType != ''">data_type = #{dataType
+                    },
+            </if>
+            <if test="dataValue != null and dataValue != ''">data_value = #{dataValue
+                    },
+            </if>
+            <if test="dataMatch != null and dataMatch != ''">data_match = #{dataMatch
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -184,7 +302,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

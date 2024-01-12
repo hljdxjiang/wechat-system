@@ -40,15 +40,33 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="userId != null and userId !=''">and user_id = #{userId}</if>
-            <if test="commentId != null and commentId !=''">and comment_id = #{commentId}</if>
-            <if test="commentPid != null and commentPid !=''">and comment_pid = #{commentPid}</if>
-            <if test="commentDetail != null and commentDetail !=''">and comment_detail = #{commentDetail}</if>
-            <if test="relateType != null and relateType !=''">and relate_type = #{relateType}</if>
-            <if test="relateId != null and relateId !=''">and relate_id = #{relateId}</if>
-            <if test="trampleAmount != null and trampleAmount !=''">and trample_amount = #{trampleAmount}</if>
-            <if test="crownAmount != null and crownAmount !=''">and crown_amount = #{crownAmount}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="userId != null and userId !=''">and user_id =
+                #{userId}
+            </if>
+            <if test="commentId != null and commentId !=''">and comment_id =
+                #{commentId}
+            </if>
+            <if test="commentPid != null and commentPid !=''">and comment_pid =
+                #{commentPid}
+            </if>
+            <if test="commentDetail != null and commentDetail !=''">and comment_detail =
+                #{commentDetail}
+            </if>
+            <if test="relateType != null and relateType !=''">and relate_type =
+                #{relateType}
+            </if>
+            <if test="relateId != null and relateId !=''">and relate_id =
+                #{relateId}
+            </if>
+            <if test="trampleAmount != null and trampleAmount !=''">and trample_amount =
+                #{trampleAmount}
+            </if>
+            <if test="crownAmount != null and crownAmount !=''">and crown_amount =
+                #{crownAmount}
+            </if>
         </where>
     </select>
 
@@ -59,15 +77,33 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="userId != null and userId !=''">and user_id = #{userId}</if>
-            <if test="commentId != null and commentId !=''">and comment_id = #{commentId}</if>
-            <if test="commentPid != null and commentPid !=''">and comment_pid = #{commentPid}</if>
-            <if test="commentDetail != null and commentDetail !=''">and comment_detail = #{commentDetail}</if>
-            <if test="relateType != null and relateType !=''">and relate_type = #{relateType}</if>
-            <if test="relateId != null and relateId !=''">and relate_id = #{relateId}</if>
-            <if test="trampleAmount != null and trampleAmount !=''">and trample_amount = #{trampleAmount}</if>
-            <if test="crownAmount != null and crownAmount !=''">and crown_amount = #{crownAmount}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="userId != null and userId !=''">and user_id =
+                #{userId}
+            </if>
+            <if test="commentId != null and commentId !=''">and comment_id =
+                #{commentId}
+            </if>
+            <if test="commentPid != null and commentPid !=''">and comment_pid =
+                #{commentPid}
+            </if>
+            <if test="commentDetail != null and commentDetail !=''">and comment_detail =
+                #{commentDetail}
+            </if>
+            <if test="relateType != null and relateType !=''">and relate_type =
+                #{relateType}
+            </if>
+            <if test="relateId != null and relateId !=''">and relate_id =
+                #{relateId}
+            </if>
+            <if test="trampleAmount != null and trampleAmount !=''">and trample_amount =
+                #{trampleAmount}
+            </if>
+            <if test="crownAmount != null and crownAmount !=''">and crown_amount =
+                #{crownAmount}
+            </if>
         </where>
     </select>
 
@@ -78,25 +114,32 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="userId != null and userId !=''">and user_id like CONCAT(CONCAT('%', #{userId}), '%')</if>
-            <if test="commentId != null and commentId !=''">and comment_id like CONCAT(CONCAT('%', #{commentId}), '%')
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
             </if>
-            <if test="commentPid != null and commentPid !=''">and comment_pid like CONCAT(CONCAT('%', #{commentPid}),
-                '%')
+            <if test="userId != null and userId !=''">and user_id like
+                CONCAT(CONCAT('%', #{userId}), '%')
             </if>
-            <if test="commentDetail != null and commentDetail !=''">and comment_detail like CONCAT(CONCAT('%',
-                #{commentDetail}), '%')
+            <if test="commentId != null and commentId !=''">and comment_id like
+                CONCAT(CONCAT('%', #{commentId}), '%')
             </if>
-            <if test="relateType != null and relateType !=''">and relate_type like CONCAT(CONCAT('%', #{relateType}),
-                '%')
+            <if test="commentPid != null and commentPid !=''">and comment_pid like
+                CONCAT(CONCAT('%', #{commentPid}), '%')
             </if>
-            <if test="relateId != null and relateId !=''">and relate_id like CONCAT(CONCAT('%', #{relateId}), '%')</if>
-            <if test="trampleAmount != null and trampleAmount !=''">and trample_amount like CONCAT(CONCAT('%',
-                #{trampleAmount}), '%')
+            <if test="commentDetail != null and commentDetail !=''">and comment_detail like
+                CONCAT(CONCAT('%', #{commentDetail}), '%')
             </if>
-            <if test="crownAmount != null and crownAmount !=''">and crown_amount like CONCAT(CONCAT('%',
-                #{crownAmount}), '%')
+            <if test="relateType != null and relateType !=''">and relate_type like
+                CONCAT(CONCAT('%', #{relateType}), '%')
+            </if>
+            <if test="relateId != null and relateId !=''">and relate_id like
+                CONCAT(CONCAT('%', #{relateId}), '%')
+            </if>
+            <if test="trampleAmount != null and trampleAmount !=''">and trample_amount like
+                CONCAT(CONCAT('%', #{trampleAmount}), '%')
+            </if>
+            <if test="crownAmount != null and crownAmount !=''">and crown_amount like
+                CONCAT(CONCAT('%', #{crownAmount}), '%')
             </if>
         </where>
 
@@ -108,15 +151,33 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="userId != null and userId !=''">and user_id = #{userId}</if>
-            <if test="commentId != null and commentId !=''">and comment_id = #{commentId}</if>
-            <if test="commentPid != null and commentPid !=''">and comment_pid = #{commentPid}</if>
-            <if test="commentDetail != null and commentDetail !=''">and comment_detail = #{commentDetail}</if>
-            <if test="relateType != null and relateType !=''">and relate_type = #{relateType}</if>
-            <if test="relateId != null and relateId !=''">and relate_id = #{relateId}</if>
-            <if test="trampleAmount != null and trampleAmount !=''">and trample_amount = #{trampleAmount}</if>
-            <if test="crownAmount != null and crownAmount !=''">and crown_amount = #{crownAmount}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="userId != null and userId !=''">and user_id =
+                #{userId}
+            </if>
+            <if test="commentId != null and commentId !=''">and comment_id =
+                #{commentId}
+            </if>
+            <if test="commentPid != null and commentPid !=''">and comment_pid =
+                #{commentPid}
+            </if>
+            <if test="commentDetail != null and commentDetail !=''">and comment_detail =
+                #{commentDetail}
+            </if>
+            <if test="relateType != null and relateType !=''">and relate_type =
+                #{relateType}
+            </if>
+            <if test="relateId != null and relateId !=''">and relate_id =
+                #{relateId}
+            </if>
+            <if test="trampleAmount != null and trampleAmount !=''">and trample_amount =
+                #{trampleAmount}
+            </if>
+            <if test="crownAmount != null and crownAmount !=''">and crown_amount =
+                #{crownAmount}
+            </if>
         </where>
     </select>
 
@@ -127,7 +188,8 @@
         (tenant_id ,user_id ,comment_id ,comment_pid ,comment_detail ,relate_type ,relate_id ,trample_amount
         ,crown_amount )
         values
-        (#{tenantId},#{userId},#{commentId},#{commentPid},#{commentDetail},#{relateType},#{relateId},#{trampleAmount},#{crownAmount})
+        (#{tenantId} ,#{userId} ,#{commentId} ,#{commentPid} ,#{commentDetail} ,#{relateType} ,#{relateId}
+        ,#{trampleAmount} ,#{crownAmount})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -149,12 +211,20 @@
         ,crown_amount)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.userId},#{entity.commentId},#{entity.commentPid},#{entity.commentDetail},#{entity.relateType},#{entity.relateId},#{entity.trampleAmount},#{entity.crownAmount})
+            ( #{entity.tenantId}, #{entity.userId}, #{entity.commentId}, #{entity.commentPid}, #{entity.commentDetail},
+            #{entity.relateType}, #{entity.relateId}, #{entity.trampleAmount}, #{entity.crownAmount})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id) ,user_id=values(user_id) ,comment_id=values(comment_id)
-        ,comment_pid=values(comment_pid) ,comment_detail=values(comment_detail) ,relate_type=values(relate_type)
-        ,relate_id=values(relate_id) ,trample_amount=values(trample_amount) ,crown_amount=values(crown_amount)
+        tenant_id
+        =values(tenant_id) ,user_id
+        =values(user_id) ,comment_id
+        =values(comment_id) ,comment_pid
+        =values(comment_pid) ,comment_detail
+        =values(comment_detail) ,relate_type
+        =values(relate_type) ,relate_id
+        =values(relate_id) ,trample_amount
+        =values(trample_amount) ,crown_amount
+        =values(crown_amount)
     </insert>
 
     <!--通过主键修改数据-->
@@ -162,15 +232,33 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="userId != null and userId != ''">user_id = #{userId},</if>
-            <if test="commentId != null and commentId != ''">comment_id = #{commentId},</if>
-            <if test="commentPid != null and commentPid != ''">comment_pid = #{commentPid},</if>
-            <if test="commentDetail != null and commentDetail != ''">comment_detail = #{commentDetail},</if>
-            <if test="relateType != null and relateType != ''">relate_type = #{relateType},</if>
-            <if test="relateId != null and relateId != ''">relate_id = #{relateId},</if>
-            <if test="trampleAmount != null and trampleAmount != ''">trample_amount = #{trampleAmount},</if>
-            <if test="crownAmount != null and crownAmount != ''">crown_amount = #{crownAmount},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="userId != null and userId != ''">user_id = #{userId
+                    },
+            </if>
+            <if test="commentId != null and commentId != ''">comment_id = #{commentId
+                    },
+            </if>
+            <if test="commentPid != null and commentPid != ''">comment_pid = #{commentPid
+                    },
+            </if>
+            <if test="commentDetail != null and commentDetail != ''">comment_detail = #{commentDetail
+                    },
+            </if>
+            <if test="relateType != null and relateType != ''">relate_type = #{relateType
+                    },
+            </if>
+            <if test="relateId != null and relateId != ''">relate_id = #{relateId
+                    },
+            </if>
+            <if test="trampleAmount != null and trampleAmount != ''">trample_amount = #{trampleAmount
+                    },
+            </if>
+            <if test="crownAmount != null and crownAmount != ''">crown_amount = #{crownAmount
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -181,7 +269,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

@@ -37,12 +37,24 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="prodId != null and prodId !=''">and prod_id = #{prodId}</if>
-            <if test="prodGroupId != null and prodGroupId !=''">and prod_group_id = #{prodGroupId}</if>
-            <if test="prodGroupName != null and prodGroupName !=''">and prod_group_name = #{prodGroupName}</if>
-            <if test="remark != null and remark !=''">and remark = #{remark}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="prodId != null and prodId !=''">and prod_id =
+                #{prodId}
+            </if>
+            <if test="prodGroupId != null and prodGroupId !=''">and prod_group_id =
+                #{prodGroupId}
+            </if>
+            <if test="prodGroupName != null and prodGroupName !=''">and prod_group_name =
+                #{prodGroupName}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
         </where>
     </select>
 
@@ -53,12 +65,24 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="prodId != null and prodId !=''">and prod_id = #{prodId}</if>
-            <if test="prodGroupId != null and prodGroupId !=''">and prod_group_id = #{prodGroupId}</if>
-            <if test="prodGroupName != null and prodGroupName !=''">and prod_group_name = #{prodGroupName}</if>
-            <if test="remark != null and remark !=''">and remark = #{remark}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="prodId != null and prodId !=''">and prod_id =
+                #{prodId}
+            </if>
+            <if test="prodGroupId != null and prodGroupId !=''">and prod_group_id =
+                #{prodGroupId}
+            </if>
+            <if test="prodGroupName != null and prodGroupName !=''">and prod_group_name =
+                #{prodGroupName}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
         </where>
     </select>
 
@@ -69,16 +93,24 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="prodId != null and prodId !=''">and prod_id like CONCAT(CONCAT('%', #{prodId}), '%')</if>
-            <if test="prodGroupId != null and prodGroupId !=''">and prod_group_id like CONCAT(CONCAT('%',
-                #{prodGroupId}), '%')
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
             </if>
-            <if test="prodGroupName != null and prodGroupName !=''">and prod_group_name like CONCAT(CONCAT('%',
-                #{prodGroupName}), '%')
+            <if test="prodId != null and prodId !=''">and prod_id like
+                CONCAT(CONCAT('%', #{prodId}), '%')
             </if>
-            <if test="remark != null and remark !=''">and remark like CONCAT(CONCAT('%', #{remark}), '%')</if>
-            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
+            <if test="prodGroupId != null and prodGroupId !=''">and prod_group_id like
+                CONCAT(CONCAT('%', #{prodGroupId}), '%')
+            </if>
+            <if test="prodGroupName != null and prodGroupName !=''">and prod_group_name like
+                CONCAT(CONCAT('%', #{prodGroupName}), '%')
+            </if>
+            <if test="remark != null and remark !=''">and remark like
+                CONCAT(CONCAT('%', #{remark}), '%')
+            </if>
+            <if test="status != null and status !=''">and status like
+                CONCAT(CONCAT('%', #{status}), '%')
+            </if>
         </where>
 
     </select>
@@ -89,12 +121,24 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="prodId != null and prodId !=''">and prod_id = #{prodId}</if>
-            <if test="prodGroupId != null and prodGroupId !=''">and prod_group_id = #{prodGroupId}</if>
-            <if test="prodGroupName != null and prodGroupName !=''">and prod_group_name = #{prodGroupName}</if>
-            <if test="remark != null and remark !=''">and remark = #{remark}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="prodId != null and prodId !=''">and prod_id =
+                #{prodId}
+            </if>
+            <if test="prodGroupId != null and prodGroupId !=''">and prod_group_id =
+                #{prodGroupId}
+            </if>
+            <if test="prodGroupName != null and prodGroupName !=''">and prod_group_name =
+                #{prodGroupName}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
         </where>
     </select>
 
@@ -104,7 +148,7 @@
         <include refid="Table_Name"/>
         (tenant_id ,prod_id ,prod_group_id ,prod_group_name ,remark )
         values
-        (#{tenantId},#{prodId},#{prodGroupId},#{prodGroupName},#{remark})
+        (#{tenantId} ,#{prodId} ,#{prodGroupId} ,#{prodGroupName} ,#{remark})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -123,11 +167,17 @@
         ( tenant_id ,prod_id ,prod_group_id ,prod_group_name ,remark ,status)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.prodId},#{entity.prodGroupId},#{entity.prodGroupName},#{entity.remark},#{entity.status})
+            ( #{entity.tenantId}, #{entity.prodId}, #{entity.prodGroupId}, #{entity.prodGroupName}, #{entity.remark},
+            #{entity.status})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id) ,prod_id=values(prod_id) ,prod_group_id=values(prod_group_id)
-        ,prod_group_name=values(prod_group_name) ,remark=values(remark) ,status=values(status)
+        tenant_id
+        =values(tenant_id) ,prod_id
+        =values(prod_id) ,prod_group_id
+        =values(prod_group_id) ,prod_group_name
+        =values(prod_group_name) ,remark
+        =values(remark) ,status
+        =values(status)
     </insert>
 
     <!--通过主键修改数据-->
@@ -135,12 +185,24 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="prodId != null and prodId != ''">prod_id = #{prodId},</if>
-            <if test="prodGroupId != null and prodGroupId != ''">prod_group_id = #{prodGroupId},</if>
-            <if test="prodGroupName != null and prodGroupName != ''">prod_group_name = #{prodGroupName},</if>
-            <if test="remark != null and remark != ''">remark = #{remark},</if>
-            <if test="status != null and status != ''">status = #{status},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="prodId != null and prodId != ''">prod_id = #{prodId
+                    },
+            </if>
+            <if test="prodGroupId != null and prodGroupId != ''">prod_group_id = #{prodGroupId
+                    },
+            </if>
+            <if test="prodGroupName != null and prodGroupName != ''">prod_group_name = #{prodGroupName
+                    },
+            </if>
+            <if test="remark != null and remark != ''">remark = #{remark
+                    },
+            </if>
+            <if test="status != null and status != ''">status = #{status
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -151,7 +213,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

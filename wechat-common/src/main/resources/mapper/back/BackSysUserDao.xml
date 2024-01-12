@@ -44,19 +44,45 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="userId != null and userId !=''">and user_id = #{userId}</if>
-            <if test="passwd != null and passwd !=''">and passwd = #{passwd}</if>
-            <if test="groupId != null and groupId !=''">and group_id = #{groupId}</if>
-            <if test="roleId != null and roleId !=''">and role_id = #{roleId}</if>
-            <if test="userName != null and userName !=''">and user_name = #{userName}</if>
-            <if test="mobileNo != null and mobileNo !=''">and mobile_no = #{mobileNo}</if>
-            <if test="email != null and email !=''">and email = #{email}</if>
-            <if test="idNo != null and idNo !=''">and id_no = #{idNo}</if>
-            <if test="idType != null and idType !=''">and id_type = #{idType}</if>
-            <if test="oauthCode != null and oauthCode !=''">and oauth_code = #{oauthCode}</if>
-            <if test="remark != null and remark !=''">and remark = #{remark}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="userId != null and userId !=''">and user_id =
+                #{userId}
+            </if>
+            <if test="passwd != null and passwd !=''">and passwd =
+                #{passwd}
+            </if>
+            <if test="groupId != null and groupId !=''">and group_id =
+                #{groupId}
+            </if>
+            <if test="roleId != null and roleId !=''">and role_id =
+                #{roleId}
+            </if>
+            <if test="userName != null and userName !=''">and user_name =
+                #{userName}
+            </if>
+            <if test="mobileNo != null and mobileNo !=''">and mobile_no =
+                #{mobileNo}
+            </if>
+            <if test="email != null and email !=''">and email =
+                #{email}
+            </if>
+            <if test="idNo != null and idNo !=''">and id_no =
+                #{idNo}
+            </if>
+            <if test="idType != null and idType !=''">and id_type =
+                #{idType}
+            </if>
+            <if test="oauthCode != null and oauthCode !=''">and oauth_code =
+                #{oauthCode}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
         </where>
     </select>
 
@@ -67,19 +93,45 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="userId != null and userId !=''">and user_id = #{userId}</if>
-            <if test="passwd != null and passwd !=''">and passwd = #{passwd}</if>
-            <if test="groupId != null and groupId !=''">and group_id = #{groupId}</if>
-            <if test="roleId != null and roleId !=''">and role_id = #{roleId}</if>
-            <if test="userName != null and userName !=''">and user_name = #{userName}</if>
-            <if test="mobileNo != null and mobileNo !=''">and mobile_no = #{mobileNo}</if>
-            <if test="email != null and email !=''">and email = #{email}</if>
-            <if test="idNo != null and idNo !=''">and id_no = #{idNo}</if>
-            <if test="idType != null and idType !=''">and id_type = #{idType}</if>
-            <if test="oauthCode != null and oauthCode !=''">and oauth_code = #{oauthCode}</if>
-            <if test="remark != null and remark !=''">and remark = #{remark}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="userId != null and userId !=''">and user_id =
+                #{userId}
+            </if>
+            <if test="passwd != null and passwd !=''">and passwd =
+                #{passwd}
+            </if>
+            <if test="groupId != null and groupId !=''">and group_id =
+                #{groupId}
+            </if>
+            <if test="roleId != null and roleId !=''">and role_id =
+                #{roleId}
+            </if>
+            <if test="userName != null and userName !=''">and user_name =
+                #{userName}
+            </if>
+            <if test="mobileNo != null and mobileNo !=''">and mobile_no =
+                #{mobileNo}
+            </if>
+            <if test="email != null and email !=''">and email =
+                #{email}
+            </if>
+            <if test="idNo != null and idNo !=''">and id_no =
+                #{idNo}
+            </if>
+            <if test="idType != null and idType !=''">and id_type =
+                #{idType}
+            </if>
+            <if test="oauthCode != null and oauthCode !=''">and oauth_code =
+                #{oauthCode}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
         </where>
     </select>
 
@@ -90,20 +142,45 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="userId != null and userId !=''">and user_id like CONCAT(CONCAT('%', #{userId}), '%')</if>
-            <if test="passwd != null and passwd !=''">and passwd like CONCAT(CONCAT('%', #{passwd}), '%')</if>
-            <if test="groupId != null and groupId !=''">and group_id like CONCAT(CONCAT('%', #{groupId}), '%')</if>
-            <if test="roleId != null and roleId !=''">and role_id like CONCAT(CONCAT('%', #{roleId}), '%')</if>
-            <if test="userName != null and userName !=''">and user_name like CONCAT(CONCAT('%', #{userName}), '%')</if>
-            <if test="mobileNo != null and mobileNo !=''">and mobile_no like CONCAT(CONCAT('%', #{mobileNo}), '%')</if>
-            <if test="email != null and email !=''">and email like CONCAT(CONCAT('%', #{email}), '%')</if>
-            <if test="idNo != null and idNo !=''">and id_no like CONCAT(CONCAT('%', #{idNo}), '%')</if>
-            <if test="idType != null and idType !=''">and id_type like CONCAT(CONCAT('%', #{idType}), '%')</if>
-            <if test="oauthCode != null and oauthCode !=''">and oauth_code like CONCAT(CONCAT('%', #{oauthCode}), '%')
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
             </if>
-            <if test="remark != null and remark !=''">and remark like CONCAT(CONCAT('%', #{remark}), '%')</if>
-            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
+            <if test="userId != null and userId !=''">and user_id like
+                CONCAT(CONCAT('%', #{userId}), '%')
+            </if>
+            <if test="passwd != null and passwd !=''">and passwd like
+                CONCAT(CONCAT('%', #{passwd}), '%')
+            </if>
+            <if test="groupId != null and groupId !=''">and group_id like
+                CONCAT(CONCAT('%', #{groupId}), '%')
+            </if>
+            <if test="roleId != null and roleId !=''">and role_id like
+                CONCAT(CONCAT('%', #{roleId}), '%')
+            </if>
+            <if test="userName != null and userName !=''">and user_name like
+                CONCAT(CONCAT('%', #{userName}), '%')
+            </if>
+            <if test="mobileNo != null and mobileNo !=''">and mobile_no like
+                CONCAT(CONCAT('%', #{mobileNo}), '%')
+            </if>
+            <if test="email != null and email !=''">and email like
+                CONCAT(CONCAT('%', #{email}), '%')
+            </if>
+            <if test="idNo != null and idNo !=''">and id_no like
+                CONCAT(CONCAT('%', #{idNo}), '%')
+            </if>
+            <if test="idType != null and idType !=''">and id_type like
+                CONCAT(CONCAT('%', #{idType}), '%')
+            </if>
+            <if test="oauthCode != null and oauthCode !=''">and oauth_code like
+                CONCAT(CONCAT('%', #{oauthCode}), '%')
+            </if>
+            <if test="remark != null and remark !=''">and remark like
+                CONCAT(CONCAT('%', #{remark}), '%')
+            </if>
+            <if test="status != null and status !=''">and status like
+                CONCAT(CONCAT('%', #{status}), '%')
+            </if>
         </where>
 
     </select>
@@ -114,19 +191,45 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="userId != null and userId !=''">and user_id = #{userId}</if>
-            <if test="passwd != null and passwd !=''">and passwd = #{passwd}</if>
-            <if test="groupId != null and groupId !=''">and group_id = #{groupId}</if>
-            <if test="roleId != null and roleId !=''">and role_id = #{roleId}</if>
-            <if test="userName != null and userName !=''">and user_name = #{userName}</if>
-            <if test="mobileNo != null and mobileNo !=''">and mobile_no = #{mobileNo}</if>
-            <if test="email != null and email !=''">and email = #{email}</if>
-            <if test="idNo != null and idNo !=''">and id_no = #{idNo}</if>
-            <if test="idType != null and idType !=''">and id_type = #{idType}</if>
-            <if test="oauthCode != null and oauthCode !=''">and oauth_code = #{oauthCode}</if>
-            <if test="remark != null and remark !=''">and remark = #{remark}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="userId != null and userId !=''">and user_id =
+                #{userId}
+            </if>
+            <if test="passwd != null and passwd !=''">and passwd =
+                #{passwd}
+            </if>
+            <if test="groupId != null and groupId !=''">and group_id =
+                #{groupId}
+            </if>
+            <if test="roleId != null and roleId !=''">and role_id =
+                #{roleId}
+            </if>
+            <if test="userName != null and userName !=''">and user_name =
+                #{userName}
+            </if>
+            <if test="mobileNo != null and mobileNo !=''">and mobile_no =
+                #{mobileNo}
+            </if>
+            <if test="email != null and email !=''">and email =
+                #{email}
+            </if>
+            <if test="idNo != null and idNo !=''">and id_no =
+                #{idNo}
+            </if>
+            <if test="idType != null and idType !=''">and id_type =
+                #{idType}
+            </if>
+            <if test="oauthCode != null and oauthCode !=''">and oauth_code =
+                #{oauthCode}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
         </where>
     </select>
 
@@ -137,7 +240,8 @@
         (tenant_id ,user_id ,passwd ,group_id ,role_id ,user_name ,mobile_no ,email ,id_no ,id_type ,oauth_code ,remark
         )
         values
-        (#{tenantId},#{userId},#{passwd},#{groupId},#{roleId},#{userName},#{mobileNo},#{email},#{idNo},#{idType},#{oauthCode},#{remark})
+        (#{tenantId} ,#{userId} ,#{passwd} ,#{groupId} ,#{roleId} ,#{userName} ,#{mobileNo} ,#{email} ,#{idNo}
+        ,#{idType} ,#{oauthCode} ,#{remark})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -160,13 +264,25 @@
         ,status)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.userId},#{entity.passwd},#{entity.groupId},#{entity.roleId},#{entity.userName},#{entity.mobileNo},#{entity.email},#{entity.idNo},#{entity.idType},#{entity.oauthCode},#{entity.remark},#{entity.status})
+            ( #{entity.tenantId}, #{entity.userId}, #{entity.passwd}, #{entity.groupId}, #{entity.roleId},
+            #{entity.userName}, #{entity.mobileNo}, #{entity.email}, #{entity.idNo}, #{entity.idType},
+            #{entity.oauthCode}, #{entity.remark}, #{entity.status})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id) ,user_id=values(user_id) ,passwd=values(passwd) ,group_id=values(group_id)
-        ,role_id=values(role_id) ,user_name=values(user_name) ,mobile_no=values(mobile_no) ,email=values(email)
-        ,id_no=values(id_no) ,id_type=values(id_type) ,oauth_code=values(oauth_code) ,remark=values(remark)
-        ,status=values(status)
+        tenant_id
+        =values(tenant_id) ,user_id
+        =values(user_id) ,passwd
+        =values(passwd) ,group_id
+        =values(group_id) ,role_id
+        =values(role_id) ,user_name
+        =values(user_name) ,mobile_no
+        =values(mobile_no) ,email
+        =values(email) ,id_no
+        =values(id_no) ,id_type
+        =values(id_type) ,oauth_code
+        =values(oauth_code) ,remark
+        =values(remark) ,status
+        =values(status)
     </insert>
 
     <!--通过主键修改数据-->
@@ -174,19 +290,45 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="userId != null and userId != ''">user_id = #{userId},</if>
-            <if test="passwd != null and passwd != ''">passwd = #{passwd},</if>
-            <if test="groupId != null and groupId != ''">group_id = #{groupId},</if>
-            <if test="roleId != null and roleId != ''">role_id = #{roleId},</if>
-            <if test="userName != null and userName != ''">user_name = #{userName},</if>
-            <if test="mobileNo != null and mobileNo != ''">mobile_no = #{mobileNo},</if>
-            <if test="email != null and email != ''">email = #{email},</if>
-            <if test="idNo != null and idNo != ''">id_no = #{idNo},</if>
-            <if test="idType != null and idType != ''">id_type = #{idType},</if>
-            <if test="oauthCode != null and oauthCode != ''">oauth_code = #{oauthCode},</if>
-            <if test="remark != null and remark != ''">remark = #{remark},</if>
-            <if test="status != null and status != ''">status = #{status},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="userId != null and userId != ''">user_id = #{userId
+                    },
+            </if>
+            <if test="passwd != null and passwd != ''">passwd = #{passwd
+                    },
+            </if>
+            <if test="groupId != null and groupId != ''">group_id = #{groupId
+                    },
+            </if>
+            <if test="roleId != null and roleId != ''">role_id = #{roleId
+                    },
+            </if>
+            <if test="userName != null and userName != ''">user_name = #{userName
+                    },
+            </if>
+            <if test="mobileNo != null and mobileNo != ''">mobile_no = #{mobileNo
+                    },
+            </if>
+            <if test="email != null and email != ''">email = #{email
+                    },
+            </if>
+            <if test="idNo != null and idNo != ''">id_no = #{idNo
+                    },
+            </if>
+            <if test="idType != null and idType != ''">id_type = #{idType
+                    },
+            </if>
+            <if test="oauthCode != null and oauthCode != ''">oauth_code = #{oauthCode
+                    },
+            </if>
+            <if test="remark != null and remark != ''">remark = #{remark
+                    },
+            </if>
+            <if test="status != null and status != ''">status = #{status
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -197,7 +339,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

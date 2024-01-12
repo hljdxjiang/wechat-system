@@ -8,9 +8,17 @@
         <result property="menuId" column="menu_id" jdbcType="VARCHAR"/>
         <result property="itemPid" column="item_pid" jdbcType="VARCHAR"/>
         <result property="itemId" column="item_id" jdbcType="VARCHAR"/>
+        <result property="sort" column="sort" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="key" column="key" jdbcType="VARCHAR"/>
+        <result property="url" column="url" jdbcType="VARCHAR"/>
+        <result property="appid" column="appid" jdbcType="VARCHAR"/>
+        <result property="pagepath" column="pagepath" jdbcType="VARCHAR"/>
+        <result property="articleId" column="article_id" jdbcType="VARCHAR"/>
+        <result property="articleViewLimited" column="article_view_limited" jdbcType="VARCHAR"/>
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
         <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
-        <result property="sort" column="sort" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Table_Name">
@@ -18,7 +26,8 @@
     </sql>
 
     <sql id="Base_Column_List">
-                id,tenant_id,menu_id,item_pid,item_id,create_time,last_modified_time,sort    </sql>
+        id
+        ,tenant_id,menu_id,item_pid,item_id,sort,name,type,key,url,appid,pagepath,article_id,article_view_limited,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="WechatMenusDetailMap">
@@ -36,11 +45,45 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="menuId != null and menuId !=''">and menu_id = #{menuId}</if>
-            <if test="itemPid != null and itemPid !=''">and item_pid = #{itemPid}</if>
-            <if test="itemId != null and itemId !=''">and item_id = #{itemId}</if>
-            <if test="sort != null and sort !=''">and sort = #{sort}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="menuId != null and menuId !=''">and menu_id =
+                #{menuId}
+            </if>
+            <if test="itemPid != null and itemPid !=''">and item_pid =
+                #{itemPid}
+            </if>
+            <if test="itemId != null and itemId !=''">and item_id =
+                #{itemId}
+            </if>
+            <if test="sort != null and sort !=''">and sort =
+                #{sort}
+            </if>
+            <if test="name != null and name !=''">and name =
+                #{name}
+            </if>
+            <if test="type != null and type !=''">and type =
+                #{type}
+            </if>
+            <if test="key != null and key !=''">and key =
+                #{key}
+            </if>
+            <if test="url != null and url !=''">and url =
+                #{url}
+            </if>
+            <if test="appid != null and appid !=''">and appid =
+                #{appid}
+            </if>
+            <if test="pagepath != null and pagepath !=''">and pagepath =
+                #{pagepath}
+            </if>
+            <if test="articleId != null and articleId !=''">and article_id =
+                #{articleId}
+            </if>
+            <if test="articleViewLimited != null and articleViewLimited !=''">and article_view_limited =
+                #{articleViewLimited}
+            </if>
         </where>
     </select>
 
@@ -51,11 +94,45 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="menuId != null and menuId !=''">and menu_id = #{menuId}</if>
-            <if test="itemPid != null and itemPid !=''">and item_pid = #{itemPid}</if>
-            <if test="itemId != null and itemId !=''">and item_id = #{itemId}</if>
-            <if test="sort != null and sort !=''">and sort = #{sort}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="menuId != null and menuId !=''">and menu_id =
+                #{menuId}
+            </if>
+            <if test="itemPid != null and itemPid !=''">and item_pid =
+                #{itemPid}
+            </if>
+            <if test="itemId != null and itemId !=''">and item_id =
+                #{itemId}
+            </if>
+            <if test="sort != null and sort !=''">and sort =
+                #{sort}
+            </if>
+            <if test="name != null and name !=''">and name =
+                #{name}
+            </if>
+            <if test="type != null and type !=''">and type =
+                #{type}
+            </if>
+            <if test="key != null and key !=''">and key =
+                #{key}
+            </if>
+            <if test="url != null and url !=''">and url =
+                #{url}
+            </if>
+            <if test="appid != null and appid !=''">and appid =
+                #{appid}
+            </if>
+            <if test="pagepath != null and pagepath !=''">and pagepath =
+                #{pagepath}
+            </if>
+            <if test="articleId != null and articleId !=''">and article_id =
+                #{articleId}
+            </if>
+            <if test="articleViewLimited != null and articleViewLimited !=''">and article_view_limited =
+                #{articleViewLimited}
+            </if>
         </where>
     </select>
 
@@ -66,11 +143,45 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="menuId != null and menuId !=''">and menu_id like CONCAT(CONCAT('%', #{menuId}), '%')</if>
-            <if test="itemPid != null and itemPid !=''">and item_pid like CONCAT(CONCAT('%', #{itemPid}), '%')</if>
-            <if test="itemId != null and itemId !=''">and item_id like CONCAT(CONCAT('%', #{itemId}), '%')</if>
-            <if test="sort != null and sort !=''">and sort like CONCAT(CONCAT('%', #{sort}), '%')</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="menuId != null and menuId !=''">and menu_id like
+                CONCAT(CONCAT('%', #{menuId}), '%')
+            </if>
+            <if test="itemPid != null and itemPid !=''">and item_pid like
+                CONCAT(CONCAT('%', #{itemPid}), '%')
+            </if>
+            <if test="itemId != null and itemId !=''">and item_id like
+                CONCAT(CONCAT('%', #{itemId}), '%')
+            </if>
+            <if test="sort != null and sort !=''">and sort like
+                CONCAT(CONCAT('%', #{sort}), '%')
+            </if>
+            <if test="name != null and name !=''">and name like
+                CONCAT(CONCAT('%', #{name}), '%')
+            </if>
+            <if test="type != null and type !=''">and type like
+                CONCAT(CONCAT('%', #{type}), '%')
+            </if>
+            <if test="key != null and key !=''">and key like
+                CONCAT(CONCAT('%', #{key}), '%')
+            </if>
+            <if test="url != null and url !=''">and url like
+                CONCAT(CONCAT('%', #{url}), '%')
+            </if>
+            <if test="appid != null and appid !=''">and appid like
+                CONCAT(CONCAT('%', #{appid}), '%')
+            </if>
+            <if test="pagepath != null and pagepath !=''">and pagepath like
+                CONCAT(CONCAT('%', #{pagepath}), '%')
+            </if>
+            <if test="articleId != null and articleId !=''">and article_id like
+                CONCAT(CONCAT('%', #{articleId}), '%')
+            </if>
+            <if test="articleViewLimited != null and articleViewLimited !=''">and article_view_limited like
+                CONCAT(CONCAT('%', #{articleViewLimited}), '%')
+            </if>
         </where>
 
     </select>
@@ -81,11 +192,45 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="menuId != null and menuId !=''">and menu_id = #{menuId}</if>
-            <if test="itemPid != null and itemPid !=''">and item_pid = #{itemPid}</if>
-            <if test="itemId != null and itemId !=''">and item_id = #{itemId}</if>
-            <if test="sort != null and sort !=''">and sort = #{sort}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="menuId != null and menuId !=''">and menu_id =
+                #{menuId}
+            </if>
+            <if test="itemPid != null and itemPid !=''">and item_pid =
+                #{itemPid}
+            </if>
+            <if test="itemId != null and itemId !=''">and item_id =
+                #{itemId}
+            </if>
+            <if test="sort != null and sort !=''">and sort =
+                #{sort}
+            </if>
+            <if test="name != null and name !=''">and name =
+                #{name}
+            </if>
+            <if test="type != null and type !=''">and type =
+                #{type}
+            </if>
+            <if test="key != null and key !=''">and key =
+                #{key}
+            </if>
+            <if test="url != null and url !=''">and url =
+                #{url}
+            </if>
+            <if test="appid != null and appid !=''">and appid =
+                #{appid}
+            </if>
+            <if test="pagepath != null and pagepath !=''">and pagepath =
+                #{pagepath}
+            </if>
+            <if test="articleId != null and articleId !=''">and article_id =
+                #{articleId}
+            </if>
+            <if test="articleViewLimited != null and articleViewLimited !=''">and article_view_limited =
+                #{articleViewLimited}
+            </if>
         </where>
     </select>
 
@@ -93,32 +238,52 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id ,menu_id ,item_pid ,item_id ,sort )
+        (tenant_id ,menu_id ,item_pid ,item_id ,sort ,name ,type ,key ,url ,appid ,pagepath ,article_id
+        ,article_view_limited )
         values
-        (#{tenantId},#{menuId},#{itemPid},#{itemId},#{sort})
+        (#{tenantId} ,#{menuId} ,#{itemPid} ,#{itemId} ,#{sort} ,#{name} ,#{type} ,#{key} ,#{url} ,#{appid} ,#{pagepath}
+        ,#{articleId} ,#{articleViewLimited})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id ,menu_id ,item_pid ,item_id ,sort)
+        ( tenant_id ,menu_id ,item_pid ,item_id ,sort ,name ,type ,key ,url ,appid ,pagepath ,article_id
+        ,article_view_limited)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId} ,#{entity.menuId} ,#{entity.itemPid} ,#{entity.itemId} ,#{entity.sort})
+            ( #{entity.tenantId} ,#{entity.menuId} ,#{entity.itemPid} ,#{entity.itemId} ,#{entity.sort} ,#{entity.name}
+            ,#{entity.type} ,#{entity.key} ,#{entity.url} ,#{entity.appid} ,#{entity.pagepath} ,#{entity.articleId}
+            ,#{entity.articleViewLimited})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id ,menu_id ,item_pid ,item_id ,sort)
+        ( tenant_id ,menu_id ,item_pid ,item_id ,sort ,name ,type ,key ,url ,appid ,pagepath ,article_id
+        ,article_view_limited)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.menuId},#{entity.itemPid},#{entity.itemId},#{entity.sort})
+            ( #{entity.tenantId}, #{entity.menuId}, #{entity.itemPid}, #{entity.itemId}, #{entity.sort}, #{entity.name},
+            #{entity.type}, #{entity.key}, #{entity.url}, #{entity.appid}, #{entity.pagepath}, #{entity.articleId},
+            #{entity.articleViewLimited})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id) ,menu_id=values(menu_id) ,item_pid=values(item_pid) ,item_id=values(item_id)
-        ,sort=values(sort)
+        tenant_id
+        =values(tenant_id) ,menu_id
+        =values(menu_id) ,item_pid
+        =values(item_pid) ,item_id
+        =values(item_id) ,sort
+        =values(sort) ,name
+        =values(name) ,type
+        =values(type) ,key
+        =values(key) ,url
+        =values(url) ,appid
+        =values(appid) ,pagepath
+        =values(pagepath) ,article_id
+        =values(article_id) ,article_view_limited
+        =values(article_view_limited)
     </insert>
 
     <!--通过主键修改数据-->
@@ -126,11 +291,45 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="menuId != null and menuId != ''">menu_id = #{menuId},</if>
-            <if test="itemPid != null and itemPid != ''">item_pid = #{itemPid},</if>
-            <if test="itemId != null and itemId != ''">item_id = #{itemId},</if>
-            <if test="sort != null and sort != ''">sort = #{sort},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="menuId != null and menuId != ''">menu_id = #{menuId
+                    },
+            </if>
+            <if test="itemPid != null and itemPid != ''">item_pid = #{itemPid
+                    },
+            </if>
+            <if test="itemId != null and itemId != ''">item_id = #{itemId
+                    },
+            </if>
+            <if test="sort != null and sort != ''">sort = #{sort
+                    },
+            </if>
+            <if test="name != null and name != ''">name = #{name
+                    },
+            </if>
+            <if test="type != null and type != ''">type = #{type
+                    },
+            </if>
+            <if test="key != null and key != ''">key = #{key
+                    },
+            </if>
+            <if test="url != null and url != ''">url = #{url
+                    },
+            </if>
+            <if test="appid != null and appid != ''">appid = #{appid
+                    },
+            </if>
+            <if test="pagepath != null and pagepath != ''">pagepath = #{pagepath
+                    },
+            </if>
+            <if test="articleId != null and articleId != ''">article_id = #{articleId
+                    },
+            </if>
+            <if test="articleViewLimited != null and articleViewLimited != ''">article_view_limited = #{articleViewLimited
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -141,7 +340,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

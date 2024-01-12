@@ -44,19 +44,45 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="imgPath != null and imgPath !=''">and img_path = #{imgPath}</if>
-            <if test="imgDesc != null and imgDesc !=''">and img_desc = #{imgDesc}</if>
-            <if test="imgSort != null and imgSort !=''">and img_sort = #{imgSort}</if>
-            <if test="imgType != null and imgType !=''">and img_type = #{imgType}</if>
-            <if test="linkUrl != null and linkUrl !=''">and link_url = #{linkUrl}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="controlFlag != null and controlFlag !=''">and control_flag = #{controlFlag}</if>
-            <if test="whiteType != null and whiteType !=''">and white_type = #{whiteType}</if>
-            <if test="validTime != null and validTime !=''">and valid_time = #{validTime}</if>
-            <if test="expireTime != null and expireTime !=''">and expire_time = #{expireTime}</if>
-            <if test="channelNo != null and channelNo !=''">and channel_no = #{channelNo}</if>
-            <if test="needLogin != null and needLogin !=''">and need_login = #{needLogin}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="imgPath != null and imgPath !=''">and img_path =
+                #{imgPath}
+            </if>
+            <if test="imgDesc != null and imgDesc !=''">and img_desc =
+                #{imgDesc}
+            </if>
+            <if test="imgSort != null and imgSort !=''">and img_sort =
+                #{imgSort}
+            </if>
+            <if test="imgType != null and imgType !=''">and img_type =
+                #{imgType}
+            </if>
+            <if test="linkUrl != null and linkUrl !=''">and link_url =
+                #{linkUrl}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="controlFlag != null and controlFlag !=''">and control_flag =
+                #{controlFlag}
+            </if>
+            <if test="whiteType != null and whiteType !=''">and white_type =
+                #{whiteType}
+            </if>
+            <if test="validTime != null and validTime !=''">and valid_time =
+                #{validTime}
+            </if>
+            <if test="expireTime != null and expireTime !=''">and expire_time =
+                #{expireTime}
+            </if>
+            <if test="channelNo != null and channelNo !=''">and channel_no =
+                #{channelNo}
+            </if>
+            <if test="needLogin != null and needLogin !=''">and need_login =
+                #{needLogin}
+            </if>
         </where>
     </select>
 
@@ -67,19 +93,45 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="imgPath != null and imgPath !=''">and img_path = #{imgPath}</if>
-            <if test="imgDesc != null and imgDesc !=''">and img_desc = #{imgDesc}</if>
-            <if test="imgSort != null and imgSort !=''">and img_sort = #{imgSort}</if>
-            <if test="imgType != null and imgType !=''">and img_type = #{imgType}</if>
-            <if test="linkUrl != null and linkUrl !=''">and link_url = #{linkUrl}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="controlFlag != null and controlFlag !=''">and control_flag = #{controlFlag}</if>
-            <if test="whiteType != null and whiteType !=''">and white_type = #{whiteType}</if>
-            <if test="validTime != null and validTime !=''">and valid_time = #{validTime}</if>
-            <if test="expireTime != null and expireTime !=''">and expire_time = #{expireTime}</if>
-            <if test="channelNo != null and channelNo !=''">and channel_no = #{channelNo}</if>
-            <if test="needLogin != null and needLogin !=''">and need_login = #{needLogin}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="imgPath != null and imgPath !=''">and img_path =
+                #{imgPath}
+            </if>
+            <if test="imgDesc != null and imgDesc !=''">and img_desc =
+                #{imgDesc}
+            </if>
+            <if test="imgSort != null and imgSort !=''">and img_sort =
+                #{imgSort}
+            </if>
+            <if test="imgType != null and imgType !=''">and img_type =
+                #{imgType}
+            </if>
+            <if test="linkUrl != null and linkUrl !=''">and link_url =
+                #{linkUrl}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="controlFlag != null and controlFlag !=''">and control_flag =
+                #{controlFlag}
+            </if>
+            <if test="whiteType != null and whiteType !=''">and white_type =
+                #{whiteType}
+            </if>
+            <if test="validTime != null and validTime !=''">and valid_time =
+                #{validTime}
+            </if>
+            <if test="expireTime != null and expireTime !=''">and expire_time =
+                #{expireTime}
+            </if>
+            <if test="channelNo != null and channelNo !=''">and channel_no =
+                #{channelNo}
+            </if>
+            <if test="needLogin != null and needLogin !=''">and need_login =
+                #{needLogin}
+            </if>
         </where>
     </select>
 
@@ -90,26 +142,44 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="imgPath != null and imgPath !=''">and img_path like CONCAT(CONCAT('%', #{imgPath}), '%')</if>
-            <if test="imgDesc != null and imgDesc !=''">and img_desc like CONCAT(CONCAT('%', #{imgDesc}), '%')</if>
-            <if test="imgSort != null and imgSort !=''">and img_sort like CONCAT(CONCAT('%', #{imgSort}), '%')</if>
-            <if test="imgType != null and imgType !=''">and img_type like CONCAT(CONCAT('%', #{imgType}), '%')</if>
-            <if test="linkUrl != null and linkUrl !=''">and link_url like CONCAT(CONCAT('%', #{linkUrl}), '%')</if>
-            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
-            <if test="controlFlag != null and controlFlag !=''">and control_flag like CONCAT(CONCAT('%',
-                #{controlFlag}), '%')
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
             </if>
-            <if test="whiteType != null and whiteType !=''">and white_type like CONCAT(CONCAT('%', #{whiteType}), '%')
+            <if test="imgPath != null and imgPath !=''">and img_path like
+                CONCAT(CONCAT('%', #{imgPath}), '%')
             </if>
-            <if test="validTime != null and validTime !=''">and valid_time like CONCAT(CONCAT('%', #{validTime}), '%')
+            <if test="imgDesc != null and imgDesc !=''">and img_desc like
+                CONCAT(CONCAT('%', #{imgDesc}), '%')
             </if>
-            <if test="expireTime != null and expireTime !=''">and expire_time like CONCAT(CONCAT('%', #{expireTime}),
-                '%')
+            <if test="imgSort != null and imgSort !=''">and img_sort like
+                CONCAT(CONCAT('%', #{imgSort}), '%')
             </if>
-            <if test="channelNo != null and channelNo !=''">and channel_no like CONCAT(CONCAT('%', #{channelNo}), '%')
+            <if test="imgType != null and imgType !=''">and img_type like
+                CONCAT(CONCAT('%', #{imgType}), '%')
             </if>
-            <if test="needLogin != null and needLogin !=''">and need_login like CONCAT(CONCAT('%', #{needLogin}), '%')
+            <if test="linkUrl != null and linkUrl !=''">and link_url like
+                CONCAT(CONCAT('%', #{linkUrl}), '%')
+            </if>
+            <if test="status != null and status !=''">and status like
+                CONCAT(CONCAT('%', #{status}), '%')
+            </if>
+            <if test="controlFlag != null and controlFlag !=''">and control_flag like
+                CONCAT(CONCAT('%', #{controlFlag}), '%')
+            </if>
+            <if test="whiteType != null and whiteType !=''">and white_type like
+                CONCAT(CONCAT('%', #{whiteType}), '%')
+            </if>
+            <if test="validTime != null and validTime !=''">and valid_time like
+                CONCAT(CONCAT('%', #{validTime}), '%')
+            </if>
+            <if test="expireTime != null and expireTime !=''">and expire_time like
+                CONCAT(CONCAT('%', #{expireTime}), '%')
+            </if>
+            <if test="channelNo != null and channelNo !=''">and channel_no like
+                CONCAT(CONCAT('%', #{channelNo}), '%')
+            </if>
+            <if test="needLogin != null and needLogin !=''">and need_login like
+                CONCAT(CONCAT('%', #{needLogin}), '%')
             </if>
         </where>
 
@@ -121,19 +191,45 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="imgPath != null and imgPath !=''">and img_path = #{imgPath}</if>
-            <if test="imgDesc != null and imgDesc !=''">and img_desc = #{imgDesc}</if>
-            <if test="imgSort != null and imgSort !=''">and img_sort = #{imgSort}</if>
-            <if test="imgType != null and imgType !=''">and img_type = #{imgType}</if>
-            <if test="linkUrl != null and linkUrl !=''">and link_url = #{linkUrl}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="controlFlag != null and controlFlag !=''">and control_flag = #{controlFlag}</if>
-            <if test="whiteType != null and whiteType !=''">and white_type = #{whiteType}</if>
-            <if test="validTime != null and validTime !=''">and valid_time = #{validTime}</if>
-            <if test="expireTime != null and expireTime !=''">and expire_time = #{expireTime}</if>
-            <if test="channelNo != null and channelNo !=''">and channel_no = #{channelNo}</if>
-            <if test="needLogin != null and needLogin !=''">and need_login = #{needLogin}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="imgPath != null and imgPath !=''">and img_path =
+                #{imgPath}
+            </if>
+            <if test="imgDesc != null and imgDesc !=''">and img_desc =
+                #{imgDesc}
+            </if>
+            <if test="imgSort != null and imgSort !=''">and img_sort =
+                #{imgSort}
+            </if>
+            <if test="imgType != null and imgType !=''">and img_type =
+                #{imgType}
+            </if>
+            <if test="linkUrl != null and linkUrl !=''">and link_url =
+                #{linkUrl}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="controlFlag != null and controlFlag !=''">and control_flag =
+                #{controlFlag}
+            </if>
+            <if test="whiteType != null and whiteType !=''">and white_type =
+                #{whiteType}
+            </if>
+            <if test="validTime != null and validTime !=''">and valid_time =
+                #{validTime}
+            </if>
+            <if test="expireTime != null and expireTime !=''">and expire_time =
+                #{expireTime}
+            </if>
+            <if test="channelNo != null and channelNo !=''">and channel_no =
+                #{channelNo}
+            </if>
+            <if test="needLogin != null and needLogin !=''">and need_login =
+                #{needLogin}
+            </if>
         </where>
     </select>
 
@@ -144,7 +240,8 @@
         (tenant_id ,img_path ,img_desc ,img_sort ,img_type ,link_url ,control_flag ,white_type ,valid_time ,expire_time
         ,channel_no ,need_login )
         values
-        (#{tenantId},#{imgPath},#{imgDesc},#{imgSort},#{imgType},#{linkUrl},#{controlFlag},#{whiteType},#{validTime},#{expireTime},#{channelNo},#{needLogin})
+        (#{tenantId} ,#{imgPath} ,#{imgDesc} ,#{imgSort} ,#{imgType} ,#{linkUrl} ,#{controlFlag} ,#{whiteType}
+        ,#{validTime} ,#{expireTime} ,#{channelNo} ,#{needLogin})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -167,13 +264,25 @@
         ,expire_time ,channel_no ,need_login)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.imgPath},#{entity.imgDesc},#{entity.imgSort},#{entity.imgType},#{entity.linkUrl},#{entity.status},#{entity.controlFlag},#{entity.whiteType},#{entity.validTime},#{entity.expireTime},#{entity.channelNo},#{entity.needLogin})
+            ( #{entity.tenantId}, #{entity.imgPath}, #{entity.imgDesc}, #{entity.imgSort}, #{entity.imgType},
+            #{entity.linkUrl}, #{entity.status}, #{entity.controlFlag}, #{entity.whiteType}, #{entity.validTime},
+            #{entity.expireTime}, #{entity.channelNo}, #{entity.needLogin})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id) ,img_path=values(img_path) ,img_desc=values(img_desc) ,img_sort=values(img_sort)
-        ,img_type=values(img_type) ,link_url=values(link_url) ,status=values(status) ,control_flag=values(control_flag)
-        ,white_type=values(white_type) ,valid_time=values(valid_time) ,expire_time=values(expire_time)
-        ,channel_no=values(channel_no) ,need_login=values(need_login)
+        tenant_id
+        =values(tenant_id) ,img_path
+        =values(img_path) ,img_desc
+        =values(img_desc) ,img_sort
+        =values(img_sort) ,img_type
+        =values(img_type) ,link_url
+        =values(link_url) ,status
+        =values(status) ,control_flag
+        =values(control_flag) ,white_type
+        =values(white_type) ,valid_time
+        =values(valid_time) ,expire_time
+        =values(expire_time) ,channel_no
+        =values(channel_no) ,need_login
+        =values(need_login)
     </insert>
 
     <!--通过主键修改数据-->
@@ -181,19 +290,45 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="imgPath != null and imgPath != ''">img_path = #{imgPath},</if>
-            <if test="imgDesc != null and imgDesc != ''">img_desc = #{imgDesc},</if>
-            <if test="imgSort != null and imgSort != ''">img_sort = #{imgSort},</if>
-            <if test="imgType != null and imgType != ''">img_type = #{imgType},</if>
-            <if test="linkUrl != null and linkUrl != ''">link_url = #{linkUrl},</if>
-            <if test="status != null and status != ''">status = #{status},</if>
-            <if test="controlFlag != null and controlFlag != ''">control_flag = #{controlFlag},</if>
-            <if test="whiteType != null and whiteType != ''">white_type = #{whiteType},</if>
-            <if test="validTime != null and validTime != ''">valid_time = #{validTime},</if>
-            <if test="expireTime != null and expireTime != ''">expire_time = #{expireTime},</if>
-            <if test="channelNo != null and channelNo != ''">channel_no = #{channelNo},</if>
-            <if test="needLogin != null and needLogin != ''">need_login = #{needLogin},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="imgPath != null and imgPath != ''">img_path = #{imgPath
+                    },
+            </if>
+            <if test="imgDesc != null and imgDesc != ''">img_desc = #{imgDesc
+                    },
+            </if>
+            <if test="imgSort != null and imgSort != ''">img_sort = #{imgSort
+                    },
+            </if>
+            <if test="imgType != null and imgType != ''">img_type = #{imgType
+                    },
+            </if>
+            <if test="linkUrl != null and linkUrl != ''">link_url = #{linkUrl
+                    },
+            </if>
+            <if test="status != null and status != ''">status = #{status
+                    },
+            </if>
+            <if test="controlFlag != null and controlFlag != ''">control_flag = #{controlFlag
+                    },
+            </if>
+            <if test="whiteType != null and whiteType != ''">white_type = #{whiteType
+                    },
+            </if>
+            <if test="validTime != null and validTime != ''">valid_time = #{validTime
+                    },
+            </if>
+            <if test="expireTime != null and expireTime != ''">expire_time = #{expireTime
+                    },
+            </if>
+            <if test="channelNo != null and channelNo != ''">channel_no = #{channelNo
+                    },
+            </if>
+            <if test="needLogin != null and needLogin != ''">need_login = #{needLogin
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -204,7 +339,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

@@ -27,7 +27,8 @@
     </sql>
 
     <sql id="Base_Column_List">
-                id,tenant_id,unionid,wxopenid,nickname,sex,province,city,country,headimgurl,privilege,mobile_no,status,user_id,remark,create_time,last_modified_time    </sql>
+        id
+        ,tenant_id,unionid,wxopenid,nickname,sex,province,city,country,headimgurl,privilege,mobile_no,status,user_id,remark,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="WechatUserMap">
@@ -45,20 +46,48 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="unionid != null and unionid !=''">and unionid = #{unionid}</if>
-            <if test="wxopenid != null and wxopenid !=''">and wxopenid = #{wxopenid}</if>
-            <if test="nickname != null and nickname !=''">and nickname = #{nickname}</if>
-            <if test="sex != null and sex !=''">and sex = #{sex}</if>
-            <if test="province != null and province !=''">and province = #{province}</if>
-            <if test="city != null and city !=''">and city = #{city}</if>
-            <if test="country != null and country !=''">and country = #{country}</if>
-            <if test="headimgurl != null and headimgurl !=''">and headimgurl = #{headimgurl}</if>
-            <if test="privilege != null and privilege !=''">and privilege = #{privilege}</if>
-            <if test="mobileNo != null and mobileNo !=''">and mobile_no = #{mobileNo}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="userId != null and userId !=''">and user_id = #{userId}</if>
-            <if test="remark != null and remark !=''">and remark = #{remark}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="unionid != null and unionid !=''">and unionid =
+                #{unionid}
+            </if>
+            <if test="wxopenid != null and wxopenid !=''">and wxopenid =
+                #{wxopenid}
+            </if>
+            <if test="nickname != null and nickname !=''">and nickname =
+                #{nickname}
+            </if>
+            <if test="sex != null and sex !=''">and sex =
+                #{sex}
+            </if>
+            <if test="province != null and province !=''">and province =
+                #{province}
+            </if>
+            <if test="city != null and city !=''">and city =
+                #{city}
+            </if>
+            <if test="country != null and country !=''">and country =
+                #{country}
+            </if>
+            <if test="headimgurl != null and headimgurl !=''">and headimgurl =
+                #{headimgurl}
+            </if>
+            <if test="privilege != null and privilege !=''">and privilege =
+                #{privilege}
+            </if>
+            <if test="mobileNo != null and mobileNo !=''">and mobile_no =
+                #{mobileNo}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="userId != null and userId !=''">and user_id =
+                #{userId}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
         </where>
     </select>
 
@@ -69,20 +98,48 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="unionid != null and unionid !=''">and unionid = #{unionid}</if>
-            <if test="wxopenid != null and wxopenid !=''">and wxopenid = #{wxopenid}</if>
-            <if test="nickname != null and nickname !=''">and nickname = #{nickname}</if>
-            <if test="sex != null and sex !=''">and sex = #{sex}</if>
-            <if test="province != null and province !=''">and province = #{province}</if>
-            <if test="city != null and city !=''">and city = #{city}</if>
-            <if test="country != null and country !=''">and country = #{country}</if>
-            <if test="headimgurl != null and headimgurl !=''">and headimgurl = #{headimgurl}</if>
-            <if test="privilege != null and privilege !=''">and privilege = #{privilege}</if>
-            <if test="mobileNo != null and mobileNo !=''">and mobile_no = #{mobileNo}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="userId != null and userId !=''">and user_id = #{userId}</if>
-            <if test="remark != null and remark !=''">and remark = #{remark}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="unionid != null and unionid !=''">and unionid =
+                #{unionid}
+            </if>
+            <if test="wxopenid != null and wxopenid !=''">and wxopenid =
+                #{wxopenid}
+            </if>
+            <if test="nickname != null and nickname !=''">and nickname =
+                #{nickname}
+            </if>
+            <if test="sex != null and sex !=''">and sex =
+                #{sex}
+            </if>
+            <if test="province != null and province !=''">and province =
+                #{province}
+            </if>
+            <if test="city != null and city !=''">and city =
+                #{city}
+            </if>
+            <if test="country != null and country !=''">and country =
+                #{country}
+            </if>
+            <if test="headimgurl != null and headimgurl !=''">and headimgurl =
+                #{headimgurl}
+            </if>
+            <if test="privilege != null and privilege !=''">and privilege =
+                #{privilege}
+            </if>
+            <if test="mobileNo != null and mobileNo !=''">and mobile_no =
+                #{mobileNo}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="userId != null and userId !=''">and user_id =
+                #{userId}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
         </where>
     </select>
 
@@ -93,23 +150,48 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="unionid != null and unionid !=''">and unionid like CONCAT(CONCAT('%', #{unionid}), '%')</if>
-            <if test="wxopenid != null and wxopenid !=''">and wxopenid like CONCAT(CONCAT('%', #{wxopenid}), '%')</if>
-            <if test="nickname != null and nickname !=''">and nickname like CONCAT(CONCAT('%', #{nickname}), '%')</if>
-            <if test="sex != null and sex !=''">and sex like CONCAT(CONCAT('%', #{sex}), '%')</if>
-            <if test="province != null and province !=''">and province like CONCAT(CONCAT('%', #{province}), '%')</if>
-            <if test="city != null and city !=''">and city like CONCAT(CONCAT('%', #{city}), '%')</if>
-            <if test="country != null and country !=''">and country like CONCAT(CONCAT('%', #{country}), '%')</if>
-            <if test="headimgurl != null and headimgurl !=''">and headimgurl like CONCAT(CONCAT('%', #{headimgurl}),
-                '%')
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
             </if>
-            <if test="privilege != null and privilege !=''">and privilege like CONCAT(CONCAT('%', #{privilege}), '%')
+            <if test="unionid != null and unionid !=''">and unionid like
+                CONCAT(CONCAT('%', #{unionid}), '%')
             </if>
-            <if test="mobileNo != null and mobileNo !=''">and mobile_no like CONCAT(CONCAT('%', #{mobileNo}), '%')</if>
-            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
-            <if test="userId != null and userId !=''">and user_id like CONCAT(CONCAT('%', #{userId}), '%')</if>
-            <if test="remark != null and remark !=''">and remark like CONCAT(CONCAT('%', #{remark}), '%')</if>
+            <if test="wxopenid != null and wxopenid !=''">and wxopenid like
+                CONCAT(CONCAT('%', #{wxopenid}), '%')
+            </if>
+            <if test="nickname != null and nickname !=''">and nickname like
+                CONCAT(CONCAT('%', #{nickname}), '%')
+            </if>
+            <if test="sex != null and sex !=''">and sex like
+                CONCAT(CONCAT('%', #{sex}), '%')
+            </if>
+            <if test="province != null and province !=''">and province like
+                CONCAT(CONCAT('%', #{province}), '%')
+            </if>
+            <if test="city != null and city !=''">and city like
+                CONCAT(CONCAT('%', #{city}), '%')
+            </if>
+            <if test="country != null and country !=''">and country like
+                CONCAT(CONCAT('%', #{country}), '%')
+            </if>
+            <if test="headimgurl != null and headimgurl !=''">and headimgurl like
+                CONCAT(CONCAT('%', #{headimgurl}), '%')
+            </if>
+            <if test="privilege != null and privilege !=''">and privilege like
+                CONCAT(CONCAT('%', #{privilege}), '%')
+            </if>
+            <if test="mobileNo != null and mobileNo !=''">and mobile_no like
+                CONCAT(CONCAT('%', #{mobileNo}), '%')
+            </if>
+            <if test="status != null and status !=''">and status like
+                CONCAT(CONCAT('%', #{status}), '%')
+            </if>
+            <if test="userId != null and userId !=''">and user_id like
+                CONCAT(CONCAT('%', #{userId}), '%')
+            </if>
+            <if test="remark != null and remark !=''">and remark like
+                CONCAT(CONCAT('%', #{remark}), '%')
+            </if>
         </where>
 
     </select>
@@ -120,20 +202,48 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="unionid != null and unionid !=''">and unionid = #{unionid}</if>
-            <if test="wxopenid != null and wxopenid !=''">and wxopenid = #{wxopenid}</if>
-            <if test="nickname != null and nickname !=''">and nickname = #{nickname}</if>
-            <if test="sex != null and sex !=''">and sex = #{sex}</if>
-            <if test="province != null and province !=''">and province = #{province}</if>
-            <if test="city != null and city !=''">and city = #{city}</if>
-            <if test="country != null and country !=''">and country = #{country}</if>
-            <if test="headimgurl != null and headimgurl !=''">and headimgurl = #{headimgurl}</if>
-            <if test="privilege != null and privilege !=''">and privilege = #{privilege}</if>
-            <if test="mobileNo != null and mobileNo !=''">and mobile_no = #{mobileNo}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="userId != null and userId !=''">and user_id = #{userId}</if>
-            <if test="remark != null and remark !=''">and remark = #{remark}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="unionid != null and unionid !=''">and unionid =
+                #{unionid}
+            </if>
+            <if test="wxopenid != null and wxopenid !=''">and wxopenid =
+                #{wxopenid}
+            </if>
+            <if test="nickname != null and nickname !=''">and nickname =
+                #{nickname}
+            </if>
+            <if test="sex != null and sex !=''">and sex =
+                #{sex}
+            </if>
+            <if test="province != null and province !=''">and province =
+                #{province}
+            </if>
+            <if test="city != null and city !=''">and city =
+                #{city}
+            </if>
+            <if test="country != null and country !=''">and country =
+                #{country}
+            </if>
+            <if test="headimgurl != null and headimgurl !=''">and headimgurl =
+                #{headimgurl}
+            </if>
+            <if test="privilege != null and privilege !=''">and privilege =
+                #{privilege}
+            </if>
+            <if test="mobileNo != null and mobileNo !=''">and mobile_no =
+                #{mobileNo}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="userId != null and userId !=''">and user_id =
+                #{userId}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
         </where>
     </select>
 
@@ -144,7 +254,8 @@
         (tenant_id ,unionid ,wxopenid ,nickname ,sex ,province ,city ,country ,headimgurl ,privilege ,mobile_no ,user_id
         ,remark )
         values
-        (#{tenantId},#{unionid},#{wxopenid},#{nickname},#{sex},#{province},#{city},#{country},#{headimgurl},#{privilege},#{mobileNo},#{userId},#{remark})
+        (#{tenantId} ,#{unionid} ,#{wxopenid} ,#{nickname} ,#{sex} ,#{province} ,#{city} ,#{country} ,#{headimgurl}
+        ,#{privilege} ,#{mobileNo} ,#{userId} ,#{remark})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -167,13 +278,26 @@
         ,user_id ,remark)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.unionid},#{entity.wxopenid},#{entity.nickname},#{entity.sex},#{entity.province},#{entity.city},#{entity.country},#{entity.headimgurl},#{entity.privilege},#{entity.mobileNo},#{entity.status},#{entity.userId},#{entity.remark})
+            ( #{entity.tenantId}, #{entity.unionid}, #{entity.wxopenid}, #{entity.nickname}, #{entity.sex},
+            #{entity.province}, #{entity.city}, #{entity.country}, #{entity.headimgurl}, #{entity.privilege},
+            #{entity.mobileNo}, #{entity.status}, #{entity.userId}, #{entity.remark})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id) ,unionid=values(unionid) ,wxopenid=values(wxopenid) ,nickname=values(nickname)
-        ,sex=values(sex) ,province=values(province) ,city=values(city) ,country=values(country)
-        ,headimgurl=values(headimgurl) ,privilege=values(privilege) ,mobile_no=values(mobile_no) ,status=values(status)
-        ,user_id=values(user_id) ,remark=values(remark)
+        tenant_id
+        =values(tenant_id) ,unionid
+        =values(unionid) ,wxopenid
+        =values(wxopenid) ,nickname
+        =values(nickname) ,sex
+        =values(sex) ,province
+        =values(province) ,city
+        =values(city) ,country
+        =values(country) ,headimgurl
+        =values(headimgurl) ,privilege
+        =values(privilege) ,mobile_no
+        =values(mobile_no) ,status
+        =values(status) ,user_id
+        =values(user_id) ,remark
+        =values(remark)
     </insert>
 
     <!--通过主键修改数据-->
@@ -181,20 +305,48 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="unionid != null and unionid != ''">unionid = #{unionid},</if>
-            <if test="wxopenid != null and wxopenid != ''">wxopenid = #{wxopenid},</if>
-            <if test="nickname != null and nickname != ''">nickname = #{nickname},</if>
-            <if test="sex != null and sex != ''">sex = #{sex},</if>
-            <if test="province != null and province != ''">province = #{province},</if>
-            <if test="city != null and city != ''">city = #{city},</if>
-            <if test="country != null and country != ''">country = #{country},</if>
-            <if test="headimgurl != null and headimgurl != ''">headimgurl = #{headimgurl},</if>
-            <if test="privilege != null and privilege != ''">privilege = #{privilege},</if>
-            <if test="mobileNo != null and mobileNo != ''">mobile_no = #{mobileNo},</if>
-            <if test="status != null and status != ''">status = #{status},</if>
-            <if test="userId != null and userId != ''">user_id = #{userId},</if>
-            <if test="remark != null and remark != ''">remark = #{remark},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="unionid != null and unionid != ''">unionid = #{unionid
+                    },
+            </if>
+            <if test="wxopenid != null and wxopenid != ''">wxopenid = #{wxopenid
+                    },
+            </if>
+            <if test="nickname != null and nickname != ''">nickname = #{nickname
+                    },
+            </if>
+            <if test="sex != null and sex != ''">sex = #{sex
+                    },
+            </if>
+            <if test="province != null and province != ''">province = #{province
+                    },
+            </if>
+            <if test="city != null and city != ''">city = #{city
+                    },
+            </if>
+            <if test="country != null and country != ''">country = #{country
+                    },
+            </if>
+            <if test="headimgurl != null and headimgurl != ''">headimgurl = #{headimgurl
+                    },
+            </if>
+            <if test="privilege != null and privilege != ''">privilege = #{privilege
+                    },
+            </if>
+            <if test="mobileNo != null and mobileNo != ''">mobile_no = #{mobileNo
+                    },
+            </if>
+            <if test="status != null and status != ''">status = #{status
+                    },
+            </if>
+            <if test="userId != null and userId != ''">user_id = #{userId
+                    },
+            </if>
+            <if test="remark != null and remark != ''">remark = #{remark
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -205,7 +357,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

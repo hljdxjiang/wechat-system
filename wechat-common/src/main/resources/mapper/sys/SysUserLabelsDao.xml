@@ -36,11 +36,21 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="labelId != null and labelId !=''">and label_id = #{labelId}</if>
-            <if test="labelKey != null and labelKey !=''">and label_key = #{labelKey}</if>
-            <if test="labelDesc != null and labelDesc !=''">and label_desc = #{labelDesc}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="labelId != null and labelId !=''">and label_id =
+                #{labelId}
+            </if>
+            <if test="labelKey != null and labelKey !=''">and label_key =
+                #{labelKey}
+            </if>
+            <if test="labelDesc != null and labelDesc !=''">and label_desc =
+                #{labelDesc}
+            </if>
         </where>
     </select>
 
@@ -51,11 +61,21 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="labelId != null and labelId !=''">and label_id = #{labelId}</if>
-            <if test="labelKey != null and labelKey !=''">and label_key = #{labelKey}</if>
-            <if test="labelDesc != null and labelDesc !=''">and label_desc = #{labelDesc}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="labelId != null and labelId !=''">and label_id =
+                #{labelId}
+            </if>
+            <if test="labelKey != null and labelKey !=''">and label_key =
+                #{labelKey}
+            </if>
+            <if test="labelDesc != null and labelDesc !=''">and label_desc =
+                #{labelDesc}
+            </if>
         </where>
     </select>
 
@@ -66,11 +86,20 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
-            <if test="labelId != null and labelId !=''">and label_id like CONCAT(CONCAT('%', #{labelId}), '%')</if>
-            <if test="labelKey != null and labelKey !=''">and label_key like CONCAT(CONCAT('%', #{labelKey}), '%')</if>
-            <if test="labelDesc != null and labelDesc !=''">and label_desc like CONCAT(CONCAT('%', #{labelDesc}), '%')
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="status != null and status !=''">and status like
+                CONCAT(CONCAT('%', #{status}), '%')
+            </if>
+            <if test="labelId != null and labelId !=''">and label_id like
+                CONCAT(CONCAT('%', #{labelId}), '%')
+            </if>
+            <if test="labelKey != null and labelKey !=''">and label_key like
+                CONCAT(CONCAT('%', #{labelKey}), '%')
+            </if>
+            <if test="labelDesc != null and labelDesc !=''">and label_desc like
+                CONCAT(CONCAT('%', #{labelDesc}), '%')
             </if>
         </where>
 
@@ -82,11 +111,21 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="labelId != null and labelId !=''">and label_id = #{labelId}</if>
-            <if test="labelKey != null and labelKey !=''">and label_key = #{labelKey}</if>
-            <if test="labelDesc != null and labelDesc !=''">and label_desc = #{labelDesc}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="labelId != null and labelId !=''">and label_id =
+                #{labelId}
+            </if>
+            <if test="labelKey != null and labelKey !=''">and label_key =
+                #{labelKey}
+            </if>
+            <if test="labelDesc != null and labelDesc !=''">and label_desc =
+                #{labelDesc}
+            </if>
         </where>
     </select>
 
@@ -96,7 +135,7 @@
         <include refid="Table_Name"/>
         (tenant_id ,label_id ,label_key ,label_desc )
         values
-        (#{tenantId},#{labelId},#{labelKey},#{labelDesc})
+        (#{tenantId} ,#{labelId} ,#{labelKey} ,#{labelDesc})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -115,11 +154,15 @@
         ( tenant_id ,status ,label_id ,label_key ,label_desc)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.status},#{entity.labelId},#{entity.labelKey},#{entity.labelDesc})
+            ( #{entity.tenantId}, #{entity.status}, #{entity.labelId}, #{entity.labelKey}, #{entity.labelDesc})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id) ,status=values(status) ,label_id=values(label_id) ,label_key=values(label_key)
-        ,label_desc=values(label_desc)
+        tenant_id
+        =values(tenant_id) ,status
+        =values(status) ,label_id
+        =values(label_id) ,label_key
+        =values(label_key) ,label_desc
+        =values(label_desc)
     </insert>
 
     <!--通过主键修改数据-->
@@ -127,11 +170,21 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="status != null and status != ''">status = #{status},</if>
-            <if test="labelId != null and labelId != ''">label_id = #{labelId},</if>
-            <if test="labelKey != null and labelKey != ''">label_key = #{labelKey},</if>
-            <if test="labelDesc != null and labelDesc != ''">label_desc = #{labelDesc},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="status != null and status != ''">status = #{status
+                    },
+            </if>
+            <if test="labelId != null and labelId != ''">label_id = #{labelId
+                    },
+            </if>
+            <if test="labelKey != null and labelKey != ''">label_key = #{labelKey
+                    },
+            </if>
+            <if test="labelDesc != null and labelDesc != ''">label_desc = #{labelDesc
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -142,7 +195,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

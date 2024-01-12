@@ -37,12 +37,24 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="lotteryId != null and lotteryId !=''">and lottery_id = #{lotteryId}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="userid != null and userid !=''">and userid = #{userid}</if>
-            <if test="complateTime != null and complateTime !=''">and complate_time = #{complateTime}</if>
-            <if test="rewardId != null and rewardId !=''">and reward_id = #{rewardId}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="lotteryId != null and lotteryId !=''">and lottery_id =
+                #{lotteryId}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="userid != null and userid !=''">and userid =
+                #{userid}
+            </if>
+            <if test="complateTime != null and complateTime !=''">and complate_time =
+                #{complateTime}
+            </if>
+            <if test="rewardId != null and rewardId !=''">and reward_id =
+                #{rewardId}
+            </if>
         </where>
     </select>
 
@@ -53,12 +65,24 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="lotteryId != null and lotteryId !=''">and lottery_id = #{lotteryId}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="userid != null and userid !=''">and userid = #{userid}</if>
-            <if test="complateTime != null and complateTime !=''">and complate_time = #{complateTime}</if>
-            <if test="rewardId != null and rewardId !=''">and reward_id = #{rewardId}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="lotteryId != null and lotteryId !=''">and lottery_id =
+                #{lotteryId}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="userid != null and userid !=''">and userid =
+                #{userid}
+            </if>
+            <if test="complateTime != null and complateTime !=''">and complate_time =
+                #{complateTime}
+            </if>
+            <if test="rewardId != null and rewardId !=''">and reward_id =
+                #{rewardId}
+            </if>
         </where>
     </select>
 
@@ -69,15 +93,24 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="lotteryId != null and lotteryId !=''">and lottery_id like CONCAT(CONCAT('%', #{lotteryId}), '%')
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
             </if>
-            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
-            <if test="userid != null and userid !=''">and userid like CONCAT(CONCAT('%', #{userid}), '%')</if>
-            <if test="complateTime != null and complateTime !=''">and complate_time like CONCAT(CONCAT('%',
-                #{complateTime}), '%')
+            <if test="lotteryId != null and lotteryId !=''">and lottery_id like
+                CONCAT(CONCAT('%', #{lotteryId}), '%')
             </if>
-            <if test="rewardId != null and rewardId !=''">and reward_id like CONCAT(CONCAT('%', #{rewardId}), '%')</if>
+            <if test="status != null and status !=''">and status like
+                CONCAT(CONCAT('%', #{status}), '%')
+            </if>
+            <if test="userid != null and userid !=''">and userid like
+                CONCAT(CONCAT('%', #{userid}), '%')
+            </if>
+            <if test="complateTime != null and complateTime !=''">and complate_time like
+                CONCAT(CONCAT('%', #{complateTime}), '%')
+            </if>
+            <if test="rewardId != null and rewardId !=''">and reward_id like
+                CONCAT(CONCAT('%', #{rewardId}), '%')
+            </if>
         </where>
 
     </select>
@@ -88,12 +121,24 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="lotteryId != null and lotteryId !=''">and lottery_id = #{lotteryId}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="userid != null and userid !=''">and userid = #{userid}</if>
-            <if test="complateTime != null and complateTime !=''">and complate_time = #{complateTime}</if>
-            <if test="rewardId != null and rewardId !=''">and reward_id = #{rewardId}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="lotteryId != null and lotteryId !=''">and lottery_id =
+                #{lotteryId}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="userid != null and userid !=''">and userid =
+                #{userid}
+            </if>
+            <if test="complateTime != null and complateTime !=''">and complate_time =
+                #{complateTime}
+            </if>
+            <if test="rewardId != null and rewardId !=''">and reward_id =
+                #{rewardId}
+            </if>
         </where>
     </select>
 
@@ -103,7 +148,7 @@
         <include refid="Table_Name"/>
         (tenant_id ,lottery_id ,userid ,complate_time ,reward_id )
         values
-        (#{tenantId},#{lotteryId},#{userid},#{complateTime},#{rewardId})
+        (#{tenantId} ,#{lotteryId} ,#{userid} ,#{complateTime} ,#{rewardId})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -122,11 +167,17 @@
         ( tenant_id ,lottery_id ,status ,userid ,complate_time ,reward_id)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.lotteryId},#{entity.status},#{entity.userid},#{entity.complateTime},#{entity.rewardId})
+            ( #{entity.tenantId}, #{entity.lotteryId}, #{entity.status}, #{entity.userid}, #{entity.complateTime},
+            #{entity.rewardId})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id) ,lottery_id=values(lottery_id) ,status=values(status) ,userid=values(userid)
-        ,complate_time=values(complate_time) ,reward_id=values(reward_id)
+        tenant_id
+        =values(tenant_id) ,lottery_id
+        =values(lottery_id) ,status
+        =values(status) ,userid
+        =values(userid) ,complate_time
+        =values(complate_time) ,reward_id
+        =values(reward_id)
     </insert>
 
     <!--通过主键修改数据-->
@@ -134,12 +185,24 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="lotteryId != null and lotteryId != ''">lottery_id = #{lotteryId},</if>
-            <if test="status != null and status != ''">status = #{status},</if>
-            <if test="userid != null and userid != ''">userid = #{userid},</if>
-            <if test="complateTime != null and complateTime != ''">complate_time = #{complateTime},</if>
-            <if test="rewardId != null and rewardId != ''">reward_id = #{rewardId},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="lotteryId != null and lotteryId != ''">lottery_id = #{lotteryId
+                    },
+            </if>
+            <if test="status != null and status != ''">status = #{status
+                    },
+            </if>
+            <if test="userid != null and userid != ''">userid = #{userid
+                    },
+            </if>
+            <if test="complateTime != null and complateTime != ''">complate_time = #{complateTime
+                    },
+            </if>
+            <if test="rewardId != null and rewardId != ''">reward_id = #{rewardId
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -150,7 +213,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

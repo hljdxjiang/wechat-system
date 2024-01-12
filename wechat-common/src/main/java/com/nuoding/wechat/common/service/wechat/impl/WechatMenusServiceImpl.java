@@ -3,17 +3,18 @@ package com.nuoding.wechat.common.service.wechat.impl;
 import com.nuoding.wechat.common.dao.wechat.WechatMenusDao;
 import com.nuoding.wechat.common.entity.wechat.WechatMenusEntity;
 import com.nuoding.wechat.common.service.wechat.WechatMenusService;
+import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (wechatMenus)表服务实现类
  * 微信菜单表
- *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */

@@ -42,21 +42,45 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantid != null and tenantid !=''">and tenantid = #{tenantid}</if>
-            <if test="referrerId != null and referrerId !=''">and referrer_id = #{referrerId}</if>
-            <if test="referrerCertNo != null and referrerCertNo !=''">and referrer_cert_no = #{referrerCertNo}</if>
-            <if test="referrerCertType != null and referrerCertType !=''">and referrer_cert_type = #{referrerCertType}
+            <if test="tenantid != null and tenantid !=''">and tenantid =
+                #{tenantid}
             </if>
-            <if test="referrerName != null and referrerName !=''">and referrer_name = #{referrerName}</if>
-            <if test="referrerEmail != null and referrerEmail !=''">and referrer_email = #{referrerEmail}</if>
-            <if test="mobileNo != null and mobileNo !=''">and mobile_no = #{mobileNo}</if>
-            <if test="referrerCardNo != null and referrerCardNo !=''">and referrer_card_no = #{referrerCardNo}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="channelNo != null and channelNo !=''">and channel_no = #{channelNo}</if>
-            <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
-            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}
+            <if test="referrerId != null and referrerId !=''">and referrer_id =
+                #{referrerId}
             </if>
-            <if test="remark != null and remark !=''">and remark = #{remark}</if>
+            <if test="referrerCertNo != null and referrerCertNo !=''">and referrer_cert_no =
+                #{referrerCertNo}
+            </if>
+            <if test="referrerCertType != null and referrerCertType !=''">and referrer_cert_type =
+                #{referrerCertType}
+            </if>
+            <if test="referrerName != null and referrerName !=''">and referrer_name =
+                #{referrerName}
+            </if>
+            <if test="referrerEmail != null and referrerEmail !=''">and referrer_email =
+                #{referrerEmail}
+            </if>
+            <if test="mobileNo != null and mobileNo !=''">and mobile_no =
+                #{mobileNo}
+            </if>
+            <if test="referrerCardNo != null and referrerCardNo !=''">and referrer_card_no =
+                #{referrerCardNo}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="channelNo != null and channelNo !=''">and channel_no =
+                #{channelNo}
+            </if>
+            <if test="createtime != null and createtime !=''">and createtime =
+                #{createtime}
+            </if>
+            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime =
+                #{lastmodifiedtime}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
         </where>
     </select>
 
@@ -67,21 +91,45 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantid != null and tenantid !=''">and tenantid = #{tenantid}</if>
-            <if test="referrerId != null and referrerId !=''">and referrer_id = #{referrerId}</if>
-            <if test="referrerCertNo != null and referrerCertNo !=''">and referrer_cert_no = #{referrerCertNo}</if>
-            <if test="referrerCertType != null and referrerCertType !=''">and referrer_cert_type = #{referrerCertType}
+            <if test="tenantid != null and tenantid !=''">and tenantid =
+                #{tenantid}
             </if>
-            <if test="referrerName != null and referrerName !=''">and referrer_name = #{referrerName}</if>
-            <if test="referrerEmail != null and referrerEmail !=''">and referrer_email = #{referrerEmail}</if>
-            <if test="mobileNo != null and mobileNo !=''">and mobile_no = #{mobileNo}</if>
-            <if test="referrerCardNo != null and referrerCardNo !=''">and referrer_card_no = #{referrerCardNo}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="channelNo != null and channelNo !=''">and channel_no = #{channelNo}</if>
-            <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
-            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}
+            <if test="referrerId != null and referrerId !=''">and referrer_id =
+                #{referrerId}
             </if>
-            <if test="remark != null and remark !=''">and remark = #{remark}</if>
+            <if test="referrerCertNo != null and referrerCertNo !=''">and referrer_cert_no =
+                #{referrerCertNo}
+            </if>
+            <if test="referrerCertType != null and referrerCertType !=''">and referrer_cert_type =
+                #{referrerCertType}
+            </if>
+            <if test="referrerName != null and referrerName !=''">and referrer_name =
+                #{referrerName}
+            </if>
+            <if test="referrerEmail != null and referrerEmail !=''">and referrer_email =
+                #{referrerEmail}
+            </if>
+            <if test="mobileNo != null and mobileNo !=''">and mobile_no =
+                #{mobileNo}
+            </if>
+            <if test="referrerCardNo != null and referrerCardNo !=''">and referrer_card_no =
+                #{referrerCardNo}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="channelNo != null and channelNo !=''">and channel_no =
+                #{channelNo}
+            </if>
+            <if test="createtime != null and createtime !=''">and createtime =
+                #{createtime}
+            </if>
+            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime =
+                #{lastmodifiedtime}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
         </where>
     </select>
 
@@ -92,36 +140,45 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantid != null and tenantid !=''">and tenantid like CONCAT(CONCAT('%', #{tenantid}), '%')</if>
-            <if test="referrerId != null and referrerId !=''">and referrer_id like CONCAT(CONCAT('%', #{referrerId}),
-                '%')
+            <if test="tenantid != null and tenantid !=''">and tenantid like
+                CONCAT(CONCAT('%', #{tenantid}), '%')
             </if>
-            <if test="referrerCertNo != null and referrerCertNo !=''">and referrer_cert_no like CONCAT(CONCAT('%',
-                #{referrerCertNo}), '%')
+            <if test="referrerId != null and referrerId !=''">and referrer_id like
+                CONCAT(CONCAT('%', #{referrerId}), '%')
             </if>
-            <if test="referrerCertType != null and referrerCertType !=''">and referrer_cert_type like CONCAT(CONCAT('%',
-                #{referrerCertType}), '%')
+            <if test="referrerCertNo != null and referrerCertNo !=''">and referrer_cert_no like
+                CONCAT(CONCAT('%', #{referrerCertNo}), '%')
             </if>
-            <if test="referrerName != null and referrerName !=''">and referrer_name like CONCAT(CONCAT('%',
-                #{referrerName}), '%')
+            <if test="referrerCertType != null and referrerCertType !=''">and referrer_cert_type like
+                CONCAT(CONCAT('%', #{referrerCertType}), '%')
             </if>
-            <if test="referrerEmail != null and referrerEmail !=''">and referrer_email like CONCAT(CONCAT('%',
-                #{referrerEmail}), '%')
+            <if test="referrerName != null and referrerName !=''">and referrer_name like
+                CONCAT(CONCAT('%', #{referrerName}), '%')
             </if>
-            <if test="mobileNo != null and mobileNo !=''">and mobile_no like CONCAT(CONCAT('%', #{mobileNo}), '%')</if>
-            <if test="referrerCardNo != null and referrerCardNo !=''">and referrer_card_no like CONCAT(CONCAT('%',
-                #{referrerCardNo}), '%')
+            <if test="referrerEmail != null and referrerEmail !=''">and referrer_email like
+                CONCAT(CONCAT('%', #{referrerEmail}), '%')
             </if>
-            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
-            <if test="channelNo != null and channelNo !=''">and channel_no like CONCAT(CONCAT('%', #{channelNo}), '%')
+            <if test="mobileNo != null and mobileNo !=''">and mobile_no like
+                CONCAT(CONCAT('%', #{mobileNo}), '%')
             </if>
-            <if test="createtime != null and createtime !=''">and createtime like CONCAT(CONCAT('%', #{createtime}),
-                '%')
+            <if test="referrerCardNo != null and referrerCardNo !=''">and referrer_card_no like
+                CONCAT(CONCAT('%', #{referrerCardNo}), '%')
             </if>
-            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime like CONCAT(CONCAT('%',
-                #{lastmodifiedtime}), '%')
+            <if test="status != null and status !=''">and status like
+                CONCAT(CONCAT('%', #{status}), '%')
             </if>
-            <if test="remark != null and remark !=''">and remark like CONCAT(CONCAT('%', #{remark}), '%')</if>
+            <if test="channelNo != null and channelNo !=''">and channel_no like
+                CONCAT(CONCAT('%', #{channelNo}), '%')
+            </if>
+            <if test="createtime != null and createtime !=''">and createtime like
+                CONCAT(CONCAT('%', #{createtime}), '%')
+            </if>
+            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime like
+                CONCAT(CONCAT('%', #{lastmodifiedtime}), '%')
+            </if>
+            <if test="remark != null and remark !=''">and remark like
+                CONCAT(CONCAT('%', #{remark}), '%')
+            </if>
         </where>
 
     </select>
@@ -132,21 +189,45 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantid != null and tenantid !=''">and tenantid = #{tenantid}</if>
-            <if test="referrerId != null and referrerId !=''">and referrer_id = #{referrerId}</if>
-            <if test="referrerCertNo != null and referrerCertNo !=''">and referrer_cert_no = #{referrerCertNo}</if>
-            <if test="referrerCertType != null and referrerCertType !=''">and referrer_cert_type = #{referrerCertType}
+            <if test="tenantid != null and tenantid !=''">and tenantid =
+                #{tenantid}
             </if>
-            <if test="referrerName != null and referrerName !=''">and referrer_name = #{referrerName}</if>
-            <if test="referrerEmail != null and referrerEmail !=''">and referrer_email = #{referrerEmail}</if>
-            <if test="mobileNo != null and mobileNo !=''">and mobile_no = #{mobileNo}</if>
-            <if test="referrerCardNo != null and referrerCardNo !=''">and referrer_card_no = #{referrerCardNo}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="channelNo != null and channelNo !=''">and channel_no = #{channelNo}</if>
-            <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
-            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}
+            <if test="referrerId != null and referrerId !=''">and referrer_id =
+                #{referrerId}
             </if>
-            <if test="remark != null and remark !=''">and remark = #{remark}</if>
+            <if test="referrerCertNo != null and referrerCertNo !=''">and referrer_cert_no =
+                #{referrerCertNo}
+            </if>
+            <if test="referrerCertType != null and referrerCertType !=''">and referrer_cert_type =
+                #{referrerCertType}
+            </if>
+            <if test="referrerName != null and referrerName !=''">and referrer_name =
+                #{referrerName}
+            </if>
+            <if test="referrerEmail != null and referrerEmail !=''">and referrer_email =
+                #{referrerEmail}
+            </if>
+            <if test="mobileNo != null and mobileNo !=''">and mobile_no =
+                #{mobileNo}
+            </if>
+            <if test="referrerCardNo != null and referrerCardNo !=''">and referrer_card_no =
+                #{referrerCardNo}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="channelNo != null and channelNo !=''">and channel_no =
+                #{channelNo}
+            </if>
+            <if test="createtime != null and createtime !=''">and createtime =
+                #{createtime}
+            </if>
+            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime =
+                #{lastmodifiedtime}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
         </where>
     </select>
 
@@ -157,7 +238,8 @@
         (tenantid ,referrer_id ,referrer_cert_no ,referrer_cert_type ,referrer_name ,referrer_email ,mobile_no
         ,referrer_card_no ,channel_no ,createtime ,lastmodifiedtime ,remark )
         values
-        (#{tenantid},#{referrerId},#{referrerCertNo},#{referrerCertType},#{referrerName},#{referrerEmail},#{mobileNo},#{referrerCardNo},#{channelNo},#{createtime},#{lastmodifiedtime},#{remark})
+        (#{tenantid} ,#{referrerId} ,#{referrerCertNo} ,#{referrerCertType} ,#{referrerName} ,#{referrerEmail}
+        ,#{mobileNo} ,#{referrerCardNo} ,#{channelNo} ,#{createtime} ,#{lastmodifiedtime} ,#{remark})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -180,14 +262,25 @@
         ,referrer_card_no ,status ,channel_no ,createtime ,lastmodifiedtime ,remark)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantid},#{entity.referrerId},#{entity.referrerCertNo},#{entity.referrerCertType},#{entity.referrerName},#{entity.referrerEmail},#{entity.mobileNo},#{entity.referrerCardNo},#{entity.status},#{entity.channelNo},#{entity.createtime},#{entity.lastmodifiedtime},#{entity.remark})
+            ( #{entity.tenantid}, #{entity.referrerId}, #{entity.referrerCertNo}, #{entity.referrerCertType},
+            #{entity.referrerName}, #{entity.referrerEmail}, #{entity.mobileNo}, #{entity.referrerCardNo},
+            #{entity.status}, #{entity.channelNo}, #{entity.createtime}, #{entity.lastmodifiedtime}, #{entity.remark})
         </foreach>
         on duplicate key update
-        tenantid=values(tenantid) ,referrer_id=values(referrer_id) ,referrer_cert_no=values(referrer_cert_no)
-        ,referrer_cert_type=values(referrer_cert_type) ,referrer_name=values(referrer_name)
-        ,referrer_email=values(referrer_email) ,mobile_no=values(mobile_no) ,referrer_card_no=values(referrer_card_no)
-        ,status=values(status) ,channel_no=values(channel_no) ,createtime=values(createtime)
-        ,lastmodifiedtime=values(lastmodifiedtime) ,remark=values(remark)
+        tenantid
+        =values(tenantid) ,referrer_id
+        =values(referrer_id) ,referrer_cert_no
+        =values(referrer_cert_no) ,referrer_cert_type
+        =values(referrer_cert_type) ,referrer_name
+        =values(referrer_name) ,referrer_email
+        =values(referrer_email) ,mobile_no
+        =values(mobile_no) ,referrer_card_no
+        =values(referrer_card_no) ,status
+        =values(status) ,channel_no
+        =values(channel_no) ,createtime
+        =values(createtime) ,lastmodifiedtime
+        =values(lastmodifiedtime) ,remark
+        =values(remark)
     </insert>
 
     <!--通过主键修改数据-->
@@ -195,20 +288,45 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantid != null and tenantid != ''">tenantid = #{tenantid},</if>
-            <if test="referrerId != null and referrerId != ''">referrer_id = #{referrerId},</if>
-            <if test="referrerCertNo != null and referrerCertNo != ''">referrer_cert_no = #{referrerCertNo},</if>
-            <if test="referrerCertType != null and referrerCertType != ''">referrer_cert_type = #{referrerCertType},
+            <if test="tenantid != null and tenantid != ''">tenantid = #{tenantid
+                    },
             </if>
-            <if test="referrerName != null and referrerName != ''">referrer_name = #{referrerName},</if>
-            <if test="referrerEmail != null and referrerEmail != ''">referrer_email = #{referrerEmail},</if>
-            <if test="mobileNo != null and mobileNo != ''">mobile_no = #{mobileNo},</if>
-            <if test="referrerCardNo != null and referrerCardNo != ''">referrer_card_no = #{referrerCardNo},</if>
-            <if test="status != null and status != ''">status = #{status},</if>
-            <if test="channelNo != null and channelNo != ''">channel_no = #{channelNo},</if>
-            <if test="createtime != null and createtime != ''">createtime = #{createtime},</if>
-            <if test="lastmodifiedtime != null and lastmodifiedtime != ''">lastmodifiedtime = #{lastmodifiedtime},</if>
-            <if test="remark != null and remark != ''">remark = #{remark},</if>
+            <if test="referrerId != null and referrerId != ''">referrer_id = #{referrerId
+                    },
+            </if>
+            <if test="referrerCertNo != null and referrerCertNo != ''">referrer_cert_no = #{referrerCertNo
+                    },
+            </if>
+            <if test="referrerCertType != null and referrerCertType != ''">referrer_cert_type = #{referrerCertType
+                    },
+            </if>
+            <if test="referrerName != null and referrerName != ''">referrer_name = #{referrerName
+                    },
+            </if>
+            <if test="referrerEmail != null and referrerEmail != ''">referrer_email = #{referrerEmail
+                    },
+            </if>
+            <if test="mobileNo != null and mobileNo != ''">mobile_no = #{mobileNo
+                    },
+            </if>
+            <if test="referrerCardNo != null and referrerCardNo != ''">referrer_card_no = #{referrerCardNo
+                    },
+            </if>
+            <if test="status != null and status != ''">status = #{status
+                    },
+            </if>
+            <if test="channelNo != null and channelNo != ''">channel_no = #{channelNo
+                    },
+            </if>
+            <if test="createtime != null and createtime != ''">createtime = #{createtime
+                    },
+            </if>
+            <if test="lastmodifiedtime != null and lastmodifiedtime != ''">lastmodifiedtime = #{lastmodifiedtime
+                    },
+            </if>
+            <if test="remark != null and remark != ''">remark = #{remark
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -219,7 +337,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

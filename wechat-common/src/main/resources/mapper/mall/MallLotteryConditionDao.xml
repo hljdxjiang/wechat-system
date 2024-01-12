@@ -38,13 +38,27 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="lotteryId != null and lotteryId !=''">and lottery_id = #{lotteryId}</if>
-            <if test="conditionId != null and conditionId !=''">and condition_id = #{conditionId}</if>
-            <if test="conditionValue != null and conditionValue !=''">and condition_value = #{conditionValue}</if>
-            <if test="conditionType != null and conditionType !=''">and condition_type = #{conditionType}</if>
-            <if test="conditionWay != null and conditionWay !=''">and condition_way = #{conditionWay}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="lotteryId != null and lotteryId !=''">and lottery_id =
+                #{lotteryId}
+            </if>
+            <if test="conditionId != null and conditionId !=''">and condition_id =
+                #{conditionId}
+            </if>
+            <if test="conditionValue != null and conditionValue !=''">and condition_value =
+                #{conditionValue}
+            </if>
+            <if test="conditionType != null and conditionType !=''">and condition_type =
+                #{conditionType}
+            </if>
+            <if test="conditionWay != null and conditionWay !=''">and condition_way =
+                #{conditionWay}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
         </where>
     </select>
 
@@ -55,13 +69,27 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="lotteryId != null and lotteryId !=''">and lottery_id = #{lotteryId}</if>
-            <if test="conditionId != null and conditionId !=''">and condition_id = #{conditionId}</if>
-            <if test="conditionValue != null and conditionValue !=''">and condition_value = #{conditionValue}</if>
-            <if test="conditionType != null and conditionType !=''">and condition_type = #{conditionType}</if>
-            <if test="conditionWay != null and conditionWay !=''">and condition_way = #{conditionWay}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="lotteryId != null and lotteryId !=''">and lottery_id =
+                #{lotteryId}
+            </if>
+            <if test="conditionId != null and conditionId !=''">and condition_id =
+                #{conditionId}
+            </if>
+            <if test="conditionValue != null and conditionValue !=''">and condition_value =
+                #{conditionValue}
+            </if>
+            <if test="conditionType != null and conditionType !=''">and condition_type =
+                #{conditionType}
+            </if>
+            <if test="conditionWay != null and conditionWay !=''">and condition_way =
+                #{conditionWay}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
         </where>
     </select>
 
@@ -72,22 +100,27 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="lotteryId != null and lotteryId !=''">and lottery_id like CONCAT(CONCAT('%', #{lotteryId}), '%')
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
             </if>
-            <if test="conditionId != null and conditionId !=''">and condition_id like CONCAT(CONCAT('%',
-                #{conditionId}), '%')
+            <if test="lotteryId != null and lotteryId !=''">and lottery_id like
+                CONCAT(CONCAT('%', #{lotteryId}), '%')
             </if>
-            <if test="conditionValue != null and conditionValue !=''">and condition_value like CONCAT(CONCAT('%',
-                #{conditionValue}), '%')
+            <if test="conditionId != null and conditionId !=''">and condition_id like
+                CONCAT(CONCAT('%', #{conditionId}), '%')
             </if>
-            <if test="conditionType != null and conditionType !=''">and condition_type like CONCAT(CONCAT('%',
-                #{conditionType}), '%')
+            <if test="conditionValue != null and conditionValue !=''">and condition_value like
+                CONCAT(CONCAT('%', #{conditionValue}), '%')
             </if>
-            <if test="conditionWay != null and conditionWay !=''">and condition_way like CONCAT(CONCAT('%',
-                #{conditionWay}), '%')
+            <if test="conditionType != null and conditionType !=''">and condition_type like
+                CONCAT(CONCAT('%', #{conditionType}), '%')
             </if>
-            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
+            <if test="conditionWay != null and conditionWay !=''">and condition_way like
+                CONCAT(CONCAT('%', #{conditionWay}), '%')
+            </if>
+            <if test="status != null and status !=''">and status like
+                CONCAT(CONCAT('%', #{status}), '%')
+            </if>
         </where>
 
     </select>
@@ -98,13 +131,27 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="lotteryId != null and lotteryId !=''">and lottery_id = #{lotteryId}</if>
-            <if test="conditionId != null and conditionId !=''">and condition_id = #{conditionId}</if>
-            <if test="conditionValue != null and conditionValue !=''">and condition_value = #{conditionValue}</if>
-            <if test="conditionType != null and conditionType !=''">and condition_type = #{conditionType}</if>
-            <if test="conditionWay != null and conditionWay !=''">and condition_way = #{conditionWay}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="lotteryId != null and lotteryId !=''">and lottery_id =
+                #{lotteryId}
+            </if>
+            <if test="conditionId != null and conditionId !=''">and condition_id =
+                #{conditionId}
+            </if>
+            <if test="conditionValue != null and conditionValue !=''">and condition_value =
+                #{conditionValue}
+            </if>
+            <if test="conditionType != null and conditionType !=''">and condition_type =
+                #{conditionType}
+            </if>
+            <if test="conditionWay != null and conditionWay !=''">and condition_way =
+                #{conditionWay}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
         </where>
     </select>
 
@@ -114,7 +161,7 @@
         <include refid="Table_Name"/>
         (tenant_id ,lottery_id ,condition_id ,condition_value ,condition_type ,condition_way )
         values
-        (#{tenantId},#{lotteryId},#{conditionId},#{conditionValue},#{conditionType},#{conditionWay})
+        (#{tenantId} ,#{lotteryId} ,#{conditionId} ,#{conditionValue} ,#{conditionType} ,#{conditionWay})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -134,12 +181,18 @@
         ( tenant_id ,lottery_id ,condition_id ,condition_value ,condition_type ,condition_way ,status)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.lotteryId},#{entity.conditionId},#{entity.conditionValue},#{entity.conditionType},#{entity.conditionWay},#{entity.status})
+            ( #{entity.tenantId}, #{entity.lotteryId}, #{entity.conditionId}, #{entity.conditionValue},
+            #{entity.conditionType}, #{entity.conditionWay}, #{entity.status})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id) ,lottery_id=values(lottery_id) ,condition_id=values(condition_id)
-        ,condition_value=values(condition_value) ,condition_type=values(condition_type)
-        ,condition_way=values(condition_way) ,status=values(status)
+        tenant_id
+        =values(tenant_id) ,lottery_id
+        =values(lottery_id) ,condition_id
+        =values(condition_id) ,condition_value
+        =values(condition_value) ,condition_type
+        =values(condition_type) ,condition_way
+        =values(condition_way) ,status
+        =values(status)
     </insert>
 
     <!--通过主键修改数据-->
@@ -147,13 +200,27 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="lotteryId != null and lotteryId != ''">lottery_id = #{lotteryId},</if>
-            <if test="conditionId != null and conditionId != ''">condition_id = #{conditionId},</if>
-            <if test="conditionValue != null and conditionValue != ''">condition_value = #{conditionValue},</if>
-            <if test="conditionType != null and conditionType != ''">condition_type = #{conditionType},</if>
-            <if test="conditionWay != null and conditionWay != ''">condition_way = #{conditionWay},</if>
-            <if test="status != null and status != ''">status = #{status},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="lotteryId != null and lotteryId != ''">lottery_id = #{lotteryId
+                    },
+            </if>
+            <if test="conditionId != null and conditionId != ''">condition_id = #{conditionId
+                    },
+            </if>
+            <if test="conditionValue != null and conditionValue != ''">condition_value = #{conditionValue
+                    },
+            </if>
+            <if test="conditionType != null and conditionType != ''">condition_type = #{conditionType
+                    },
+            </if>
+            <if test="conditionWay != null and conditionWay != ''">condition_way = #{conditionWay
+                    },
+            </if>
+            <if test="status != null and status != ''">status = #{status
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -164,7 +231,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

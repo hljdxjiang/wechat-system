@@ -5,11 +5,11 @@
     <resultMap type="com.nuoding.wechat.common.entity.wechat.WechatMenusVersionEntity" id="WechatMenusVersionMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
+        <result property="menuId" column="menu_id" jdbcType="VARCHAR"/>
+        <result property="version" column="version" jdbcType="VARCHAR"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
         <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
-        <result property="optionId" column="option_id" jdbcType="VARCHAR"/>
-        <result property="optionKey" column="option_key" jdbcType="VARCHAR"/>
-        <result property="optionDesc" column="option_desc" jdbcType="VARCHAR"/>
-        <result property="optionType" column="option_type" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Table_Name">
@@ -17,7 +17,8 @@
     </sql>
 
     <sql id="Base_Column_List">
-                id,tenant_id,last_modified_time,option_id,option_key,option_desc,option_type    </sql>
+        id
+        ,tenant_id,menu_id,version,remark,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="WechatMenusVersionMap">
@@ -35,11 +36,18 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="optionId != null and optionId !=''">and option_id = #{optionId}</if>
-            <if test="optionKey != null and optionKey !=''">and option_key = #{optionKey}</if>
-            <if test="optionDesc != null and optionDesc !=''">and option_desc = #{optionDesc}</if>
-            <if test="optionType != null and optionType !=''">and option_type = #{optionType}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="menuId != null and menuId !=''">and menu_id =
+                #{menuId}
+            </if>
+            <if test="version != null and version !=''">and version =
+                #{version}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
         </where>
     </select>
 
@@ -50,11 +58,18 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="optionId != null and optionId !=''">and option_id = #{optionId}</if>
-            <if test="optionKey != null and optionKey !=''">and option_key = #{optionKey}</if>
-            <if test="optionDesc != null and optionDesc !=''">and option_desc = #{optionDesc}</if>
-            <if test="optionType != null and optionType !=''">and option_type = #{optionType}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="menuId != null and menuId !=''">and menu_id =
+                #{menuId}
+            </if>
+            <if test="version != null and version !=''">and version =
+                #{version}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
         </where>
     </select>
 
@@ -65,15 +80,17 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="optionId != null and optionId !=''">and option_id like CONCAT(CONCAT('%', #{optionId}), '%')</if>
-            <if test="optionKey != null and optionKey !=''">and option_key like CONCAT(CONCAT('%', #{optionKey}), '%')
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
             </if>
-            <if test="optionDesc != null and optionDesc !=''">and option_desc like CONCAT(CONCAT('%', #{optionDesc}),
-                '%')
+            <if test="menuId != null and menuId !=''">and menu_id like
+                CONCAT(CONCAT('%', #{menuId}), '%')
             </if>
-            <if test="optionType != null and optionType !=''">and option_type like CONCAT(CONCAT('%', #{optionType}),
-                '%')
+            <if test="version != null and version !=''">and version like
+                CONCAT(CONCAT('%', #{version}), '%')
+            </if>
+            <if test="remark != null and remark !=''">and remark like
+                CONCAT(CONCAT('%', #{remark}), '%')
             </if>
         </where>
 
@@ -85,11 +102,18 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="optionId != null and optionId !=''">and option_id = #{optionId}</if>
-            <if test="optionKey != null and optionKey !=''">and option_key = #{optionKey}</if>
-            <if test="optionDesc != null and optionDesc !=''">and option_desc = #{optionDesc}</if>
-            <if test="optionType != null and optionType !=''">and option_type = #{optionType}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="menuId != null and menuId !=''">and menu_id =
+                #{menuId}
+            </if>
+            <if test="version != null and version !=''">and version =
+                #{version}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
         </where>
     </select>
 
@@ -97,32 +121,35 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id ,option_id ,option_key ,option_desc ,option_type )
+        (tenant_id ,menu_id ,version ,remark )
         values
-        (#{tenantId},#{optionId},#{optionKey},#{optionDesc},#{optionType})
+        (#{tenantId} ,#{menuId} ,#{version} ,#{remark})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id ,option_id ,option_key ,option_desc ,option_type)
+        ( tenant_id ,menu_id ,version ,remark)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId} ,#{entity.optionId} ,#{entity.optionKey} ,#{entity.optionDesc} ,#{entity.optionType})
+            ( #{entity.tenantId} ,#{entity.menuId} ,#{entity.version} ,#{entity.remark})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id ,option_id ,option_key ,option_desc ,option_type)
+        ( tenant_id ,menu_id ,version ,remark)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.optionId},#{entity.optionKey},#{entity.optionDesc},#{entity.optionType})
+            ( #{entity.tenantId}, #{entity.menuId}, #{entity.version}, #{entity.remark})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id) ,option_id=values(option_id) ,option_key=values(option_key)
-        ,option_desc=values(option_desc) ,option_type=values(option_type)
+        tenant_id
+        =values(tenant_id) ,menu_id
+        =values(menu_id) ,version
+        =values(version) ,remark
+        =values(remark)
     </insert>
 
     <!--通过主键修改数据-->
@@ -130,11 +157,18 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="optionId != null and optionId != ''">option_id = #{optionId},</if>
-            <if test="optionKey != null and optionKey != ''">option_key = #{optionKey},</if>
-            <if test="optionDesc != null and optionDesc != ''">option_desc = #{optionDesc},</if>
-            <if test="optionType != null and optionType != ''">option_type = #{optionType},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="menuId != null and menuId != ''">menu_id = #{menuId
+                    },
+            </if>
+            <if test="version != null and version != ''">version = #{version
+                    },
+            </if>
+            <if test="remark != null and remark != ''">remark = #{remark
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -145,7 +179,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

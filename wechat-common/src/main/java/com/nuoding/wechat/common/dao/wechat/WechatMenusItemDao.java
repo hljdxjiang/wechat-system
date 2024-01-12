@@ -10,7 +10,7 @@ import java.util.List;
  * 微信菜单要素表
  *
  * @Author: hzq
- * @Date: 2023-12-19 13:50:19
+ * @Date: 2023-12-22 17:12:02
  */
 @Repository
 public interface WechatMenusItemDao {

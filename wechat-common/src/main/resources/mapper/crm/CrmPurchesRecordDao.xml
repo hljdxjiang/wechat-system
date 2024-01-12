@@ -43,18 +43,42 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="batchId != null and batchId !=''">and batch_id = #{batchId}</if>
-            <if test="brandId != null and brandId !=''">and brand_id = #{brandId}</if>
-            <if test="amount != null and amount !=''">and amount = #{amount}</if>
-            <if test="arrivalTime != null and arrivalTime !=''">and arrival_time = #{arrivalTime}</if>
-            <if test="orderTime != null and orderTime !=''">and order_time = #{orderTime}</if>
-            <if test="spend != null and spend !=''">and spend = #{spend}</if>
-            <if test="postage != null and postage !=''">and postage = #{postage}</if>
-            <if test="traceCode != null and traceCode !=''">and trace_code = #{traceCode}</if>
-            <if test="otherCost != null and otherCost !=''">and other_cost = #{otherCost}</if>
-            <if test="remark != null and remark !=''">and remark = #{remark}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="batchId != null and batchId !=''">and batch_id =
+                #{batchId}
+            </if>
+            <if test="brandId != null and brandId !=''">and brand_id =
+                #{brandId}
+            </if>
+            <if test="amount != null and amount !=''">and amount =
+                #{amount}
+            </if>
+            <if test="arrivalTime != null and arrivalTime !=''">and arrival_time =
+                #{arrivalTime}
+            </if>
+            <if test="orderTime != null and orderTime !=''">and order_time =
+                #{orderTime}
+            </if>
+            <if test="spend != null and spend !=''">and spend =
+                #{spend}
+            </if>
+            <if test="postage != null and postage !=''">and postage =
+                #{postage}
+            </if>
+            <if test="traceCode != null and traceCode !=''">and trace_code =
+                #{traceCode}
+            </if>
+            <if test="otherCost != null and otherCost !=''">and other_cost =
+                #{otherCost}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
         </where>
     </select>
 
@@ -65,18 +89,42 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="batchId != null and batchId !=''">and batch_id = #{batchId}</if>
-            <if test="brandId != null and brandId !=''">and brand_id = #{brandId}</if>
-            <if test="amount != null and amount !=''">and amount = #{amount}</if>
-            <if test="arrivalTime != null and arrivalTime !=''">and arrival_time = #{arrivalTime}</if>
-            <if test="orderTime != null and orderTime !=''">and order_time = #{orderTime}</if>
-            <if test="spend != null and spend !=''">and spend = #{spend}</if>
-            <if test="postage != null and postage !=''">and postage = #{postage}</if>
-            <if test="traceCode != null and traceCode !=''">and trace_code = #{traceCode}</if>
-            <if test="otherCost != null and otherCost !=''">and other_cost = #{otherCost}</if>
-            <if test="remark != null and remark !=''">and remark = #{remark}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="batchId != null and batchId !=''">and batch_id =
+                #{batchId}
+            </if>
+            <if test="brandId != null and brandId !=''">and brand_id =
+                #{brandId}
+            </if>
+            <if test="amount != null and amount !=''">and amount =
+                #{amount}
+            </if>
+            <if test="arrivalTime != null and arrivalTime !=''">and arrival_time =
+                #{arrivalTime}
+            </if>
+            <if test="orderTime != null and orderTime !=''">and order_time =
+                #{orderTime}
+            </if>
+            <if test="spend != null and spend !=''">and spend =
+                #{spend}
+            </if>
+            <if test="postage != null and postage !=''">and postage =
+                #{postage}
+            </if>
+            <if test="traceCode != null and traceCode !=''">and trace_code =
+                #{traceCode}
+            </if>
+            <if test="otherCost != null and otherCost !=''">and other_cost =
+                #{otherCost}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
         </where>
     </select>
 
@@ -87,23 +135,42 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="batchId != null and batchId !=''">and batch_id like CONCAT(CONCAT('%', #{batchId}), '%')</if>
-            <if test="brandId != null and brandId !=''">and brand_id like CONCAT(CONCAT('%', #{brandId}), '%')</if>
-            <if test="amount != null and amount !=''">and amount like CONCAT(CONCAT('%', #{amount}), '%')</if>
-            <if test="arrivalTime != null and arrivalTime !=''">and arrival_time like CONCAT(CONCAT('%',
-                #{arrivalTime}), '%')
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
             </if>
-            <if test="orderTime != null and orderTime !=''">and order_time like CONCAT(CONCAT('%', #{orderTime}), '%')
+            <if test="batchId != null and batchId !=''">and batch_id like
+                CONCAT(CONCAT('%', #{batchId}), '%')
             </if>
-            <if test="spend != null and spend !=''">and spend like CONCAT(CONCAT('%', #{spend}), '%')</if>
-            <if test="postage != null and postage !=''">and postage like CONCAT(CONCAT('%', #{postage}), '%')</if>
-            <if test="traceCode != null and traceCode !=''">and trace_code like CONCAT(CONCAT('%', #{traceCode}), '%')
+            <if test="brandId != null and brandId !=''">and brand_id like
+                CONCAT(CONCAT('%', #{brandId}), '%')
             </if>
-            <if test="otherCost != null and otherCost !=''">and other_cost like CONCAT(CONCAT('%', #{otherCost}), '%')
+            <if test="amount != null and amount !=''">and amount like
+                CONCAT(CONCAT('%', #{amount}), '%')
             </if>
-            <if test="remark != null and remark !=''">and remark like CONCAT(CONCAT('%', #{remark}), '%')</if>
-            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
+            <if test="arrivalTime != null and arrivalTime !=''">and arrival_time like
+                CONCAT(CONCAT('%', #{arrivalTime}), '%')
+            </if>
+            <if test="orderTime != null and orderTime !=''">and order_time like
+                CONCAT(CONCAT('%', #{orderTime}), '%')
+            </if>
+            <if test="spend != null and spend !=''">and spend like
+                CONCAT(CONCAT('%', #{spend}), '%')
+            </if>
+            <if test="postage != null and postage !=''">and postage like
+                CONCAT(CONCAT('%', #{postage}), '%')
+            </if>
+            <if test="traceCode != null and traceCode !=''">and trace_code like
+                CONCAT(CONCAT('%', #{traceCode}), '%')
+            </if>
+            <if test="otherCost != null and otherCost !=''">and other_cost like
+                CONCAT(CONCAT('%', #{otherCost}), '%')
+            </if>
+            <if test="remark != null and remark !=''">and remark like
+                CONCAT(CONCAT('%', #{remark}), '%')
+            </if>
+            <if test="status != null and status !=''">and status like
+                CONCAT(CONCAT('%', #{status}), '%')
+            </if>
         </where>
 
     </select>
@@ -114,18 +181,42 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="batchId != null and batchId !=''">and batch_id = #{batchId}</if>
-            <if test="brandId != null and brandId !=''">and brand_id = #{brandId}</if>
-            <if test="amount != null and amount !=''">and amount = #{amount}</if>
-            <if test="arrivalTime != null and arrivalTime !=''">and arrival_time = #{arrivalTime}</if>
-            <if test="orderTime != null and orderTime !=''">and order_time = #{orderTime}</if>
-            <if test="spend != null and spend !=''">and spend = #{spend}</if>
-            <if test="postage != null and postage !=''">and postage = #{postage}</if>
-            <if test="traceCode != null and traceCode !=''">and trace_code = #{traceCode}</if>
-            <if test="otherCost != null and otherCost !=''">and other_cost = #{otherCost}</if>
-            <if test="remark != null and remark !=''">and remark = #{remark}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="batchId != null and batchId !=''">and batch_id =
+                #{batchId}
+            </if>
+            <if test="brandId != null and brandId !=''">and brand_id =
+                #{brandId}
+            </if>
+            <if test="amount != null and amount !=''">and amount =
+                #{amount}
+            </if>
+            <if test="arrivalTime != null and arrivalTime !=''">and arrival_time =
+                #{arrivalTime}
+            </if>
+            <if test="orderTime != null and orderTime !=''">and order_time =
+                #{orderTime}
+            </if>
+            <if test="spend != null and spend !=''">and spend =
+                #{spend}
+            </if>
+            <if test="postage != null and postage !=''">and postage =
+                #{postage}
+            </if>
+            <if test="traceCode != null and traceCode !=''">and trace_code =
+                #{traceCode}
+            </if>
+            <if test="otherCost != null and otherCost !=''">and other_cost =
+                #{otherCost}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
         </where>
     </select>
 
@@ -136,7 +227,8 @@
         (tenant_id ,batch_id ,brand_id ,amount ,arrival_time ,order_time ,spend ,postage ,trace_code ,other_cost ,remark
         )
         values
-        (#{tenantId},#{batchId},#{brandId},#{amount},#{arrivalTime},#{orderTime},#{spend},#{postage},#{traceCode},#{otherCost},#{remark})
+        (#{tenantId} ,#{batchId} ,#{brandId} ,#{amount} ,#{arrivalTime} ,#{orderTime} ,#{spend} ,#{postage}
+        ,#{traceCode} ,#{otherCost} ,#{remark})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -159,12 +251,24 @@
         ,remark ,status)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.batchId},#{entity.brandId},#{entity.amount},#{entity.arrivalTime},#{entity.orderTime},#{entity.spend},#{entity.postage},#{entity.traceCode},#{entity.otherCost},#{entity.remark},#{entity.status})
+            ( #{entity.tenantId}, #{entity.batchId}, #{entity.brandId}, #{entity.amount}, #{entity.arrivalTime},
+            #{entity.orderTime}, #{entity.spend}, #{entity.postage}, #{entity.traceCode}, #{entity.otherCost},
+            #{entity.remark}, #{entity.status})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id) ,batch_id=values(batch_id) ,brand_id=values(brand_id) ,amount=values(amount)
-        ,arrival_time=values(arrival_time) ,order_time=values(order_time) ,spend=values(spend) ,postage=values(postage)
-        ,trace_code=values(trace_code) ,other_cost=values(other_cost) ,remark=values(remark) ,status=values(status)
+        tenant_id
+        =values(tenant_id) ,batch_id
+        =values(batch_id) ,brand_id
+        =values(brand_id) ,amount
+        =values(amount) ,arrival_time
+        =values(arrival_time) ,order_time
+        =values(order_time) ,spend
+        =values(spend) ,postage
+        =values(postage) ,trace_code
+        =values(trace_code) ,other_cost
+        =values(other_cost) ,remark
+        =values(remark) ,status
+        =values(status)
     </insert>
 
     <!--通过主键修改数据-->
@@ -172,18 +276,42 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="batchId != null and batchId != ''">batch_id = #{batchId},</if>
-            <if test="brandId != null and brandId != ''">brand_id = #{brandId},</if>
-            <if test="amount != null and amount != ''">amount = #{amount},</if>
-            <if test="arrivalTime != null and arrivalTime != ''">arrival_time = #{arrivalTime},</if>
-            <if test="orderTime != null and orderTime != ''">order_time = #{orderTime},</if>
-            <if test="spend != null and spend != ''">spend = #{spend},</if>
-            <if test="postage != null and postage != ''">postage = #{postage},</if>
-            <if test="traceCode != null and traceCode != ''">trace_code = #{traceCode},</if>
-            <if test="otherCost != null and otherCost != ''">other_cost = #{otherCost},</if>
-            <if test="remark != null and remark != ''">remark = #{remark},</if>
-            <if test="status != null and status != ''">status = #{status},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="batchId != null and batchId != ''">batch_id = #{batchId
+                    },
+            </if>
+            <if test="brandId != null and brandId != ''">brand_id = #{brandId
+                    },
+            </if>
+            <if test="amount != null and amount != ''">amount = #{amount
+                    },
+            </if>
+            <if test="arrivalTime != null and arrivalTime != ''">arrival_time = #{arrivalTime
+                    },
+            </if>
+            <if test="orderTime != null and orderTime != ''">order_time = #{orderTime
+                    },
+            </if>
+            <if test="spend != null and spend != ''">spend = #{spend
+                    },
+            </if>
+            <if test="postage != null and postage != ''">postage = #{postage
+                    },
+            </if>
+            <if test="traceCode != null and traceCode != ''">trace_code = #{traceCode
+                    },
+            </if>
+            <if test="otherCost != null and otherCost != ''">other_cost = #{otherCost
+                    },
+            </if>
+            <if test="remark != null and remark != ''">remark = #{remark
+                    },
+            </if>
+            <if test="status != null and status != ''">status = #{status
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -194,7 +322,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

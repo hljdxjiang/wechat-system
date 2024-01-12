@@ -28,6 +28,12 @@ public class BackSysRoleDetailEntity implements Serializable {
     private Integer id;
 
     /**
+     * 租户ID
+     */
+    @Column(name = "tenant_id")
+    private String tenantId;
+
+    /**
      * 角色ID
      */
     @Column(name = "roleid")
@@ -70,6 +76,13 @@ public class BackSysRoleDetailEntity implements Serializable {
      */
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    /**
+     * 设置：租户ID
+     */
+    public void setTenantId(String tenantId) {
+        this.tenantId = tenantId;
     }
 
     /**

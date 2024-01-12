@@ -22,7 +22,8 @@
     </sql>
 
     <sql id="Base_Column_List">
-                id,tenant_id,template_id,template_type,template_des,template_url,template_config,minip_appid,minip_page_path,message_type,create_time,last_modified_time    </sql>
+        id
+        ,tenant_id,template_id,template_type,template_des,template_url,template_config,minip_appid,minip_page_path,message_type,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="WechatTemplateInfoMap">
@@ -40,15 +41,33 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="templateId != null and templateId !=''">and template_id = #{templateId}</if>
-            <if test="templateType != null and templateType !=''">and template_type = #{templateType}</if>
-            <if test="templateDes != null and templateDes !=''">and template_des = #{templateDes}</if>
-            <if test="templateUrl != null and templateUrl !=''">and template_url = #{templateUrl}</if>
-            <if test="templateConfig != null and templateConfig !=''">and template_config = #{templateConfig}</if>
-            <if test="minipAppid != null and minipAppid !=''">and minip_appid = #{minipAppid}</if>
-            <if test="minipPagePath != null and minipPagePath !=''">and minip_page_path = #{minipPagePath}</if>
-            <if test="messageType != null and messageType !=''">and message_type = #{messageType}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="templateId != null and templateId !=''">and template_id =
+                #{templateId}
+            </if>
+            <if test="templateType != null and templateType !=''">and template_type =
+                #{templateType}
+            </if>
+            <if test="templateDes != null and templateDes !=''">and template_des =
+                #{templateDes}
+            </if>
+            <if test="templateUrl != null and templateUrl !=''">and template_url =
+                #{templateUrl}
+            </if>
+            <if test="templateConfig != null and templateConfig !=''">and template_config =
+                #{templateConfig}
+            </if>
+            <if test="minipAppid != null and minipAppid !=''">and minip_appid =
+                #{minipAppid}
+            </if>
+            <if test="minipPagePath != null and minipPagePath !=''">and minip_page_path =
+                #{minipPagePath}
+            </if>
+            <if test="messageType != null and messageType !=''">and message_type =
+                #{messageType}
+            </if>
         </where>
     </select>
 
@@ -59,15 +78,33 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="templateId != null and templateId !=''">and template_id = #{templateId}</if>
-            <if test="templateType != null and templateType !=''">and template_type = #{templateType}</if>
-            <if test="templateDes != null and templateDes !=''">and template_des = #{templateDes}</if>
-            <if test="templateUrl != null and templateUrl !=''">and template_url = #{templateUrl}</if>
-            <if test="templateConfig != null and templateConfig !=''">and template_config = #{templateConfig}</if>
-            <if test="minipAppid != null and minipAppid !=''">and minip_appid = #{minipAppid}</if>
-            <if test="minipPagePath != null and minipPagePath !=''">and minip_page_path = #{minipPagePath}</if>
-            <if test="messageType != null and messageType !=''">and message_type = #{messageType}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="templateId != null and templateId !=''">and template_id =
+                #{templateId}
+            </if>
+            <if test="templateType != null and templateType !=''">and template_type =
+                #{templateType}
+            </if>
+            <if test="templateDes != null and templateDes !=''">and template_des =
+                #{templateDes}
+            </if>
+            <if test="templateUrl != null and templateUrl !=''">and template_url =
+                #{templateUrl}
+            </if>
+            <if test="templateConfig != null and templateConfig !=''">and template_config =
+                #{templateConfig}
+            </if>
+            <if test="minipAppid != null and minipAppid !=''">and minip_appid =
+                #{minipAppid}
+            </if>
+            <if test="minipPagePath != null and minipPagePath !=''">and minip_page_path =
+                #{minipPagePath}
+            </if>
+            <if test="messageType != null and messageType !=''">and message_type =
+                #{messageType}
+            </if>
         </where>
     </select>
 
@@ -78,30 +115,32 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="templateId != null and templateId !=''">and template_id like CONCAT(CONCAT('%', #{templateId}),
-                '%')
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
             </if>
-            <if test="templateType != null and templateType !=''">and template_type like CONCAT(CONCAT('%',
-                #{templateType}), '%')
+            <if test="templateId != null and templateId !=''">and template_id like
+                CONCAT(CONCAT('%', #{templateId}), '%')
             </if>
-            <if test="templateDes != null and templateDes !=''">and template_des like CONCAT(CONCAT('%',
-                #{templateDes}), '%')
+            <if test="templateType != null and templateType !=''">and template_type like
+                CONCAT(CONCAT('%', #{templateType}), '%')
             </if>
-            <if test="templateUrl != null and templateUrl !=''">and template_url like CONCAT(CONCAT('%',
-                #{templateUrl}), '%')
+            <if test="templateDes != null and templateDes !=''">and template_des like
+                CONCAT(CONCAT('%', #{templateDes}), '%')
             </if>
-            <if test="templateConfig != null and templateConfig !=''">and template_config like CONCAT(CONCAT('%',
-                #{templateConfig}), '%')
+            <if test="templateUrl != null and templateUrl !=''">and template_url like
+                CONCAT(CONCAT('%', #{templateUrl}), '%')
             </if>
-            <if test="minipAppid != null and minipAppid !=''">and minip_appid like CONCAT(CONCAT('%', #{minipAppid}),
-                '%')
+            <if test="templateConfig != null and templateConfig !=''">and template_config like
+                CONCAT(CONCAT('%', #{templateConfig}), '%')
             </if>
-            <if test="minipPagePath != null and minipPagePath !=''">and minip_page_path like CONCAT(CONCAT('%',
-                #{minipPagePath}), '%')
+            <if test="minipAppid != null and minipAppid !=''">and minip_appid like
+                CONCAT(CONCAT('%', #{minipAppid}), '%')
             </if>
-            <if test="messageType != null and messageType !=''">and message_type like CONCAT(CONCAT('%',
-                #{messageType}), '%')
+            <if test="minipPagePath != null and minipPagePath !=''">and minip_page_path like
+                CONCAT(CONCAT('%', #{minipPagePath}), '%')
+            </if>
+            <if test="messageType != null and messageType !=''">and message_type like
+                CONCAT(CONCAT('%', #{messageType}), '%')
             </if>
         </where>
 
@@ -113,15 +152,33 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="templateId != null and templateId !=''">and template_id = #{templateId}</if>
-            <if test="templateType != null and templateType !=''">and template_type = #{templateType}</if>
-            <if test="templateDes != null and templateDes !=''">and template_des = #{templateDes}</if>
-            <if test="templateUrl != null and templateUrl !=''">and template_url = #{templateUrl}</if>
-            <if test="templateConfig != null and templateConfig !=''">and template_config = #{templateConfig}</if>
-            <if test="minipAppid != null and minipAppid !=''">and minip_appid = #{minipAppid}</if>
-            <if test="minipPagePath != null and minipPagePath !=''">and minip_page_path = #{minipPagePath}</if>
-            <if test="messageType != null and messageType !=''">and message_type = #{messageType}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="templateId != null and templateId !=''">and template_id =
+                #{templateId}
+            </if>
+            <if test="templateType != null and templateType !=''">and template_type =
+                #{templateType}
+            </if>
+            <if test="templateDes != null and templateDes !=''">and template_des =
+                #{templateDes}
+            </if>
+            <if test="templateUrl != null and templateUrl !=''">and template_url =
+                #{templateUrl}
+            </if>
+            <if test="templateConfig != null and templateConfig !=''">and template_config =
+                #{templateConfig}
+            </if>
+            <if test="minipAppid != null and minipAppid !=''">and minip_appid =
+                #{minipAppid}
+            </if>
+            <if test="minipPagePath != null and minipPagePath !=''">and minip_page_path =
+                #{minipPagePath}
+            </if>
+            <if test="messageType != null and messageType !=''">and message_type =
+                #{messageType}
+            </if>
         </where>
     </select>
 
@@ -132,7 +189,8 @@
         (tenant_id ,template_id ,template_type ,template_des ,template_url ,template_config ,minip_appid
         ,minip_page_path ,message_type )
         values
-        (#{tenantId},#{templateId},#{templateType},#{templateDes},#{templateUrl},#{templateConfig},#{minipAppid},#{minipPagePath},#{messageType})
+        (#{tenantId} ,#{templateId} ,#{templateType} ,#{templateDes} ,#{templateUrl} ,#{templateConfig} ,#{minipAppid}
+        ,#{minipPagePath} ,#{messageType})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -155,12 +213,21 @@
         ,minip_page_path ,message_type)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.templateId},#{entity.templateType},#{entity.templateDes},#{entity.templateUrl},#{entity.templateConfig},#{entity.minipAppid},#{entity.minipPagePath},#{entity.messageType})
+            ( #{entity.tenantId}, #{entity.templateId}, #{entity.templateType}, #{entity.templateDes},
+            #{entity.templateUrl}, #{entity.templateConfig}, #{entity.minipAppid}, #{entity.minipPagePath},
+            #{entity.messageType})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id) ,template_id=values(template_id) ,template_type=values(template_type)
-        ,template_des=values(template_des) ,template_url=values(template_url) ,template_config=values(template_config)
-        ,minip_appid=values(minip_appid) ,minip_page_path=values(minip_page_path) ,message_type=values(message_type)
+        tenant_id
+        =values(tenant_id) ,template_id
+        =values(template_id) ,template_type
+        =values(template_type) ,template_des
+        =values(template_des) ,template_url
+        =values(template_url) ,template_config
+        =values(template_config) ,minip_appid
+        =values(minip_appid) ,minip_page_path
+        =values(minip_page_path) ,message_type
+        =values(message_type)
     </insert>
 
     <!--通过主键修改数据-->
@@ -168,15 +235,33 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="templateId != null and templateId != ''">template_id = #{templateId},</if>
-            <if test="templateType != null and templateType != ''">template_type = #{templateType},</if>
-            <if test="templateDes != null and templateDes != ''">template_des = #{templateDes},</if>
-            <if test="templateUrl != null and templateUrl != ''">template_url = #{templateUrl},</if>
-            <if test="templateConfig != null and templateConfig != ''">template_config = #{templateConfig},</if>
-            <if test="minipAppid != null and minipAppid != ''">minip_appid = #{minipAppid},</if>
-            <if test="minipPagePath != null and minipPagePath != ''">minip_page_path = #{minipPagePath},</if>
-            <if test="messageType != null and messageType != ''">message_type = #{messageType},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="templateId != null and templateId != ''">template_id = #{templateId
+                    },
+            </if>
+            <if test="templateType != null and templateType != ''">template_type = #{templateType
+                    },
+            </if>
+            <if test="templateDes != null and templateDes != ''">template_des = #{templateDes
+                    },
+            </if>
+            <if test="templateUrl != null and templateUrl != ''">template_url = #{templateUrl
+                    },
+            </if>
+            <if test="templateConfig != null and templateConfig != ''">template_config = #{templateConfig
+                    },
+            </if>
+            <if test="minipAppid != null and minipAppid != ''">minip_appid = #{minipAppid
+                    },
+            </if>
+            <if test="minipPagePath != null and minipPagePath != ''">minip_page_path = #{minipPagePath
+                    },
+            </if>
+            <if test="messageType != null and messageType != ''">message_type = #{messageType
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -187,7 +272,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

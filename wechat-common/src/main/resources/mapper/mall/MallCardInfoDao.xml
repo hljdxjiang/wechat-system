@@ -41,16 +41,36 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="cardId != null and cardId !=''">and card_id = #{cardId}</if>
-            <if test="cardName != null and cardName !=''">and card_name = #{cardName}</if>
-            <if test="cardNo != null and cardNo !=''">and card_no = #{cardNo}</if>
-            <if test="cardPwd != null and cardPwd !=''">and card_pwd = #{cardPwd}</if>
-            <if test="cardDesc != null and cardDesc !=''">and card_desc = #{cardDesc}</if>
-            <if test="cardType != null and cardType !=''">and card_type = #{cardType}</if>
-            <if test="vaildDate != null and vaildDate !=''">and vaild_date = #{vaildDate}</if>
-            <if test="expireDate != null and expireDate !=''">and expire_date = #{expireDate}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="cardId != null and cardId !=''">and card_id =
+                #{cardId}
+            </if>
+            <if test="cardName != null and cardName !=''">and card_name =
+                #{cardName}
+            </if>
+            <if test="cardNo != null and cardNo !=''">and card_no =
+                #{cardNo}
+            </if>
+            <if test="cardPwd != null and cardPwd !=''">and card_pwd =
+                #{cardPwd}
+            </if>
+            <if test="cardDesc != null and cardDesc !=''">and card_desc =
+                #{cardDesc}
+            </if>
+            <if test="cardType != null and cardType !=''">and card_type =
+                #{cardType}
+            </if>
+            <if test="vaildDate != null and vaildDate !=''">and vaild_date =
+                #{vaildDate}
+            </if>
+            <if test="expireDate != null and expireDate !=''">and expire_date =
+                #{expireDate}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
         </where>
     </select>
 
@@ -61,16 +81,36 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="cardId != null and cardId !=''">and card_id = #{cardId}</if>
-            <if test="cardName != null and cardName !=''">and card_name = #{cardName}</if>
-            <if test="cardNo != null and cardNo !=''">and card_no = #{cardNo}</if>
-            <if test="cardPwd != null and cardPwd !=''">and card_pwd = #{cardPwd}</if>
-            <if test="cardDesc != null and cardDesc !=''">and card_desc = #{cardDesc}</if>
-            <if test="cardType != null and cardType !=''">and card_type = #{cardType}</if>
-            <if test="vaildDate != null and vaildDate !=''">and vaild_date = #{vaildDate}</if>
-            <if test="expireDate != null and expireDate !=''">and expire_date = #{expireDate}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="cardId != null and cardId !=''">and card_id =
+                #{cardId}
+            </if>
+            <if test="cardName != null and cardName !=''">and card_name =
+                #{cardName}
+            </if>
+            <if test="cardNo != null and cardNo !=''">and card_no =
+                #{cardNo}
+            </if>
+            <if test="cardPwd != null and cardPwd !=''">and card_pwd =
+                #{cardPwd}
+            </if>
+            <if test="cardDesc != null and cardDesc !=''">and card_desc =
+                #{cardDesc}
+            </if>
+            <if test="cardType != null and cardType !=''">and card_type =
+                #{cardType}
+            </if>
+            <if test="vaildDate != null and vaildDate !=''">and vaild_date =
+                #{vaildDate}
+            </if>
+            <if test="expireDate != null and expireDate !=''">and expire_date =
+                #{expireDate}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
         </where>
     </select>
 
@@ -81,19 +121,36 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="cardId != null and cardId !=''">and card_id like CONCAT(CONCAT('%', #{cardId}), '%')</if>
-            <if test="cardName != null and cardName !=''">and card_name like CONCAT(CONCAT('%', #{cardName}), '%')</if>
-            <if test="cardNo != null and cardNo !=''">and card_no like CONCAT(CONCAT('%', #{cardNo}), '%')</if>
-            <if test="cardPwd != null and cardPwd !=''">and card_pwd like CONCAT(CONCAT('%', #{cardPwd}), '%')</if>
-            <if test="cardDesc != null and cardDesc !=''">and card_desc like CONCAT(CONCAT('%', #{cardDesc}), '%')</if>
-            <if test="cardType != null and cardType !=''">and card_type like CONCAT(CONCAT('%', #{cardType}), '%')</if>
-            <if test="vaildDate != null and vaildDate !=''">and vaild_date like CONCAT(CONCAT('%', #{vaildDate}), '%')
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
             </if>
-            <if test="expireDate != null and expireDate !=''">and expire_date like CONCAT(CONCAT('%', #{expireDate}),
-                '%')
+            <if test="cardId != null and cardId !=''">and card_id like
+                CONCAT(CONCAT('%', #{cardId}), '%')
             </if>
-            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
+            <if test="cardName != null and cardName !=''">and card_name like
+                CONCAT(CONCAT('%', #{cardName}), '%')
+            </if>
+            <if test="cardNo != null and cardNo !=''">and card_no like
+                CONCAT(CONCAT('%', #{cardNo}), '%')
+            </if>
+            <if test="cardPwd != null and cardPwd !=''">and card_pwd like
+                CONCAT(CONCAT('%', #{cardPwd}), '%')
+            </if>
+            <if test="cardDesc != null and cardDesc !=''">and card_desc like
+                CONCAT(CONCAT('%', #{cardDesc}), '%')
+            </if>
+            <if test="cardType != null and cardType !=''">and card_type like
+                CONCAT(CONCAT('%', #{cardType}), '%')
+            </if>
+            <if test="vaildDate != null and vaildDate !=''">and vaild_date like
+                CONCAT(CONCAT('%', #{vaildDate}), '%')
+            </if>
+            <if test="expireDate != null and expireDate !=''">and expire_date like
+                CONCAT(CONCAT('%', #{expireDate}), '%')
+            </if>
+            <if test="status != null and status !=''">and status like
+                CONCAT(CONCAT('%', #{status}), '%')
+            </if>
         </where>
 
     </select>
@@ -104,16 +161,36 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="cardId != null and cardId !=''">and card_id = #{cardId}</if>
-            <if test="cardName != null and cardName !=''">and card_name = #{cardName}</if>
-            <if test="cardNo != null and cardNo !=''">and card_no = #{cardNo}</if>
-            <if test="cardPwd != null and cardPwd !=''">and card_pwd = #{cardPwd}</if>
-            <if test="cardDesc != null and cardDesc !=''">and card_desc = #{cardDesc}</if>
-            <if test="cardType != null and cardType !=''">and card_type = #{cardType}</if>
-            <if test="vaildDate != null and vaildDate !=''">and vaild_date = #{vaildDate}</if>
-            <if test="expireDate != null and expireDate !=''">and expire_date = #{expireDate}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="cardId != null and cardId !=''">and card_id =
+                #{cardId}
+            </if>
+            <if test="cardName != null and cardName !=''">and card_name =
+                #{cardName}
+            </if>
+            <if test="cardNo != null and cardNo !=''">and card_no =
+                #{cardNo}
+            </if>
+            <if test="cardPwd != null and cardPwd !=''">and card_pwd =
+                #{cardPwd}
+            </if>
+            <if test="cardDesc != null and cardDesc !=''">and card_desc =
+                #{cardDesc}
+            </if>
+            <if test="cardType != null and cardType !=''">and card_type =
+                #{cardType}
+            </if>
+            <if test="vaildDate != null and vaildDate !=''">and vaild_date =
+                #{vaildDate}
+            </if>
+            <if test="expireDate != null and expireDate !=''">and expire_date =
+                #{expireDate}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
         </where>
     </select>
 
@@ -123,7 +200,8 @@
         <include refid="Table_Name"/>
         (tenant_id ,card_id ,card_name ,card_no ,card_pwd ,card_desc ,card_type ,vaild_date ,expire_date )
         values
-        (#{tenantId},#{cardId},#{cardName},#{cardNo},#{cardPwd},#{cardDesc},#{cardType},#{vaildDate},#{expireDate})
+        (#{tenantId} ,#{cardId} ,#{cardName} ,#{cardNo} ,#{cardPwd} ,#{cardDesc} ,#{cardType} ,#{vaildDate}
+        ,#{expireDate})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -143,12 +221,21 @@
         ( tenant_id ,card_id ,card_name ,card_no ,card_pwd ,card_desc ,card_type ,vaild_date ,expire_date ,status)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.cardId},#{entity.cardName},#{entity.cardNo},#{entity.cardPwd},#{entity.cardDesc},#{entity.cardType},#{entity.vaildDate},#{entity.expireDate},#{entity.status})
+            ( #{entity.tenantId}, #{entity.cardId}, #{entity.cardName}, #{entity.cardNo}, #{entity.cardPwd},
+            #{entity.cardDesc}, #{entity.cardType}, #{entity.vaildDate}, #{entity.expireDate}, #{entity.status})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id) ,card_id=values(card_id) ,card_name=values(card_name) ,card_no=values(card_no)
-        ,card_pwd=values(card_pwd) ,card_desc=values(card_desc) ,card_type=values(card_type)
-        ,vaild_date=values(vaild_date) ,expire_date=values(expire_date) ,status=values(status)
+        tenant_id
+        =values(tenant_id) ,card_id
+        =values(card_id) ,card_name
+        =values(card_name) ,card_no
+        =values(card_no) ,card_pwd
+        =values(card_pwd) ,card_desc
+        =values(card_desc) ,card_type
+        =values(card_type) ,vaild_date
+        =values(vaild_date) ,expire_date
+        =values(expire_date) ,status
+        =values(status)
     </insert>
 
     <!--通过主键修改数据-->
@@ -156,16 +243,36 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="cardId != null and cardId != ''">card_id = #{cardId},</if>
-            <if test="cardName != null and cardName != ''">card_name = #{cardName},</if>
-            <if test="cardNo != null and cardNo != ''">card_no = #{cardNo},</if>
-            <if test="cardPwd != null and cardPwd != ''">card_pwd = #{cardPwd},</if>
-            <if test="cardDesc != null and cardDesc != ''">card_desc = #{cardDesc},</if>
-            <if test="cardType != null and cardType != ''">card_type = #{cardType},</if>
-            <if test="vaildDate != null and vaildDate != ''">vaild_date = #{vaildDate},</if>
-            <if test="expireDate != null and expireDate != ''">expire_date = #{expireDate},</if>
-            <if test="status != null and status != ''">status = #{status},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="cardId != null and cardId != ''">card_id = #{cardId
+                    },
+            </if>
+            <if test="cardName != null and cardName != ''">card_name = #{cardName
+                    },
+            </if>
+            <if test="cardNo != null and cardNo != ''">card_no = #{cardNo
+                    },
+            </if>
+            <if test="cardPwd != null and cardPwd != ''">card_pwd = #{cardPwd
+                    },
+            </if>
+            <if test="cardDesc != null and cardDesc != ''">card_desc = #{cardDesc
+                    },
+            </if>
+            <if test="cardType != null and cardType != ''">card_type = #{cardType
+                    },
+            </if>
+            <if test="vaildDate != null and vaildDate != ''">vaild_date = #{vaildDate
+                    },
+            </if>
+            <if test="expireDate != null and expireDate != ''">expire_date = #{expireDate
+                    },
+            </if>
+            <if test="status != null and status != ''">status = #{status
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -176,7 +283,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

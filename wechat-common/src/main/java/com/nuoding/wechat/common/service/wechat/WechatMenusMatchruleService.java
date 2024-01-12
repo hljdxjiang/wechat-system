@@ -7,7 +7,6 @@ import java.util.List;
 /**
  * (wechatMenusMatchrule)表服务接口
  * 微信个性化菜单匹配表
- *
  * @author jhc
  * @since 2023-03-07 14:38:18
  */

@@ -7,7 +7,9 @@
         <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
         <result property="menuId" column="menu_id" jdbcType="VARCHAR"/>
         <result property="ruleId" column="rule_id" jdbcType="VARCHAR"/>
+        <result property="ruleName" column="rule_name" jdbcType="VARCHAR"/>
         <result property="ruleValue" column="rule_value" jdbcType="VARCHAR"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
         <result property="lastModifiedTime" column="last_modified_time" jdbcType="TIMESTAMP"/>
     </resultMap>
@@ -17,7 +19,8 @@
     </sql>
 
     <sql id="Base_Column_List">
-                id,tenant_id,menu_id,rule_id,rule_value,create_time,last_modified_time    </sql>
+        id
+        ,tenant_id,menu_id,rule_id,rule_name,rule_value,remark,create_time,last_modified_time    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="WechatMenusMatchruleMap">
@@ -35,10 +38,24 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="menuId != null and menuId !=''">and menu_id = #{menuId}</if>
-            <if test="ruleId != null and ruleId !=''">and rule_id = #{ruleId}</if>
-            <if test="ruleValue != null and ruleValue !=''">and rule_value = #{ruleValue}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="menuId != null and menuId !=''">and menu_id =
+                #{menuId}
+            </if>
+            <if test="ruleId != null and ruleId !=''">and rule_id =
+                #{ruleId}
+            </if>
+            <if test="ruleName != null and ruleName !=''">and rule_name =
+                #{ruleName}
+            </if>
+            <if test="ruleValue != null and ruleValue !=''">and rule_value =
+                #{ruleValue}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
         </where>
     </select>
 
@@ -49,10 +66,24 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="menuId != null and menuId !=''">and menu_id = #{menuId}</if>
-            <if test="ruleId != null and ruleId !=''">and rule_id = #{ruleId}</if>
-            <if test="ruleValue != null and ruleValue !=''">and rule_value = #{ruleValue}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="menuId != null and menuId !=''">and menu_id =
+                #{menuId}
+            </if>
+            <if test="ruleId != null and ruleId !=''">and rule_id =
+                #{ruleId}
+            </if>
+            <if test="ruleName != null and ruleName !=''">and rule_name =
+                #{ruleName}
+            </if>
+            <if test="ruleValue != null and ruleValue !=''">and rule_value =
+                #{ruleValue}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
         </where>
     </select>
 
@@ -63,10 +94,23 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="menuId != null and menuId !=''">and menu_id like CONCAT(CONCAT('%', #{menuId}), '%')</if>
-            <if test="ruleId != null and ruleId !=''">and rule_id like CONCAT(CONCAT('%', #{ruleId}), '%')</if>
-            <if test="ruleValue != null and ruleValue !=''">and rule_value like CONCAT(CONCAT('%', #{ruleValue}), '%')
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="menuId != null and menuId !=''">and menu_id like
+                CONCAT(CONCAT('%', #{menuId}), '%')
+            </if>
+            <if test="ruleId != null and ruleId !=''">and rule_id like
+                CONCAT(CONCAT('%', #{ruleId}), '%')
+            </if>
+            <if test="ruleName != null and ruleName !=''">and rule_name like
+                CONCAT(CONCAT('%', #{ruleName}), '%')
+            </if>
+            <if test="ruleValue != null and ruleValue !=''">and rule_value like
+                CONCAT(CONCAT('%', #{ruleValue}), '%')
+            </if>
+            <if test="remark != null and remark !=''">and remark like
+                CONCAT(CONCAT('%', #{remark}), '%')
             </if>
         </where>
 
@@ -78,10 +122,24 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="menuId != null and menuId !=''">and menu_id = #{menuId}</if>
-            <if test="ruleId != null and ruleId !=''">and rule_id = #{ruleId}</if>
-            <if test="ruleValue != null and ruleValue !=''">and rule_value = #{ruleValue}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="menuId != null and menuId !=''">and menu_id =
+                #{menuId}
+            </if>
+            <if test="ruleId != null and ruleId !=''">and rule_id =
+                #{ruleId}
+            </if>
+            <if test="ruleName != null and ruleName !=''">and rule_name =
+                #{ruleName}
+            </if>
+            <if test="ruleValue != null and ruleValue !=''">and rule_value =
+                #{ruleValue}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
         </where>
     </select>
 
@@ -89,31 +147,39 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (tenant_id ,menu_id ,rule_id ,rule_value )
+        (tenant_id ,menu_id ,rule_id ,rule_name ,rule_value ,remark )
         values
-        (#{tenantId},#{menuId},#{ruleId},#{ruleValue})
+        (#{tenantId} ,#{menuId} ,#{ruleId} ,#{ruleName} ,#{ruleValue} ,#{remark})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id ,menu_id ,rule_id ,rule_value)
+        ( tenant_id ,menu_id ,rule_id ,rule_name ,rule_value ,remark)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.tenantId} ,#{entity.menuId} ,#{entity.ruleId} ,#{entity.ruleValue})
+            ( #{entity.tenantId} ,#{entity.menuId} ,#{entity.ruleId} ,#{entity.ruleName} ,#{entity.ruleValue}
+            ,#{entity.remark})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( tenant_id ,menu_id ,rule_id ,rule_value)
+        ( tenant_id ,menu_id ,rule_id ,rule_name ,rule_value ,remark)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.menuId},#{entity.ruleId},#{entity.ruleValue})
+            ( #{entity.tenantId}, #{entity.menuId}, #{entity.ruleId}, #{entity.ruleName}, #{entity.ruleValue},
+            #{entity.remark})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id) ,menu_id=values(menu_id) ,rule_id=values(rule_id) ,rule_value=values(rule_value)
+        tenant_id
+        =values(tenant_id) ,menu_id
+        =values(menu_id) ,rule_id
+        =values(rule_id) ,rule_name
+        =values(rule_name) ,rule_value
+        =values(rule_value) ,remark
+        =values(remark)
     </insert>
 
     <!--通过主键修改数据-->
@@ -121,10 +187,24 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="menuId != null and menuId != ''">menu_id = #{menuId},</if>
-            <if test="ruleId != null and ruleId != ''">rule_id = #{ruleId},</if>
-            <if test="ruleValue != null and ruleValue != ''">rule_value = #{ruleValue},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="menuId != null and menuId != ''">menu_id = #{menuId
+                    },
+            </if>
+            <if test="ruleId != null and ruleId != ''">rule_id = #{ruleId
+                    },
+            </if>
+            <if test="ruleName != null and ruleName != ''">rule_name = #{ruleName
+                    },
+            </if>
+            <if test="ruleValue != null and ruleValue != ''">rule_value = #{ruleValue
+                    },
+            </if>
+            <if test="remark != null and remark != ''">remark = #{remark
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -135,7 +215,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

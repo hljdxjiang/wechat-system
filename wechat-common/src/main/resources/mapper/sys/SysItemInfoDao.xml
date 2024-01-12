@@ -43,18 +43,42 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="itemId != null and itemId !=''">and item_id = #{itemId}</if>
-            <if test="itemSort != null and itemSort !=''">and item_sort = #{itemSort}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="itemTitle != null and itemTitle !=''">and item_title = #{itemTitle}</if>
-            <if test="itemValue != null and itemValue !=''">and item_value = #{itemValue}</if>
-            <if test="itemDesc != null and itemDesc !=''">and item_desc = #{itemDesc}</if>
-            <if test="itemType != null and itemType !=''">and item_type = #{itemType}</if>
-            <if test="titleShowType != null and titleShowType !=''">and title_show_type = #{titleShowType}</if>
-            <if test="titleUrl != null and titleUrl !=''">and title_url = #{titleUrl}</if>
-            <if test="valueUrl != null and valueUrl !=''">and value_url = #{valueUrl}</if>
-            <if test="valueShowType != null and valueShowType !=''">and value_show_type = #{valueShowType}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="itemId != null and itemId !=''">and item_id =
+                #{itemId}
+            </if>
+            <if test="itemSort != null and itemSort !=''">and item_sort =
+                #{itemSort}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="itemTitle != null and itemTitle !=''">and item_title =
+                #{itemTitle}
+            </if>
+            <if test="itemValue != null and itemValue !=''">and item_value =
+                #{itemValue}
+            </if>
+            <if test="itemDesc != null and itemDesc !=''">and item_desc =
+                #{itemDesc}
+            </if>
+            <if test="itemType != null and itemType !=''">and item_type =
+                #{itemType}
+            </if>
+            <if test="titleShowType != null and titleShowType !=''">and title_show_type =
+                #{titleShowType}
+            </if>
+            <if test="titleUrl != null and titleUrl !=''">and title_url =
+                #{titleUrl}
+            </if>
+            <if test="valueUrl != null and valueUrl !=''">and value_url =
+                #{valueUrl}
+            </if>
+            <if test="valueShowType != null and valueShowType !=''">and value_show_type =
+                #{valueShowType}
+            </if>
         </where>
     </select>
 
@@ -65,18 +89,42 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="itemId != null and itemId !=''">and item_id = #{itemId}</if>
-            <if test="itemSort != null and itemSort !=''">and item_sort = #{itemSort}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="itemTitle != null and itemTitle !=''">and item_title = #{itemTitle}</if>
-            <if test="itemValue != null and itemValue !=''">and item_value = #{itemValue}</if>
-            <if test="itemDesc != null and itemDesc !=''">and item_desc = #{itemDesc}</if>
-            <if test="itemType != null and itemType !=''">and item_type = #{itemType}</if>
-            <if test="titleShowType != null and titleShowType !=''">and title_show_type = #{titleShowType}</if>
-            <if test="titleUrl != null and titleUrl !=''">and title_url = #{titleUrl}</if>
-            <if test="valueUrl != null and valueUrl !=''">and value_url = #{valueUrl}</if>
-            <if test="valueShowType != null and valueShowType !=''">and value_show_type = #{valueShowType}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="itemId != null and itemId !=''">and item_id =
+                #{itemId}
+            </if>
+            <if test="itemSort != null and itemSort !=''">and item_sort =
+                #{itemSort}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="itemTitle != null and itemTitle !=''">and item_title =
+                #{itemTitle}
+            </if>
+            <if test="itemValue != null and itemValue !=''">and item_value =
+                #{itemValue}
+            </if>
+            <if test="itemDesc != null and itemDesc !=''">and item_desc =
+                #{itemDesc}
+            </if>
+            <if test="itemType != null and itemType !=''">and item_type =
+                #{itemType}
+            </if>
+            <if test="titleShowType != null and titleShowType !=''">and title_show_type =
+                #{titleShowType}
+            </if>
+            <if test="titleUrl != null and titleUrl !=''">and title_url =
+                #{titleUrl}
+            </if>
+            <if test="valueUrl != null and valueUrl !=''">and value_url =
+                #{valueUrl}
+            </if>
+            <if test="valueShowType != null and valueShowType !=''">and value_show_type =
+                #{valueShowType}
+            </if>
         </where>
     </select>
 
@@ -87,23 +135,41 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="itemId != null and itemId !=''">and item_id like CONCAT(CONCAT('%', #{itemId}), '%')</if>
-            <if test="itemSort != null and itemSort !=''">and item_sort like CONCAT(CONCAT('%', #{itemSort}), '%')</if>
-            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
-            <if test="itemTitle != null and itemTitle !=''">and item_title like CONCAT(CONCAT('%', #{itemTitle}), '%')
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
             </if>
-            <if test="itemValue != null and itemValue !=''">and item_value like CONCAT(CONCAT('%', #{itemValue}), '%')
+            <if test="itemId != null and itemId !=''">and item_id like
+                CONCAT(CONCAT('%', #{itemId}), '%')
             </if>
-            <if test="itemDesc != null and itemDesc !=''">and item_desc like CONCAT(CONCAT('%', #{itemDesc}), '%')</if>
-            <if test="itemType != null and itemType !=''">and item_type like CONCAT(CONCAT('%', #{itemType}), '%')</if>
-            <if test="titleShowType != null and titleShowType !=''">and title_show_type like CONCAT(CONCAT('%',
-                #{titleShowType}), '%')
+            <if test="itemSort != null and itemSort !=''">and item_sort like
+                CONCAT(CONCAT('%', #{itemSort}), '%')
             </if>
-            <if test="titleUrl != null and titleUrl !=''">and title_url like CONCAT(CONCAT('%', #{titleUrl}), '%')</if>
-            <if test="valueUrl != null and valueUrl !=''">and value_url like CONCAT(CONCAT('%', #{valueUrl}), '%')</if>
-            <if test="valueShowType != null and valueShowType !=''">and value_show_type like CONCAT(CONCAT('%',
-                #{valueShowType}), '%')
+            <if test="status != null and status !=''">and status like
+                CONCAT(CONCAT('%', #{status}), '%')
+            </if>
+            <if test="itemTitle != null and itemTitle !=''">and item_title like
+                CONCAT(CONCAT('%', #{itemTitle}), '%')
+            </if>
+            <if test="itemValue != null and itemValue !=''">and item_value like
+                CONCAT(CONCAT('%', #{itemValue}), '%')
+            </if>
+            <if test="itemDesc != null and itemDesc !=''">and item_desc like
+                CONCAT(CONCAT('%', #{itemDesc}), '%')
+            </if>
+            <if test="itemType != null and itemType !=''">and item_type like
+                CONCAT(CONCAT('%', #{itemType}), '%')
+            </if>
+            <if test="titleShowType != null and titleShowType !=''">and title_show_type like
+                CONCAT(CONCAT('%', #{titleShowType}), '%')
+            </if>
+            <if test="titleUrl != null and titleUrl !=''">and title_url like
+                CONCAT(CONCAT('%', #{titleUrl}), '%')
+            </if>
+            <if test="valueUrl != null and valueUrl !=''">and value_url like
+                CONCAT(CONCAT('%', #{valueUrl}), '%')
+            </if>
+            <if test="valueShowType != null and valueShowType !=''">and value_show_type like
+                CONCAT(CONCAT('%', #{valueShowType}), '%')
             </if>
         </where>
 
@@ -115,18 +181,42 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="itemId != null and itemId !=''">and item_id = #{itemId}</if>
-            <if test="itemSort != null and itemSort !=''">and item_sort = #{itemSort}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="itemTitle != null and itemTitle !=''">and item_title = #{itemTitle}</if>
-            <if test="itemValue != null and itemValue !=''">and item_value = #{itemValue}</if>
-            <if test="itemDesc != null and itemDesc !=''">and item_desc = #{itemDesc}</if>
-            <if test="itemType != null and itemType !=''">and item_type = #{itemType}</if>
-            <if test="titleShowType != null and titleShowType !=''">and title_show_type = #{titleShowType}</if>
-            <if test="titleUrl != null and titleUrl !=''">and title_url = #{titleUrl}</if>
-            <if test="valueUrl != null and valueUrl !=''">and value_url = #{valueUrl}</if>
-            <if test="valueShowType != null and valueShowType !=''">and value_show_type = #{valueShowType}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="itemId != null and itemId !=''">and item_id =
+                #{itemId}
+            </if>
+            <if test="itemSort != null and itemSort !=''">and item_sort =
+                #{itemSort}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="itemTitle != null and itemTitle !=''">and item_title =
+                #{itemTitle}
+            </if>
+            <if test="itemValue != null and itemValue !=''">and item_value =
+                #{itemValue}
+            </if>
+            <if test="itemDesc != null and itemDesc !=''">and item_desc =
+                #{itemDesc}
+            </if>
+            <if test="itemType != null and itemType !=''">and item_type =
+                #{itemType}
+            </if>
+            <if test="titleShowType != null and titleShowType !=''">and title_show_type =
+                #{titleShowType}
+            </if>
+            <if test="titleUrl != null and titleUrl !=''">and title_url =
+                #{titleUrl}
+            </if>
+            <if test="valueUrl != null and valueUrl !=''">and value_url =
+                #{valueUrl}
+            </if>
+            <if test="valueShowType != null and valueShowType !=''">and value_show_type =
+                #{valueShowType}
+            </if>
         </where>
     </select>
 
@@ -137,7 +227,8 @@
         (tenant_id ,item_id ,item_sort ,item_title ,item_value ,item_desc ,item_type ,title_show_type ,title_url
         ,value_url ,value_show_type )
         values
-        (#{tenantId},#{itemId},#{itemSort},#{itemTitle},#{itemValue},#{itemDesc},#{itemType},#{titleShowType},#{titleUrl},#{valueUrl},#{valueShowType})
+        (#{tenantId} ,#{itemId} ,#{itemSort} ,#{itemTitle} ,#{itemValue} ,#{itemDesc} ,#{itemType} ,#{titleShowType}
+        ,#{titleUrl} ,#{valueUrl} ,#{valueShowType})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -160,13 +251,24 @@
         ,title_url ,value_url ,value_show_type)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.itemId},#{entity.itemSort},#{entity.status},#{entity.itemTitle},#{entity.itemValue},#{entity.itemDesc},#{entity.itemType},#{entity.titleShowType},#{entity.titleUrl},#{entity.valueUrl},#{entity.valueShowType})
+            ( #{entity.tenantId}, #{entity.itemId}, #{entity.itemSort}, #{entity.status}, #{entity.itemTitle},
+            #{entity.itemValue}, #{entity.itemDesc}, #{entity.itemType}, #{entity.titleShowType}, #{entity.titleUrl},
+            #{entity.valueUrl}, #{entity.valueShowType})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id) ,item_id=values(item_id) ,item_sort=values(item_sort) ,status=values(status)
-        ,item_title=values(item_title) ,item_value=values(item_value) ,item_desc=values(item_desc)
-        ,item_type=values(item_type) ,title_show_type=values(title_show_type) ,title_url=values(title_url)
-        ,value_url=values(value_url) ,value_show_type=values(value_show_type)
+        tenant_id
+        =values(tenant_id) ,item_id
+        =values(item_id) ,item_sort
+        =values(item_sort) ,status
+        =values(status) ,item_title
+        =values(item_title) ,item_value
+        =values(item_value) ,item_desc
+        =values(item_desc) ,item_type
+        =values(item_type) ,title_show_type
+        =values(title_show_type) ,title_url
+        =values(title_url) ,value_url
+        =values(value_url) ,value_show_type
+        =values(value_show_type)
     </insert>
 
     <!--通过主键修改数据-->
@@ -174,18 +276,42 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="itemId != null and itemId != ''">item_id = #{itemId},</if>
-            <if test="itemSort != null and itemSort != ''">item_sort = #{itemSort},</if>
-            <if test="status != null and status != ''">status = #{status},</if>
-            <if test="itemTitle != null and itemTitle != ''">item_title = #{itemTitle},</if>
-            <if test="itemValue != null and itemValue != ''">item_value = #{itemValue},</if>
-            <if test="itemDesc != null and itemDesc != ''">item_desc = #{itemDesc},</if>
-            <if test="itemType != null and itemType != ''">item_type = #{itemType},</if>
-            <if test="titleShowType != null and titleShowType != ''">title_show_type = #{titleShowType},</if>
-            <if test="titleUrl != null and titleUrl != ''">title_url = #{titleUrl},</if>
-            <if test="valueUrl != null and valueUrl != ''">value_url = #{valueUrl},</if>
-            <if test="valueShowType != null and valueShowType != ''">value_show_type = #{valueShowType},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="itemId != null and itemId != ''">item_id = #{itemId
+                    },
+            </if>
+            <if test="itemSort != null and itemSort != ''">item_sort = #{itemSort
+                    },
+            </if>
+            <if test="status != null and status != ''">status = #{status
+                    },
+            </if>
+            <if test="itemTitle != null and itemTitle != ''">item_title = #{itemTitle
+                    },
+            </if>
+            <if test="itemValue != null and itemValue != ''">item_value = #{itemValue
+                    },
+            </if>
+            <if test="itemDesc != null and itemDesc != ''">item_desc = #{itemDesc
+                    },
+            </if>
+            <if test="itemType != null and itemType != ''">item_type = #{itemType
+                    },
+            </if>
+            <if test="titleShowType != null and titleShowType != ''">title_show_type = #{titleShowType
+                    },
+            </if>
+            <if test="titleUrl != null and titleUrl != ''">title_url = #{titleUrl
+                    },
+            </if>
+            <if test="valueUrl != null and valueUrl != ''">value_url = #{valueUrl
+                    },
+            </if>
+            <if test="valueShowType != null and valueShowType != ''">value_show_type = #{valueShowType
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -196,7 +322,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

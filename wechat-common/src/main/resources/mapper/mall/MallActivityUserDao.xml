@@ -36,11 +36,21 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="activityId != null and activityId !=''">and activity_id = #{activityId}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="userid != null and userid !=''">and userid = #{userid}</if>
-            <if test="complateTime != null and complateTime !=''">and complate_time = #{complateTime}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="activityId != null and activityId !=''">and activity_id =
+                #{activityId}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="userid != null and userid !=''">and userid =
+                #{userid}
+            </if>
+            <if test="complateTime != null and complateTime !=''">and complate_time =
+                #{complateTime}
+            </if>
         </where>
     </select>
 
@@ -51,11 +61,21 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="activityId != null and activityId !=''">and activity_id = #{activityId}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="userid != null and userid !=''">and userid = #{userid}</if>
-            <if test="complateTime != null and complateTime !=''">and complate_time = #{complateTime}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="activityId != null and activityId !=''">and activity_id =
+                #{activityId}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="userid != null and userid !=''">and userid =
+                #{userid}
+            </if>
+            <if test="complateTime != null and complateTime !=''">and complate_time =
+                #{complateTime}
+            </if>
         </where>
     </select>
 
@@ -66,14 +86,20 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="activityId != null and activityId !=''">and activity_id like CONCAT(CONCAT('%', #{activityId}),
-                '%')
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
             </if>
-            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
-            <if test="userid != null and userid !=''">and userid like CONCAT(CONCAT('%', #{userid}), '%')</if>
-            <if test="complateTime != null and complateTime !=''">and complate_time like CONCAT(CONCAT('%',
-                #{complateTime}), '%')
+            <if test="activityId != null and activityId !=''">and activity_id like
+                CONCAT(CONCAT('%', #{activityId}), '%')
+            </if>
+            <if test="status != null and status !=''">and status like
+                CONCAT(CONCAT('%', #{status}), '%')
+            </if>
+            <if test="userid != null and userid !=''">and userid like
+                CONCAT(CONCAT('%', #{userid}), '%')
+            </if>
+            <if test="complateTime != null and complateTime !=''">and complate_time like
+                CONCAT(CONCAT('%', #{complateTime}), '%')
             </if>
         </where>
 
@@ -85,11 +111,21 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="activityId != null and activityId !=''">and activity_id = #{activityId}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="userid != null and userid !=''">and userid = #{userid}</if>
-            <if test="complateTime != null and complateTime !=''">and complate_time = #{complateTime}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="activityId != null and activityId !=''">and activity_id =
+                #{activityId}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="userid != null and userid !=''">and userid =
+                #{userid}
+            </if>
+            <if test="complateTime != null and complateTime !=''">and complate_time =
+                #{complateTime}
+            </if>
         </where>
     </select>
 
@@ -99,7 +135,7 @@
         <include refid="Table_Name"/>
         (tenant_id ,activity_id ,userid ,complate_time )
         values
-        (#{tenantId},#{activityId},#{userid},#{complateTime})
+        (#{tenantId} ,#{activityId} ,#{userid} ,#{complateTime})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -118,11 +154,15 @@
         ( tenant_id ,activity_id ,status ,userid ,complate_time)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.activityId},#{entity.status},#{entity.userid},#{entity.complateTime})
+            ( #{entity.tenantId}, #{entity.activityId}, #{entity.status}, #{entity.userid}, #{entity.complateTime})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id) ,activity_id=values(activity_id) ,status=values(status) ,userid=values(userid)
-        ,complate_time=values(complate_time)
+        tenant_id
+        =values(tenant_id) ,activity_id
+        =values(activity_id) ,status
+        =values(status) ,userid
+        =values(userid) ,complate_time
+        =values(complate_time)
     </insert>
 
     <!--通过主键修改数据-->
@@ -130,11 +170,21 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="activityId != null and activityId != ''">activity_id = #{activityId},</if>
-            <if test="status != null and status != ''">status = #{status},</if>
-            <if test="userid != null and userid != ''">userid = #{userid},</if>
-            <if test="complateTime != null and complateTime != ''">complate_time = #{complateTime},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="activityId != null and activityId != ''">activity_id = #{activityId
+                    },
+            </if>
+            <if test="status != null and status != ''">status = #{status
+                    },
+            </if>
+            <if test="userid != null and userid != ''">userid = #{userid
+                    },
+            </if>
+            <if test="complateTime != null and complateTime != ''">complate_time = #{complateTime
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -145,7 +195,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

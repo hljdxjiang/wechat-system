@@ -47,22 +47,54 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="couponId != null and couponId !=''">and coupon_id = #{couponId}</if>
-            <if test="couponName != null and couponName !=''">and coupon_name = #{couponName}</if>
-            <if test="couponDesc != null and couponDesc !=''">and coupon_desc = #{couponDesc}</if>
-            <if test="couponType != null and couponType !=''">and coupon_type = #{couponType}</if>
-            <if test="couponMethod != null and couponMethod !=''">and coupon_method = #{couponMethod}</if>
-            <if test="couponAmount != null and couponAmount !=''">and coupon_amount = #{couponAmount}</if>
-            <if test="controlType != null and controlType !=''">and control_type = #{controlType}</if>
-            <if test="grantType != null and grantType !=''">and grant_type = #{grantType}</if>
-            <if test="grantScope != null and grantScope !=''">and grant_scope = #{grantScope}</if>
-            <if test="vaildDate != null and vaildDate !=''">and vaild_date = #{vaildDate}</if>
-            <if test="expireDate != null and expireDate !=''">and expire_date = #{expireDate}</if>
-            <if test="vaildDays != null and vaildDays !=''">and vaild_days = #{vaildDays}</if>
-            <if test="useVaildDate != null and useVaildDate !=''">and use_vaild_date = #{useVaildDate}</if>
-            <if test="useExpireDate != null and useExpireDate !=''">and use_expire_date = #{useExpireDate}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="couponId != null and couponId !=''">and coupon_id =
+                #{couponId}
+            </if>
+            <if test="couponName != null and couponName !=''">and coupon_name =
+                #{couponName}
+            </if>
+            <if test="couponDesc != null and couponDesc !=''">and coupon_desc =
+                #{couponDesc}
+            </if>
+            <if test="couponType != null and couponType !=''">and coupon_type =
+                #{couponType}
+            </if>
+            <if test="couponMethod != null and couponMethod !=''">and coupon_method =
+                #{couponMethod}
+            </if>
+            <if test="couponAmount != null and couponAmount !=''">and coupon_amount =
+                #{couponAmount}
+            </if>
+            <if test="controlType != null and controlType !=''">and control_type =
+                #{controlType}
+            </if>
+            <if test="grantType != null and grantType !=''">and grant_type =
+                #{grantType}
+            </if>
+            <if test="grantScope != null and grantScope !=''">and grant_scope =
+                #{grantScope}
+            </if>
+            <if test="vaildDate != null and vaildDate !=''">and vaild_date =
+                #{vaildDate}
+            </if>
+            <if test="expireDate != null and expireDate !=''">and expire_date =
+                #{expireDate}
+            </if>
+            <if test="vaildDays != null and vaildDays !=''">and vaild_days =
+                #{vaildDays}
+            </if>
+            <if test="useVaildDate != null and useVaildDate !=''">and use_vaild_date =
+                #{useVaildDate}
+            </if>
+            <if test="useExpireDate != null and useExpireDate !=''">and use_expire_date =
+                #{useExpireDate}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
         </where>
     </select>
 
@@ -73,22 +105,54 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="couponId != null and couponId !=''">and coupon_id = #{couponId}</if>
-            <if test="couponName != null and couponName !=''">and coupon_name = #{couponName}</if>
-            <if test="couponDesc != null and couponDesc !=''">and coupon_desc = #{couponDesc}</if>
-            <if test="couponType != null and couponType !=''">and coupon_type = #{couponType}</if>
-            <if test="couponMethod != null and couponMethod !=''">and coupon_method = #{couponMethod}</if>
-            <if test="couponAmount != null and couponAmount !=''">and coupon_amount = #{couponAmount}</if>
-            <if test="controlType != null and controlType !=''">and control_type = #{controlType}</if>
-            <if test="grantType != null and grantType !=''">and grant_type = #{grantType}</if>
-            <if test="grantScope != null and grantScope !=''">and grant_scope = #{grantScope}</if>
-            <if test="vaildDate != null and vaildDate !=''">and vaild_date = #{vaildDate}</if>
-            <if test="expireDate != null and expireDate !=''">and expire_date = #{expireDate}</if>
-            <if test="vaildDays != null and vaildDays !=''">and vaild_days = #{vaildDays}</if>
-            <if test="useVaildDate != null and useVaildDate !=''">and use_vaild_date = #{useVaildDate}</if>
-            <if test="useExpireDate != null and useExpireDate !=''">and use_expire_date = #{useExpireDate}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="couponId != null and couponId !=''">and coupon_id =
+                #{couponId}
+            </if>
+            <if test="couponName != null and couponName !=''">and coupon_name =
+                #{couponName}
+            </if>
+            <if test="couponDesc != null and couponDesc !=''">and coupon_desc =
+                #{couponDesc}
+            </if>
+            <if test="couponType != null and couponType !=''">and coupon_type =
+                #{couponType}
+            </if>
+            <if test="couponMethod != null and couponMethod !=''">and coupon_method =
+                #{couponMethod}
+            </if>
+            <if test="couponAmount != null and couponAmount !=''">and coupon_amount =
+                #{couponAmount}
+            </if>
+            <if test="controlType != null and controlType !=''">and control_type =
+                #{controlType}
+            </if>
+            <if test="grantType != null and grantType !=''">and grant_type =
+                #{grantType}
+            </if>
+            <if test="grantScope != null and grantScope !=''">and grant_scope =
+                #{grantScope}
+            </if>
+            <if test="vaildDate != null and vaildDate !=''">and vaild_date =
+                #{vaildDate}
+            </if>
+            <if test="expireDate != null and expireDate !=''">and expire_date =
+                #{expireDate}
+            </if>
+            <if test="vaildDays != null and vaildDays !=''">and vaild_days =
+                #{vaildDays}
+            </if>
+            <if test="useVaildDate != null and useVaildDate !=''">and use_vaild_date =
+                #{useVaildDate}
+            </if>
+            <if test="useExpireDate != null and useExpireDate !=''">and use_expire_date =
+                #{useExpireDate}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
         </where>
     </select>
 
@@ -99,45 +163,54 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="couponId != null and couponId !=''">and coupon_id like CONCAT(CONCAT('%', #{couponId}), '%')</if>
-            <if test="couponName != null and couponName !=''">and coupon_name like CONCAT(CONCAT('%', #{couponName}),
-                '%')
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
             </if>
-            <if test="couponDesc != null and couponDesc !=''">and coupon_desc like CONCAT(CONCAT('%', #{couponDesc}),
-                '%')
+            <if test="couponId != null and couponId !=''">and coupon_id like
+                CONCAT(CONCAT('%', #{couponId}), '%')
             </if>
-            <if test="couponType != null and couponType !=''">and coupon_type like CONCAT(CONCAT('%', #{couponType}),
-                '%')
+            <if test="couponName != null and couponName !=''">and coupon_name like
+                CONCAT(CONCAT('%', #{couponName}), '%')
             </if>
-            <if test="couponMethod != null and couponMethod !=''">and coupon_method like CONCAT(CONCAT('%',
-                #{couponMethod}), '%')
+            <if test="couponDesc != null and couponDesc !=''">and coupon_desc like
+                CONCAT(CONCAT('%', #{couponDesc}), '%')
             </if>
-            <if test="couponAmount != null and couponAmount !=''">and coupon_amount like CONCAT(CONCAT('%',
-                #{couponAmount}), '%')
+            <if test="couponType != null and couponType !=''">and coupon_type like
+                CONCAT(CONCAT('%', #{couponType}), '%')
             </if>
-            <if test="controlType != null and controlType !=''">and control_type like CONCAT(CONCAT('%',
-                #{controlType}), '%')
+            <if test="couponMethod != null and couponMethod !=''">and coupon_method like
+                CONCAT(CONCAT('%', #{couponMethod}), '%')
             </if>
-            <if test="grantType != null and grantType !=''">and grant_type like CONCAT(CONCAT('%', #{grantType}), '%')
+            <if test="couponAmount != null and couponAmount !=''">and coupon_amount like
+                CONCAT(CONCAT('%', #{couponAmount}), '%')
             </if>
-            <if test="grantScope != null and grantScope !=''">and grant_scope like CONCAT(CONCAT('%', #{grantScope}),
-                '%')
+            <if test="controlType != null and controlType !=''">and control_type like
+                CONCAT(CONCAT('%', #{controlType}), '%')
             </if>
-            <if test="vaildDate != null and vaildDate !=''">and vaild_date like CONCAT(CONCAT('%', #{vaildDate}), '%')
+            <if test="grantType != null and grantType !=''">and grant_type like
+                CONCAT(CONCAT('%', #{grantType}), '%')
             </if>
-            <if test="expireDate != null and expireDate !=''">and expire_date like CONCAT(CONCAT('%', #{expireDate}),
-                '%')
+            <if test="grantScope != null and grantScope !=''">and grant_scope like
+                CONCAT(CONCAT('%', #{grantScope}), '%')
             </if>
-            <if test="vaildDays != null and vaildDays !=''">and vaild_days like CONCAT(CONCAT('%', #{vaildDays}), '%')
+            <if test="vaildDate != null and vaildDate !=''">and vaild_date like
+                CONCAT(CONCAT('%', #{vaildDate}), '%')
             </if>
-            <if test="useVaildDate != null and useVaildDate !=''">and use_vaild_date like CONCAT(CONCAT('%',
-                #{useVaildDate}), '%')
+            <if test="expireDate != null and expireDate !=''">and expire_date like
+                CONCAT(CONCAT('%', #{expireDate}), '%')
             </if>
-            <if test="useExpireDate != null and useExpireDate !=''">and use_expire_date like CONCAT(CONCAT('%',
-                #{useExpireDate}), '%')
+            <if test="vaildDays != null and vaildDays !=''">and vaild_days like
+                CONCAT(CONCAT('%', #{vaildDays}), '%')
             </if>
-            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
+            <if test="useVaildDate != null and useVaildDate !=''">and use_vaild_date like
+                CONCAT(CONCAT('%', #{useVaildDate}), '%')
+            </if>
+            <if test="useExpireDate != null and useExpireDate !=''">and use_expire_date like
+                CONCAT(CONCAT('%', #{useExpireDate}), '%')
+            </if>
+            <if test="status != null and status !=''">and status like
+                CONCAT(CONCAT('%', #{status}), '%')
+            </if>
         </where>
 
     </select>
@@ -148,22 +221,54 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="couponId != null and couponId !=''">and coupon_id = #{couponId}</if>
-            <if test="couponName != null and couponName !=''">and coupon_name = #{couponName}</if>
-            <if test="couponDesc != null and couponDesc !=''">and coupon_desc = #{couponDesc}</if>
-            <if test="couponType != null and couponType !=''">and coupon_type = #{couponType}</if>
-            <if test="couponMethod != null and couponMethod !=''">and coupon_method = #{couponMethod}</if>
-            <if test="couponAmount != null and couponAmount !=''">and coupon_amount = #{couponAmount}</if>
-            <if test="controlType != null and controlType !=''">and control_type = #{controlType}</if>
-            <if test="grantType != null and grantType !=''">and grant_type = #{grantType}</if>
-            <if test="grantScope != null and grantScope !=''">and grant_scope = #{grantScope}</if>
-            <if test="vaildDate != null and vaildDate !=''">and vaild_date = #{vaildDate}</if>
-            <if test="expireDate != null and expireDate !=''">and expire_date = #{expireDate}</if>
-            <if test="vaildDays != null and vaildDays !=''">and vaild_days = #{vaildDays}</if>
-            <if test="useVaildDate != null and useVaildDate !=''">and use_vaild_date = #{useVaildDate}</if>
-            <if test="useExpireDate != null and useExpireDate !=''">and use_expire_date = #{useExpireDate}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="couponId != null and couponId !=''">and coupon_id =
+                #{couponId}
+            </if>
+            <if test="couponName != null and couponName !=''">and coupon_name =
+                #{couponName}
+            </if>
+            <if test="couponDesc != null and couponDesc !=''">and coupon_desc =
+                #{couponDesc}
+            </if>
+            <if test="couponType != null and couponType !=''">and coupon_type =
+                #{couponType}
+            </if>
+            <if test="couponMethod != null and couponMethod !=''">and coupon_method =
+                #{couponMethod}
+            </if>
+            <if test="couponAmount != null and couponAmount !=''">and coupon_amount =
+                #{couponAmount}
+            </if>
+            <if test="controlType != null and controlType !=''">and control_type =
+                #{controlType}
+            </if>
+            <if test="grantType != null and grantType !=''">and grant_type =
+                #{grantType}
+            </if>
+            <if test="grantScope != null and grantScope !=''">and grant_scope =
+                #{grantScope}
+            </if>
+            <if test="vaildDate != null and vaildDate !=''">and vaild_date =
+                #{vaildDate}
+            </if>
+            <if test="expireDate != null and expireDate !=''">and expire_date =
+                #{expireDate}
+            </if>
+            <if test="vaildDays != null and vaildDays !=''">and vaild_days =
+                #{vaildDays}
+            </if>
+            <if test="useVaildDate != null and useVaildDate !=''">and use_vaild_date =
+                #{useVaildDate}
+            </if>
+            <if test="useExpireDate != null and useExpireDate !=''">and use_expire_date =
+                #{useExpireDate}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
         </where>
     </select>
 
@@ -174,7 +279,9 @@
         (tenant_id ,coupon_id ,coupon_name ,coupon_desc ,coupon_type ,coupon_method ,coupon_amount ,control_type
         ,grant_type ,grant_scope ,vaild_date ,expire_date ,vaild_days ,use_vaild_date ,use_expire_date )
         values
-        (#{tenantId},#{couponId},#{couponName},#{couponDesc},#{couponType},#{couponMethod},#{couponAmount},#{controlType},#{grantType},#{grantScope},#{vaildDate},#{expireDate},#{vaildDays},#{useVaildDate},#{useExpireDate})
+        (#{tenantId} ,#{couponId} ,#{couponName} ,#{couponDesc} ,#{couponType} ,#{couponMethod} ,#{couponAmount}
+        ,#{controlType} ,#{grantType} ,#{grantScope} ,#{vaildDate} ,#{expireDate} ,#{vaildDays} ,#{useVaildDate}
+        ,#{useExpireDate})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -198,15 +305,29 @@
         ,grant_type ,grant_scope ,vaild_date ,expire_date ,vaild_days ,use_vaild_date ,use_expire_date ,status)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.couponId},#{entity.couponName},#{entity.couponDesc},#{entity.couponType},#{entity.couponMethod},#{entity.couponAmount},#{entity.controlType},#{entity.grantType},#{entity.grantScope},#{entity.vaildDate},#{entity.expireDate},#{entity.vaildDays},#{entity.useVaildDate},#{entity.useExpireDate},#{entity.status})
+            ( #{entity.tenantId}, #{entity.couponId}, #{entity.couponName}, #{entity.couponDesc}, #{entity.couponType},
+            #{entity.couponMethod}, #{entity.couponAmount}, #{entity.controlType}, #{entity.grantType},
+            #{entity.grantScope}, #{entity.vaildDate}, #{entity.expireDate}, #{entity.vaildDays},
+            #{entity.useVaildDate}, #{entity.useExpireDate}, #{entity.status})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id) ,coupon_id=values(coupon_id) ,coupon_name=values(coupon_name)
-        ,coupon_desc=values(coupon_desc) ,coupon_type=values(coupon_type) ,coupon_method=values(coupon_method)
-        ,coupon_amount=values(coupon_amount) ,control_type=values(control_type) ,grant_type=values(grant_type)
-        ,grant_scope=values(grant_scope) ,vaild_date=values(vaild_date) ,expire_date=values(expire_date)
-        ,vaild_days=values(vaild_days) ,use_vaild_date=values(use_vaild_date) ,use_expire_date=values(use_expire_date)
-        ,status=values(status)
+        tenant_id
+        =values(tenant_id) ,coupon_id
+        =values(coupon_id) ,coupon_name
+        =values(coupon_name) ,coupon_desc
+        =values(coupon_desc) ,coupon_type
+        =values(coupon_type) ,coupon_method
+        =values(coupon_method) ,coupon_amount
+        =values(coupon_amount) ,control_type
+        =values(control_type) ,grant_type
+        =values(grant_type) ,grant_scope
+        =values(grant_scope) ,vaild_date
+        =values(vaild_date) ,expire_date
+        =values(expire_date) ,vaild_days
+        =values(vaild_days) ,use_vaild_date
+        =values(use_vaild_date) ,use_expire_date
+        =values(use_expire_date) ,status
+        =values(status)
     </insert>
 
     <!--通过主键修改数据-->
@@ -214,22 +335,54 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="couponId != null and couponId != ''">coupon_id = #{couponId},</if>
-            <if test="couponName != null and couponName != ''">coupon_name = #{couponName},</if>
-            <if test="couponDesc != null and couponDesc != ''">coupon_desc = #{couponDesc},</if>
-            <if test="couponType != null and couponType != ''">coupon_type = #{couponType},</if>
-            <if test="couponMethod != null and couponMethod != ''">coupon_method = #{couponMethod},</if>
-            <if test="couponAmount != null and couponAmount != ''">coupon_amount = #{couponAmount},</if>
-            <if test="controlType != null and controlType != ''">control_type = #{controlType},</if>
-            <if test="grantType != null and grantType != ''">grant_type = #{grantType},</if>
-            <if test="grantScope != null and grantScope != ''">grant_scope = #{grantScope},</if>
-            <if test="vaildDate != null and vaildDate != ''">vaild_date = #{vaildDate},</if>
-            <if test="expireDate != null and expireDate != ''">expire_date = #{expireDate},</if>
-            <if test="vaildDays != null and vaildDays != ''">vaild_days = #{vaildDays},</if>
-            <if test="useVaildDate != null and useVaildDate != ''">use_vaild_date = #{useVaildDate},</if>
-            <if test="useExpireDate != null and useExpireDate != ''">use_expire_date = #{useExpireDate},</if>
-            <if test="status != null and status != ''">status = #{status},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="couponId != null and couponId != ''">coupon_id = #{couponId
+                    },
+            </if>
+            <if test="couponName != null and couponName != ''">coupon_name = #{couponName
+                    },
+            </if>
+            <if test="couponDesc != null and couponDesc != ''">coupon_desc = #{couponDesc
+                    },
+            </if>
+            <if test="couponType != null and couponType != ''">coupon_type = #{couponType
+                    },
+            </if>
+            <if test="couponMethod != null and couponMethod != ''">coupon_method = #{couponMethod
+                    },
+            </if>
+            <if test="couponAmount != null and couponAmount != ''">coupon_amount = #{couponAmount
+                    },
+            </if>
+            <if test="controlType != null and controlType != ''">control_type = #{controlType
+                    },
+            </if>
+            <if test="grantType != null and grantType != ''">grant_type = #{grantType
+                    },
+            </if>
+            <if test="grantScope != null and grantScope != ''">grant_scope = #{grantScope
+                    },
+            </if>
+            <if test="vaildDate != null and vaildDate != ''">vaild_date = #{vaildDate
+                    },
+            </if>
+            <if test="expireDate != null and expireDate != ''">expire_date = #{expireDate
+                    },
+            </if>
+            <if test="vaildDays != null and vaildDays != ''">vaild_days = #{vaildDays
+                    },
+            </if>
+            <if test="useVaildDate != null and useVaildDate != ''">use_vaild_date = #{useVaildDate
+                    },
+            </if>
+            <if test="useExpireDate != null and useExpireDate != ''">use_expire_date = #{useExpireDate
+                    },
+            </if>
+            <if test="status != null and status != ''">status = #{status
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -240,7 +393,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

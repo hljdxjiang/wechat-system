@@ -40,15 +40,33 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="authType != null and authType !=''">and auth_type = #{authType}</if>
-            <if test="appid != null and appid !=''">and appid = #{appid}</if>
-            <if test="appSecret != null and appSecret !=''">and app_secret = #{appSecret}</if>
-            <if test="channel != null and channel !=''">and channel = #{channel}</if>
-            <if test="token != null and token !=''">and token = #{token}</if>
-            <if test="refreshToken != null and refreshToken !=''">and refresh_token = #{refreshToken}</if>
-            <if test="echostr != null and echostr !=''">and echostr = #{echostr}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="authType != null and authType !=''">and auth_type =
+                #{authType}
+            </if>
+            <if test="appid != null and appid !=''">and appid =
+                #{appid}
+            </if>
+            <if test="appSecret != null and appSecret !=''">and app_secret =
+                #{appSecret}
+            </if>
+            <if test="channel != null and channel !=''">and channel =
+                #{channel}
+            </if>
+            <if test="token != null and token !=''">and token =
+                #{token}
+            </if>
+            <if test="refreshToken != null and refreshToken !=''">and refresh_token =
+                #{refreshToken}
+            </if>
+            <if test="echostr != null and echostr !=''">and echostr =
+                #{echostr}
+            </if>
         </where>
     </select>
 
@@ -59,15 +77,33 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="authType != null and authType !=''">and auth_type = #{authType}</if>
-            <if test="appid != null and appid !=''">and appid = #{appid}</if>
-            <if test="appSecret != null and appSecret !=''">and app_secret = #{appSecret}</if>
-            <if test="channel != null and channel !=''">and channel = #{channel}</if>
-            <if test="token != null and token !=''">and token = #{token}</if>
-            <if test="refreshToken != null and refreshToken !=''">and refresh_token = #{refreshToken}</if>
-            <if test="echostr != null and echostr !=''">and echostr = #{echostr}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="authType != null and authType !=''">and auth_type =
+                #{authType}
+            </if>
+            <if test="appid != null and appid !=''">and appid =
+                #{appid}
+            </if>
+            <if test="appSecret != null and appSecret !=''">and app_secret =
+                #{appSecret}
+            </if>
+            <if test="channel != null and channel !=''">and channel =
+                #{channel}
+            </if>
+            <if test="token != null and token !=''">and token =
+                #{token}
+            </if>
+            <if test="refreshToken != null and refreshToken !=''">and refresh_token =
+                #{refreshToken}
+            </if>
+            <if test="echostr != null and echostr !=''">and echostr =
+                #{echostr}
+            </if>
         </where>
     </select>
 
@@ -78,18 +114,33 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
-            <if test="authType != null and authType !=''">and auth_type like CONCAT(CONCAT('%', #{authType}), '%')</if>
-            <if test="appid != null and appid !=''">and appid like CONCAT(CONCAT('%', #{appid}), '%')</if>
-            <if test="appSecret != null and appSecret !=''">and app_secret like CONCAT(CONCAT('%', #{appSecret}), '%')
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
             </if>
-            <if test="channel != null and channel !=''">and channel like CONCAT(CONCAT('%', #{channel}), '%')</if>
-            <if test="token != null and token !=''">and token like CONCAT(CONCAT('%', #{token}), '%')</if>
-            <if test="refreshToken != null and refreshToken !=''">and refresh_token like CONCAT(CONCAT('%',
-                #{refreshToken}), '%')
+            <if test="status != null and status !=''">and status like
+                CONCAT(CONCAT('%', #{status}), '%')
             </if>
-            <if test="echostr != null and echostr !=''">and echostr like CONCAT(CONCAT('%', #{echostr}), '%')</if>
+            <if test="authType != null and authType !=''">and auth_type like
+                CONCAT(CONCAT('%', #{authType}), '%')
+            </if>
+            <if test="appid != null and appid !=''">and appid like
+                CONCAT(CONCAT('%', #{appid}), '%')
+            </if>
+            <if test="appSecret != null and appSecret !=''">and app_secret like
+                CONCAT(CONCAT('%', #{appSecret}), '%')
+            </if>
+            <if test="channel != null and channel !=''">and channel like
+                CONCAT(CONCAT('%', #{channel}), '%')
+            </if>
+            <if test="token != null and token !=''">and token like
+                CONCAT(CONCAT('%', #{token}), '%')
+            </if>
+            <if test="refreshToken != null and refreshToken !=''">and refresh_token like
+                CONCAT(CONCAT('%', #{refreshToken}), '%')
+            </if>
+            <if test="echostr != null and echostr !=''">and echostr like
+                CONCAT(CONCAT('%', #{echostr}), '%')
+            </if>
         </where>
 
     </select>
@@ -100,15 +151,33 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="authType != null and authType !=''">and auth_type = #{authType}</if>
-            <if test="appid != null and appid !=''">and appid = #{appid}</if>
-            <if test="appSecret != null and appSecret !=''">and app_secret = #{appSecret}</if>
-            <if test="channel != null and channel !=''">and channel = #{channel}</if>
-            <if test="token != null and token !=''">and token = #{token}</if>
-            <if test="refreshToken != null and refreshToken !=''">and refresh_token = #{refreshToken}</if>
-            <if test="echostr != null and echostr !=''">and echostr = #{echostr}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="authType != null and authType !=''">and auth_type =
+                #{authType}
+            </if>
+            <if test="appid != null and appid !=''">and appid =
+                #{appid}
+            </if>
+            <if test="appSecret != null and appSecret !=''">and app_secret =
+                #{appSecret}
+            </if>
+            <if test="channel != null and channel !=''">and channel =
+                #{channel}
+            </if>
+            <if test="token != null and token !=''">and token =
+                #{token}
+            </if>
+            <if test="refreshToken != null and refreshToken !=''">and refresh_token =
+                #{refreshToken}
+            </if>
+            <if test="echostr != null and echostr !=''">and echostr =
+                #{echostr}
+            </if>
         </where>
     </select>
 
@@ -118,7 +187,7 @@
         <include refid="Table_Name"/>
         (tenant_id ,auth_type ,appid ,app_secret ,channel ,token ,refresh_token ,echostr )
         values
-        (#{tenantId},#{authType},#{appid},#{appSecret},#{channel},#{token},#{refreshToken},#{echostr})
+        (#{tenantId} ,#{authType} ,#{appid} ,#{appSecret} ,#{channel} ,#{token} ,#{refreshToken} ,#{echostr})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -138,12 +207,20 @@
         ( tenant_id ,status ,auth_type ,appid ,app_secret ,channel ,token ,refresh_token ,echostr)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.status},#{entity.authType},#{entity.appid},#{entity.appSecret},#{entity.channel},#{entity.token},#{entity.refreshToken},#{entity.echostr})
+            ( #{entity.tenantId}, #{entity.status}, #{entity.authType}, #{entity.appid}, #{entity.appSecret},
+            #{entity.channel}, #{entity.token}, #{entity.refreshToken}, #{entity.echostr})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id) ,status=values(status) ,auth_type=values(auth_type) ,appid=values(appid)
-        ,app_secret=values(app_secret) ,channel=values(channel) ,token=values(token)
-        ,refresh_token=values(refresh_token) ,echostr=values(echostr)
+        tenant_id
+        =values(tenant_id) ,status
+        =values(status) ,auth_type
+        =values(auth_type) ,appid
+        =values(appid) ,app_secret
+        =values(app_secret) ,channel
+        =values(channel) ,token
+        =values(token) ,refresh_token
+        =values(refresh_token) ,echostr
+        =values(echostr)
     </insert>
 
     <!--通过主键修改数据-->
@@ -151,15 +228,33 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="status != null and status != ''">status = #{status},</if>
-            <if test="authType != null and authType != ''">auth_type = #{authType},</if>
-            <if test="appid != null and appid != ''">appid = #{appid},</if>
-            <if test="appSecret != null and appSecret != ''">app_secret = #{appSecret},</if>
-            <if test="channel != null and channel != ''">channel = #{channel},</if>
-            <if test="token != null and token != ''">token = #{token},</if>
-            <if test="refreshToken != null and refreshToken != ''">refresh_token = #{refreshToken},</if>
-            <if test="echostr != null and echostr != ''">echostr = #{echostr},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="status != null and status != ''">status = #{status
+                    },
+            </if>
+            <if test="authType != null and authType != ''">auth_type = #{authType
+                    },
+            </if>
+            <if test="appid != null and appid != ''">appid = #{appid
+                    },
+            </if>
+            <if test="appSecret != null and appSecret != ''">app_secret = #{appSecret
+                    },
+            </if>
+            <if test="channel != null and channel != ''">channel = #{channel
+                    },
+            </if>
+            <if test="token != null and token != ''">token = #{token
+                    },
+            </if>
+            <if test="refreshToken != null and refreshToken != ''">refresh_token = #{refreshToken
+                    },
+            </if>
+            <if test="echostr != null and echostr != ''">echostr = #{echostr
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -170,7 +265,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

@@ -37,12 +37,24 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="columnId != null and columnId !=''">and column_id = #{columnId}</if>
-            <if test="columnName != null and columnName !=''">and column_name = #{columnName}</if>
-            <if test="columnDesc != null and columnDesc !=''">and column_desc = #{columnDesc}</if>
-            <if test="remark != null and remark !=''">and remark = #{remark}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="columnId != null and columnId !=''">and column_id =
+                #{columnId}
+            </if>
+            <if test="columnName != null and columnName !=''">and column_name =
+                #{columnName}
+            </if>
+            <if test="columnDesc != null and columnDesc !=''">and column_desc =
+                #{columnDesc}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
         </where>
     </select>
 
@@ -53,12 +65,24 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="columnId != null and columnId !=''">and column_id = #{columnId}</if>
-            <if test="columnName != null and columnName !=''">and column_name = #{columnName}</if>
-            <if test="columnDesc != null and columnDesc !=''">and column_desc = #{columnDesc}</if>
-            <if test="remark != null and remark !=''">and remark = #{remark}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="columnId != null and columnId !=''">and column_id =
+                #{columnId}
+            </if>
+            <if test="columnName != null and columnName !=''">and column_name =
+                #{columnName}
+            </if>
+            <if test="columnDesc != null and columnDesc !=''">and column_desc =
+                #{columnDesc}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
         </where>
     </select>
 
@@ -69,16 +93,24 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="columnId != null and columnId !=''">and column_id like CONCAT(CONCAT('%', #{columnId}), '%')</if>
-            <if test="columnName != null and columnName !=''">and column_name like CONCAT(CONCAT('%', #{columnName}),
-                '%')
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
             </if>
-            <if test="columnDesc != null and columnDesc !=''">and column_desc like CONCAT(CONCAT('%', #{columnDesc}),
-                '%')
+            <if test="columnId != null and columnId !=''">and column_id like
+                CONCAT(CONCAT('%', #{columnId}), '%')
             </if>
-            <if test="remark != null and remark !=''">and remark like CONCAT(CONCAT('%', #{remark}), '%')</if>
-            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
+            <if test="columnName != null and columnName !=''">and column_name like
+                CONCAT(CONCAT('%', #{columnName}), '%')
+            </if>
+            <if test="columnDesc != null and columnDesc !=''">and column_desc like
+                CONCAT(CONCAT('%', #{columnDesc}), '%')
+            </if>
+            <if test="remark != null and remark !=''">and remark like
+                CONCAT(CONCAT('%', #{remark}), '%')
+            </if>
+            <if test="status != null and status !=''">and status like
+                CONCAT(CONCAT('%', #{status}), '%')
+            </if>
         </where>
 
     </select>
@@ -89,12 +121,24 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="columnId != null and columnId !=''">and column_id = #{columnId}</if>
-            <if test="columnName != null and columnName !=''">and column_name = #{columnName}</if>
-            <if test="columnDesc != null and columnDesc !=''">and column_desc = #{columnDesc}</if>
-            <if test="remark != null and remark !=''">and remark = #{remark}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="columnId != null and columnId !=''">and column_id =
+                #{columnId}
+            </if>
+            <if test="columnName != null and columnName !=''">and column_name =
+                #{columnName}
+            </if>
+            <if test="columnDesc != null and columnDesc !=''">and column_desc =
+                #{columnDesc}
+            </if>
+            <if test="remark != null and remark !=''">and remark =
+                #{remark}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
         </where>
     </select>
 
@@ -104,7 +148,7 @@
         <include refid="Table_Name"/>
         (tenant_id ,column_id ,column_name ,column_desc ,remark )
         values
-        (#{tenantId},#{columnId},#{columnName},#{columnDesc},#{remark})
+        (#{tenantId} ,#{columnId} ,#{columnName} ,#{columnDesc} ,#{remark})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -123,11 +167,17 @@
         ( tenant_id ,column_id ,column_name ,column_desc ,remark ,status)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.columnId},#{entity.columnName},#{entity.columnDesc},#{entity.remark},#{entity.status})
+            ( #{entity.tenantId}, #{entity.columnId}, #{entity.columnName}, #{entity.columnDesc}, #{entity.remark},
+            #{entity.status})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id) ,column_id=values(column_id) ,column_name=values(column_name)
-        ,column_desc=values(column_desc) ,remark=values(remark) ,status=values(status)
+        tenant_id
+        =values(tenant_id) ,column_id
+        =values(column_id) ,column_name
+        =values(column_name) ,column_desc
+        =values(column_desc) ,remark
+        =values(remark) ,status
+        =values(status)
     </insert>
 
     <!--通过主键修改数据-->
@@ -135,12 +185,24 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="columnId != null and columnId != ''">column_id = #{columnId},</if>
-            <if test="columnName != null and columnName != ''">column_name = #{columnName},</if>
-            <if test="columnDesc != null and columnDesc != ''">column_desc = #{columnDesc},</if>
-            <if test="remark != null and remark != ''">remark = #{remark},</if>
-            <if test="status != null and status != ''">status = #{status},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="columnId != null and columnId != ''">column_id = #{columnId
+                    },
+            </if>
+            <if test="columnName != null and columnName != ''">column_name = #{columnName
+                    },
+            </if>
+            <if test="columnDesc != null and columnDesc != ''">column_desc = #{columnDesc
+                    },
+            </if>
+            <if test="remark != null and remark != ''">remark = #{remark
+                    },
+            </if>
+            <if test="status != null and status != ''">status = #{status
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -151,7 +213,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

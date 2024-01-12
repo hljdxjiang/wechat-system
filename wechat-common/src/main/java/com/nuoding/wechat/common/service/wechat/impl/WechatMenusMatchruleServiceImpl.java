@@ -3,17 +3,18 @@ package com.nuoding.wechat.common.service.wechat.impl;
 import com.nuoding.wechat.common.dao.wechat.WechatMenusMatchruleDao;
 import com.nuoding.wechat.common.entity.wechat.WechatMenusMatchruleEntity;
 import com.nuoding.wechat.common.service.wechat.WechatMenusMatchruleService;
+import org.springframework.stereotype.Service;
 import com.nuoding.wechat.common.utils.JsonUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
  * (wechatMenusMatchrule)表服务实现类
  * 微信个性化菜单匹配表
- *
  * @author jhc
  * @since 2023-03-07 14:38:19
  */

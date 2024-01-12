@@ -4,6 +4,7 @@
 
     <resultMap type="com.nuoding.wechat.common.entity.back.BackSysRoleDetailEntity" id="BackSysRoleDetailMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="tenantId" column="tenant_id" jdbcType="VARCHAR"/>
         <result property="roleid" column="roleid" jdbcType="VARCHAR"/>
         <result property="path" column="path" jdbcType="VARCHAR"/>
         <result property="title" column="title" jdbcType="VARCHAR"/>
@@ -16,7 +17,7 @@
     </sql>
 
     <sql id="Base_Column_List">
-                id,roleid,path,title,type,parent_path    </sql>
+                id,tenant_id,roleid,path,title,type,parent_path    </sql>
 
     <!--查询单个-->
     <select id="queryById" resultMap="BackSysRoleDetailMap">
@@ -34,11 +35,24 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="roleid != null and roleid !=''">and roleid = #{roleid}</if>
-            <if test="path != null and path !=''">and path = #{path}</if>
-            <if test="title != null and title !=''">and title = #{title}</if>
-            <if test="type != null and type !=''">and type = #{type}</if>
-            <if test="parentPath != null and parentPath !=''">and parent_path = #{parentPath}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="roleid != null and roleid !=''">and roleid =
+                #{roleid}
+            </if>
+            <if test="path != null and path !=''">and path =
+                #{path}
+            </if>
+            <if test="title != null and title !=''">and title =
+                #{title}
+            </if>
+            <if test="type != null and type !=''">and type =
+                #{type}
+            </if>
+            <if test="parentPath != null and parentPath !=''">and parent_path =
+                #{parentPath}
+            </if>
         </where>
     </select>
 
@@ -49,11 +63,24 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="roleid != null and roleid !=''">and roleid = #{roleid}</if>
-            <if test="path != null and path !=''">and path = #{path}</if>
-            <if test="title != null and title !=''">and title = #{title}</if>
-            <if test="type != null and type !=''">and type = #{type}</if>
-            <if test="parentPath != null and parentPath !=''">and parent_path = #{parentPath}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="roleid != null and roleid !=''">and roleid =
+                #{roleid}
+            </if>
+            <if test="path != null and path !=''">and path =
+                #{path}
+            </if>
+            <if test="title != null and title !=''">and title =
+                #{title}
+            </if>
+            <if test="type != null and type !=''">and type =
+                #{type}
+            </if>
+            <if test="parentPath != null and parentPath !=''">and parent_path =
+                #{parentPath}
+            </if>
         </where>
     </select>
 
@@ -64,12 +91,23 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="roleid != null and roleid !=''">and roleid like CONCAT(CONCAT('%', #{roleid}), '%')</if>
-            <if test="path != null and path !=''">and path like CONCAT(CONCAT('%', #{path}), '%')</if>
-            <if test="title != null and title !=''">and title like CONCAT(CONCAT('%', #{title}), '%')</if>
-            <if test="type != null and type !=''">and type like CONCAT(CONCAT('%', #{type}), '%')</if>
-            <if test="parentPath != null and parentPath !=''">and parent_path like CONCAT(CONCAT('%', #{parentPath}),
-                '%')
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="roleid != null and roleid !=''">and roleid like
+                CONCAT(CONCAT('%', #{roleid}), '%')
+            </if>
+            <if test="path != null and path !=''">and path like
+                CONCAT(CONCAT('%', #{path}), '%')
+            </if>
+            <if test="title != null and title !=''">and title like
+                CONCAT(CONCAT('%', #{title}), '%')
+            </if>
+            <if test="type != null and type !=''">and type like
+                CONCAT(CONCAT('%', #{type}), '%')
+            </if>
+            <if test="parentPath != null and parentPath !=''">and parent_path like
+                CONCAT(CONCAT('%', #{parentPath}), '%')
             </if>
         </where>
 
@@ -81,11 +119,24 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="roleid != null and roleid !=''">and roleid = #{roleid}</if>
-            <if test="path != null and path !=''">and path = #{path}</if>
-            <if test="title != null and title !=''">and title = #{title}</if>
-            <if test="type != null and type !=''">and type = #{type}</if>
-            <if test="parentPath != null and parentPath !=''">and parent_path = #{parentPath}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="roleid != null and roleid !=''">and roleid =
+                #{roleid}
+            </if>
+            <if test="path != null and path !=''">and path =
+                #{path}
+            </if>
+            <if test="title != null and title !=''">and title =
+                #{title}
+            </if>
+            <if test="type != null and type !=''">and type =
+                #{type}
+            </if>
+            <if test="parentPath != null and parentPath !=''">and parent_path =
+                #{parentPath}
+            </if>
         </where>
     </select>
 
@@ -93,32 +144,39 @@
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        (roleid ,path ,title ,type ,parent_path )
+        (tenant_id ,roleid ,path ,title ,type ,parent_path )
         values
-        (#{roleid},#{path},#{title},#{type},#{parentPath})
+        (#{tenantId} ,#{roleid} ,#{path} ,#{title} ,#{type} ,#{parentPath})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( roleid ,path ,title ,type ,parent_path)
+        ( tenant_id ,roleid ,path ,title ,type ,parent_path)
         values
         <foreach collection="entities" item="entity" separator=",">
-            ( #{entity.roleid} ,#{entity.path} ,#{entity.title} ,#{entity.type} ,#{entity.parentPath})
+            ( #{entity.tenantId} ,#{entity.roleid} ,#{entity.path} ,#{entity.title} ,#{entity.type}
+            ,#{entity.parentPath})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into
         <include refid="Table_Name"/>
-        ( roleid ,path ,title ,type ,parent_path)
+        ( tenant_id ,roleid ,path ,title ,type ,parent_path)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.roleid},#{entity.path},#{entity.title},#{entity.type},#{entity.parentPath})
+            ( #{entity.tenantId}, #{entity.roleid}, #{entity.path}, #{entity.title}, #{entity.type},
+            #{entity.parentPath})
         </foreach>
         on duplicate key update
-        roleid=values(roleid) ,path=values(path) ,title=values(title) ,type=values(type)
-        ,parent_path=values(parent_path)
+        tenant_id
+        =values(tenant_id) ,roleid
+        =values(roleid) ,path
+        =values(path) ,title
+        =values(title) ,type
+        =values(type) ,parent_path
+        =values(parent_path)
     </insert>
 
     <!--通过主键修改数据-->
@@ -126,11 +184,24 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="roleid != null and roleid != ''">roleid = #{roleid},</if>
-            <if test="path != null and path != ''">path = #{path},</if>
-            <if test="title != null and title != ''">title = #{title},</if>
-            <if test="type != null and type != ''">type = #{type},</if>
-            <if test="parentPath != null and parentPath != ''">parent_path = #{parentPath},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="roleid != null and roleid != ''">roleid = #{roleid
+                    },
+            </if>
+            <if test="path != null and path != ''">path = #{path
+                    },
+            </if>
+            <if test="title != null and title != ''">title = #{title
+                    },
+            </if>
+            <if test="type != null and type != ''">type = #{type
+                    },
+            </if>
+            <if test="parentPath != null and parentPath != ''">parent_path = #{parentPath
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -141,7 +212,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

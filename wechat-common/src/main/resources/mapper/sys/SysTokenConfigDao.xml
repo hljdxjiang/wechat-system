@@ -38,14 +38,30 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="appid != null and appid !=''">and appid = #{appid}</if>
-            <if test="tokenKey != null and tokenKey !=''">and token_key = #{tokenKey}</if>
-            <if test="tokenDesc != null and tokenDesc !=''">and token_desc = #{tokenDesc}</if>
-            <if test="tokenVaildType != null and tokenVaildType !=''">and token_vaild_type = #{tokenVaildType}</if>
-            <if test="tokenValidTime != null and tokenValidTime !=''">and token_valid_time = #{tokenValidTime}</if>
-            <if test="tokenStatus != null and tokenStatus !=''">and token_status = #{tokenStatus}</if>
-            <if test="lastUpdateTime != null and lastUpdateTime !=''">and last_update_time = #{lastUpdateTime}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="appid != null and appid !=''">and appid =
+                #{appid}
+            </if>
+            <if test="tokenKey != null and tokenKey !=''">and token_key =
+                #{tokenKey}
+            </if>
+            <if test="tokenDesc != null and tokenDesc !=''">and token_desc =
+                #{tokenDesc}
+            </if>
+            <if test="tokenVaildType != null and tokenVaildType !=''">and token_vaild_type =
+                #{tokenVaildType}
+            </if>
+            <if test="tokenValidTime != null and tokenValidTime !=''">and token_valid_time =
+                #{tokenValidTime}
+            </if>
+            <if test="tokenStatus != null and tokenStatus !=''">and token_status =
+                #{tokenStatus}
+            </if>
+            <if test="lastUpdateTime != null and lastUpdateTime !=''">and last_update_time =
+                #{lastUpdateTime}
+            </if>
         </where>
     </select>
 
@@ -56,14 +72,30 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="appid != null and appid !=''">and appid = #{appid}</if>
-            <if test="tokenKey != null and tokenKey !=''">and token_key = #{tokenKey}</if>
-            <if test="tokenDesc != null and tokenDesc !=''">and token_desc = #{tokenDesc}</if>
-            <if test="tokenVaildType != null and tokenVaildType !=''">and token_vaild_type = #{tokenVaildType}</if>
-            <if test="tokenValidTime != null and tokenValidTime !=''">and token_valid_time = #{tokenValidTime}</if>
-            <if test="tokenStatus != null and tokenStatus !=''">and token_status = #{tokenStatus}</if>
-            <if test="lastUpdateTime != null and lastUpdateTime !=''">and last_update_time = #{lastUpdateTime}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="appid != null and appid !=''">and appid =
+                #{appid}
+            </if>
+            <if test="tokenKey != null and tokenKey !=''">and token_key =
+                #{tokenKey}
+            </if>
+            <if test="tokenDesc != null and tokenDesc !=''">and token_desc =
+                #{tokenDesc}
+            </if>
+            <if test="tokenVaildType != null and tokenVaildType !=''">and token_vaild_type =
+                #{tokenVaildType}
+            </if>
+            <if test="tokenValidTime != null and tokenValidTime !=''">and token_valid_time =
+                #{tokenValidTime}
+            </if>
+            <if test="tokenStatus != null and tokenStatus !=''">and token_status =
+                #{tokenStatus}
+            </if>
+            <if test="lastUpdateTime != null and lastUpdateTime !=''">and last_update_time =
+                #{lastUpdateTime}
+            </if>
         </where>
     </select>
 
@@ -74,22 +106,29 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="appid != null and appid !=''">and appid like CONCAT(CONCAT('%', #{appid}), '%')</if>
-            <if test="tokenKey != null and tokenKey !=''">and token_key like CONCAT(CONCAT('%', #{tokenKey}), '%')</if>
-            <if test="tokenDesc != null and tokenDesc !=''">and token_desc like CONCAT(CONCAT('%', #{tokenDesc}), '%')
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
             </if>
-            <if test="tokenVaildType != null and tokenVaildType !=''">and token_vaild_type like CONCAT(CONCAT('%',
-                #{tokenVaildType}), '%')
+            <if test="appid != null and appid !=''">and appid like
+                CONCAT(CONCAT('%', #{appid}), '%')
             </if>
-            <if test="tokenValidTime != null and tokenValidTime !=''">and token_valid_time like CONCAT(CONCAT('%',
-                #{tokenValidTime}), '%')
+            <if test="tokenKey != null and tokenKey !=''">and token_key like
+                CONCAT(CONCAT('%', #{tokenKey}), '%')
             </if>
-            <if test="tokenStatus != null and tokenStatus !=''">and token_status like CONCAT(CONCAT('%',
-                #{tokenStatus}), '%')
+            <if test="tokenDesc != null and tokenDesc !=''">and token_desc like
+                CONCAT(CONCAT('%', #{tokenDesc}), '%')
             </if>
-            <if test="lastUpdateTime != null and lastUpdateTime !=''">and last_update_time like CONCAT(CONCAT('%',
-                #{lastUpdateTime}), '%')
+            <if test="tokenVaildType != null and tokenVaildType !=''">and token_vaild_type like
+                CONCAT(CONCAT('%', #{tokenVaildType}), '%')
+            </if>
+            <if test="tokenValidTime != null and tokenValidTime !=''">and token_valid_time like
+                CONCAT(CONCAT('%', #{tokenValidTime}), '%')
+            </if>
+            <if test="tokenStatus != null and tokenStatus !=''">and token_status like
+                CONCAT(CONCAT('%', #{tokenStatus}), '%')
+            </if>
+            <if test="lastUpdateTime != null and lastUpdateTime !=''">and last_update_time like
+                CONCAT(CONCAT('%', #{lastUpdateTime}), '%')
             </if>
         </where>
 
@@ -101,14 +140,30 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="appid != null and appid !=''">and appid = #{appid}</if>
-            <if test="tokenKey != null and tokenKey !=''">and token_key = #{tokenKey}</if>
-            <if test="tokenDesc != null and tokenDesc !=''">and token_desc = #{tokenDesc}</if>
-            <if test="tokenVaildType != null and tokenVaildType !=''">and token_vaild_type = #{tokenVaildType}</if>
-            <if test="tokenValidTime != null and tokenValidTime !=''">and token_valid_time = #{tokenValidTime}</if>
-            <if test="tokenStatus != null and tokenStatus !=''">and token_status = #{tokenStatus}</if>
-            <if test="lastUpdateTime != null and lastUpdateTime !=''">and last_update_time = #{lastUpdateTime}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="appid != null and appid !=''">and appid =
+                #{appid}
+            </if>
+            <if test="tokenKey != null and tokenKey !=''">and token_key =
+                #{tokenKey}
+            </if>
+            <if test="tokenDesc != null and tokenDesc !=''">and token_desc =
+                #{tokenDesc}
+            </if>
+            <if test="tokenVaildType != null and tokenVaildType !=''">and token_vaild_type =
+                #{tokenVaildType}
+            </if>
+            <if test="tokenValidTime != null and tokenValidTime !=''">and token_valid_time =
+                #{tokenValidTime}
+            </if>
+            <if test="tokenStatus != null and tokenStatus !=''">and token_status =
+                #{tokenStatus}
+            </if>
+            <if test="lastUpdateTime != null and lastUpdateTime !=''">and last_update_time =
+                #{lastUpdateTime}
+            </if>
         </where>
     </select>
 
@@ -118,7 +173,8 @@
         <include refid="Table_Name"/>
         (tenant_id ,appid ,token_key ,token_desc ,token_vaild_type ,token_valid_time ,token_status ,last_update_time )
         values
-        (#{tenantId},#{appid},#{tokenKey},#{tokenDesc},#{tokenVaildType},#{tokenValidTime},#{tokenStatus},#{lastUpdateTime})
+        (#{tenantId} ,#{appid} ,#{tokenKey} ,#{tokenDesc} ,#{tokenVaildType} ,#{tokenValidTime} ,#{tokenStatus}
+        ,#{lastUpdateTime})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -138,12 +194,19 @@
         ( tenant_id ,appid ,token_key ,token_desc ,token_vaild_type ,token_valid_time ,token_status ,last_update_time)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.appid},#{entity.tokenKey},#{entity.tokenDesc},#{entity.tokenVaildType},#{entity.tokenValidTime},#{entity.tokenStatus},#{entity.lastUpdateTime})
+            ( #{entity.tenantId}, #{entity.appid}, #{entity.tokenKey}, #{entity.tokenDesc}, #{entity.tokenVaildType},
+            #{entity.tokenValidTime}, #{entity.tokenStatus}, #{entity.lastUpdateTime})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id) ,appid=values(appid) ,token_key=values(token_key) ,token_desc=values(token_desc)
-        ,token_vaild_type=values(token_vaild_type) ,token_valid_time=values(token_valid_time)
-        ,token_status=values(token_status) ,last_update_time=values(last_update_time)
+        tenant_id
+        =values(tenant_id) ,appid
+        =values(appid) ,token_key
+        =values(token_key) ,token_desc
+        =values(token_desc) ,token_vaild_type
+        =values(token_vaild_type) ,token_valid_time
+        =values(token_valid_time) ,token_status
+        =values(token_status) ,last_update_time
+        =values(last_update_time)
     </insert>
 
     <!--通过主键修改数据-->
@@ -151,14 +214,30 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="appid != null and appid != ''">appid = #{appid},</if>
-            <if test="tokenKey != null and tokenKey != ''">token_key = #{tokenKey},</if>
-            <if test="tokenDesc != null and tokenDesc != ''">token_desc = #{tokenDesc},</if>
-            <if test="tokenVaildType != null and tokenVaildType != ''">token_vaild_type = #{tokenVaildType},</if>
-            <if test="tokenValidTime != null and tokenValidTime != ''">token_valid_time = #{tokenValidTime},</if>
-            <if test="tokenStatus != null and tokenStatus != ''">token_status = #{tokenStatus},</if>
-            <if test="lastUpdateTime != null and lastUpdateTime != ''">last_update_time = #{lastUpdateTime},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="appid != null and appid != ''">appid = #{appid
+                    },
+            </if>
+            <if test="tokenKey != null and tokenKey != ''">token_key = #{tokenKey
+                    },
+            </if>
+            <if test="tokenDesc != null and tokenDesc != ''">token_desc = #{tokenDesc
+                    },
+            </if>
+            <if test="tokenVaildType != null and tokenVaildType != ''">token_vaild_type = #{tokenVaildType
+                    },
+            </if>
+            <if test="tokenValidTime != null and tokenValidTime != ''">token_valid_time = #{tokenValidTime
+                    },
+            </if>
+            <if test="tokenStatus != null and tokenStatus != ''">token_status = #{tokenStatus
+                    },
+            </if>
+            <if test="lastUpdateTime != null and lastUpdateTime != ''">last_update_time = #{lastUpdateTime
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -169,7 +248,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

@@ -35,10 +35,18 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="couponId != null and couponId !=''">and coupon_id = #{couponId}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="ruleId != null and ruleId !=''">and rule_id = #{ruleId}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="couponId != null and couponId !=''">and coupon_id =
+                #{couponId}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="ruleId != null and ruleId !=''">and rule_id =
+                #{ruleId}
+            </if>
         </where>
     </select>
 
@@ -49,10 +57,18 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="couponId != null and couponId !=''">and coupon_id = #{couponId}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="ruleId != null and ruleId !=''">and rule_id = #{ruleId}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="couponId != null and couponId !=''">and coupon_id =
+                #{couponId}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="ruleId != null and ruleId !=''">and rule_id =
+                #{ruleId}
+            </if>
         </where>
     </select>
 
@@ -63,10 +79,18 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="couponId != null and couponId !=''">and coupon_id like CONCAT(CONCAT('%', #{couponId}), '%')</if>
-            <if test="status != null and status !=''">and status like CONCAT(CONCAT('%', #{status}), '%')</if>
-            <if test="ruleId != null and ruleId !=''">and rule_id like CONCAT(CONCAT('%', #{ruleId}), '%')</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="couponId != null and couponId !=''">and coupon_id like
+                CONCAT(CONCAT('%', #{couponId}), '%')
+            </if>
+            <if test="status != null and status !=''">and status like
+                CONCAT(CONCAT('%', #{status}), '%')
+            </if>
+            <if test="ruleId != null and ruleId !=''">and rule_id like
+                CONCAT(CONCAT('%', #{ruleId}), '%')
+            </if>
         </where>
 
     </select>
@@ -77,10 +101,18 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="couponId != null and couponId !=''">and coupon_id = #{couponId}</if>
-            <if test="status != null and status !=''">and status = #{status}</if>
-            <if test="ruleId != null and ruleId !=''">and rule_id = #{ruleId}</if>
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
+            </if>
+            <if test="couponId != null and couponId !=''">and coupon_id =
+                #{couponId}
+            </if>
+            <if test="status != null and status !=''">and status =
+                #{status}
+            </if>
+            <if test="ruleId != null and ruleId !=''">and rule_id =
+                #{ruleId}
+            </if>
         </where>
     </select>
 
@@ -90,7 +122,7 @@
         <include refid="Table_Name"/>
         (tenant_id ,coupon_id ,rule_id )
         values
-        (#{tenantId},#{couponId},#{ruleId})
+        (#{tenantId} ,#{couponId} ,#{ruleId})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -109,10 +141,14 @@
         ( tenant_id ,coupon_id ,status ,rule_id)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.couponId},#{entity.status},#{entity.ruleId})
+            ( #{entity.tenantId}, #{entity.couponId}, #{entity.status}, #{entity.ruleId})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id) ,coupon_id=values(coupon_id) ,status=values(status) ,rule_id=values(rule_id)
+        tenant_id
+        =values(tenant_id) ,coupon_id
+        =values(coupon_id) ,status
+        =values(status) ,rule_id
+        =values(rule_id)
     </insert>
 
     <!--通过主键修改数据-->
@@ -120,10 +156,18 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="couponId != null and couponId != ''">coupon_id = #{couponId},</if>
-            <if test="status != null and status != ''">status = #{status},</if>
-            <if test="ruleId != null and ruleId != ''">rule_id = #{ruleId},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="couponId != null and couponId != ''">coupon_id = #{couponId
+                    },
+            </if>
+            <if test="status != null and status != ''">status = #{status
+                    },
+            </if>
+            <if test="ruleId != null and ruleId != ''">rule_id = #{ruleId
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -134,7 +178,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>

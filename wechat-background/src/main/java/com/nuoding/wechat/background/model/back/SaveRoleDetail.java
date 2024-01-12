@@ -19,7 +19,7 @@ public class SaveRoleDetail extends BaseDTO {
     /**
      * 角色描述
      */
-    private String roleDesc;
+    private String roleRemark;
 
     private List<String> menus;
 
@@ -41,12 +41,12 @@ public class SaveRoleDetail extends BaseDTO {
         this.roleName = roleName;
     }
 
-    public String getRoleDesc() {
-        return roleDesc;
+    public String getRoleRemark() {
+        return roleRemark;
     }
 
-    public void setRoleDesc(String roleDesc) {
-        this.roleDesc = roleDesc;
+    public void setRoleRemark(String roleRemark) {
+        this.roleRemark = roleRemark;
     }
 
     public List<String> getMenus() {

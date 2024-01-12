@@ -127,7 +127,7 @@ public class RoleServiceImpl implements RoleService {
         BackSysRolesEntity entity = new BackSysRolesEntity();
         entity.setRoleId(saveRoleDetail.getRoleId());
         entity.setRoleName(saveRoleDetail.getRoleName());
-        entity.setRoleRemark(saveRoleDetail.getRoleDesc());
+        entity.setRoleRemark(saveRoleDetail.getRoleRemark());
         backSysRolesService.insert(entity);
         List<String> mens = saveRoleDetail.getMenus();
         if (CollectionUtils.isNotEmpty(mens)) {

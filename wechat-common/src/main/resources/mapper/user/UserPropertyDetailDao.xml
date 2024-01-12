@@ -41,18 +41,39 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="userid != null and userid !=''">and userid = #{userid}</if>
-            <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
-            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
             </if>
-            <if test="propertyType != null and propertyType !=''">and property_type = #{propertyType}</if>
-            <if test="operaType != null and operaType !=''">and opera_type = #{operaType}</if>
-            <if test="amount != null and amount !=''">and amount = #{amount}</if>
-            <if test="relateType != null and relateType !=''">and relate_type = #{relateType}</if>
-            <if test="relateId != null and relateId !=''">and relate_id = #{relateId}</if>
-            <if test="expireDate != null and expireDate !=''">and expire_date = #{expireDate}</if>
-            <if test="vaildType != null and vaildType !=''">and vaild_type = #{vaildType}</if>
+            <if test="userid != null and userid !=''">and userid =
+                #{userid}
+            </if>
+            <if test="createtime != null and createtime !=''">and createtime =
+                #{createtime}
+            </if>
+            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime =
+                #{lastmodifiedtime}
+            </if>
+            <if test="propertyType != null and propertyType !=''">and property_type =
+                #{propertyType}
+            </if>
+            <if test="operaType != null and operaType !=''">and opera_type =
+                #{operaType}
+            </if>
+            <if test="amount != null and amount !=''">and amount =
+                #{amount}
+            </if>
+            <if test="relateType != null and relateType !=''">and relate_type =
+                #{relateType}
+            </if>
+            <if test="relateId != null and relateId !=''">and relate_id =
+                #{relateId}
+            </if>
+            <if test="expireDate != null and expireDate !=''">and expire_date =
+                #{expireDate}
+            </if>
+            <if test="vaildType != null and vaildType !=''">and vaild_type =
+                #{vaildType}
+            </if>
         </where>
     </select>
 
@@ -63,18 +84,39 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="userid != null and userid !=''">and userid = #{userid}</if>
-            <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
-            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
             </if>
-            <if test="propertyType != null and propertyType !=''">and property_type = #{propertyType}</if>
-            <if test="operaType != null and operaType !=''">and opera_type = #{operaType}</if>
-            <if test="amount != null and amount !=''">and amount = #{amount}</if>
-            <if test="relateType != null and relateType !=''">and relate_type = #{relateType}</if>
-            <if test="relateId != null and relateId !=''">and relate_id = #{relateId}</if>
-            <if test="expireDate != null and expireDate !=''">and expire_date = #{expireDate}</if>
-            <if test="vaildType != null and vaildType !=''">and vaild_type = #{vaildType}</if>
+            <if test="userid != null and userid !=''">and userid =
+                #{userid}
+            </if>
+            <if test="createtime != null and createtime !=''">and createtime =
+                #{createtime}
+            </if>
+            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime =
+                #{lastmodifiedtime}
+            </if>
+            <if test="propertyType != null and propertyType !=''">and property_type =
+                #{propertyType}
+            </if>
+            <if test="operaType != null and operaType !=''">and opera_type =
+                #{operaType}
+            </if>
+            <if test="amount != null and amount !=''">and amount =
+                #{amount}
+            </if>
+            <if test="relateType != null and relateType !=''">and relate_type =
+                #{relateType}
+            </if>
+            <if test="relateId != null and relateId !=''">and relate_id =
+                #{relateId}
+            </if>
+            <if test="expireDate != null and expireDate !=''">and expire_date =
+                #{expireDate}
+            </if>
+            <if test="vaildType != null and vaildType !=''">and vaild_type =
+                #{vaildType}
+            </if>
         </where>
     </select>
 
@@ -85,28 +127,38 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="userid != null and userid !=''">and userid like CONCAT(CONCAT('%', #{userid}), '%')</if>
-            <if test="createtime != null and createtime !=''">and createtime like CONCAT(CONCAT('%', #{createtime}),
-                '%')
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
             </if>
-            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime like CONCAT(CONCAT('%',
-                #{lastmodifiedtime}), '%')
+            <if test="userid != null and userid !=''">and userid like
+                CONCAT(CONCAT('%', #{userid}), '%')
             </if>
-            <if test="propertyType != null and propertyType !=''">and property_type like CONCAT(CONCAT('%',
-                #{propertyType}), '%')
+            <if test="createtime != null and createtime !=''">and createtime like
+                CONCAT(CONCAT('%', #{createtime}), '%')
             </if>
-            <if test="operaType != null and operaType !=''">and opera_type like CONCAT(CONCAT('%', #{operaType}), '%')
+            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime like
+                CONCAT(CONCAT('%', #{lastmodifiedtime}), '%')
             </if>
-            <if test="amount != null and amount !=''">and amount like CONCAT(CONCAT('%', #{amount}), '%')</if>
-            <if test="relateType != null and relateType !=''">and relate_type like CONCAT(CONCAT('%', #{relateType}),
-                '%')
+            <if test="propertyType != null and propertyType !=''">and property_type like
+                CONCAT(CONCAT('%', #{propertyType}), '%')
             </if>
-            <if test="relateId != null and relateId !=''">and relate_id like CONCAT(CONCAT('%', #{relateId}), '%')</if>
-            <if test="expireDate != null and expireDate !=''">and expire_date like CONCAT(CONCAT('%', #{expireDate}),
-                '%')
+            <if test="operaType != null and operaType !=''">and opera_type like
+                CONCAT(CONCAT('%', #{operaType}), '%')
             </if>
-            <if test="vaildType != null and vaildType !=''">and vaild_type like CONCAT(CONCAT('%', #{vaildType}), '%')
+            <if test="amount != null and amount !=''">and amount like
+                CONCAT(CONCAT('%', #{amount}), '%')
+            </if>
+            <if test="relateType != null and relateType !=''">and relate_type like
+                CONCAT(CONCAT('%', #{relateType}), '%')
+            </if>
+            <if test="relateId != null and relateId !=''">and relate_id like
+                CONCAT(CONCAT('%', #{relateId}), '%')
+            </if>
+            <if test="expireDate != null and expireDate !=''">and expire_date like
+                CONCAT(CONCAT('%', #{expireDate}), '%')
+            </if>
+            <if test="vaildType != null and vaildType !=''">and vaild_type like
+                CONCAT(CONCAT('%', #{vaildType}), '%')
             </if>
         </where>
 
@@ -118,18 +170,39 @@
         from
         <include refid="Table_Name"/>
         <where>
-            <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
-            <if test="userid != null and userid !=''">and userid = #{userid}</if>
-            <if test="createtime != null and createtime !=''">and createtime = #{createtime}</if>
-            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime = #{lastmodifiedtime}
+            <if test="tenantId != null and tenantId !=''">and tenant_id =
+                #{tenantId}
             </if>
-            <if test="propertyType != null and propertyType !=''">and property_type = #{propertyType}</if>
-            <if test="operaType != null and operaType !=''">and opera_type = #{operaType}</if>
-            <if test="amount != null and amount !=''">and amount = #{amount}</if>
-            <if test="relateType != null and relateType !=''">and relate_type = #{relateType}</if>
-            <if test="relateId != null and relateId !=''">and relate_id = #{relateId}</if>
-            <if test="expireDate != null and expireDate !=''">and expire_date = #{expireDate}</if>
-            <if test="vaildType != null and vaildType !=''">and vaild_type = #{vaildType}</if>
+            <if test="userid != null and userid !=''">and userid =
+                #{userid}
+            </if>
+            <if test="createtime != null and createtime !=''">and createtime =
+                #{createtime}
+            </if>
+            <if test="lastmodifiedtime != null and lastmodifiedtime !=''">and lastmodifiedtime =
+                #{lastmodifiedtime}
+            </if>
+            <if test="propertyType != null and propertyType !=''">and property_type =
+                #{propertyType}
+            </if>
+            <if test="operaType != null and operaType !=''">and opera_type =
+                #{operaType}
+            </if>
+            <if test="amount != null and amount !=''">and amount =
+                #{amount}
+            </if>
+            <if test="relateType != null and relateType !=''">and relate_type =
+                #{relateType}
+            </if>
+            <if test="relateId != null and relateId !=''">and relate_id =
+                #{relateId}
+            </if>
+            <if test="expireDate != null and expireDate !=''">and expire_date =
+                #{expireDate}
+            </if>
+            <if test="vaildType != null and vaildType !=''">and vaild_type =
+                #{vaildType}
+            </if>
         </where>
     </select>
 
@@ -140,7 +213,8 @@
         (tenant_id ,userid ,createtime ,lastmodifiedtime ,property_type ,opera_type ,amount ,relate_type ,relate_id
         ,expire_date ,vaild_type )
         values
-        (#{tenantId},#{userid},#{createtime},#{lastmodifiedtime},#{propertyType},#{operaType},#{amount},#{relateType},#{relateId},#{expireDate},#{vaildType})
+        (#{tenantId} ,#{userid} ,#{createtime} ,#{lastmodifiedtime} ,#{propertyType} ,#{operaType} ,#{amount}
+        ,#{relateType} ,#{relateId} ,#{expireDate} ,#{vaildType})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
@@ -163,13 +237,23 @@
         ,expire_date ,vaild_type)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.tenantId},#{entity.userid},#{entity.createtime},#{entity.lastmodifiedtime},#{entity.propertyType},#{entity.operaType},#{entity.amount},#{entity.relateType},#{entity.relateId},#{entity.expireDate},#{entity.vaildType})
+            ( #{entity.tenantId}, #{entity.userid}, #{entity.createtime}, #{entity.lastmodifiedtime},
+            #{entity.propertyType}, #{entity.operaType}, #{entity.amount}, #{entity.relateType}, #{entity.relateId},
+            #{entity.expireDate}, #{entity.vaildType})
         </foreach>
         on duplicate key update
-        tenant_id=values(tenant_id) ,userid=values(userid) ,createtime=values(createtime)
-        ,lastmodifiedtime=values(lastmodifiedtime) ,property_type=values(property_type) ,opera_type=values(opera_type)
-        ,amount=values(amount) ,relate_type=values(relate_type) ,relate_id=values(relate_id)
-        ,expire_date=values(expire_date) ,vaild_type=values(vaild_type)
+        tenant_id
+        =values(tenant_id) ,userid
+        =values(userid) ,createtime
+        =values(createtime) ,lastmodifiedtime
+        =values(lastmodifiedtime) ,property_type
+        =values(property_type) ,opera_type
+        =values(opera_type) ,amount
+        =values(amount) ,relate_type
+        =values(relate_type) ,relate_id
+        =values(relate_id) ,expire_date
+        =values(expire_date) ,vaild_type
+        =values(vaild_type)
     </insert>
 
     <!--通过主键修改数据-->
@@ -177,17 +261,39 @@
         update
         <include refid="Table_Name"/>
         <set>
-            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId},</if>
-            <if test="userid != null and userid != ''">userid = #{userid},</if>
-            <if test="createtime != null and createtime != ''">createtime = #{createtime},</if>
-            <if test="lastmodifiedtime != null and lastmodifiedtime != ''">lastmodifiedtime = #{lastmodifiedtime},</if>
-            <if test="propertyType != null and propertyType != ''">property_type = #{propertyType},</if>
-            <if test="operaType != null and operaType != ''">opera_type = #{operaType},</if>
-            <if test="amount != null and amount != ''">amount = #{amount},</if>
-            <if test="relateType != null and relateType != ''">relate_type = #{relateType},</if>
-            <if test="relateId != null and relateId != ''">relate_id = #{relateId},</if>
-            <if test="expireDate != null and expireDate != ''">expire_date = #{expireDate},</if>
-            <if test="vaildType != null and vaildType != ''">vaild_type = #{vaildType},</if>
+            <if test="tenantId != null and tenantId != ''">tenant_id = #{tenantId
+                    },
+            </if>
+            <if test="userid != null and userid != ''">userid = #{userid
+                    },
+            </if>
+            <if test="createtime != null and createtime != ''">createtime = #{createtime
+                    },
+            </if>
+            <if test="lastmodifiedtime != null and lastmodifiedtime != ''">lastmodifiedtime = #{lastmodifiedtime
+                    },
+            </if>
+            <if test="propertyType != null and propertyType != ''">property_type = #{propertyType
+                    },
+            </if>
+            <if test="operaType != null and operaType != ''">opera_type = #{operaType
+                    },
+            </if>
+            <if test="amount != null and amount != ''">amount = #{amount
+                    },
+            </if>
+            <if test="relateType != null and relateType != ''">relate_type = #{relateType
+                    },
+            </if>
+            <if test="relateId != null and relateId != ''">relate_id = #{relateId
+                    },
+            </if>
+            <if test="expireDate != null and expireDate != ''">expire_date = #{expireDate
+                    },
+            </if>
+            <if test="vaildType != null and vaildType != ''">vaild_type = #{vaildType
+                    },
+            </if>
         </set>
         where id = #{id}
         <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
@@ -198,7 +304,6 @@
         delete from
         <include refid="Table_Name"/>
         where id = #{id}
-        <if test="tenantId != null and tenantId !=''">and tenant_id = #{tenantId}</if>
     </delete>
 
 </mapper>
