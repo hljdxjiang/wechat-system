@@ -2,6 +2,7 @@ package com.nuoding.wechat.common.utils;
 
 import com.nuoding.wechat.common.constant.Constants;
 
+import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
@@ -14,6 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  **/
 public class IdGenerateUtils {
 
+    private static final String characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     private final static AtomicInteger atomic = new AtomicInteger(0);
 
     private final static SnowFlake snowFlake = new SnowFlake(2, 3);
@@ -118,5 +120,34 @@ public class IdGenerateUtils {
      */
     public static String generateRedis(Long incrKey) {
         return String.format(Constants.OFFSET, incrKey);
+    }
+
+    /**
+     * @Ahther:JHC
+     * @Description:生成随机字符串
+     * @Date:2024/1/31 17:56
+     */
+    public static String generateRandomString(int length) {
+        String characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        SecureRandom secureRandom = new SecureRandom();
+        StringBuilder salt = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            int randomIndex = secureRandom.nextInt(characters.length());
+            salt.append(characters.charAt(randomIndex));
+        }
+        return salt.toString();
+    }
+
+    /**
+     * @Ahther:JHC
+     * @Description:生成指定区间的随机数
+     * @Date:2024/1/31 18:33
+     */
+    public static int generateRandomNumber(int min, int max) {
+        if (max < min) {
+            return 0;
+        }
+        SecureRandom secureRandom = new SecureRandom();
+        return secureRandom.nextInt(max - min + 1) + min;
     }
 }

@@ -111,14 +111,14 @@ public class CrmBrandInfoEntity implements Serializable {
     /**
      * 合约生效日
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "vaild_date")
     private Date vaildDate;
 
     /**
      * 合约失效日期
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "expired_date")
     private Date expiredDate;
 

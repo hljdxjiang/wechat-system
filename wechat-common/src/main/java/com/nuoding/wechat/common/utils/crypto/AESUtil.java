@@ -1,12 +1,18 @@
 package com.nuoding.wechat.common.utils.crypto;
 
+import org.apache.logging.log4j.util.Strings;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
+import java.security.NoSuchAlgorithmException;
 import java.security.spec.KeySpec;
 import java.util.Base64;
 
@@ -17,16 +23,22 @@ import java.util.Base64;
  */
 public class AESUtil {
 
+    private final static Logger logger = LoggerFactory.getLogger(AESUtil.class);
+
     private static final String AES_ALGORITHM = "AES";
     private static final String AES_CIPHER_ALGORITHM = "AES/CBC/PKCS5Padding"; // 使用CBC模式和PKCS5Padding填充
     private static final String SECRET_KEY_FACTORY_ALGORITHM = "PBKDF2WithHmacSHA256";
-    private static final int ITERATION_COUNT = 65536; // 迭代次数
+    private static final int ITERATION_COUNT = 256; // 迭代次数
     private static final int KEY_LENGTH = 256; // 密钥长度
-    private static final int GCM_NONCE_LENGTH = 12; // GCM模式下的Nonce长度
+    private static final int GCM_NONCE_LENGTH = 16; // GCM模式下的Nonce长度
 
     public static String encrypt(String plaintext, String password) {
+        return encrypt(plaintext, password, "0");
+    }
+
+    public static String encrypt(String plaintext, String password, String salt) {
         try {
-            SecretKey secretKey = generateKey(password);
+            SecretKey secretKey = generateKey(password, salt);
 
             Cipher cipher = Cipher.getInstance(AES_CIPHER_ALGORITHM);
             byte[] iv = generateIV();
@@ -41,13 +53,14 @@ public class AESUtil {
 
             return Base64.getEncoder().encodeToString(combined);
         } catch (Exception e) {
-            return null;
+            logger.error("encrypt end with exception:[{}].stackTrance:[{}]", e.getMessage(), e.getStackTrace());
+            return Strings.EMPTY;
         }
     }
 
-    public static String decrypt(String ciphertext, String password) {
+    public static String decrypt(String ciphertext, String password, String salt) {
         try {
-            SecretKey secretKey = generateKey(password);
+            SecretKey secretKey = generateKey(password, salt);
 
             Cipher cipher = Cipher.getInstance(AES_CIPHER_ALGORITHM);
             byte[] combined = Base64.getDecoder().decode(ciphertext);
@@ -55,17 +68,24 @@ public class AESUtil {
             System.arraycopy(combined, 0, iv, 0, GCM_NONCE_LENGTH);
             cipher.init(Cipher.DECRYPT_MODE, secretKey, new IvParameterSpec(iv));
 
+            // Use combined array instead of ciphertext.getBytes()
             byte[] decryptedBytes = cipher.doFinal(combined, GCM_NONCE_LENGTH, combined.length - GCM_NONCE_LENGTH);
 
             return new String(decryptedBytes, StandardCharsets.UTF_8);
         } catch (Exception e) {
-            return null;
+            logger.error("decrypt end with exception:[{}].stackTrace:[{}]", e.getMessage(), e.getStackTrace());
+            return Strings.EMPTY;
         }
     }
 
-    private static SecretKey generateKey(String password) throws Exception {
+
+    public static String decrypt(String ciphertext, String password) {
+        return decrypt(ciphertext, password, "0");
+    }
+
+    private static SecretKey generateKey(String password, String salt) throws Exception {
         SecretKeyFactory factory = SecretKeyFactory.getInstance(SECRET_KEY_FACTORY_ALGORITHM);
-        KeySpec spec = new PBEKeySpec(password.toCharArray(), new byte[0], ITERATION_COUNT, KEY_LENGTH);
+        KeySpec spec = new PBEKeySpec(password.toCharArray(), salt.getBytes(), ITERATION_COUNT, KEY_LENGTH);
         return new SecretKeySpec(factory.generateSecret(spec).getEncoded(), AES_ALGORITHM);
     }
 
@@ -77,6 +97,24 @@ public class AESUtil {
             iv[i] = (byte) (Math.random() * 256);
         }
         return iv;
+    }
+
+    /**
+     * @Ahther:JHC
+     * @Description:生成随机秘钥
+     * @Date:2024/1/31 17:52 
+     */
+    public static String generateKey() {
+        KeyGenerator keyGenerator;
+        try {
+            keyGenerator = KeyGenerator.getInstance(AES_ALGORITHM);
+            keyGenerator.init(KEY_LENGTH);
+            SecretKey secretKey = keyGenerator.generateKey();
+            return Base64.getEncoder().encodeToString(secretKey.getEncoded());
+        } catch (NoSuchAlgorithmException e) {
+            logger.error("generateKey end with exception:[{}].stackTrance:[{}]", e.getMessage(), e.getStackTrace());
+            return Strings.EMPTY;
+        }
     }
 }
 
