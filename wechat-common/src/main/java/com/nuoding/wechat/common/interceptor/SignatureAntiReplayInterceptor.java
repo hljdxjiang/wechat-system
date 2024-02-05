@@ -1,5 +1,6 @@
 package com.nuoding.wechat.common.interceptor;
 
+import com.google.common.hash.Hashing;
 import com.nuoding.wechat.common.constant.RedisKey;
 import com.nuoding.wechat.common.constant.SessionKey;
 import com.nuoding.wechat.common.enums.RespStatusEnum;
@@ -9,7 +10,7 @@ import com.nuoding.wechat.common.model.base.MapRequest;
 import com.nuoding.wechat.common.model.base.MapResponse;
 import com.nuoding.wechat.common.service.RedisService;
 import com.nuoding.wechat.common.utils.JsonUtil;
-import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.io.Charsets;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +24,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * @Ahther:JHC
@@ -40,8 +44,7 @@ public class SignatureAntiReplayInterceptor implements AsyncHandlerInterceptor {
     private RedisService redisService;
 
     @Override
-    public boolean preHandle(HttpServletRequest servletRequest,
-                             HttpServletResponse servletResponse, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest servletRequest, HttpServletResponse servletResponse, Object handler) throws Exception {
         MultiReadHttpRequestWrapper request = new MultiReadHttpRequestWrapper((HttpServletRequest) servletRequest);
         if (request == null) {
             logger.error("SignatureAntiReplayInterceptor preHandle begin.request is null");
@@ -84,10 +87,10 @@ public class SignatureAntiReplayInterceptor implements AsyncHandlerInterceptor {
             logger.info("SignatureAntiReplayInterceptor checkValue.checkParam return false");
             returnJson(response, RespStatusEnum.ARGS_NULL);
         }
-        //检查报文完整性
-        if (!checkSession(header, checkSession)) {
-            logger.info("SignatureAntiReplayInterceptor checkValue.checkSession return false");
-            returnJson(response, RespStatusEnum.REQUEST_SESSION_ERROR);
+        //检查时钟服务是否正常
+        if (!checkExpire(Long.parseLong(header.getTimeStamp()))) {
+            logger.info("SignatureAntiReplayInterceptor checkValue.checkExpire return false");
+            returnJson(response, RespStatusEnum.REQUEST_TIME_ERROR);
         }
         //判断RequestID请求重复
         String redisRequestId = redisService.getValue(RedisKey.USER_REQUEST_REPLAY_KEY_PRE.concat(header.getRequestId()));
@@ -95,25 +98,29 @@ public class SignatureAntiReplayInterceptor implements AsyncHandlerInterceptor {
             logger.info("SignatureAntiReplayInterceptor checkValue.requestID return false");
             returnJson(response, RespStatusEnum.REQUEST_REPEAT);
         }
+        //检查报文完整性
+        if (!checkSession(header, checkSession)) {
+            logger.info("SignatureAntiReplayInterceptor checkValue.checkSession return false");
+            returnJson(response, RespStatusEnum.REQUEST_SESSION_ERROR);
+        }
+
         //比对报文签章
         if (!checkSign(header, body)) {
             logger.info("SignatureAntiReplayInterceptor checkValue.checkSign return false");
             returnJson(response, RespStatusEnum.REQUEST_ILLEGAL);
         }
-        if (!checkExpire(Long.parseLong(header.getTimeStamp()))) {
-            logger.info("SignatureAntiReplayInterceptor checkValue.checkExpire return false");
-            returnJson(response, RespStatusEnum.REQUEST_TIME_ERROR);
-        }
     }
 
     private boolean checkSign(ReqHeader header, String body) {
         String signature = header.getSignature();
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append(header.getUserId());
-        stringBuffer.append(header.getTimeStamp());
-        stringBuffer.append(header.getRequestId());
-        stringBuffer.append(body);
-        String decryptData = DigestUtils.sha256Hex(stringBuffer.toString());
+        List<String> list = new ArrayList<>();
+        list.add(header.getUserId());
+        list.add(header.getRequestId());
+        list.add(header.getVersion());
+        list.add(header.getTransCode());
+        list.add(header.getNonce());
+
+        String decryptData = getSign(list);
         if (!StringUtils.equals(signature, decryptData)) {
             return false;
         }
@@ -138,8 +145,7 @@ public class SignatureAntiReplayInterceptor implements AsyncHandlerInterceptor {
         String signature = header.getSignature();
         String timeStamp = header.getTimeStamp();
         String requestId = header.getRequestId();
-        if (StringUtils.isBlank(signature) ||
-                StringUtils.isBlank(timeStamp) || StringUtils.isBlank(requestId)) {
+        if (StringUtils.isBlank(signature) || StringUtils.isBlank(timeStamp) || StringUtils.isBlank(requestId)) {
             return false;
         }
         if (checkSession && StringUtils.isBlank(userID)) {
@@ -158,6 +164,18 @@ public class SignatureAntiReplayInterceptor implements AsyncHandlerInterceptor {
             return false;
         }
         return true;
+    }
+
+    private String getSign(List<String> list) {
+        list.removeAll(Collections.singleton(null));
+        Collections.sort(list);
+
+        StringBuilder sb = new StringBuilder();
+        for (String s : list) {
+            sb.append(s);
+        }
+        String ret = Hashing.sha1().hashString(sb, Charsets.UTF_8).toString().toUpperCase();
+        return ret;
     }
 
     /***
@@ -181,8 +199,7 @@ public class SignatureAntiReplayInterceptor implements AsyncHandlerInterceptor {
         } catch (IOException e) {
             logger.error("SignatureAntiReplayInterceptor response error", e);
         } finally {
-            if (writer != null)
-                writer.close();
+            if (writer != null) writer.close();
         }
     }
 

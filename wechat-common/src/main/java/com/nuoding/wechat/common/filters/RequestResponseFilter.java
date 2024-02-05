@@ -4,6 +4,7 @@ package com.nuoding.wechat.common.filters;
 import com.nuoding.wechat.common.constant.CommonConstant;
 import com.nuoding.wechat.common.constant.UtilConstant;
 import com.nuoding.wechat.common.utils.CommonUtil;
+import com.nuoding.wechat.common.utils.EncryptionUtil;
 import com.nuoding.wechat.common.utils.JsonUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -94,12 +95,12 @@ public class RequestResponseFilter implements Filter {
         //加密数据
         String cipherText = "999";
         try {
-            logger.info("encodeRespData 原数据={}", new String(content));
-            //TODO 加密数据
+            String retStr = new String(content);
+            logger.info("encodeRespData 原数据={}", retStr);
+            cipherText = EncryptionUtil.encrypt(retStr);
         } catch (Exception e) {
             logger.error("encodeRespData加密失败", e);
         }
-
         response.setHeader("Content-Type", "text/plain;charset=UTF-8");
         byte[] cipher = cipherText.getBytes();
         response.setContentLength(cipher.length);
@@ -107,7 +108,6 @@ public class RequestResponseFilter implements Filter {
         out.write(cipher);
         out.flush();
         out.close();
-
     }
 
     /**
@@ -148,9 +148,10 @@ public class RequestResponseFilter implements Filter {
         }
         byte[] body = StreamUtils.copyToByteArray(inputStream);
         // 解密
-        byte[] decodeParams = null; //TODO 解密数据
+        String decodeStr = EncryptionUtil.decrypt(new String(body));
+        byte[] decodeParams = decodeStr.getBytes();
 
-        logger.info("decodeBodyToBody 解密后数据={}", new String(decodeParams));
+        logger.info("decodeBodyToBody 解密后数据={}", decodeStr);
         Map<String, String[]> m = new HashMap(request.getParameterMap());
         ParameterRequestWrapper requestWrapper = new ParameterRequestWrapper(request, m, decodeParams);
         requestWrapper.addHeader("content-type", APPLICATION_JSON_UTF8_VALUE);

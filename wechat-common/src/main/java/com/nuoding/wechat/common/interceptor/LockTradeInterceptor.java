@@ -93,7 +93,7 @@ public class LockTradeInterceptor implements AsyncHandlerInterceptor {
         response.setContentType("application/json; charset=utf-8");
 
         MapResponse mp = new MapResponse();
-        mp.setResponse(RespStatusEnum.REQUEST_REPEAT);
+        mp.setResponse(RespStatusEnum.REQUEST_OFTEN);
         String json = JsonUtil.obj2Json(mp);
         try {
             writer = response.getWriter();

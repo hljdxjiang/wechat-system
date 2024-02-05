@@ -14,7 +14,7 @@ public enum RespStatusEnum {
     REQUEST_ILLEGAL("900002", "请求非法"),
     REQUEST_SESSION_ERROR("900003", "会话异常"),
     REQUEST_TIME_ERROR("900004", "机器时钟异常"),
-
+    REQUEST_OFTEN("900005", "操作频繁，请稍后重试"),
 
     DATA_NOT_FOUND("100001", "数据查询失败"),
     DATA_UPDATE_FAIL("100101", "更新数据失败"),

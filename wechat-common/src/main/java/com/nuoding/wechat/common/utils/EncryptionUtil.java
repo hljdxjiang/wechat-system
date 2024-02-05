@@ -12,6 +12,7 @@ public class EncryptionUtil {
         String key = AESUtil.generateKey();
         int random = IdGenerateUtils.generateRandomNumber(5, 9);
         String salt = IdGenerateUtils.generateRandomString(random);
+        System.out.println("key== "+key+" salt== "+salt+" value== "+value);
         if (StringUtils.isNotBlank(key) && StringUtils.isNotBlank(salt)) {
             String k1 = buildKeyWithSalt(key, salt);
             String k2 = AESUtil.encrypt(value, key, salt);
@@ -66,6 +67,10 @@ public class EncryptionUtil {
         Map map=new HashMap();
         map.put("aaa","aaa");
         String value=JsonUtil.obj2Json(map);
-        System.out.println(encrypt(value));
+        System.out.println(AESUtil.decrypt("P1lL5pUu6wuTJppUUFLfuA==plKbU5wGrfg6TT35cs/EEQ=="
+                ,"oy/tCuE3LETRMaC+3H+A1JlfBtv5m9SIQqTv2Sun8cc=","ztgYWXo"));
+        String val=encrypt(value);
+        System.out.println(val);
+        System.out.println(decrypt(val));
     }
 }
