@@ -41,7 +41,7 @@ public class EncryptionUtil {
 
     private static String buildKeyWithSalt(String pwd, String salt) {
         int random = salt.length();
-        return pwd.substring(0, random) + salt + pwd.substring(random) + String.valueOf(random);
+        return String.valueOf(random)+pwd.substring(0, random) + salt + pwd.substring(random);
     }
 
     /**
@@ -53,9 +53,9 @@ public class EncryptionUtil {
         if (StringUtils.isBlank(key)) {
             return null;
         }
-        int random = Integer.parseInt(key.substring(key.length() - 1));
+        int random = Integer.parseInt(key.substring(0,1));
         // Remove the random number from the key
-        String base64Key = key.substring(0, key.length() - 1);
+        String base64Key = key.substring(1);
 
         String pwd = base64Key.substring(0, random) + base64Key.substring(random + random);
         String salt = base64Key.substring(random, random + random);
