@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @Service
 public class SignatureCheckServiceImpl implements SignatureCheckService {
 
@@ -78,16 +80,26 @@ public class SignatureCheckServiceImpl implements SignatureCheckService {
      */
     private boolean checkSign(ReqHeader header, String body) {
         String signature = header.getSignature();
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append(header.getUserId());
-        stringBuffer.append(header.getTimeStamp());
-        stringBuffer.append(header.getRequestId());
-        stringBuffer.append(body);
-        String decryptData = DigestUtils.sha256Hex(stringBuffer.toString());
-        if (!StringUtils.equals(signature, decryptData)) {
-            return false;
+        List<String> list = new ArrayList<>();
+        list.add(header.getUserId());
+        list.add(header.getRequestId());
+        list.add(header.getTimeStamp());
+        list.add(header.getVersion());
+        list.add(header.getNonce());
+        String newSign = checkSignature(list);
+        return StringUtils.equals(signature, decryptData);
+    }
+
+
+    private String checkSign(List<String> list) {
+        java.util.Collections.sort(values);
+
+
+        StringBuilder sb = new StringBuilder();
+        for (String s : values) {
+            sb.append(s);
         }
-        return true;
+        return Hashing.sha1().hashString(sb, Charsets.UTF_8).toString().toUpperCase();
     }
 
     /***
@@ -103,8 +115,7 @@ public class SignatureCheckServiceImpl implements SignatureCheckService {
         String signature = header.getSignature();
         String timeStamp = header.getTimeStamp();
         String requestId = header.getRequestId();
-        if (StringUtils.isBlank(signature) ||
-                StringUtils.isBlank(timeStamp) || StringUtils.isBlank(requestId)) {
+        if (StringUtils.isBlank(signature) || StringUtils.isBlank(timeStamp) || StringUtils.isBlank(requestId)) {
             return false;
         }
         return true;
