@@ -2,17 +2,11 @@ package com.nuoding.wechat.common.filters;
 
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HtmlUtil;
-import cn.hutool.json.JSONUtil;
-import org.apache.commons.lang3.StringUtils;
-
 import javax.servlet.ReadListener;
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import java.io.*;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -22,7 +16,6 @@ import java.util.Map;
  * @Description:
  */
 public class MultiReadHttpRequestWrapper extends HttpServletRequestWrapper {
-    private byte[] body;
 
     public MultiReadHttpRequestWrapper(HttpServletRequest request) throws IOException {
         super(request);
@@ -83,7 +76,7 @@ public class MultiReadHttpRequestWrapper extends HttpServletRequestWrapper {
 
     @Override
     public ServletInputStream getInputStream() throws IOException {
-        InputStream in= super.getInputStream();
+        InputStream in = super.getInputStream();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         int len = -1;
         byte[] buffer = new byte[1024];//1kb
@@ -91,7 +84,7 @@ public class MultiReadHttpRequestWrapper extends HttpServletRequestWrapper {
             baos.write(buffer, 0, len);
         }
         in.close();
-        String json = new String(baos.toByteArray());
+        String json = baos.toString();
 
         InputStream bain = new ByteArrayInputStream(json.getBytes());
         final ByteArrayInputStream byteInputStream = new ByteArrayInputStream(bain.toString().getBytes());
