@@ -26,35 +26,6 @@ public class MultiReadHttpRequestWrapper extends HttpServletRequestWrapper {
 
     public MultiReadHttpRequestWrapper(HttpServletRequest request) throws IOException {
         super(request);
-        InputStream in = super.getInputStream();
-        StringBuffer reqbody = new StringBuffer();
-        InputStreamReader reader = new InputStreamReader(in, StandardCharsets.UTF_8);
-        BufferedReader buffer = new BufferedReader(reader);
-        String line = buffer.readLine();
-        while (line != null) {
-            reqbody.append(line);
-            line = buffer.readLine();
-        }
-        buffer.close();
-        reader.close();
-        in.close();
-
-        String str = "";
-        if (StringUtils.isNotBlank(reqbody)) {
-            Map<String, Object> map = JSONUtil.parseObj(reqbody.toString());
-            Map<String, Object> resultMap = new HashMap<>(map.size());
-            for (String key : map.keySet()) {
-                Object val = map.get(key);
-                if (map.get(key) instanceof String) {
-                    resultMap.put(key, HtmlUtil.filter(val.toString()));
-                } else {
-                    resultMap.put(key, val);
-                }
-            }
-            str = JSONUtil.toJsonStr(resultMap);
-        }
-
-        body = str.getBytes(Charset.forName("UTF-8"));
     }
 
     @Override
@@ -112,7 +83,18 @@ public class MultiReadHttpRequestWrapper extends HttpServletRequestWrapper {
 
     @Override
     public ServletInputStream getInputStream() throws IOException {
-        final ByteArrayInputStream byteInputStream = new ByteArrayInputStream(this.body);
+        InputStream in= super.getInputStream();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        int len = -1;
+        byte[] buffer = new byte[1024];//1kb
+        while ((len = in.read(buffer)) != -1) {
+            baos.write(buffer, 0, len);
+        }
+        in.close();
+        String json = new String(baos.toByteArray());
+
+        InputStream bain = new ByteArrayInputStream(json.getBytes());
+        final ByteArrayInputStream byteInputStream = new ByteArrayInputStream(bain.toString().getBytes());
         return new ServletInputStream() {
             @Override
             public int read() {
